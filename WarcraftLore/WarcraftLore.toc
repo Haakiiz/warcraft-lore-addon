@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Warcraft Lore
+## Notes: Shows whether an NPC has a past in Warcraft: Orcs & Humans, Warcraft II or Warcraft III.
+## Author: Håkon
+## Version: 0.1.0
+## SavedVariables: WarcraftLoreDB
+
+Compat.lua
+Data.lua
+Core.lua
+UI.lua
