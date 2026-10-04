@@ -232,3 +232,45 @@ function C.Report()
         tooltipDataProcessor = TooltipDataProcessor ~= nil,
     }
 end
+
+-- Player position on the current map: mapID, x, y (x and y in 0..1), or nil if unknown
+-- (no map, instance, or secret values).
+function C.GetPlayerMapPos()
+    if type(C_Map) ~= "table" or type(C_Map.GetBestMapForUnit) ~= "function"
+        or type(C_Map.GetPlayerMapPosition) ~= "function" then
+        noteMissing("C_Map.GetPlayerMapPosition")
+        return nil
+    end
+    local okMap, mapID = pcall(C_Map.GetBestMapForUnit, "player")
+    if not okMap or type(mapID) ~= "number" or C.IsSecret(mapID) then
+        return nil
+    end
+    local okPos, pos = pcall(C_Map.GetPlayerMapPosition, mapID, "player")
+    if not okPos or type(pos) ~= "table" or type(pos.GetXY) ~= "function" then
+        return nil
+    end
+    local okXY, x, y = pcall(pos.GetXY, pos)
+    if not okXY or type(x) ~= "number" or type(y) ~= "number" or C.IsSecret(x) or C.IsSecret(y) then
+        return nil
+    end
+    return mapID, x, y
+end
+
+-- True when the player is inside an instance (dungeon, raid, battleground, arena).
+function C.InInstance()
+    if type(IsInInstance) ~= "function" then
+        noteMissing("IsInInstance")
+        return false
+    end
+    local ok, inInstance = pcall(IsInInstance)
+    return ok and inInstance == true
+end
+
+-- Calls fn every `seconds` seconds. Returns true if the ticker could be started.
+function C.StartTicker(seconds, fn)
+    if type(C_Timer) ~= "table" or type(C_Timer.NewTicker) ~= "function" then
+        noteMissing("C_Timer.NewTicker")
+        return false
+    end
+    return pcall(C_Timer.NewTicker, seconds, fn)
+end
