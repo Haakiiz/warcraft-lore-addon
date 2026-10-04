@@ -172,6 +172,32 @@ function C.SetUnitPortrait(texture, unit)
     return ok
 end
 
+-- Registers an event if the client knows it. Returns false instead of erroring
+-- when the event does not exist in this client version.
+function C.RegisterEventSafe(frame, event)
+    local ok = pcall(frame.RegisterEvent, frame, event)
+    if not ok then
+        noteMissing("event " .. event)
+    end
+    return ok
+end
+
+-- Fires with a unit token ("nameplate3") when a nameplate appears. Nameplates only
+-- exist for units whose plates are shown (friendly NPC plates may need to be enabled).
+C.EVENT_NAMEPLATE_ADDED = "NAME_PLATE_UNIT_ADDED"
+
+-- A short, unobtrusive alert sound.
+function C.PlayAlertSound()
+    if type(PlaySound) ~= "function" then
+        noteMissing("PlaySound")
+        return
+    end
+    local kit = SOUNDKIT and (SOUNDKIT.MAP_PING or SOUNDKIT.IG_QUEST_LOG_OPEN)
+    if kit then
+        pcall(PlaySound, kit, "Master")
+    end
+end
+
 -- Lets Esc close the window. The frame needs a global name.
 function C.RegisterEscapeClose(frame)
     local name = frame:GetName()

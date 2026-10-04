@@ -121,6 +121,31 @@ local function cmdAuto()
     chat("Auto-open is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
 end
 
+local function cmdAlert()
+    WarcraftLoreDB.alert = not WarcraftLoreDB.alert
+    chat("Nearby alerts are now " .. (WarcraftLoreDB.alert and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+end
+
+-------------------------------------------------------------------- Nearby alert
+-- When a nameplate appears for an NPC in the database, say so once per session.
+local alerted = {}
+
+local function onNameplateAdded(unit)
+    if not (WarcraftLoreDB and WarcraftLoreDB.alert) or type(unit) ~= "string" then
+        return
+    end
+    local entry, npcID, _, name = ns.Lookup(unit)
+    if not entry or alerted[npcID] then
+        return
+    end
+    alerted[npcID] = true
+    local who = name or entry.name
+    local tag = entry.confidence == "uncertain" and " |cffa79d8a(uncertain)|r" or ""
+    chat(("Warcraft veteran nearby: |cffd4c6f7%s|r – %s%s. Target them to read their story.")
+        :format(who, ns.GamesLabel(entry), tag))
+    C.PlayAlertSound()
+end
+
 local function cmdDebug()
     local r = C.Report()
     chat(("build %s, interface %s, issecretvalue=%s, TooltipDataProcessor=%s, tooltip hook=%s")
@@ -143,6 +168,7 @@ local function cmdHelp()
     chat("/wcl – open the window for your target")
     chat("/wcl id – print your target's NPC ID and name in chat")
     chat("/wcl auto – toggle auto-open (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
+    chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); needs nameplates")
     chat("/wcl reset – move the window back to the center")
     chat("/wcl debug – show which APIs the client has")
 end
@@ -156,6 +182,8 @@ SlashCmdList.WARCRAFTLORE = function(msg)
         cmdID()
     elseif cmd == "auto" then
         cmdAuto()
+    elseif cmd == "alert" then
+        cmdAlert()
     elseif cmd == "reset" then
         ns.UI.ResetPosition()
         chat("The window is back in the center.")
@@ -170,12 +198,18 @@ end
 local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
+C.RegisterEventSafe(events, C.EVENT_NAMEPLATE_ADDED)
 events:SetScript("OnEvent", function(_, event, arg1)
-    if event == "ADDON_LOADED" and arg1 == ADDON_NAME then
+    if event == C.EVENT_NAMEPLATE_ADDED then
+        onNameplateAdded(arg1)
+    elseif event == "ADDON_LOADED" and arg1 == ADDON_NAME then
         -- SavedVariables are only available from here on.
         WarcraftLoreDB = WarcraftLoreDB or {}
         if WarcraftLoreDB.auto == nil then
             WarcraftLoreDB.auto = true
+        end
+        if WarcraftLoreDB.alert == nil then
+            WarcraftLoreDB.alert = true
         end
         ns.UI.Init()
         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)

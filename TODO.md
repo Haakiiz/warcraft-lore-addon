@@ -80,14 +80,14 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 
 ## Addon follow-ups
 
-- [ ] **Signal when a Warcraft veteran is nearby** (requested 2026-10-03): give a small heads-up (sound, chat line or a little icon/toast) when an NPC from the database is close, so the player knows someone is worth clicking on. Ideas to evaluate:
+- [x] **Signal when a Warcraft veteran is nearby** (done 2026-10-04: nameplate-based chat line + sound, `/wcl alert`; coordinate-based variant not built) (requested 2026-10-03): give a small heads-up (sound, chat line or a little icon/toast) when an NPC from the database is close, so the player knows someone is worth clicking on. Ideas to evaluate:
   - Nameplates: listen for `NAME_PLATE_UNIT_ADDED`, read `UnitGUID("nameplateN")` → NPC ID → database. Only works when nameplates are shown (friendly NPC nameplates may need to be enabled), and GUIDs may be secret values in some situations on Midnight-based clients. Goes in Compat.lua.
   - Distance from known coordinates: compare the player's map position (`C_Map.GetPlayerMapPosition`) with `coords` in Data.lua for the current zone. Works without nameplates, but only for NPCs with coordinates and outside instances.
   - Show each NPC only once per session, add a `/wcl alert` on/off toggle, and maybe mark the NPC with a raid-target-style icon or a line pointing in its direction.
 
-- [ ] **Include book/novel links** (requested 2026-10-03): add a source code for books/novels (Data.lua docs, validator, UI colour), label them clearly as book-based, never as game appearances. Then re-check earlier "novel only" rejects: Mok'Morokk (Exploring Azeroth), Marcus Redpath (Tides of Darkness), Aliden Perenolde (Beyond the Dark Portal, Day of the Dragon), Pained (Tides of War), and the Cycle of Hatred details for Nazgrel.
+- [x] Book/novel source code `BOOK` added (Data.lua docs, validator, UI). - [ ] Still to do: re-check earlier "novel only" rejects: Mok'Morokk (Exploring Azeroth), Marcus Redpath (Tides of Darkness), Aliden Perenolde (Beyond the Dark Portal, Day of the Dragon), Pained (Tides of War), and the Cycle of Hatred details for Nazgrel.
 
-- [ ] Allow more than one zone per NPC (Rexxar/Misha walk through three zones)
+- [x] Allow more than one zone per NPC (`alsoIn` field; Rexxar/Misha)
 - [ ] Check in game whether Grunt Maug exists in Forever
 - [x] Gazlowe's Charm removed (name-only link)
 - [ ] Confirm in game that the new frame looks right (vines tiled, round portrait)
