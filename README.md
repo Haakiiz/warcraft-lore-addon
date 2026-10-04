@@ -56,6 +56,8 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT |
 | Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT |
 | Witch Doctor Jin'Zil | 3995 | Stonetalon Mountains | 74.4, 97.8 | TFT, *uncertain* |
+| Arch Druid Fandral Staghelm | 3516 | Darnassus | 34.4, 8.4 | BOOK |
+| Tyrande Whisperwind | 7999 | Darnassus | 38.4, 80.6 | WC3, TFT, BOOK |
 | Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
 | Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
 | Archmage Tervosh | 4967 | Dustwallow Marsh | 66.4, 49.2 | WC3, *uncertain* |

@@ -29,8 +29,8 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 - [x] Durotar – 1 NPC (Gar'Thok)
 - [x] Mulgore – 1 NPC (Baine Bloodhoof)
 - [x] Thunder Bluff – 1 NPC (Cairne Bloodhoof)
-- [ ] Teldrassil
-- [ ] Darnassus
+- [x] Teldrassil – 0 NPCs
+- [x] Darnassus – 2 NPCs (Tyrande Whisperwind, Arch Druid Fandral Staghelm – book only)
 - [x] Darkshore – 1 NPC (Athrikus Narassin)
 - [x] Ashenvale – 0 NPCs (8 Season of Discovery name matches dropped)
 - [ ] Thousand Needles
