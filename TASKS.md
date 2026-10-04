@@ -77,7 +77,7 @@ Sjekk get_usage mellom hver runde.
   Ferdig og pushet: BOOK-kode, alsoIn (Rexxar/Misha), nærhetsvarsel via navneskilt (/wcl alert).
   Bok-koblinger: arbeider → kritiker (Pained AVVIST: Tides of War-handling presentert som bakgrunn) → rettet av orkestratoren → lagt inn på PR #1 (40 NPC-er).
   Darnassus: Tyrande + Fandral (AVVIST runde 1 → rettet av orkestratoren → lagt inn på PR #1). Teldrassil: 0. Totalt 42 NPC-er.
-  STOPPET ved 97 % ukesgrense (2026-10-04). PR #1 (session/book-links) venter på Håkons review/merge.
+  STOPPET ved 97 % ukesgrense (2026-10-04). PR #1 merget til main 2026-10-04; grenen er slettet.
 - STOPPET ved 88 % ukesgrense (2026-10-03). Neste: Teldrassil/Darnassus, Thousand Needles, Alterac Valley (Drek'Thar), Forever-sonene.
 - [ ] Sluttkritiker for helheten + røyktest
 
