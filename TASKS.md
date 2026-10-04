@@ -73,6 +73,9 @@ Sjekk get_usage mellom hver runde.
 - [x] Sluttkritiker: AVVIST (Thrall's Resolve og Seal of Sylvanas var navnelikhet; inkonsekvent Reforged-/kampanjenavn).
       Rettet av orkestratoren: begge items fjernet, navn og merking samkjørt, Dalar fikk samme forbehold, Jin'Zil fikk kilde.
       Ikke kjørt ny sluttkritiker (ukesgrense 88 %). Testskript + røyktest grønne med 36 NPC-er.
+- 2026-10-04: GitHub-repo laget: https://github.com/Haakiiz/warcraft-lore-addon (privat). Håkon: bruk opptil 100 % ukesgrense.
+  Ferdig og pushet: BOOK-kode, alsoIn (Rexxar/Misha), nærhetsvarsel via navneskilt (/wcl alert).
+  Kjører: arbeider for bok-koblinger (Mok'Morokk, Marcus Redpath, Aliden Perenolde, Pained, Nazgrel/Cycle of Hatred) → kritiker.
 - STOPPET ved 88 % ukesgrense (2026-10-03). Neste: Teldrassil/Darnassus, Thousand Needles, Alterac Valley (Drek'Thar), Forever-sonene.
 - [ ] Sluttkritiker for helheten + røyktest
 
