@@ -6,8 +6,8 @@ local C = ns.Compat
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 
-ns.GAME_ORDER = { "WC1", "WC2", "BTDP", "WC3", "TFT", "FK" }
-ns.GAME_SHORT = { WC1 = "WC1", WC2 = "WC2", BTDP = "BtDP", WC3 = "WC3", TFT = "TFT", FK = "FK" }
+ns.GAME_ORDER = { "WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK" }
+ns.GAME_SHORT = { WC1 = "WC1", WC2 = "WC2", BTDP = "BtDP", WC3 = "WC3", TFT = "TFT", FK = "FK", BOOK = "Book" }
 ns.GAME_LONG = {
     WC1 = "Warcraft: Orcs & Humans",
     WC2 = "Warcraft II: Tides of Darkness",
@@ -15,9 +15,10 @@ ns.GAME_LONG = {
     WC3 = "Warcraft III: Reign of Chaos",
     TFT = "Warcraft III: The Frozen Throne",
     FK = "Warcraft III Reforged: Forsaken Kingdom",
+    BOOK = "Warcraft novels and books",
 }
--- One color per game: bronze, red, violet, orange, ice blue, lime (Reforged's new Forsaken campaign).
-ns.GAME_COLOR = { WC1 = "c9a46a", WC2 = "e0533f", BTDP = "b07cf0", WC3 = "f0a24a", TFT = "7cc7ef", FK = "9bd46a" }
+-- One color per game: bronze, red, violet, orange, ice blue, lime (Reforged's new Forsaken campaign), parchment (books).
+ns.GAME_COLOR = { WC1 = "c9a46a", WC2 = "e0533f", BTDP = "b07cf0", WC3 = "f0a24a", TFT = "7cc7ef", FK = "9bd46a", BOOK = "e8dcb5" }
 
 function ns.GameRGB(code)
     local hex = ns.GAME_COLOR[code] or "a79d8a"

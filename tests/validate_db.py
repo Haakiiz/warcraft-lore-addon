@@ -16,9 +16,9 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "WarcraftLore" / "Data.lua"
 
-GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK"}
+GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
-ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait"}
+ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
@@ -218,6 +218,11 @@ def check_entries(npcs):
                 err(f"'portrait' = {portrait!r}, but neither Portraits/{portrait}.tga nor .blp exists")
         if conf == "uncertain" and not (isinstance(e.get("searched"), str) and e["searched"].strip()):
             err("confidence = \"uncertain\" requires 'searched' (where you looked)")
+
+        also = e.get("alsoIn")
+        if also is not None and not (isinstance(also, LuaTable) and (also.is_list or not also.data)
+                                     and all(isinstance(z, str) and z.strip() for z in (also.data or []))):
+            err("'alsoIn' must be a list of zone names")
 
         story = e.get("story")
         if isinstance(story, str) and story.strip():

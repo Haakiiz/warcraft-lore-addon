@@ -7,6 +7,7 @@
 --   name        (required) The NPC's name in WoW (English client).
 --   zone        (required) The zone the NPC stands in, e.g. "Orgrimmar".
 --   coords      (optional) Map coordinates as text, e.g. "32.0, 37.8". "" if unknown.
+--   alsoIn      (optional) Other zones the NPC also walks through, e.g. { "Desolace", "Feralas" }.
 --   appearances (required) List of appearances in the RTS games. Each has:
 --       game      "WC1"  = Warcraft: Orcs & Humans
 --                 "WC2"  = Warcraft II: Tides of Darkness
@@ -14,8 +15,10 @@
 --                 "WC3"  = Warcraft III: Reign of Chaos
 --                 "TFT"  = Warcraft III: The Frozen Throne
 --                 "FK"   = Warcraft III Reforged: Forsaken Kingdom (the new Undead campaign)
+--                 "BOOK" = Warcraft novels and books (campaign = book title, missions = chapters)
 --                 Characters Reforged added to old RoC/TFT missions keep WC3/TFT;
---                 say "Reforged only" in the role.
+--                 say "Reforged only" in the role. A BOOK appearance is never a game appearance:
+--                 use it only for what happens in the book.
 --       campaign  Campaign and side, e.g. "The Invasion of Kalimdor (Orc)". "" if unknown.
 --       missions  List of mission names (original English titles). {} if unknown.
 --       role      The role there: hero, unit, quest giver, mentioned in dialogue, …
@@ -451,6 +454,7 @@ ns.NPCS = {
         name = "Rexxar",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        alsoIn = { "Desolace", "Feralas" },
         appearances = {
             {
                 game = "TFT",
@@ -477,6 +481,7 @@ ns.NPCS = {
         name = "Misha",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        alsoIn = { "Desolace", "Feralas" },
         appearances = {
             {
                 game = "TFT",

@@ -341,12 +341,16 @@ local function fillGameBox(b, app)
     b.badge:Set(ns.GAME_SHORT[app.game] or app.game, c)
     b.title:SetText(ns.GAME_LONG[app.game] or app.game)
     b.title:SetTextColor(c[1], c[2], c[3])
+    -- Books use the same fields: campaign = book title, missions = chapters (optional).
+    local isBook = app.game == "BOOK"
     local lines = {}
     if app.campaign and app.campaign ~= "" then
-        lines[#lines + 1] = HEX_MUTED .. "Campaign" .. END .. "  " .. app.campaign
+        lines[#lines + 1] = HEX_MUTED .. (isBook and "Book" or "Campaign") .. END .. "  " .. app.campaign
     end
     if app.missions and #app.missions > 0 then
-        lines[#lines + 1] = HEX_MUTED .. (#app.missions == 1 and "Mission" or "Missions") .. END .. "  " .. table.concat(app.missions, ", ")
+        local label = isBook and (#app.missions == 1 and "Chapter" or "Chapters")
+            or (#app.missions == 1 and "Mission" or "Missions")
+        lines[#lines + 1] = HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
     end
     if app.role and app.role ~= "" then
         lines[#lines + 1] = HEX_MUTED .. "Role" .. END .. "  " .. app.role
@@ -441,6 +445,9 @@ function UI.ShowEntry(npcID, entry, unit)
     local place = entry.zone or ""
     if entry.coords and entry.coords ~= "" then
         place = place .. " · " .. entry.coords
+    end
+    if entry.alsoIn and #entry.alsoIn > 0 then
+        place = place .. "\n" .. HEX_MUTED .. "Also in " .. table.concat(entry.alsoIn, ", ") .. END
     end
     showHeader(entry.name, place, npcID, badges)
     setRing(ringColors, 1)
