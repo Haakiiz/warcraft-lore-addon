@@ -80,7 +80,7 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 
 ## Addon follow-ups
 
-- [x] **Signal when a Warcraft veteran is nearby** (done 2026-10-04: nameplate-based chat line + sound, `/wcl alert`; coordinate-based variant also done 2026-10-04: 2 s ticker, 3% radius, shared once-per-session dedupe, skipped in instances) (requested 2026-10-03): give a small heads-up (sound, chat line or a little icon/toast) when an NPC from the database is close, so the player knows someone is worth clicking on. Ideas to evaluate:
+- [x] **Signal when a Warcraft veteran is nearby** (on-screen toast + center text + `/wcl test` added 2026-10-05, not tested in game; done 2026-10-04: nameplate-based chat line + sound, `/wcl alert`; coordinate-based variant also done 2026-10-04: 2 s ticker, 3% radius, shared once-per-session dedupe, skipped in instances) (requested 2026-10-03): give a small heads-up (sound, chat line or a little icon/toast) when an NPC from the database is close, so the player knows someone is worth clicking on. Ideas to evaluate:
   - Nameplates: listen for `NAME_PLATE_UNIT_ADDED`, read `UnitGUID("nameplateN")` → NPC ID → database. Only works when nameplates are shown (friendly NPC nameplates may need to be enabled), and GUIDs may be secret values in some situations on Midnight-based clients. Goes in Compat.lua.
   - Distance from known coordinates: compare the player's map position (`C_Map.GetPlayerMapPosition`) with `coords` in Data.lua for the current zone. Works without nameplates, but only for NPCs with coordinates and outside instances.
   - Show each NPC only once per session, add a `/wcl alert` on/off toggle, and maybe mark the NPC with a raid-target-style icon or a line pointing in its direction.

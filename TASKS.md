@@ -104,3 +104,4 @@ Sjekk get_usage mellom hver runde.
   5. Les oppdragssidene (`index.php?title=<X>_(WC3_Orc)&action=raw`) for navngitte karakterer.
 - Lore-feller: Thrall er IKKE med i «The Hunter of Shadows» (Groms kapittel). Rehgar Earthfury: fant ikke bevis for at han er med i TFT, så han er utelatt.
 - 2026-10-04: Coordinate-based nearby alert added (Compat.GetPlayerMapPos/InInstance/StartTicker, Core.lua ticker). Branch session/coord-alert. Not tested in game; Classic and Mainline uiMapIDs both listed.
+- 2026-10-05: Nearby alert now shows an on-screen toast (Toast.lua, max 3, click/right-click/shift-drag) plus RaidNotice center text; /wcl test added. Branch session/alert-toast. Not tested in game.

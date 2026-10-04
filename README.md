@@ -34,6 +34,7 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl id` | Prints your target's NPC ID and name in chat, and whether it is in the database |
 | `/wcl auto` | Turns auto-open on target on or off |
 | `/wcl alert` | Turns the "Warcraft veteran nearby" chat alert on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
+| `/wcl test` (or `/wcl alert test`) | Shows a test alert for the first database NPC: toast, center-screen text, chat line and sound. Click the toast to open the NPC's window, right-click to dismiss, shift-drag to move |
 | `/wcl reset` | Moves the window back to the center |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
@@ -144,6 +145,7 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 - `WarcraftLore/Compat.lua`: **every client-version-dependent API call**. Fix this file if a beta patch breaks something.
 - `WarcraftLore/Data.lua`: the database. The format is described at the top of the file.
+- `WarcraftLore/Toast.lua`: on-screen alert toasts.
 - `WarcraftLore/Core.lua`: lookup, tooltip line, events and `/wcl`.
 - `WarcraftLore/UI.lua`: the window.
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).

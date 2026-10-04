@@ -9,3 +9,4 @@ Compat.lua
 Data.lua
 Core.lua
 UI.lua
+Toast.lua
