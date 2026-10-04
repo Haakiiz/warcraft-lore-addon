@@ -130,6 +130,16 @@ end
 -- When a nameplate appears for an NPC in the database, say so once per session.
 local alerted = {}
 
+-- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
+local function announce(npcID, entry, name)
+    alerted[npcID] = true
+    local who = name or entry.name
+    local tag = entry.confidence == "uncertain" and " |cffa79d8a(uncertain)|r" or ""
+    chat(("Warcraft veteran nearby: |cffd4c6f7%s|r – %s%s. Target them to read their story.")
+        :format(who, ns.GamesLabel(entry), tag))
+    C.PlayAlertSound()
+end
+
 local function onNameplateAdded(unit)
     if not (WarcraftLoreDB and WarcraftLoreDB.alert) or type(unit) ~= "string" then
         return
@@ -138,12 +148,77 @@ local function onNameplateAdded(unit)
     if not entry or alerted[npcID] then
         return
     end
-    alerted[npcID] = true
-    local who = name or entry.name
-    local tag = entry.confidence == "uncertain" and " |cffa79d8a(uncertain)|r" or ""
-    chat(("Warcraft veteran nearby: |cffd4c6f7%s|r – %s%s. Target them to read their story.")
-        :format(who, ns.GamesLabel(entry), tag))
-    C.PlayAlertSound()
+    announce(npcID, entry, name)
+end
+
+-------------------------------------------------------------------- Nearby alert (coordinates)
+-- Compares the player's map position with `coords` in Data.lua (Wowhead map percent).
+local CHECK_INTERVAL = 2      -- seconds between checks
+local ALERT_RADIUS = 3        -- distance in map percent (0-100) that counts as "nearby"
+
+-- Zone name -> uiMapIDs. Classic-era IDs first, Mainline IDs after; the client only
+-- knows one set, so listing both is harmless. Only zones with coords in Data.lua.
+local ZONE_MAPS = {
+    ["Orgrimmar"] = { 1454, 85 },
+    ["Durotar"] = { 1411, 1 },
+    ["The Barrens"] = { 1413, 10 },
+    ["Undercity"] = { 1458, 90 },
+    ["Silverpine Forest"] = { 1421, 21 },
+    ["Stonetalon Mountains"] = { 1442, 65 },
+    ["Mulgore"] = { 1412, 7 },
+    ["Thunder Bluff"] = { 1456, 88 },
+    ["Feralas"] = { 1444, 69 },
+    ["Dustwallow Marsh"] = { 1445, 70 },
+    ["Darkshore"] = { 1439, 62 },
+    ["Hillsbrad Foothills"] = { 1424, 25 },
+    ["Alterac Mountains"] = { 1416, 27 },
+    ["Tirisfal Glades"] = { 1420, 18 },
+    ["Western Plaguelands"] = { 1422, 22 },
+    ["Darnassus"] = { 1457, 89 },
+}
+
+-- uiMapID -> list of { npcID, x, y } (x, y in percent), built once on first use.
+local byMap
+local function buildIndex()
+    byMap = {}
+    for npcID, entry in pairs(ns.NPCS) do
+        local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+        x, y = tonumber(x), tonumber(y)
+        local maps = ZONE_MAPS[entry.zone]
+        if x and y and maps then
+            for _, mapID in ipairs(maps) do
+                byMap[mapID] = byMap[mapID] or {}
+                table.insert(byMap[mapID], { npcID, x, y })
+            end
+        end
+    end
+end
+
+local function checkPosition()
+    if not (WarcraftLoreDB and WarcraftLoreDB.alert) or C.InInstance() then
+        return
+    end
+    local mapID, px, py = C.GetPlayerMapPos()
+    if not mapID then
+        return
+    end
+    if not byMap then
+        buildIndex()
+    end
+    local list = byMap[mapID]
+    if not list then
+        return
+    end
+    px, py = px * 100, py * 100
+    for _, npc in ipairs(list) do
+        local npcID = npc[1]
+        if not alerted[npcID] then
+            local dx, dy = px - npc[2], py - npc[3]
+            if dx * dx + dy * dy <= ALERT_RADIUS * ALERT_RADIUS then
+                announce(npcID, ns.NPCS[npcID])
+            end
+        end
+    end
 end
 
 local function cmdDebug()
@@ -168,7 +243,7 @@ local function cmdHelp()
     chat("/wcl – open the window for your target")
     chat("/wcl id – print your target's NPC ID and name in chat")
     chat("/wcl auto – toggle auto-open (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
-    chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); needs nameplates")
+    chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
     chat("/wcl reset – move the window back to the center")
     chat("/wcl debug – show which APIs the client has")
 end
@@ -212,6 +287,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
             WarcraftLoreDB.alert = true
         end
         ns.UI.Init()
+        C.StartTicker(CHECK_INTERVAL, checkPosition)
         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)
         if not ns.tooltipHook then
             chat("Found no way to hook tooltips in this client, so the tooltip line is off. Type /wcl debug.")

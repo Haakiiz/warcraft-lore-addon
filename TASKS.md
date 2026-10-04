@@ -103,3 +103,4 @@ Sjekk get_usage mellom hver runde.
      Maks ca. 1 forespørsel per 0,7 s, ellers gir wikien 429.
   5. Les oppdragssidene (`index.php?title=<X>_(WC3_Orc)&action=raw`) for navngitte karakterer.
 - Lore-feller: Thrall er IKKE med i «The Hunter of Shadows» (Groms kapittel). Rehgar Earthfury: fant ikke bevis for at han er med i TFT, så han er utelatt.
+- 2026-10-04: Coordinate-based nearby alert added (Compat.GetPlayerMapPos/InInstance/StartTicker, Core.lua ticker). Branch session/coord-alert. Not tested in game; Classic and Mainline uiMapIDs both listed.

@@ -33,7 +33,7 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl` | Opens the window for your target. NPCs not in the database show "No known Warcraft history recorded for … (NPC ID …) yet." |
 | `/wcl id` | Prints your target's NPC ID and name in chat, and whether it is in the database |
 | `/wcl auto` | Turns auto-open on target on or off |
-| `/wcl alert` | Turns the "Warcraft veteran nearby" chat alert on or off. It fires once per NPC per session when the NPC's nameplate appears, so friendly NPC nameplates must be enabled to get alerts for quest givers |
+| `/wcl alert` | Turns the "Warcraft veteran nearby" chat alert on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
 | `/wcl reset` | Moves the window back to the center |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
