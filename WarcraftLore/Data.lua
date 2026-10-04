@@ -88,6 +88,12 @@ ns.NPCS = {
                 missions = { "To Tame a Land" },
                 role = "Quest giver (Raider): asks Rexxar to stop the harpies raiding the supply caravans",
             },
+            {
+                game = "BOOK",
+                campaign = "Cycle of Hatred",
+                missions = {},
+                role = "Minor character in the novel (not a game appearance): his men help carry the wounded orc Byrok to Thrall, and he readies the orc troops when the human army gathers at Northwatch Hold",
+            },
         },
         story = "Nazgrel was freed from an internment camp by Thrall and became one of his most trusted advisors. "
              .. "When Orgrimmar was built, he was put in charge of the new city's security. "
@@ -98,6 +104,7 @@ ns.NPCS = {
         sources = {
             "https://warcraft.wiki.gg/wiki/Nazgrel",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Cycle_of_Hatred",
             "https://www.wowhead.com/classic/npc=3230",
         },
         confidence = "confirmed",
@@ -209,6 +216,137 @@ ns.NPCS = {
         },
         confidence = "uncertain",
         searched = "warcraft.wiki.gg Ansirem Runeweaver page and Under the Burning Sky (WC3 Undead); the mission page only lists his name among enemy random-hero names in its Notes section (\"Since patch 1.33 ...\"), so the link rests on a name alone. Whether later patches (1.36.1, 2.0) changed these names could not be verified from the wiki.",
+    },
+
+    -- ===================================================================== Darnassus
+[7999] = {
+        name = "Tyrande Whisperwind",
+        zone = "Darnassus",
+        coords = "38.4, 80.6",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "Eternity's End (Night Elf)",
+                missions = { "Enemies at the Gate", "Daughters of the Moon", "The Awakening of Stormrage",
+                             "The Druids Arise", "Brothers in Blood", "Twilight of the Gods" },
+                role = "Playable hero (Priestess of the Moon)",
+            },
+            {
+                game = "WC3",
+                campaign = "Eternity's End (Night Elf)",
+                missions = { "A Destiny of Flame and Sorrow", "The Last Guardian" },
+                role = "Cutscenes only: the closing scene with Furion, and a speaking part in the interlude",
+            },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "Balancing the Scales", "Shards of the Alliance" },
+                role = "Playable hero (Priestess of the Moon)",
+            },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "Unfinished Business", "A Parting of Ways" },
+                role = "Speaking character in the cutscenes",
+            },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "The Ruins of Dalaran" },
+                role = "Mentioned only: Maiev says she saw her \"torn apart\"",
+            },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "The Brothers Stormrage" },
+                role = "Rescue target: the swept-away priestess whom Illidan and Malfurion save",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Well of Eternity",
+                missions = {},
+                role = "Major character in the novel (not a game appearance), set about 10,000 years before the First War (War of the Ancients): listed as Sister Tyrande Whisperwind",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Demon Soul",
+                missions = {},
+                role = "Major character in the novel (not a game appearance), set about 10,000 years before the First War (War of the Ancients): listed as High Priestess Tyrande Whisperwind",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Sundering",
+                missions = {},
+                role = "Major character in the novel (not a game appearance), set about 10,000 years before the First War (War of the Ancients): High Priestess Tyrande Whisperwind in the events leading to the Great Sundering",
+            },
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Major character in the novel (not a game appearance; it is set long after Classic): she learns through nightmares that Malfurion is dying, asks Broll Bearmantle to search the Emerald Dream and goes with him",
+            },
+        },
+        story = "After the Battle of Mount Hyjal, Tyrande and Malfurion stayed on Hyjal to rebuild and later took their people back to Ashenvale to heal the damage done by the Burning Legion. "
+             .. "Malfurion and Tyrande helped their people rebuild their shattered villages and ruled them for a time. "
+             .. "Afterwards Malfurion's spirit was lost in the Emerald Dream, and Fandral Staghelm became Arch-Druid and planted Teldrassil. "
+             .. "With Malfurion gone, Tyrande became the sole leader of the night elves, priestesses and Sentinels, and she often quarrelled with Fandral. "
+             .. "In World of Warcraft she is High Priestess of Elune in Darnassus.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Tyrande_Whisperwind",
+            "https://warcraft.wiki.gg/wiki/Eternity%27s_End_(WC3_campaign)",
+            "https://warcraft.wiki.gg/wiki/Terror_of_the_Tides",
+            "https://warcraft.wiki.gg/wiki/Enemies_at_the_Gate_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Daughters_of_the_Moon_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/The_Awakening_of_Stormrage_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/The_Druids_Arise_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Brothers_in_Blood_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/A_Destiny_of_Flame_and_Sorrow_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/The_Last_Guardian_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Twilight_of_the_Gods_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Unfinished_Business_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Balancing_the_Scales_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Shards_of_the_Alliance_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/The_Ruins_of_Dalaran_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/The_Brothers_Stormrage_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/A_Parting_of_Ways_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/War_of_the_Ancients",
+            "https://warcraft.wiki.gg/wiki/The_Well_of_Eternity",
+            "https://warcraft.wiki.gg/wiki/The_Demon_Soul",
+            "https://warcraft.wiki.gg/wiki/The_Sundering",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=7999/tyrande-whisperwind",
+        },
+        confidence = "confirmed",
+    },
+
+    [3516] = {
+        name = "Arch Druid Fandral Staghelm",
+        zone = "Darnassus",
+        coords = "34.4, 8.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Supporting character in the novel (not a game appearance; it is set long after Classic): calls a convocation of druids on Teldrassil and insists on healing the tree, and the Nightmare Lord has tricked him with a vision of his dead son Valstann",
+            },
+        },
+        story = "After the Third War the night elves lost Nordrassil and their immortality, and Malfurion fell into a deep coma. "
+             .. "His absence left the leadership of the druids to Fandral Staghelm, who became the new archdruid. "
+             .. "Fandral convinced the other druids to create a new World Tree, and together they planted Teldrassil off the coast of northern Kalimdor. "
+             .. "The tree was not blessed by the Dragon Aspects and the night elves did not regain their immortality, while corruption began to spread through Teldrassil. "
+             .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus.",
+        items = {
+            { id = 5390, name = "Fandral's Message", note = "Quest item in \"Grove of the Ancients\", which he starts" },
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Fandral_Staghelm",
+            "https://www.wowhead.com/classic/item=5390",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=3516/arch-druid-fandral-staghelm",
+        },
+        confidence = "confirmed",
     },
 
     -- ===================================================================== Darkshore
@@ -943,6 +1081,124 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Gordo",
             "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
             "https://www.wowhead.com/classic/npc=10666/gordo",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Book and novel links
+    [4500] = {
+        name = "Overlord Mok'Morokk",
+        zone = "Dustwallow Marsh",
+        coords = "36.2, 31.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Exploring Azeroth: Kalimdor",
+                missions = {},
+                role = "Mentioned in the book (not a game appearance): Rexxar names him the new leader of the Stonemaul clan, a choice Rexxar later regrets",
+            },
+        },
+        story = "After the invasion of Durotar, Rexxar named the ogre Mok'Morokk the new leader of the Stonemaul clan, according to the book Exploring Azeroth: Kalimdor. "
+             .. "Rexxar chose him because he had shown strength while Rexxar himself led the clan, and he later came to regret the choice. "
+             .. "Soon after Rexxar left, Mok'Morokk fell prey to the temptations of power and demanded service from his people instead of leading them. "
+             .. "When the black dragonflight attacked the clan's old home in Stonemaul Village, he led the clan to Brackenwall Village. "
+             .. "In World of Warcraft he stays in Brackenwall Village in Dustwallow Marsh and gives the Horde quest Overlord Mok'Morokk's Concern.",
+        items = {
+            { id = 5834, name = "Mok'Morokk's Snuff", note = "His snuff, which he sends you to collect in Overlord Mok'Morokk's Concern" },
+            { id = 5835, name = "Mok'Morokk's Grog", note = "His grog, which he sends you to collect in Overlord Mok'Morokk's Concern" },
+            { id = 5836, name = "Mok'Morokk's Strongbox", note = "His strongbox, which he sends you to collect in Overlord Mok'Morokk's Concern" },
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Overlord_Mok%27Morokk",
+            "https://warcraft.wiki.gg/wiki/Rexxar",
+            "https://warcraft.wiki.gg/wiki/Exploring_Azeroth:_Kalimdor",
+            "https://warcraft.wiki.gg/wiki/The_Brood_of_Onyxia_(2)",
+            "https://warcraft.wiki.gg/wiki/Spirits_of_Stonemaul_Hold",
+            "https://warcraft.wiki.gg/wiki/Overlord_Mok%27Morokk%27s_Concern",
+            "https://www.wowhead.com/classic/quest=1166",
+            "https://www.wowhead.com/classic/npc=4500",
+        },
+        confidence = "confirmed",
+    },
+
+    -- Dustwallow Marsh (Theramore Isle)
+    [4965] = {
+        name = "Pained",
+        zone = "Dustwallow Marsh",
+        coords = "66.2, 49.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Supporting character in the novel (not a game appearance): Jaina's night elf bodyguard, who dies when Theramore is destroyed",
+            },
+        },
+        story = "In the novel Jaina Proudmoore: Tides of War, Pained is the night elf bodyguard whom Tyrande assigned to Jaina at the Battle of Mount Hyjal. "
+             .. "She stayed with Jaina afterwards because she had never officially been relieved of her duty. "
+             .. "In World of Warcraft she is Jaina Proudmoore's night elf bodyguard on Theramore Isle. "
+             .. "The novel itself is set long after Classic and ends with her death when Theramore is destroyed.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Pained",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=4965",
+        },
+        confidence = "confirmed",
+    },
+
+    -- Hillsbrad Foothills (Southshore)
+    [2263] = {
+        name = "Marshal Redpath",
+        zone = "Hillsbrad Foothills",
+        coords = "49.6, 58.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Tides of Darkness",
+                missions = { "First prologue" },
+                role = "Minor character in the novel (not a game appearance): the headman of Southshore who greets Anduin Lothar and the Stormwind refugees in the first prologue",
+            },
+        },
+        story = "In the novel Tides of Darkness (Aaron Rosenberg's retelling of the Second War), Marcus Redpath is the headman of Southshore. "
+             .. "He greets Anduin Lothar, Khadgar and the refugees from the Kingdom of Stormwind. "
+             .. "He sends his fastest rider, Willem, to King Terenas Menethil II to announce their arrival. "
+             .. "After the Third War he is Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga. "
+             .. "In World of Warcraft he stands in Southshore as Marshal Redpath.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Marcus_Redpath",
+            "https://warcraft.wiki.gg/wiki/Tides_of_Darkness",
+            "https://www.wowhead.com/classic/npc=2263",
+        },
+        confidence = "confirmed",
+    },
+
+    -- Alterac Mountains (Dandred's Fold)
+    [2423] = {
+        name = "Lord Aliden Perenolde",
+        zone = "Alterac Mountains",
+        coords = "39.4, 15.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Beyond the Dark Portal",
+                missions = { "Chapter 7", "Chapter 10" },
+                role = "Supporting character in the novel (not a game appearance; chapters 7 and 10): crown prince of Alterac and eldest son of King Aiden Perenolde, the Alterac ruler who betrays the Alliance in Warcraft II",
+            },
+        },
+        story = "In the novel Beyond the Dark Portal, Aliden is the eldest son of King Aiden Perenolde and crown prince of Alterac. "
+             .. "King Terenas of Lordaeron thought him pampered and inexperienced, but admitted that the Alliance had no right to deny him the throne if his father abdicated, since he was the legal heir. "
+             .. "He spent two years trying to overcome the stigma of his father's betrayal in the Second War. "
+             .. "When he saw that his father had traded the Book of Medivh to the Horde, he punched him and said he had ruined everything. "
+             .. "In World of Warcraft he leads the Syndicate from Dandred's Fold, and Horde adventurers kill him on Krusk's orders.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Aliden_Perenolde",
+            "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
+            "https://warcraft.wiki.gg/wiki/Aiden_Perenolde",
+            "https://warcraft.wiki.gg/wiki/Lord_Aliden_Perenolde_(quest)",
+            "https://www.wowhead.com/classic/npc=2423",
         },
         confidence = "confirmed",
     },

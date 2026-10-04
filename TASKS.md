@@ -73,6 +73,11 @@ Sjekk get_usage mellom hver runde.
 - [x] Sluttkritiker: AVVIST (Thrall's Resolve og Seal of Sylvanas var navnelikhet; inkonsekvent Reforged-/kampanjenavn).
       Rettet av orkestratoren: begge items fjernet, navn og merking samkjørt, Dalar fikk samme forbehold, Jin'Zil fikk kilde.
       Ikke kjørt ny sluttkritiker (ukesgrense 88 %). Testskript + røyktest grønne med 36 NPC-er.
+- 2026-10-04: GitHub-repo laget: https://github.com/Haakiiz/warcraft-lore-addon (privat). Håkon: bruk opptil 100 % ukesgrense.
+  Ferdig og pushet: BOOK-kode, alsoIn (Rexxar/Misha), nærhetsvarsel via navneskilt (/wcl alert).
+  Bok-koblinger: arbeider → kritiker (Pained AVVIST: Tides of War-handling presentert som bakgrunn) → rettet av orkestratoren → lagt inn på PR #1 (40 NPC-er).
+  Darnassus: Tyrande + Fandral (AVVIST runde 1 → rettet av orkestratoren → lagt inn på PR #1). Teldrassil: 0. Totalt 42 NPC-er.
+  STOPPET ved 97 % ukesgrense (2026-10-04). PR #1 (session/book-links) venter på Håkons review/merge.
 - STOPPET ved 88 % ukesgrense (2026-10-03). Neste: Teldrassil/Darnassus, Thousand Needles, Alterac Valley (Drek'Thar), Forever-sonene.
 - [ ] Sluttkritiker for helheten + røyktest
 
