@@ -274,3 +274,14 @@ function C.StartTicker(seconds, fn)
     end
     return pcall(C_Timer.NewTicker, seconds, fn)
 end
+
+-- A big line in the middle of the screen (the raid warning area). Optional: silently skipped
+-- when the client has no RaidNotice_AddMessage.
+function C.RaidNotice(msg)
+    if type(RaidNotice_AddMessage) ~= "function" or not RaidWarningFrame then
+        noteMissing("RaidNotice_AddMessage")
+        return
+    end
+    local color = ChatTypeInfo and ChatTypeInfo["RAID_WARNING"] or { r = 1, g = 0.9, b = 0.4 }
+    pcall(RaidNotice_AddMessage, RaidWarningFrame, msg, color)
+end

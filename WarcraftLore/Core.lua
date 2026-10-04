@@ -131,13 +131,34 @@ end
 local alerted = {}
 
 -- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
-local function announce(npcID, entry, name)
-    alerted[npcID] = true
+local function announce(npcID, entry, name, isTest)
+    if not isTest then
+        alerted[npcID] = true
+    end
     local who = name or entry.name
     local tag = entry.confidence == "uncertain" and " |cffa79d8a(uncertain)|r" or ""
     chat(("Warcraft veteran nearby: |cffd4c6f7%s|r – %s%s. Target them to read their story.")
         :format(who, ns.GamesLabel(entry), tag))
     C.PlayAlertSound()
+    C.RaidNotice("Warcraft veteran nearby: " .. who)
+    if ns.Toast then
+        ns.Toast.Show(npcID, entry, who)
+    end
+end
+
+-- /wcl test: shows the alert for the database NPC with the lowest ID.
+local function cmdTest()
+    local lowest
+    for npcID in pairs(ns.NPCS) do
+        if not lowest or npcID < lowest then
+            lowest = npcID
+        end
+    end
+    if not lowest then
+        chat("The database is empty.")
+        return
+    end
+    announce(lowest, ns.NPCS[lowest], nil, true)
 end
 
 local function onNameplateAdded(unit)
@@ -244,6 +265,7 @@ local function cmdHelp()
     chat("/wcl id – print your target's NPC ID and name in chat")
     chat("/wcl auto – toggle auto-open (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
     chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
+    chat("/wcl test – show a test alert (toast, center text, chat, sound)")
     chat("/wcl reset – move the window back to the center")
     chat("/wcl debug – show which APIs the client has")
 end
@@ -259,6 +281,8 @@ SlashCmdList.WARCRAFTLORE = function(msg)
         cmdAuto()
     elseif cmd == "alert" then
         cmdAlert()
+    elseif cmd == "test" or cmd == "alert test" then
+        cmdTest()
     elseif cmd == "reset" then
         ns.UI.ResetPosition()
         chat("The window is back in the center.")
