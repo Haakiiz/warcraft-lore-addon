@@ -45,7 +45,7 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | NPC | NPC ID | Zone | Coords | Games |
 |---|---|---|---|---|
 | Grunt Maug | 15460 | Orgrimmar | 31.0, 65.2 | TFT |
-| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT |
+| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
 | Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT |
 | Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT |
 | Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
@@ -64,8 +64,11 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Draz'Zilb | 4501 | Dustwallow Marsh | 37.0, 33.0 | TFT |
 | Lady Jaina Proudmoore | 4968 | Dustwallow Marsh | 66.2, 49.0 | WC3, TFT |
 | Ogg'marr | 4879 | Dustwallow Marsh | 36.6, 31.0 | TFT |
+| Overlord Mok'Morokk | 4500 | Dustwallow Marsh | 36.2, 31.4 | BOOK |
+| Pained | 4965 | Dustwallow Marsh | 66.2, 49.0 | BOOK |
 | Tharg | 4502 | Dustwallow Marsh | 37.2, 31.4 | TFT |
 | Torq Ironblast | 4889 | Dustwallow Marsh | 67.4, 48.0 | WC3, *uncertain* |
+| Marshal Redpath | 2263 | Hillsbrad Foothills | 49.6, 58.6 | BOOK |
 | Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK |
 | Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK |
 | Lexington Mortaim | 2492 | Undercity | 84.2, 16.0 | FK, *uncertain* |
@@ -75,6 +78,7 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Dalar Dawnweaver | 1938 | Silverpine Forest | 44.2, 39.8 | WC3, *uncertain* |
 | Snarlmane | 1948 | Silverpine Forest | 65.2, 24.0 | TFT, *uncertain* |
 | Archmage Ansirem Runeweaver | 2543 | Alterac Mountains | 18.8, 78.4 | WC3, *uncertain* |
+| Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
 | Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
 | Araj the Summoner | 1852 | Western Plaguelands | 45.4, 69.2 | WC3, *uncertain* |
 | Gregory | 231500 | Western Plaguelands | 69.4, 79.6 | WC3 |

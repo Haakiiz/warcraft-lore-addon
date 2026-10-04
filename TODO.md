@@ -85,7 +85,7 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
   - Distance from known coordinates: compare the player's map position (`C_Map.GetPlayerMapPosition`) with `coords` in Data.lua for the current zone. Works without nameplates, but only for NPCs with coordinates and outside instances.
   - Show each NPC only once per session, add a `/wcl alert` on/off toggle, and maybe mark the NPC with a raid-target-style icon or a line pointing in its direction.
 
-- [x] Book/novel source code `BOOK` added (Data.lua docs, validator, UI). - [ ] Still to do: re-check earlier "novel only" rejects: Mok'Morokk (Exploring Azeroth), Marcus Redpath (Tides of Darkness), Aliden Perenolde (Beyond the Dark Portal, Day of the Dragon), Pained (Tides of War), and the Cycle of Hatred details for Nazgrel.
+- [x] Book/novel source code `BOOK` added (Data.lua docs, validator, UI). - [x] Re-checked (2026-10-04, added as BOOK entries): earlier "novel only" rejects: Mok'Morokk (Exploring Azeroth), Marcus Redpath (Tides of Darkness), Aliden Perenolde (Beyond the Dark Portal, Day of the Dragon), Pained (Tides of War), and the Cycle of Hatred details for Nazgrel.
 
 - [x] Allow more than one zone per NPC (`alsoIn` field; Rexxar/Misha)
 - [ ] Check in game whether Grunt Maug exists in Forever
