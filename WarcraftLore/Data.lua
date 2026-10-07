@@ -61,6 +61,36 @@ ns.NPCS = {
                 missions = { "To Tame a Land" },
                 role = "Allied NPC; the Warchief who gives Rexxar his orders",
             },
+            {
+                game = "BOOK",
+                campaign = "Lord of the Clans",
+                missions = {},
+                role = "Protagonist: Go'el's life in the internment camps, his escape from Durnholde Keep, and his rise to Warchief (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Cycle of Hatred",
+                missions = {},
+                role = "Tries to keep the peace with Theramore while his chief warrior Burx attacks Northwatch Hold (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Of Blood and Honor",
+                missions = {},
+                role = "Leads an attack on Stratholme that saves Eitrigg from execution and lets him join the New Horde (chapter 7; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Appoints Garrosh Hellscream acting warchief and travels to Nagrand to speak with the Furies (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Leader of the Earthen Ring; meets Jaina in secret and refuses to return to the Horde to rein in Garrosh (novel, not a game appearance)",
+            },
         },
         story = "After the Third War, Thrall gathered the orcs and found them a new home in Kalimdor. "
              .. "He founded Durotar, named after his father Durotan, with Orgrimmar as its capital, named after Orgrim Doomhammer. "
@@ -120,6 +150,18 @@ ns.NPCS = {
                 campaign = "The Founding of Durotar (Orc bonus campaign)",
                 missions = { "To Tame a Land", "Old Hatreds" },
                 role = "Quest giver and advisor (Witch Doctor); the Darkspear chieftain turns Rexxar, Rokhan and Chen into invisible wyverns",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Leads the Darkspear at Northwatch Hold and in Garrosh's attack on Theramore, and questions the plan to drive out the night elves (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Vol'jin: Shadows of the Horde",
+                missions = {},
+                role = "Poisoned by Garrosh's assassins, recovers at the Shado-Pan Monastery with Chen Stormstout's help, and receives Shado-Pan monk training (novel, not a game appearance)",
             },
         },
         story = "Vol'jin stayed behind on the Darkspear isles when many trolls sailed to Kalimdor with the orcs. "
@@ -2730,6 +2772,207 @@ ns.NPCS = {
         sources = {
             "https://warcraft.wiki.gg/wiki/Narm_Skychaser",
             "https://www.wowhead.com/classic/npc=3066",
+        },
+        confidence = "confirmed",
+    },
+
+    -- Book rescan of Orgrimmar and Durotar (2026-10-08, Haiku worker + Haiku critic)
+    [3144] = {
+        name = "Eitrigg",
+        zone = "Orgrimmar",
+        coords = "34.2, 39.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Of Blood and Honor",
+                missions = {},
+                role = "Blackrock orc who meets Thrall and leaves with his people to return to their shamanistic roots (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Opposes Garrosh Hellscream's plan to conquer Kalimdor at the Horde leaders' meeting, with Baine Bloodhoof's support (novel, not a game appearance)",
+            },
+        },
+        story = "Eitrigg was born into the Blackrock clan on Draenor. "
+             .. "In the novel The Shattering: Prelude to Cataclysm he was in his late fifties by the time the Lich King was defeated. "
+             .. "In the novel Of Blood and Honor, after meeting Thrall he found that his people had rediscovered their shamanistic roots, and he returned to life among his own kind. "
+             .. "In the novel Jaina Proudmoore: Tides of War, he was against Garrosh's plan to conquer Kalimdor, and Baine Bloodhoof supported him. "
+             .. "In World of Warcraft he serves the Horde as an advisor and supporter to Thrall, and can be found in Thrall's throne room in Orgrimmar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Eitrigg",
+            "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=3144",
+        },
+        confidence = "confirmed",
+    },
+
+    [14720] = {
+        name = "High Overlord Saurfang",
+        zone = "Orgrimmar",
+        coords = "50.4, 76.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Remains at Warsong Hold as leader of the Warsong Offensive and the Horde Expedition after Cairne Bloodhoof visits Garrosh (novel, not a game appearance)",
+            },
+        },
+        story = "Varok Saurfang was a renowned Blackrock orc warrior, the younger brother of Broxigar, and second-in-command to Warchief Orgrim Doomhammer. "
+             .. "In the novel The Shattering: Prelude to Cataclysm, Cairne Bloodhoof traveled to Warsong Hold to meet Garrosh, and Saurfang was to stay there as leader of the Warsong Offensive and the Horde Expedition. "
+             .. "In World of Warcraft he is High Overlord of the Horde and High Overlord of the Kor'kron Guard.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Varok_Saurfang",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=14720",
+        },
+        confidence = "confirmed",
+    },
+
+    [3355] = {
+        name = "Saru Steelfury",
+        zone = "Orgrimmar",
+        coords = "82.2, 23.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "A Good War",
+                missions = {},
+                role = "Smith at the Burning Anvil in Orgrimmar; keeps High Overlord Saurfang's letter promising replacement Azerite after an explosion (novella, not a game appearance)",
+            },
+        },
+        story = "In the novella A Good War, a few weeks before the War of the Thorns an explosion rocked the Burning Anvil in Orgrimmar, where Saru Steelfury worked. "
+             .. "Saru came out unscathed and blamed an apprentice's overcooked felslate, while High Overlord Saurfang promised him in writing that the lost Azerite would be replaced. "
+             .. "In World of Warcraft he is a Blacksmithing Trainer at the Burning Anvil in the Valley of Honor, Orgrimmar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Saru_Steelfury",
+            "https://warcraft.wiki.gg/wiki/A_Good_War",
+            "https://www.wowhead.com/classic/npc=3355",
+        },
+        confidence = "confirmed",
+    },
+
+    [3329] = {
+        name = "Kor'jus",
+        zone = "Orgrimmar",
+        coords = "49.0, 54.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Shopkeeper arrested and beaten by Malkorok and Kor'kron soldiers for not fully supporting Garrosh Hellscream (novel, not a game appearance)",
+            },
+        },
+        story = "In the novel Jaina Proudmoore: Tides of War, Malkorok and a few Kor'kron soldiers attacked Kor'jus when his shop was closed, because he was not fully supportive of Garrosh Hellscream. "
+             .. "They arrested and beat him, and he returned to his shop after a few days. "
+             .. "In World of Warcraft he is a Mushroom Vendor in Orgrimmar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Kor%27jus",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=3329",
+        },
+        confidence = "confirmed",
+    },
+
+    [6928] = {
+        name = "Innkeeper Grosk",
+        zone = "Durotar",
+        coords = "51.4, 41.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Innkeeper of the inn in Razor Hill who serves Malkorok and his Kor'kron soldiers, vanishes during their visit, and the inn explodes after they leave (novel, not a game appearance)",
+            },
+        },
+        story = "In the novel Jaina Proudmoore: Tides of War, Grosk served drinks to Malkorok and his Kor'kron soldiers, then disappeared. "
+             .. "Kelantir Bloodblade and Frandis Farley were killed when Kor'kron grenades blew up the inn, and Grosk claimed he knew nothing about it. "
+             .. "In World of Warcraft he is an innkeeper in Razor Hill, Durotar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Innkeeper_Grosk",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=6928",
+        },
+        confidence = "confirmed",
+    },
+
+    [3205] = {
+        name = "Zalazane",
+        zone = "Durotar",
+        coords = "66.4, 87.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Vol'jin: Shadows of the Horde",
+                missions = {},
+                role = "Vol'jin's best friend in childhood, shown in the novel's account of their youth (novel, not a game appearance)",
+            },
+        },
+        story = "In the novel Vol'jin: Shadows of the Horde, Zalazane grew up as the best friend of Vol'jin, who was the son of the Darkspear chieftain Sen'jin. "
+             .. "In World of Warcraft he became the Hexmaster and Traitor of the Darkspears, and used dark voodoo to rob most of the Darkspear trolls of their free will. "
+             .. "He declared himself ruler of the Echo Isles, and the Darkspears and their allies often struck at his holdings there.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Zalazane",
+            "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
+            "https://www.wowhead.com/classic/npc=3205",
+        },
+        confidence = "confirmed",
+    },
+
+    [4047] = {
+        name = "Zor Lonetree",
+        zone = "Orgrimmar",
+        coords = "39.0, 38.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Ally whom Malfurion Stormrage contacts for help against the Nightmare Lord when the Emerald Nightmare attacks Azeroth (novel, not a game appearance)",
+            },
+        },
+        story = "In the novel Stormrage, when the Emerald Nightmare attacked Azeroth, Malfurion Stormrage contacted Zor to gather allies against the Nightmare Lord. "
+             .. "In World of Warcraft he stands in Grommash Hold in Orgrimmar and is well schooled in Alliance politics. "
+             .. "He sends adventurers to help the spirits of the Stonetalon Mountains.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Zor_Lonetree",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=4047",
+        },
+        confidence = "confirmed",
+    },
+
+    [3173] = {
+        name = "Swart",
+        zone = "Durotar",
+        coords = "54.4, 42.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "As Our Fathers Before Us",
+                missions = {},
+                role = "Explains the reasons for quilboar aggression to Baine Bloodhoof (short story, not a game appearance)",
+            },
+        },
+        story = "In the short story As Our Fathers Before Us, some time after the Cataclysm, Swart explained the reasons behind the quilboar aggression to Baine Bloodhoof. "
+             .. "In World of Warcraft he is a Shaman Trainer in Durotar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Swart",
+            "https://warcraft.wiki.gg/wiki/As_Our_Fathers_Before_Us",
+            "https://www.wowhead.com/classic/npc=3173",
         },
         confidence = "confirmed",
     },
