@@ -2967,7 +2967,8 @@ ns.NPCS = {
             },
         },
         story = "In the short story As Our Fathers Before Us, some time after the Cataclysm, Swart explained the reasons behind the quilboar aggression to Baine Bloodhoof. "
-             .. "In World of Warcraft he is a Shaman Trainer in Durotar.",
+             .. "In World of Warcraft he is an orc shaman trainer. "
+             .. "He trains shamans in the Razor Hill Barracks in Durotar.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Swart",
