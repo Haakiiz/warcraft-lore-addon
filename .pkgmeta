@@ -1,0 +1,14 @@
+package-as: WarcraftLore
+
+# The addon lives in a subfolder; ship only that folder.
+move-folders:
+  WarcraftLore/WarcraftLore: WarcraftLore
+
+ignore:
+  - README.md
+  - TASKS.md
+  - TODO.md
+  - tests
+  - tools
+  - .kritikk
+  - .claude
