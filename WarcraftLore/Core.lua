@@ -192,10 +192,17 @@ local ZONE_MAPS = {
     ["Dustwallow Marsh"] = { 1445, 70 },
     ["Darkshore"] = { 1439, 62 },
     ["Hillsbrad Foothills"] = { 1424, 25 },
-    ["Alterac Mountains"] = { 1416, 27 },
+    ["Alterac Mountains"] = { 1416 }, -- Mainline 27 is Dun Morogh, so only the Classic ID
     ["Tirisfal Glades"] = { 1420, 18 },
     ["Western Plaguelands"] = { 1422, 22 },
     ["Darnassus"] = { 1457, 89 },
+    ["Elwynn Forest"] = { 1429, 37 },
+    ["Stormwind City"] = { 1453, 84 },
+    ["Ironforge"] = { 1455, 87 },
+    ["Redridge Mountains"] = { 1433, 49 },
+    ["Duskwood"] = { 1431, 47 },
+    ["Loch Modan"] = { 1432, 48 },
+    ["Thousand Needles"] = { 1441, 64 },
 }
 
 -- uiMapID -> list of { npcID, x, y } (x, y in percent), built once on first use.
