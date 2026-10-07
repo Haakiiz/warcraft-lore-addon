@@ -24,5 +24,3 @@ It flags NPCs who also appear in the real-time strategy games:
 - `/wcl reset` – move the window back to the center
 
 Built for WoW: Forever (interface 16001). All lore ships inside the addon.
-
-Source and issues: https://github.com/Haakiiz/warcraft-lore-addon
