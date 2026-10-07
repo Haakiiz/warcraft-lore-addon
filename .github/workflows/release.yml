@@ -1,0 +1,27 @@
+name: Release AddOn
+
+# Push a tag (e.g. v0.1.0) to build the zip and upload it to CurseForge and GitHub Releases.
+on:
+  push:
+    tags:
+      - '**'
+
+permissions:
+  contents: write
+
+env:
+  CF_API_KEY: ${{ secrets.CF_API_KEY }}
+  GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate database
+        run: python3 tests/validate_db.py
+
+      - uses: BigWigsMods/packager@v2

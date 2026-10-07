@@ -150,3 +150,15 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 - `WarcraftLore/UI.lua`: the window.
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).
 - `WarcraftLore/Portraits/`: your own portrait images (optional).
+
+## Releasing to CurseForge
+
+Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge.
+
+One-time setup:
+
+1. Create the project on [CurseForge](https://authors.curseforge.com) (game: World of Warcraft) and wait for moderation approval.
+2. Add `## X-Curse-Project-ID: <id>` to `WarcraftLore/WarcraftLore.toc` (the ID is under "About Project" on the project page).
+3. Create an API token at <https://legacy.curseforge.com/account/api-tokens> and add it as the repository secret `CF_API_KEY`.
+
+To release, tag and push: `git tag v0.1.0 && git push origin v0.1.0`. The tag becomes the version in the TOC. Tags with `alpha` or `beta` in the name are uploaded as alpha or beta files.
