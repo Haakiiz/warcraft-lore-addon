@@ -702,6 +702,18 @@ ns.NPCS = {
                 missions = { "To Tame a Land", "Old Hatreds", "A Blaze of Glory" },
                 role = "Main playable hero (Beastmaster); the Mok'nathal who helps Thrall secure Durotar",
             },
+            {
+                game = "BOOK",
+                campaign = "Cycle of Hatred",
+                missions = {},
+                role = "Beastmaster who finds the wounded orc Byrok with his bear Misha and brings him to Thrall in Orgrimmar, where Byrok tells Thrall about the Burning Blade clan (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Beyond the Dark Portal",
+                missions = {},
+                role = "Horde beastmaster; the novel describes him as a half-ogre (chapter 14; novel, not the Beyond the Dark Portal game)",
+            },
         },
         story = "Thrall named Rexxar Champion of the Horde and let him lead the attack on Admiral Daelin Proudmoore's forces at Theramore. "
              .. "Rexxar named the ogre Mok'Morokk the new leader of the Stonemaul clan, a decision he would later regret. "
@@ -728,6 +740,12 @@ ns.NPCS = {
                 campaign = "The Founding of Durotar (Orc bonus campaign)",
                 missions = { "To Tame a Land", "A Blaze of Glory" },
                 role = "Rexxar's bear companion, summoned with his \"Summon Misha\" ability",
+            },
+            {
+                game = "BOOK",
+                campaign = "Cycle of Hatred",
+                missions = {},
+                role = "Rexxar's bear, who helps him find the wounded orc Byrok and carry him to Orgrimmar (novel, not a game appearance)",
             },
         },
         story = "Misha fought at Rexxar's side in the battle against Lord Admiral Daelin Proudmoore at Theramore Isle. "
@@ -2974,6 +2992,140 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Swart",
             "https://warcraft.wiki.gg/wiki/As_Our_Fathers_Before_Us",
             "https://www.wowhead.com/classic/npc=3173",
+        },
+        confidence = "confirmed",
+    },
+
+    -- Book rescan of Ashenvale and Hillsbrad (2026-10-08, Haiku worker + Haiku critic)
+-- Checked by critic (book_ashenvale): PASS and FIX entries only.
+-- ===================================================================== Ashenvale
+    [14753] = {
+        name = "Illiyana Moonblaze",
+        zone = "Ashenvale",
+        coords = "61.4, 83.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Silverwing Sentinel scout under Su'ura Swiftarrow who survives the Horde invasion of Ashenvale, saves Su'ura from Garrosh Hellscream, and turns down a commission afterwards (novel, not a game appearance)",
+            },
+        },
+        story = "Illiyana Moonblaze is a night elf tracker and PvP vendor in Silverwing Grove in Ashenvale. "
+             .. "In the novel Wolfheart, set in the aftermath of the Cataclysm, she is one of Su'ura Swiftarrow's scouts when the Horde pushes into Ashenvale. "
+             .. "She is the only scout to make it back to Silverwing Outpost alive, and she saves Su'ura when Garrosh Hellscream finds her injured. "
+             .. "With her saber distracting Garrosh, she rescues Su'ura and retreats with the surviving Silverwing Sentinels to safer territory. "
+             .. "After the battle for Ashenvale she is offered a commission, but she turns it down because it would mean more responsibility and less independence.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Illiyana_Moonblaze",
+            "https://warcraft.wiki.gg/wiki/Wolfheart",
+            "https://warcraft.wiki.gg/wiki/Silverwing_Outpost",
+            "https://www.wowhead.com/classic/npc=14753",
+        },
+        confidence = "confirmed",
+    },
+
+    [14889] = {
+        name = "Emeriss",
+        zone = "Ashenvale",
+        coords = "",
+        alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Corrupted green dragon and servant of the Nightmare; one of the major antagonists of the War Against the Nightmare, who is disintegrated when Tyrande tries to cleanse her (novel, not a game appearance)",
+            },
+        },
+        story = "Emeriss is a green dragon of Ysera's flight who was turned into a servant of the Nightmare. "
+             .. "In the novel Stormrage she is one of the major antagonists of the War Against the Nightmare. "
+             .. "She and Lethon attack Eranikus to corrupt him, but Alexstrasza forces the corrupted dragons to retreat. "
+             .. "Later she attacks Tyrande Whisperwind and Malfurion Stormrage, and when Tyrande tries to remove her corruption with the power of Elune, Emeriss is disintegrated. "
+             .. "Her tainted essence remains tied to the Nightmare and to Xavius.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Emeriss",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=14889",
+        },
+        confidence = "confirmed",
+    },
+
+    [14888] = {
+        name = "Lethon",
+        zone = "Ashenvale",
+        coords = "",
+        alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "One of Ysera's wayward dragons and a strong servant of the Nightmare; attacks Ysera, Tyrande, Broll Bearmantle, Eranikus and Gnarl, and is torn apart when he is pulled into the boundary between the Emerald Dream and Azeroth (novel, not a game appearance)",
+            },
+        },
+        story = "Lethon is one of Ysera's wayward dragon lieutenants and was among the strongest servants of the Nightmare. "
+             .. "In the novel Stormrage he attacks Ysera, Tyrande Whisperwind, Broll Bearmantle, Eranikus and Gnarl during the War Against the Nightmare. "
+             .. "He tries to corrupt Eranikus alongside Emeriss, and is forced to retreat when Alexstrasza arrives. "
+             .. "Later he ambushes Malfurion Stormrage and Eranikus as they try to free Ysera from the Eye, and attempts to corrupt Eranikus. "
+             .. "When Eranikus shifts them both into the unstable boundary between the Emerald Dream and Azeroth, the chaotic energies tear both dragons apart.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Lethon",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=14888",
+        },
+        confidence = "confirmed",
+    },
+
+    [3916] = {
+        name = "Shael'dryn",
+        zone = "Ashenvale",
+        coords = "53.4, 46.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Dryad guardian who warns the other guardians about the shadow attackers of the Emerald Nightmare, then falls asleep herself (chapter 11; novel, not a game appearance)",
+            },
+        },
+        story = "Shael'dryn is a dryad quest giver in Ashenvale who considers herself a comedian; Broll Bearmantle calls her a jester of words and a lover of puns. "
+             .. "In the novel Stormrage, when the Emerald Nightmare attacks Azeroth, she warns the other guardians about shadow attackers. "
+             .. "She then becomes a sleeping victim of the attack herself.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Shael%27dryn",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=3916",
+        },
+        confidence = "confirmed",
+    },
+
+-- ===================================================================== Hillsbrad Foothills (Tarren Mill)
+    [2216] = {
+        name = "Apothecary Lydon",
+        zone = "Hillsbrad Foothills",
+        coords = "61.4, 19.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Edge of Night",
+                missions = {},
+                role = "Supporting character in the official short story (not a game appearance): a former young human alchemist who serves Sylvanas and oversees the attack on Gilneas alongside Garrosh Hellscream",
+            },
+        },
+        story = "In the short story Edge of Night, Lydon is a former young human alchemist who fought during Sylvanas' liberation. "
+             .. "He has already embraced his fate and speaks of humans as another race, and Sylvanas answers that they will only serve in the battle. "
+             .. "The story has him oversee the attack on Gilneas alongside Warchief Garrosh Hellscream, and he tries to persuade Garrosh not to use the Forsaken as a ramp of bodies. "
+             .. "In World of Warcraft he is Apothecary Lydon, a quest giver in Tarren Mill who tests his poisons on his frog Umpi.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Master_Apothecary_Lydon",
+            "https://warcraft.wiki.gg/wiki/Edge_of_Night",
+            "https://www.wowhead.com/classic/npc=2216",
         },
         confidence = "confirmed",
     },
