@@ -3129,4 +3129,115 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
+
+    -- Stormwind entries the Haiku pass missed (2026-10-08, Opus comparison run)
+    [1749] = {
+        name = "Lady Katrana Prestor",
+        zone = "Stormwind City",
+        coords = "77.6, 18.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Beyond the Dark Portal",
+                missions = { "Chapter 8" },
+                role = "Minor character in the novel (not a game appearance): as the dragon Onyxia, ordered by Deathwing to win over the Blackrock orcs",
+            },
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = { "Chapter 15" },
+                role = "Mentioned in the novel (not a game appearance): Varian recalls how she used sorcery on him after Queen Tiffin's death",
+            },
+        },
+        story = "Lady Katrana Prestor is the black dragon Onyxia, daughter of Deathwing, in human form. "
+             .. "In the novel Beyond the Dark Portal, Deathwing orders Onyxia and her brother Nefarian to secure the orcs of Blackrock Spire as their new force. "
+             .. "As Lady Prestor she rose to be one of Stormwind's highest nobles and kept aid from reaching the lands near the Burning Steppes, where Nefarian held power. "
+             .. "When King Varian vanished, she had the boy Anduin crowned and steered the regent Bolvar Fordragon with the Dragon's Eye. "
+             .. "In World of Warcraft she is the royal councilor in Stormwind Keep and advises Bolvar against sending troops to Lakeshire.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Onyxia",
+            "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
+            "https://warcraft.wiki.gg/wiki/Wolfheart",
+            "https://warcraft.wiki.gg/wiki/The_True_Masters_(3)",
+            "https://www.wowhead.com/classic/npc=1749",
+        },
+        confidence = "confirmed",
+    },
+
+    [482] = {
+        name = "Elling Trias",
+        zone = "Stormwind City",
+        coords = "60.0, 64.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Tipping Point",
+                missions = {},
+                role = "Supporting character in the official audio short story (not a game appearance): the \"master of cheese\" in Stormwind to whom Shaw sends Renzik",
+            },
+        },
+        story = "Elling Trias runs Trias' Cheese in the Trade District with his wife Elaine and son Ben, but he is more than a cheesemaker and has contacts from SI:7 to Hearthglen. "
+             .. "In the audio short story The Tipping Point, Mathias Shaw gives Renzik a coin and tells him to show it to the master of cheese if he ever comes to Stormwind. "
+             .. "In World of Warcraft he is a contact in quest chains such as The Missing Diplomat, and he orders the killing of the traitor Lord Gregor Lescovar.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Elling_Trias",
+            "https://warcraft.wiki.gg/wiki/The_Tipping_Point_(short_story)",
+            "https://warcraft.wiki.gg/wiki/Renzik_%22The_Shiv%22",
+            "https://warcraft.wiki.gg/wiki/Lord_Gregor_Lescovar",
+            "https://www.wowhead.com/classic/npc=482",
+        },
+        confidence = "confirmed",
+    },
+
+    [1646] = {
+        name = "Baros Alexston",
+        zone = "Stormwind City",
+        coords = "49.0, 30.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Blood of Our Fathers",
+                missions = {},
+                role = "Supporting character in the official short story (not a game appearance): the architect rebuilding Stormwind after Deathwing's attack",
+            },
+        },
+        story = "Baros Alexston grew up on the Alexston Farmstead in Westfall and worked with Edwin VanCleef in the Stonemasons' Guild to rebuild Stormwind after the First War. "
+             .. "When the House of Nobles refused to pay the guild and VanCleef led the stonemasons out in rebellion, Baros took the post of city architect instead and made an enemy of his old friend. "
+             .. "In World of Warcraft he works in Stormwind's City Hall in Cathedral Square. "
+             .. "In the short story Blood of Our Fathers, set after Deathwing's attack on Stormwind, he oversees the rebuilding of the city and keeps King Varian informed of its progress and price.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Baros_Alexston",
+            "https://warcraft.wiki.gg/wiki/Blood_of_Our_Fathers",
+            "https://www.wowhead.com/classic/npc=1646",
+        },
+        confidence = "confirmed",
+    },
+
+    [2708] = {
+        name = "Archmage Malin",
+        zone = "Stormwind City",
+        coords = "39.8, 80.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Elegy",
+                missions = {},
+                role = "Minor character in the novella (not a game appearance): holds portals open for night elf refugees from Teldrassil",
+            },
+        },
+        story = "Archmage Malin stands outside the Wizard's Sanctum in Stormwind's Mage Quarter, and Archmage Trelane was his first master. "
+             .. "In World of Warcraft he sends agents to the Arathi Highlands to gather reagents and recover Trelane's belongings. "
+             .. "In the novella Elegy, set long after Classic during the War of the Thorns, he holds portals open at the Wizard's Sanctum for night elf refugees fleeing to Stormwind. "
+             .. "King Anduin has him send word to Dalaran asking its mages to help speed up the evacuation.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Archmage_Malin",
+            "https://warcraft.wiki.gg/wiki/Elegy",
+            "https://www.wowhead.com/classic/npc=2708",
+        },
+        confidence = "confirmed",
+    },
 }
