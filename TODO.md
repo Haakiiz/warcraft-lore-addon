@@ -95,3 +95,12 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [ ] Check in game whether Grunt Maug exists in Forever
 - [x] Gazlowe's Charm removed (name-only link)
 - [ ] Confirm in game that the new frame looks right (vines tiled, round portrait)
+
+### From competitor research (2026-10-08)
+
+No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion (Classic) and NPCodex (Retail), both small. Priority order:
+
+- [ ] **Veterans met:** remember which veterans the player has met, show a counter per game (e.g. "WC3: 12/40") and list the ones still missing. Builds on the nearby alert.
+- [ ] **Browse and search window:** list the whole database, filter by game, campaign and zone, search by name. Clicking an entry opens its lore window.
+- [ ] **Related NPCs:** link characters to each other (e.g. Thrall → Grom → Nazgrel) so players can follow a lore thread.
+- [ ] **Localization and wider client support:** translations, plus Classic Era and Retail builds alongside Forever.
