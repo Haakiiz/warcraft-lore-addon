@@ -163,6 +163,30 @@ ns.NPCS = {
                 missions = {},
                 role = "Poisoned by Garrosh's assassins, recovers at the Shado-Pan Monastery with Chen Stormstout's help, and receives Shado-Pan monk training (novel, not a game appearance)",
             },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Major (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Shadows Rising",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "Vol'jin stayed behind on the Darkspear isles when many trolls sailed to Kalimdor with the orcs. "
              .. "Rexxar, Rokhan and Chen Stormstout helped him evacuate the tribe, and he advised Rexxar to recruit the tauren and the ogres against the humans. "
@@ -592,6 +616,18 @@ ns.NPCS = {
                 missions = {},
                 role = "Supporting character: on his \"factfinding\" tours he strong-arms Marin Noggenfogger into letting him inspect his mine, and the two agree to align their cartels",
             },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Shadows Rising",
+                missions = {},
+                role = "Minor (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "Gazlowe was chief engineer when Orgrimmar was built, and dug tunnels under the city in search of water. "
              .. "When the city was finished, Thrall paid him for the work. "
@@ -713,6 +749,18 @@ ns.NPCS = {
                 campaign = "Beyond the Dark Portal",
                 missions = {},
                 role = "Horde beastmaster; the novel describes him as a half-ogre (chapter 14; novel, not the Beyond the Dark Portal game)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Vol'jin: Shadows of the Horde",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
             },
         },
         story = "Thrall named Rexxar Champion of the Horde and let him lead the attack on Admiral Daelin Proudmoore's forces at Theramore. "
@@ -1365,6 +1413,42 @@ ns.NPCS = {
                 missions = {},
                 role = "Not a game appearance: attends Garrosh Hellscream's Horde leader meeting, opposes his plan to attack Theramore, and gets no support from Lor'themar Theron",
             },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Major (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "A Good War",
+                missions = {},
+                role = "Major (listed in the novella's Characters section; novella, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "In the Shadow of the Sun",
+                missions = {},
+                role = "Supporting (listed in the short story's Characters section; short story, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Blood of the Highborne",
+                missions = {},
+                role = "Minor (listed in the novella's Characters section; novella, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Elegy",
+                missions = {},
+                role = "Mentioned (listed in the novella's Characters section; novella, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Blood Ties",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "When the Lich King's power waned, Sylvanas regained her free will and turned against Arthas. "
              .. "She took Lordaeron from the three dreadlords and gathered the freed undead as the Forsaken. "
@@ -1417,6 +1501,12 @@ ns.NPCS = {
                 campaign = "Arthas: Rise of the Lich King",
                 missions = {},
                 role = "Minor character in the novel (not a game appearance; epilogue): Sylvanas tells him that something has happened with the Lich King and that their plans must be stepped up",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
             },
         },
         story = "Varimathras was one of three dreadlords who ruled Lordaeron after Arthas left for Northrend. "
@@ -1958,6 +2048,12 @@ ns.NPCS = {
                 missions = {},
                 role = "Attends the wedding of Turalyon and Alleria Windrunner with his family in chapter 17 (not a game appearance)",
             },
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Major (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "During the Second War Magni defended Ironforge from the orcs and joined the Alliance of Lordaeron. "
              .. "He was a founding member of the Explorers' League, led by his brother Brann. "
@@ -2071,6 +2167,18 @@ ns.NPCS = {
                 missions = {},
                 role = "Gnome engineer who studies Azerite samples and sends Sapphronetta Flivvers to Silithus, and meets Magni Bronzebeard in Ironforge (chapters 8 and 14; not a game appearance)",
             },
+            {
+                game = "BOOK",
+                campaign = "Beyond the Dark Portal",
+                missions = {},
+                role = "Supporting (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Minor (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "Gelbin Mekkatorque is the High Tinker of Gnomeregan and a brilliant gnomish inventor. "
              .. "After the Second War, King Magni asked him for a faster solution to the slow travel to and from the north, and he prepared the schematics for the Deeprun Tram. "
@@ -2097,6 +2205,12 @@ ns.NPCS = {
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
                 role = "High priest of Ironforge and priest trainer in the Hall of Mysteries; heals Anduin Wrynn, witnesses Magni's petrification, and backs Moira Thaurissan as heir (chapters 11, 14, 15 and 31; not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
             },
         },
         story = "In The Shattering: Prelude to Cataclysm, Rohan meets Anduin Wrynn in the Hall of Mysteries and heals him after he bumps into the gnome mages Dink and Bink. "
@@ -2421,6 +2535,18 @@ ns.NPCS = {
                 campaign = "Lord of His Pack",
                 missions = {},
                 role = "Minor character in the short story (not a game appearance; Leaders of Azeroth series, centred on Genn Greymane): named in the text as \"the infamous royal archmage known as Arugal\"",
+            },
+            {
+                game = "BOOK",
+                campaign = "In the Shadow of the Sun",
+                missions = {},
+                role = "Mentioned (listed in the short story's Characters section; short story, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
             },
         },
         story = "",
@@ -2812,6 +2938,36 @@ ns.NPCS = {
                 missions = {},
                 role = "Opposes Garrosh Hellscream's plan to conquer Kalimdor at the Horde leaders' meeting, with Baine Bloodhoof's support (novel, not a game appearance)",
             },
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Supporting (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Supporting (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Heartlands",
+                missions = {},
+                role = "Supporting (listed in the novella's Characters section; novella, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Rise of the Horde",
+                missions = {},
+                role = "Minor (listed in the novel's Characters section; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Blood Ties",
+                missions = {},
+                role = "Minor (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "Eitrigg was born into the Blackrock clan on Draenor. "
              .. "In the novel The Shattering: Prelude to Cataclysm he was in his late fifties by the time the Lich King was defeated. "
@@ -2887,6 +3043,12 @@ ns.NPCS = {
                 missions = {},
                 role = "Shopkeeper arrested and beaten by Malkorok and Kor'kron soldiers for not fully supporting Garrosh Hellscream (novel, not a game appearance)",
             },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Minor (listed in the novel's Characters section; novel, not a game appearance)",
+            },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Malkorok and a few Kor'kron soldiers attacked Kor'jus when his shop was closed, because he was not fully supportive of Garrosh Hellscream. "
              .. "They arrested and beat him, and he returned to his shop after a few days. "
@@ -2910,6 +3072,12 @@ ns.NPCS = {
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
                 role = "Innkeeper of the inn in Razor Hill who serves Malkorok and his Kor'kron soldiers, vanishes during their visit, and the inn explodes after they leave (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Appears in a vision (listed in the novel's Characters section; novel, not a game appearance)",
             },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Grosk served drinks to Malkorok and his Kor'kron soldiers, then disappeared. "
@@ -3239,5 +3407,549 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/npc=2708",
         },
         confidence = "confirmed",
+    },
+
+    -- ===================================================================== Zone redo 2026-10-08 (Haiku v3 workers + critics)
+
+    -- ===================================================================== Ironforge
+    [1573] = {
+        name = "Gryth Thurden",
+        zone = "Ironforge",
+        coords = "55.5, 47.7",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Supporting: Ironforge gryphon master who tells Anduin Wrynn about Moira's gryphon quarantine (novel, not a game appearance)",
+            },
+        },
+        story = "Gryth Thurden is a dwarf gryphon flight master at the Great Forge in Ironforge. "
+             .. "In The Shattering, Moira Thaurissan claims the gryphons are sick and has them quarantined outside the city. "
+             .. "Gryth has no choice but to obey, since one of his gryphons had already been injured by a Dark Iron. "
+             .. "He explains all of this to Prince Anduin Wrynn, who realizes that Moira is isolating Ironforge.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Gryth_Thurden",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=1573",
+        },
+        confidence = "confirmed",
+    },
+
+    [2918] = {
+        name = "Advisor Belgrum",
+        zone = "Ironforge",
+        coords = "76.8, 10.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Supporting: advisor to Magni Bronzebeard who gives orders on the King's authority (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Mentioned in the character list; chapter 7: Moira asks him to take Dagran away after the Argus Campaign (novel, not a game appearance)",
+            },
+        },
+        story = "Advisor Belgrum is a dwarf of Old Ironforge and a member of the Explorers' League. "
+             .. "As an advisor to Magni Bronzebeard, he gives orders on the King's authority. "
+             .. "In World of Warcraft he stands in the Library of the Hall of Explorers, where he acts on Historian Karnik's warning about the Shadowforge dwarves in Uldaman and sends adventurers back for the Tablet of Will. "
+             .. "In the novel The Shattering, he fills in as head of Ironforge's government for a while after Magni turns to stone. "
+             .. "In the novel Before the Storm, after the Argus Campaign, Moira asks him to take Dagran away from Ironforge.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Advisor_Belgrum",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=2918",
+        },
+        confidence = "confirmed",
+    },
+
+    [5387] = {
+        name = "High Explorer Magellas",
+        zone = "Ironforge",
+        coords = "69.9, 18.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Supporting; chapter 12: Anduin recognizes him as High Explorer Muninn Magellas, head of the Explorers' League (novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Minor (novel, not a game appearance)",
+            },
+        },
+        story = "High Explorer Muninn Magellas leads the Explorers' League and stands in the Hall of Explorers in Ironforge. "
+             .. "The World of Warcraft game manual names him as the League's High Explorer. "
+             .. "In the novel The Shattering, Prince Anduin recognizes him as the head of the Explorers' League.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/High_Explorer_Magellas",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=5387",
+        },
+        confidence = "confirmed",
+    },
+
+    [5159] = {
+        name = "Daryl Riknussun",
+        zone = "Ironforge",
+        coords = "60.2, 37.1",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War Effort",
+                missions = {},
+                role = "Helps Saegan clean and cook fish supplies for the Ahn'Qiraj War (short story, not a game appearance)",
+            },
+        },
+        story = "Daryl Riknussun is a dwarf cooking trainer in Ironforge. "
+             .. "In The War Effort, he helps Saegan clean and cook fish supplies for the Ahn'Qiraj War. "
+             .. "The supplies are to be delivered to Huntress Swiftriver.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Daryl_Riknussun",
+            "https://warcraft.wiki.gg/wiki/The_War_Effort",
+            "https://www.wowhead.com/classic/npc=5159",
+        },
+        confidence = "confirmed",
+    },
+
+    [15457] = {
+        name = "Huntress Swiftriver",
+        zone = "Ironforge",
+        coords = "71.2, 69.7",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War Effort",
+                missions = {},
+                role = "Mentioned: the intended recipient of Saegan's fish supplies for the Ahn'Qiraj War, which he carries to the Military Ward (short story, not a game appearance)",
+            },
+        },
+        story = "Huntress Swiftriver is a night elf quest giver in the Military Ward of Ironforge. "
+             .. "During the war effort before the Ahn'Qiraj War she gathers spotted yellowtail fish, aiming for 17,000, to feed the soldiers. "
+             .. "In the short story The War Effort, the fish that Saegan and Daryl Riknussun prepare are meant for her.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Huntress_Swiftriver",
+            "https://warcraft.wiki.gg/wiki/The_War_Effort",
+            "https://www.wowhead.com/classic/npc=15457",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Wetlands
+    [233382] = {
+        name = "Korialstrasz",
+        zone = "Wetlands",
+        coords = "74.2, 70.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Day of the Dragon",
+                missions = {},
+                role = "Major: Alexstrasza's consort, who lives as the high elf mage Krasus and works to free Alexstrasza from the Dragonmaw clan; at the final battle of Grim Batol he summons Rhonin to destroy the Demon Soul (not a game appearance)",
+            },
+        },
+        story = "Korialstrasz was the prime consort of the Aspect of Life Alexstrasza. "
+             .. "In the guise of the high elf mage Krasus, he was a senior member of the Kirin Tor. "
+             .. "In Day of the Dragon, Krasus works to free Alexstrasza from the Dragonmaw clan in Grim Batol. "
+             .. "At the final battle of Grim Batol, Rhonin destroys the Demon Soul. "
+             .. "This NPC is a Season of Discovery boss at Grim Batol in the Wetlands, so it may not exist in every Classic version.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Korialstrasz",
+            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
+            "https://www.wowhead.com/classic/npc=233382",
+        },
+        confidence = "confirmed",
+    },
+
+    [232624] = {
+        name = "Krasus",
+        zone = "Wetlands",
+        coords = "74.4, 70.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Day of the Dragon",
+                missions = {},
+                role = "Major: Korialstrasz in the guise of the high elf mage Krasus, who works to free Alexstrasza from the Dragonmaw clan (not a game appearance)",
+            },
+        },
+        story = "Krasus is the high elf mage identity of Korialstrasz, the prime consort of Alexstrasza. "
+             .. "In Day of the Dragon, Krasus works to free Alexstrasza from the Dragonmaw clan. "
+             .. "This Season of Discovery NPC stands near Grim Batol in the Wetlands with the title Consort to the Dragon Queen, so it may not exist in every Classic version.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Korialstrasz",
+            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
+            "https://www.wowhead.com/classic/npc=232624",
+        },
+        confidence = "confirmed",
+    },
+
+-- ===================================================================== Durotar
+    [3188] = {
+        name = "Master Gadrin",
+        zone = "Durotar",
+        coords = "56.0, 74.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Present at Spirit Rise in Thunder Bluff beside Baine Bloodhoof when Magni Bronzebeard arrives to speak about healing Azeroth (chapter 12; novel, not a game appearance)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Vol'jin: Shadows of the Horde",
+                missions = {},
+                role = "Mentioned: listed in the novel's Characters section (novel, not a game appearance)",
+            },
+        },
+        story = "Master Gadrin is an elderly jungle troll and the chief witch doctor of the Darkspear tribe, based in Sen'jin Village in Durotar. "
+             .. "He was the mentor of Vol'jin and Zalazane, and after they returned from First Home he told them about the death of Sen'jin. "
+             .. "In World of Warcraft he sends adventurers to retrieve Minshina's skull in the Echo Isles and to fight Zalazane's minions. "
+             .. "In the novel Before the Storm he stood beside Baine Bloodhoof at Spirit Rise in Thunder Bluff.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Master_Gadrin",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
+            "https://www.wowhead.com/classic/npc=3188/master-gadrin",
+        },
+        confidence = "confirmed",
+    },
+
+-- ===================================================================== The Barrens
+    [3387] = {
+        name = "Jorn Skyseer",
+        zone = "The Barrens",
+        coords = "44.8, 59.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Minor: gives shelter to Baine Bloodhoof and his loyal forces in Thunder Bluff after Magatha Grimtotem takes control of the city (chapter 22; novel, not a game appearance)",
+            },
+        },
+        story = "Jorn Skyseer is a tauren hunter at Camp Taurajo in the Barrens. "
+             .. "There he serves as a guide and mentor to Horde adventurers as they train in the wilds of the Barrens. "
+             .. "In the novel The Shattering: Prelude to Cataclysm, he gives shelter and help to Baine Bloodhoof and his loyal forces when Magatha Grimtotem seizes Thunder Bluff.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Jorn_Skyseer",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=3387/jorn-skyseer",
+        },
+        confidence = "confirmed",
+    },
+
+    [3453] = {
+        name = "Wharfmaster Dizzywig",
+        zone = "The Barrens",
+        coords = "63.2, 38.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Night of the Dragon",
+                missions = {},
+                role = "Minor: provides boat transport to the night elf Velinde Starsong, and later to the draenei Iridi when she comes through Ratchet to buy a boat (novel, not a game appearance)",
+            },
+        },
+        story = "Wharfmaster Dizzywig is a goblin dockmaster in Ratchet in the Barrens. "
+             .. "In the novel Night of the Dragon he provided transport for Velinde Starsong, and later for Iridi when she came through Ratchet to purchase a boat. "
+             .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Southsea Freebooters and Mutiny, Mon!",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Wharfmaster_Dizzywig",
+            "https://warcraft.wiki.gg/wiki/Night_of_the_Dragon",
+            "https://www.wowhead.com/classic/npc=3453/wharfmaster-dizzywig",
+        },
+        confidence = "confirmed",
+    },
+
+    [6791] = {
+        name = "Innkeeper Wiley",
+        zone = "The Barrens",
+        coords = "62.0, 39.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Night of the Dragon",
+                missions = {},
+                role = "Minor: listed in the novel's Characters section (novel, not a game appearance)",
+            },
+        },
+        story = "Innkeeper Wiley is a goblin innkeeper at the Broken Keel Tavern in Ratchet in the Barrens. "
+             .. "The inn he keeps has two stoves, one of which seems to have exploded in the past. "
+             .. "He is listed among the minor characters of the novel Night of the Dragon.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Innkeeper_Wiley",
+            "https://warcraft.wiki.gg/wiki/Night_of_the_Dragon",
+            "https://www.wowhead.com/classic/npc=6791/innkeeper-wiley",
+        },
+        confidence = "confirmed",
+    },
+
+    [3454] = {
+        name = "Cannoneer Smythe",
+        zone = "The Barrens",
+        coords = "63.0, 56.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Mentioned: listed in the novel's Characters section (novel, not a game appearance)",
+            },
+        },
+        story = "",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Cannoneer_Smythe",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=3454/cannoneer-smythe",
+        },
+        confidence = "confirmed",
+    },
+
+    [3455] = {
+        name = "Cannoneer Whessan",
+        zone = "The Barrens",
+        coords = "60.4, 54.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Mentioned: listed in the novel's Characters section (novel, not a game appearance)",
+            },
+        },
+        story = "",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Cannoneer_Whessan",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/classic/npc=3455/cannoneer-whessan",
+        },
+        confidence = "confirmed",
+    },
+
+    [3498] = {
+        name = "Jazzik",
+        zone = "The Barrens",
+        coords = "61.8, 38.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Mentioned: listed in the novel's Characters section (novel, not a game appearance)",
+            },
+        },
+        story = "Jazzik is a goblin general goods vendor in Ratchet in the Barrens. "
+             .. "He runs Jazzik's General Goods together with Ranik, a trade goods supplier. "
+             .. "He is listed among the characters mentioned in the novel The Shattering: Prelude to Cataclysm.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Jazzik",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=3498/jazzik",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Shadowfang Keep
+    [3887] = {
+        name = "Baron Silverlaine",
+        zone = "Shadowfang Keep",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Arthas: Rise of the Lich King",
+                missions = {},
+                role = "Mentioned (listed in the Mentioned column of the book's Characters table; not a game appearance, novel only)",
+            },
+        },
+        story = "",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Arthas:_Rise_of_the_Lich_King",
+            "https://warcraft.wiki.gg/wiki/Baron_Silverlaine_(Classic)",
+            "https://warcraft.wiki.gg/wiki/Baron_Silverlaine",
+            "https://www.wowhead.com/classic/npc=3887",
+        },
+        confidence = "uncertain",
+        searched = "Arthas: Rise of the Lich King Characters table (warcraft.wiki.gg, cached) lists [[Baron Silverlaine]] under Mentioned. That linked article is the retail-era character page; the Classic NPC page (Baron Silverlaine (Classic), Shadowfang Keep, level 20) points to it with a 'For the retail version' hatnote, so the wiki treats them as one character. Wowhead 3887 is 'Baron Silverlaine' in Shadowfang Keep (location 209). The cached novel text has no passage with him, so the book link rests on the Characters table alone. Coordinates not available (Wowhead page has no coordinates).",
+    },
+
+    -- ===================================================================== Scarlet Monastery
+    [242499] = {
+        name = "Highlord Mograine",
+        zone = "Scarlet Monastery",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "We Ride Forth",
+                missions = {},
+                role = "Mentioned (listed in the Mentioned column of the short story's Characters table; not a game appearance, short story only)",
+            },
+        },
+        story = "",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Alexandros_Mograine",
+            "https://warcraft.wiki.gg/wiki/We_Ride_Forth",
+            "https://www.wowhead.com/classic/npc=242499",
+        },
+        confidence = "uncertain",
+        searched = "Wowhead 242499 is 'Highlord Mograine' (Classic NPC, located in Scarlet Monastery, location 796; no coordinates on the page). The warcraft.wiki.gg article Alexandros Mograine has a Classic section (Four Horsemen (Classic) and the Corrupted Ashbringer Scarlet Monastery event, with Npclocations at Crusader's Chapel, Scarlet Monastery Cathedral), which places the Classic Highlord in the Scarlet Monastery as Alexandros. The article does not cite 242499 by ID. We Ride Forth (Blizzard short story by Robert Brooks, 2020) Characters table lists [[Alexandros Mograine]] under Mentioned. Not the same person as Scarlet Commander Mograine / Renault Mograine (3976), who has its own entry.",
+    },
+
+    -- ===================================================================== Thunder Bluff
+    [3032] = {
+        name = "Beram Skychaser",
+        zone = "Thunder Bluff",
+        coords = "22.2, 19.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Minor (Characters section, Minor column): killed by the Grimtotem tribe after Cairne Bloodhoof's death (pg. 209) (novel, not a game appearance)",
+            },
+        },
+        story = "In World of Warcraft Beram Skychaser is a tauren shaman trainer on Spirit Rise in Thunder Bluff. "
+             .. "Years later, in the time of the novel The Shattering: Prelude to Cataclysm, he blesses Cairne Bloodhoof's runespear for the mak'gora duel against Garrosh Hellscream. "
+             .. "After Cairne's death he is killed by the Grimtotem tribe.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Beram_Skychaser",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=3032",
+        },
+        confidence = "confirmed",
+    },
+
+    [3030] = {
+        name = "Siln Skychaser",
+        zone = "Thunder Bluff",
+        coords = "23.0, 20.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Mentioned: killed by the Grimtotem tribe after Cairne Bloodhoof's death (pg. 209), as cited on the wiki page (novel, not a game appearance)",
+            },
+        },
+        story = "In World of Warcraft Siln Skychaser is a tauren shaman trainer on Spirit Rise in Thunder Bluff. "
+             .. "She belongs to the Skychaser tribe, the spiritual leaders of the tauren. "
+             .. "In the novel The Shattering: Prelude to Cataclysm, set years later, she is killed by the Grimtotem tribe after Cairne Bloodhoof's death.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Siln_Skychaser",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=3030",
+        },
+        confidence = "confirmed",
+    },
+
+    [3031] = {
+        name = "Tigor Skychaser",
+        zone = "Thunder Bluff",
+        coords = "23.4, 19.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Mentioned: killed by the Grimtotem tribe after Cairne Bloodhoof's death (pg. 209), as cited on the wiki page (novel, not a game appearance)",
+            },
+        },
+        story = "In World of Warcraft Tigor Skychaser is a tauren shaman trainer on Spirit Rise in Thunder Bluff. "
+             .. "He belongs to the Skychaser tribe, the spiritual leaders of the tauren. "
+             .. "In the novel The Shattering: Prelude to Cataclysm, set years later, he is killed by the Grimtotem tribe after Cairne Bloodhoof's death.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Tigor_Skychaser",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=3031",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Thousand Needles
+    [4630] = {
+        name = "Pozzik",
+        zone = "Thousand Needles",
+        coords = "80.0, 75.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Minor (Characters section, 'Other' column); MEGA membership cited to pg. 236 (novel, not a game appearance)",
+            },
+        },
+        story = "In World of Warcraft Pozzik is a goblin tinker at the Mirage Raceway in Thousand Needles, which he built with his long-time rival Fizzle Brassbolts to prove the superiority of their races' engineering. "
+             .. "Both of them then built rocket cars and enlisted teams to drive them. "
+             .. "The novel Traveler: The Spiral Path, set much later, records him as a member of MEGA, the Mechanical Engineers' Guild of Azeroth.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Pozzik",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=4630",
+        },
+        confidence = "confirmed",
+    },
+
+    [10645] = {
+        name = "Thalia Amberhide",
+        zone = "Thousand Needles",
+        coords = "46.0, 51.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Minor (Characters section, 'Other' column): tauren of Freewind Post (novel, not a game appearance); the scenes she appears in were not verified",
+            },
+        },
+        story = "In World of Warcraft Thalia Amberhide resides in the inn of Freewind Post in Thousand Needles. "
+             .. "She is a close friend of Lakota Windsong, the tauren who was kidnapped by Arnak Grimtotem. "
+             .. "She is listed among the characters of the novel Traveler: The Spiral Path.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Thalia_Amberhide",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=10645",
+        },
+        confidence = "uncertain",
+        searched = "Listed in the novel's Characters section ('Other' column), confirmed in raw wikitext; her wiki page cites no book line and her book scenes were not read",
     },
 }
