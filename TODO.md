@@ -6,8 +6,8 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 
 ## Done
 
-- [x] Orgrimmar – 4 NPCs (Thrall, Nazgrel, Vol'jin, Grunt Maug)
-- [x] The Barrens – 2 NPCs (Gazlowe, Apothecary Helbrim*)
+- [x] Orgrimmar – 4 NPCs (Thrall, Nazgrel, Vol'jin, Grunt Maug); Kiro rejected (namesake of the vulpera leader)
+- [x] The Barrens – 8 NPCs (Gazlowe, Apothecary Helbrim*; books: Jorn Skyseer, Wharfmaster Dizzywig, Innkeeper Wiley, Cannoneer Smythe, Cannoneer Whessan, Jazzik)
 - [x] Undercity – 5 NPCs (Sylvanas, Varimathras, Sharlindra, Apothecary Keever, Lexington Mortaim*)
 - [x] Silverpine Forest – 2 NPCs (Dalar Dawnweaver, Snarlmane*)
 - [x] Stonetalon Mountains – 3 NPCs (Rexxar, Misha, Witch Doctor Jin'Zil*)
@@ -24,19 +24,22 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 
 Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the game (`/wcl id`) or from Forever databases once they exist.
 
+2026-10-08 (evening): the 24 zones and dungeons up to level 30 were redone with Haiku workers + critics (brief v3):
+21 new NPCs and 28 new book appearances in existing entries. See .kritikk/LESSONS_LEARNED.md.
+
 2026-10-08: level cap is 30 in Forever. All zones up to level 30 are done; Orgrimmar, Durotar, Undercity, Tirisfal, Silverpine,
 Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalon and Hillsbrad were rescanned for book links.
 
 ## Kalimdor
 
-- [x] Durotar – 1 NPC (Gar'Thok)
+- [x] Durotar – 2 NPCs (Gar'Thok; Master Gadrin, book)
 - [x] Mulgore – 1 NPC (Baine Bloodhoof)
-- [x] Thunder Bluff – 1 NPC (Cairne Bloodhoof)
+- [x] Thunder Bluff – 1 NPC (Cairne Bloodhoof) + 3 Skychasers from The Shattering (Beram, Siln, Tigor)
 - [x] Teldrassil – 0 NPCs
 - [x] Darnassus – 2 NPCs (Tyrande Whisperwind, Arch Druid Fandral Staghelm – book only)
 - [x] Darkshore – 1 NPC (Athrikus Narassin)
 - [x] Ashenvale – 0 NPCs (8 Season of Discovery name matches dropped)
-- [x] Thousand Needles – 5 NPCs, all books (Traveler: The Spiral Path)
+- [x] Thousand Needles – 7 NPCs, all books (Traveler: The Spiral Path; Pozzik, Thalia Amberhide* added in round 3)
 - [x] Desolace – 0 new (Rexxar and Misha wander here; same NPC IDs as in Stonetalon)
 - [x] Dustwallow Marsh – 8 NPCs (Jaina, Tervosh*, Brother Karman*, Torq Ironblast*, Draz'Zilb, Tharg, Do'gol, Ogg'marr); Mok'Morokk rejected (link is book-only)
 - [x] Feralas – 1 NPC (Shandris Feathermoon); Rexxar and Misha also wander here
@@ -52,14 +55,14 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 
 - [x] Tirisfal Glades – 1 NPC (Gordo)
 - [x] Dun Morogh – 0 NPCs
-- [x] Ironforge – 6 NPCs, all books (Magni, Mekkatorque, Rohan, Bink, Dink, Reyna Stonebranch)
+- [x] Ironforge – 11 NPCs, all books (Magni, Mekkatorque, Rohan, Bink, Dink, Reyna Stonebranch, Gryth Thurden, Advisor Belgrum, High Explorer Magellas, Daryl Riknussun, Huntress Swiftriver)
 - [x] Elwynn Forest – 3 NPCs, all books
 - [x] Stormwind City – 17 NPCs, all books (Anduin, Bolvar, Katrana, Shaw, Renzik …); Aedis Brom/Christoph Faral rejected
 - [x] Westfall – 0 NPCs
 - [x] Loch Modan – 1 NPC (Vyrin Swiftwind, book)
 - [x] Redridge Mountains – 1 NPC (Magistrate Solomon, book)
 - [x] Duskwood – 3 NPCs (Terror by Torchlight)
-- [x] Wetlands – 0 NPCs (Korialstrasz/Krasus SoD NPCs rejected: name only)
+- [x] Wetlands – 2 NPCs (Korialstrasz and Krasus, Season of Discovery NPCs at Grim Batol; Day of the Dragon)
 - [x] Hillsbrad Foothills – 0 NPCs
 - [x] Alterac Mountains – 2 NPCs (Mug'thol, Archmage Ansirem Runeweaver*)
 - [ ] Arathi Highlands
@@ -78,7 +81,7 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 
 - [ ] Alterac Valley – lead: Drek'Thar (quest giver in "To Tame a Land")
 - [ ] Warsong Gulch, Arathi Basin
-- [x] Dungeons up to level 30 – Naralex, VanCleef*, Arugal*, Mograine + Whitemane (FK: A Scarlet Flame), Thermaplugg, Charlga
+- [x] Dungeons up to level 30 – Naralex, VanCleef*, Arugal*, Mograine + Whitemane (FK: A Scarlet Flame), Thermaplugg, Charlga; round 3: Baron Silverlaine*, Highlord Mograine* (SoD ID)
 - [ ] Higher dungeons and raids
 - [ ] Forever: Krol'Dok Stronghold (Riverglades), the new Dalaran dungeon, Hyjal Summit, Barrow Deeps (Mount Hyjal)
 

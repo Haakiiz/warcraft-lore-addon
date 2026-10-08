@@ -46,10 +46,12 @@ Brief v2 lærer Haiku dette (★-reglene), og det løftet Haiku fra 14 til 19 fu
   `tools/research/backlinks.py <soneId…>`, kjør med `py -3 -I`), eller la kritikeren fylle inn koordinater.
 - «Bare nevnt»-roller (Lescovar) og omdirigerte NPC-er (Katrana → Onyxia) må avgjøres av orkestratoren.
 
-## Oppskrift for neste runde
-Briefene nevner en arbeidsmappe i scratchpad fra 2026-10-08; bytt den ut med denne øktens scratchpad-mappe.
-1. Orkestrator henter NPC-lister (Wowhead Classic `g_listviews.npcs`) og tilbakelenker fra RTS-oppdrag for alle soner i runden.
-2. 5 Haiku-arbeidere parallelt med brief v2, én til tre soner hver. Gi dem `existing_ids`/Data.lua så de ikke lager duplikater.
-3. Én Haiku-kritiker per arbeider (`.kritikk/BRIEF_critic.md`: verifiser hver påstand mot kilden, PASS/FIX/REJECT, skriv `_checked.lua`).
-4. Orkestrator: slå sammen, legg tillegg inn i eksisterende oppføringer, kjør validatoren, sjekk tidslinje, commit + PR.
-5. Sjekk kvoten mellom rundene (en Haiku-kjøring ≈ 1–2 % av 5-timersgrensen).
+## Oppskrift for neste runde (oppdatert etter runde 3, 2026-10-08 kveld)
+Les `LESSONS_LEARNED.md` og `HVORDAN_INSTRUERE_HAIKU.md` først. Kort:
+1. Orkestrator: `fetch_npcs.py <soneId…>`, `backlinks.py <soneId…>`, kopier `npcs_*.json` til en arbeidsmappe i scratchpad og kjør
+   `prep_candidates.py <arbeidsmappe> WarcraftLore/Data.lua` (alt med `py -3 -I`). Gir `candidates_<soneId>.json`, `_pages.json`, `_books.json`.
+2. 5–6 Haiku-arbeidere parallelt med brief v3 (3–5 soner hver, balansert på antall kandidater). Arbeidsmappen oppgis i prompten.
+3. Én Haiku-kritiker per arbeider, startet straks arbeideren er ferdig, med konkrete ekstraoppdrag fra rapporten.
+4. Orkestrator: rett tidslinje og korte historier, slå sammen med skript, legg tillegg inn i eksisterende oppføringer,
+   kjør `tests/validate_db.py`, commit + PR.
+5. Runde 3 brukte ~2,1 M Haiku-tokens for 24 soner.
