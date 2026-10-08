@@ -24,6 +24,9 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 
 Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the game (`/wcl id`) or from Forever databases once they exist.
 
+2026-10-08: level cap is 30 in Forever. All zones up to level 30 are done; Orgrimmar, Durotar, Undercity, Tirisfal, Silverpine,
+Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalon and Hillsbrad were rescanned for book links.
+
 ## Kalimdor
 
 - [x] Durotar – 1 NPC (Gar'Thok)
@@ -33,7 +36,7 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 - [x] Darnassus – 2 NPCs (Tyrande Whisperwind, Arch Druid Fandral Staghelm – book only)
 - [x] Darkshore – 1 NPC (Athrikus Narassin)
 - [x] Ashenvale – 0 NPCs (8 Season of Discovery name matches dropped)
-- [ ] Thousand Needles
+- [x] Thousand Needles – 5 NPCs, all books (Traveler: The Spiral Path)
 - [x] Desolace – 0 new (Rexxar and Misha wander here; same NPC IDs as in Stonetalon)
 - [x] Dustwallow Marsh – 8 NPCs (Jaina, Tervosh*, Brother Karman*, Torq Ironblast*, Draz'Zilb, Tharg, Do'gol, Ogg'marr); Mok'Morokk rejected (link is book-only)
 - [x] Feralas – 1 NPC (Shandris Feathermoon); Rexxar and Misha also wander here
@@ -48,15 +51,15 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 ## Eastern Kingdoms
 
 - [x] Tirisfal Glades – 1 NPC (Gordo)
-- [ ] Dun Morogh
-- [ ] Ironforge
-- [ ] Elwynn Forest
-- [ ] Stormwind City
-- [ ] Westfall
-- [ ] Loch Modan
-- [ ] Redridge Mountains
-- [ ] Duskwood
-- [ ] Wetlands
+- [x] Dun Morogh – 0 NPCs
+- [x] Ironforge – 6 NPCs, all books (Magni, Mekkatorque, Rohan, Bink, Dink, Reyna Stonebranch)
+- [x] Elwynn Forest – 3 NPCs, all books
+- [x] Stormwind City – 17 NPCs, all books (Anduin, Bolvar, Katrana, Shaw, Renzik …); Aedis Brom/Christoph Faral rejected
+- [x] Westfall – 0 NPCs
+- [x] Loch Modan – 1 NPC (Vyrin Swiftwind, book)
+- [x] Redridge Mountains – 1 NPC (Magistrate Solomon, book)
+- [x] Duskwood – 3 NPCs (Terror by Torchlight)
+- [x] Wetlands – 0 NPCs (Korialstrasz/Krasus SoD NPCs rejected: name only)
 - [x] Hillsbrad Foothills – 0 NPCs
 - [x] Alterac Mountains – 2 NPCs (Mug'thol, Archmage Ansirem Runeweaver*)
 - [ ] Arathi Highlands
@@ -75,7 +78,8 @@ Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the g
 
 - [ ] Alterac Valley – lead: Drek'Thar (quest giver in "To Tame a Land")
 - [ ] Warsong Gulch, Arathi Basin
-- [ ] Classic dungeons and raids
+- [x] Dungeons up to level 30 – Naralex, VanCleef*, Arugal*, Mograine + Whitemane (FK: A Scarlet Flame), Thermaplugg, Charlga
+- [ ] Higher dungeons and raids
 - [ ] Forever: Krol'Dok Stronghold (Riverglades), the new Dalaran dungeon, Hyjal Summit, Barrow Deeps (Mount Hyjal)
 
 ## Addon follow-ups
