@@ -132,8 +132,106 @@ def circle_mask():
     return img, w, h
 
 
+def pill_glow():
+    """256x64 soft glow for the nearby-alert pill. White, tinted in the addon, drawn with ADD blend.
+
+    Shown stretched to 268x80, i.e. 16 px around a 236x48 pill. The alpha falls off smoothly
+    over those 16 px and is zero at the texture border.
+    """
+    import numpy as np
+    w, h = 256, 64
+    pad = 16
+    sx, sy = (236 + 2 * pad) / w, (48 + 2 * pad) / h       # texture px -> screen px
+    xs = (np.arange(w) + 0.5) * sx
+    ys = (np.arange(h) + 0.5) * sy
+    X, Y = np.meshgrid(xs, ys)
+    dx = np.maximum(np.maximum(pad - X, X - (236 + pad)), 0)
+    dy = np.maximum(np.maximum(pad - Y, Y - (48 + pad)), 0)
+    dist = np.hypot(dx, dy)                                # screen px outside the pill rectangle
+    t = np.clip(1 - dist / pad, 0, 1)
+    alpha = 0.85 * t ** 2.4
+    a8 = (np.clip(alpha, 0, 1) * 255 + 0.5).astype(np.uint8)
+    rgba = np.zeros((h, w, 4), np.uint8)
+    rgba[..., :3] = 255
+    rgba[..., 3] = a8
+    return Image.fromarray(rgba), w, h
+
+
+def shadow_v():
+    """4x32 black strip, opaque at the top and clear at the bottom (a popup's drop shadow, top/bottom)."""
+    img = Image.new("RGBA", (4, 32))
+    for y in range(32):
+        a = int(255 * (1 - y / 31) ** 1.8)
+        for x in range(4):
+            img.putpixel((x, y), (0, 0, 0, a))
+    return img
+
+
+def shadow_h():
+    """32x4 black strip, opaque at the left and clear at the right (drop shadow, sides)."""
+    return shadow_v().rotate(90, expand=True)
+
+def _glyph(draw_fn, size=16):
+    img = Image.new("RGBA", (size * SS, size * SS), (255, 255, 255, 0))
+    a = Image.new("L", img.size, 0)
+    draw_fn(ImageDraw.Draw(a))
+    img.putalpha(a)
+    return img, size, size
+
+
+def chevron_down():
+    """16x16 white "v", drawn to be shown at 10x10 (a 7 x 3.5 glyph), tinted in the addon."""
+    def draw(d):
+        k = 16 / 10 * SS                   # display px -> texture px (supersampled)
+        c = 8 * SS
+        d.line([(c - 3.5 * k * 0.625, c - 1.75 * k * 0.625), (c, c + 1.75 * k * 0.625), (c + 3.5 * k * 0.625, c - 1.75 * k * 0.625)],
+               fill=255, width=int(1.2 * k), joint="curve")
+    return _glyph(draw)
+
+
+def chevron_right():
+    """16x16 white ">", drawn to be shown at 10x10 (a 4.5 x 8 glyph)."""
+    def draw(d):
+        k = 16 / 10 * SS
+        c = 8 * SS
+        d.line([(c - 2.0 * k, c - 4.0 * k), (c + 2.0 * k - 0.4 * k, c), (c - 2.0 * k, c + 4.0 * k)],
+               fill=255, width=int(1.3 * k), joint="curve")
+    return _glyph(draw)
+
+
+def magnifier():
+    """16x16 white magnifier, drawn to be shown at 12x12."""
+    def draw(d):
+        k = SS / 0.75                      # display px (12 px box) -> supersampled texture px
+        cx, cy, r = 5 * k, 5 * k, 3.6 * k
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=255, width=int(1.4 * k))
+        d.line([(7.7 * k, 7.7 * k), (11 * k, 11 * k)], fill=255, width=int(1.4 * k))
+    return _glyph(draw)
+
+
+def fade_down():
+    """4x32 strip in the panel color, transparent at the top and opaque at the bottom (list fade)."""
+    w, h = 4, 32
+    img = Image.new("RGBA", (w, h))
+    for y in range(h):
+        a = int(255 * (y / (h - 1)) ** 1.2)
+        for x in range(w):
+            img.putpixel((x, y), (16, 13, 24, a))
+    return img, w, h
+
+
+def save_exact(img, name):
+    OUT.mkdir(parents=True, exist_ok=True)
+    img.save(OUT / name, format="TGA")
+    print("wrote", OUT / name)
+
 if __name__ == "__main__":
     for name, fn in [("VineH.tga", vine_h), ("VineV.tga", vine_v), ("Corner.tga", corner), ("RingGlow.tga", ring_glow),
-                     ("RingThin.tga", ring_thin), ("CircleMask.tga", circle_mask)]:
+                     ("RingThin.tga", ring_thin), ("CircleMask.tga", circle_mask), ("PillGlow.tga", pill_glow),
+                     ("ChevronDown.tga", chevron_down), ("ChevronRight.tga", chevron_right), ("Magnifier.tga", magnifier)]:
         img, w, h = fn()
         save(img, name, w, h)
+    img, w, h = fade_down()
+    save_exact(img, "FadeDown.tga")
+    save_exact(shadow_v(), "ShadowV.tga")
+    save_exact(shadow_h(), "ShadowH.tga")

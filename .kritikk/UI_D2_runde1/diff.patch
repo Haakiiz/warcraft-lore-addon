@@ -1,0 +1,503 @@
+﻿diff --git a/WarcraftLore/Compat.lua b/WarcraftLore/Compat.lua
+index 160862c..0a6f337 100644
+--- a/WarcraftLore/Compat.lua
++++ b/WarcraftLore/Compat.lua
+@@ -275,6 +275,19 @@ function C.StartTicker(seconds, fn)
+     return pcall(C_Timer.NewTicker, seconds, fn)
+ end
+ 
++-- Runs fn on the next frame (C_Timer.After(0)), outside whatever called us. Used to keep
++-- chat output and window refreshes out of tooltip post-calls. Falls back to running fn now.
++function C.After(fn)
++    if type(C_Timer) == "table" and type(C_Timer.After) == "function" then
++        local ok = pcall(C_Timer.After, 0, fn)
++        if ok then
++            return
++        end
++    end
++    noteMissing("C_Timer.After")
++    fn()
++end
++
+ -- A big line in the middle of the screen (the raid warning area). Optional: silently skipped
+ -- when the client has no RaidNotice_AddMessage.
+ function C.RaidNotice(msg)
+@@ -285,3 +298,30 @@ function C.RaidNotice(msg)
+     local color = ChatTypeInfo and ChatTypeInfo["RAID_WARNING"] or { r = 1, g = 0.9, b = 0.4 }
+     pcall(RaidNotice_AddMessage, RaidWarningFrame, msg, color)
+ end
++
++-- A single-line text box with its font already set (an EditBox without a font errors).
++-- Returns nil if the client cannot make one, so callers can leave the box out.
++function C.CreateEditBox(parent, fontPath, size)
++    local ok, box = pcall(CreateFrame, "EditBox", nil, parent)
++    if not ok or not box then
++        noteMissing("EditBox")
++        return nil
++    end
++    local okSetup = pcall(function()
++        -- Font first: SetText on an EditBox without a font raises an error. Like FontStrings,
++        -- a missing font file may make SetFont return false instead of erroring.
++        if box:SetFont(fontPath, size, "") == false then
++            box:SetFont(C.FONT_BODY, size, "")
++        end
++        box:SetAutoFocus(false)
++        box:SetMultiLine(false)
++        box:SetMaxLetters(40)
++        box:SetTextInsets(0, 0, 0, 0)
++    end)
++    if not okSetup then
++        noteMissing("EditBox setup")
++        box:Hide()
++        return nil
++    end
++    return box
++end
+diff --git a/WarcraftLore/Core.lua b/WarcraftLore/Core.lua
+index 2e2c853..2b4647e 100644
+--- a/WarcraftLore/Core.lua
++++ b/WarcraftLore/Core.lua
+@@ -63,12 +63,83 @@ function ns.GamesLabel(entry)
+     return table.concat(parts, " · ")
+ end
+ 
++-------------------------------------------------------------------- Met tracking
++-- A veteran counts as met when the player targets it or mouses over it (a real unit, not
++-- a nameplate/coordinate alert and not /wcl test). Stored per character:
++-- WarcraftLoreCharDB.met[npcID] = time() of the first meeting.
++function ns.IsMet(npcID)
++    local db = WarcraftLoreCharDB
++    return (db and db.met and npcID and db.met[npcID] ~= nil) and true or false
++end
++
++-- Returns perGame, overall. perGame[code] = { met = n, total = n } for every code in
++-- ns.GAME_ORDER (an NPC with several games counts in each; BOOK counts as its own game);
++-- overall = { met = n, total = n } counted once per NPC.
++function ns.MetCounts()
++    local perGame = {}
++    for _, code in ipairs(ns.GAME_ORDER) do
++        perGame[code] = { met = 0, total = 0 }
++    end
++    local overall = { met = 0, total = 0 }
++    for npcID, entry in pairs(ns.NPCS) do
++        local met = ns.IsMet(npcID)
++        overall.total = overall.total + 1
++        if met then
++            overall.met = overall.met + 1
++        end
++        for _, code in ipairs(ns.GamesInOrder(entry)) do
++            perGame[code].total = perGame[code].total + 1
++            if met then
++                perGame[code].met = perGame[code].met + 1
++            end
++        end
++    end
++    return perGame, overall
++end
++
++-- Records the first meeting with a database NPC. Returns true if it was new.
++function ns.MarkMet(npcID)
++    local db = WarcraftLoreCharDB
++    local entry = npcID and ns.NPCS[npcID]
++    if not db or not entry then
++        return false -- before ADDON_LOADED, or not a veteran
++    end
++    if type(db.met) ~= "table" then
++        db.met = {}
++    end
++    if db.met[npcID] then
++        return false
++    end
++    -- Recorded right away (so a second call in the same frame is a no-op) ...
++    db.met[npcID] = time()
++    -- ... but the chat line and window refreshes wait for the next frame: this is usually
++    -- called from inside a tooltip post-call, which should stay quick and must not be
++    -- able to break the tooltip if one of our windows errors.
++    C.After(function()
++        local _, overall = ns.MetCounts()
++        chat(("New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."):format(
++            entry.name or "?", ns.GamesLabel(entry), overall.met, overall.total))
++        if ns.Browser then
++            ns.Browser.Refresh()
++        end
++        if ns.UI then
++            ns.UI.RefreshMet(npcID)
++        end
++    end)
++    return true
++end
++
+ -------------------------------------------------------------------- Tooltip
+ local function onUnitTooltip(tooltip, unit, guid)
+-    local entry = ns.Lookup(unit, guid)
++    local entry, npcID = ns.Lookup(unit, guid)
+     if not entry then
+         return -- not in the database: no line
+     end
++    -- Any GameTooltip unit tooltip counts as meeting: mouseover in the world, on a nameplate
++    -- or on a unit frame. You can only mouse over what is on screen and in view range (the
++    -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
++    -- GUIDs give no entry above, so nothing is marked then.
++    ns.MarkMet(npcID)
+     local line
+     if entry.confidence == "uncertain" then
+         line = "Warcraft Veteran? " .. ns.GamesLabel(entry) .. " |cffa79d8a(uncertain)|r"
+@@ -116,6 +187,10 @@ local function cmdID()
+     end
+ end
+ 
++local function cmdList()
++    ns.Browser.Toggle()
++end
++
+ local function cmdAuto()
+     WarcraftLoreDB.auto = not WarcraftLoreDB.auto
+     chat("Auto-open is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+@@ -270,10 +345,11 @@ end
+ local function cmdHelp()
+     chat("/wcl – open the window for your target")
+     chat("/wcl id – print your target's NPC ID and name in chat")
++    chat("/wcl list (or /wcl browse) – open or close the veterans list: search, filter, see who you have met")
+     chat("/wcl auto – toggle auto-open (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
+     chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
+     chat("/wcl test – show a test alert (toast, center text, chat, sound)")
+-    chat("/wcl reset – move the window back to the center")
++    chat("/wcl reset – move the windows back to the center")
+     chat("/wcl debug – show which APIs the client has")
+ end
+ 
+@@ -284,6 +360,8 @@ SlashCmdList.WARCRAFTLORE = function(msg)
+         cmdShow()
+     elseif cmd == "id" then
+         cmdID()
++    elseif cmd == "list" or cmd == "browse" then
++        cmdList()
+     elseif cmd == "auto" then
+         cmdAuto()
+     elseif cmd == "alert" then
+@@ -292,7 +370,8 @@ SlashCmdList.WARCRAFTLORE = function(msg)
+         cmdTest()
+     elseif cmd == "reset" then
+         ns.UI.ResetPosition()
+-        chat("The window is back in the center.")
++        ns.Browser.ResetPosition()
++        chat("The windows are back in the center.")
+     elseif cmd == "debug" then
+         cmdDebug()
+     else
+@@ -317,6 +396,13 @@ events:SetScript("OnEvent", function(_, event, arg1)
+         if WarcraftLoreDB.alert == nil then
+             WarcraftLoreDB.alert = true
+         end
++        -- Per-character data; a damaged file (wrong types) is replaced rather than crashing.
++        if type(WarcraftLoreCharDB) ~= "table" then
++            WarcraftLoreCharDB = {}
++        end
++        if type(WarcraftLoreCharDB.met) ~= "table" then
++            WarcraftLoreCharDB.met = {}
++        end
+         ns.UI.Init()
+         C.StartTicker(CHECK_INTERVAL, checkPosition)
+         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)
+@@ -325,12 +411,15 @@ events:SetScript("OnEvent", function(_, event, arg1)
+         end
+         events:UnregisterEvent("ADDON_LOADED")
+     elseif event == "PLAYER_TARGET_CHANGED" then
+-        if not (WarcraftLoreDB and WarcraftLoreDB.auto) then
++        if not WarcraftLoreDB then
+             return
+         end
+         local entry, npcID = ns.Lookup("target")
+         if entry then
+-            ns.UI.ShowEntry(npcID, entry, "target")
++            ns.MarkMet(npcID)
++            if WarcraftLoreDB.auto then
++                ns.UI.ShowEntry(npcID, entry, "target")
++            end
+         end
+     end
+ end)
+diff --git a/WarcraftLore/Toast.lua b/WarcraftLore/Toast.lua
+index c7cbe43..6217728 100644
+--- a/WarcraftLore/Toast.lua
++++ b/WarcraftLore/Toast.lua
+@@ -7,9 +7,9 @@ local C = ns.Compat
+ local Toast = {}
+ ns.Toast = Toast
+ 
+-local TEX = "Interface\AddOns\\" .. ADDON_NAME .. "\Textures\\"
+-local PORTRAITS = "Interface\AddOns\\" .. ADDON_NAME .. "\Portraits\\"
+-local QUESTION_MARK = "Interface\Icons\INV_Misc_QuestionMark"
++local TEX = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Textures\\"
++local PORTRAITS = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Portraits\\"
++local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
+ 
+ local TOAST_W, TOAST_H = 340, 78
+ local GAP = 6
+diff --git a/WarcraftLore/UI.lua b/WarcraftLore/UI.lua
+index 3b54b21..14f9b41 100644
+--- a/WarcraftLore/UI.lua
++++ b/WarcraftLore/UI.lua
+@@ -11,89 +11,19 @@ local TEX = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Textures\\"
+ local PORTRAITS = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Portraits\\"
+ local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
+ 
++local S = ns.Style
++local COL, solid, text, outline, box, badge = S.COL, S.solid, S.text, S.outline, S.box, S.badge
++local BAND, PAD, HEADER = S.BAND, S.PAD, S.HEADER
++local HEX_MUTED, HEX_TITLE, HEX_MET, END = S.HEX_MUTED, S.HEX_TITLE, S.HEX_MET, S.END
++
+ local W, H = 460, 580      -- window size
+-local BAND = 20            -- width of the vine band around the window
+-local PAD = 12             -- inner padding
+-local HEADER = 26          -- height of the title band
+ local RING = 96            -- portrait ring size
+ local INNER_W = W - 2 * BAND
+ local CONTENT_W = INNER_W - 2 * PAD
+-local VINE_TILE = 80       -- on-screen length of one vine tile (128x32 texture shown 20 px high)
+-
+-local function rgb(hex)
+-    return tonumber(hex:sub(1, 2), 16) / 255, tonumber(hex:sub(3, 4), 16) / 255, tonumber(hex:sub(5, 6), 16) / 255
+-end
+-
+-local COL = {
+-    outer = { rgb("120f1c") }, inner = { rgb("100d18") }, header = { rgb("181226") },
+-    headerLine = { rgb("3d2a78") }, violet = { rgb("8b6cd6") }, teal = { rgb("2a6f68") },
+-    title = { rgb("d4c6f7") }, text = { rgb("d9d2c3") }, muted = { rgb("a79d8a") },
+-    divider = { rgb("2d2347") }, uncertain = { rgb("e0b04a") }, dim = { rgb("4d4434") },
+-}
+-local HEX_MUTED = "|cffa79d8a"
+-local HEX_TITLE = "|cffd4c6f7"
+-local END = "|r"
+-
+--------------------------------------------------------------------- small builders
+-local function solid(parent, layer, c, a)
+-    local t = parent:CreateTexture(nil, layer)
+-    t:SetColorTexture(c[1], c[2], c[3], a or 1)
+-    return t
+-end
+-
+-local function text(parent, font, size, c)
+-    local fs = parent:CreateFontString(nil, "OVERLAY")
+-    C.SetFont(fs, font, size)
+-    fs:SetJustifyH("LEFT")
+-    fs:SetJustifyV("TOP")
+-    if c then
+-        fs:SetTextColor(c[1], c[2], c[3])
+-    end
+-    return fs
+-end
+-
+--- Four textures forming a rectangle outline, `inset` px inside the parent.
+-local function outline(parent, inset, thickness, c, layer)
+-    local t = solid(parent, layer, c); t:SetPoint("TOPLEFT", inset, -inset); t:SetPoint("TOPRIGHT", -inset, -inset); t:SetHeight(thickness)
+-    local b = solid(parent, layer, c); b:SetPoint("BOTTOMLEFT", inset, inset); b:SetPoint("BOTTOMRIGHT", -inset, inset); b:SetHeight(thickness)
+-    local l = solid(parent, layer, c); l:SetPoint("TOPLEFT", inset, -inset); l:SetPoint("BOTTOMLEFT", inset, inset); l:SetWidth(thickness)
+-    local r = solid(parent, layer, c); r:SetPoint("TOPRIGHT", -inset, -inset); r:SetPoint("BOTTOMRIGHT", -inset, inset); r:SetWidth(thickness)
+-    return { t, b, l, r }
+-end
+-
+--- A frame with a flat background and a 1 px border whose colors can change.
+-local function box(parent)
+-    local f = CreateFrame("Frame", nil, parent)
+-    f.bg = solid(f, "BACKGROUND", COL.inner)
+-    f.bg:SetAllPoints()
+-    f.edges = outline(f, 0, 1, COL.violet, "BORDER")
+-    function f:SetColors(fill, fillAlpha, edge, edgeAlpha)
+-        self.bg:SetColorTexture(fill[1], fill[2], fill[3], fillAlpha)
+-        for _, e in ipairs(self.edges) do
+-            e:SetColorTexture(edge[1], edge[2], edge[3], edgeAlpha)
+-        end
+-    end
+-    return f
+-end
+-
+-local function badge(parent)
+-    local b = box(parent)
+-    b:SetHeight(16)
+-    b.label = text(b, C.FONT_BODY, 10)
+-    b.label:SetPoint("CENTER", b, "CENTER", 0, 0)
+-    b.label:SetJustifyV("MIDDLE")
+-    function b:Set(label, c)
+-        self.label:SetText(label)
+-        self.label:SetTextColor(c[1], c[2], c[3])
+-        self:SetColors(c, 0.12, c, 1)
+-        self:SetWidth(math.floor(self.label:GetStringWidth() + 14))
+-        self:Show()
+-    end
+-    return b
+-end
+ 
+ -------------------------------------------------------------------- the window
+-local frame, nameText, placeText, idText, portrait, portraitRing
++local frame, nameText, placeText, idText, metText, portrait, portraitRing
++local shownNPC            -- NPC ID the lore window currently shows (nil for messages)
+ local ringParts = {}
+ local headerBadges = {}
+ local scroll, content
+@@ -121,76 +51,6 @@ function UI.ResetPosition()
+     end
+ end
+ 
+--- Violet outer lines, turquoise vines along all four edges, rosettes in the corners.
+-local function buildFrameArt(f)
+-    local bg = solid(f, "BACKGROUND", COL.outer)
+-    bg:SetAllPoints()
+-    outline(f, 0, 3, COL.violet, "BORDER")
+-    outline(f, 6, 1, COL.teal, "BORDER")
+-
+-    local half = BAND / 2
+-    local spanH, spanV = W - 2 * 24, H - 2 * 24
+-    local tilesH, tilesV = spanH / VINE_TILE, spanV / VINE_TILE
+-
+-    local top = f:CreateTexture(nil, "ARTWORK")
+-    top:SetPoint("TOPLEFT", 24, 0); top:SetSize(spanH, BAND)
+-    C.SetTiledTexture(top, TEX .. "VineH", tilesH, 1)
+-    local bottom = f:CreateTexture(nil, "ARTWORK")
+-    bottom:SetPoint("BOTTOMLEFT", 24, 0); bottom:SetSize(spanH, BAND)
+-    C.SetTiledTexture(bottom, TEX .. "VineH", tilesH, -1)
+-    local left = f:CreateTexture(nil, "ARTWORK")
+-    left:SetPoint("TOPLEFT", 0, -24); left:SetSize(BAND, spanV)
+-    C.SetTiledTexture(left, TEX .. "VineV", 1, tilesV)
+-    local right = f:CreateTexture(nil, "ARTWORK")
+-    right:SetPoint("TOPRIGHT", 0, -24); right:SetSize(BAND, spanV)
+-    C.SetTiledTexture(right, TEX .. "VineV", -1, tilesV)
+-
+-    -- Rosettes: the texture's leaves point right and down, so mirror it per corner.
+-    local corners = {
+-        { "CENTER", "TOPLEFT", half, -half, 0, 1, 0, 1 },
+-        { "CENTER", "TOPRIGHT", -half, -half, 1, 0, 0, 1 },
+-        { "CENTER", "BOTTOMLEFT", half, half, 0, 1, 1, 0 },
+-        { "CENTER", "BOTTOMRIGHT", -half, half, 1, 0, 1, 0 },
+-    }
+-    for _, c in ipairs(corners) do
+-        local t = f:CreateTexture(nil, "OVERLAY")
+-        t:SetTexture(TEX .. "Corner")
+-        t:SetSize(34, 34)
+-        t:SetPoint(c[1], f, c[2], c[3], c[4])
+-        t:SetTexCoord(c[5], c[6], c[7], c[8])
+-    end
+-end
+-
+-local function buildHeader(inner)
+-    local band = solid(inner, "BORDER", COL.header)
+-    band:SetPoint("TOPLEFT"); band:SetPoint("TOPRIGHT"); band:SetHeight(HEADER)
+-    local line = solid(inner, "BORDER", COL.headerLine)
+-    line:SetPoint("TOPLEFT", 0, -HEADER); line:SetPoint("TOPRIGHT", 0, -HEADER); line:SetHeight(1)
+-
+-    local title = text(inner, C.FONT_TITLE, 14, COL.title)
+-    title:SetPoint("LEFT", inner, "TOPLEFT", PAD, -HEADER / 2)
+-    title:SetJustifyV("MIDDLE")
+-    title:SetText("Warcraft Lore")
+-
+-    local close = CreateFrame("Button", nil, inner)
+-    close:SetSize(22, 18)
+-    close:SetPoint("RIGHT", inner, "TOPRIGHT", -PAD + 4, -HEADER / 2)
+-    local edges = outline(close, 0, 1, COL.headerLine, "BORDER")
+-    local x = text(close, C.FONT_BODY, 12, COL.violet)
+-    x:SetPoint("CENTER", 0, 0)
+-    x:SetText("X")
+-    C.RegisterClicks(close)
+-    close:SetScript("OnClick", function() frame:Hide() end)
+-    close:SetScript("OnEnter", function()
+-        x:SetTextColor(COL.title[1], COL.title[2], COL.title[3])
+-        for _, e in ipairs(edges) do e:SetColorTexture(COL.violet[1], COL.violet[2], COL.violet[3], 1) end
+-    end)
+-    close:SetScript("OnLeave", function()
+-        x:SetTextColor(COL.violet[1], COL.violet[2], COL.violet[3])
+-        for _, e in ipairs(edges) do e:SetColorTexture(COL.headerLine[1], COL.headerLine[2], COL.headerLine[3], 1) end
+-    end)
+-end
+-
+ local function buildPortrait(inner)
+     local holder = CreateFrame("Frame", nil, inner)
+     holder:SetSize(RING, RING)
+@@ -224,6 +84,10 @@ local function buildPortrait(inner)
+     placeText:SetWidth(wText)
+     idText = text(inner, C.FONT_BODY, 11, COL.muted)
+     idText:SetPoint("TOPLEFT", placeText, "BOTTOMLEFT", 0, -3)
++    metText = text(inner, C.FONT_BODY, 11, COL.muted)
++    metText:SetPoint("LEFT", idText, "RIGHT", 10, 0)
++    metText:SetJustifyV("MIDDLE")
++    metText:Hide()
+ 
+     for i = 1, 6 do
+         local b = badge(inner)
+@@ -387,16 +251,9 @@ function UI.Init()
+     frame:Hide()
+     C.RegisterEscapeClose(frame)
+ 
+-    buildFrameArt(frame)
+-
+-    local inner = CreateFrame("Frame", nil, frame)
+-    inner:SetPoint("TOPLEFT", BAND, -BAND)
+-    inner:SetPoint("BOTTOMRIGHT", -BAND, BAND)
+-    local ibg = solid(inner, "BACKGROUND", COL.inner)
+-    ibg:SetAllPoints()
+-    outline(inner, 0, 1, COL.violet, "BORDER")
+-
+-    buildHeader(inner)
++    S.buildFrameArt(frame, W, H)
++    local inner = S.buildInner(frame)
++    S.buildHeader(inner, "Warcraft Lore", function() frame:Hide() end)
+     buildPortrait(inner)
+ 
+     scroll = CreateFrame("ScrollFrame", nil, inner)
+@@ -415,7 +272,30 @@ function UI.Init()
+     applyPosition()
+ end
+ 
++-- "MET" in green, or a muted "Not met yet", next to the NPC ID. Only for database entries.
++local function setMetText(npcID)
++    if not npcID then
++        metText:Hide()
++        return
++    end
++    if ns.IsMet(npcID) then
++        metText:SetText(HEX_MET .. "MET" .. END)
++    else
++        metText:SetText(HEX_MUTED .. "Not met yet" .. END)
++    end
++    metText:Show()
++end
++
++-- Called when a veteran is met while the lore window already shows it.
++function UI.RefreshMet(npcID)
++    if frame and frame:IsShown() and shownNPC == npcID then
++        setMetText(npcID)
++    end
++end
++
+ local function showHeader(name, place, npcID, badges)
++    shownNPC = nil
++    metText:Hide()
+     nameText:SetText(name or "")
+     placeText:SetText(place or "")
+     idText:SetText(npcID and ("NPC ID " .. npcID) or "")
+@@ -450,6 +330,8 @@ function UI.ShowEntry(npcID, entry, unit)
+         place = place .. "\n" .. HEX_MUTED .. "Also in " .. table.concat(entry.alsoIn, ", ") .. END
+     end
+     showHeader(entry.name, place, npcID, badges)
++    shownNPC = npcID
++    setMetText(npcID)
+     setRing(ringColors, 1)
+     setPortrait(entry, unit)
+ 
+diff --git a/WarcraftLore/WarcraftLore.toc b/WarcraftLore/WarcraftLore.toc
+index 3e56e43..0119d60 100644
+--- a/WarcraftLore/WarcraftLore.toc
++++ b/WarcraftLore/WarcraftLore.toc
+@@ -4,10 +4,13 @@
+ ## Author: Håkon
+ ## Version: @project-version@
+ ## SavedVariables: WarcraftLoreDB
++## SavedVariablesPerCharacter: WarcraftLoreCharDB
+ ## X-Curse-Project-ID: 1732546
+ 
+ Compat.lua
+ Data.lua
+ Core.lua
++Style.lua
+ UI.lua
++Browser.lua
+ Toast.lua

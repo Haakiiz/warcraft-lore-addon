@@ -98,12 +98,16 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [ ] Check in game whether Grunt Maug exists in Forever
 - [x] Gazlowe's Charm removed (name-only link)
 - [ ] Confirm in game that the new frame looks right (vines tiled, round portrait)
+- [ ] Test `/wcl list` in game: layout, search box typing/Esc, mouse wheel over rows, zone/campaign popups
+- [ ] Check in game that toast textures now show (2026-10-09: fixed `"Interface\AddOns"` single-backslash paths in Toast.lua, which Lua 5.1 turns into `InterfaceAddOns`)
 
 ### From competitor research (2026-10-08)
 
 No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion (Classic) and NPCodex (Retail), both small. Priority order:
 
-- [ ] **Veterans met:** remember which veterans the player has met, show a counter per game (e.g. "WC3: 12/40") and list the ones still missing. Builds on the nearby alert.
-- [ ] **Browse and search window:** list the whole database, filter by game, campaign and zone, search by name. Clicking an entry opens its lore window.
+- [x] **Veterans met:** remember which veterans the player has met, show a counter per game (e.g. "WC3: 12/40") and list the ones still missing. Builds on the nearby alert. (done 2026-10-09, not tested in game; met = targeted or moused over, stored per character in `WarcraftLoreCharDB`)
+- [x] **Browse and search window:** list the whole database, filter by game, campaign and zone, search by name. Clicking an entry opens its lore window. (done 2026-10-09, not tested in game; `/wcl list`, merged with the met counter)
+- [ ] **In-game test: alert pill.** Check the glow and its slow pulse, the pill appears for a nearby veteran and when you target one, click opens the lore window, right-click dismisses, shift-drag moves the stack and the spot is remembered, the portrait shows (unit portrait, or the question mark fallback), and up to 3 pills stack with room for the glow.
+- [ ] **In-game test: minimap button.** Check the book icon exists (else the question mark shows), it sits on the minimap edge, drag moves it and the spot is remembered, left-click toggles the Veterans list, right-click opens your target's story, the tooltip shows the live met count, and `/wcl minimap` hides and shows it.
 - [ ] **Related NPCs:** link characters to each other (e.g. Thrall → Grom → Nazgrel) so players can follow a lore thread.
 - [ ] **Localization and wider client support:** translations, plus Classic Era and Retail builds alongside Forever.
