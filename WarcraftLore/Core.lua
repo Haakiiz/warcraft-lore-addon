@@ -55,20 +55,159 @@ function ns.GamesInOrder(entry)
 end
 
 -- "WC3 · TFT" with each code in its game's color.
-function ns.GamesLabel(entry)
+function ns.CodesLabel(codes)
     local parts = {}
-    for _, code in ipairs(ns.GamesInOrder(entry)) do
+    for _, code in ipairs(codes) do
         parts[#parts + 1] = "|cff" .. ns.GAME_COLOR[code] .. ns.GAME_SHORT[code] .. "|r"
     end
     return table.concat(parts, " · ")
 end
 
+function ns.GamesLabel(entry)
+    return ns.CodesLabel(ns.GamesInOrder(entry))
+end
+
+-------------------------------------------------------------------- Veterans (merged by name + zone)
+-- Data.lua can hold the same character under two NPC IDs (e.g. Season of Discovery IDs). For the
+-- list and the counters those count as ONE veteran: { ids = sorted NPC IDs, id = lowest ID,
+-- entry = that ID's entry, codes = union of games in release order }.
+local veterans, byID
+function ns.Veterans()
+    if veterans then
+        return veterans
+    end
+    local byKey = {}
+    veterans, byID = {}, {}
+    for npcID, entry in pairs(ns.NPCS) do
+        local key = (entry.name or "?") .. "\1" .. (entry.zone or "")
+        local g = byKey[key]
+        if not g then
+            g = { ids = {} }
+            byKey[key] = g
+            veterans[#veterans + 1] = g
+        end
+        g.ids[#g.ids + 1] = npcID
+    end
+    for _, g in ipairs(veterans) do
+        table.sort(g.ids)
+        g.id = g.ids[1]
+        g.entry = ns.NPCS[g.id]
+        g.idSet = {}
+        local seen = {}
+        for _, id in ipairs(g.ids) do
+            g.idSet[id] = true
+            byID[id] = g
+            for _, code in ipairs(ns.GamesInOrder(ns.NPCS[id])) do
+                seen[code] = true
+            end
+        end
+        g.codes = {}
+        for _, code in ipairs(ns.GAME_ORDER) do
+            if seen[code] then
+                g.codes[#g.codes + 1] = code
+            end
+        end
+    end
+    return veterans
+end
+
+-- The merged veteran an NPC ID belongs to (nil if the ID is not in the database).
+function ns.VeteranOf(npcID)
+    ns.Veterans()
+    return byID[npcID]
+end
+
+-------------------------------------------------------------------- Met tracking
+-- A veteran counts as met when the player targets it or mouses over it (a real unit, not
+-- a nameplate/coordinate alert and not /wcl test). Stored per character:
+-- WarcraftLoreCharDB.met[npcID] = time() of the first meeting.
+function ns.IsMet(npcID)
+    local db = WarcraftLoreCharDB
+    return (db and db.met and npcID and db.met[npcID] ~= nil) and true or false
+end
+
+-- A merged veteran is met when any of its NPC IDs is met.
+function ns.GroupMet(g)
+    for _, id in ipairs(g.ids) do
+        if ns.IsMet(id) then
+            return true
+        end
+    end
+    return false
+end
+
+-- Returns perGame, overall. perGame[code] = { met = n, total = n } for every code in
+-- ns.GAME_ORDER (a veteran with several games counts in each; BOOK counts as its own game);
+-- overall = { met = n, total = n } counted once per veteran (NPC IDs of the same name and zone merged).
+function ns.MetCounts()
+    local perGame = {}
+    for _, code in ipairs(ns.GAME_ORDER) do
+        perGame[code] = { met = 0, total = 0 }
+    end
+    local overall = { met = 0, total = 0 }
+    for _, g in ipairs(ns.Veterans()) do
+        local met = ns.GroupMet(g)
+        overall.total = overall.total + 1
+        if met then
+            overall.met = overall.met + 1
+        end
+        for _, code in ipairs(g.codes) do
+            perGame[code].total = perGame[code].total + 1
+            if met then
+                perGame[code].met = perGame[code].met + 1
+            end
+        end
+    end
+    return perGame, overall
+end
+
+-- Records the first meeting with a database NPC. Returns true if it was new.
+function ns.MarkMet(npcID)
+    local db = WarcraftLoreCharDB
+    local entry = npcID and ns.NPCS[npcID]
+    if not db or not entry then
+        return false -- before ADDON_LOADED, or not a veteran
+    end
+    if type(db.met) ~= "table" then
+        db.met = {}
+    end
+    if db.met[npcID] then
+        return false
+    end
+    local group = ns.VeteranOf(npcID)
+    local alreadyMet = group and ns.GroupMet(group) -- another NPC ID of the same veteran was met before
+    -- Recorded right away (so a second call in the same frame is a no-op) ...
+    db.met[npcID] = time()
+    -- ... but the chat line and window refreshes wait for the next frame: this is usually
+    -- called from inside a tooltip post-call, which should stay quick and must not be
+    -- able to break the tooltip if one of our windows errors.
+    C.After(function()
+        if not alreadyMet then
+            local _, overall = ns.MetCounts()
+            chat(("New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."):format(
+                entry.name or "?", ns.GamesLabel(entry), overall.met, overall.total))
+        end
+        if ns.Browser then
+            ns.Browser.Refresh()
+        end
+        if ns.UI then
+            ns.UI.RefreshMet(npcID)
+        end
+    end)
+    return true
+end
+
 -------------------------------------------------------------------- Tooltip
 local function onUnitTooltip(tooltip, unit, guid)
-    local entry = ns.Lookup(unit, guid)
+    local entry, npcID = ns.Lookup(unit, guid)
     if not entry then
         return -- not in the database: no line
     end
+    -- Any GameTooltip unit tooltip counts as meeting: mouseover in the world, on a nameplate
+    -- or on a unit frame. You can only mouse over what is on screen and in view range (the
+    -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
+    -- GUIDs give no entry above, so nothing is marked then.
+    ns.MarkMet(npcID)
     local line
     if entry.confidence == "uncertain" then
         line = "Warcraft Veteran? " .. ns.GamesLabel(entry) .. " |cffa79d8a(uncertain)|r"
@@ -116,9 +255,20 @@ local function cmdID()
     end
 end
 
+ns.ShowTarget = cmdShow -- the minimap button's right-click does the same as /wcl
+
+local function cmdList()
+    ns.Browser.Toggle()
+end
+
+local function cmdMinimap()
+    local shown = ns.Minimap.Toggle()
+    chat("The minimap button is now " .. (shown and "|cff40ff40shown|r" or "|cffff4040hidden|r") .. ".")
+end
+
 local function cmdAuto()
     WarcraftLoreDB.auto = not WarcraftLoreDB.auto
-    chat("Auto-open is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+    chat("The alert when you target a veteran is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
 end
 
 local function cmdAlert()
@@ -131,18 +281,16 @@ end
 local alerted = {}
 
 -- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
-local function announce(npcID, entry, name, isTest)
+-- unit = the nameplate unit token when there is one (used for the pill's portrait).
+local function announce(npcID, entry, name, isTest, unit)
     if not isTest then
         alerted[npcID] = true
     end
     local who = name or entry.name
-    local tag = entry.confidence == "uncertain" and " |cffa79d8a(uncertain)|r" or ""
-    chat(("Warcraft veteran nearby: |cffd4c6f7%s|r – %s%s. Target them to read their story.")
-        :format(who, ns.GamesLabel(entry), tag))
+    chat(("Veteran nearby: |cffd4c6f7%s|r (%s)."):format(who, ns.GamesLabel(entry)))
     C.PlayAlertSound()
-    C.RaidNotice("Warcraft veteran nearby: " .. who)
     if ns.Toast then
-        ns.Toast.Show(npcID, entry, who)
+        ns.Toast.Show(npcID, entry, who, unit)
     end
 end
 
@@ -169,7 +317,7 @@ local function onNameplateAdded(unit)
     if not entry or alerted[npcID] then
         return
     end
-    announce(npcID, entry, name)
+    announce(npcID, entry, name, false, unit)
 end
 
 -------------------------------------------------------------------- Nearby alert (coordinates)
@@ -270,10 +418,12 @@ end
 local function cmdHelp()
     chat("/wcl – open the window for your target")
     chat("/wcl id – print your target's NPC ID and name in chat")
-    chat("/wcl auto – toggle auto-open (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
+    chat("/wcl list (or /wcl browse) – open or close the veterans list: search, filter, see who you have met")
+    chat("/wcl auto – show a small alert when you target a veteran (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
     chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
-    chat("/wcl test – show a test alert (toast, center text, chat, sound)")
-    chat("/wcl reset – move the window back to the center")
+    chat("/wcl minimap – show or hide the minimap button (now: " .. ((WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and "hidden" or "shown") .. ")")
+    chat("/wcl test – show a test alert (small pill, chat line, sound)")
+    chat("/wcl reset – move the windows back to the center")
     chat("/wcl debug – show which APIs the client has")
 end
 
@@ -284,6 +434,10 @@ SlashCmdList.WARCRAFTLORE = function(msg)
         cmdShow()
     elseif cmd == "id" then
         cmdID()
+    elseif cmd == "list" or cmd == "browse" then
+        cmdList()
+    elseif cmd == "minimap" then
+        cmdMinimap()
     elseif cmd == "auto" then
         cmdAuto()
     elseif cmd == "alert" then
@@ -292,7 +446,8 @@ SlashCmdList.WARCRAFTLORE = function(msg)
         cmdTest()
     elseif cmd == "reset" then
         ns.UI.ResetPosition()
-        chat("The window is back in the center.")
+        ns.Browser.ResetPosition()
+        chat("The windows are back in the center.")
     elseif cmd == "debug" then
         cmdDebug()
     else
@@ -317,7 +472,18 @@ events:SetScript("OnEvent", function(_, event, arg1)
         if WarcraftLoreDB.alert == nil then
             WarcraftLoreDB.alert = true
         end
+        if type(WarcraftLoreDB.minimap) ~= "table" then
+            WarcraftLoreDB.minimap = {}
+        end
+        -- Per-character data; a damaged file (wrong types) is replaced rather than crashing.
+        if type(WarcraftLoreCharDB) ~= "table" then
+            WarcraftLoreCharDB = {}
+        end
+        if type(WarcraftLoreCharDB.met) ~= "table" then
+            WarcraftLoreCharDB.met = {}
+        end
         ns.UI.Init()
+        ns.Minimap.Init()
         C.StartTicker(CHECK_INTERVAL, checkPosition)
         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)
         if not ns.tooltipHook then
@@ -325,12 +491,19 @@ events:SetScript("OnEvent", function(_, event, arg1)
         end
         events:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_TARGET_CHANGED" then
-        if not (WarcraftLoreDB and WarcraftLoreDB.auto) then
+        if not WarcraftLoreDB then
             return
         end
-        local entry, npcID = ns.Lookup("target")
+        local entry, npcID, _, name = ns.Lookup("target")
         if entry then
-            ns.UI.ShowEntry(npcID, entry, "target")
+            ns.MarkMet(npcID)
+            if WarcraftLoreDB.auto then
+                if ns.UI.IsShown() then
+                    ns.UI.ShowEntry(npcID, entry, "target")   -- already open: follow the target
+                elseif ns.Toast then
+                    ns.Toast.Show(npcID, entry, name, "target") -- otherwise a small pill; click for the story
+                end
+            end
         end
     end
 end)

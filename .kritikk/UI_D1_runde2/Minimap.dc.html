@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Minimap button</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&amp;family=Marcellus&amp;display=swap">
+<style>
+body{margin:0}
+.ring{background-image:url(/_blob/ddb08cc1e52eb1308674e6963ee8120b);background-size:100% 100%}
+.mm:hover .hl{opacity:1}
+</style>
+</helmet>
+<div style="position: relative; width: 560px; height: 420px; overflow: hidden; font-family: Marcellus, serif; background: linear-gradient(160deg, #2f2a20, #1b1913)">
+<div style="position: absolute; right: 36px; top: 36px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle at 45% 40%, #6b7a4a, #3f4a2c 55%, #2a301e); box-shadow: 0 0 0 4px #4a4030, 0 0 0 6px #1a160f"></div>
+<div style="position: absolute; right: 128px; top: 128px; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 14px solid #f2e7c4"></div>
+
+<button class="mm" aria-label="Warcraft Lore: open the Veterans list" style="position: absolute; left: 266px; top: 148px; width: 34px; height: 34px; padding: 0; border: 0; background: transparent; cursor: pointer">
+<span style="position: absolute; left: 6px; top: 6px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #8a6a3c, #4a3520 70%, #2a1d12); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6)">
+<svg width="14" height="14" viewBox="0 0 14 14" style="position: absolute; left: 4px; top: 4px" aria-hidden="true"><path d="M2 3.2 C4 2.2 5.6 2.4 7 3.4 C8.4 2.4 10 2.2 12 3.2 L12 11 C10 10.1 8.4 10.3 7 11.2 C5.6 10.3 4 10.1 2 11 Z" fill="#e8dcb5" stroke="#3a2a18" stroke-width="0.8"></path><path d="M7 3.4 L7 11.2" stroke="#3a2a18" stroke-width="0.8"></path></svg>
+</span>
+<span class="ring" style="position: absolute; inset: 0; filter: sepia(1) saturate(2.2) hue-rotate(215deg) brightness(1.05)"></span>
+<span class="hl" style="position: absolute; inset: 2px; border-radius: 50%; box-shadow: 0 0 8px 2px rgba(212,198,247,0.55); opacity: 0"></span>
+</button>
+
+<div role="tooltip" style="position: absolute; left: 24px; top: 190px; width: 236px; padding: 8px 10px; background: rgba(8,8,18,0.96); border: 1px solid #5c5c70; box-shadow: 0 4px 12px rgba(0,0,0,0.6); font-size: 11px; line-height: 16px; color: #d9d2c3">
+<div style="font-family: Almendra, serif; font-weight: 700; font-size: 14px; color: #d4c6f7">Warcraft Lore</div>
+<div style="color: #a79d8a">Veterans met: <span style="color: #6fcf7f">13</span> of 128</div>
+<div style="margin-top: 6px"><span style="color: #8b6cd6">Left-click</span>  Veterans list</div>
+<div><span style="color: #8b6cd6">Right-click</span>  Story of your target</div>
+<div><span style="color: #8b6cd6">Drag</span>  Move around the minimap</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":560,"height":420}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

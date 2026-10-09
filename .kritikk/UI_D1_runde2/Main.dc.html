@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Warcraft Veterans window</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&amp;family=Marcellus&amp;display=swap">
+<style>
+body{margin:0}
+.vh{background-image:url(/_blob/ec8af7c880713ccd7b88ab3e1c6717bc);background-size:80px 20px;background-repeat:repeat-x}
+.vv{background-image:url(/_blob/a8fe2bda8fab11cce6b4884bd593e79a);background-size:20px 80px;background-repeat:repeat-y}
+.corner{background-image:url(/_blob/8c510182e483550c6432ddc6fd5bf4e3);background-size:34px 34px}
+.row:hover{background:rgba(139,108,214,0.18)}
+.chip:hover{border-color:#d4c6f7}
+.ctl:hover{background:#181226;border-color:#8b6cd6}
+.close:hover{border-color:#8b6cd6;color:#d4c6f7}
+input::placeholder{color:#a79d8a;opacity:1}
+input:focus{outline:none}
+a{color:#8b6cd6}a:hover{color:#d4c6f7}
+</style>
+</helmet>
+<div style="width: 640px; height: 720px; background: #2b2a24; display: flex; align-items: center; justify-content: center; font-family: Marcellus, serif; color: #d9d2c3">
+<div style="position: relative; width: 520px; height: 600px; background: #120f1c; box-sizing: border-box; border: 3px solid #8b6cd6">
+<div style="position: absolute; inset: 3px; border: 1px solid #2a6f68"></div>
+<div class="vh" style="position: absolute; left: 21px; top: -3px; width: 472px; height: 20px"></div>
+<div class="vh" style="position: absolute; left: 21px; bottom: -3px; width: 472px; height: 20px; transform: scaleY(-1)"></div>
+<div class="vv" style="position: absolute; left: -3px; top: 21px; width: 20px; height: 552px"></div>
+<div class="vv" style="position: absolute; right: -3px; top: 21px; width: 20px; height: 552px; transform: scaleX(-1)"></div>
+<div class="corner" style="position: absolute; left: -10px; top: -10px; width: 34px; height: 34px"></div>
+<div class="corner" style="position: absolute; right: -10px; top: -10px; width: 34px; height: 34px; transform: scaleX(-1)"></div>
+<div class="corner" style="position: absolute; left: -10px; bottom: -10px; width: 34px; height: 34px; transform: scaleY(-1)"></div>
+<div class="corner" style="position: absolute; right: -10px; bottom: -10px; width: 34px; height: 34px; transform: scale(-1,-1)"></div>
+
+<div style="position: absolute; left: 17px; top: 17px; right: 17px; bottom: 17px; background: #100d18; border: 1px solid #8b6cd6; display: flex; flex-direction: column">
+<div style="height: 26px; flex: none; background: #181226; border-bottom: 1px solid #3d2a78; display: flex; align-items: center; justify-content: space-between; padding: 0 8px 0 12px">
+<span style="font-family: Almendra, serif; font-weight: 700; font-size: 15px; color: #d4c6f7">Warcraft Veterans</span>
+<button class="close" aria-label="Close" style="width: 22px; height: 18px; background: transparent; border: 1px solid #3d2a78; color: #8b6cd6; font: 12px Marcellus, serif; padding: 0; cursor: pointer">X</button>
+</div>
+
+<div style="padding: 10px 12px 0; display: flex; flex-direction: column; gap: 8px; flex: none">
+<div style="display: flex; align-items: baseline; gap: 10px">
+<span style="font-size: 10px; letter-spacing: 1px; color: #8b6cd6">VETERANS MET</span>
+<span style="font-family: Almendra, serif; font-weight: 700; font-size: 20px; color: #d4c6f7">13</span>
+<span style="font-size: 12px; color: #a79d8a">of 128</span>
+<div style="flex: 1; align-self: center; height: 4px; background: #2d2347; position: relative">
+<div style="position: absolute; left: 0; top: 0; bottom: 0; width: 10%; background: #6fcf7f"></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+<button class="chip" onClick="{{ c.toggle }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">
+<span style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="font-size: 11px; color: {{ c.color }}">{{ c.label }}</span>
+<span style="font-size: 11px; color: #d9d2c3">{{ c.count }}</span>
+</span>
+<span style="display: block; height: 2px; background: rgba(255,255,255,0.08); margin-top: 4px; position: relative">
+<span style="{{ c.bar }}"></span>
+</span>
+</button>
+</sc-for>
+</div>
+<label style="display: flex; align-items: center; gap: 6px; height: 24px; box-sizing: border-box; border: 1px solid #3d2a78; background: #100d18; padding: 0 8px">
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#a79d8a" stroke-width="1.4" aria-hidden="true"><circle cx="5" cy="5" r="3.6"></circle><path d="M7.7 7.7 11 11"></path></svg>
+<input value="{{ q }}" onInput="{{ onSearch }}" placeholder="Search by name" aria-label="Search veterans by name" style="flex: 1; background: transparent; border: 0; color: #d9d2c3; font: 12px Marcellus, serif; padding: 0">
+</label>
+<div style="display: flex; gap: 8px">
+<button class="ctl" style="flex: 0 0 168px; height: 22px; display: flex; align-items: center; justify-content: space-between; background: #100d18; border: 1px solid #3d2a78; padding: 0 8px; font: 11px Marcellus, serif; color: #d9d2c3; cursor: pointer"><span><span style="color: #a79d8a">Zone </span>All zones</span><svg width="8" height="5" viewBox="0 0 8 5" aria-hidden="true"><path d="M0.5 0.5 4 4 7.5 0.5" fill="none" stroke="#a79d8a" stroke-width="1.2"></path></svg></button>
+<button class="ctl" style="flex: 1; height: 22px; display: flex; align-items: center; justify-content: space-between; background: #100d18; border: 1px solid #3d2a78; padding: 0 8px; font: 11px Marcellus, serif; color: #d9d2c3; cursor: pointer"><span><span style="color: #a79d8a">Campaign </span>All campaigns</span><svg width="8" height="5" viewBox="0 0 8 5" aria-hidden="true"><path d="M0.5 0.5 4 4 7.5 0.5" fill="none" stroke="#a79d8a" stroke-width="1.2"></path></svg></button>
+<button class="ctl" onClick="{{ cycleStatus }}" style="{{ statusStyle }}"><span><span style="color: #a79d8a">Show </span>{{ statusLabel }}</span></button>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; font-size: 11px; color: #a79d8a">
+<span style="flex: 1">{{ countLine }}</span>
+<sc-if value="{{ anyFilter }}" hint-placeholder-val="{{ false }}"><a href="#" onClick="{{ clearAll }}" style="font-size: 11px; text-decoration: none">Clear filters</a></sc-if>
+<button role="switch" aria-checked="{{ hideBooksAria }}" onClick="{{ toggleBooks }}" style="display: flex; align-items: center; gap: 6px; background: transparent; border: 0; padding: 0; cursor: pointer; font: 11px Marcellus, serif; color: {{ hideBooksText }}">
+<span style="{{ hideBooksBox }}"><span style="{{ hideBooksTick }}"></span></span>Hide book-only
+</button>
+</div>
+</div>
+
+<div style="margin: 6px 12px 0; display: grid; grid-template-columns: 18px 230px 1fr 100px; font-size: 9px; letter-spacing: 1px; color: #8b6cd6; padding-bottom: 4px; border-bottom: 1px solid #2d2347; flex: none">
+<span></span><span>NAME</span><span>ZONE</span><span style="text-align: right; padding-right: 10px">APPEARS IN</span>
+</div>
+<div style="position: relative; flex: 1; margin: 0 12px 12px; overflow: visible">
+<div style="position: absolute; inset: 0; overflow: hidden">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="16">
+<button class="row" onClick="{{ r.pick }}" onMouseEnter="{{ r.enter }}" onMouseLeave="{{ leave }}" style="{{ r.style }}">
+<span style="{{ r.marker }}"></span>
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: {{ r.nameColor }}">{{ r.name }}<span style="color: #c79b3e; font-size: 10px">{{ r.tag }}</span></span>
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; color: #a79d8a">{{ r.zone }}</span>
+<span style="text-align: right; padding-right: 10px; font-size: 11px; white-space: nowrap">
+<sc-for list="{{ r.games }}" as="g" hint-placeholder-count="2"><span style="color: #4d4434">{{ g.sep }}</span><span style="color: {{ g.color }}">{{ g.code }}</span></sc-for>
+</span>
+</button>
+</sc-for>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<div style="padding-top: 40px; text-align: center; font-size: 12px; color: #a79d8a">No veterans match.<br><span style="font-size: 11px">Try another name, or clear the filters.</span></div>
+</sc-if>
+<div style="position: absolute; right: 0; top: 0; bottom: 0; width: 3px; background: rgba(45,35,71,0.6)">
+<sc-if value="{{ scrollable }}" hint-placeholder-val="{{ true }}"><div style="height: 70px; background: #8b6cd6"></div></sc-if>
+</div>
+</div>
+<sc-if value="{{ tip.show }}" hint-placeholder-val="{{ false }}">
+<div role="tooltip" style="{{ tip.style }}">
+<div style="font-size: 13px; color: #d4c6f7">{{ tip.name }}</div>
+<div style="font-size: 11px; color: #a79d8a; margin-top: 2px">{{ tip.zone }}</div>
+<div style="font-size: 11px; margin-top: 4px"><sc-for list="{{ tip.games }}" as="g" hint-placeholder-count="2"><span style="color: #4d4434">{{ g.sep }}</span><span style="color: {{ g.color }}">{{ g.long }}</span></sc-for></div>
+<div style="font-size: 11px; margin-top: 4px; color: {{ tip.metColor }}">{{ tip.met }}</div>
+<div style="font-size: 10px; margin-top: 4px; color: #a79d8a">Click to read their story</div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":640,"height":720}}'>
+const GAMES = {
+  WC2: { label: "WC2", color: "#e0533f" }, WC3: { label: "WC3", color: "#f0a24a" },
+  TFT: { label: "TFT", color: "#7cc7ef" }, FK: { label: "FK", color: "#9bd46a" },
+  BOOK: { label: "Book", color: "#e8dcb5" },
+};
+const COUNTS = [["WC2", 0, 1], ["WC3", 3, 15], ["TFT", 6, 24], ["FK", 1, 7], ["BOOK", 9, 103]];
+const MET = { "Anduin Wrynn": 1, "Apothecary Keever": 1, "Baine Bloodhoof": 1, "Bink": 1, "Cairne Bloodhoof": 1,
+  "Draz'Zilb": 1, "Thrall": 1, "Lady Sylvanas Windrunner": 1, "Rexxar": 1, "Vol'jin": 1 };
+const NPCS = [
+  ["Advisor Belgrum","Ironforge",["BOOK"],0],["Anduin Wrynn","Stormwind City",["BOOK"],0],
+  ["Apothecary Helbrim","The Barrens",["TFT"],1],["Apothecary Keever","Undercity",["FK","BOOK"],0],
+  ["Apothecary Lydon","Hillsbrad Foothills",["BOOK"],0],["Araj the Summoner","Western Plaguelands",["WC3"],1],
+  ["Arch Druid Fandral Staghelm","Darnassus",["BOOK"],0],["Archbishop Benedictus","Stormwind City",["BOOK"],0],
+  ["Archmage Ansirem Runeweaver","Alterac Mountains",["WC3"],1],["Archmage Arugal","Shadowfang Keep",["BOOK"],1],
+  ["Archmage Malin","Stormwind City",["BOOK"],0],["Archmage Tervosh","Dustwallow Marsh",["WC3"],1],
+  ["Athrikus Narassin","Darkshore",["TFT"],0],["Baine Bloodhoof","Mulgore",["TFT","BOOK"],0],
+  ["Baron Silverlaine","Shadowfang Keep",["BOOK"],1],["Baros Alexston","Stormwind City",["BOOK"],0],
+  ["Beram Skychaser","Thunder Bluff",["BOOK"],0],["Bink","Ironforge",["BOOK"],0],
+  ["Brother Karman","Dustwallow Marsh",["WC3"],1],["Brother Sarno","Stormwind City",["BOOK"],0],
+  ["Cairne Bloodhoof","Thunder Bluff",["WC3","TFT","BOOK"],0],["Cannoneer Smythe","The Barrens",["BOOK"],0],
+  ["Charlga Razorflank","Razorfen Kraul",["BOOK"],0],["Dalar Dawnweaver","Silverpine Forest",["WC3"],1],
+  ["Do'gol","Dustwallow Marsh",["TFT"],0],["Draz'Zilb","Dustwallow Marsh",["TFT"],0],
+  ["Gazlowe","The Barrens",["TFT","BOOK"],0],["Gordo","Tirisfal Glades",["FK"],0],
+  ["Lady Jaina Proudmoore","Dustwallow Marsh",["WC3","TFT"],0],["Lady Sylvanas Windrunner","Undercity",["WC3","TFT","FK","BOOK"],0],
+  ["Rexxar","Stonetalon Mountains",["TFT","BOOK"],0],["Shandris Feathermoon","Feralas",["WC3"],0],
+  ["Thrall","Orgrimmar",["WC3","TFT","BOOK"],0],["Tyrande Whisperwind","Darnassus",["WC3","TFT","BOOK"],0],
+  ["Uther","Western Plaguelands",["WC2","WC3"],0],["Varimathras","Undercity",["TFT","FK","BOOK"],0],
+  ["Vol'jin","Orgrimmar",["TFT","BOOK"],0],
+];
+const STATUS = ["All", "Met", "Not met"];
+const BTN = "height: 22px; display: flex; align-items: center; justify-content: center; padding: 0 8px; font: 11px Marcellus, serif; color: #d9d2c3; cursor: pointer; ";
+
+function hexA(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return "rgba(" + (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+}
+
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { q: "", games: {}, status: 0, picked: "Thrall", hideBooks: false, hover: -1 }; }
+  renderVals() {
+    const s = this.state;
+    const anyGame = Object.keys(s.games).length > 0;
+    const q = s.q.trim().toLowerCase();
+    const list = NPCS.filter(([name, , games]) => {
+      if (s.hideBooks && games.every((g) => g === "BOOK")) return false;
+      if (anyGame && !games.some((g) => s.games[g])) return false;
+      if (s.status === 1 && !MET[name]) return false;
+      if (s.status === 2 && MET[name]) return false;
+      return !q || name.toLowerCase().indexOf(q) !== -1;
+    });
+    const filtered = anyGame || q || s.status !== 0;
+    const chips = COUNTS.map(([code, met, total]) => {
+      const g = GAMES[code], on = !!s.games[code];
+      return {
+        label: g.label, color: g.color, count: met + "/" + total, pressed: on ? "true" : "false",
+        style: "display: block; text-align: left; padding: 5px 7px 6px; cursor: pointer; font-family: Marcellus, serif; border: 1px solid " +
+          hexA(g.color, on ? 1 : 0.45) + "; background: " + hexA(g.color, on ? 0.2 : 0.07),
+        bar: "position: absolute; left: 0; top: 0; bottom: 0; width: " + Math.round(100 * met / total) + "%; background: " + g.color,
+        toggle: () => { const games = { ...this.state.games }; if (games[code]) delete games[code]; else games[code] = true; this.setState({ games }); },
+      };
+    });
+    const rows = list.map(([name, zone, games, unc], i) => {
+      const met = !!MET[name], picked = s.picked === name;
+      return {
+        name, zone, tag: unc ? "  uncertain" : "",
+        nameColor: met || picked ? "#d4c6f7" : "#d9d2c3",
+        marker: met ? "width: 7px; height: 7px; background: #6fcf7f; justify-self: center"
+          : "width: 5px; height: 5px; border: 1px solid #6b5f4a; justify-self: center",
+        enter: () => this.setState({ hover: i }),
+        style: "display: grid; grid-template-columns: 18px 230px 1fr 100px; align-items: center; width: 100%; height: 20px; padding: 0; border: 0; text-align: left; cursor: pointer; font: 12px Marcellus, serif; background: " +
+          (picked ? "rgba(139,108,214,0.28)" : (i % 2 ? "rgba(255,255,255,0.025)" : "transparent")),
+        games: games.map((g, j) => ({ code: GAMES[g].label, color: GAMES[g].color, sep: j ? " · " : "" })),
+        pick: () => this.setState({ picked: name }),
+      };
+    });
+    const LONG = { WC2: "Warcraft II", WC3: "Reign of Chaos", TFT: "The Frozen Throne", FK: "Forsaken Kingdom", BOOK: "Books" };
+    const h = list[s.hover];
+    const tip = h ? {
+      show: true, name: h[0] + (h[3] ? " (uncertain)" : ""), zone: h[1],
+      games: h[2].map((g, j) => ({ long: LONG[g], color: GAMES[g].color, sep: j ? " · " : "" })),
+      met: MET[h[0]] ? "Met on this character" : "Not met yet",
+      metColor: MET[h[0]] ? "#6fcf7f" : "#a79d8a",
+      style: "position: absolute; z-index: 5; left: 40px; top: " + (s.hover * 20 + 24) + "px; min-width: 200px; max-width: 300px; padding: 8px 10px; " +
+        "background: rgba(8,8,18,0.96); border: 1px solid #5c5c70; box-shadow: 0 4px 12px rgba(0,0,0,0.6); pointer-events: none; font-family: Marcellus, serif",
+    } : { show: false };
+    const shown = s.hideBooks || filtered;
+    return {
+      q: s.q, chips, rows, tip, empty: rows.length === 0, scrollable: rows.length > 22, anyFilter: filtered,
+      leave: () => this.setState({ hover: -1 }),
+      hideBooksAria: s.hideBooks ? "true" : "false",
+      hideBooksText: s.hideBooks ? "#d4c6f7" : "#a79d8a",
+      hideBooksBox: "width: 10px; height: 10px; box-sizing: border-box; border: 1px solid " + (s.hideBooks ? "#8b6cd6" : "#3d2a78") + "; display: flex; align-items: center; justify-content: center",
+      hideBooksTick: s.hideBooks ? "width: 6px; height: 6px; background: #8b6cd6" : "width: 0; height: 0",
+      toggleBooks: () => this.setState({ hideBooks: !this.state.hideBooks, hover: -1 }),
+      countLine: shown ? "Showing " + (s.hideBooks && !filtered ? 39 : rows.length) + " of 128" : "Showing all 128 veterans",
+      statusLabel: STATUS[s.status],
+      statusStyle: BTN + "flex: 0 0 104px; justify-content: flex-start; background: #100d18; border: 1px solid " + (s.status ? "#8b6cd6" : "#3d2a78"),
+      onSearch: (e) => this.setState({ q: e.target.value, hover: -1 }),
+      cycleStatus: () => this.setState({ status: (this.state.status + 1) % 3, hover: -1 }),
+      clearAll: (e) => { e.preventDefault(); this.setState({ q: "", games: {}, status: 0 }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

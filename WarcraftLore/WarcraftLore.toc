@@ -4,10 +4,14 @@
 ## Author: Håkon
 ## Version: @project-version@
 ## SavedVariables: WarcraftLoreDB
+## SavedVariablesPerCharacter: WarcraftLoreCharDB
 ## X-Curse-Project-ID: 1732546
 
 Compat.lua
 Data.lua
 Core.lua
+Style.lua
 UI.lua
+Browser.lua
 Toast.lua
+Minimap.lua

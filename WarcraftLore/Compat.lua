@@ -275,13 +275,201 @@ function C.StartTicker(seconds, fn)
     return pcall(C_Timer.NewTicker, seconds, fn)
 end
 
--- A big line in the middle of the screen (the raid warning area). Optional: silently skipped
--- when the client has no RaidNotice_AddMessage.
-function C.RaidNotice(msg)
-    if type(RaidNotice_AddMessage) ~= "function" or not RaidWarningFrame then
-        noteMissing("RaidNotice_AddMessage")
+-- Runs fn on the next frame (C_Timer.After(0)), outside whatever called us. Used to keep
+-- chat output and window refreshes out of tooltip post-calls. Falls back to running fn now.
+function C.After(fn)
+    if type(C_Timer) == "table" and type(C_Timer.After) == "function" then
+        local ok = pcall(C_Timer.After, 0, fn)
+        if ok then
+            return
+        end
+    end
+    noteMissing("C_Timer.After")
+    fn()
+end
+
+-- True while a Shift key is held.
+function C.IsShiftDown()
+    if type(IsShiftKeyDown) ~= "function" then
+        noteMissing("IsShiftKeyDown")
+        return false
+    end
+    local ok, down = pcall(IsShiftKeyDown)
+    return ok and down == true
+end
+
+-- Seconds since the game started (sub-second); 0 if the client has no GetTime.
+function C.Now()
+    if type(GetTime) ~= "function" then
+        noteMissing("GetTime")
+        return 0
+    end
+    return GetTime()
+end
+
+-- Sets a texture to an icon; falls back to `fallback` when the path is rejected or the
+-- client reports no texture afterwards.
+function C.SetIconTexture(texture, path, fallback)
+    local ok = pcall(texture.SetTexture, texture, path)
+    if ok and texture.GetTexture then
+        local okGet, current = pcall(texture.GetTexture, texture)
+        if okGet and current == nil then
+            ok = false
+        end
+    end
+    if not ok then
+        noteMissing("icon " .. tostring(path))
+        texture:SetTexture(fallback)
+        return false
+    end
+    return true
+end
+
+-- Makes `region` pulse between alpha lo and hi (lo -> hi -> lo takes 2 * halfPeriod seconds).
+-- Returns an object with :Play() and :Stop(), or nil if the client has no animation groups
+-- (then the caller drives the alpha itself).
+function C.CreatePulse(region, lo, hi, halfPeriod)
+    local ok, group = pcall(function()
+        local g = region:CreateAnimationGroup()
+        g:SetLooping("BOUNCE")
+        local a = g:CreateAnimation("Alpha")
+        a:SetFromAlpha(lo)
+        a:SetToAlpha(hi)
+        a:SetDuration(halfPeriod)
+        a:SetSmoothing("IN_OUT")
+        return g
+    end)
+    if not ok or not group then
+        noteMissing("AnimationGroup")
+        return nil
+    end
+    return {
+        Play = function() pcall(group.Play, group) end,
+        Stop = function() pcall(group.Stop, group) end,
+    }
+end
+
+-- Blend mode of a texture ("ADD" for glows). Ignored if the client refuses it.
+function C.SetBlendMode(texture, mode)
+    if not pcall(texture.SetBlendMode, texture, mode) then
+        noteMissing("SetBlendMode")
+    end
+end
+
+-- Tooltips. lines = { { text, r, g, b, wrap }, ... }. anchor is either an owner anchor such as
+-- "ANCHOR_LEFT" or a table { point, relativePoint, x, y } placed against the owner.
+function C.ShowTooltip(owner, anchor, lines, minWidth)
+    if not GameTooltip then
+        noteMissing("GameTooltip")
         return
     end
-    local color = ChatTypeInfo and ChatTypeInfo["RAID_WARNING"] or { r = 1, g = 0.9, b = 0.4 }
-    pcall(RaidNotice_AddMessage, RaidWarningFrame, msg, color)
+    pcall(function()
+        if type(anchor) == "table" then
+            GameTooltip:SetOwner(owner, "ANCHOR_NONE")
+            GameTooltip:ClearAllPoints()
+            GameTooltip:SetPoint(anchor[1], owner, anchor[2], anchor[3] or 0, anchor[4] or 0)
+        else
+            GameTooltip:SetOwner(owner, anchor or "ANCHOR_RIGHT")
+        end
+        GameTooltip:ClearLines()
+        if GameTooltip.SetMinimumWidth then
+            GameTooltip:SetMinimumWidth(minWidth or 0)
+        end
+        for _, l in ipairs(lines) do
+            GameTooltip:AddLine(l[1], l[2] or 1, l[3] or 1, l[4] or 1, l[5])
+        end
+        GameTooltip:Show()
+    end)
+end
+
+function C.HideTooltip()
+    if GameTooltip then
+        pcall(GameTooltip.Hide, GameTooltip)
+    end
+end
+
+-- The minimap frame, or nil.
+function C.GetMinimap()
+    if not Minimap then
+        noteMissing("Minimap")
+        return nil
+    end
+    return Minimap
+end
+
+-- Offset (x, y) from the minimap's center to the point on its edge at `angleDeg`
+-- (0 = right, 90 = up). Round minimaps get a circle, other shapes a square.
+function C.MinimapEdgeOffset(angleDeg)
+    local mm = C.GetMinimap()
+    if not mm then
+        return nil
+    end
+    local okW, width = pcall(mm.GetWidth, mm)
+    if not okW or type(width) ~= "number" or width <= 0 then
+        return nil
+    end
+    local radius = width / 2 + 5
+    local rad = math.rad(angleDeg)
+    local dx, dy = math.cos(rad), math.sin(rad)
+    local shape = "ROUND"
+    if type(GetMinimapShape) == "function" then
+        local ok, s = pcall(GetMinimapShape)
+        if ok and type(s) == "string" then
+            shape = s
+        end
+    else
+        noteMissing("GetMinimapShape")
+    end
+    if shape ~= "ROUND" then
+        local m = math.max(math.abs(dx), math.abs(dy))
+        dx, dy = dx / m, dy / m
+    end
+    return dx * radius, dy * radius
+end
+
+-- Angle in degrees from the minimap's center to the mouse cursor, or nil.
+function C.MinimapCursorAngle()
+    local mm = C.GetMinimap()
+    if not mm or type(GetCursorPosition) ~= "function" then
+        noteMissing("GetCursorPosition")
+        return nil
+    end
+    local ok, angle = pcall(function()
+        local cx, cy = mm:GetCenter()
+        local px, py = GetCursorPosition()
+        local scale = mm:GetEffectiveScale()
+        px, py = px / scale, py / scale
+        local atan2 = math.atan2 or math.atan -- Lua 5.1 has atan2; newer Lua folds it into atan
+        return math.deg(atan2(py - cy, px - cx))
+    end)
+    if ok and type(angle) == "number" then
+        return angle
+    end
+    return nil
+end
+-- A single-line text box with its font already set (an EditBox without a font errors).
+-- Returns nil if the client cannot make one, so callers can leave the box out.
+function C.CreateEditBox(parent, fontPath, size)
+    local ok, box = pcall(CreateFrame, "EditBox", nil, parent)
+    if not ok or not box then
+        noteMissing("EditBox")
+        return nil
+    end
+    local okSetup = pcall(function()
+        -- Font first: SetText on an EditBox without a font raises an error. Like FontStrings,
+        -- a missing font file may make SetFont return false instead of erroring.
+        if box:SetFont(fontPath, size, "") == false then
+            box:SetFont(C.FONT_BODY, size, "")
+        end
+        box:SetAutoFocus(false)
+        box:SetMultiLine(false)
+        box:SetMaxLetters(40)
+        box:SetTextInsets(0, 0, 0, 0)
+    end)
+    if not okSetup then
+        noteMissing("EditBox setup")
+        box:Hide()
+        return nil
+    end
+    return box
 end

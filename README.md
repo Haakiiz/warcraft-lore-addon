@@ -11,9 +11,32 @@ Ever run into a random level-15 quest giver and later found out they were in a W
 What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
-- **Lore window:** targeting a known NPC opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
+- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 127" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
+- **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. Click the pill for the story, right-click to dismiss, shift-drag to move.
+- **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
 
 All lore ships inside the addon (addons cannot reach the internet in game), in `WarcraftLore/Data.lua`.
+
+## Screenshots
+
+Preview renders of the real addon code (made offline with substitute fonts and a placeholder portrait, so the in-game look differs slightly):
+
+![The Veterans list and the lore window docked side by side](media/screenshots/veterans-and-lore.png)
+
+| | |
+|---|---|
+| ![Hover a row for the full name, games and met status](media/screenshots/veterans-tooltip.png) | ![Filter by campaign](media/screenshots/campaign-filter.png) |
+| Hover a row for the full name, games and met status | Filter by campaign, zone, game or met status |
+| ![Small glowing alert when a veteran is nearby](media/screenshots/nearby-alert.png) | ![Minimap button with tooltip](media/screenshots/minimap-button.png) |
+| A small glowing alert when a veteran is nearby; click it for the story | Minimap button: left-click for the list, right-click for your target |
+
+## What's new in 0.3
+
+- New: the Warcraft Veterans list (`/wcl list`) with search, filters for game, zone, campaign and met status, "Hide book-only", hover tooltips with full names, and the lore window docking next to it.
+- New: met tracking per character, with a "Veterans met" counter, a chip per game and a chat line the first time you meet a veteran. The lore window shows a green MET badge.
+- New: the small glowing alert pill replaces the big toast and the center-screen text. Targeting a veteran now shows the pill instead of opening the window.
+- New: a minimap button and `/wcl minimap`.
 
 ## Installation
 
@@ -31,11 +54,13 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | Command | What it does |
 |---|---|
 | `/wcl` | Opens the window for your target. NPCs not in the database show "No known Warcraft history recorded for … (NPC ID …) yet." |
+| `/wcl list` (or `/wcl browse`) | Opens or closes the Warcraft Veterans window: every veteran with a met marker, a counter per game, name search, zone, campaign and met filters, and a "Hide book-only" switch (saved). Click a game chip to filter by that game, hover a row for full names, click a row to read the story |
+| `/wcl minimap` | Shows or hides the minimap button |
 | `/wcl id` | Prints your target's NPC ID and name in chat, and whether it is in the database |
-| `/wcl auto` | Turns auto-open on target on or off |
-| `/wcl alert` | Turns the "Warcraft veteran nearby" chat alert on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
-| `/wcl test` (or `/wcl alert test`) | Shows a test alert for the first database NPC: toast, center-screen text, chat line and sound. Click the toast to open the NPC's window, right-click to dismiss, shift-drag to move |
-| `/wcl reset` | Moves the window back to the center |
+| `/wcl auto` | Turns the small alert when you target a veteran on or off (if the lore window is already open, it just follows your target) |
+| `/wcl alert` | Turns the "veteran nearby" alert (pill, chat line, sound) on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
+| `/wcl test` (or `/wcl alert test`) | Shows a test alert for the database NPC with the lowest ID: the small pill, chat line and sound. Click the pill to open the NPC's window, right-click to dismiss, shift-drag to move |
+| `/wcl reset` | Moves the windows back to the center |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
 ## Test NPCs
@@ -145,9 +170,12 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 - `WarcraftLore/Compat.lua`: **every client-version-dependent API call**. Fix this file if a beta patch breaks something.
 - `WarcraftLore/Data.lua`: the database. The format is described at the top of the file.
-- `WarcraftLore/Toast.lua`: on-screen alert toasts.
+- `WarcraftLore/Toast.lua`: the small glowing alert pills.
+- `WarcraftLore/Minimap.lua`: the minimap button.
 - `WarcraftLore/Core.lua`: lookup, tooltip line, events and `/wcl`.
-- `WarcraftLore/UI.lua`: the window.
+- `WarcraftLore/Style.lua`: the palette, small widget builders and the vine frame shared by both windows.
+- `WarcraftLore/UI.lua`: the lore window.
+- `WarcraftLore/Browser.lua`: the veterans list window (`/wcl list`).
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).
 - `WarcraftLore/Portraits/`: your own portrait images (optional).
 
