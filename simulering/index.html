@@ -1,0 +1,662 @@
+<title>Sagaen om Warcraft Lore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IM+Fell+English:ital@0;1&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --night: #0d0b15; --night-2: #120f1c; --panel: #181226; --line: #2d2347; --line-strong: #3d2a78;
+  --violet: #8b6cd6; --teal: #3fb8a6; --teal-deep: #2a6f68;
+  --title: #d4c6f7; --text: #d9d2c3; --muted: #a79d8a; --parchment: #e8dcb5;
+  --wc1: #c9a46a; --wc2: #e0533f; --btdp: #b07cf0; --wc3: #f0a24a; --tft: #7cc7ef; --fk: #9bd46a; --book: #e8dcb5;
+  --good: #6fcf7f; --warn: #e0b04a;
+
+  --f-display: "IM Fell English", Georgia, "Times New Roman", serif;
+  --f-body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Spline Sans Mono", ui-monospace, Consolas, monospace;
+  --gutter: clamp(16px, 4vw, 56px);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--night); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--night); color: var(--text);
+  font-family: var(--f-body); font-size: 1.0625rem; line-height: 1.55;
+  overflow-x: hidden;
+}
+a { color: var(--teal); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 2px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--panel); color: var(--title); padding: 8px 12px; border: 1px solid var(--teal); z-index: 50; }
+.skip:focus { top: 12px; }
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  padding: clamp(40px, 9vh, 104px) var(--gutter) clamp(48px, 8vh, 96px);
+  background:
+    radial-gradient(60rem 30rem at 78% 30%, rgba(139,108,214,.10), transparent 70%),
+    linear-gradient(var(--night-2), var(--night));
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.hero::before { /* svakt rutenett, som i logoens bakgrunn */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(45,35,71,.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,35,71,.35) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 80% at 70% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 70% 40%, #000 20%, transparent 75%);
+}
+.hero-grid {
+  position: relative; max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(32px, 5vw, 80px); align-items: center;
+}
+.sim-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--warn); border: 1px solid rgba(224,176,74,.45); padding: 5px 10px 4px;
+}
+.sim-tag::before { content: ""; width: 7px; height: 7px; background: var(--warn); transform: rotate(45deg); flex: none; }
+.hero h1 {
+  font-family: var(--f-display); font-weight: 400; color: var(--title);
+  font-size: clamp(2.7rem, 7.2vw, 5.6rem); line-height: .98; letter-spacing: -.01em;
+  margin: 22px 0 18px;
+}
+.hero h1 em { font-style: italic; color: var(--parchment); }
+.hero .thesis {
+  font-size: clamp(1.15rem, 1.9vw, 1.4rem); line-height: 1.45; color: var(--text);
+  max-width: 34ch; margin: 0 0 14px;
+}
+.hero .subtitle { color: var(--muted); max-width: 52ch; margin: 0 0 28px; }
+.anchors {
+  list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 10px 28px; max-width: 560px;
+}
+.anchors li { display: grid; gap: 2px; }
+.anchors .d { font-family: var(--f-mono); font-size: .78rem; color: var(--teal); font-variant-numeric: tabular-nums; }
+.anchors .l { font-size: .92rem; color: var(--muted); }
+.anchors-note { font-size: .82rem; color: var(--muted); margin: 10px 0 0; }
+/* Hele kurven i miniatyr: der vi er i dag, og der modellen ender */
+.foresight { margin: 26px 0 0; max-width: 560px; }
+.foresight svg { display: block; width: 100%; height: 74px; overflow: visible; }
+.foresight .cap { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-mono); font-size: .72rem; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.foresight .cap b { color: var(--parchment); font-weight: 500; }
+
+/* Hero-objekt: ringen fra logoen + tooltip-kortet */
+.relic { position: relative; justify-self: center; width: min(100%, 440px); margin: 0; }
+.relic .ring-box { position: relative; aspect-ratio: 1 / 1; }
+.relic svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ring-outer { animation: breathe 7s ease-in-out infinite; transform-origin: 50% 50%; }
+@keyframes breathe { 0%,100% { opacity: .95; } 50% { opacity: .7; } }
+.tooltip {
+  position: absolute; left: 50%; top: 74%; width: min(272px, 70%);
+  background: rgba(13,11,21,.94);
+  border: 1px solid #5d5a6e; border-radius: 4px;
+  box-shadow: 0 0 0 1px #000, 0 12px 30px rgba(0,0,0,.45);
+  padding: 9px 12px 10px;
+  font-family: var(--f-body); font-size: .95rem; line-height: 1.32;
+}
+.tooltip .tn { color: var(--good); font-weight: 700; font-size: 1.05rem; }
+.tooltip .tg { color: var(--text); }
+.tooltip .tl { color: var(--text); }
+.tooltip .tv { margin-top: 4px; color: var(--title); white-space: nowrap; }
+.tooltip .tv b { font-weight: 500; }
+.tooltip .tv .wc3 { color: var(--wc3); }
+.tooltip .tv .tft { color: var(--tft); }
+.tooltip .tv .sep { color: var(--muted); }
+.relic figcaption {
+  margin: 64px 0 0 8%; max-width: 30ch;
+  font-size: .8rem; line-height: 1.35; color: var(--muted); font-style: italic;
+}
+.scroll-cue {
+  position: relative; max-width: 1180px; margin: clamp(36px, 6vh, 64px) auto 0;
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.scroll-cue::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), transparent); }
+
+/* ---------- SCROLLY ---------- */
+.scrolly { position: relative; }
+.stage {
+  position: sticky; top: 0; height: 100vh; height: 100svh; z-index: 0;
+  display: grid; grid-template-rows: minmax(0, 1fr);
+  padding: calc(var(--hud-h, 64px) + 8px) var(--gutter) 10px calc(42% + 8px);
+  background: var(--night);
+}
+.chart-wrap { position: relative; min-height: 0; }
+#chart { position: absolute; inset: 0; }
+.chart-missing { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-style: italic; text-align: center; padding: 16px; }
+
+.hud {
+  position: sticky; top: 0; z-index: 4;
+  margin: 0 0 calc(-1 * var(--hud-h, 64px)) calc(42% + 8px);
+  padding: 14px var(--gutter) 10px 0; background: var(--night);
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-end; gap: 6px 22px;
+  border-bottom: 1px solid var(--line);
+  font-size: .78rem; color: var(--muted);
+}
+.hud dl { display: contents; }
+.hud .cell { display: grid; gap: 0; text-align: right; }
+.hud dt { font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; }
+.hud dd { margin: 0; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--text); font-size: .95rem; }
+.hud .cell.date dd { color: var(--title); }
+.hud .cell.ver dd { color: var(--teal); }
+.hud .sim-flag { color: var(--warn); font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; margin-left: 6px; }
+.metric { display: inline-flex; border: 1px solid var(--line); align-self: center; }
+.metric button {
+  font: inherit; font-size: .74rem; color: var(--muted); background: transparent; border: 0;
+  padding: 5px 9px; cursor: pointer; min-height: 30px;
+}
+.metric button + button { border-left: 1px solid var(--line); }
+.metric button[aria-pressed="true"] { color: var(--night); background: var(--teal); }
+.metric button:hover:not([aria-pressed="true"]) { color: var(--text); }
+
+.steps { position: relative; z-index: 2; margin-top: -100vh; margin-top: -100svh; pointer-events: none; }
+.step {
+  min-height: 92vh; min-height: 92svh;
+  display: flex; align-items: center;
+  padding: 0 0 0 var(--gutter); width: 42%;
+}
+.step:first-child { min-height: 100svh; }
+.step:last-child { min-height: 110svh; }
+.card {
+  pointer-events: auto;
+  --accent: var(--violet);
+  position: relative; width: 100%; max-width: 34rem;
+  background: rgba(24,18,38,.96);
+  border: 1px solid var(--line);
+  padding: 22px 24px 22px 26px;
+  transition: opacity .45s var(--ease), border-color .45s var(--ease);
+}
+.card::before { /* tynn aksent, som rammen i addonens vindu */
+  content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px; width: 2px; background: var(--accent);
+}
+.card::after {
+  content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: var(--accent); opacity: .25;
+}
+.card[data-tone="spark"] { --accent: var(--violet); }
+.card[data-tone="rise"]  { --accent: var(--teal); }
+.card[data-tone="storm"] { --accent: var(--warn); }
+.card[data-tone="fall"]  { --accent: var(--wc2); }
+.card[data-tone="crown"] { --accent: var(--parchment); }
+.js .card { opacity: .58; }
+.js .card.is-active { opacity: 1; border-color: var(--line-strong); }
+.kicker { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .02em; color: var(--accent); margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+.card h2 { font-family: var(--f-display); font-weight: 400; color: var(--title); font-size: clamp(1.55rem, 2.4vw, 2.05rem); line-height: 1.08; margin: 0 0 12px; }
+.card .body { margin: 0 0 16px; max-width: 62ch; }
+.stat { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.stat .v { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: clamp(1.8rem, 3.2vw, 2.4rem); line-height: 1; color: var(--parchment); font-weight: 500; letter-spacing: -.02em; }
+.stat .l { color: var(--muted); font-size: .92rem; }
+.quotes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.quote { font-size: .95rem; }
+.quote .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-bottom: 2px; font-size: .78rem; color: var(--muted); }
+.quote .src {
+  font-family: var(--f-mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase;
+  padding: 1px 6px; border: 1px solid currentColor; line-height: 1.5;
+}
+.src-curseforge { color: var(--wc3); } .src-reddit { color: var(--wc2); } .src-discord { color: var(--violet); }
+.src-github { color: var(--text); } .src-twitch { color: var(--btdp); } .src-wowhead { color: var(--fk); }
+.quote .who { color: var(--text); font-weight: 500; }
+.quote p { margin: 0; color: var(--text); font-style: italic; }
+.rel { margin-top: 14px; padding: 10px 12px; border: 1px dashed var(--line-strong); font-size: .92rem; }
+.rel .rh { font-family: var(--f-mono); font-size: .74rem; color: var(--teal); margin-bottom: 4px; }
+.rel .rh b { color: var(--title); font-weight: 500; }
+.rel ul { margin: 0; padding-left: 1.1em; color: var(--muted); }
+.rel li::marker { color: var(--teal-deep); }
+
+/* ---------- VERSJONER ---------- */
+.after { position: relative; z-index: 3; background: var(--night); border-top: 1px solid var(--line); }
+.section { max-width: 1180px; margin: 0 auto; padding: clamp(56px, 9vh, 104px) var(--gutter); }
+.section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 16px 56px; align-items: end; margin-bottom: 40px; }
+.eyebrow { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin: 0 0 10px; }
+.section h2 { font-family: var(--f-display); font-weight: 400; color: var(--title); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.02; margin: 0; }
+.section-head p { margin: 0; color: var(--muted); max-width: 58ch; }
+.log { list-style: none; margin: 0; padding: 0; position: relative; }
+.year { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 28px; }
+.year + .year { margin-top: 28px; }
+.year > h3 { font-family: var(--f-display); font-weight: 400; font-size: 2.2rem; color: var(--violet); margin: 0; line-height: 1; position: sticky; top: 16px; align-self: start; }
+.year ol { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 1px solid var(--line); }
+.relrow { position: relative; padding: 0 0 22px; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 2px 20px; }
+.relrow::before { content: ""; position: absolute; left: -27px; top: .45em; width: 9px; height: 9px; background: var(--night); border: 1px solid var(--teal-deep); border-radius: 50%; }
+.relrow .rd { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: .2em; }
+.relrow .rv { font-family: var(--f-mono); color: var(--teal); font-variant-numeric: tabular-nums; }
+.relrow .rn { color: var(--text); }
+.relrow ul { margin: 4px 0 0; padding-left: 1.1em; color: var(--muted); font-size: .94rem; }
+.relrow ul li::marker { color: var(--teal-deep); }
+.relrow .real { font-family: var(--f-mono); font-size: .64rem; letter-spacing: .07em; text-transform: uppercase; color: var(--good); border: 1px solid rgba(111,207,127,.5); padding: 0 5px; margin-left: 6px; vertical-align: 2px; }
+.relrow.major::before { width: 15px; height: 15px; left: -30px; top: .25em; border: 2px solid var(--teal); box-shadow: inset 0 0 0 2px var(--night), inset 0 0 0 4px var(--violet); }
+.relrow.major .rv { font-family: var(--f-display); font-size: 1.7rem; color: var(--title); line-height: 1; }
+.relrow.major .rn { font-family: var(--f-display); font-style: italic; font-size: 1.2rem; color: var(--parchment); }
+.relrow .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+
+/* ---------- EPILOG ---------- */
+.epilogue { border-top: 1px solid var(--line); background: linear-gradient(var(--night), var(--night-2)); }
+.epi-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px 64px; align-items: start; }
+.epilogue .lede { font-size: clamp(1.1rem, 1.6vw, 1.28rem); line-height: 1.55; max-width: 60ch; margin: 22px 0 0; }
+.facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); }
+.facts div { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); }
+.facts div:nth-child(odd) { border-right: 1px solid var(--line); }
+.facts div:nth-child(even) { padding-left: 16px; }
+.facts dt { color: var(--muted); font-size: .85rem; margin-bottom: 4px; }
+.facts dd.txt { font-family: var(--f-display); font-style: italic; font-size: clamp(1.1rem, 1.7vw, 1.3rem); line-height: 1.25; }
+.facts dd { margin: 0; font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: clamp(1.25rem, 2.2vw, 1.6rem); color: var(--parchment); overflow-wrap: anywhere; }
+.footnote { max-width: 1180px; margin: 0 auto; padding: 28px var(--gutter) 56px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 12px 56px; font-size: .9rem; color: var(--muted); }
+.footnote h2 { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--warn); margin: 0; font-weight: 400; }
+.footnote p { margin: 0 0 10px; max-width: 70ch; }
+.footnote ul { margin: 0 0 10px; padding-left: 1.1em; max-width: 70ch; }
+
+/* ---------- SMAL SKJERM ---------- */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .relic { width: min(100%, 320px); justify-self: start; margin-top: 8px; }
+  .tooltip { left: 28%; }
+  .relic figcaption { margin-left: 0; }
+  .stage { padding: calc(var(--hud-h, 96px) + 4px) 16px 0; grid-template-rows: 46vh 1fr; }
+  @supports (height: 1svh) { .stage { grid-template-rows: 46svh 1fr; } }
+  .hud { margin-left: 0; padding: 8px 16px 8px; justify-content: flex-start; }
+  .rel ul { display: none; }
+  .hud .cell { text-align: left; }
+  .hud dt { font-size: .68rem; letter-spacing: .05em; }
+  .hud .sim-flag { font-size: .66rem; margin-left: 4px; }
+  .hud dd { font-size: .8rem; }
+  .hud { gap: 4px 11px; }
+  .metric { order: 9; }
+  /* Mobil: grafen ligger fast øverst over kortene, kortene glir inn under den. */
+  .stage { height: calc(var(--hud-h, 96px) + 44svh); grid-template-rows: minmax(0, 1fr); z-index: 3; border-bottom: 1px solid var(--line); }
+  .steps { margin-top: 0; }
+  .step { width: 100%; padding: 4svh 16px 0; align-items: flex-start; min-height: 64svh; }
+  .step:first-child, .step:last-child { min-height: 64svh; }
+  .card { max-width: none; padding: 18px 18px 18px 22px; background: rgba(24,18,38,.97); }
+  .js .card { opacity: .72; }
+  .section-head, .epi-grid, .footnote { grid-template-columns: minmax(0, 1fr); }
+  .year { grid-template-columns: minmax(0, 1fr); }
+  .year > h3 { position: static; margin-bottom: 14px; font-size: 1.8rem; }
+  .year ol { margin-left: 6px; }
+  .relrow { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts div:nth-child(odd) { border-right: 0; }
+  .facts div:nth-child(even) { padding-left: 0; }
+  .tooltip { left: 30%; width: 66%; font-size: .88rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<a class="skip" href="#saga">Hopp til tidslinjen</a>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="sim-tag">Simulering · alt etter 9. oktober 2026 er fiksjon</span>
+      <h1 id="hero-title">Sagaen om <em>Warcraft Lore</em></h1>
+      <p class="thesis">Én ekstra linje i en tooltip. Tre år senere: hva skjer hvis spillerne faktisk vil vite hvem questgiveren i Orgrimmar var i Warcraft III?</p>
+      <p class="subtitle" id="hero-sub">En tenkt tidslinje fra første commit til oktober 2029.</p>
+      <ul class="anchors" aria-label="Ekte startpunkter">
+        <li><span class="d">04.10.2026</span><span class="l">første commit, 36 NPC-er</span></li>
+        <li><span class="d">07.10.2026</span><span class="l">v0.1.0 på CurseForge</span></li>
+        <li><span class="d">08.10.2026</span><span class="l">v0.2.0</span></li>
+      </ul>
+      <p class="anchors-note">Disse tre datoene er ekte. Resten er en modell.</p>
+      <figure class="foresight" aria-label="Hele den simulerte kurven i miniatyr">
+        <svg id="foresight" viewBox="0 0 560 74" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <figcaption class="cap"><span>Nå · 128 veteraner</span><span>Okt. 2029 · <b id="foresight-end">2,1 mill.</b> nedlastinger</span></figcaption>
+      </figure>
+    </div>
+
+    <figure class="relic" aria-label="Addonens tooltip-linje for Thrall, foran ringen fra logoen">
+      <div class="ring-box">
+        <svg class="ring" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+              <stop offset="70%" stop-color="#8b6cd6" stop-opacity="0"/>
+              <stop offset="88%" stop-color="#8b6cd6" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#8b6cd6" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="196" fill="url(#halo)"/>
+          <circle class="ring-outer" cx="200" cy="200" r="168" fill="none" stroke="#3fb8a6" stroke-width="9"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="#8b6cd6" stroke-width="1.6" opacity=".9"/>
+          <g opacity=".5" stroke="#3fb8a6" stroke-width="1.4">
+            <line x1="200" y1="22" x2="200" y2="36"/><line x1="200" y1="364" x2="200" y2="378"/>
+            <line x1="22" y1="200" x2="36" y2="200"/><line x1="364" y1="200" x2="378" y2="200"/>
+          </g>
+          <!-- sverd -->
+          <path d="M193 92 L200 72 L207 92 L207 162 L193 162 Z" fill="#c9cfe0"/>
+          <rect x="176" y="160" width="48" height="8" fill="#c9a46a"/>
+          <!-- åpen bok -->
+          <path d="M118 168 L197 176 L197 266 L118 256 Z" fill="#e8dcb5"/>
+          <path d="M282 168 L203 176 L203 266 L282 256 Z" fill="#e8dcb5"/>
+          <rect x="197" y="174" width="6" height="94" fill="#c9a46a"/>
+          <g stroke="#8a7a58" stroke-width="2.4" stroke-linecap="round">
+            <line x1="132" y1="190" x2="184" y2="195"/><line x1="132" y1="206" x2="184" y2="211"/>
+            <line x1="132" y1="222" x2="184" y2="227"/><line x1="132" y1="238" x2="170" y2="242"/>
+            <line x1="216" y1="195" x2="268" y2="190"/><line x1="216" y1="211" x2="268" y2="206"/>
+            <line x1="216" y1="227" x2="268" y2="222"/><line x1="216" y1="243" x2="252" y2="239"/>
+          </g>
+        </svg>
+        <div class="tooltip" role="img" aria-label="Tooltip: Thrall, Warchief, nivå ukjent, Boss, Orgrimmar. Warcraft Veteran: WC3 og TFT">
+          <div class="tn">Thrall</div>
+          <div class="tg">&lt;Warchief&gt;</div>
+          <div class="tl">Level ?? Boss</div>
+          <div class="tl">Orgrimmar</div>
+          <div class="tv"><b>Warcraft Veteran:</b> <span class="wc3">WC3</span> <span class="sep">·</span> <span class="tft">TFT</span></div>
+        </div>
+      </div>
+      <figcaption>Linjen addonen legger til. Hver spillkode i sin egen farge, og ingen linje for NPC-er uten historie.</figcaption>
+    </figure>
+  </div>
+  <div class="scroll-cue">Bla ned · tre år på 60 sekunder</div>
+</header>
+
+<main id="saga">
+  <section class="scrolly" aria-label="Tidslinjen, kapittel for kapittel">
+    <div class="hud" aria-label="Status på valgt dato">
+      <dl>
+        <div class="cell date"><dt>Dato<span class="sim-flag" id="hud-sim" hidden>simulert</span></dt><dd id="hud-date">okt. 2026</dd></div>
+        <div class="cell"><dt>Nedlastinger</dt><dd id="hud-total">0</dd></div>
+        <div class="cell"><dt>Aktive</dt><dd id="hud-active">0</dd></div>
+        <div class="cell"><dt>Veteraner</dt><dd id="hud-npcs">0</dd></div>
+        <div class="cell ver"><dt>Versjon</dt><dd id="hud-ver">–</dd></div>
+      </dl>
+      <div class="metric" role="group" aria-label="Vis i grafen">
+        <button type="button" data-metric="total" aria-pressed="true">Totalt</button>
+        <button type="button" data-metric="downloads" aria-pressed="false">Per måned</button>
+        <button type="button" data-metric="active" aria-pressed="false">Aktive</button>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="chart-wrap">
+        <div id="chart" role="img" aria-label="Graf over nedlastinger av Warcraft Lore, oktober 2026 til oktober 2029 (simulert etter 9. oktober 2026)"></div>
+      </div>
+    </div>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <div class="after">
+    <section class="section" aria-labelledby="log-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Versjonshistorikk</p>
+          <h2 id="log-title">Hver tag, fra 0.1.0</h2>
+        </div>
+        <p id="log-intro">Alle utgivelser i tidslinjen. Store versjoner er markert med ringen fra logoen; de to første er ekte.</p>
+      </div>
+      <div class="log" id="log"></div>
+    </section>
+
+    <section class="epilogue" aria-labelledby="epi-title">
+      <div class="section epi-grid">
+        <div>
+          <p class="eyebrow">Epilog</p>
+          <h2 id="epi-title">Oktober 2029</h2>
+          <p class="lede" id="epi-body"></p>
+        </div>
+        <dl class="facts" id="epi-facts"></dl>
+      </div>
+    </section>
+
+    <footer class="footnote">
+      <h2>Om tallene</h2>
+      <div>
+        <p>Dette er en simulering, ikke en prognose. Bare de tre første datoene er ekte: første commit 4. oktober 2026, v0.1.0 7. oktober og v0.2.0 8. oktober 2026. Alt etter 9. oktober 2026 er oppdiktet, også sitatene og brukernavnene.</p>
+        <ul>
+          <li>Nedlastingskurven er modellert etter hvordan nisjeaddons med en tydelig idé typisk vokser på CurseForge: rolig start, hopp ved omtale og nye utvidelser, og et fall når spillere tar pause.</li>
+          <li>«Aktive» er et anslag på installasjoner i bruk ved månedsslutt, ikke CurseForges egne tall.</li>
+          <li>«Veteraner» er antall NPC-er i databasen; utgangspunktet er de 36 i første commit.</li>
+        </ul>
+        <p>Warcraft Lore er et fanprosjekt uten tilknytning til Blizzard Entertainment.</p>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script src="story.js" charset="utf-8"></script><script src="chart.js" charset="utf-8"></script>
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  var S = (window.STORY && typeof window.STORY === "object") ? window.STORY : {};
+  var arr = function (x) { return Array.isArray(x) ? x : []; };
+  var months = arr(S.months), releases = arr(S.releases), chapters = arr(S.chapters);
+  (function foresight() {
+    var svg = document.getElementById("foresight");
+    if (!svg || months.length < 2) return;
+    var ns = "http://www.w3.org/2000/svg", W = 560, H = 70, max = months[months.length - 1].total || 1, n = months.length - 1;
+    var lastCh = chapters[chapters.length - 1], endVal = lastCh && lastCh.stat && lastCh.stat.value ? lastCh.stat.value : max;
+    var pts = months.map(function (m, i) { return [i / n * W, H - (m.total / max) * (H - 6)]; });
+    var line = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    function add(tag, at) { var e = document.createElementNS(ns, tag); for (var k in at) e.setAttribute(k, at[k]); svg.appendChild(e); return e; }
+    add("line", { x1: 0, y1: H, x2: W, y2: H, stroke: "var(--line-strong)", "stroke-width": 1, "vector-effect": "non-scaling-stroke" });
+    add("path", { d: line + " L" + W + " " + H + " L0 " + H + " Z", fill: "var(--teal-deep)", opacity: .35 });
+    add("path", { d: line, fill: "none", stroke: "var(--teal)", "stroke-width": 1.6, "vector-effect": "non-scaling-stroke", "stroke-dasharray": "3 3" });
+    add("circle", { cx: 1.5, cy: H - 1, r: 4, fill: "var(--night)", stroke: "var(--teal)", "stroke-width": 2, "vector-effect": "non-scaling-stroke" });
+    var endEl = document.getElementById("foresight-end");
+    if (endEl) endEl.textContent = (Math.floor(endVal / 1e5) / 10).toLocaleString("nb-NO", { maximumFractionDigits: 1 }) + " mill.";
+  })();
+  var TODAY = typeof S.today === "string" ? S.today : "2026-10-09";
+  var reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  var nf = (function () { try { return new Intl.NumberFormat("nb-NO"); } catch (e) { return null; } })();
+  function fmtNum(n) {
+    if (typeof n !== "number" || !isFinite(n)) return (n == null ? "–" : String(n));
+    n = Math.round(n);
+    return nf ? nf.format(n) : String(n);
+  }
+  var MONTHS = ["jan.", "feb.", "mars", "apr.", "mai", "juni", "juli", "aug.", "sep.", "okt.", "nov.", "des."];
+  function parts(d) {
+    var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(d || ""));
+    return m ? { y: +m[1], m: +m[2], d: m[3] ? +m[3] : null } : null;
+  }
+  function fmtMonth(d) { var p = parts(d); return p ? MONTHS[p.m - 1] + " " + p.y : String(d || "–"); }
+  function fmtDay(d) { var p = parts(d); return p ? (p.d ? p.d + ". " : "") + MONTHS[p.m - 1] + " " + p.y : String(d || ""); }
+  function fmtShort(d) { var p = parts(d); return p ? (p.d ? p.d + ". " : "") + MONTHS[p.m - 1] : ""; }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function byV(v) { for (var i = 0; i < releases.length; i++) if (releases[i] && releases[i].v === v) return releases[i]; return null; }
+  function isReal(d) { return typeof d === "string" && d.slice(0, 10) <= TODAY; }
+
+  /* ---- hero ---- */
+  if (S.subtitle) document.getElementById("hero-sub").textContent = S.subtitle;
+
+  /* ---- kapittelkort ---- */
+  var stepsEl = document.getElementById("steps");
+  var SRC = { curseforge: 1, reddit: 1, discord: 1, github: 1, twitch: 1, wowhead: 1 };
+  var html = chapters.map(function (ch, i) {
+    ch = ch || {};
+    var tone = /^(spark|rise|storm|fall|crown)$/.test(ch.tone) ? ch.tone : "spark";
+    var out = '<div class="step" data-i="' + i + '"><article class="card" data-tone="' + tone + '" id="kap-' + esc(ch.id || i) + '" tabindex="-1" aria-labelledby="kap-' + esc(ch.id || i) + '-t">';
+    out += '<p class="kicker">' + esc(ch.kicker || fmtDay(ch.date)) + '</p>';
+    out += '<h2 id="kap-' + esc(ch.id || i) + '-t">' + esc(ch.title || "") + '</h2>';
+    if (ch.body) out += '<p class="body">' + esc(ch.body) + '</p>';
+    if (ch.stat && ch.stat.value != null) {
+      var v = typeof ch.stat.value === "number" ? fmtNum(ch.stat.value) : esc(ch.stat.value);
+      out += '<div class="stat"><span class="v">' + v + '</span><span class="l">' + esc(ch.stat.label || "") + '</span></div>';
+    }
+    var qs = arr(ch.quotes).filter(function (q) { return q && q.text; });
+    if (qs.length) {
+      out += '<ul class="quotes" aria-label="Spillerkommentarer (oppdiktet)">' + qs.map(function (q) {
+        var key = String(q.src || "").toLowerCase();
+        var cls = SRC[key] ? " src-" + key : "";
+        return '<li class="quote"><div class="meta"><span class="src' + cls + '">' + esc(q.src || "kilde") + '</span><span class="who">' + esc(q.who || "anonym") + '</span></div><p lang="en">«' + esc(q.text) + '»</p></li>';
+      }).join("") + '</ul>';
+    }
+    var r = ch.release ? byV(ch.release) : null;
+    if (r) {
+      var hl = arr(r.highlights);
+      out += '<div class="rel"><div class="rh">v<b>' + esc(r.v) + '</b>' + (r.name ? " · " + esc(r.name) : "") + (r.date ? " · " + esc(fmtShort(r.date)) : "") + '</div>' +
+        (hl.length ? '<ul>' + hl.slice(0, 3).map(function (h) { return '<li>' + esc(h) + '</li>'; }).join("") + '</ul>' : "") + '</div>';
+    }
+    return out + '</article></div>';
+  }).join("");
+  stepsEl.innerHTML = html || '<div class="step"><article class="card"><h2>Fortellingen mangler</h2><p class="body">Fant ikke story.js.</p></article></div>';
+
+  /* ---- graf ---- */
+  var chart = null;
+  var chartEl = document.getElementById("chart");
+  try {
+    if (window.SagaChart && typeof window.SagaChart.create === "function" && months.length) {
+      chart = window.SagaChart.create(chartEl, S, { reducedMotion: reduced, safeLeft: 0, safeBottom: 0 });
+    }
+  } catch (e) { chart = null; if (window.console) console.warn("SagaChart feilet:", e); }
+  if (!chart) chartEl.innerHTML = '<div class="chart-missing">Grafen kunne ikke lastes. Tallene står i kortene.</div>';
+
+  /* ---- HUD ---- */
+  var hud = {
+    date: document.getElementById("hud-date"), total: document.getElementById("hud-total"),
+    active: document.getElementById("hud-active"), npcs: document.getElementById("hud-npcs"),
+    ver: document.getElementById("hud-ver"), sim: document.getElementById("hud-sim")
+  };
+  var hudTotalLabel = document.getElementById("hud-total") && document.getElementById("hud-total").previousElementSibling;
+  function setHud(t) {
+    if (!t) return;
+    if (t.date) { hud.date.textContent = fmtMonth(t.date); hud.sim.hidden = String(t.date).slice(0, 10) <= TODAY; }
+    var perMonth = t.metric === "downloads" && t.downloads != null;
+    if (hudTotalLabel) hudTotalLabel.textContent = perMonth ? "Nedlastinger i mnd." : "Nedlastinger";
+    if (perMonth) hud.total.textContent = fmtNum(t.downloads);
+    else if (t.total != null) hud.total.textContent = fmtNum(t.total);
+    if (t.active != null) hud.active.textContent = fmtNum(t.active);
+    if (t.npcs != null) hud.npcs.textContent = fmtNum(t.npcs);
+    hud.ver.textContent = t.version ? "v" + String(t.version).replace(/^v/, "") : "–";
+  }
+  // hvilestand: verdiene for første kapittel, fra data (stemmer med grafen)
+  (function initHud() {
+    var d = chapters[0] && chapters[0].date ? chapters[0].date : (months[0] && months[0].m);
+    if (!d) return;
+    var mk = String(d).slice(0, 7), row = null;
+    for (var i = 0; i < months.length; i++) if (months[i] && months[i].m <= mk) row = months[i];
+    var ver = null;
+    for (var j = 0; j < releases.length; j++) if (releases[j] && releases[j].date <= d) ver = releases[j].v;
+    setHud({ date: d, total: row ? row.total : null, active: row ? row.active : null, npcs: row ? row.npcs : null, version: ver });
+  })();
+  if (chart && typeof chart.on === "function") {
+    try { chart.on("tick", setHud); } catch (e) { /* valgfritt */ }
+  }
+
+  var metricBtns = Array.prototype.slice.call(document.querySelectorAll(".metric button"));
+  var curMetric = "total";
+  function useMetric(m) {
+    if (m === curMetric) return;
+    curMetric = m;
+    metricBtns.forEach(function (o) { o.setAttribute("aria-pressed", o.getAttribute("data-metric") === m ? "true" : "false"); });
+    if (chart && typeof chart.setMetric === "function") chart.setMetric(m);
+  }
+  metricBtns.forEach(function (b) {
+    b.addEventListener("click", function () { useMetric(b.getAttribute("data-metric")); });
+  });
+
+  /* ---- scroll: aktivt kapittel = kortet nærmest lesekanten ---- */
+  var steps = Array.prototype.slice.call(stepsEl.querySelectorAll(".step"));
+  var cards = steps.map(function (s) { return s.querySelector(".card"); });
+  var active = -1;
+  var mqNarrow = window.matchMedia ? window.matchMedia("(max-width: 860px)") : { matches: false };
+  function setActive(i) {
+    if (i === active || i < 0 || !cards[i]) return;
+    if (active >= 0 && cards[active]) cards[active].classList.remove("is-active");
+    active = i;
+    cards[i].classList.add("is-active");
+    var ch = chapters[i];
+    /* Nedturskapitlene vises per måned; en kumulativ kurve kan ikke falle. */
+    if (ch) useMetric(ch.tone === "fall" ? "downloads" : "total");
+    if (chart && ch && ch.date && typeof chart.setDate === "function") {
+      try { chart.setDate(ch.date); } catch (e) { if (window.console) console.warn(e); }
+    }
+  }
+  var hudEl = document.querySelector(".hud"), scrollyEl = document.querySelector(".scrolly");
+  function measureHud() { if (hudEl && scrollyEl) scrollyEl.style.setProperty("--hud-h", Math.ceil(hudEl.getBoundingClientRect().height) + "px"); }
+  measureHud();
+  if (chart && typeof chart.resize === "function") { try { chart.resize(); } catch (e) {} }
+  function pick() {
+    if (!cards.length) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    if (mqNarrow.matches) {
+      // mobil: kortet blir aktivt når det kommer inn under grafen, så grafen rekker å vises før kortet dekker den
+      var k = 0;
+      for (var j = 0; j < cards.length; j++) if (cards[j].getBoundingClientRect().top < vh * 0.78) k = j;
+      setActive(k);
+      return;
+    }
+    var line = vh * (mqNarrow.matches ? 0.72 : 0.5);
+    var best = -1, bd = Infinity;
+    for (var i = 0; i < cards.length; i++) {
+      var r = cards[i].getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) continue;
+      var d = (line >= r.top && line <= r.bottom) ? 0 : Math.min(Math.abs(r.top - line), Math.abs(r.bottom - line));
+      if (d < bd) { bd = d; best = i; }
+    }
+    if (best < 0) {
+      var first = cards[0].getBoundingClientRect();
+      best = first.top > vh ? 0 : cards.length - 1;
+    }
+    setActive(best);
+  }
+  var queued = false;
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    (window.requestAnimationFrame || setTimeout)(function () {
+      queued = false; pick();
+      /* Telleren hører til tidslinjen: skjul den når scenen har scrollet forbi. */
+      if (hudEl && scrollyEl) hudEl.style.visibility = scrollyEl.getBoundingClientRect().bottom < hudEl.offsetHeight + 4 ? "hidden" : "";
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  var rt = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      measureHud();
+      if (chart && typeof chart.resize === "function") { try { chart.resize(); } catch (e) {} }
+      pick();
+    }, 120);
+  });
+  pick();
+
+  /* ---- versjonshistorikk ---- */
+  var logEl = document.getElementById("log");
+  var sorted = releases.filter(function (r) { return r && r.v; }).slice().sort(function (a, b) {
+    return String(a.date || "").localeCompare(String(b.date || ""));
+  });
+  var years = {};
+  var order = [];
+  sorted.forEach(function (r) {
+    var y = String(r.date || "").slice(0, 4) || "–";
+    if (!years[y]) { years[y] = []; order.push(y); }
+    years[y].push(r);
+  });
+  logEl.innerHTML = order.map(function (y) {
+    return '<div class="year"><h3>' + esc(y) + '</h3><ol>' + years[y].map(function (r) {
+      var hl = arr(r.highlights);
+      return '<li class="relrow' + (r.major ? " major" : "") + '"><span class="rd">' + esc(fmtShort(r.date)) + '</span><div>' +
+        '<div class="head"><span class="rv">' + esc(r.v) + '</span>' + (r.name ? '<span class="rn">' + esc(r.name) + '</span>' : "") +
+        (isReal(r.date) ? '<span class="real" title="Ekte utgivelse">ekte</span>' : "") + '</div>' +
+        (hl.length ? '<ul>' + hl.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join("") + '</ul>' : "") +
+        '</div></li>';
+    }).join("") + '</ol></div>';
+  }).join("") || '<p class="anchors-note">Ingen utgivelser i dataene.</p>';
+  if (sorted.length) {
+    var majors = sorted.filter(function (r) { return r.major; }).length;
+    document.getElementById("log-intro").textContent = sorted.length + " utgivelser, " + majors + " store. Store versjoner er markert med ringen fra logoen; utgivelser merket «ekte» fantes før simuleringen starter.";
+  }
+
+  /* ---- epilog ---- */
+  var ep = S.epilogue || {};
+  if (ep.title) document.getElementById("epi-title").textContent = ep.title;
+  document.getElementById("epi-body").textContent = ep.body || "";
+  document.getElementById("epi-facts").innerHTML = arr(ep.facts).filter(Boolean).map(function (f) {
+    var v = typeof f.value === "number" ? fmtNum(f.value) : esc(f.value);
+    var txt = typeof f.value === "string" && /[A-Za-zÆØÅæøå]{3,}/.test(f.value);
+    return '<div><dt>' + esc(f.label) + '</dt><dd' + (txt ? ' class="txt"' : '') + '>' + v + '</dd></div>';
+  }).join("");
+})();
+</script>

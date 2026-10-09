@@ -105,3 +105,19 @@ Sjekk get_usage mellom hver runde.
 - Lore-feller: Thrall er IKKE med i «The Hunter of Shadows» (Groms kapittel). Rehgar Earthfury: fant ikke bevis for at han er med i TFT, så han er utelatt.
 - 2026-10-04: Coordinate-based nearby alert added (Compat.GetPlayerMapPos/InInstance/StartTicker, Core.lua ticker). Branch session/coord-alert. Not tested in game; Classic and Mainline uiMapIDs both listed.
 - 2026-10-05: Nearby alert now shows an on-screen toast (Toast.lua, max 3, click/right-click/shift-drag) plus RaidNotice center text; /wcl test added. Branch session/alert-toast. Not tested in game.
+
+## Gauntlet 2026-10-09: Veterans-vindu (/wcl list) + met-telling
+Referanse: lore-vinduet (UI.lua), rendret til PNG. Målestokk: .kritikk/referanse/malestokk_ui.md. Harness/renderer: scratchpad/harness.
+- [x] D0 Renderer: mock-UI -> PNG (fengari + PIL), scratchpad/harness/shoot.py. Ferdig.
+- [x] D1 Design (skisse https://claude.ai/artifact/MbntNB3SBpgSvBQVs1gq5j): runde 1 AVVIST (tooltip, glød, duplikat-Gregory), runde 2 GODKJENT (alle >= 8, blindtest likeverdig).
+- [x] D2 Robusthet/korrekthet: GODKJENT runde 1 (8/8/8/9/8). Småfeil N1 (søk holder fokus), N2 (catcher sluker klikk), N6, N11 tas i D1.
+- [x] D3 Docs + helhet: sluttkritiker runde 1 AVVIST, runde 2 GODKJENT (9/9/8/8/8). Merget som PR #7, v0.3.0 lastet opp til GitHub + CurseForge 2026-10-09.
+
+## Gauntlet-løkke: «Sagaen om Warcraft Lore» – simulert suksess-tidslinje (startet 2026-10-09, grense 80 % av 5-timersvinduet)
+Målestokk: .kritikk/referanse/malestokk_simulering.md · kontrakt: simulering/CONTRACT.md · kritikkfiler: .kritikk/SIM_*/
+- [x] T1 story.js – 3 runder: AVVIST (6/6/7), AVVIST (8/8/8, telleren motsa ekte tall første dager), rettet av orkestratoren (anchors + småfeil)
+- [~] T2 chart.js – runde 1 AVVIST (graf 6: fylte ikke flaten, nedtur usynlig, lite endepunkt). Rettet av orkestratoren, ikke kritisert på nytt
+- [~] T3 index.html – runde 1 AVVIST (mobil: kort over graf; hero 7). Mobil + metric per kapittel rettet; hero ikke endret
+- [~] Sluttkritiker: AVVIST knapt (hero 7, polish 7, resten 8–9; leveransen likeverdig/bedre i blindtest). Rettet: HUD skjules etter
+      tidslinjen, HUD viser månedstall i nedturskapitler, mini-kurven sier 2,1 mill. Ikke kritisert på nytt (92 % av 5-timersvinduet).
+      Gjenstår: hero (tom høyre halvdel, tooltip ved ringkanten). Publisert v2: https://claude.ai/artifact/2hq7XRetf3PKrCvDYLs2WC

@@ -13,3 +13,4 @@ ignore:
   - .kritikk
   - .claude
   - media
+  - simulering
