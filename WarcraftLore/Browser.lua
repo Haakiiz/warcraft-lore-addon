@@ -326,7 +326,7 @@ local function buildPopup()
     p.scroll:SetPoint("BOTTOMRIGHT", -POPUP_PAD, POPUP_PAD)
     p.scroll:EnableMouseWheel(true)
     p.scroll:SetScript("OnMouseWheel", function(self, delta)
-        local new = self:GetVerticalScroll() - delta * POPUP_ROW_H * 2
+        local new = self:GetVerticalScroll() - delta * POPUP_ROW_H * 3
         new = math.max(0, math.min(new, self:GetVerticalScrollRange()))
         self:SetVerticalScroll(new)
     end)
