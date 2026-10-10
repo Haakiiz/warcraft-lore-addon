@@ -70,20 +70,21 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 
 | NPC | NPC ID | Zone | Coords | Games |
 |---|---|---|---|---|
-| Grunt Maug | 15460 | Orgrimmar | 31.0, 65.2 | TFT |
-| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
-| Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT |
-| Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT |
-| Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
-| Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT |
-| Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT |
-| Cairne Bloodhoof | 3057 | Thunder Bluff | 59.4, 51.4 | WC3, TFT |
-| Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT |
-| Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT |
+| Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
+| Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
+| Illiyana Moonblaze | 14753 | Ashenvale | 61.4, 83.8 | BOOK |
+| Shael'dryn | 3916 | Ashenvale | 53.4, 46.2 | BOOK |
+| Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
 | Arch Druid Fandral Staghelm | 3516 | Darnassus | 34.4, 8.4 | BOOK |
 | Tyrande Whisperwind | 7999 | Darnassus | 38.4, 80.6 | WC3, TFT, BOOK |
-| Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
-| Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
+| Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
+| Innkeeper Grosk | 6928 | Durotar | 51.4, 41.6 | BOOK |
+| Master Gadrin | 3188 | Durotar | 56.0, 74.6 | BOOK |
+| Swart | 3173 | Durotar | 54.4, 42.4 | BOOK |
+| Zalazane | 3205 | Durotar | 66.4, 87.4 | BOOK |
+| Morbent Fel | 1200 | Duskwood | 17.2, 33.4 | BOOK |
+| Watcher Cutford | 1436 | Duskwood | 45.0, 67.4 | BOOK |
+| Watcher Ladimore | 576 | Duskwood | 73.4, 46.6 | BOOK |
 | Do'gol | 5087 | Dustwallow Marsh | 36.4, 30.8 | TFT |
 | Draz'Zilb | 4501 | Dustwallow Marsh | 37.0, 33.0 | TFT |
 | Lady Jaina Proudmoore | 4968 | Dustwallow Marsh | 66.2, 49.0 | WC3, TFT |
@@ -91,19 +92,86 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Overlord Mok'Morokk | 4500 | Dustwallow Marsh | 36.2, 31.4 | BOOK |
 | Pained | 4965 | Dustwallow Marsh | 66.2, 49.0 | BOOK |
 | Tharg | 4502 | Dustwallow Marsh | 37.2, 31.4 | TFT |
+| Innkeeper Farley | 295 | Elwynn Forest | 43.8, 65.8 | BOOK |
+| Marshal Dughan | 240 | Elwynn Forest | 42.2, 65.8 | BOOK |
+| Zaldimar Wefhellt | 328 | Elwynn Forest | 43.2, 66.2 | BOOK |
+| Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
+| Apothecary Lydon | 2216 | Hillsbrad Foothills | 61.4, 19.2 | BOOK |
 | Marshal Redpath | 2263 | Hillsbrad Foothills | 49.6, 58.6 | BOOK |
-| Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK |
-| Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK |
-| Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT |
-| Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK |
+| Advisor Belgrum | 2918 | Ironforge | 76.8, 10.4 | BOOK |
+| Bink | 5144 | Ironforge | 26.8, 8.6 | BOOK |
+| Daryl Riknussun | 5159 | Ironforge | 60.2, 37.1 | BOOK |
+| Dink | 7312 | Ironforge | 26.8, 8.4 | BOOK |
+| Gryth Thurden | 1573 | Ironforge | 55.5, 47.7 | BOOK |
+| High Explorer Magellas | 5387 | Ironforge | 69.9, 18.2 | BOOK |
+| High Priest Rohan | 11406 | Ironforge | 23.4, 6.4 | BOOK |
+| High Tinker Mekkatorque | 7937 | Ironforge | 69.0, 49.0 | BOOK |
+| Huntress Swiftriver | 15457 | Ironforge | 71.2, 69.7 | BOOK |
+| King Magni Bronzebeard | 2784 | Ironforge | 39.4, 55.8 | BOOK |
+| Reyna Stonebranch | 5137 | Ironforge | 55.4, 58.8 | BOOK |
+| Vyrin Swiftwind | 1156 | Loch Modan | 81.8, 64.2 | BOOK |
+| Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT, BOOK |
+| Narm Skychaser | 3066 | Mulgore | 48.4, 59.2 | BOOK |
+| Eitrigg | 3144 | Orgrimmar | 34.2, 39.0 | BOOK |
+| Grunt Maug | 15460 | Orgrimmar | 31.0, 65.2 | TFT |
+| High Overlord Saurfang | 14720 | Orgrimmar | 50.4, 76.0 | BOOK |
+| Kor'jus | 3329 | Orgrimmar | 49.0, 54.0 | BOOK |
+| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
+| Saru Steelfury | 3355 | Orgrimmar | 82.2, 23.0 | BOOK |
+| Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT, BOOK |
+| Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT, BOOK |
+| Zor Lonetree | 4047 | Orgrimmar | 39.0, 38.0 | BOOK |
+| Magistrate Solomon | 344 | Redridge Mountains | 29.8, 44.6 | BOOK |
+| Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT, BOOK |
+| Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT, BOOK |
+| Anduin Wrynn | 1747 | Stormwind City | 77.4, 18.4 | BOOK |
+| Archbishop Benedictus | 1284 | Stormwind City | 39.4, 27.4 | BOOK |
+| Archmage Malin | 2708 | Stormwind City | 39.8, 80.4 | BOOK |
+| Baros Alexston | 1646 | Stormwind City | 49.0, 30.2 | BOOK |
+| Brother Sarno | 7917 | Stormwind City | 40.4, 30.4 | BOOK |
+| Count Remington Ridgewell | 2285 | Stormwind City | 74.0, 30.0 | BOOK |
+| Elling Trias | 482 | Stormwind City | 60.0, 64.4 | BOOK |
+| General Marcus Jonathan | 466 | Stormwind City | 63.4, 75.8 | BOOK |
+| High Priestess Laurena | 376 | Stormwind City | 38.4, 26.2 | BOOK |
+| Highlord Bolvar Fordragon | 1748 | Stormwind City | 77.4, 18.8 | BOOK |
+| Lady Katrana Prestor | 1749 | Stormwind City | 77.6, 18.6 | BOOK |
+| Lord Grayson Shadowbreaker | 928 | Stormwind City | 37.2, 33.0 | BOOK |
+| Major Mattingly | 14394 | Stormwind City | 61.4, 78.4 | BOOK |
+| Master Mathias Shaw | 332 | Stormwind City | 75.8, 59.8 | BOOK |
+| Ol' Emma | 3520 | Stormwind City | 52.4, 41.8 | BOOK |
+| Osric Strang | 1323 | Stormwind City | 74.2, 47.4 | BOOK |
+| Renzik "The Shiv" | 6946 | Stormwind City | 75.8, 60.2 | BOOK |
+| Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT, BOOK |
+| Innkeeper Wiley | 6791 | The Barrens | 62.0, 39.4 | BOOK |
+| Jazzik | 3498 | The Barrens | 61.8, 38.8 | BOOK |
+| Jorn Skyseer | 3387 | The Barrens | 44.8, 59.0 | BOOK |
+| Wharfmaster Dizzywig | 3453 | The Barrens | 63.2, 38.4 | BOOK |
+| Daisy | 4507 | Thousand Needles | 78.8, 75.4 | BOOK |
+| Fizzle Brassbolts | 4454 | Thousand Needles | 78.0, 77.0 | BOOK |
+| Jinky Twizzlefixxit | 6730 | Thousand Needles | 77.6, 77.8 | BOOK |
+| Pozzik | 4630 | Thousand Needles | 80.0, 75.8 | BOOK |
+| Razzeric | 4706 | Thousand Needles | 80.2, 76.0 | BOOK |
+| Rizzle Brassbolts | 4720 | Thousand Needles | 77.2, 77.4 | BOOK |
+| Beram Skychaser | 3032 | Thunder Bluff | 22.2, 19.0 | BOOK |
+| Cairne Bloodhoof | 3057 | Thunder Bluff | 59.4, 51.4 | WC3, TFT, BOOK |
+| Hamuul Runetotem | 5769 | Thunder Bluff | 78.4, 28.4 | BOOK |
+| Magatha Grimtotem | 4046 | Thunder Bluff | 70.2, 30.8 | BOOK |
+| Siln Skychaser | 3030 | Thunder Bluff | 23.0, 20.4 | BOOK |
+| Tigor Skychaser | 3031 | Thunder Bluff | 23.4, 19.2 | BOOK |
 | Gordo | 10666 | Tirisfal Glades | 39.8, 51.2 | FK |
-| Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
-| Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
+| Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK, BOOK |
+| Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK, BOOK |
+| Master Apothecary Faranell | 2055 | Undercity | 48.4, 69.4 | BOOK |
+| Parqual Fintallas | 4488 | Undercity | 57.4, 65.4 | BOOK |
+| Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT, BOOK |
+| Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK, BOOK |
 | Gregory | 231500 | Western Plaguelands | 69.4, 79.6 | WC3 |
 | Gregory | 232932 | Western Plaguelands | 39.4, 67.2 | WC3 |
 | Uther | 232920 | Western Plaguelands | 47.0, 69.4 | WC2, WC3 |
+| Korialstrasz | 233382 | Wetlands | 74.2, 70.0 | BOOK |
+| Krasus | 232624 | Wetlands | 74.4, 70.0 | BOOK |
 
-Some Western Plaguelands NPCs use Season of Discovery NPC IDs and may not exist in Forever.
+Some NPCs in the Western Plaguelands and the Wetlands use Season of Discovery NPC IDs and may not exist in Forever.
 
 **Negative check:** hover over an Orgrimmar Grunt. The tooltip should get no extra line, and `/wcl` should show the "No known Warcraft history" text.
 
