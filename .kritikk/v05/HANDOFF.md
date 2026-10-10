@@ -28,7 +28,7 @@ Remove anything unfinished or uncertain rather than ship it.
 | P2 Robustness: survive API changes, batch alerts, /wcl why | Core.lua, Compat.lua, Toast.lua, tests/test_guard.py | round 1 merged; NEEDS CRITIC |
 | P3 Account-wide met + meet counts (migration 2) | SavedData.lua, Core.lua (met), tests/test_saved_data.py | round 1 merged; NEEDS CRITIC |
 | P4 Options panel + mouse-wheel lists | Options.lua, .toc, Browser.lua, tests/test_options.py | round 1 merged; /wcl options wired; NEEDS CRITIC |
-| P5 Data quality audit | Data.lua, README test table | worker still running at 01:15 (branch origin/v05/p5-data); merge when pushed, then critic |
+| P5 Data quality audit | Data.lua, README test table, tests/test_related.py | round 1 merged (110 entries; Smythe + Whessan removed, 19 related links added); NEEDS CRITIC |
 
 ### Open points from the workers (for the critics / round 2)
 - P1: model is only 44 px inside the ring (square model cannot be circle-masked) – critic should judge if it
