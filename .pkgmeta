@@ -8,6 +8,7 @@ ignore:
   - README.md
   - TASKS.md
   - TODO.md
+  - ROADMAP.md
   - tests
   - tools
   - .kritikk
