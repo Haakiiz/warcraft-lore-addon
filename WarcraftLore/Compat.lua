@@ -172,6 +172,43 @@ function C.SetUnitPortrait(texture, unit)
     return ok
 end
 
+-- A live 3D model frame for an NPC. `onLoaded` runs when the client has the model ready.
+-- Returns nil when the client has no model frames (the caller keeps the 2D portrait).
+function C.CreateCreatureModel(parent, onLoaded)
+    local ok, model = pcall(CreateFrame, "PlayerModel", nil, parent)
+    if not (ok and model and model.SetCreature) then
+        noteMissing("PlayerModel")
+        return nil
+    end
+    pcall(model.SetScript, model, "OnModelLoaded", function()
+        pcall(onLoaded, model)
+    end)
+    return model
+end
+
+-- Shows the NPC on `model`: the live unit when one is given, otherwise the creature by NPC ID
+-- (works without the NPC being nearby). Framed on the face, no rotation.
+-- Returns true when the model is already loaded; false when it may still load (OnModelLoaded
+-- follows) or the call failed.
+function C.SetCreatureModel(model, npcID, unit)
+    local ok = pcall(function()
+        if model.ClearModel then model:ClearModel() end
+        if unit and C.UnitExists(unit) and model.SetUnit then
+            model:SetUnit(unit)
+        else
+            model:SetCreature(npcID)
+        end
+        if model.SetPortraitZoom then model:SetPortraitZoom(1) end
+        if model.SetFacing then model:SetFacing(0) end
+    end)
+    if not ok then
+        noteMissing("SetCreature")
+        return false
+    end
+    local okFile, file = pcall(function() return model.GetModelFileID and model:GetModelFileID() end)
+    return okFile and file ~= nil and file ~= 0
+end
+
 -- Registers an event if the client knows it. Returns false instead of erroring
 -- when the event does not exist in this client version.
 function C.RegisterEventSafe(frame, event)
