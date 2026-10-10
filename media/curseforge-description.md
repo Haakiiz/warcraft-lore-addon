@@ -8,6 +8,8 @@ It flags NPCs who also appear in the real-time strategy games:
 - Warcraft III Reforged: Forsaken Kingdom
 - Warcraft novels and books (labelled "Book", never presented as a game appearance)
 
+Every veteran is checked against a source: 112 confirmed so far, with more as new zones open.
+
 ## What you get
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
