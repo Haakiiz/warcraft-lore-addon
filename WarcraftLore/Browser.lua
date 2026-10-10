@@ -60,6 +60,12 @@ local items            -- all veterans sorted by name: { id, entry, name, lower,
 local zoneItems        -- popup list: "All zones" + every zone, sorted
 local campaignItems    -- popup list: "All campaigns" + campaigns grouped under their (earliest) game
 
+-- Search text: lower case without spaces or punctuation, so "mugthol" finds Mug'thol and
+-- "thousandneedles" or "needles" finds Thousand Needles.
+local function normalize(s)
+    return (s:lower():gsub("[%s%p]", ""))
+end
+
 local function buildIndex()
     if items then
         return
@@ -109,6 +115,12 @@ local function buildIndex()
                 end
             end
         end
+        -- The search box matches the name and every zone the veteran is found in.
+        local haystack = { normalize(it.name) }
+        for z in pairs(it.zones) do
+            haystack[#haystack + 1] = normalize(z)
+        end
+        it.search = table.concat(haystack, "\1")
         items[#items + 1] = it
     end
     table.sort(items, function(a, b)
@@ -182,7 +194,7 @@ local function matches(it, anyGame, hideBooks)
     elseif state.status == 3 and met then
         return false
     end
-    if state.query ~= "" and not string.find(it.lower, state.query, 1, true) then
+    if state.query ~= "" and not string.find(it.search, state.query, 1, true) then
         return false
     end
     return true
@@ -862,7 +874,7 @@ local function buildSearch(inner, above)
         return holder
     end
     raise(searchEdit)
-    searchHint:SetText("Search by name")
+    searchHint:SetText("Search by name or zone")
     searchEdit:SetPoint("TOPLEFT", holder, "TOPLEFT", 27, -3)
     searchEdit:SetPoint("BOTTOMRIGHT", holder, "BOTTOMRIGHT", -9, 3)
     searchEdit:SetTextColor(COL.text[1], COL.text[2], COL.text[3])
@@ -873,7 +885,7 @@ local function buildSearch(inner, above)
         else
             searchHint:Hide()
         end
-        local q = strtrim(raw):lower()
+        local q = normalize(raw)
         if q ~= state.query then
             state.query = q
             refreshFiltered()

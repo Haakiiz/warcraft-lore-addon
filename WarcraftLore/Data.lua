@@ -31,8 +31,8 @@
 --               in WarcraftLore/Portraits/, e.g. "Thrall" for Portraits/Thrall.tga.
 --               Without it the window shows the NPC's normal WoW portrait.
 --   sources     (required) List of links (http/https).
---   confidence  (required) "confirmed" or "uncertain".
---   searched    (required when confidence = "uncertain") Where you looked for confirmation.
+--   confidence  (required) "confirmed". Only confirmed veterans ship; leave out anything you cannot
+--               confirm from a source (tests/validate_db.py rejects "uncertain").
 --
 -- Rule: never invent mission names, items or NPC IDs. If something is missing, leave the field empty.
 -- Run tests/validate_db.py after changes.
@@ -261,31 +261,6 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/item=3553",
         },
         confidence = "confirmed",
-    },
-
-    [2543] = {
-        name = "Archmage Ansirem Runeweaver",
-        zone = "Alterac Mountains",
-        coords = "18.8, 78.4",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "Path of the Damned (Undead)",
-                missions = { "Under the Burning Sky" },
-                role = "Possible enemy archmage (random enemy hero name listed in the mission notes \"since patch 1.33\"); not a fixed story character",
-            },
-        },
-        story = "Ansirem Runeweaver is a member of the Council of Six, the leaders of the Kirin Tor of Dalaran. "
-             .. "The wiki says he fought outside Dalaran against Arthas and the Scourge while Kel'Thuzad summoned Archimonde. "
-             .. "In World of Warcraft he is a human quest giver in the Dalaran Crater in the Alterac Mountains.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Archmage_Ansirem_Runeweaver",
-            "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
-            "https://www.wowhead.com/classic/npc=2543",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg Ansirem Runeweaver page and Under the Burning Sky (WC3 Undead); the mission page only lists his name among enemy random-hero names in its Notes section (\"Since patch 1.33 ...\"), so the link rests on a name alone. Whether later patches (1.36.1, 2.0) changed these names could not be verified from the wiki.",
     },
 
     -- ===================================================================== Darnassus
@@ -652,85 +627,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [3390] = {
-        name = "Apothecary Helbrim",
-        zone = "The Barrens",
-        coords = "51.4, 30.2",
-        appearances = {
-            {
-                game = "TFT",
-                campaign = "The Founding of Durotar (Orc bonus campaign)",
-                missions = { "A Blaze of Glory" },
-                role = "Mentioned: a goblin shop on Theramore Isle is called \"Helbrim's Potions\"",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Apothecary_Helbrim",
-            "https://warcraft.wiki.gg/wiki/Helbrim's_Potions",
-            "https://www.wowhead.com/classic/npc=3390",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Apothecary Helbrim, Helbrim's Potions, A Blaze of Glory). The wiki itself says the shared name may be a coincidence. "
-                .. "It suggests Helbrim may have been a human who followed Jaina before becoming Forsaken, but that is not confirmed.",
-    },
-
-    -- ===================================================================== Silverpine Forest
-    [1938] = {
-        name = "Dalar Dawnweaver",
-        zone = "Silverpine Forest",
-        coords = "44.2, 39.8",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "Path of the Damned (Undead)",
-                missions = { "Under the Burning Sky" },
-                role = "Enemy hero (Archmage), Warcraft III: Reforged only. Originally one of the random Archmage hero names; since patch 1.33 "
-                    .. "one of seven named archmages defending Dalaran, so he may be missing from a given playthrough",
-            },
-        },
-        story = "Dalar was an archmage of the Kirin Tor and was present when Kel'Thuzad summoned Archimonde at Dalaran. "
-             .. "He died in the Scourge's attack on the city and was raised as one of the undead. "
-             .. "Sylvanas freed him from the Lich King's control, and he joined the Forsaken. "
-             .. "In World of Warcraft he works at the Sepulcher in Silverpine Forest and sends adventurers after Archmage Arugal.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Dalar_Dawnweaver",
-            "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
-            "https://warcraft.wiki.gg/wiki/Random_hero",
-            "https://www.wowhead.com/classic/npc=1938",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Dalar Dawnweaver, Under the Burning Sky, Random hero). His Warcraft III appearance is a random Archmage hero name; "
-                .. "the Random hero page says such heroes \"can only be guessed at, if they exist as actual characters at all\", "
-                .. "although Dalar's own page treats him as present at Archimonde's summoning. Whether later patches (1.36.1, 2.0) changed these names could not be verified from the wiki.",
-    },
-
-    [1948] = {
-        name = "Snarlmane",
-        zone = "Silverpine Forest",
-        coords = "65.2, 24.0",
-        appearances = {
-            {
-                game = "TFT",
-                campaign = "Legacy of the Damned (Undead)",
-                missions = { "The Dark Lady" },
-                role = "Gnoll leader; Sylvanas has a banshee possess him and turns his gnolls against Varimathras' forces",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Snarlmane",
-            "https://warcraft.wiki.gg/wiki/Snarlmane_(Warcraft_III)",
-            "https://www.wowhead.com/classic/npc=1948",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Snarlmane, Snarlmane (Warcraft III)). Both pages only speculate that the WoW gnoll at Fenris Keep "
-                .. "and the Warcraft III gnoll are the same or connected; no source confirms it.",
-    },
-
     -- ===================================================================== Stonetalon Mountains
     [10182] = {
         name = "Rexxar",
@@ -815,40 +711,11 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [3995] = {
-        name = "Witch Doctor Jin'Zil",
-        zone = "Stonetalon Mountains",
-        coords = "74.4, 97.8",
-        appearances = {
-            {
-                game = "TFT",
-                campaign = "The Founding of Durotar (Orc bonus campaign)",
-                missions = { "A Blaze of Glory" },
-                role = "Mentioned: a voodoo shop in Theramore is called \"Jin'Zil's Magic Shack\"",
-            },
-        },
-        story = "",
-        items = {
-            { id = 5594, name = "Letter to Jin'Zil", note = "Quest item addressed to him" },
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Witch_Doctor_Jin'Zil",
-            "https://warcraft.wiki.gg/wiki/Jin'Zil%27s_Magic_Shack",
-            "https://warcraft.wiki.gg/wiki/A_Blaze_of_Glory_(WC3_Orc)",
-            "https://www.wowhead.com/classic/npc=3995",
-            "https://www.wowhead.com/classic/item=5594",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Witch Doctor Jin'Zil, A Blaze of Glory). The wiki only says he might have been present "
-                .. "during the first attack on Theramore, because a voodoo shop there carries his name.",
-    },
-
     -- ===================================================================== Dustwallow Marsh
     [4968] = {
         name = "Lady Jaina Proudmoore",
         zone = "Dustwallow Marsh",
         coords = "66.2, 49.0",
-        related = { 4967 },
         appearances = {
             {
                 game = "WC3",
@@ -898,83 +765,6 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/npc=4968",
         },
         confidence = "confirmed",
-    },
-
-    [4967] = {
-        name = "Archmage Tervosh",
-        zone = "Dustwallow Marsh",
-        coords = "66.4, 49.2",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "Cry of the Warsong" },
-                role = "Random enemy archmage hero name (Warcraft III: Reforged only; names added in patch 1.33; the Cry of the Warsong notes say they were reverted in 1.36.1 and restored in 2.0); only two of Xylem, Tervosh and Horace Alder appear in a playthrough",
-            },
-        },
-        story = "During the Third War, Tervosh was part of the human forces in the Stonetalon Mountains. "
-             .. "His base was attacked by the Warsong clan led by Grommash Hellscream. "
-             .. "In World of Warcraft he is a close friend and advisor to Jaina Proudmoore and gives quests in the Theramore Isle tower.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Archmage_Tervosh",
-            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
-            "https://www.wowhead.com/classic/npc=4967",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg pages Archmage Tervosh and Cry of the Warsong (WC3 Orc); the name is a random hero name restored in patch 2.0 (Cry of the Warsong notes), so no source confirms an actual character",
-    },
-
-    [8140] = {
-        name = "Brother Karman",
-        zone = "Dustwallow Marsh",
-        coords = "67.4, 47.4",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "Cry of the Warsong" },
-                role = "Random enemy paladin hero name, Lordaeron Corps (Warcraft III: Reforged only; names added in patch 1.33; the Cry of the Warsong notes say they were reverted in 1.36.1 and restored in 2.0)",
-            },
-        },
-        story = "During the Third War, Brother Karman was part of the Lordaeron Corps in the Stonetalon Mountains. "
-             .. "His base was attacked by Grommash Hellscream and the Warsong clan. "
-             .. "In World of Warcraft he is a paladin trainer on Theramore Isle, outside Foothold Citadel.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Brother_Karman",
-            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
-            "https://www.wowhead.com/classic/npc=8140",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg pages Brother Karman and Cry of the Warsong (WC3 Orc); the name is a random hero name restored in patch 2.0 (Cry of the Warsong notes), so no source confirms an actual character",
-    },
-
-    [4889] = {
-        name = "Torq Ironblast",
-        zone = "Dustwallow Marsh",
-        coords = "67.4, 48.0",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "Cry of the Warsong", "Where Wyverns Dare" },
-                role = "Random enemy mountain king hero name (Warcraft III: Reforged only; names added in patch 1.33; the Cry of the Warsong notes say they were reverted in 1.36.1 and restored in 2.0)",
-            },
-        },
-        story = "During the Third War, Torq Ironblast commanded the Gilneas Brigade in the Stonetalon Mountains. "
-             .. "His base was attacked by Grommash Hellscream and the Warsong clan. "
-             .. "He was then guarding the entrance to Stonetalon Peak. "
-             .. "In World of Warcraft he is a gunsmith in Foothold Citadel on Theramore Isle.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Torq_Ironblast",
-            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
-            "https://warcraft.wiki.gg/wiki/Where_Wyverns_Dare_(WC3_Orc)",
-            "https://www.wowhead.com/classic/npc=4889",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg pages Torq Ironblast, Cry of the Warsong and Where Wyverns Dare (WC3 Orc); the name is a random hero name restored in patch 2.0 (Cry of the Warsong notes), so no source confirms an actual character",
     },
 
     [4501] = {
@@ -1203,38 +993,6 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/npc=232932/gregory",
         },
         confidence = "confirmed",
-    },
-
-    [1852] = {
-        name = "Araj the Summoner",
-        zone = "Western Plaguelands",
-        coords = "45.4, 69.2",
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "March of the Scourge" },
-                role = "Reforged only: enemy Lich hero commanding the Undead Ravagers in the attack on Hearthglen (replaces a randomized Lich name)",
-            },
-        },
-        story = "Araj served the Lich King during the Third War and became the regional Scourge commander in the Western Plaguelands, where he commanded the Undead Ravagers against Hearthglen. "
-             .. "He was the former leader of Scholomance before aiding the Scourge invasion of Caer Darrow and later claiming Andorhal as his own. "
-             .. "From Andorhal he spread the plague through the Plague Cauldrons and held off the Forsaken at the Bulwark and the Alliance at Chillwind Camp. "
-             .. "In World of Warcraft adventurers defeat him on the orders of Commander Ashlam Valorfist and High Executor Derrington.",
-        items = {
-            { id = 14610, name = "Araj's Scarab", note = "Quest item contained in Araj's Phylactery, guarded by Araj; his scarab was used to create the Scholomance key" },
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Araj_the_Summoner",
-            "https://warcraft.wiki.gg/wiki/March_of_the_Scourge_(WC3_Human)",
-            "https://warcraft.wiki.gg/wiki/Araj%27s_Scarab",
-            "https://www.wowhead.com/classic/npc=1852/araj-the-summoner",
-            "https://www.wowhead.com/classic/item=14610",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Araj the Summoner, March of the Scourge (WC3 Human), Random hero, Warcraft III patch 1.36.1). "
-                .. "His Warcraft III appearance rests on a former random Lich hero name that Reforged fixed in this mission; "
-                .. "patch 1.36.1 rolled back changes from 1.33, and no page confirms that this change survived.",
     },
 
     [10666] = {
@@ -1599,30 +1357,6 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/npc=5734",
         },
         confidence = "confirmed",
-    },
-
-    [2492] = {
-        name = "Lexington Mortaim",
-        zone = "Undercity",
-        coords = "84.2, 16.0",
-        appearances = {
-            {
-                game = "FK",
-                campaign = "Forsaken Kingdom (Undead)",
-                missions = { "City of the Dead" },
-                role = "Quest NPC: the optional quest \"Relic Raiders\" ends with returning an artifact to him",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
-            "https://warcraft.wiki.gg/wiki/Lexington_Mortaim",
-            "https://www.wowhead.com/classic/npc=2492",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg (Lexington Mortaim, City of the Dead). The mission's quest text names him and the name is unique, "
-                .. "but his own wiki page does not mention the mission.",
     },
 
     -- Level 1-30 zones and dungeons (2026-10-08, Haiku workers + Haiku critics, checked by the orchestrator)
@@ -2488,33 +2222,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [639] = {
-        name = "Edwin VanCleef",
-        zone = "The Deadmines",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Beyond the Dark Portal",
-                missions = {},
-                role = "Supporting Alliance character in the novel (not a game appearance), listed in the novel's cast table; the wiki article credits him with supervising the Stonemasons who built Nethergarde Keep (chapter not verified)",
-            },
-        },
-        story = "VanCleef was the Stonemasons' Guildmaster and one of the architects who rebuilt Stormwind City after the Second War. "
-             .. "He supervised the construction of Nethergarde Keep, which was commissioned to keep watch over the Dark Portal. "
-             .. "When the House of Nobles refused to pay the Stonemasons properly, VanCleef led them in rioting in Stormwind and out of the city. "
-             .. "In World of Warcraft he took over gold mines in Westfall and led the Defias Brotherhood from a ship deep in the Deadmines until adventurers defeated him there.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Edwin_VanCleef",
-            "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
-            "https://warcraft.wiki.gg/wiki/Nethergarde_Keep",
-            "https://warcraft.wiki.gg/wiki/Report_on_the_Defias_Brotherhood",
-            "https://www.wowhead.com/classic/npc=639/edwin-vancleef",
-        },
-        confidence = "uncertain",
-        searched = "warcraft.wiki.gg article Edwin VanCleef (novel and WoW sections of the same character page), Beyond the Dark Portal cast table (Edwin VanCleef is in the Alliance column of the Supporting block, checked in the wikitext), Nethergarde Keep, Report on the Defias Brotherhood. The novel text itself was not read, so the chapter is unknown. No RTS game appearance found.",
-    },
-
     [3679] = {
         name = "Naralex",
         zone = "Wailing Caverns",
@@ -2540,41 +2247,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [4275] = {
-        name = "Archmage Arugal",
-        zone = "Shadowfang Keep",
-        related = { 3887 },
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Lord of His Pack",
-                missions = {},
-                role = "Minor character in the short story (not a game appearance; Leaders of Azeroth series, centred on Genn Greymane): named in the text as \"the infamous royal archmage known as Arugal\"",
-            },
-            {
-                game = "BOOK",
-                campaign = "In the Shadow of the Sun",
-                missions = {},
-                role = "Mentioned (listed in the short story's Characters section; short story, not a game appearance)",
-            },
-            {
-                game = "BOOK",
-                campaign = "Wolfheart",
-                missions = {},
-                role = "Mentioned (listed in the novel's Characters section; novel, not a game appearance)",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Arugal",
-            "https://warcraft.wiki.gg/wiki/Lord_of_His_Pack",
-            "https://worldofwarcraft.blizzard.com/en-us/media/short-story/genn-greymane-lord-of-his-pack",
-            "https://www.wowhead.com/classic/npc=4275/archmage-arugal",
-        },
-        confidence = "uncertain",
-        searched = "Official story text at worldofwarcraft.blizzard.com (Genn Greymane, Lord of His Pack) checked: it names Arugal. Lord of His Pack wiki article cast table lists him under Minor. The Arugal article cites this story for its Gilneas background; that background was not checked line by line against the story text, so no story is written. No RTS game appearance found.",
-    },
     -- ===================================================================== Scarlet Monastery
     [3976] = {
         name = "Scarlet Commander Mograine",
@@ -2743,29 +2415,6 @@ ns.NPCS = {
             "https://www.wowhead.com/classic/npc=4488",
         },
         confidence = "confirmed",
-    },
-
-    [4611] = {
-        name = "Doctor Herbert Halsey",
-        zone = "Undercity",
-        coords = "47.4, 73.0",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Minor character named in the novel (not a game appearance): listed as Herbert Halsey in the character list; Vellcinda Benton compares herself to Doctor Halsey in chapter 19",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Doctor_Herbert_Halsey",
-            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
-            "https://www.wowhead.com/classic/npc=4611",
-        },
-        confidence = "uncertain",
-        searched = "Read the wiki NPC page and the Before the Storm page. The novel's character list links 'Herbert Halsey' (undead male) to this NPC page; that link is the only identity link. The novel text only mentions 'Doctor Halsey' in chapter 19, as a comparison. The NPC page's trivia says the name is borrowed from Lovecraft's Herbert West. The identity is therefore an inference from the wiki link, not an explicit statement in the text.",
     },
 
 -- Checked by critic: book_thunderbluff. PASS and FIX entries only.
@@ -3425,7 +3074,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- ===================================================================== Zone redo 2026-10-08 (Haiku v3 workers + critics)
 
     -- ===================================================================== Ironforge
     [1573] = {
@@ -3798,55 +3446,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- ===================================================================== Shadowfang Keep
-    [3887] = {
-        name = "Baron Silverlaine",
-        zone = "Shadowfang Keep",
-        coords = "",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Arthas: Rise of the Lich King",
-                missions = {},
-                role = "Mentioned (listed in the Mentioned column of the book's Characters table; not a game appearance, novel only)",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Arthas:_Rise_of_the_Lich_King",
-            "https://warcraft.wiki.gg/wiki/Baron_Silverlaine_(Classic)",
-            "https://warcraft.wiki.gg/wiki/Baron_Silverlaine",
-            "https://www.wowhead.com/classic/npc=3887",
-        },
-        confidence = "uncertain",
-        searched = "Arthas: Rise of the Lich King Characters table (warcraft.wiki.gg, cached) lists [[Baron Silverlaine]] under Mentioned. That linked article is the retail-era character page; the Classic NPC page (Baron Silverlaine (Classic), Shadowfang Keep, level 20) points to it with a 'For the retail version' hatnote, so the wiki treats them as one character. Wowhead 3887 is 'Baron Silverlaine' in Shadowfang Keep (location 209). The cached novel text has no passage with him, so the book link rests on the Characters table alone. Coordinates not available (Wowhead page has no coordinates).",
-    },
-
-    -- ===================================================================== Scarlet Monastery
-    [242499] = {
-        name = "Highlord Mograine",
-        zone = "Scarlet Monastery",
-        coords = "",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "We Ride Forth",
-                missions = {},
-                role = "Mentioned (listed in the Mentioned column of the short story's Characters table; not a game appearance, short story only)",
-            },
-        },
-        story = "",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Alexandros_Mograine",
-            "https://warcraft.wiki.gg/wiki/We_Ride_Forth",
-            "https://www.wowhead.com/classic/npc=242499",
-        },
-        confidence = "uncertain",
-        searched = "Wowhead 242499 is 'Highlord Mograine' (Classic NPC, located in Scarlet Monastery, location 796; no coordinates on the page). The warcraft.wiki.gg article Alexandros Mograine has a Classic section (Four Horsemen (Classic) and the Corrupted Ashbringer Scarlet Monastery event, with Npclocations at Crusader's Chapel, Scarlet Monastery Cathedral), which places the Classic Highlord in the Scarlet Monastery as Alexandros. The article does not cite 242499 by ID. We Ride Forth (Blizzard short story by Robert Brooks, 2020) Characters table lists [[Alexandros Mograine]] under Mentioned. Not the same person as Scarlet Commander Mograine / Renault Mograine (3976), who has its own entry.",
-    },
-
     -- ===================================================================== Thunder Bluff
     [3032] = {
         name = "Beram Skychaser",
@@ -3945,28 +3544,4 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [10645] = {
-        name = "Thalia Amberhide",
-        zone = "Thousand Needles",
-        coords = "46.0, 51.4",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Traveler: The Spiral Path",
-                missions = {},
-                role = "Minor (Characters section, 'Other' column): tauren of Freewind Post (novel, not a game appearance); the scenes she appears in were not verified",
-            },
-        },
-        story = "In World of Warcraft Thalia Amberhide resides in the inn of Freewind Post in Thousand Needles. "
-             .. "She is a close friend of Lakota Windsong, the tauren who was kidnapped by Arnak Grimtotem. "
-             .. "She is listed among the characters of the novel Traveler: The Spiral Path.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Thalia_Amberhide",
-            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
-            "https://www.wowhead.com/classic/npc=10645",
-        },
-        confidence = "uncertain",
-        searched = "Listed in the novel's Characters section ('Other' column), confirmed in raw wikitext; her wiki page cites no book line and her book scenes were not read",
-    },
 }

@@ -3,8 +3,12 @@
 ## v0.4.0
 
 - **Related veterans:** the lore window has a new "Related" section. Click a name to follow the thread,
-  e.g. Thrall → Cairne Bloodhoof → Baine, or Jaina → Archmage Tervosh. 15 links so far
+  e.g. Thrall → Cairne Bloodhoof → Baine, or Tyrande → Shandris Feathermoon. 13 links so far
   (family, allies and rivals), with more to come as zones are added.
+- **Search by name or zone:** the search box in the Veterans list now also matches zones, and ignores
+  apostrophes, dashes and spaces ("mugthol" finds Mug'thol, "needles" finds everyone in Thousand Needles).
+- **Only confirmed veterans:** 16 entries whose link to the RTS games or books could not be confirmed
+  have been removed. The list now holds 112 veterans you can trust.
 - Your saved settings and met list now carry a version number, so future updates can change how
   data is stored without losing anything. Nothing to do on your side.
 

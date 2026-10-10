@@ -210,8 +210,10 @@ def check_entries(npcs):
             err(f"'coords' must look like \"32.0, 37.8\", found {e['coords']!r}")
 
         conf = e.get("confidence")
-        if "confidence" in e and conf not in CONFIDENCE:
-            err(f"'confidence' must be \"confirmed\" or \"uncertain\", found {conf!r}")
+        if conf == "uncertain":
+            err("only confirmed veterans ship: remove this entry or confirm it from a source")
+        elif "confidence" in e and conf not in CONFIDENCE:
+            err(f"'confidence' must be \"confirmed\", found {conf!r}")
         portrait = e.get("portrait")
         if isinstance(portrait, str) and portrait:
             if not any((PORTRAITS / f"{portrait}.{ext}").exists() for ext in ("tga", "blp")):

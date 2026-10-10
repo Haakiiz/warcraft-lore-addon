@@ -52,7 +52,7 @@ def main():
     results.append(check("Nazgrel: link back to Thrall", nazgrel == ["Thrall"], nazgrel))
 
     jaina = related_names(lua, 4968)
-    results.append(check("Jaina: own + incoming", {"Archmage Tervosh", "Thrall", "Rexxar"} == set(jaina), jaina))
+    results.append(check("Jaina: incoming only", {"Thrall", "Rexxar"} == set(jaina), jaina))
 
     results.append(check("Krasus <-> Korialstrasz", related_names(lua, 232624) == ["Korialstrasz"]))
     results.append(check("no relations: empty list", related_names(lua, 3139) == []))  # Gar'Thok

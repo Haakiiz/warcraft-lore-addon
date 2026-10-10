@@ -30,7 +30,7 @@ Versjonsnummeret i parentes er der simuleringen legger funksjonen, ikke et løft
 - [x] **Relaterte NPC-er** (0.3): følg tråden Thrall → Nazgrel → …
       Feltet `related = { 3230, ... }` i Data.lua, vist som klikkbare rader («Related») i lore-vinduet.
       Det holder å skrive koblingen på én side. `validate_db.py` sjekker at ID-ene finnes, og `tests/test_related.py` tester oppslaget.
-      15 koblinger er lagt inn så langt. Flere kan legges til etter hvert som sonene fylles.
+      13 koblinger er lagt inn så langt. Flere kan legges til etter hvert som sonene fylles.
 - [x] **Schema-versjon for lagrede data** (`SavedData.lua`, testet av `tests/test_saved_data.py`).
       `schema` i både `WarcraftLoreDB` og `WarcraftLoreCharDB`, og en liste med migreringer som kjøres ved `ADDON_LOADED`.
       Data fra en nyere versjon blir ikke rørt. En migrering som feiler, prøves igjen ved neste innlasting.

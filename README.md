@@ -12,7 +12,7 @@ What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
 - **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 127" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 112" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
 - **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. Click the pill for the story, right-click to dismiss, shift-drag to move.
 - **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
 
@@ -75,19 +75,15 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT |
 | Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT |
 | Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
-| Apothecary Helbrim | 3390 | The Barrens | 51.4, 30.2 | TFT, *uncertain* |
 | Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT |
 | Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT |
 | Cairne Bloodhoof | 3057 | Thunder Bluff | 59.4, 51.4 | WC3, TFT |
 | Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT |
 | Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT |
-| Witch Doctor Jin'Zil | 3995 | Stonetalon Mountains | 74.4, 97.8 | TFT, *uncertain* |
 | Arch Druid Fandral Staghelm | 3516 | Darnassus | 34.4, 8.4 | BOOK |
 | Tyrande Whisperwind | 7999 | Darnassus | 38.4, 80.6 | WC3, TFT, BOOK |
 | Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
 | Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
-| Archmage Tervosh | 4967 | Dustwallow Marsh | 66.4, 49.2 | WC3, *uncertain* |
-| Brother Karman | 8140 | Dustwallow Marsh | 67.4, 47.4 | WC3, *uncertain* |
 | Do'gol | 5087 | Dustwallow Marsh | 36.4, 30.8 | TFT |
 | Draz'Zilb | 4501 | Dustwallow Marsh | 37.0, 33.0 | TFT |
 | Lady Jaina Proudmoore | 4968 | Dustwallow Marsh | 66.2, 49.0 | WC3, TFT |
@@ -95,32 +91,26 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Overlord Mok'Morokk | 4500 | Dustwallow Marsh | 36.2, 31.4 | BOOK |
 | Pained | 4965 | Dustwallow Marsh | 66.2, 49.0 | BOOK |
 | Tharg | 4502 | Dustwallow Marsh | 37.2, 31.4 | TFT |
-| Torq Ironblast | 4889 | Dustwallow Marsh | 67.4, 48.0 | WC3, *uncertain* |
 | Marshal Redpath | 2263 | Hillsbrad Foothills | 49.6, 58.6 | BOOK |
 | Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK |
 | Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK |
-| Lexington Mortaim | 2492 | Undercity | 84.2, 16.0 | FK, *uncertain* |
 | Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT |
 | Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK |
 | Gordo | 10666 | Tirisfal Glades | 39.8, 51.2 | FK |
-| Dalar Dawnweaver | 1938 | Silverpine Forest | 44.2, 39.8 | WC3, *uncertain* |
-| Snarlmane | 1948 | Silverpine Forest | 65.2, 24.0 | TFT, *uncertain* |
-| Archmage Ansirem Runeweaver | 2543 | Alterac Mountains | 18.8, 78.4 | WC3, *uncertain* |
 | Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
 | Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
-| Araj the Summoner | 1852 | Western Plaguelands | 45.4, 69.2 | WC3, *uncertain* |
 | Gregory | 231500 | Western Plaguelands | 69.4, 79.6 | WC3 |
 | Gregory | 232932 | Western Plaguelands | 39.4, 67.2 | WC3 |
 | Uther | 232920 | Western Plaguelands | 47.0, 69.4 | WC2, WC3 |
 
-Uncertain links show "Warcraft Veteran?" in the tooltip. Some Western Plaguelands NPCs use Season of Discovery NPC IDs and may not exist in Forever.
+Some Western Plaguelands NPCs use Season of Discovery NPC IDs and may not exist in Forever.
 
 **Negative check:** hover over an Orgrimmar Grunt. The tooltip should get no extra line, and `/wcl` should show the "No known Warcraft history" text.
 
 ## Adding an NPC yourself
 
 1. **Find the NPC ID.** Target the NPC in game and type `/wcl id`. Chat shows the name and NPC ID, and whether it is already in the database.
-2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, add it with `confidence = "uncertain"` and write where you looked in `searched`.
+2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, leave it out: only confirmed veterans ship.
 3. **Add an entry** to `WarcraftLore/Data.lua`, inside `ns.NPCS = { … }`, under the right zone heading:
 
    ```lua
@@ -141,7 +131,7 @@ Uncertain links show "Warcraft Veteran?" in the tooltip. Some Western Plagueland
            { id = 5080, name = "Gazlowe's Ledger", note = "Quest item in \"The Missing Shipment\"" },
        },
        sources = { "https://warcraft.wiki.gg/wiki/Monte_Gazlowe" },
-       confidence = "confirmed",    -- or "uncertain" (then also add searched = "…")
+       confidence = "confirmed",    -- only confirmed veterans ship
    },
    ```
 
