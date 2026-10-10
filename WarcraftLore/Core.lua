@@ -156,11 +156,25 @@ end
 
 -------------------------------------------------------------------- Met tracking
 -- A veteran counts as met when the player targets it or mouses over it (a real unit, not
--- a nameplate/coordinate alert and not /wcl test). Stored per character:
--- WarcraftLoreCharDB.met[npcID] = time() of the first meeting.
+-- a nameplate/coordinate alert and not /wcl test). Stored account-wide (SavedData.lua):
+-- WarcraftLoreDB.met[npcID] = { first = time(), count = meetings, by = "Name-Realm" }.
+-- count goes up once per NPC per session, not on every tooltip refresh.
+local metThisSession = {}
+
+local function metEntry(npcID)
+    local db = WarcraftLoreDB
+    local e = db and type(db.met) == "table" and npcID and db.met[npcID]
+    return type(e) == "table" and e or nil
+end
+
 function ns.IsMet(npcID)
-    local db = WarcraftLoreCharDB
-    return (db and db.met and npcID and db.met[npcID] ~= nil) and true or false
+    return metEntry(npcID) ~= nil
+end
+
+-- How many sessions the player has met this NPC ID in (0 = never).
+function ns.MeetCount(npcID)
+    local e = metEntry(npcID)
+    return e and tonumber(e.count) or 0
 end
 
 -- A merged veteran is met when any of its NPC IDs is met.
@@ -198,23 +212,29 @@ function ns.MetCounts()
     return perGame, overall
 end
 
--- Records the first meeting with a database NPC. Returns true if it was new.
+-- Records a meeting with a database NPC. Returns true if it was the first ever.
 function ns.MarkMet(npcID)
-    local db = WarcraftLoreCharDB
+    local db = WarcraftLoreDB
     local entry = npcID and ns.NPCS[npcID]
     if not db or not entry then
         return false -- before ADDON_LOADED, or not a veteran
     end
     if type(db.met) ~= "table" then
-        db.met = {}
+        return false -- account data from a newer version: left alone
     end
-    if db.met[npcID] then
+    if metThisSession[npcID] then
+        return false
+    end
+    metThisSession[npcID] = true
+    local e = metEntry(npcID)
+    if e then
+        e.count = (tonumber(e.count) or 0) + 1
         return false
     end
     local group = ns.VeteranOf(npcID)
     local alreadyMet = group and ns.GroupMet(group) -- another NPC ID of the same veteran was met before
     -- Recorded right away (so a second call in the same frame is a no-op) ...
-    db.met[npcID] = time()
+    db.met[npcID] = { first = time(), count = 1, by = ns.SavedData.CharacterName() }
     -- ... but the chat line and window refreshes wait for the next frame: this is usually
     -- called from inside a tooltip post-call, which should stay quick and must not be
     -- able to break the tooltip if one of our windows errors.
