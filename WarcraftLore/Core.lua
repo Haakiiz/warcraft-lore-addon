@@ -481,6 +481,7 @@ local function cmdHelp()
     chat("/wcl minimap – show or hide the minimap button (now: " .. ((WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and "hidden" or "shown") .. ")")
     chat("/wcl test – show a test alert (small pill, chat line, sound)")
     chat("/wcl reset – move the windows back to the center")
+    chat("/wcl options – open the Warcraft Lore settings")
     chat("/wcl debug – show which APIs the client has")
 end
 
@@ -505,6 +506,10 @@ SlashCmdList.WARCRAFTLORE = function(msg)
         ns.UI.ResetPosition()
         ns.Browser.ResetPosition()
         chat("The windows are back in the center.")
+    elseif cmd == "options" then
+        if not (ns.Options and ns.Options.Open()) then
+            chat("This client has no settings panel for Warcraft Lore.")
+        end
     elseif cmd == "debug" then
         cmdDebug()
     else

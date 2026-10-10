@@ -492,7 +492,7 @@ local function showRowTip(r)
         lines[#lines + 1] = { ns.GAME_LONG[code] or code, gr, gg, gb }
     end
     if ns.GroupMet(it.group) then
-        lines[#lines + 1] = { "Met on this character", COL.met[1], COL.met[2], COL.met[3] }
+        lines[#lines + 1] = { "Met", COL.met[1], COL.met[2], COL.met[3] }
     else
         lines[#lines + 1] = { "Not met yet", mc[1], mc[2], mc[3] }
     end
