@@ -78,6 +78,15 @@ python tests/validate_db.py; python tests/test_saved_data.py; python tests/test_
 - 01:20 P5 merged (110 entries). Draft PR #10 (session/v0.5 -> session/v0.4-related). A critic for
   P1–P5 round 1 was started at 01:20 and writes .kritikk/v05/critic_round1.md (uncommitted). If that file
   exists and is complete, use it; otherwise run the critic again.
-- NEXT: one fresh critic per part (blind A/B against the v0.4 version of the same file/
+- 01:28 Critic round 1 DONE, see .kritikk/v05/critic_round1.md (committed). P4 GODKJENT; P1, P2, P3, P5
+  AVVIST. Round 2 workers should fix exactly the blocking faults listed there:
+  P1 round mask overlay + ~60 px model, Story before the game rows, SetIconTexture must detect a false
+  return, more tests; P2 name every batched veteran (one summary chat line), player-friendly /wcl why
+  wording, pill text width, one guard key for the alert; P3 show meet count + "first met by" in the
+  lore window/list tooltip, route UnitName/GetRealmName through Compat, test MarkMet counting;
+  P5 remove entries that cannot be met in Forever (removed NPCs, Season of Discovery-only IDs) per
+  Håkon's "only sure" rule, rewrite dev wording, give "Major character"/"Mentioned" rows real text,
+  add a phrase check to validate_db.py. Also verify FK year and Siln Skychaser's gender.
+- NEXT: round 2 workers, then one fresh critic per part (blind A/B against the v0.4 version of the same file/
   render), round 2 workers for rejected parts, then the remaining roadmap parts, then a final whole-addon
   critic. Open/keep a PR from session/v0.5 to main (do not merge).
