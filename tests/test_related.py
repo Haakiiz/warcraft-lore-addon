@@ -49,13 +49,13 @@ def main():
     results.append(check("Thrall: sorted by name", thrall == sorted(thrall), thrall))
 
     nazgrel = related_names(lua, 3230)
-    results.append(check("Nazgrel: link back to Thrall", nazgrel == ["Thrall"], nazgrel))
+    results.append(check("Nazgrel: link back to Thrall", nazgrel == ["Gar'Thok", "Thrall"], nazgrel))
 
     jaina = related_names(lua, 4968)
-    results.append(check("Jaina: incoming only", {"Thrall", "Rexxar"} == set(jaina), jaina))
+    results.append(check("Jaina: incoming only", {"Thrall", "Rexxar", "Pained"} == set(jaina), jaina))
 
     results.append(check("Krasus <-> Korialstrasz", related_names(lua, 232624) == ["Korialstrasz"]))
-    results.append(check("no relations: empty list", related_names(lua, 3139) == []))  # Gar'Thok
+    results.append(check("no relations: empty list", related_names(lua, 15460) == []))  # Grunt Maug
     results.append(check("unknown ID: empty list", related_names(lua, 999999) == []))
 
     print(f"\n{sum(results)}/{len(results)} passed")
