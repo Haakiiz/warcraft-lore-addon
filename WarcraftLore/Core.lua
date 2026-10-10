@@ -29,6 +29,36 @@ local function chat(msg)
     C.Print(PREFIX .. msg)
 end
 
+-------------------------------------------------------------------- Guards
+-- Every feature's entry point (tooltip callback, nameplate alert, ticker, target handler, slash
+-- command) runs inside a guard. If it errors, only that feature is off for the session, ONE chat
+-- line says so, and the error text is kept for /wcl debug. Nothing reaches the client's error frame.
+local disabled, failures, failureOrder = {}, {}, {}
+
+local function fail(key, label, err)
+    disabled[key] = true
+    if not failures[key] then
+        failureOrder[#failureOrder + 1] = key
+    end
+    failures[key] = { label = label, err = tostring(err) }
+    pcall(chat, ("%s hit an error and is off until you /reload. Type /wcl debug for details."):format(label))
+end
+
+-- Returns a wrapper that calls fn unless the feature is off. An error turns the feature off.
+local function guard(key, label, fn)
+    return function(...)
+        if disabled[key] then
+            return
+        end
+        local ok, err = pcall(fn, ...)
+        if not ok then
+            fail(key, label, err)
+        end
+    end
+end
+ns.Guard = guard
+ns.FeatureOff = function(key) return disabled[key] == true end
+
 -- Looks up a unit ("target", "mouseover" …) or a GUID.
 -- Returns entry (or nil), npcID (or nil), guidType, name.
 function ns.Lookup(unit, guid)
@@ -255,7 +285,7 @@ function ns.MarkMet(npcID)
 end
 
 -------------------------------------------------------------------- Tooltip
-local function onUnitTooltip(tooltip, unit, guid)
+local function tooltipLine(tooltip, unit, guid)
     local entry, npcID = ns.Lookup(unit, guid)
     if not entry then
         return -- not in the database: no line
@@ -273,6 +303,7 @@ local function onUnitTooltip(tooltip, unit, guid)
     end
     C.AddTooltipLine(tooltip, line, 0.83, 0.78, 0.97)
 end
+local onUnitTooltip = guard("tooltip", "the tooltip line", tooltipLine)
 
 -------------------------------------------------------------------- Slash commands
 local function cmdShow()
@@ -337,19 +368,56 @@ end
 -- When a nameplate appears for an NPC in the database, say so once per session.
 local alerted = {}
 
+-- Several veterans appearing together (entering a city) are batched: after BATCH_WINDOW seconds
+-- there is ONE chat line, ONE sound and ONE pill, for the first veteran, saying "+N more nearby".
+local BATCH_WINDOW = 1.5
+local batch -- nil, or { first = { npcID, entry, name, unit }, more = n }
+
+local function show(npcID, entry, name, unit, more)
+    local who = name or entry.name
+    local extra = (more or 0) > 0 and (" |cffa79d8a+%d more nearby|r"):format(more) or ""
+    chat(("Veteran nearby: |cffd4c6f7%s|r (%s).%s"):format(who, ns.GamesLabel(entry), extra))
+    C.PlayAlertSound()
+    if ns.Toast then
+        ns.Toast.Show(npcID, entry, who, unit, more)
+    end
+end
+
+local function flushBatch()
+    local b = batch
+    batch = nil
+    if not b then
+        return
+    end
+    local f = b.first
+    local unit = f.unit
+    if unit then
+        -- The nameplate may be gone or reused by now: only keep it if it still shows this NPC.
+        local id = C.NPCIDFromGUID(C.UnitGUID(unit))
+        if id ~= f.npcID then
+            unit = nil
+        end
+    end
+    show(f.npcID, f.entry, f.name, unit, b.more)
+end
+local flushGuarded = function() end -- set below, once guard() is used
+
 -- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
 -- unit = the nameplate unit token when there is one (used for the pill's portrait).
 local function announce(npcID, entry, name, isTest, unit)
-    if not isTest then
-        alerted[npcID] = true
+    if isTest then
+        show(npcID, entry, name, unit)
+        return
     end
-    local who = name or entry.name
-    chat(("Veteran nearby: |cffd4c6f7%s|r (%s)."):format(who, ns.GamesLabel(entry)))
-    C.PlayAlertSound()
-    if ns.Toast then
-        ns.Toast.Show(npcID, entry, who, unit)
+    alerted[npcID] = true
+    if batch then
+        batch.more = batch.more + 1
+        return
     end
+    batch = { first = { npcID = npcID, entry = entry, name = name, unit = unit }, more = 0 }
+    C.After(flushGuarded, BATCH_WINDOW)
 end
+flushGuarded = guard("alert-batch", "the nearby alert", flushBatch)
 
 -- /wcl test: shows the alert for the database NPC with the lowest ID.
 local function cmdTest()
@@ -366,7 +434,7 @@ local function cmdTest()
     announce(lowest, ns.NPCS[lowest], nil, true)
 end
 
-local function onNameplateAdded(unit)
+local function nameplateAdded(unit)
     if not (WarcraftLoreDB and WarcraftLoreDB.alert) or type(unit) ~= "string" then
         return
     end
@@ -376,6 +444,7 @@ local function onNameplateAdded(unit)
     end
     announce(npcID, entry, name, false, unit)
 end
+local onNameplateAdded = guard("alert", "the nearby alert", nameplateAdded)
 
 -------------------------------------------------------------------- Nearby alert (coordinates)
 -- Compares the player's map position with `coords` in Data.lua (Wowhead map percent).
@@ -410,6 +479,12 @@ local ZONE_MAPS = {
     ["Thousand Needles"] = { 1441, 64 },
 }
 
+-- True when the entry has stored coordinates in a zone we can match to a map.
+local function hasCoords(entry)
+    local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+    return tonumber(x) ~= nil and tonumber(y) ~= nil and ZONE_MAPS[entry.zone] ~= nil
+end
+
 -- uiMapID -> list of { npcID, x, y } (x, y in percent), built once on first use.
 local byMap
 local function buildIndex()
@@ -427,7 +502,7 @@ local function buildIndex()
     end
 end
 
-local function checkPosition()
+local function positionCheck()
     if not (WarcraftLoreDB and WarcraftLoreDB.alert) or C.InInstance() then
         return
     end
@@ -453,6 +528,7 @@ local function checkPosition()
         end
     end
 end
+local checkPosition = guard("position", "the nearby alert by map position", positionCheck)
 
 local function cmdDebug()
     local r = C.Report()
@@ -470,6 +546,61 @@ local function cmdDebug()
         n = n + 1
     end
     chat("NPCs in the database: " .. n)
+    if #failureOrder == 0 then
+        chat("Errors: none")
+    end
+    for _, key in ipairs(failureOrder) do
+        local f = failures[key]
+        chat(("Error in %s (off for this session): %s"):format(f.label, f.err))
+    end
+end
+
+-- /wcl why: explains in one or two lines why the target is or is not recognised.
+local function cmdWhy()
+    if not C.UnitExists("target") then
+        chat("You have no target. Target an NPC and type /wcl why.")
+        return
+    end
+    local entry, npcID, guidType, name = ns.Lookup("target")
+    local shown = name or "Your target"
+    if not npcID then
+        if guidType == "Player" then
+            chat(shown .. " is a player, not an NPC, so there is nothing to recognise.")
+        elseif guidType then
+            chat(shown .. " is not an NPC (GUID type " .. guidType .. ").")
+        else
+            chat(shown .. ": the client hides this unit's ID right now (a secret value, often in combat). Try again out of combat.")
+        end
+        return
+    end
+    if not entry then
+        chat(("%s has NPC ID %d, which is not in the database, so there is no tooltip line, alert or story."):format(shown, npcID))
+        return
+    end
+    chat(("%s is a veteran (NPC ID %d, %s)."):format(shown, npcID, ns.GamesLabel(entry)))
+    local notes = {}
+    if not WarcraftLoreDB.alert then
+        notes[#notes + 1] = "nearby alerts are off (/wcl alert)"
+    else
+        if disabled.alert then
+            notes[#notes + 1] = "the nameplate alert is off after an error"
+        end
+        if disabled.position then
+            notes[#notes + 1] = "the map position alert is off after an error"
+        elseif C.InInstance() then
+            notes[#notes + 1] = "you are in an instance, so map position alerts are off"
+        elseif not hasCoords(entry) then
+            notes[#notes + 1] = "no map position is stored for this NPC, so only its nameplate can trigger an alert"
+        end
+        if alerted[npcID] then
+            notes[#notes + 1] = "you were already alerted about it this session"
+        end
+    end
+    if disabled.tooltip then
+        notes[#notes + 1] = "the tooltip line is off after an error"
+    end
+    chat(#notes > 0 and ("Note: " .. table.concat(notes, "; ") .. ".")
+        or "Its tooltip line, alerts and story are all active.")
 end
 
 local function cmdHelp()
@@ -479,42 +610,40 @@ local function cmdHelp()
     chat("/wcl auto – show a small alert when you target a veteran (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
     chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
     chat("/wcl minimap – show or hide the minimap button (now: " .. ((WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and "hidden" or "shown") .. ")")
+    chat("/wcl why – explain why your target is or is not recognised")
     chat("/wcl test – show a test alert (small pill, chat line, sound)")
     chat("/wcl reset – move the windows back to the center")
     chat("/wcl options – open the Warcraft Lore settings")
     chat("/wcl debug – show which APIs the client has")
 end
 
-SLASH_WARCRAFTLORE1 = "/wcl"
-SlashCmdList.WARCRAFTLORE = function(msg)
-    local cmd = strtrim((msg or ""):lower())
-    if cmd == "" then
-        cmdShow()
-    elseif cmd == "id" then
-        cmdID()
-    elseif cmd == "list" or cmd == "browse" then
-        cmdList()
-    elseif cmd == "minimap" then
-        cmdMinimap()
-    elseif cmd == "auto" then
-        cmdAuto()
-    elseif cmd == "alert" then
-        cmdAlert()
-    elseif cmd == "test" or cmd == "alert test" then
-        cmdTest()
-    elseif cmd == "reset" then
-        ns.UI.ResetPosition()
-        ns.Browser.ResetPosition()
-        chat("The windows are back in the center.")
-    elseif cmd == "options" then
+local COMMANDS = {
+    [""] = cmdShow, id = cmdID, list = cmdList, browse = cmdList, minimap = cmdMinimap,
+    auto = cmdAuto, alert = cmdAlert, test = cmdTest, ["alert test"] = cmdTest, why = cmdWhy,
+    debug = cmdDebug,
+    options = function()
         if not (ns.Options and ns.Options.Open()) then
             chat("This client has no settings panel for Warcraft Lore.")
         end
-    elseif cmd == "debug" then
-        cmdDebug()
-    else
-        cmdHelp()
-    end
+    end,
+    reset = function()
+        ns.UI.ResetPosition()
+        ns.Browser.ResetPosition()
+        chat("The windows are back in the center.")
+    end,
+}
+local guardedCommands = {}
+for name, fn in pairs(COMMANDS) do
+    local shown = name == "" and "/wcl" or ("/wcl " .. name)
+    guardedCommands[name] = guard("cmd:" .. name, "the " .. shown .. " command", fn)
+end
+guardedCommands.help = guard("cmd:help", "the /wcl help command", cmdHelp)
+
+SLASH_WARCRAFTLORE1 = "/wcl"
+SlashCmdList.WARCRAFTLORE = function(msg)
+    local ok, cmd = pcall(function() return strtrim((msg or ""):lower()) end)
+    local run = guardedCommands[ok and cmd or "help"] or guardedCommands.help
+    run()
 end
 
 -------------------------------------------------------------------- Events
@@ -522,34 +651,44 @@ local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
 C.RegisterEventSafe(events, C.EVENT_NAMEPLATE_ADDED)
-events:SetScript("OnEvent", function(_, event, arg1)
-    if event == C.EVENT_NAMEPLATE_ADDED then
-        onNameplateAdded(arg1)
-    elseif event == "ADDON_LOADED" and arg1 == ADDON_NAME then
-        -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
-        ns.SavedData.Load()
-        ns.UI.Init()
-        ns.Minimap.Init()
-        C.StartTicker(CHECK_INTERVAL, checkPosition)
+local onAddonLoaded = guard("init", "the addon setup", function()
+    -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
+    ns.SavedData.Load()
+    guard("window", "the lore window", ns.UI.Init)()
+    guard("minimap", "the minimap button", ns.Minimap.Init)()
+    C.StartTicker(CHECK_INTERVAL, checkPosition)
+    guard("tooltip-hook", "the tooltip line", function()
         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)
         if not ns.tooltipHook then
             chat("Found no way to hook tooltips in this client, so the tooltip line is off. Type /wcl debug.")
         end
-        events:UnregisterEvent("ADDON_LOADED")
-    elseif event == "PLAYER_TARGET_CHANGED" then
-        if not WarcraftLoreDB then
-            return
-        end
-        local entry, npcID, _, name = ns.Lookup("target")
-        if entry then
-            ns.MarkMet(npcID)
-            if WarcraftLoreDB.auto then
-                if ns.UI.IsShown() then
-                    ns.UI.ShowEntry(npcID, entry, "target")   -- already open: follow the target
-                elseif ns.Toast then
-                    ns.Toast.Show(npcID, entry, name, "target") -- otherwise a small pill; click for the story
-                end
+    end)()
+end)
+
+local onTargetChanged = guard("target", "the target alert", function()
+    if not WarcraftLoreDB then
+        return
+    end
+    local entry, npcID, _, name = ns.Lookup("target")
+    if entry then
+        ns.MarkMet(npcID)
+        if WarcraftLoreDB.auto then
+            if ns.UI.IsShown() then
+                ns.UI.ShowEntry(npcID, entry, "target")   -- already open: follow the target
+            elseif ns.Toast then
+                ns.Toast.Show(npcID, entry, name, "target") -- otherwise a small pill; click for the story
             end
         end
+    end
+end)
+
+events:SetScript("OnEvent", function(_, event, arg1)
+    if event == C.EVENT_NAMEPLATE_ADDED then
+        onNameplateAdded(arg1)
+    elseif event == "ADDON_LOADED" and arg1 == ADDON_NAME then
+        events:UnregisterEvent("ADDON_LOADED")
+        onAddonLoaded()
+    elseif event == "PLAYER_TARGET_CHANGED" then
+        onTargetChanged()
     end
 end)

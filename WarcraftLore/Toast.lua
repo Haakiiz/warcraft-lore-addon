@@ -211,7 +211,7 @@ local function build()
     return t
 end
 
-local function display(npcID, entry, name, unit)
+local function display(npcID, entry, name, unit, more)
     ensureAnchor()
     local t
     for _, v in ipairs(pool) do
@@ -237,7 +237,8 @@ local function display(npcID, entry, name, unit)
     t.ring:SetVertexColor(r, g, b)
     t.ringGlow:SetVertexColor(r, g, b, 0.8)
     t.name:SetText(name or entry.name or "?")
-    t.games:SetText(ns.GamesLabel(entry))
+    t.games:SetText(ns.GamesLabel(entry)
+        .. ((more or 0) > 0 and ("  |cffa79d8a+" .. more .. " more nearby|r") or ""))
 
     t.portrait:SetTexCoord(0, 1, 0, 1)
     if entry.portrait and entry.portrait ~= "" then
@@ -260,13 +261,14 @@ end
 showNext = function()
     while #active < MAX_TOASTS and #queue > 0 do
         local q = table.remove(queue, 1)
-        display(q.npcID, q.entry, q.name, q.unit)
+        display(q.npcID, q.entry, q.name, q.unit, q.more)
     end
 end
 
 -- Shows the pill for a veteran. Someone already on screen or waiting is not shown twice.
 -- unit = optional unit token ("target", "nameplate3") for the portrait.
-function Toast.Show(npcID, entry, name, unit)
+-- more = optional number of other veterans that appeared at the same time ("+N more nearby").
+function Toast.Show(npcID, entry, name, unit, more)
     for _, t in ipairs(active) do
         if t.npcID == npcID then
             return
@@ -277,6 +279,6 @@ function Toast.Show(npcID, entry, name, unit)
             return
         end
     end
-    queue[#queue + 1] = { npcID = npcID, entry = entry, name = name, unit = unit }
+    queue[#queue + 1] = { npcID = npcID, entry = entry, name = name, unit = unit, more = more }
     showNext()
 end

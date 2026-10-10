@@ -24,11 +24,26 @@ Remove anything unfinished or uncertain rather than ship it.
 ## Parts (one worker each, own files where possible)
 | Part | Files | Status |
 |---|---|---|
-| P1 Portrait: 3D model + "Through the ages" | UI.lua (+ tests/render if useful) | worker started 00:59 |
-| P2 Robustness: survive API changes, batch alerts, /wcl why | Core.lua (alert/tooltip/events), Compat.lua | worker started 00:59 |
-| P3 Account-wide met + meet counts (migration 2) | SavedData.lua, Core.lua (met section only), tests | worker started 00:59 |
-| P4 Options panel + mouse-wheel lists | new Options.lua, .toc, Browser.lua (scroll only) | worker started 00:59 |
-| P5 Data quality audit | Data.lua, README test table | worker started 00:59 |
+| P1 Portrait: 3D model + "Through the ages" | UI.lua, Compat.lua, tests/test_timeline.py | round 1 merged; NEEDS CRITIC |
+| P2 Robustness: survive API changes, batch alerts, /wcl why | Core.lua, Compat.lua, Toast.lua, tests/test_guard.py | round 1 merged; NEEDS CRITIC |
+| P3 Account-wide met + meet counts (migration 2) | SavedData.lua, Core.lua (met), tests/test_saved_data.py | round 1 merged; NEEDS CRITIC |
+| P4 Options panel + mouse-wheel lists | Options.lua, .toc, Browser.lua, tests/test_options.py | round 1 merged; /wcl options wired; NEEDS CRITIC |
+| P5 Data quality audit | Data.lua, README test table | worker still running at 01:15 (branch origin/v05/p5-data); merge when pushed, then critic |
+
+### Open points from the workers (for the critics / round 2)
+- P1: model is only 44 px inside the ring (square model cannot be circle-masked) – critic should judge if it
+  reads well; icon names INV_Misc_Note_01, INV_Sword_27, INV_Scroll_03, INV_Misc_Bell_01, INV_Misc_Book_09,
+  INV_Misc_Map_01 unverified in Forever (fallback = question mark). OnModelLoaded / GetModelFileID unverified.
+- P2: a lone nearby alert is now delayed 1.5 s by batching – consider showing the first at once and only
+  batching the rest into one follow-up line (but max one extra chat line).
+- P4: Settings.OpenToCategory(category:GetID()) unverified.
+- Not done yet from ROADMAP (next parts after critics): world-map pins (no libs, or decide on
+  HereBeDragons), zone atlas ("3/8 met" per zone in the list), export/import of met list, CHANGELOG v0.5.0
+  entry, README/CurseForge description update for v0.5 features, offline preview renders for critics
+  (see how v0.3 screenshots were made: tools/ and .kritikk/UI_*).
+- CurseForge page (done by the orchestrator 01:05): project renamed "Warcraft Lore: RTS Veterans", slug kept,
+  description updated, categories Roleplay + Tooltip added, username now "EnkaiLore" ("Enkai" was taken),
+  profile photo removed. Gallery still empty: needs Håkon's in-game screenshots.
 
 Each worker commits on its own worktree branch `v05/<part>`; the orchestrator merges them into
 `session/v0.5`, runs all tests and sends each part to a fresh critic.
@@ -57,3 +72,9 @@ python tests/validate_db.py; python tests/test_saved_data.py; python tests/test_
 
 ## Log
 - 00:59 plan written, 5 workers started (Sonnet, worktrees).
+- 01:15 P1–P4 merged into session/v0.5 (one conflict in Core.lua slash table resolved: P2's guarded
+  COMMANDS table + options entry). All tests pass: validate_db, saved_data 28/28, related 7/7, timeline,
+  options 10/10, guard 21/21. New tests added to tests.yml and release.yml.
+- NEXT: merge P5, then one fresh critic per part (blind A/B against the v0.4 version of the same file/
+  render), round 2 workers for rejected parts, then the remaining roadmap parts, then a final whole-addon
+  critic. Open/keep a PR from session/v0.5 to main (do not merge).

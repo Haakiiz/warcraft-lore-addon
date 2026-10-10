@@ -27,3 +27,9 @@ jobs:
 
       - name: Related veterans
         run: python tests/test_related.py
+
+      - name: Timeline, options panel and error guards
+        run: |
+          python tests/test_timeline.py
+          python tests/test_options.py
+          python tests/test_guard.py

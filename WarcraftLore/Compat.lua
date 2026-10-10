@@ -73,21 +73,25 @@ function C.HookUnitTooltip(callback)
     if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
         and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Unit then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tooltip, data)
-            if tooltip ~= GameTooltip then
-                return
-            end
-            local guid = data and data.guid
-            if C.IsSecret(guid) then
-                guid = nil
-            end
-            local unit
-            if tooltip.GetUnit then
-                local ok, _, u = pcall(tooltip.GetUnit, tooltip)
-                if ok and not C.IsSecret(u) then
-                    unit = u
+            -- Nothing here may reach the client's error frame. The callback guards itself
+            -- (Core.lua); this covers the reading of the tooltip data.
+            pcall(function()
+                if tooltip ~= GameTooltip then
+                    return
                 end
-            end
-            callback(tooltip, unit, guid)
+                local guid = data and data.guid
+                if C.IsSecret(guid) then
+                    guid = nil
+                end
+                local unit
+                if tooltip.GetUnit then
+                    local ok, _, u = pcall(tooltip.GetUnit, tooltip)
+                    if ok and not C.IsSecret(u) then
+                        unit = u
+                    end
+                end
+                callback(tooltip, unit, guid)
+            end)
         end)
         return "TooltipDataProcessor"
     end
@@ -96,8 +100,13 @@ function C.HookUnitTooltip(callback)
     -- Older API (Classic Era / before 10.0.2).
     if GameTooltip and GameTooltip.HasScript and GameTooltip:HasScript("OnTooltipSetUnit") then
         GameTooltip:HookScript("OnTooltipSetUnit", function(tooltip)
-            local _, unit = tooltip:GetUnit()
-            callback(tooltip, unit, nil)
+            pcall(function()
+                local _, unit = tooltip:GetUnit()
+                if C.IsSecret(unit) then
+                    unit = nil
+                end
+                callback(tooltip, unit, nil)
+            end)
         end)
         return "OnTooltipSetUnit"
     end
@@ -309,14 +318,15 @@ function C.StartTicker(seconds, fn)
         noteMissing("C_Timer.NewTicker")
         return false
     end
-    return pcall(C_Timer.NewTicker, seconds, fn)
+    return pcall(C_Timer.NewTicker, seconds, fn) -- fn guards itself (Core.lua)
 end
 
--- Runs fn on the next frame (C_Timer.After(0)), outside whatever called us. Used to keep
--- chat output and window refreshes out of tooltip post-calls. Falls back to running fn now.
-function C.After(fn)
+-- Runs fn after `seconds` (default: the next frame), outside whatever called us. Used to keep
+-- chat output and window refreshes out of tooltip post-calls and to batch alerts.
+-- Falls back to running fn now.
+function C.After(fn, seconds)
     if type(C_Timer) == "table" and type(C_Timer.After) == "function" then
-        local ok = pcall(C_Timer.After, 0, fn)
+        local ok = pcall(C_Timer.After, seconds or 0, fn)
         if ok then
             return
         end
