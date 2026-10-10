@@ -14,7 +14,7 @@ local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
 local S = ns.Style
 local COL, solid, text, box, badge = S.COL, S.solid, S.text, S.box, S.badge
 local BAND, PAD, HEADER = S.BAND, S.PAD, S.HEADER
-local HEX_MUTED, HEX_TITLE, END = S.HEX_MUTED, S.HEX_TITLE, S.END
+local HEX_MUTED, HEX_TITLE, HEX_MET, END = S.HEX_MUTED, S.HEX_TITLE, S.HEX_MET, S.END
 
 local W, H = 460, 580      -- window size
 local RING = 96            -- portrait ring size
@@ -35,6 +35,7 @@ end
 local docked = false       -- true while the window sits next to the browser instead of at its saved spot
 local scroll, content
 local gameBoxes, sections = {}, {}
+local relatedBlock         -- "Related" section with one clickable row per related veteran
 
 local function savePosition()
     local point, _, relativePoint, x, y = frame:GetPoint(1)
@@ -181,10 +182,7 @@ local function gameBox(i)
     return b
 end
 
-local function section(i)
-    if sections[i] then
-        return sections[i]
-    end
+local function newSection()
     local s = CreateFrame("Frame", nil, content)
     s:SetWidth(CONTENT_W)
     s.line = solid(s, "BORDER", COL.divider)
@@ -195,13 +193,72 @@ local function section(i)
     s.body:SetPoint("TOPLEFT", 0, -24)
     s.body:SetWidth(CONTENT_W)
     s.body:SetSpacing(2)
-    sections[i] = s
     return s
+end
+
+local function section(i)
+    if not sections[i] then
+        sections[i] = newSection()
+    end
+    return sections[i]
+end
+
+local ROW_H = 20
+
+-- One row in the Related block: name, game codes and zone; click to open that veteran.
+local function relatedRow(i)
+    local rows = relatedBlock.rows
+    if rows[i] then
+        return rows[i]
+    end
+    local r = CreateFrame("Button", nil, relatedBlock)
+    r:SetSize(CONTENT_W, ROW_H)
+    r:SetPoint("TOPLEFT", 0, -(22 + (i - 1) * ROW_H))
+    r.hl = solid(r, "BACKGROUND", COL.violet, 0.14)
+    r.hl:SetAllPoints()
+    r.hl:Hide()
+    r.label = text(r, C.FONT_BODY, 11, COL.text)
+    r.label:SetPoint("LEFT", 6, 0)
+    r.label:SetPoint("RIGHT", -6, 0)
+    r.label:SetJustifyV("MIDDLE")
+    r.label:SetWordWrap(false)
+    C.RegisterClicks(r)
+    r:SetScript("OnEnter", function(self) self.hl:Show() end)
+    r:SetScript("OnLeave", function(self) self.hl:Hide() end)
+    r:SetScript("OnClick", function(self)
+        UI.ShowEntry(self.group.id, self.group.entry, nil, nil, true)
+    end)
+    rows[i] = r
+    return r
+end
+
+local function fillRelated(groups)
+    if not relatedBlock then
+        relatedBlock = newSection()
+        relatedBlock.body:Hide()
+        relatedBlock.rows = {}
+        relatedBlock.label:SetText("RELATED")
+    end
+    for _, r in ipairs(relatedBlock.rows) do r:Hide() end
+    for i, g in ipairs(groups) do
+        local r = relatedRow(i)
+        r.group = g
+        local line = HEX_TITLE .. (g.entry.name or "?") .. END .. "  " .. ns.CodesLabel(g.codes)
+            .. "  " .. HEX_MUTED .. (g.entry.zone or "") .. END
+        if ns.GroupMet(g) then
+            line = line .. "  " .. HEX_MET .. "met" .. END
+        end
+        r.label:SetText(line)
+        r:Show()
+    end
+    relatedBlock:SetHeight(22 + #groups * ROW_H + 2)
+    return relatedBlock
 end
 
 local function clearContent()
     for _, b in ipairs(gameBoxes) do b:Hide() end
     for _, s in ipairs(sections) do s:Hide() end
+    if relatedBlock then relatedBlock:Hide() end
 end
 
 local function layout(blocks)
@@ -361,7 +418,8 @@ end
 
 -------------------------------------------------------------------- public
 -- dock = optional frame to sit next to (the veterans list); nil = the saved position.
-function UI.ShowEntry(npcID, entry, unit, dock)
+-- keepPlace = true leaves the window where it is (used by the Related links).
+function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
     UI.Init()
     local games = ns.GamesInOrder(entry)
     local ringColors, badges = {}, {}
@@ -406,6 +464,10 @@ function UI.ShowEntry(npcID, entry, unit, dock)
     if entry.story and entry.story ~= "" then
         add("Story", entry.story)
     end
+    local related = ns.Related(npcID)
+    if #related > 0 then
+        blocks[#blocks + 1] = fillRelated(related)
+    end
     local items = {}
     for _, item in ipairs(entry.items or {}) do
         local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · item ID " .. tostring(item.id) .. END
@@ -419,7 +481,7 @@ function UI.ShowEntry(npcID, entry, unit, dock)
     layout(blocks)
     if dock then
         dockTo(dock)
-    elseif docked then
+    elseif docked and not keepPlace then
         applyPosition()
     end
     frame:Show()

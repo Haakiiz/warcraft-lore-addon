@@ -9,6 +9,7 @@
 
 Compat.lua
 Data.lua
+SavedData.lua
 Core.lua
 Style.lua
 UI.lua

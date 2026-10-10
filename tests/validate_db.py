@@ -18,7 +18,7 @@ DATA = Path(__file__).resolve().parent.parent / "WarcraftLore" / "Data.lua"
 
 GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
-ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn"}
+ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
@@ -223,6 +223,29 @@ def check_entries(npcs):
         if also is not None and not (isinstance(also, LuaTable) and (also.is_list or not also.data)
                                      and all(isinstance(z, str) and z.strip() for z in (also.data or []))):
             err("'alsoIn' must be a list of zone names")
+
+        related = e.get("related")
+        if related is not None:
+            ids = related.data if isinstance(related, LuaTable) and (related.is_list or not related.data) else None
+            if ids is None or not all(isinstance(r, int) and not isinstance(r, bool) for r in ids):
+                err("'related' must be a list of NPC IDs, e.g. { 4949, 3230 }")
+            else:
+                seen = set()
+                for r in ids:
+                    if r in seen:
+                        continue
+                    seen.add(r)
+                    if r == npc_id:
+                        err(f"'related' lists the entry itself ({r})")
+                    elif r not in npcs.data:
+                        err(f"'related' lists NPC ID {r}, which is not in the database")
+                    elif ids.count(r) > 1:
+                        err(f"'related' lists NPC ID {r} more than once")
+                    else:
+                        other = npcs.data[r]
+                        back = other.data.get("related") if isinstance(other, LuaTable) and not other.is_list else None
+                        if isinstance(back, LuaTable) and back.is_list and npc_id in back.data and npc_id < r:
+                            warnings.append(f"{where}: {r} is related both ways; one side is enough")
 
         story = e.get("story")
         if isinstance(story, str) and story.strip():

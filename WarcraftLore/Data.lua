@@ -8,6 +8,8 @@
 --   zone        (required) The zone the NPC stands in, e.g. "Orgrimmar".
 --   coords      (optional) Map coordinates as text, e.g. "32.0, 37.8". "" if unknown.
 --   alsoIn      (optional) Other zones the NPC also walks through, e.g. { "Desolace", "Feralas" }.
+--   related     (optional) NPC IDs of other entries tied to this one (family, allies, rivals), e.g. { 3230, 10540 }.
+--               One side is enough: the lore window shows the link on both entries.
 --   appearances (required) List of appearances in the RTS games. Each has:
 --       game      "WC1"  = Warcraft: Orcs & Humans
 --                 "WC2"  = Warcraft II: Tides of Darkness
@@ -47,6 +49,7 @@ ns.NPCS = {
         name = "Thrall",
         zone = "Orgrimmar",
         coords = "32.0, 37.8",
+        related = { 3230, 10540, 3057, 4968, 10182, 3391 },
         appearances = {
             {
                 game = "WC3",
@@ -144,6 +147,7 @@ ns.NPCS = {
         name = "Vol'jin",
         zone = "Orgrimmar",
         coords = "34.2, 36.4",
+        related = { 3205 },
         appearances = {
             {
                 game = "TFT",
@@ -289,6 +293,7 @@ ns.NPCS = {
         name = "Tyrande Whisperwind",
         zone = "Darnassus",
         coords = "38.4, 80.6",
+        related = { 3936, 3516 },
         appearances = {
             {
                 game = "WC3",
@@ -478,6 +483,7 @@ ns.NPCS = {
         name = "Cairne Bloodhoof",
         zone = "Thunder Bluff",
         coords = "59.4, 51.4",
+        related = { 2993, 4046, 5769 },
         appearances = {
             {
                 game = "WC3",
@@ -731,6 +737,7 @@ ns.NPCS = {
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
         alsoIn = { "Desolace", "Feralas" },
+        related = { 10204, 4968 },
         appearances = {
             {
                 game = "TFT",
@@ -841,6 +848,7 @@ ns.NPCS = {
         name = "Lady Jaina Proudmoore",
         zone = "Dustwallow Marsh",
         coords = "66.2, 49.0",
+        related = { 4967 },
         appearances = {
             {
                 game = "WC3",
@@ -973,6 +981,7 @@ ns.NPCS = {
         name = "Draz'Zilb",
         zone = "Dustwallow Marsh",
         coords = "37.0, 33.0",
+        related = { 4500 },
         appearances = {
             {
                 game = "TFT",
@@ -1376,6 +1385,7 @@ ns.NPCS = {
         name = "Lady Sylvanas Windrunner",
         zone = "Undercity",
         coords = "57.8, 91.4",
+        related = { 2425, 2227 },
         appearances = {
             {
                 game = "WC3",
@@ -1621,6 +1631,7 @@ ns.NPCS = {
         name = "Anduin Wrynn",
         zone = "Stormwind City",
         coords = "77.4, 18.4",
+        related = { 1748, 1749 },
         appearances = {
             {
                 game = "BOOK",
@@ -1981,6 +1992,7 @@ ns.NPCS = {
         name = "Highlord Bolvar Fordragon",
         zone = "Stormwind City",
         coords = "77.4, 18.8",
+        related = { 1749 },
         appearances = {
             {
                 game = "BOOK",
@@ -2029,6 +2041,7 @@ ns.NPCS = {
         name = "King Magni Bronzebeard",
         zone = "Ironforge",
         coords = "39.4, 55.8",
+        related = { 7937 },
         appearances = {
             {
                 game = "BOOK",
@@ -2148,6 +2161,7 @@ ns.NPCS = {
         name = "High Tinker Mekkatorque",
         zone = "Ironforge",
         coords = "69.0, 49.0",
+        related = { 7800 },
         appearances = {
             {
                 game = "BOOK",
@@ -2529,6 +2543,7 @@ ns.NPCS = {
     [4275] = {
         name = "Archmage Arugal",
         zone = "Shadowfang Keep",
+        related = { 3887 },
         appearances = {
             {
                 game = "BOOK",
@@ -2564,6 +2579,7 @@ ns.NPCS = {
     [3976] = {
         name = "Scarlet Commander Mograine",
         zone = "Scarlet Monastery",
+        related = { 3977 },
         appearances = {
             {
                 game = "FK",
@@ -3559,6 +3575,7 @@ ns.NPCS = {
         name = "Korialstrasz",
         zone = "Wetlands",
         coords = "74.2, 70.0",
+        related = { 232624 },
         appearances = {
             {
                 game = "BOOK",

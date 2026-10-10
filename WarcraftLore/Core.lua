@@ -117,6 +117,43 @@ function ns.VeteranOf(npcID)
     return byID[npcID]
 end
 
+-------------------------------------------------------------------- Related veterans
+-- `related` in Data.lua only needs to be written on one side: an entry is related to the IDs it
+-- lists and to every entry that lists it. Works on merged veterans, so a Season of Discovery ID
+-- shares the relations of its namesake.
+local incoming -- npcID -> list of NPC IDs whose `related` names it, built on first use
+function ns.Related(npcID)
+    if not incoming then
+        incoming = {}
+        for id, entry in pairs(ns.NPCS) do
+            for _, rid in ipairs(entry.related or {}) do
+                incoming[rid] = incoming[rid] or {}
+                table.insert(incoming[rid], id)
+            end
+        end
+    end
+    local own = ns.VeteranOf(npcID)
+    local seen, out = {}, {}
+    local function add(id)
+        local g = ns.VeteranOf(id)
+        if g and g ~= own and not seen[g] then
+            seen[g] = true
+            out[#out + 1] = g
+        end
+    end
+    for _, id in ipairs(own and own.ids or { npcID }) do
+        local entry = ns.NPCS[id]
+        for _, rid in ipairs(entry and entry.related or {}) do
+            add(rid)
+        end
+        for _, rid in ipairs(incoming[id] or {}) do
+            add(rid)
+        end
+    end
+    table.sort(out, function(a, b) return (a.entry.name or "") < (b.entry.name or "") end)
+    return out
+end
+
 -------------------------------------------------------------------- Met tracking
 -- A veteran counts as met when the player targets it or mouses over it (a real unit, not
 -- a nameplate/coordinate alert and not /wcl test). Stored per character:
@@ -464,24 +501,8 @@ events:SetScript("OnEvent", function(_, event, arg1)
     if event == C.EVENT_NAMEPLATE_ADDED then
         onNameplateAdded(arg1)
     elseif event == "ADDON_LOADED" and arg1 == ADDON_NAME then
-        -- SavedVariables are only available from here on.
-        WarcraftLoreDB = WarcraftLoreDB or {}
-        if WarcraftLoreDB.auto == nil then
-            WarcraftLoreDB.auto = true
-        end
-        if WarcraftLoreDB.alert == nil then
-            WarcraftLoreDB.alert = true
-        end
-        if type(WarcraftLoreDB.minimap) ~= "table" then
-            WarcraftLoreDB.minimap = {}
-        end
-        -- Per-character data; a damaged file (wrong types) is replaced rather than crashing.
-        if type(WarcraftLoreCharDB) ~= "table" then
-            WarcraftLoreCharDB = {}
-        end
-        if type(WarcraftLoreCharDB.met) ~= "table" then
-            WarcraftLoreCharDB.met = {}
-        end
+        -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
+        ns.SavedData.Load()
         ns.UI.Init()
         ns.Minimap.Init()
         C.StartTicker(CHECK_INTERVAL, checkPosition)

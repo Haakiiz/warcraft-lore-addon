@@ -27,12 +27,13 @@ Versjonsnummeret i parentes er der simuleringen legger funksjonen, ikke et løft
 
 ## 1. Data og kjerne
 
-- [ ] **Relaterte NPC-er** (0.3): følg tråden Thrall → Grom → Nazgrel.
-      *Forslag:* nytt felt `related = { 4949, ... }` i Data.lua, vist som klikkbare navn i lore-vinduet.
-      Utvid `validate_db.py` så den sjekker at hver ID finnes.
-- [ ] **Schema-versjon for lagrede data**, før neste store endring.
-      *Forslag:* `WarcraftLoreDB.schema = 1` og en liste med migreringsfunksjoner som kjøres ved `ADDON_LOADED`.
-      Gjør senere punkter (kontoteller, opprydding) trygge.
+- [x] **Relaterte NPC-er** (0.3): følg tråden Thrall → Nazgrel → …
+      Feltet `related = { 3230, ... }` i Data.lua, vist som klikkbare rader («Related») i lore-vinduet.
+      Det holder å skrive koblingen på én side. `validate_db.py` sjekker at ID-ene finnes, og `tests/test_related.py` tester oppslaget.
+      15 koblinger er lagt inn så langt. Flere kan legges til etter hvert som sonene fylles.
+- [x] **Schema-versjon for lagrede data** (`SavedData.lua`, testet av `tests/test_saved_data.py`).
+      `schema` i både `WarcraftLoreDB` og `WarcraftLoreCharDB`, og en liste med migreringer som kjøres ved `ADDON_LOADED`.
+      Data fra en nyere versjon blir ikke rørt. En migrering som feiler, prøves igjen ved neste innlasting.
 - [ ] **Kontodekkende møtt-teller** (1.3): det du har møtt på én karakter teller på alle.
       *Forslag:* flytt tellingen til `WarcraftLoreDB`, og migrer eksisterende `WarcraftLoreCharDB` inn ved første innlogging.
 - [ ] **Telle antall møter**, ikke bare møtt/ikke møtt. Gir grunnlag for statistikk som «mest møtte veteraner» (3.2).

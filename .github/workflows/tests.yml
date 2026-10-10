@@ -1,0 +1,29 @@
+name: Tests
+
+# Runs on every pull request and push to main, so broken data or Lua is caught before a release tag.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install lupa (Lua 5.1 for the Lua tests)
+        run: pip install lupa
+
+      - name: Validate database
+        run: python tests/validate_db.py
+
+      - name: Saved data migrations
+        run: python tests/test_saved_data.py
+
+      - name: Related veterans
+        run: python tests/test_related.py
