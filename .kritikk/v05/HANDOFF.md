@@ -75,6 +75,9 @@ python tests/validate_db.py; python tests/test_saved_data.py; python tests/test_
 - 01:15 P1–P4 merged into session/v0.5 (one conflict in Core.lua slash table resolved: P2's guarded
   COMMANDS table + options entry). All tests pass: validate_db, saved_data 28/28, related 7/7, timeline,
   options 10/10, guard 21/21. New tests added to tests.yml and release.yml.
-- NEXT: merge P5, then one fresh critic per part (blind A/B against the v0.4 version of the same file/
+- 01:20 P5 merged (110 entries). Draft PR #10 (session/v0.5 -> session/v0.4-related). A critic for
+  P1–P5 round 1 was started at 01:20 and writes .kritikk/v05/critic_round1.md (uncommitted). If that file
+  exists and is complete, use it; otherwise run the critic again.
+- NEXT: one fresh critic per part (blind A/B against the v0.4 version of the same file/
   render), round 2 workers for rejected parts, then the remaining roadmap parts, then a final whole-addon
   critic. Open/keep a PR from session/v0.5 to main (do not merge).
