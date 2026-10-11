@@ -265,6 +265,9 @@ function Achievements.Check()
             titles[#titles + 1] = a.title
         end
     end
+    if #fresh > 0 and ns.Journal and ns.Journal.Refresh then
+        pcall(ns.Journal.Refresh) -- an open Lore Journal shows the new dates right away
+    end
     if not db.achievementsSeeded then
         -- First run with this feature: what is already done is stored without announcing.
         db.achievementsSeeded = true
