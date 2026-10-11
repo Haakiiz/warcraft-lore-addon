@@ -75,4 +75,4 @@ Det tidligere arbeidet hadde altså gått glipp av mye, nesten bare bokkoblinger
 
 - Master Gadrin: siden siterer *The Judgment* for barndommen med Vol'jin og Zalazane. Sjekk om det er en offisiell novelle (da er det en BOOK-opptreden til).
 - Sylvanas i *Beyond the Dark Portal*: «Mentioned» ifølge kolonneposisjon, men usikkert. Ikke lagt inn.
-- Krasus/Korialstrasz og Mograine (242499) er Season of Discovery-NPC-er. Sjekk i spillet om de finnes i Forever.
+- NPC-ID-er over 200000 (Season of Discovery-NPC-er som Krasus og Mograine, 242499) avvises av validate_db.py.

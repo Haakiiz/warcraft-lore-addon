@@ -11,10 +11,12 @@ Ever run into a random level-15 quest giver and later found out they were in a W
 What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
-- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 100" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
-- **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. Click the pill for the story, right-click to dismiss, shift-drag to move.
+- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a live 3D model of the NPC inside a round ring that glows in the game's color (the classic portrait if the model can't load). The story comes first, followed by "Through the ages": every game appearance in release order with its year and role, and the books as compact one-line rows. You also get related veterans (click a name to follow the thread), related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 100" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
+- **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. In busy cities the first veteran is announced right away and anyone else nearby is named in one follow-up line ("Also nearby: ..."); click "+N more" to open the Veterans list. Click the pill for the story, right-click to dismiss, shift-drag to move.
 - **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
+- **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
+- **`/wcl why`:** explains in plain words why your target is or isn't recognised.
 
 All lore ships inside the addon (addons cannot reach the internet in game), in `WarcraftLore/Data.lua`.
 
@@ -31,12 +33,16 @@ Preview renders of the real addon code (made offline with substitute fonts and a
 | ![Small glowing alert when a veteran is nearby](media/screenshots/nearby-alert.png) | ![Minimap button with tooltip](media/screenshots/minimap-button.png) |
 | A small glowing alert when a veteran is nearby; click it for the story | Minimap button: left-click for the list, right-click for your target |
 
-## What's new in 0.3
+## What's new in 0.5
 
-- New: the Warcraft Veterans list (`/wcl list`) with search, filters for game, zone, campaign and met status, "Hide book-only", hover tooltips with full names, and the lore window docking next to it.
-- New: met tracking per character, with a "Veterans met" counter, a chip per game and a chat line the first time you meet a veteran. The lore window shows a green MET badge.
-- New: the small glowing alert pill replaces the big toast and the center-screen text. Targeting a veteran now shows the pill instead of opening the window.
-- New: a minimap button and `/wcl minimap`.
+- Live 3D portrait in the lore window, with the story first and a "Through the ages" section for every game appearance.
+- The met counter now covers your whole account. Existing progress from all characters is merged, and a tooltip shows how often and when you met each veteran.
+- Calmer alerts in cities: one alert, one follow-up line for everyone else nearby.
+- A settings page (`/wcl options`) and `/wcl why`.
+- Safer after game patches: if a patch breaks something, only that feature switches off.
+- Every entry reviewed: 100 confirmed veterans and 42 related links.
+
+See `CHANGELOG.md` for older versions.
 
 ## Installation
 
@@ -61,6 +67,8 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl alert` | Turns the "veteran nearby" alert (pill, chat line, sound) on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
 | `/wcl test` (or `/wcl alert test`) | Shows a test alert for the database NPC with the lowest ID: the small pill, chat line and sound. Click the pill to open the NPC's window, right-click to dismiss, shift-drag to move |
 | `/wcl reset` | Moves the windows back to the center |
+| `/wcl why` | Explains in one or two chat lines why your target is or isn't recognised: a player, not in the database, or a veteran (with notes if alerts are off, you are in an instance, no map position is stored, or you were already alerted this session) |
+| `/wcl options` | Opens the Warcraft Lore settings page. If this client has no settings panel it says so in chat |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
 ## Test NPCs
@@ -163,14 +171,14 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT, BOOK |
 | Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK, BOOK |
 
-Some NPCs in the Western Plaguelands and the Wetlands use Season of Discovery NPC IDs and may not exist in Forever.
+Entries without known coordinates are left out of this table.
 
 **Negative check:** hover over an Orgrimmar Grunt. The tooltip should get no extra line, and `/wcl` should show the "No known Warcraft history" text.
 
 ## Adding an NPC yourself
 
 1. **Find the NPC ID.** Target the NPC in game and type `/wcl id`. Chat shows the name and NPC ID, and whether it is already in the database.
-2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, leave it out: only confirmed veterans ship.
+2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, leave it out: only confirmed veterans ship, and `confidence = "uncertain"` is rejected by the test script.
 3. **Add an entry** to `WarcraftLore/Data.lua`, inside `ns.NPCS = { … }`, under the right zone heading:
 
    ```lua
@@ -195,13 +203,13 @@ Some NPCs in the Western Plaguelands and the Wetlands use Season of Discovery NP
    },
    ```
 
-   Every field is described at the top of `Data.lua`. Never guess mission names, item IDs or NPC IDs. If you don't know something, leave it empty (`""` or `{}`).
-4. **Run the test script** (below). It catches typos in field names, wrong game codes, duplicate NPC IDs, bad links and stories that are not 3–6 sentences.
+   Every field is described at the top of `Data.lua`. Never guess mission names, item IDs or NPC IDs. If you don't know something, leave it empty (`""` or `{}`). NPC IDs above 200000 are rejected, and research or dev wording (such as "wiki", "Classic", "listed" or "Season of Discovery") must not appear in a name, role, story or campaign.
+4. **Run the test script** (below). It catches typos in field names, wrong game codes, duplicate NPC IDs, bad links, stories that are not 3–6 sentences, uncertain entries, NPC IDs above 200000 and banned research phrases.
 5. **Restart the game** or type `/reload`, then target the NPC.
 
 ### Your own portraits
 
-The round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, put a 128×128 `.tga` file in `WarcraftLore/Portraits/` and add `portrait = "FileName"` to the entry. See `WarcraftLore/Portraits/README.txt`. Portrait images are not shipped with the addon.
+If the 3D model can't load, the round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, put a 128×128 `.tga` file in `WarcraftLore/Portraits/` and add `portrait = "FileName"` to the entry. See `WarcraftLore/Portraits/README.txt`. Portrait images are not shipped with the addon.
 
 ## Test script (outside the game)
 
@@ -209,7 +217,7 @@ The round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, p
 python tests/validate_db.py
 ```
 
-The script checks that every entry in `WarcraftLore/Data.lua` has valid fields and values, that no NPC ID appears twice, and that every portrait file exists. It needs Python 3 but no Lua interpreter.
+The script checks that every entry in `WarcraftLore/Data.lua` has valid fields and values, that no NPC ID appears twice or is above 200000, and that every portrait file exists. It needs Python 3 but no Lua interpreter.
 `tests/fixtures/bad_data.lua` is broken on purpose, so you can see the test fail:
 
 ```bash
@@ -226,6 +234,8 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 - `WarcraftLore/Style.lua`: the palette, small widget builders and the vine frame shared by both windows.
 - `WarcraftLore/UI.lua`: the lore window.
 - `WarcraftLore/Browser.lua`: the veterans list window (`/wcl list`).
+- `WarcraftLore/Options.lua`: the settings page (`/wcl options`).
+- `WarcraftLore/SavedData.lua`: saved-data versions and migrations.
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).
 - `WarcraftLore/Portraits/`: your own portrait images (optional).
 

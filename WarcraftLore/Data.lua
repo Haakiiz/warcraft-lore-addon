@@ -1880,7 +1880,7 @@ ns.NPCS = {
                 role = "Sponsor, engineer and pilot of the speedboat Guzzler: second place in the Annual Fizzle and Pozzik's Speedbarge Boat Race, then led the protest against the result with Fizzle Brassbolts",
             },
         },
-        story = "Before the Cataclysm, Razzeric was an independent goblin pilot at the Mirage Raceway in the Shimmering Flats in Thousand Needles. "
+        story = "Razzeric is an independent goblin pilot at the Mirage Raceway in the Shimmering Flats in Thousand Needles. "
              .. "In the novel Traveler: The Spiral Path, he registers for the Annual Fizzle and Pozzik's Speedbarge Boat Race as sponsor, engineer and pilot of his speedboat, the Guzzler. "
              .. "He finishes second in the race. "
              .. "Afterwards he leads a protest with Fizzle Brassbolts, claiming that Steamwhistle should be disqualified for switching pilots.",
@@ -1930,7 +1930,7 @@ ns.NPCS = {
                 role = "Engineer of the Freebooters' Fire in the Annual Speedbarge Boat Race, with teammates Tony Two-Tusk and Rugfizzle",
             },
         },
-        story = "Before the Cataclysm, Jinky was a neutral vendor at the Mirage Raceway in Thousand Needles. "
+        story = "Jinky is a neutral vendor at the Mirage Raceway in Thousand Needles. "
              .. "In the novel Traveler: The Spiral Path she took part in the Annual Speedbarge Boat Race as part of the Mechanical Engineers' Guild of Azeroth (MEGA) team with Tony Two-Tusk and Rugfizzle. "
              .. "She acted as the engineer of the Freebooters' Fire.",
         items = {},
