@@ -79,13 +79,18 @@ local function addCheck(parent, y, option)
     cb:SetPoint("TOPLEFT", parent, "TOPLEFT", PAD, y)
     cb.get = option[2]
     local set = option[3]
-    cb:SetScript("OnClick", function()
+    local function onClick()
         local d = db()
         if not d then
             return
         end
         set(d, not cb.get(d))
         refreshChecks()
+    end
+    cb:SetScript("OnClick", function()
+        -- ns.Guard (Core.lua) keeps an error in a setting's side effect out of the error frame.
+        local run = ns.Guard and ns.Guard("options", "the settings page", onClick) or onClick
+        run()
     end)
     checks[#checks + 1] = cb
     return cb
@@ -139,11 +144,8 @@ local function build()
         if not db() then
             return
         end
-        if ns.UI then
-            ns.UI.ResetPosition()
-        end
-        if ns.Browser then
-            ns.Browser.ResetPosition()
+        if ns.ResetWindows then
+            ns.ResetWindows() -- same as /wcl reset, including the chat line
         end
     end)
 
@@ -177,18 +179,26 @@ local function register()
     end
 end
 
--- Opens the page. Returns false when the client has none.
+-- Ticks the checkboxes to match the saved settings (after a slash command changed one).
+function Options.Refresh()
+    if panel then
+        refreshChecks()
+    end
+end
+
+-- Opens the page. Returns false when the client has no settings page at all; otherwise
+-- true, plus a second value saying whether opening it worked (it can fail, for example in combat).
 function Options.Open()
     if not panel then
         return false
     end
     if category and Settings and Settings.OpenToCategory then
         local id = category.GetID and category:GetID() or category.ID
-        return pcall(Settings.OpenToCategory, id)
+        return true, (pcall(Settings.OpenToCategory, id))
     elseif InterfaceOptionsFrame_OpenToCategory then
-        pcall(InterfaceOptionsFrame_OpenToCategory, panel)
+        local ok = pcall(InterfaceOptionsFrame_OpenToCategory, panel)
         pcall(InterfaceOptionsFrame_OpenToCategory, panel) -- the first call can land on the wrong page
-        return true
+        return true, ok
     end
     return false
 end

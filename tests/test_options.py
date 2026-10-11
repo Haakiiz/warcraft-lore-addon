@@ -86,8 +86,35 @@ def main():
     results.append(check("minimap checkbox shows it again", lua.eval("minimapToggles") == 2 and lua.eval("WarcraftLoreDB.minimap.hide") is None))
     lua.execute("clickable[4].scripts.OnClick()")
     results.append(check("book-only toggled and list refreshed", lua.eval("WarcraftLoreDB.hideBookOnly") is True and lua.eval("refreshes") == 1))
+    lua.execute("ns.ResetWindows = nil; clickable[6].scripts.OnClick()")
+    results.append(check("reset button does nothing (no error) without ns.ResetWindows", lua.eval("resets") == 0))
+
+    # Open() returns (true, true) normally, (true, false) when opening fails, false when no panel.
+    results.append(check("Open() reports success as (true, true)",
+                         list(lua.eval("{ ns.Options.Open() }").values()) == [True, True]))
+    lua.execute("Settings.OpenToCategory = function() error('blocked in combat') end")
+    results.append(check("Open() failing for another reason still reports a panel",
+                         list(lua.eval("{ ns.Options.Open() }").values()) == [True, False]))
+
+    # Refresh() ticks the boxes after a slash command changed a setting.
+    lua.execute("WarcraftLoreDB.auto = true; ns.Options.Refresh()")
+    results.append(check("Refresh() updates the checkbox", lua.eval("clickable[1].get(WarcraftLoreDB)") is True))
+
+    # A failing action is contained by ns.Guard and does not reach the caller.
+    lua.execute("""
+        guardedKeys = {}
+        ns.Guard = function(key, label, fn)
+            return function(...) local ok = pcall(fn, ...); if not ok then guardedKeys[#guardedKeys + 1] = key end end
+        end
+        ns.Minimap.Toggle = function() error("minimap broke") end
+    """)
+    lua.execute("clickable[3].scripts.OnClick()")
+    results.append(check("checkbox click is guarded", lua.eval("#guardedKeys") == 1))
+
+    # "Reset window positions" goes through ns.ResetWindows (same chat line as /wcl reset).
+    lua.execute("resetCalls = 0; ns.ResetWindows = function() resetCalls = resetCalls + 1 end")
     lua.execute("clickable[6].scripts.OnClick()")
-    results.append(check("reset window positions", lua.eval("resets") == 2))
+    results.append(check("reset button uses ns.ResetWindows", lua.eval("resetCalls") == 1))
 
     lua = run(False)
     lua.execute("loader = frames[#frames]; loader.scripts.OnEvent(loader)")

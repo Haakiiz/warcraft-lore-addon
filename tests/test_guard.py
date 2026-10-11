@@ -12,12 +12,12 @@ ADDON = Path(__file__).resolve().parent.parent / "WarcraftLore"
 STUBS = """
 local noop = function() end
 local function stub() return setmetatable({}, { __index = function() return noop end }) end
-printed, timers, sounds, toasts = {}, {}, 0, {}
+printed, timers, sounds, toasts, setMore = {}, {}, 0, {}, {}
 guids, targetExists, inInstance = {}, true, false
 ns = { Compat = {
     Print = function(m) printed[#printed + 1] = m end,
     UnitGUID = function(u) if guids[u] == "ERROR" then error("boom") end return guids[u] end,
-    UnitName = function(u) return u end,
+    UnitName = function() return nil end,
     UnitExists = function() return targetExists end,
     NPCIDFromGUID = function(g)
         if not g then return nil, nil end
@@ -37,7 +37,8 @@ ns = { Compat = {
     HookUnitTooltip = function() return "stub" end,
     AddTooltipLine = noop,
 } }
-ns.Toast = { Show = function(id, e, who, unit, more) toasts[#toasts + 1] = { id = id, who = who, more = more } end }
+ns.Toast = { Show = function(id, e, who, unit, more) toasts[#toasts + 1] = { id = id, who = who, more = more } end,
+    SetMore = function(id, n) setMore[#setMore + 1] = { id = id, n = n } end }
 ns.UI = { Init = noop, IsShown = function() return false end }
 ns.Minimap = { Init = noop }
 ns.SavedData = { Load = function() end }
@@ -117,30 +118,79 @@ def main():
     results.append(check("slash command: one chat line",
                          len(lines(lua)) == 1 and "/wcl command" in lines(lua)[0], lines(lua)))
 
-    # 3. Batching: three veterans at once give one chat line, one sound, one pill.
+    # 3. Batching: the first veteran is announced at once; the rest become ONE follow-up line.
     lua = runtime()
     lua.execute('guids.nameplate1 = "Creature-900001"; guids.nameplate2 = "Creature-900002"; '
                 'guids.nameplate3 = "Creature-900003"')
-    lua.execute('for i = 1, 3 do fire("NAME_PLATE_UNIT_ADDED", "nameplate" .. i) end')
-    results.append(check("nothing shown before the window ends", len(lines(lua)) == 0 and lua.eval("sounds") == 0))
+    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1")')
+    out = lines(lua)
+    results.append(check("first alert is immediate: line, sound, pill",
+                         len(out) == 1 and "Alpha" in out[0] and lua.eval("sounds") == 1
+                         and lua.eval("#toasts") == 1 and lua.eval("toasts[1].more") is None, out))
     results.append(check("one timer of 1.5 s", lua.eval("#timers") == 1 and lua.eval("timers[1].s") == 1.5))
+    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate2"); fire("NAME_PLATE_UNIT_ADDED", "nameplate3")')
+    results.append(check("later ones add nothing until the window ends",
+                         len(lines(lua)) == 1 and lua.eval("sounds") == 1 and lua.eval("#timers") == 1))
     lua.execute("timers[1].fn()")
     out = lines(lua)
-    results.append(check("one chat line with +2 more nearby", len(out) == 1 and "+2 more nearby" in out[0], out))
-    results.append(check("one sound, one pill", lua.eval("sounds") == 1 and lua.eval("#toasts") == 1
-                         and lua.eval("toasts[1].more") == 2))
+    results.append(check("one follow-up line naming both", len(out) == 2 and "Also nearby:" in out[1]
+                         and "Beta" in out[1] and "Gamma" in out[1] and "more" not in out[1], out))
+    results.append(check("no extra sound, no second pill; pill told +2",
+                         lua.eval("sounds") == 1 and lua.eval("#toasts") == 1
+                         and lua.eval("#setMore") == 1 and lua.eval("setMore[1].n") == 2))
+    # Nobody is announced twice.
+    lua.execute('for i = 1, 3 do fire("NAME_PLATE_UNIT_ADDED", "nameplate" .. i) end')
+    results.append(check("already alerted veterans stay quiet", len(lines(lua)) == 2))
 
-    # A lone veteran: plain line, no "more".
+    # Many veterans: at most 3 named, the rest counted.
+    lua = runtime()
+    lua.execute("""
+        for i = 1, 7 do
+            ns.NPCS[910000 + i] = { name = "Vet" .. i, appearances = { { game = "TFT" } } }
+            guids["np" .. i] = "Creature-" .. (910000 + i)
+            fire("NAME_PLATE_UNIT_ADDED", "np" .. i)
+        end
+        timers[1].fn()
+    """)
+    out = lines(lua)
+    results.append(check("7 veterans: 2 chat lines in total", len(out) == 2, out))
+    results.append(check("follow-up names exactly 3 and counts +3 more",
+                         "Vet2" in out[1] and "Vet3" in out[1] and "Vet4" in out[1] and "Vet5" not in out[1]
+                         and "+3 more" in out[1], out))
+
+    # A lone veteran: one line, a timer that says nothing.
     lua = runtime()
     lua.execute('guids.nameplate1 = "Creature-900002"; fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); timers[1].fn()')
     out = lines(lua)
-    results.append(check("lone veteran: no +N", len(out) == 1 and "more nearby" not in out[0], out))
+    results.append(check("lone veteran: one line, no follow-up", len(out) == 1 and "nearby" in out[0], out))
+
+    # The whole alert path shares ONE guard key: a failing follow-up switches "alert" off and /wcl why says so.
+    lua = runtime()
+    lua.execute('ns.Toast.SetMore = function() error("pill broke") end; '
+                'guids.nameplate1 = "Creature-900001"; guids.nameplate2 = "Creature-900002"; '
+                'fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); fire("NAME_PLATE_UNIT_ADDED", "nameplate2"); '
+                'timers[1].fn()')
+    results.append(check("flush error turns off the same 'alert' key", lua.eval('ns.FeatureOff("alert")') is True
+                         and lua.eval('ns.FeatureOff("alert-batch")') is False))
+    lua.execute('guids.target = "Creature-900002"; SlashCmdList.WARCRAFTLORE("why")')
+    results.append(check("why reports the dead alert", "alert is off after an error" in lines(lua)[-1], lines(lua)[-1]))
+    # The batch window is closed even though the flush failed, so a new veteran is announced again.
+    results.append(check("batch is not stuck open", lua.eval("#timers") == 1))
+
+    # The lore window failed to build: callers check FeatureOff("window").
+    lua = runtime()
+    lua.execute('ns.UI.Init = function() error("ui broke") end; fire("ADDON_LOADED", "WarcraftLore")')
+    lua.execute("printed = {}")
+    lua.execute('guids.target = "Creature-900001"; SlashCmdList.WARCRAFTLORE("")')
+    results.append(check("window off: /wcl says so, once, no per-feature error",
+                         len(lines(lua)) == 1 and "not available" in lines(lua)[0]
+                         and lua.eval('ns.FeatureOff("cmd:")') is False, lines(lua)))
 
     # 4. /wcl why
     lua = runtime()
     lua.execute('targetExists = false; SlashCmdList.WARCRAFTLORE("why")')
     results.append(check("why: no target", "no target" in lines(lua)[-1]))
-    for guid, needle in (("Player-1-ABC", "player"), (None, "hides"), ("Creature-12345", "not in the database")):
+    for guid, needle in (("Player-1-ABC", "player"), (None, "not sharing"), ("Creature-12345", "not in the database")):
         target = f'"{guid}"' if guid else "nil"
         lua.execute(f"targetExists = true; guids.target = {target}; SlashCmdList.WARCRAFTLORE('why')")
         results.append(check(f"why: {needle}", needle in lines(lua)[-1], lines(lua)[-1]))
@@ -151,6 +201,9 @@ def main():
     results.append(check("why: instance", "instance" in lines(lua)[-1], lines(lua)[-1]))
     lua.execute('inInstance = false; WarcraftLoreDB.alert = false; SlashCmdList.WARCRAFTLORE("why")')
     results.append(check("why: alerts off", "alerts are off" in lines(lua)[-1], lines(lua)[-1]))
+    lua.execute('guids.target = "Pet-0-1"; SlashCmdList.WARCRAFTLORE("why")')
+    results.append(check("why: no GUID/secret jargon", not any(w in x for x in lines(lua) for w in ("GUID", "secret")),
+                         lines(lua)))
     lua.execute('SlashCmdList.WARCRAFTLORE("help")')
     results.append(check("help lists /wcl why", any("/wcl why" in x for x in lines(lua))))
 
