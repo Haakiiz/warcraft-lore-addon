@@ -125,7 +125,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Cycle of Hatred",
                 missions = {},
-                role = "Minor character in the novel: his men help carry the wounded orc Byrok to Thrall, and he readies the orc troops when the human army gathers at Northwatch Hold",
+                role = "His men help carry the wounded orc Byrok to Thrall, and he readies the orc troops when the human army gathers at Northwatch Hold",
             },
         },
         story = "Nazgrel was freed from an internment camp by Thrall and became one of his most trusted advisors. "
@@ -171,25 +171,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "War Crimes",
                 missions = {},
-                role = "Major character",
-            },
-            {
-                game = "BOOK",
-                campaign = "The Shattering: Prelude to Cataclysm",
-                missions = {},
-                role = "Mentioned in the book",
-            },
-            {
-                game = "BOOK",
-                campaign = "Shadows Rising",
-                missions = {},
-                role = "Mentioned in the book",
-            },
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Mentioned in the book",
+                role = "As Warchief he offers Baine Bloodhoof the role of Garrosh's defender, vetoes the Alliance's choice of Varian as accuser, and later testifies as Tyrande's witness",
             },
         },
         story = "Vol'jin stayed behind on the Darkspear isles when many trolls sailed to Kalimdor with the orcs. "
@@ -203,32 +185,6 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
             "https://warcraft.wiki.gg/wiki/Old_Hatreds_(WC3_Orc)",
             "https://www.wowhead.com/classic/npc=10540",
-        },
-        confidence = "confirmed",
-    },
-
-    [15460] = {
-        name = "Grunt Maug",
-        zone = "Orgrimmar",
-        coords = "31.0, 65.2",
-        appearances = {
-            {
-                game = "TFT",
-                campaign = "The Founding of Durotar (Orc bonus campaign)",
-                missions = { "To Tame a Land" },
-                role = "Grunt guarding a gate to Orgrimmar (Warcraft III: Reforged only)",
-            },
-        },
-        story = "Maug guarded a gate to Orgrimmar during the invasion of Durotar, as shown in To Tame a Land in Warcraft III: Reforged. "
-             .. "In World of Warcraft he is the Tin Bar Collector in the Valley of Spirits in Orgrimmar. "
-             .. "He appeared for the Gates of Ahn'Qiraj event, giving the quests The Horde Needs Tin Bars! "
-             .. "and The Horde Needs More Tin Bars! "
-             .. "Players handed in tin bars for the Horde's war effort against Ahn'Qiraj.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Grunt_Maug",
-            "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
-            "https://www.wowhead.com/classic/npc=15460",
         },
         confidence = "confirmed",
     },
@@ -312,25 +268,25 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Well of Eternity",
                 missions = {},
-                role = "Major character in the novel, set about 10,000 years before the First War: appears as Sister Tyrande Whisperwind",
+                role = "In the novel, set about 10,000 years before the First War, she appears as Sister Tyrande Whisperwind",
             },
             {
                 game = "BOOK",
                 campaign = "The Demon Soul",
                 missions = {},
-                role = "Major character in the novel, set about 10,000 years before the First War: appears as High Priestess Tyrande Whisperwind",
+                role = "In the novel, set about 10,000 years before the First War, she appears as High Priestess Tyrande Whisperwind",
             },
             {
                 game = "BOOK",
                 campaign = "The Sundering",
                 missions = {},
-                role = "Major character in the novel, set about 10,000 years before the First War: High Priestess Tyrande Whisperwind in the events leading to the Great Sundering",
+                role = "In the novel, set about 10,000 years before the First War, she is High Priestess Tyrande Whisperwind in the events leading to the Great Sundering",
             },
             {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Major character in the novel: she learns through nightmares that Malfurion is dying, asks Broll Bearmantle to search the Emerald Dream and goes with him",
+                role = "She learns through nightmares that Malfurion is dying, asks Broll Bearmantle to search the Emerald Dream and goes with him",
             },
         },
         story = "After the Battle of Mount Hyjal, Tyrande and Malfurion stayed on Hyjal to rebuild and later took their people back to Ashenvale to heal the damage done by the Burning Legion. "
@@ -376,7 +332,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Supporting character in the novel: calls a convocation of druids on Teldrassil and insists on healing the tree, and the Nightmare Lord has tricked him with a vision of his dead son Valstann",
+                role = "Calls a convocation of druids on Teldrassil and insists on healing the tree, and the Nightmare Lord has tricked him with a vision of his dead son Valstann",
             },
         },
         story = "After the Third War the night elves lost Nordrassil and their immortality, and Malfurion fell into a deep coma. "
@@ -478,7 +434,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Supporting character: among the first tauren to fall under the Nightmare's sway and into slumber",
+                role = "Among the first tauren to fall under the Nightmare's sway and into slumber",
             },
             {
                 game = "BOOK",
@@ -539,25 +495,25 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
-                role = "Supporting character: co-leads the tauren and Darkspear army at Northwatch, confronts Garrosh over the molten giants and the Theramore attack, and has Perith Stormhoof warn Jaina Proudmoore of the attack",
+                role = "Co-leads the tauren and Darkspear army at Northwatch, confronts Garrosh over the molten giants and the Theramore attack, and has Perith Stormhoof warn Jaina Proudmoore of the attack",
             },
             {
                 game = "BOOK",
                 campaign = "War Crimes",
                 missions = {},
-                role = "Supporting character: chosen by Vol'jin as Garrosh Hellscream's defender at his trial in the Temple of the White Tiger, opposite Tyrande Whisperwind",
+                role = "Chosen by Vol'jin as Garrosh Hellscream's defender at his trial in the Temple of the White Tiger, opposite Tyrande Whisperwind",
             },
             {
                 game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
-                role = "Supporting character: Sylvanas Windrunner tasks him with organizing the Horde's healing efforts and orders him to cut off contact with King Anduin Wrynn",
+                role = "Sylvanas Windrunner tasks him with organizing the Horde's healing efforts and orders him to cut off contact with King Anduin Wrynn",
             },
             {
                 game = "BOOK",
                 campaign = "A Good War",
                 missions = {},
-                role = "Supporting character: questions Varok Saurfang about the Horde's march through the Northern Barrens; Saurfang realizes Baine knows something of the real plan to invade Ashenvale",
+                role = "Questions Varok Saurfang about the Horde's march through the Northern Barrens; Saurfang realizes Baine knows something of the real plan to invade Ashenvale",
             },
         },
         story = "After the Third War, Baine went with his father Cairne as the tauren settled in Mulgore. "
@@ -591,25 +547,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character: Thrall hires him to rebuild Orgrimmar after rogue fire elementals devastated the city",
+                role = "Thrall hires him to rebuild Orgrimmar after rogue fire elementals devastated the city",
             },
             {
                 game = "BOOK",
                 campaign = "The Goblin Way",
                 missions = {},
-                role = "Supporting character: on his \"factfinding\" tours he strong-arms Marin Noggenfogger into letting him inspect his mine, and the two agree to align their cartels",
-            },
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Mentioned in the book",
-            },
-            {
-                game = "BOOK",
-                campaign = "Shadows Rising",
-                missions = {},
-                role = "Minor character",
+                role = "On his \"factfinding\" tours he strong-arms Marin Noggenfogger into letting him inspect his mine, and the two agree to align their cartels",
             },
         },
         story = "Gazlowe was chief engineer when Orgrimmar was built, and dug tunnels under the city in search of water. "
@@ -654,18 +598,6 @@ ns.NPCS = {
                 campaign = "Beyond the Dark Portal",
                 missions = {},
                 role = "Horde beastmaster; the novel describes him as a half-ogre (chapter 14)",
-            },
-            {
-                game = "BOOK",
-                campaign = "Wolfheart",
-                missions = {},
-                role = "Mentioned in the book",
-            },
-            {
-                game = "BOOK",
-                campaign = "Vol'jin: Shadows of the Horde",
-                missions = {},
-                role = "Mentioned in the book",
             },
         },
         story = "Thrall named Rexxar Champion of the Horde and let him lead the attack on Admiral Daelin Proudmoore's forces at Theramore. "
@@ -903,108 +835,6 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Tirisfal Glades and Western Plaguelands
-    [232920] = {
-        name = "Uther",
-        zone = "Western Plaguelands",
-        coords = "47.0, 69.4",
-        appearances = {
-            {
-                game = "WC2",
-                campaign = "Tides of Darkness (Human)",
-                missions = { "The Battle at Darrowmere" },
-                role = "Escort objective: the player must escort the Lightbringer to the Circle of Power at Caer Darrow",
-            },
-            {
-                game = "WC3",
-                campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "Blackrock and Roll" },
-                role = "Ally hero (Paladin), Chapter II",
-            },
-            {
-                game = "WC3",
-                campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "The Defense of Strahnbrad", "March of the Scourge", "The Culling" },
-                role = "Appears in dialogue and cutscenes only; in The Culling he refuses Arthas's order to purge Stratholme",
-            },
-            {
-                game = "WC3",
-                campaign = "Path of the Damned (Undead)",
-                missions = { "Digging up the Dead" },
-                role = "Enemy hero (Paladin) guarding King Terenas's urn at the Silver Hand camp outside Andorhal; killed by Arthas",
-            },
-        },
-        story = "Uther led the Knights of the Silver Hand and tutored Prince Arthas. "
-             .. "When Arthas ordered the purge of Stratholme, Uther refused and informed King Terenas. "
-             .. "He was later killed by Arthas at Andorhal while guarding the urn with King Terenas's ashes, and his body was buried in a tomb south of Andorhal.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Uther_the_Lightbringer",
-            "https://warcraft.wiki.gg/wiki/The_Battle_at_Darrowmere_(WC2_Human)",
-            "https://warcraft.wiki.gg/wiki/Scourge_of_Lordaeron",
-            "https://warcraft.wiki.gg/wiki/The_Defense_of_Strahnbrad_(WC3_Human)",
-            "https://warcraft.wiki.gg/wiki/Blackrock_and_Roll_(WC3_Human)",
-            "https://warcraft.wiki.gg/wiki/March_of_the_Scourge_(WC3_Human)",
-            "https://warcraft.wiki.gg/wiki/The_Culling_(WC3_Human)",
-            "https://warcraft.wiki.gg/wiki/Digging_up_the_Dead_(WC3_Undead)",
-            "https://www.wowhead.com/classic/npc=232920/uther",
-        },
-        confidence = "confirmed",
-    },
-
-    [231500] = {
-        name = "Gregory",
-        zone = "Western Plaguelands",
-        coords = "69.4, 79.6",
-        related = { 232920 },
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "Path of the Damned (Undead)",
-                missions = { "Digging up the Dead" },
-                role = "Enemy hero (Paladin, as Sage Truthbearer; Gregory Edmunson in the game files): guards King Terenas's urn near Andorhal with Uther and is killed by Arthas",
-            },
-        },
-        story = "In life Gregory was a paladin of the Silver Hand called Sage Truthbearer and led the Champions of Truth under Uther. "
-             .. "He died protecting King Terenas's urn in Andorhal alongside Uther and Ballador the Bright. "
-             .. "He was raised as a death knight of the Scourge. "
-             .. "In Season of Discovery he allies with his old friend Aeonas and the paladin adventurer to destroy Echoing Orbs.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Gregory",
-            "https://warcraft.wiki.gg/wiki/Sage_Truthbearer_(Warcraft_III)",
-            "https://warcraft.wiki.gg/wiki/Digging_up_the_Dead_(WC3_Undead)",
-            "https://www.wowhead.com/classic/npc=231500/gregory",
-        },
-        confidence = "confirmed",
-    },
-
-    [232932] = {
-        name = "Gregory",
-        zone = "Western Plaguelands",
-        coords = "39.4, 67.2",
-        related = { 232920 },
-        appearances = {
-            {
-                game = "WC3",
-                campaign = "Path of the Damned (Undead)",
-                missions = { "Digging up the Dead" },
-                role = "Enemy hero (Paladin, as Sage Truthbearer; Gregory Edmunson in the game files): guards King Terenas's urn near Andorhal with Uther and is killed by Arthas",
-            },
-        },
-        story = "In life Gregory was a paladin of the Silver Hand called Sage Truthbearer and led the Champions of Truth under Uther. "
-             .. "He died protecting King Terenas's urn in Andorhal alongside Uther and Ballador the Bright. "
-             .. "He was raised as a death knight of the Scourge. "
-             .. "In Season of Discovery he allies with his old friend Aeonas and the paladin adventurer to destroy Echoing Orbs.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Gregory",
-            "https://warcraft.wiki.gg/wiki/Sage_Truthbearer_(Warcraft_III)",
-            "https://warcraft.wiki.gg/wiki/Digging_up_the_Dead_(WC3_Undead)",
-            "https://www.wowhead.com/classic/npc=232932/gregory",
-        },
-        confidence = "confirmed",
-    },
-
     [10666] = {
         name = "Gordo",
         zone = "Tirisfal Glades",
@@ -1040,7 +870,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Exploring Azeroth: Kalimdor",
                 missions = {},
-                role = "Mentioned in the book: Rexxar names him the new leader of the Stonemaul clan, a choice Rexxar later regrets",
+                role = "Rexxar names him the new leader of the Stonemaul clan, a choice Rexxar later regrets",
             },
         },
         story = "After the invasion of Durotar, Rexxar named the ogre Mok'Morokk the new leader of the Stonemaul clan, according to the book Exploring Azeroth: Kalimdor. "
@@ -1077,13 +907,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
-                role = "Supporting character in the novel: Jaina's night elf bodyguard, who dies when Theramore is destroyed",
+                role = "Jaina's night elf bodyguard, who dies when Theramore is destroyed",
             },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Pained is the night elf bodyguard whom Tyrande assigned to Jaina at the Battle of Mount Hyjal. "
              .. "She stayed with Jaina afterwards because she had never officially been relieved of her duty. "
              .. "In World of Warcraft she is Jaina Proudmoore's night elf bodyguard on Theramore Isle. "
-             .. "The novel itself is set long after Classic and ends with her death when Theramore is destroyed.",
+             .. "The novel is set many years later and ends with her death when Theramore is destroyed.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Pained",
@@ -1103,7 +933,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Tides of Darkness",
                 missions = { "First prologue" },
-                role = "Minor character in the novel: the headman of Southshore who greets Anduin Lothar and the Stormwind refugees in the first prologue",
+                role = "The headman of Southshore who greets Anduin Lothar and the Stormwind refugees in the first prologue",
             },
         },
         story = "In the novel Tides of Darkness (Aaron Rosenberg's retelling of the Second War), Marcus Redpath is the headman of Southshore. "
@@ -1130,7 +960,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Beyond the Dark Portal",
                 missions = { "Chapter 7", "Chapter 10" },
-                role = "Supporting character in the novel (chapters 7 and 10): crown prince of Alterac and eldest son of King Aiden Perenolde, the Alterac ruler who betrays the Alliance in Warcraft II",
+                role = "Crown prince of Alterac and eldest son of King Aiden Perenolde, the Alterac ruler who betrays the Alliance in Warcraft II (chapters 7 and 10)",
             },
         },
         story = "In the novel Beyond the Dark Portal, Aliden is the eldest son of King Aiden Perenolde and crown prince of Alterac. "
@@ -1196,37 +1026,19 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
-                role = "Major character",
+                role = "Warchief of the Horde and queen of the Forsaken, whose trust Anduin must win while she pursues her own schemes",
             },
             {
                 game = "BOOK",
                 campaign = "A Good War",
                 missions = {},
-                role = "Major character",
+                role = "Leads a Horde army into Darkshore and later duels Malfurion after the two Horde armies rejoin",
             },
             {
                 game = "BOOK",
                 campaign = "In the Shadow of the Sun",
                 missions = {},
-                role = "Supporting character",
-            },
-            {
-                game = "BOOK",
-                campaign = "Blood of the Highborne",
-                missions = {},
-                role = "Minor character",
-            },
-            {
-                game = "BOOK",
-                campaign = "Elegy",
-                missions = {},
-                role = "Mentioned in the book",
-            },
-            {
-                game = "BOOK",
-                campaign = "Blood Ties",
-                missions = {},
-                role = "Mentioned in the book",
+                role = "Travels to Sunfury Spire to gain the blood elves' support for the war effort",
             },
         },
         story = "When the Lich King's power waned, Sylvanas regained her free will and turned against Arthas. "
@@ -1267,25 +1079,19 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Minor character in the novel (chapter 18): in the Battle for the Undercity he fights with his summoned Legion minions and is defeated by Sylvanas herself",
+                role = "In the Battle for the Undercity he fights with his summoned Legion minions and is defeated by Sylvanas herself (chapter 18)",
             },
             {
                 game = "BOOK",
                 campaign = "World of Warcraft: Sylvanas",
                 missions = {},
-                role = "Minor character in the novel (chapter 15): named by Sylvanas as the one who must supply Putress with whatever he needs for the New Plague",
+                role = "Named by Sylvanas as the one who must supply Putress with whatever he needs for the New Plague (chapter 15)",
             },
             {
                 game = "BOOK",
                 campaign = "Arthas: Rise of the Lich King",
                 missions = {},
-                role = "Minor character in the novel: Sylvanas tells him that something has happened with the Lich King and that their plans must be stepped up",
-            },
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Mentioned in the book",
+                role = "Sylvanas tells him that something has happened with the Lich King and that their plans must be stepped up",
             },
         },
         story = "Varimathras was one of three dreadlords who ruled Lordaeron after Arthas left for Northrend. "
@@ -1318,13 +1124,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "World of Warcraft: Sylvanas",
                 missions = {},
-                role = "Minor character in the novel (chapter 14): witnesses Sylvanas refuse Varimathras' invitation to join his new order and wonders whether it would have been prudent to accept",
+                role = "Witnesses Sylvanas refuse Varimathras' invitation to join his new order and wonders whether it would have been prudent to accept (chapter 14)",
             },
             {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Minor character in the novel (chapter 18): the first of Sylvanas' trusted counsel to fall in Sylvanas' Emerald Nightmare dream",
+                role = "The first of Sylvanas' trusted counsel to fall in Sylvanas' Emerald Nightmare dream (chapter 18)",
             },
         },
         story = "Sharlindra is one of the banshees in Sylvanas' forces when Sylvanas breaks free of Arthas and turns on the dreadlords. "
@@ -1356,7 +1162,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Arthas: Rise of the Lich King",
                 missions = {},
-                role = "Minor character in the novel: assisted Faranell in showing the effects of the Forsaken Blight to Sylvanas shortly before the War against the Lich King",
+                role = "Assisted Faranell in showing the effects of the Forsaken Blight to Sylvanas shortly before the War against the Lich King",
             },
         },
         story = "While the Forsaken kingdom was being founded, Grand Apothecary Putress had Garek Bandarion and Dark Ranger Anya bring corpses to Keever. "
@@ -1407,7 +1213,7 @@ ns.NPCS = {
         story = "Anduin Llane Wrynn is the son of King Varian Wrynn and Queen Tiffin Ellerian Wrynn, named after Anduin Lothar and his grandfather King Llane Wrynn. "
              .. "He was thirteen during the Shattering, when he stayed in Ironforge. "
              .. "In Stormrage he suffered nightmares from the Emerald Nightmare, and in Blood Ties he returned to Stormwind without reclaiming his throne. "
-             .. "In World of Warcraft Classic he is the young king of Stormwind, with Highlord Bolvar Fordragon acting as regent.",
+             .. "In World of Warcraft he is the young king of Stormwind, with Highlord Bolvar Fordragon acting as regent.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Anduin_Wrynn",
@@ -1502,7 +1308,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
-                role = "First to accept King Wrynn's call to support Theramore Isle; he is the main organizer of its defense and is killed when the Horde detonates a mana bomb (Year 30 ADP)",
+                role = "First to accept King Wrynn's call to support Theramore Isle; he is the main organizer of its defense and is killed when the Horde detonates a mana bomb about 30 years after the Dark Portal opened",
             },
         },
         story = "General Marcus Jonathan was the high commander of Stormwind Defense. "
@@ -1531,7 +1337,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Blood Ties",
                 missions = {},
-                role = "Gains a new squire, Winthrop, in Year 42 ADP; at Light's Hope Chapel, Winthrop and Arator the Redeemer clean his armor while he speaks with other paladins",
+                role = "Gains a new squire, Winthrop, about 42 years after the Dark Portal opened; at Light's Hope Chapel, Winthrop and Arator the Redeemer clean his armor while he speaks with other paladins",
             },
         },
         story = "Lord Grayson Shadowbreaker is one of Stormwind's foremost paladins and one of the lords of the Order of the Silver Hand, where he trains young paladins. "
@@ -1743,11 +1549,11 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "We Ride Forth",
                 missions = {},
-                role = "Minor character in the short story: as the Lich King, he is confronted by the Four Horsemen over his increasingly militant actions",
+                role = "As the Lich King, he is confronted by the Four Horsemen over his increasingly militant actions",
             },
         },
         story = "Bolvar Fordragon served as Highlord and Regent of Stormwind while King Varian Wrynn was missing. "
-             .. "In World of Warcraft Classic he rules Stormwind Keep as regent for the young Anduin Wrynn. "
+             .. "In World of Warcraft he rules Stormwind Keep as regent for the young Anduin Wrynn. "
              .. "In the later short story We Ride Forth, the Four Horsemen confront him in his role as the Lich King.",
         items = {},
         sources = {
@@ -1767,7 +1573,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Tipping Point",
                 missions = {},
-                role = "Major character in the short story: enforcer of Trade Prince Mozzy Gloxscorn in Undermine, who fights Mathias Shaw and lets him go",
+                role = "Enforcer of Trade Prince Mozzy Gloxscorn in Undermine, who fights Mathias Shaw and lets him go",
             },
         },
         story = "Renzik is a goblin from Undermine who became the right hand of Trade Prince Mozzy Gloxscorn in the Krackslagger Cartel. "
@@ -1805,12 +1611,6 @@ ns.NPCS = {
                 campaign = "Blood Ties",
                 missions = {},
                 role = "Attends the wedding of Turalyon and Alleria Windrunner with his family in chapter 17",
-            },
-            {
-                game = "BOOK",
-                campaign = "The Shattering: Prelude to Cataclysm",
-                missions = {},
-                role = "Major character",
             },
         },
         story = "During the Second War Magni defended Ironforge from the orcs and joined the Alliance of Lordaeron. "
@@ -1928,18 +1728,6 @@ ns.NPCS = {
                 missions = {},
                 role = "Gnome engineer who studies Azerite samples and sends Sapphronetta Flivvers to Silithus, and meets Magni Bronzebeard in Ironforge (chapters 8 and 14)",
             },
-            {
-                game = "BOOK",
-                campaign = "Beyond the Dark Portal",
-                missions = {},
-                role = "Supporting character",
-            },
-            {
-                game = "BOOK",
-                campaign = "War Crimes",
-                missions = {},
-                role = "Minor character",
-            },
         },
         story = "Gelbin Mekkatorque is the High Tinker of Gnomeregan and a brilliant gnomish inventor. "
              .. "After the Second War, King Magni asked him for a faster solution to the slow travel to and from the north, and he prepared the schematics for the Deeprun Tram. "
@@ -1967,12 +1755,6 @@ ns.NPCS = {
                 missions = {},
                 role = "High priest of Ironforge and priest trainer in the Hall of Mysteries; heals Anduin Wrynn, witnesses Magni's petrification, and backs Moira Thaurissan as heir (chapters 11, 14, 15 and 31)",
             },
-            {
-                game = "BOOK",
-                campaign = "Wolfheart",
-                missions = {},
-                role = "Mentioned in the book",
-            },
         },
         story = "In The Shattering: Prelude to Cataclysm, Rohan meets Anduin Wrynn in the Hall of Mysteries and heals him after he bumps into the gnome mages Dink and Bink. "
              .. "Shortly before the Cataclysm he witnesses Magni's petrification in Old Ironforge and casts healing spells to save the king, but it is too late. "
@@ -1996,7 +1778,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Traveler",
                 missions = {},
-                role = "Minor character in the novel, chapter 12: the judge who declares Greydon Thorne dead two years after he leaves his family, so that Ceya Northbrooke can marry Robb Glade",
+                role = "The judge who declares Greydon Thorne dead two years after he leaves his family, so that Ceya Northbrooke can marry Robb Glade (chapter 12)",
             },
         },
         story = "Magistrate Solomon is the judge of the Court of Lakeshire in the Redridge Mountains. "
@@ -2075,7 +1857,7 @@ ns.NPCS = {
         },
         story = "Morbent Fel was a human necromancer who ruled over the undead of Duskwood from his house atop the Forlorn Rowe in Raven Hill Cemetery. "
              .. "He was an ally of the Dark Riders and was responsible for raising the undead in Duskwood. "
-             .. "In World of Warcraft Classic he was guarded by his undead minions and a magical barrier, which had to be removed with Morbent's Bane before he could be defeated.",
+             .. "In World of Warcraft he is guarded by his undead minions and a magical barrier, which had to be removed with Morbent's Bane before he could be defeated.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Morbent_Fel",
@@ -2220,14 +2002,14 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Quest for Pandaria",
                 missions = {},
-                role = "Minor character in the novella: Talithar Swiftwind's estranged wife, to whom Baenan delivers the wedding rings and Talithar's message",
+                role = "Talithar Swiftwind's estranged wife, to whom Baenan delivers the wedding rings and Talithar's message",
             },
         },
         story = "Vyrin Swiftwind is a high elf married to Talithar Swiftwind, though the two became estranged after the fall of the high elves following the Third War. "
              .. "Talithar embraced the teachings of Prince Kael'thas for the sake of his people, while Vyrin chose her integrity and went to live at the Farstrider Lodge. "
              .. "In the novella Quest for Pandaria, Talithar helps the dwarf Baenan escape the Horde destroyer Warchief's Fist and asks him to give Vyrin their wedding rings with the message that he never stopped loving her. "
              .. "Talithar later sacrificed himself to save Baenan and Chen Stormstout, and Baenan chose to name him a hero. "
-             .. "In World of Warcraft Classic she is a quest giver at the Farstrider Lodge in Loch Modan.",
+             .. "In World of Warcraft she is a quest giver at the Farstrider Lodge in Loch Modan.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Vyrin_Swiftwind",
@@ -2246,7 +2028,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Minor character in the novel: a druid who discovers Fandral Staghelm's corruption, is silenced with Hamuul Runetotem and Shandris Feathermoon, and is later freed by Malfurion",
+                role = "A druid who discovers Fandral Staghelm's corruption, is silenced with Hamuul Runetotem and Shandris Feathermoon, and is later freed by Malfurion",
             },
         },
         story = "In World of Warcraft, Naralex tried to bring life back to the Barrens through the Wailing Caverns, but the Emerald Dream corrupted the caverns and trapped him in sleep until adventurers and his disciple Muyoh woke him. "
@@ -2310,7 +2092,7 @@ ns.NPCS = {
         story = "Sally Whitemane was a human priestess of the Light who became High Inquisitor of the Scarlet Crusade, directing its activities from the Scarlet Monastery's Cathedral. "
              .. "Nearly one year after the Forsaken secured the Undercity, she and Renault Mograine launched an all-out assault on the Forsaken, and Whitemane attacked the Forsaken settlements in Tirisfal Glades. "
              .. "She and Renault were forced to pull back by Garek Bandarion, Dark Ranger Anya and, in Whitemane's case, Leonid Barthalomew, and the crusaders retreated to the Scarlet Monastery. "
-             .. "In World of Warcraft Classic she is the final boss of the Scarlet Monastery.",
+             .. "In World of Warcraft she is the final boss of the Scarlet Monastery.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Sally_Whitemane",
@@ -2331,7 +2113,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Cut Short",
                 missions = {},
-                role = "Major character and antagonist in the short story: Gelbin Mekkatorque's former closest friend, the betrayer the gnomes must face",
+                role = "Gelbin Mekkatorque's former closest friend, the betrayer the gnomes must face",
             },
         },
         story = "In his youth, Sicco Thermaplugg was the closest friend of Gelbin Mekkatorque, and Gelbin later employed him at his foundry. "
@@ -2385,13 +2167,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Arthas: Rise of the Lich King",
                 missions = {},
-                role = "Minor character in the novel: Grand Apothecary Putress' apothecary who demonstrates the New Plague to Sylvanas with two prisoners",
+                role = "Grand Apothecary Putress' apothecary who demonstrates the New Plague to Sylvanas with two prisoners",
             },
             {
                 game = "BOOK",
                 campaign = "World of Warcraft: Sylvanas",
                 missions = {},
-                role = "Minor character in the novel: subordinate of Grand Apothecary Putress",
+                role = "Subordinate of Grand Apothecary Putress",
             },
         },
         story = "Before the Scourge, Faranell was an alchemist of great renown who studied with the wizards of Dalaran, and he rose as one of the Forsaken. "
@@ -2417,7 +2199,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
-                role = "Minor character in the novel (chapters 12, 19, 22, 29, 32, 33 and 34): Forsaken former historian of Lordaeron, titled Governor in chapter 19 and a member of the Desolate Council; reunited with his daughter Philia at the Gathering and killed in chapter 34",
+                role = "Forsaken former historian of Lordaeron, titled Governor in chapter 19 and a member of the Desolate Council; reunited with his daughter Philia at the Gathering and killed in chapter 34",
             },
         },
         story = "Before the Plague, Parqual Fintallas was a human historian in Capital City, living with his wife Mina and daughter Philia. "
@@ -2441,7 +2223,7 @@ ns.NPCS = {
         name = "Magatha Grimtotem",
         zone = "Thunder Bluff",
         coords = "70.2, 30.8",
-        related = { 4310, 4309, 11833 },
+        related = { 11833 },
         appearances = {
             {
                 game = "BOOK",
@@ -2474,25 +2256,25 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Supporting character: archdruid who becomes a close friend of Broll and is among the archdruids summoned to Teldrassil",
+                role = "Archdruid who becomes a close friend of Broll and is among the archdruids summoned to Teldrassil",
             },
             {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character: archdruid in Orgrimmar; sends messages to the Cenarion Circle and discusses Garrosh's rebuilt Orgrimmar with Cairne Bloodhoof at Red Rocks",
+                role = "Archdruid in Orgrimmar; sends messages to the Cenarion Circle and discusses Garrosh's rebuilt Orgrimmar with Cairne Bloodhoof at Red Rocks",
             },
             {
                 game = "BOOK",
                 campaign = "As Our Fathers Before Us",
                 missions = {},
-                role = "Supporting character: Baine Bloodhoof asks him about the Quilboar attacks on the water caravans to Orgrimmar",
+                role = "Baine Bloodhoof asks him about the Quilboar attacks on the water caravans to Orgrimmar",
             },
             {
                 game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
-                role = "Supporting character: steps in to aid Baine Bloodhoof when Baine and Garrosh confront each other over the attack on Theramore, until both are ordered to stand down",
+                role = "Steps in to aid Baine Bloodhoof when Baine and Garrosh confront each other over the attack on Theramore, until both are ordered to stand down",
             },
         },
         story = "Hamuul Runetotem is the archdruid of the tauren and the leader of the Horde druids. "
@@ -2507,54 +2289,6 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/As_Our_Fathers_Before_Us",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
             "https://www.wowhead.com/classic/npc=5769",
-        },
-        confidence = "confirmed",
-    },
-
-    [4310] = {
-        name = "Cor Grimtotem",
-        zone = "Thunder Bluff",
-        coords = "",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "The Shattering: Prelude to Cataclysm",
-                missions = {},
-                role = "Grimtotem agent: sabotages the Thunder Bluff lifts during Baine's counterattack",
-            },
-        },
-        story = "Cor Grimtotem was a tauren once found in Thunder Bluff, and he has since been removed from the game. "
-             .. "In The Shattering: Prelude to Cataclysm, he loyally helped Magatha Grimtotem secure Thunder Bluff for the Grimtotem tribe. "
-             .. "Expecting Baine Bloodhoof to try to retake the town, he planned to make the lifts explode so that Baine's troops would camp at the base, but he managed to explode only one of them. "
-             .. "His fate after the battle is unknown.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Cor_Grimtotem",
-            "https://www.wowhead.com/classic/npc=4310",
-        },
-        confidence = "confirmed",
-    },
-
-    [4309] = {
-        name = "Gorm Grimtotem",
-        zone = "Thunder Bluff",
-        coords = "",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "The Shattering: Prelude to Cataclysm",
-                missions = {},
-                role = "Grimtotem bodyguard: stays at Magatha's side during Baine's counterattack on Thunder Bluff",
-            },
-        },
-        story = "Gorm Grimtotem was a tauren originally found on the Elder Rise of Thunder Bluff, and he has since been removed from the game. "
-             .. "In The Shattering: Prelude to Cataclysm, he loyally assisted Magatha Grimtotem in securing Thunder Bluff for the Grimtotem tribe. "
-             .. "When Baine Bloodhoof launched a counterattack to retake the town, Gorm stayed at Magatha's side and saved her life by keeping her from falling. "
-             .. "His fate after Baine's forces retook Thunder Bluff is unknown.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Gorm_Grimtotem",
-            "https://www.wowhead.com/classic/npc=4309",
         },
         confidence = "confirmed",
     },
@@ -2628,31 +2362,19 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character",
+                role = "Accompanies Thrall to Dustwallow Marsh, becomes one of Garrosh's advisers and warns Garrosh that Magatha has staged a coup",
             },
             {
                 game = "BOOK",
                 campaign = "War Crimes",
                 missions = {},
-                role = "Supporting character",
+                role = "Goes with Go'el and Varok to Garrosh's trial, where he declines to be Garrosh's defender and backs the choice of Baine instead",
             },
             {
                 game = "BOOK",
                 campaign = "Heartlands",
                 missions = {},
-                role = "Supporting character",
-            },
-            {
-                game = "BOOK",
-                campaign = "Rise of the Horde",
-                missions = {},
-                role = "Minor character",
-            },
-            {
-                game = "BOOK",
-                campaign = "Blood Ties",
-                missions = {},
-                role = "Minor character",
+                role = "Advises Overlord Geya'rah to stand down during a clash with Stromgarde, and later joins the allied armies before Stromgarde Keep",
             },
         },
         story = "Eitrigg was born into the Blackrock clan on Draenor. "
@@ -2728,12 +2450,6 @@ ns.NPCS = {
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
                 role = "Shopkeeper arrested and beaten by Malkorok and Kor'kron soldiers for not fully supporting Garrosh Hellscream",
-            },
-            {
-                game = "BOOK",
-                campaign = "War Crimes",
-                missions = {},
-                role = "Minor character",
             },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Malkorok and a few Kor'kron soldiers attacked Kor'jus when his shop was closed, because he was not fully supportive of Garrosh Hellscream. "
@@ -2924,7 +2640,7 @@ ns.NPCS = {
         story = "Lethon is one of Ysera's wayward dragon lieutenants and was among the strongest servants of the Nightmare. "
              .. "In the novel Stormrage he attacks Ysera, Tyrande Whisperwind, Broll Bearmantle, Eranikus and Gnarl during the War Against the Nightmare. "
              .. "He tries to corrupt Eranikus alongside Emeriss, and is forced to retreat when Alexstrasza arrives. "
-             .. "Later he ambushes Malfurion Stormrage and Eranikus as they try to free Ysera from the Eye, and attempts to corrupt Eranikus. "
+             .. "Later he ambushes Malfurion Stormrage and Eranikus as they try to free Ysera from the Eye. "
              .. "When Eranikus shifts them both into the unstable boundary between the Emerald Dream and Azeroth, the chaotic energies tear both dragons apart.",
         items = {},
         sources = {
@@ -2969,7 +2685,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Edge of Night",
                 missions = {},
-                role = "Supporting character in the official short story: a former young human alchemist who serves Sylvanas and oversees the attack on Gilneas alongside Garrosh Hellscream",
+                role = "A former young human alchemist who serves Sylvanas and oversees the attack on Gilneas alongside Garrosh Hellscream",
             },
         },
         story = "In the short story Edge of Night, Lydon is a former young human alchemist who fought during Sylvanas' liberation. "
@@ -2995,7 +2711,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Beyond the Dark Portal",
                 missions = { "Chapter 8" },
-                role = "Minor character in the novel: as the dragon Onyxia, ordered by Deathwing to win over the Blackrock orcs",
+                role = "As the dragon Onyxia, ordered by Deathwing to win over the Blackrock orcs",
             },
             {
                 game = "BOOK",
@@ -3029,7 +2745,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Tipping Point",
                 missions = {},
-                role = "Supporting character in the official audio short story: the \"master of cheese\" in Stormwind to whom Shaw sends Renzik",
+                role = "The \"master of cheese\" in Stormwind to whom Shaw sends Renzik",
             },
         },
         story = "Elling Trias runs Trias' Cheese in the Trade District with his wife Elaine and son Ben, but he is more than a cheesemaker and has contacts from SI:7 to Hearthglen. "
@@ -3055,7 +2771,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Blood of Our Fathers",
                 missions = {},
-                role = "Supporting character in the official short story: the architect rebuilding Stormwind after Deathwing's attack",
+                role = "The architect rebuilding Stormwind after Deathwing's attack",
             },
         },
         story = "Baros Alexston grew up on the Alexston Farmstead in Westfall and worked with Edwin VanCleef in the Stonemasons' Guild to rebuild Stormwind after the First War. "
@@ -3080,12 +2796,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Elegy",
                 missions = {},
-                role = "Minor character in the novella: holds portals open for night elf refugees from Teldrassil",
+                role = "Holds portals open for night elf refugees from Teldrassil",
             },
         },
         story = "Archmage Malin stands outside the Wizard's Sanctum in Stormwind's Mage Quarter, and Archmage Trelane was his first master. "
              .. "In World of Warcraft he sends agents to the Arathi Highlands to gather reagents and recover Trelane's belongings. "
-             .. "In the novella Elegy, set long after Classic during the War of the Thorns, he holds portals open at the Wizard's Sanctum for night elf refugees fleeing to Stormwind. "
+             .. "In the novella Elegy, set during the War of the Thorns, he holds portals open at the Wizard's Sanctum for night elf refugees fleeing to Stormwind. "
              .. "King Anduin has him send word to Dalaran asking its mages to help speed up the evacuation.",
         items = {},
         sources = {
@@ -3107,7 +2823,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character: Ironforge gryphon master who tells Anduin Wrynn about Moira's gryphon quarantine",
+                role = "Ironforge gryphon master who tells Anduin Wrynn about Moira's gryphon quarantine",
             },
         },
         story = "Gryth Thurden is a dwarf gryphon flight master at the Great Forge in Ironforge. "
@@ -3134,7 +2850,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character: advisor to Magni Bronzebeard who gives orders on the King's authority",
+                role = "Advisor to Magni Bronzebeard who gives orders on the King's authority",
             },
             {
                 game = "BOOK",
@@ -3168,13 +2884,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Supporting character: in chapter 12 Anduin recognizes him as High Explorer Muninn Magellas, head of the Explorers' League",
-            },
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Minor character",
+                role = "In chapter 12 Anduin recognizes him as High Explorer Muninn Magellas, head of the Explorers' League",
             },
         },
         story = "High Explorer Muninn Magellas leads the Explorers' League and stands in the Hall of Explorers in Ironforge. "
@@ -3242,59 +2952,6 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Wetlands
-    [233382] = {
-        name = "Korialstrasz",
-        zone = "Wetlands",
-        coords = "74.2, 70.0",
-        related = { 232624 },
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Day of the Dragon",
-                missions = {},
-                role = "Major character: Alexstrasza's consort, who lives as the high elf mage Krasus and works to free Alexstrasza from the Dragonmaw clan; at the final battle of Grim Batol he summons Rhonin to destroy the Demon Soul",
-            },
-        },
-        story = "Korialstrasz was the prime consort of the Aspect of Life Alexstrasza. "
-             .. "In the guise of the high elf mage Krasus, he was a senior member of the Kirin Tor. "
-             .. "In Day of the Dragon, Krasus works to free Alexstrasza from the Dragonmaw clan in Grim Batol. "
-             .. "At the final battle of Grim Batol, Rhonin destroys the Demon Soul. "
-             .. "In Season of Discovery he is a boss at Grim Batol in the Wetlands.",
-        items = {
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Korialstrasz",
-            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
-            "https://www.wowhead.com/classic/npc=233382",
-        },
-        confidence = "confirmed",
-    },
-
-    [232624] = {
-        name = "Krasus",
-        zone = "Wetlands",
-        coords = "74.4, 70.0",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Day of the Dragon",
-                missions = {},
-                role = "Major character: Korialstrasz in the guise of the high elf mage Krasus, who works to free Alexstrasza from the Dragonmaw clan",
-            },
-        },
-        story = "Krasus is the high elf mage identity of Korialstrasz, the prime consort of Alexstrasza. "
-             .. "In Day of the Dragon, Krasus works to free Alexstrasza from the Dragonmaw clan. "
-             .. "In Season of Discovery he stands near Grim Batol in the Wetlands with the title Consort to the Dragon Queen.",
-        items = {
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Korialstrasz",
-            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
-            "https://www.wowhead.com/classic/npc=232624",
-        },
-        confidence = "confirmed",
-    },
-
 -- ===================================================================== Durotar
     [3188] = {
         name = "Master Gadrin",
@@ -3307,12 +2964,6 @@ ns.NPCS = {
                 campaign = "Before the Storm",
                 missions = {},
                 role = "Present at Spirit Rise in Thunder Bluff beside Baine Bloodhoof when Magni Bronzebeard arrives to speak about healing Azeroth (chapter 12)",
-            },
-            {
-                game = "BOOK",
-                campaign = "Vol'jin: Shadows of the Horde",
-                missions = {},
-                role = "Mentioned in the novel",
             },
         },
         story = "Master Gadrin is an elderly jungle troll and the chief witch doctor of the Darkspear tribe, based in Sen'jin Village in Durotar. "
@@ -3340,7 +2991,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Minor character: gives shelter to Baine Bloodhoof and his loyal forces in Thunder Bluff after Magatha Grimtotem takes control of the city (chapter 22)",
+                role = "Gives shelter to Baine Bloodhoof and his loyal forces in Thunder Bluff after Magatha Grimtotem takes control of the city (chapter 22)",
             },
         },
         story = "Jorn Skyseer is a tauren hunter at Camp Taurajo in the Barrens. "
@@ -3364,7 +3015,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Night of the Dragon",
                 missions = {},
-                role = "Minor character: provides boat transport to the night elf Velinde Starsong, and later to the draenei Iridi when she comes through Ratchet to buy a boat",
+                role = "Provides boat transport to the night elf Velinde Starsong, and later to the draenei Iridi when she comes through Ratchet to buy a boat",
             },
         },
         story = "Wharfmaster Dizzywig is a goblin dockmaster in Ratchet in the Barrens. "
@@ -3379,53 +3030,7 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [6791] = {
-        name = "Innkeeper Wiley",
-        zone = "The Barrens",
-        coords = "62.0, 39.4",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Night of the Dragon",
-                missions = {},
-                role = "Minor character in the novel",
-            },
-        },
-        story = "Innkeeper Wiley is a goblin innkeeper at the Broken Keel Tavern in Ratchet in the Barrens. "
-             .. "His inn has two stoves, and he warns guests not to sit near the stove. "
-             .. "The novel Night of the Dragon lists him among its minor characters.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Innkeeper_Wiley",
-            "https://warcraft.wiki.gg/wiki/Night_of_the_Dragon",
-            "https://www.wowhead.com/classic/npc=6791/innkeeper-wiley",
-        },
-        confidence = "confirmed",
-    },
 
-    [3498] = {
-        name = "Jazzik",
-        zone = "The Barrens",
-        coords = "61.8, 38.8",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "The Shattering: Prelude to Cataclysm",
-                missions = {},
-                role = "Mentioned in the novel",
-            },
-        },
-        story = "Jazzik is a goblin general goods vendor in Ratchet in the Barrens. "
-             .. "He runs Jazzik's General Goods together with Ranik, a trade goods supplier. "
-             .. "He is listed among the characters mentioned in the novel The Shattering: Prelude to Cataclysm.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Jazzik",
-            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
-            "https://www.wowhead.com/classic/npc=3498/jazzik",
-        },
-        confidence = "confirmed",
-    },
 
     -- ===================================================================== Thunder Bluff
     [3032] = {
@@ -3438,7 +3043,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Minor character: killed by the Grimtotem tribe after Cairne Bloodhoof's death",
+                role = "Killed by the Grimtotem tribe after Cairne Bloodhoof's death",
             },
         },
         story = "In World of Warcraft Beram Skychaser is a tauren shaman trainer on Spirit Rise in Thunder Bluff. "
@@ -3512,7 +3117,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Traveler: The Spiral Path",
                 missions = {},
-                role = "Minor character: a member of the Mechanical Engineers' Guild of Azeroth (MEGA)",
+                role = "A member of the Mechanical Engineers' Guild of Azeroth (MEGA)",
             },
         },
         story = "In World of Warcraft Pozzik is a goblin tinker at the Mirage Raceway in Thousand Needles, which he built with his long-time rival Fizzle Brassbolts to prove the superiority of their races' engineering. "
