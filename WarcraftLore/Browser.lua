@@ -12,7 +12,7 @@ ns.Browser = Browser
 local S = ns.Style
 local COL, solid, text, box, outline = S.COL, S.solid, S.text, S.box, S.outline
 local PAD, HEADER = S.PAD, S.HEADER
-local HEX_MUTED, END = S.HEX_MUTED, S.END
+local HEX_MUTED, HEX_MET, END = S.HEX_MUTED, S.HEX_MET, S.END
 
 local TEX = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Textures\\"
 
@@ -29,6 +29,7 @@ local POPUP_MAX_H = 282
 local POPUP_PAD = 3
 local STATUS_LABELS = { "All", "Met", "Not met" }
 local FILTER_GAP = 8
+local ZONE_BTN_W, HERE_BTN_W, STATUS_BTN_W = 150, 62, 96
 
 -- Group headers in the campaign picker.
 local POPUP_HEAD = {
@@ -41,7 +42,7 @@ local POPUP_HEAD = {
 local state = { games = {}, zone = nil, campaign = nil, status = 1, query = "" }
 
 local frame, searchEdit, searchHint
-local zoneBtn, campaignBtn, statusBtn, clearBtn, bookToggle
+local zoneBtn, hereBtn, campaignBtn, statusBtn, clearBtn, bookToggle
 local progress, countText, emptyText, emptyHint
 local scroll, content, track, thumb
 local chips = {}
@@ -59,6 +60,7 @@ end
 local items            -- all veterans sorted by name: { id, entry, name, lower, label, games, zones, campaigns, bookOnly }
 local zoneItems        -- popup list: "All zones" + every zone, sorted
 local campaignItems    -- popup list: "All campaigns" + campaigns grouped under their (earliest) game
+local zoneCounts       -- zone -> { met, total }; built on demand, dropped on every Refresh (met can change)
 
 -- Search text: lower case without spaces or punctuation, so "mugthol" finds Mug'thol and
 -- "thousandneedles" or "needles" finds Thousand Needles.
@@ -198,6 +200,38 @@ local function matches(it, anyGame, hideBooks)
         return false
     end
     return true
+end
+
+-- Veterans met / total per zone, an alsoIn zone counts too. Built lazily from the index.
+local function getZoneCounts()
+    if zoneCounts then
+        return zoneCounts
+    end
+    buildIndex()
+    zoneCounts = {}
+    for _, it in ipairs(items) do
+        local met = ns.GroupMet(it.group)
+        for z in pairs(it.zones) do
+            local n = zoneCounts[z]
+            if not n then
+                n = { met = 0, total = 0 }
+                zoneCounts[z] = n
+            end
+            n.total = n.total + 1
+            if met then
+                n.met = n.met + 1
+            end
+        end
+    end
+    return zoneCounts
+end
+
+-- "3/8" with the met part in the met color; a complete zone is all in the met color.
+local function zoneCountText(n)
+    if n.met >= n.total then
+        return HEX_MET .. n.met .. "/" .. n.total .. END
+    end
+    return (n.met > 0 and (HEX_MET .. n.met .. END) or "0") .. "/" .. n.total
 end
 
 -- A filter or search is active (hide book-only is a preference, so it does not count).
@@ -374,6 +408,11 @@ local function popupRow(i)
     r.label = text(r, C.FONT_BODY, 11, COL.text)
     r.label:SetJustifyV("MIDDLE")
     r.label:SetWordWrap(false)
+    r.count = text(r, C.FONT_BODY, 10, COL.muted)       -- per-zone progress, right-aligned
+    r.count:SetPoint("BOTTOMRIGHT", -6, 0)
+    r.count:SetHeight(POPUP_ROW_H)
+    r.count:SetJustifyH("RIGHT")
+    r.count:SetJustifyV("MIDDLE")
     r:SetScript("OnEnter", function(self)
         if not self.isHeader then
             self.hl:Show()
@@ -431,13 +470,19 @@ local function openPopup(owner, list, current, onPick)
             c = it.color or COL.muted
         else
             r.label:SetPoint("LEFT", it.indent or 8, 0)
-            r.label:SetPoint("RIGHT", -6, 0)
+            r.label:SetPoint("RIGHT", it.right and -46 or -6, 0)
             C.SetFont(r.label, C.FONT_BODY, 11)
             r.line:Hide()
             c = (it.value == current) and COL.title or COL.text
         end
         r.label:SetText(it.label)
         r.label:SetTextColor(c[1], c[2], c[3])
+        if it.right then
+            r.count:SetText(it.right)
+            r.count:Show()
+        else
+            r.count:Hide()
+        end
         if not it.header and it.value == current then
             r.cur:Show()
         else
@@ -699,6 +744,7 @@ local function updateFilterButtons()
     zoneBtn:SetValue("Zone ", state.zone or "All zones", state.zone ~= nil)
     campaignBtn:SetValue("Campaign ", state.campaign or "All campaigns", state.campaign ~= nil)
     statusBtn:SetValue("Show ", STATUS_LABELS[state.status], state.status ~= 1)
+    Browser.UpdateHere()
     if anyFilter() then
         clearBtn:Show()
     else
@@ -713,6 +759,7 @@ end
 
 -- resetScroll = true when the filters changed; otherwise the scroll position is kept.
 function Browser.Refresh(resetScroll)
+    zoneCounts = nil
     if not frame or not frame:IsShown() then
         return
     end
@@ -740,7 +787,15 @@ function Browser.Refresh(resetScroll)
     scroll:SetVerticalScroll(resetScroll and 0 or math.min(previous, maxScroll))
     updateThumb()
 
-    if anyFilter() or hideBooks then
+    local zn = state.zone and getZoneCounts()[state.zone]
+    if zn then
+        -- With a zone picked, the line shows that zone's progress ("Orgrimmar: 3 of 8 met").
+        local line = ("%s: %s%d of %d met%s"):format(state.zone, HEX_MET, zn.met, zn.total, END)
+        if shown ~= zn.total then
+            line = line .. ("  -  showing %d"):format(shown)
+        end
+        countText:SetText(line)
+    elseif anyFilter() or hideBooks then
         countText:SetText(("Showing %d of %d"):format(shown, #items))
     else
         countText:SetText(("Showing all %d veterans"):format(#items))
@@ -934,20 +989,32 @@ local function filterButton(parent, width, withChevron)
 end
 
 local function buildFilters(inner, above)
-    local campaignW = CONTENT_W - 168 - 104 - 2 * FILTER_GAP
+    local campaignW = CONTENT_W - ZONE_BTN_W - HERE_BTN_W - STATUS_BTN_W - 3 * FILTER_GAP
 
-    zoneBtn = filterButton(inner, 168, true)
+    zoneBtn = filterButton(inner, ZONE_BTN_W, true)
     zoneBtn:SetPoint("TOPLEFT", above, "BOTTOMLEFT", 0, -8)
     zoneBtn:SetScript("OnClick", function(self)
-        buildIndex()
+        local counts = getZoneCounts()
+        for _, z in ipairs(zoneItems) do
+            z.right = z.value and counts[z.value] and zoneCountText(counts[z.value]) or nil
+        end
         openPopup(self, zoneItems, state.zone, function(value)
             state.zone = value
             refreshFiltered()
         end)
     end)
 
+    -- "This zone": filters to the zone the player is standing in (dimmed when it has no veterans).
+    hereBtn = filterButton(inner, HERE_BTN_W, false)
+    hereBtn:SetPoint("TOPLEFT", zoneBtn, "TOPRIGHT", FILTER_GAP, 0)
+    hereBtn:SetValue("", "This zone", false)
+    hereBtn:SetScript("OnClick", function()
+        closePopup()
+        Browser.ThisZone()
+    end)
+
     campaignBtn = filterButton(inner, campaignW, true)
-    campaignBtn:SetPoint("TOPLEFT", zoneBtn, "TOPRIGHT", FILTER_GAP, 0)
+    campaignBtn:SetPoint("TOPLEFT", hereBtn, "TOPRIGHT", FILTER_GAP, 0)
     campaignBtn:SetScript("OnClick", function(self)
         buildIndex()
         openPopup(self, campaignItems, state.campaign, function(value)
@@ -956,7 +1023,7 @@ local function buildFilters(inner, above)
         end)
     end)
 
-    statusBtn = filterButton(inner, 104, false)
+    statusBtn = filterButton(inner, STATUS_BTN_W, false)
     statusBtn:SetPoint("TOPLEFT", campaignBtn, "TOPRIGHT", FILTER_GAP, 0)
     statusBtn:SetScript("OnClick", function()
         closePopup()
@@ -975,6 +1042,9 @@ local function buildCountRow(inner, above)
     countText = text(row, C.FONT_BODY, 11, COL.muted)
     countText:SetPoint("LEFT", 0, 0)
     countText:SetJustifyV("MIDDLE")
+    countText:SetWidth(280)                    -- stays clear of "Clear filters" and the book toggle
+    countText:SetJustifyH("LEFT")
+    countText:SetWordWrap(false)
 
     bookToggle = raise(CreateFrame("Button", nil, row))
     bookToggle:SetHeight(14)
@@ -1153,4 +1223,44 @@ function Browser.ShowZone(zoneName)
     else
         frame:Show()
     end
+end
+
+-- The zone the player is in, when at least one veteran is found there (otherwise nil).
+local function hereZone()
+    local zone = C.GetZoneName()
+    if zone and getZoneCounts()[zone] then
+        return zone
+    end
+    return nil
+end
+
+-- Dims the "This zone" button when there is nothing to show for the current zone, or when
+-- the list is already filtered to it.
+function Browser.UpdateHere()
+    if not hereBtn then
+        return
+    end
+    local zone = hereZone()
+    hereBtn.usable = zone ~= nil and zone ~= state.zone
+    local c = hereBtn.usable and COL.text or COL.dim
+    hereBtn.label:SetTextColor(c[1], c[2], c[3])
+end
+
+-- Filters the list to the player's current zone. Returns true when it did.
+function Browser.ThisZone()
+    local zone = hereZone()
+    if not zone then
+        return false
+    end
+    Browser.ShowZone(zone)
+    return true
+end
+
+-- Met / total veterans in a zone (nil, nil for a zone nobody is found in).
+function Browser.ZoneProgress(zone)
+    local n = getZoneCounts()[zone]
+    if n then
+        return n.met, n.total
+    end
+    return nil, nil
 end
