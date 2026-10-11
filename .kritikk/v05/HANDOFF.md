@@ -89,6 +89,11 @@ python tests/validate_db.py; python tests/test_saved_data.py; python tests/test_
   add a phrase check to validate_db.py. Also verify FK year and Siln Skychaser's gender.
 - 07:20 The scheduled night session got stuck on a permission prompt at 01:26 and did nothing.
   Round 2 started from the main session: workers on v05/p1-r2, v05/p2-r2, v05/p3-r2, v05/p5-r2.
-- NEXT: merge round 2 branches, then one fresh critic per part (round 2) (blind A/B against the v0.4 version of the same file/
+- 07:45 Round 2 merged (100 entries, 8 test scripts green). Critic round 2 (.kritikk/v05/critic_round2.md):
+  P3, P4, P5 GODKJENT; P1 AVVIST (no layout tests), P2 AVVIST ("+N more" pill click toggles the full list
+  and no longer opens the named veteran). CHANGELOG v0.5.0 entry added.
+- 07:50 Round 3 (last allowed) started: v05/p1-r3 (layout tests + dead code), v05/p2-r3 (pill click,
+  MetSummary wording), v05/docs-r3 (README, CurseForge description, small data wording).
+- NEXT: merge round 3, final whole-addon critic, morning summary. (blind A/B against the v0.4 version of the same file/
   render), round 2 workers for rejected parts, then the remaining roadmap parts, then a final whole-addon
   critic. Open/keep a PR from session/v0.5 to main (do not merge).
