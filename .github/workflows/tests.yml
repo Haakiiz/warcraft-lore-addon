@@ -33,3 +33,4 @@ jobs:
           python tests/test_timeline.py
           python tests/test_options.py
           python tests/test_guard.py
+          python tests/test_portrait.py
