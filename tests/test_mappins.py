@@ -75,6 +75,7 @@ SETUP = """
     }
     metIDs = { [3] = true }
     ns = {
+        L = setmetatable({}, { __index = function(_, k) return k end }), 
         Compat = {
             RegisterClicks = function(b) clicks[#clicks + 1] = b; b.clicksRegistered = true end,
             FONT_BODY = "b", FONT_TITLE = "t", SetFont = function() end,

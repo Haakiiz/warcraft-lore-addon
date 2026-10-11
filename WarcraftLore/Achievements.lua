@@ -8,6 +8,7 @@
 
 local _, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local Achievements = {}
 ns.Achievements = Achievements
@@ -16,15 +17,15 @@ local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 local ICON = "Interface\\Icons\\"
 local CATEGORY_ORDER = { "milestone", "game", "zone", "circle", "special" }
 local MILESTONES = {
-    { 1, "First Contact" }, { 10, "Old Soldiers" }, { 25, "Seasoned Traveller" },
-    { 50, "Keeper of Lore" }, { 100, "Living Archive" },
+    { 1, L["First Contact"] }, { 10, L["Old Soldiers"] }, { 25, L["Seasoned Traveller"] },
+    { 50, L["Keeper of Lore"] }, { 100, L["Living Archive"] },
 }
 local GAME_TITLE = {
-    WC1 = "Where It Began", WC2 = "Tides of Darkness", BTDP = "Beyond the Portal",
-    WC3 = "Heroes of Reign of Chaos", TFT = "Heroes of the Frozen Throne",
-    FK = "The Forsaken Kingdom", BOOK = "Keeper of the Books",
+    WC1 = L["Where It Began"], WC2 = L["Tides of Darkness"], BTDP = L["Beyond the Portal"],
+    WC3 = L["Heroes of Reign of Chaos"], TFT = L["Heroes of the Frozen Throne"],
+    FK = L["The Forsaken Kingdom"], BOOK = L["Keeper of the Books"],
 }
-local BOOK_STEPS = { { 25, "Bookworm" }, { 50, "Library Regular" } }
+local BOOK_STEPS = { { 25, L["Bookworm"] }, { 50, L["Library Regular"] } }
 local MIN_GROUP = 3 -- smallest set that gets a game, zone or circle achievement
 
 -- Static part: id, text, icon and the veterans that count. Built on first use.
@@ -43,7 +44,7 @@ local function build()
         if m[1] <= total then
             add(list, {
                 id = "milestone_" .. m[1], title = m[2], category = "milestone", icon = ICON .. "Achievement_Level_10",
-                desc = m[1] == 1 and "Meet your first veteran." or ("Meet %d veterans."):format(m[1]),
+                desc = m[1] == 1 and L["Meet your first veteran."] or L["Meet %d veterans."]:format(m[1]),
                 total = m[1], all = true,
             })
         end
@@ -88,7 +89,7 @@ local function build()
                         if step[1] < #members then
                             add(list, {
                                 id = "game_BOOK_" .. step[1], title = step[2], category = "game", icon = ICON .. "INV_Misc_Book_09",
-                                desc = ("Meet %d veterans from the Warcraft novels and books."):format(step[1]),
+                                desc = L["Meet %d veterans from the Warcraft novels and books."]:format(step[1]),
                                 members = members, total = step[1],
                             })
                         end
@@ -96,8 +97,8 @@ local function build()
                 end
                 add(list, {
                     id = "game_" .. code, title = GAME_TITLE[code] or long, category = "game", icon = ICON .. "INV_Misc_Book_09",
-                    desc = code == "BOOK" and "Meet every veteran from the Warcraft novels and books."
-                        or ("Meet every veteran from %s."):format(long),
+                    desc = code == "BOOK" and L["Meet every veteran from the Warcraft novels and books."]
+                        or L["Meet every veteran from %s."]:format(long),
                     members = members, total = #members,
                 })
             end
@@ -108,8 +109,8 @@ local function build()
         local members = perZone[z]
         if #members >= MIN_GROUP then
             add(list, {
-                id = "zone_" .. z, title = "All of " .. z, category = "zone", icon = ICON .. "INV_Misc_Map_01",
-                desc = ("Meet every veteran in %s."):format(z), members = members, total = #members,
+                id = "zone_" .. z, title = L["All of %s"]:format(z), category = "zone", icon = ICON .. "INV_Misc_Map_01",
+                desc = L["Meet every veteran in %s."]:format(z), members = members, total = #members,
             })
         end
     end
@@ -123,16 +124,16 @@ local function build()
             end
             local name = g.entry.name or "?"
             add(list, {
-                id = "circle_" .. g.id, title = name .. "'s Circle", category = "circle", icon = ICON .. "Achievement_Reputation_01",
-                desc = ("Meet %s and everyone tied to them."):format(name), members = members, total = #members,
+                id = "circle_" .. g.id, title = L["%s's Circle"]:format(name), category = "circle", icon = ICON .. "Achievement_Reputation_01",
+                desc = L["Meet %s and everyone tied to them."]:format(name), members = members, total = #members,
             })
         end
     end
 
     if #rtsCodes >= 2 then
         add(list, {
-            id = "special_ages", title = "Across the Ages", category = "special", icon = ICON .. "INV_Misc_Spyglass_03",
-            desc = "Meet a veteran from every Warcraft game.", codes = rtsCodes, total = #rtsCodes,
+            id = "special_ages", title = L["Across the Ages"], category = "special", icon = ICON .. "INV_Misc_Spyglass_03",
+            desc = L["Meet a veteran from every Warcraft game."], codes = rtsCodes, total = #rtsCodes,
         })
     end
 
@@ -232,7 +233,7 @@ local function announce(titles)
         return
     end
     if n == 1 then
-        C.Print(PREFIX .. "Achievement earned: " .. titles[1])
+        C.Print(PREFIX .. L["Achievement earned: %s"]:format(titles[1]))
     else
         local shown = {}
         for i = 1, math.min(n, 3) do
@@ -240,9 +241,9 @@ local function announce(titles)
         end
         local text = table.concat(shown, ", ")
         if n > 3 then
-            text = text .. (" and %d more"):format(n - 3)
+            text = text .. L[" and %d more"]:format(n - 3)
         end
-        C.Print(PREFIX .. ("%d achievements earned: %s"):format(n, text))
+        C.Print(PREFIX .. L["%d achievements earned: %s"]:format(n, text))
     end
     if ns.Toast and ns.Toast.ShowAchievement then
         pcall(ns.Toast.ShowAchievement, titles[1], n)
@@ -272,7 +273,7 @@ function Achievements.Check()
         -- First run with this feature: what is already done is stored without announcing.
         db.achievementsSeeded = true
         if #fresh > 0 then
-            C.Print(PREFIX .. ("you already have %d achievements \226\128\147 see /wcl journal."):format(#fresh))
+            C.Print(PREFIX .. L["you already have %d achievements – see /wcl journal."]:format(#fresh))
         end
         return {}
     end

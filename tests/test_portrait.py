@@ -11,7 +11,7 @@ ADDON = Path(__file__).resolve().parent.parent / "WarcraftLore"
 
 # A fake client: every frame/texture accepts any method call and remembers a few things.
 STUBS = """
-ns = {}
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), }
 SlashCmdList = {}
 WarcraftLoreDB = {}
 UIParent = nil

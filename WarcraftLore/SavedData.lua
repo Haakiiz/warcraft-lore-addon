@@ -5,6 +5,7 @@
 
 local _, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 
@@ -105,14 +106,13 @@ local function migrate(db, migrations, label)
     local latest = #migrations
     local from = tonumber(db.schema) or 0
     if from > latest then
-        C.Print(PREFIX .. ("The %s data was saved by a newer version of the addon (schema %d, this version knows %d). "
-            .. "It is kept as it is; update the addon to use it fully."):format(label, from, latest))
+        C.Print(PREFIX .. L["The %s data was saved by a newer version of the addon (schema %d, this version knows %d). It is kept as it is; update the addon to use it fully."]:format(label, from, latest))
         return false
     end
     for n = from + 1, latest do
         local ok, err = pcall(migrations[n], db)
         if not ok then
-            C.Print(PREFIX .. ("Could not upgrade the %s data to schema %d: %s"):format(label, n, tostring(err)))
+            C.Print(PREFIX .. L["Could not upgrade the %s data to schema %d: %s"]:format(label, n, tostring(err)))
             return false
         end
         db.schema = n
@@ -134,10 +134,10 @@ function ns.SavedData.Load()
     if type(WarcraftLoreCharDB) ~= "table" then
         WarcraftLoreCharDB = {}
     end
-    local accountOk = migrate(WarcraftLoreDB, ACCOUNT_MIGRATIONS, "account")
+    local accountOk = migrate(WarcraftLoreDB, ACCOUNT_MIGRATIONS, L["account"])
     -- Character data is merged into the account list only when the account layout is current.
     if accountOk then
-        migrate(WarcraftLoreCharDB, CHAR_MIGRATIONS, "character")
+        migrate(WarcraftLoreCharDB, CHAR_MIGRATIONS, L["character"])
         -- A character that was upgraded before this one logged in may still hold old data
         -- (or a new character may have an old list): merge whatever is left at every load.
         if tonumber(WarcraftLoreCharDB.schema) == #CHAR_MIGRATIONS then

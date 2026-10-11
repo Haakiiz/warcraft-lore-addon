@@ -78,7 +78,7 @@ local C = {
     HideTooltip = function() hidden = hidden + 1 end,
     Now = function() return 1000 end,
 }
-ns = { Compat = C, MetCounts = function() return {}, { met = 3, total = 10 } end }
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = C, MetCounts = function() return {}, { met = 3, total = 10 } end }
 """
 
 LOAD = """
@@ -241,7 +241,7 @@ def minimap_ok():
 
 def browser_ok():
     src = (ADDON / "Browser.lua").read_text(encoding="utf-8")
-    return 'jl:SetText("Journal")' in src and "ns.Journal.Toggle()" in src
+    return 'jl:SetText(L["Journal"])' in src and "ns.Journal.Toggle()" in src
 
 
 if __name__ == "__main__":

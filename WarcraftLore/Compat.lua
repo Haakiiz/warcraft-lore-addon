@@ -548,3 +548,13 @@ end
 function C.GetRealmName()
     return safeCall("GetRealmName", GetRealmName)
 end
+
+-- The client's language code ("enUS", "deDE", "frFR" ...). Falls back to "enUS" if the API is
+-- missing or gives something unexpected.
+function C.GetLocale()
+    local value = safeCall("GetLocale", GetLocale)
+    if type(value) ~= "string" or value == "" then
+        return "enUS"
+    end
+    return value
+end

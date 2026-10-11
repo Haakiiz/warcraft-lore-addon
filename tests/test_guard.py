@@ -14,7 +14,7 @@ local noop = function() end
 local function stub() return setmetatable({}, { __index = function() return noop end }) end
 printed, timers, sounds, toasts, setMore = {}, {}, 0, {}, {}
 guids, targetExists, inInstance = {}, true, false
-ns = { Compat = {
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = {
     Print = function(m) printed[#printed + 1] = m end,
     UnitGUID = function(u) if guids[u] == "ERROR" then error("boom") end return guids[u] end,
     UnitName = function() return nil end,

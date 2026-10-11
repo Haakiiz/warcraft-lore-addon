@@ -6,6 +6,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 local S = ns.Style
 local COL = S.COL
 
@@ -59,9 +60,9 @@ local function showTooltip(pin)
     if met then
         lines[#lines + 1] = { met, COL.met[1], COL.met[2], COL.met[3] }
     else
-        lines[#lines + 1] = { "Not met yet", m[1], m[2], m[3] }
+        lines[#lines + 1] = { L["Not met yet"], m[1], m[2], m[3] }
     end
-    lines[#lines + 1] = { "Click to read the story", m[1], m[2], m[3] }
+    lines[#lines + 1] = { L["Click to read the story"], m[1], m[2], m[3] }
     C.ShowTooltip(pin, "ANCHOR_RIGHT", lines)
 end
 
@@ -88,9 +89,9 @@ local function newPin()
     pin.tick:SetPoint("TOPRIGHT", 2, 2)
     C.ApplyCircleMask(pin.tick, TEX .. "CircleMask")
 
-    pin:SetScript("OnEnter", guarded("mappins", "the world map pins", function() showTooltip(pin) end))
+    pin:SetScript("OnEnter", guarded("mappins", L["the world map pins"], function() showTooltip(pin) end))
     pin:SetScript("OnLeave", C.HideTooltip)
-    pin:SetScript("OnClick", guarded("mappins", "the world map pins", function(_, button)
+    pin:SetScript("OnClick", guarded("mappins", L["the world map pins"], function(_, button)
         if button and button ~= "LeftButton" then
             return -- only a left click opens the story
         end
@@ -168,7 +169,7 @@ local function refresh()
     end
     layout()
 end
-local guardedRefresh = guarded("mappins", "the world map pins", refresh)
+local guardedRefresh = guarded("mappins", L["the world map pins"], refresh)
 
 local function setup()
     local wm = rawget(_G, "WorldMapFrame")
@@ -210,7 +211,7 @@ local function setup()
     hooked = true
     refresh()
 end
-local guardedSetup = guarded("mappins", "the world map pins", setup)
+local guardedSetup = guarded("mappins", L["the world map pins"], setup)
 
 -- Called by the settings checkbox.
 function MP.Refresh()
