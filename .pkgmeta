@@ -1,5 +1,10 @@
 package-as: WarcraftLore
 
+# Shown as the file's changelog on CurseForge instead of a list of commits.
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
 # The addon lives in a subfolder; ship only that folder.
 move-folders:
   WarcraftLore/WarcraftLore: WarcraftLore
@@ -8,6 +13,7 @@ ignore:
   - README.md
   - TASKS.md
   - TODO.md
+  - ROADMAP.md
   - tests
   - tools
   - .kritikk

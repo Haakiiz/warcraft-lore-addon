@@ -73,21 +73,25 @@ function C.HookUnitTooltip(callback)
     if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
         and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Unit then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tooltip, data)
-            if tooltip ~= GameTooltip then
-                return
-            end
-            local guid = data and data.guid
-            if C.IsSecret(guid) then
-                guid = nil
-            end
-            local unit
-            if tooltip.GetUnit then
-                local ok, _, u = pcall(tooltip.GetUnit, tooltip)
-                if ok and not C.IsSecret(u) then
-                    unit = u
+            -- Nothing here may reach the client's error frame. The callback guards itself
+            -- (Core.lua); this covers the reading of the tooltip data.
+            pcall(function()
+                if tooltip ~= GameTooltip then
+                    return
                 end
-            end
-            callback(tooltip, unit, guid)
+                local guid = data and data.guid
+                if C.IsSecret(guid) then
+                    guid = nil
+                end
+                local unit
+                if tooltip.GetUnit then
+                    local ok, _, u = pcall(tooltip.GetUnit, tooltip)
+                    if ok and not C.IsSecret(u) then
+                        unit = u
+                    end
+                end
+                callback(tooltip, unit, guid)
+            end)
         end)
         return "TooltipDataProcessor"
     end
@@ -96,8 +100,13 @@ function C.HookUnitTooltip(callback)
     -- Older API (Classic Era / before 10.0.2).
     if GameTooltip and GameTooltip.HasScript and GameTooltip:HasScript("OnTooltipSetUnit") then
         GameTooltip:HookScript("OnTooltipSetUnit", function(tooltip)
-            local _, unit = tooltip:GetUnit()
-            callback(tooltip, unit, nil)
+            pcall(function()
+                local _, unit = tooltip:GetUnit()
+                if C.IsSecret(unit) then
+                    unit = nil
+                end
+                callback(tooltip, unit, nil)
+            end)
         end)
         return "OnTooltipSetUnit"
     end
@@ -172,6 +181,44 @@ function C.SetUnitPortrait(texture, unit)
     return ok
 end
 
+-- A live 3D model frame for an NPC. `onLoaded` runs when the client has the model ready.
+-- Returns nil when the client has no model frames (the caller keeps the 2D portrait).
+function C.CreateCreatureModel(parent, onLoaded)
+    local ok, model = pcall(CreateFrame, "PlayerModel", nil, parent)
+    if not (ok and model and model.SetCreature) then
+        noteMissing("PlayerModel")
+        return nil
+    end
+    pcall(model.SetScript, model, "OnModelLoaded", function()
+        pcall(onLoaded, model)
+    end)
+    return model
+end
+
+-- Shows the NPC on `model`: the live unit when one is given, otherwise the creature by NPC ID
+-- (works without the NPC being nearby). Framed on the face, no rotation.
+-- Returns true when the model is already loaded; false when it may still load (OnModelLoaded
+-- follows) or the call failed.
+function C.SetCreatureModel(model, npcID, unit)
+    model.wclNPC = npcID       -- which NPC this model was asked for (UI checks it on OnModelLoaded)
+    local ok = pcall(function()
+        if model.ClearModel then model:ClearModel() end
+        if unit and C.UnitExists(unit) and model.SetUnit then
+            model:SetUnit(unit)
+        else
+            model:SetCreature(npcID)
+        end
+        if model.SetPortraitZoom then model:SetPortraitZoom(1) end
+        if model.SetFacing then model:SetFacing(0) end
+    end)
+    if not ok then
+        noteMissing("SetCreature")
+        return false
+    end
+    local okFile, file = pcall(function() return model.GetModelFileID and model:GetModelFileID() end)
+    return okFile and file ~= nil and file ~= 0
+end
+
 -- Registers an event if the client knows it. Returns false instead of erroring
 -- when the event does not exist in this client version.
 function C.RegisterEventSafe(frame, event)
@@ -233,6 +280,25 @@ function C.Report()
     }
 end
 
+-- Name of the zone the player is in (from the map), or nil when unknown.
+function C.GetZoneName()
+    if type(C_Map) ~= "table" or type(C_Map.GetBestMapForUnit) ~= "function"
+        or type(C_Map.GetMapInfo) ~= "function" then
+        noteMissing("C_Map.GetMapInfo")
+        return nil
+    end
+    local okMap, mapID = pcall(C_Map.GetBestMapForUnit, "player")
+    if not okMap or type(mapID) ~= "number" or C.IsSecret(mapID) then
+        return nil
+    end
+    local okInfo, info = pcall(C_Map.GetMapInfo, mapID)
+    local name = okInfo and type(info) == "table" and info.name
+    if type(name) ~= "string" or C.IsSecret(name) or name == "" then
+        return nil
+    end
+    return name
+end
+
 -- Player position on the current map: mapID, x, y (x and y in 0..1), or nil if unknown
 -- (no map, instance, or secret values).
 function C.GetPlayerMapPos()
@@ -272,14 +338,15 @@ function C.StartTicker(seconds, fn)
         noteMissing("C_Timer.NewTicker")
         return false
     end
-    return pcall(C_Timer.NewTicker, seconds, fn)
+    return pcall(C_Timer.NewTicker, seconds, fn) -- fn guards itself (Core.lua)
 end
 
--- Runs fn on the next frame (C_Timer.After(0)), outside whatever called us. Used to keep
--- chat output and window refreshes out of tooltip post-calls. Falls back to running fn now.
-function C.After(fn)
+-- Runs fn after `seconds` (default: the next frame), outside whatever called us. Used to keep
+-- chat output and window refreshes out of tooltip post-calls and to batch alerts.
+-- Falls back to running fn now.
+function C.After(fn, seconds)
     if type(C_Timer) == "table" and type(C_Timer.After) == "function" then
-        local ok = pcall(C_Timer.After, 0, fn)
+        local ok = pcall(C_Timer.After, seconds or 0, fn)
         if ok then
             return
         end
@@ -310,7 +377,10 @@ end
 -- Sets a texture to an icon; falls back to `fallback` when the path is rejected or the
 -- client reports no texture afterwards.
 function C.SetIconTexture(texture, path, fallback)
-    local ok = pcall(texture.SetTexture, texture, path)
+    local ok, res = pcall(texture.SetTexture, texture, path)
+    if ok and res == false then
+        ok = false       -- the client reports a bad path through SetTexture's return value
+    end
     if ok and texture.GetTexture then
         local okGet, current = pcall(texture.GetTexture, texture)
         if okGet and current == nil then
@@ -472,4 +542,9 @@ function C.CreateEditBox(parent, fontPath, size)
         return nil
     end
     return box
+end
+
+-- Realm name of the player (nil when missing or secret).
+function C.GetRealmName()
+    return safeCall("GetRealmName", GetRealmName)
 end

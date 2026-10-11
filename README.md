@@ -11,10 +11,12 @@ Ever run into a random level-15 quest giver and later found out they were in a W
 What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
-- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 127" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
-- **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. Click the pill for the story, right-click to dismiss, shift-drag to move.
+- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a live 3D model of the NPC inside a round ring that glows in the game's color (the classic portrait if the model can't load). The story comes first, followed by "Through the ages": every game appearance in release order with its year and role, and the books as compact one-line rows. You also get related veterans (click a name to follow the thread), related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 100" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
+- **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. In busy cities the first veteran is announced right away and anyone else nearby is named in one follow-up line ("Also nearby: ..."); click "+N more" to open the Veterans list. Click the pill for the story, right-click to dismiss, shift-drag to move.
 - **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
+- **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
+- **`/wcl why`:** explains in plain words why your target is or isn't recognised.
 
 All lore ships inside the addon (addons cannot reach the internet in game), in `WarcraftLore/Data.lua`.
 
@@ -31,12 +33,16 @@ Preview renders of the real addon code (made offline with substitute fonts and a
 | ![Small glowing alert when a veteran is nearby](media/screenshots/nearby-alert.png) | ![Minimap button with tooltip](media/screenshots/minimap-button.png) |
 | A small glowing alert when a veteran is nearby; click it for the story | Minimap button: left-click for the list, right-click for your target |
 
-## What's new in 0.3
+## What's new in 0.5
 
-- New: the Warcraft Veterans list (`/wcl list`) with search, filters for game, zone, campaign and met status, "Hide book-only", hover tooltips with full names, and the lore window docking next to it.
-- New: met tracking per character, with a "Veterans met" counter, a chip per game and a chat line the first time you meet a veteran. The lore window shows a green MET badge.
-- New: the small glowing alert pill replaces the big toast and the center-screen text. Targeting a veteran now shows the pill instead of opening the window.
-- New: a minimap button and `/wcl minimap`.
+- Live 3D portrait in the lore window, with the story first and a "Through the ages" section for every game appearance.
+- The met counter now covers your whole account. Existing progress from all characters is merged, and a tooltip shows how often and when you met each veteran.
+- Calmer alerts in cities: one alert, one follow-up line for everyone else nearby.
+- A settings page (`/wcl options`) and `/wcl why`.
+- Safer after game patches: if a patch breaks something, only that feature switches off.
+- Every entry reviewed: 100 confirmed veterans and 42 related links.
+
+See `CHANGELOG.md` for older versions.
 
 ## Installation
 
@@ -61,6 +67,10 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl alert` | Turns the "veteran nearby" alert (pill, chat line, sound) on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
 | `/wcl test` (or `/wcl alert test`) | Shows a test alert for the database NPC with the lowest ID: the small pill, chat line and sound. Click the pill to open the NPC's window, right-click to dismiss, shift-drag to move |
 | `/wcl reset` | Moves the windows back to the center |
+| `/wcl why` | Explains in one or two chat lines why your target is or isn't recognised: a player, not in the database, or a veteran (with notes if alerts are off, you are in an instance, no map position is stored, or you were already alerted this session) |
+| `/wcl options` | Opens the Warcraft Lore settings page. If this client has no settings panel it says so in chat |
+| `/wcl export` | Opens a window with your met list as a short text (starts with `WCL1:`), already selected so you can copy it with Ctrl+C |
+| `/wcl import` | Opens the same window empty. Paste an export string and press Import: the earliest first meeting and the larger count are kept, nothing is deleted, unknown NPCs are ignored, and a damaged string changes nothing |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
 ## Test NPCs
@@ -70,24 +80,21 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 
 | NPC | NPC ID | Zone | Coords | Games |
 |---|---|---|---|---|
-| Grunt Maug | 15460 | Orgrimmar | 31.0, 65.2 | TFT |
-| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
-| Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT |
-| Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT |
-| Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
-| Apothecary Helbrim | 3390 | The Barrens | 51.4, 30.2 | TFT, *uncertain* |
-| Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT |
-| Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT |
-| Cairne Bloodhoof | 3057 | Thunder Bluff | 59.4, 51.4 | WC3, TFT |
-| Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT |
-| Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT |
-| Witch Doctor Jin'Zil | 3995 | Stonetalon Mountains | 74.4, 97.8 | TFT, *uncertain* |
+| Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
+| Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
+| Illiyana Moonblaze | 14753 | Ashenvale | 61.4, 83.8 | BOOK |
+| Shael'dryn | 3916 | Ashenvale | 53.4, 46.2 | BOOK |
+| Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
 | Arch Druid Fandral Staghelm | 3516 | Darnassus | 34.4, 8.4 | BOOK |
 | Tyrande Whisperwind | 7999 | Darnassus | 38.4, 80.6 | WC3, TFT, BOOK |
-| Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
-| Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
-| Archmage Tervosh | 4967 | Dustwallow Marsh | 66.4, 49.2 | WC3, *uncertain* |
-| Brother Karman | 8140 | Dustwallow Marsh | 67.4, 47.4 | WC3, *uncertain* |
+| Gar'Thok | 3139 | Durotar | 52.0, 43.4 | TFT |
+| Innkeeper Grosk | 6928 | Durotar | 51.4, 41.6 | BOOK |
+| Master Gadrin | 3188 | Durotar | 56.0, 74.6 | BOOK |
+| Swart | 3173 | Durotar | 54.4, 42.4 | BOOK |
+| Zalazane | 3205 | Durotar | 66.4, 87.4 | BOOK |
+| Morbent Fel | 1200 | Duskwood | 17.2, 33.4 | BOOK |
+| Watcher Cutford | 1436 | Duskwood | 45.0, 67.4 | BOOK |
+| Watcher Ladimore | 576 | Duskwood | 73.4, 46.6 | BOOK |
 | Do'gol | 5087 | Dustwallow Marsh | 36.4, 30.8 | TFT |
 | Draz'Zilb | 4501 | Dustwallow Marsh | 37.0, 33.0 | TFT |
 | Lady Jaina Proudmoore | 4968 | Dustwallow Marsh | 66.2, 49.0 | WC3, TFT |
@@ -95,32 +102,85 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Overlord Mok'Morokk | 4500 | Dustwallow Marsh | 36.2, 31.4 | BOOK |
 | Pained | 4965 | Dustwallow Marsh | 66.2, 49.0 | BOOK |
 | Tharg | 4502 | Dustwallow Marsh | 37.2, 31.4 | TFT |
-| Torq Ironblast | 4889 | Dustwallow Marsh | 67.4, 48.0 | WC3, *uncertain* |
+| Innkeeper Farley | 295 | Elwynn Forest | 43.8, 65.8 | BOOK |
+| Marshal Dughan | 240 | Elwynn Forest | 42.2, 65.8 | BOOK |
+| Zaldimar Wefhellt | 328 | Elwynn Forest | 43.2, 66.2 | BOOK |
+| Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
+| Apothecary Lydon | 2216 | Hillsbrad Foothills | 61.4, 19.2 | BOOK |
 | Marshal Redpath | 2263 | Hillsbrad Foothills | 49.6, 58.6 | BOOK |
-| Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK |
-| Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK |
-| Lexington Mortaim | 2492 | Undercity | 84.2, 16.0 | FK, *uncertain* |
-| Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT |
-| Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK |
+| Advisor Belgrum | 2918 | Ironforge | 76.8, 10.4 | BOOK |
+| Bink | 5144 | Ironforge | 26.8, 8.6 | BOOK |
+| Daryl Riknussun | 5159 | Ironforge | 60.2, 37.1 | BOOK |
+| Dink | 7312 | Ironforge | 26.8, 8.4 | BOOK |
+| Gryth Thurden | 1573 | Ironforge | 55.5, 47.7 | BOOK |
+| High Explorer Magellas | 5387 | Ironforge | 69.9, 18.2 | BOOK |
+| High Priest Rohan | 11406 | Ironforge | 23.4, 6.4 | BOOK |
+| High Tinker Mekkatorque | 7937 | Ironforge | 69.0, 49.0 | BOOK |
+| Huntress Swiftriver | 15457 | Ironforge | 71.2, 69.7 | BOOK |
+| King Magni Bronzebeard | 2784 | Ironforge | 39.4, 55.8 | BOOK |
+| Reyna Stonebranch | 5137 | Ironforge | 55.4, 58.8 | BOOK |
+| Vyrin Swiftwind | 1156 | Loch Modan | 81.8, 64.2 | BOOK |
+| Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT, BOOK |
+| Narm Skychaser | 3066 | Mulgore | 48.4, 59.2 | BOOK |
+| Eitrigg | 3144 | Orgrimmar | 34.2, 39.0 | BOOK |
+| High Overlord Saurfang | 14720 | Orgrimmar | 50.4, 76.0 | BOOK |
+| Kor'jus | 3329 | Orgrimmar | 49.0, 54.0 | BOOK |
+| Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
+| Saru Steelfury | 3355 | Orgrimmar | 82.2, 23.0 | BOOK |
+| Thrall | 4949 | Orgrimmar | 32.0, 37.8 | WC3, TFT, BOOK |
+| Vol'jin | 10540 | Orgrimmar | 34.2, 36.4 | TFT, BOOK |
+| Zor Lonetree | 4047 | Orgrimmar | 39.0, 38.0 | BOOK |
+| Magistrate Solomon | 344 | Redridge Mountains | 29.8, 44.6 | BOOK |
+| Misha | 10204 | Stonetalon Mountains | 30.2, 76.0 | TFT, BOOK |
+| Rexxar | 10182 | Stonetalon Mountains | 30.2, 76.0 | TFT, BOOK |
+| Anduin Wrynn | 1747 | Stormwind City | 77.4, 18.4 | BOOK |
+| Archbishop Benedictus | 1284 | Stormwind City | 39.4, 27.4 | BOOK |
+| Archmage Malin | 2708 | Stormwind City | 39.8, 80.4 | BOOK |
+| Baros Alexston | 1646 | Stormwind City | 49.0, 30.2 | BOOK |
+| Brother Sarno | 7917 | Stormwind City | 40.4, 30.4 | BOOK |
+| Count Remington Ridgewell | 2285 | Stormwind City | 74.0, 30.0 | BOOK |
+| Elling Trias | 482 | Stormwind City | 60.0, 64.4 | BOOK |
+| General Marcus Jonathan | 466 | Stormwind City | 63.4, 75.8 | BOOK |
+| High Priestess Laurena | 376 | Stormwind City | 38.4, 26.2 | BOOK |
+| Highlord Bolvar Fordragon | 1748 | Stormwind City | 77.4, 18.8 | BOOK |
+| Lady Katrana Prestor | 1749 | Stormwind City | 77.6, 18.6 | BOOK |
+| Lord Grayson Shadowbreaker | 928 | Stormwind City | 37.2, 33.0 | BOOK |
+| Major Mattingly | 14394 | Stormwind City | 61.4, 78.4 | BOOK |
+| Master Mathias Shaw | 332 | Stormwind City | 75.8, 59.8 | BOOK |
+| Ol' Emma | 3520 | Stormwind City | 52.4, 41.8 | BOOK |
+| Osric Strang | 1323 | Stormwind City | 74.2, 47.4 | BOOK |
+| Renzik "The Shiv" | 6946 | Stormwind City | 75.8, 60.2 | BOOK |
+| Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT, BOOK |
+| Jorn Skyseer | 3387 | The Barrens | 44.8, 59.0 | BOOK |
+| Wharfmaster Dizzywig | 3453 | The Barrens | 63.2, 38.4 | BOOK |
+| Daisy | 4507 | Thousand Needles | 78.8, 75.4 | BOOK |
+| Fizzle Brassbolts | 4454 | Thousand Needles | 78.0, 77.0 | BOOK |
+| Jinky Twizzlefixxit | 6730 | Thousand Needles | 77.6, 77.8 | BOOK |
+| Pozzik | 4630 | Thousand Needles | 80.0, 75.8 | BOOK |
+| Razzeric | 4706 | Thousand Needles | 80.2, 76.0 | BOOK |
+| Rizzle Brassbolts | 4720 | Thousand Needles | 77.2, 77.4 | BOOK |
+| Beram Skychaser | 3032 | Thunder Bluff | 22.2, 19.0 | BOOK |
+| Cairne Bloodhoof | 3057 | Thunder Bluff | 59.4, 51.4 | WC3, TFT, BOOK |
+| Hamuul Runetotem | 5769 | Thunder Bluff | 78.4, 28.4 | BOOK |
+| Magatha Grimtotem | 4046 | Thunder Bluff | 70.2, 30.8 | BOOK |
+| Siln Skychaser | 3030 | Thunder Bluff | 23.0, 20.4 | BOOK |
+| Tigor Skychaser | 3031 | Thunder Bluff | 23.4, 19.2 | BOOK |
 | Gordo | 10666 | Tirisfal Glades | 39.8, 51.2 | FK |
-| Dalar Dawnweaver | 1938 | Silverpine Forest | 44.2, 39.8 | WC3, *uncertain* |
-| Snarlmane | 1948 | Silverpine Forest | 65.2, 24.0 | TFT, *uncertain* |
-| Archmage Ansirem Runeweaver | 2543 | Alterac Mountains | 18.8, 78.4 | WC3, *uncertain* |
-| Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
-| Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
-| Araj the Summoner | 1852 | Western Plaguelands | 45.4, 69.2 | WC3, *uncertain* |
-| Gregory | 231500 | Western Plaguelands | 69.4, 79.6 | WC3 |
-| Gregory | 232932 | Western Plaguelands | 39.4, 67.2 | WC3 |
-| Uther | 232920 | Western Plaguelands | 47.0, 69.4 | WC2, WC3 |
+| Apothecary Keever | 5734 | Undercity | 52.6, 73.4 | FK, BOOK |
+| Lady Sylvanas Windrunner | 10181 | Undercity | 57.8, 91.4 | WC3, TFT, FK, BOOK |
+| Master Apothecary Faranell | 2055 | Undercity | 48.4, 69.4 | BOOK |
+| Parqual Fintallas | 4488 | Undercity | 57.4, 65.4 | BOOK |
+| Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT, BOOK |
+| Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK, BOOK |
 
-Uncertain links show "Warcraft Veteran?" in the tooltip. Some Western Plaguelands NPCs use Season of Discovery NPC IDs and may not exist in Forever.
+Entries without known coordinates are left out of this table.
 
 **Negative check:** hover over an Orgrimmar Grunt. The tooltip should get no extra line, and `/wcl` should show the "No known Warcraft history" text.
 
 ## Adding an NPC yourself
 
 1. **Find the NPC ID.** Target the NPC in game and type `/wcl id`. Chat shows the name and NPC ID, and whether it is already in the database.
-2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, add it with `confidence = "uncertain"` and write where you looked in `searched`.
+2. **Check that it is the same character.** Many NPCs share a name with an RTS character without being the same person. Look the NPC up on [warcraft.wiki.gg](https://warcraft.wiki.gg) and only add it if a source says the WoW NPC and the RTS character are the same. If the wiki only speculates, leave it out: only confirmed veterans ship, and `confidence = "uncertain"` is rejected by the test script.
 3. **Add an entry** to `WarcraftLore/Data.lua`, inside `ns.NPCS = { … }`, under the right zone heading:
 
    ```lua
@@ -141,17 +201,17 @@ Uncertain links show "Warcraft Veteran?" in the tooltip. Some Western Plagueland
            { id = 5080, name = "Gazlowe's Ledger", note = "Quest item in \"The Missing Shipment\"" },
        },
        sources = { "https://warcraft.wiki.gg/wiki/Monte_Gazlowe" },
-       confidence = "confirmed",    -- or "uncertain" (then also add searched = "…")
+       confidence = "confirmed",    -- only confirmed veterans ship
    },
    ```
 
-   Every field is described at the top of `Data.lua`. Never guess mission names, item IDs or NPC IDs. If you don't know something, leave it empty (`""` or `{}`).
-4. **Run the test script** (below). It catches typos in field names, wrong game codes, duplicate NPC IDs, bad links and stories that are not 3–6 sentences.
+   Every field is described at the top of `Data.lua`. Never guess mission names, item IDs or NPC IDs. If you don't know something, leave it empty (`""` or `{}`). NPC IDs above 200000 are rejected, and research or dev wording (such as "wiki", "Classic", "listed" or "Season of Discovery") must not appear in a name, role, story or campaign.
+4. **Run the test script** (below). It catches typos in field names, wrong game codes, duplicate NPC IDs, bad links, stories that are not 3–6 sentences, uncertain entries, NPC IDs above 200000 and banned research phrases.
 5. **Restart the game** or type `/reload`, then target the NPC.
 
 ### Your own portraits
 
-The round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, put a 128×128 `.tga` file in `WarcraftLore/Portraits/` and add `portrait = "FileName"` to the entry. See `WarcraftLore/Portraits/README.txt`. Portrait images are not shipped with the addon.
+If the 3D model can't load, the round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, put a 128×128 `.tga` file in `WarcraftLore/Portraits/` and add `portrait = "FileName"` to the entry. See `WarcraftLore/Portraits/README.txt`. Portrait images are not shipped with the addon.
 
 ## Test script (outside the game)
 
@@ -159,7 +219,7 @@ The round frame shows the NPC's normal WoW portrait. For the RTS-era portrait, p
 python tests/validate_db.py
 ```
 
-The script checks that every entry in `WarcraftLore/Data.lua` has valid fields and values, that no NPC ID appears twice, and that every portrait file exists. It needs Python 3 but no Lua interpreter.
+The script checks that every entry in `WarcraftLore/Data.lua` has valid fields and values, that no NPC ID appears twice or is above 200000, and that every portrait file exists. It needs Python 3 but no Lua interpreter.
 `tests/fixtures/bad_data.lua` is broken on purpose, so you can see the test fail:
 
 ```bash
@@ -176,6 +236,8 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 - `WarcraftLore/Style.lua`: the palette, small widget builders and the vine frame shared by both windows.
 - `WarcraftLore/UI.lua`: the lore window.
 - `WarcraftLore/Browser.lua`: the veterans list window (`/wcl list`).
+- `WarcraftLore/Options.lua`: the settings page (`/wcl options`).
+- `WarcraftLore/SavedData.lua`: saved-data versions and migrations.
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).
 - `WarcraftLore/Portraits/`: your own portrait images (optional).
 

@@ -1,5 +1,16 @@
 # Brief v3: zone review worker (written for Claude Haiku 5.5)
 
+## ★ v4 overrides (2026-10-11) – these win over anything below
+The addon is public now and ships ONLY confirmed lore (tests/validate_db.py enforces this):
+- No `confidence = "uncertain"`. If identity is not explicit in a source, REJECT the NPC (say why in the report). Every entry has `confidence = "confirmed"` and no `searched` field.
+- NPC IDs above 200000 (Season of Discovery) are rejected. Only classic-era NPCs a player can actually meet.
+- `role` is one concrete clause about what the character DOES there ("Helps Thrall escape Durnholde"), never a bare
+  "Major/Minor/Supporting character" or "Mentioned in the book", and no "(novel, not a game appearance)" tags. If the source
+  only lists the name in a Characters table with no action, REJECT that appearance.
+- Banned words in role/story/campaign: "Classic", "Season of Discovery", "game files", "removed from the game", "ADP",
+  "wiki", "listed", "pg.", "may not exist". Write for players, not researchers.
+- An NPC that was removed from the game or only appeared in a one-time event is REJECTED (players can't meet them).
+
 v2 (2026-10-08 morning) lifted Haiku from 14 to 19 of 21 NPCs on Stormwind/Elwynn. v3 (2026-10-08 evening) moves the
 mechanical part to the orchestrator: you get the wiki pages already fetched and a candidate list already flagged.
 Your job is judgment: read, decide, write. See `.kritikk/LESSONS_LEARNED.md` for why each rule exists.

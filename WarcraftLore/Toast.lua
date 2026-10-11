@@ -1,7 +1,7 @@
 -- Toast.lua – the veteran alert pill, shown for nearby veterans (nameplate / map position) and when
 -- you target one: a small glowing pill at the top of the screen with a round portrait, the name
 -- and the game codes (max 3 at once, extra ones queue).
--- Click opens the lore window, right-click dismisses, shift-drag moves them.
+-- Click opens the lore window of the named veteran, "+N more" opens the Veterans list for the zone, right-click dismisses, shift-drag moves them.
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
@@ -17,6 +17,7 @@ local PORTRAITS = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Portraits\\"
 local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
 
 local TOAST_W, TOAST_H = 236, 48
+local MORE_W = 56               -- width of the "+N more" target
 local GAP = 16                  -- room for two glows, so neighbours do not mix
 local MAX_TOASTS = 3
 local FADE_IN, HOLD, FADE_OUT = 0.4, 12, 0.8
@@ -172,6 +173,9 @@ local function build()
 
     t.games = S.text(t, C.FONT_BODY, 10, COL.dim)   -- dim "·" separators; the codes carry their own color
     t.games:SetPoint("TOPLEFT", t.name, "BOTTOMLEFT", 0, -2)
+    t.games:SetWidth(TOAST_W - 56 - 12 - 12 - 4)     -- never runs under the chevron
+    t.games:SetWordWrap(false)
+    t.games:SetJustifyH("LEFT")
 
     t.chevron = t:CreateTexture(nil, "ARTWORK")
     t.chevron:SetTexture(TEX .. "ChevronRight")
@@ -179,17 +183,38 @@ local function build()
     t.chevron:SetPoint("RIGHT", -10, 0)
     t.chevron:SetVertexColor(COL.muted[1], COL.muted[2], COL.muted[3])
 
-    t:SetScript("OnClick", function(self, button)
+    t:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self, button)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return -- the mouse-up that ends a drag is not a click
         end
         if button == "RightButton" then
             dismiss(self)
-        elseif self.npcID then
+        elseif self.npcID and not ns.FeatureOff("window") then
             ns.UI.ShowEntry(self.npcID, self.entry, nil)
             dismiss(self)
         end
-    end)
+    end))
+
+    -- "+N more": its own small target; opens the Veterans list for the zone you are in.
+    t.moreBtn = CreateFrame("Button", nil, t)
+    t.moreBtn:SetSize(MORE_W, 14)
+    t.moreBtn:SetPoint("BOTTOMRIGHT", t, "BOTTOMRIGHT", -24, 8)
+    t.moreBtn:EnableMouse(true)
+    C.RegisterClicks(t.moreBtn)
+    t.moreText = S.text(t.moreBtn, C.FONT_BODY, 10, COL.muted)
+    t.moreText:SetAllPoints()
+    t.moreText:SetJustifyH("RIGHT")
+    t.moreBtn:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self)
+        if moving or C.Now() - lastDragEnd < CLICK_GRACE then
+            return
+        end
+        if ns.Browser and ns.Browser.ShowZone then
+            ns.Browser.ShowZone(C.GetZoneName())
+        end
+    end))
+    t.moreBtn:SetScript("OnEnter", function() setHover(t, true); t.moreText:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
+    t.moreBtn:SetScript("OnLeave", function() t.moreText:SetTextColor(COL.muted[1], COL.muted[2], COL.muted[3]) end)
+
     t:SetScript("OnEnter", function(self) setHover(self, true) end)
     t:SetScript("OnLeave", function(self) setHover(self, false) end)
     t:SetScript("OnDragStart", function()
@@ -211,7 +236,20 @@ local function build()
     return t
 end
 
-local function display(npcID, entry, name, unit)
+-- Game codes, plus a short "+N more" when other veterans appeared together with this one.
+local function setGames(t)
+    local n = t.more or 0
+    t.games:SetText(ns.GamesLabel(t.entry))
+    t.games:SetWidth(TOAST_W - 56 - 12 - 12 - 4 - (n > 0 and MORE_W or 0))
+    t.moreText:SetText("+" .. n .. " more")
+    if n > 0 then
+        t.moreBtn:Show()
+    else
+        t.moreBtn:Hide()
+    end
+end
+
+local function display(npcID, entry, name, unit, more)
     ensureAnchor()
     local t
     for _, v in ipairs(pool) do
@@ -237,7 +275,8 @@ local function display(npcID, entry, name, unit)
     t.ring:SetVertexColor(r, g, b)
     t.ringGlow:SetVertexColor(r, g, b, 0.8)
     t.name:SetText(name or entry.name or "?")
-    t.games:SetText(ns.GamesLabel(entry))
+    t.more = more
+    setGames(t)
 
     t.portrait:SetTexCoord(0, 1, 0, 1)
     if entry.portrait and entry.portrait ~= "" then
@@ -260,13 +299,31 @@ end
 showNext = function()
     while #active < MAX_TOASTS and #queue > 0 do
         local q = table.remove(queue, 1)
-        display(q.npcID, q.entry, q.name, q.unit)
+        display(q.npcID, q.entry, q.name, q.unit, q.more)
+    end
+end
+
+-- Adds "+N more" to the pill of a veteran that is already on screen (no-op if it is gone).
+function Toast.SetMore(npcID, more)
+    for _, t in ipairs(active) do
+        if t.npcID == npcID then
+            t.more = more
+            setGames(t)
+            return
+        end
+    end
+    for _, q in ipairs(queue) do
+        if q.npcID == npcID then
+            q.more = more -- shown when the pill comes up
+            return
+        end
     end
 end
 
 -- Shows the pill for a veteran. Someone already on screen or waiting is not shown twice.
 -- unit = optional unit token ("target", "nameplate3") for the portrait.
-function Toast.Show(npcID, entry, name, unit)
+-- more = optional number of other veterans that appeared at the same time ("+N more nearby").
+function Toast.Show(npcID, entry, name, unit, more)
     for _, t in ipairs(active) do
         if t.npcID == npcID then
             return
@@ -277,6 +334,6 @@ function Toast.Show(npcID, entry, name, unit)
             return
         end
     end
-    queue[#queue + 1] = { npcID = npcID, entry = entry, name = name, unit = unit }
+    queue[#queue + 1] = { npcID = npcID, entry = entry, name = name, unit = unit, more = more }
     showNext()
 end

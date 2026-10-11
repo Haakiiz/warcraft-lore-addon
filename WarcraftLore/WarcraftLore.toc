@@ -1,6 +1,6 @@
 ## Interface: 16001
 ## Title: Warcraft Lore
-## Notes: Shows whether an NPC has a past in Warcraft: Orcs & Humans, Warcraft II or Warcraft III.
+## Notes: Shows which NPCs have a past in the Warcraft RTS games and novels, with their story.
 ## Author: Håkon
 ## Version: @project-version@
 ## SavedVariables: WarcraftLoreDB
@@ -9,9 +9,13 @@
 
 Compat.lua
 Data.lua
+SavedData.lua
 Core.lua
 Style.lua
 UI.lua
 Browser.lua
 Toast.lua
 Minimap.lua
+MapPins.lua
+Options.lua
+Share.lua

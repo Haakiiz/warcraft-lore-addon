@@ -1,6 +1,8 @@
 name: Release AddOn
 
 # Push a tag (e.g. v0.1.0) to build the zip and upload it to CurseForge and GitHub Releases.
+# A tag with "beta" in it (v0.4.0-beta1) is uploaded as a Beta file and "alpha" as Alpha:
+# CurseForge app users only get those if they switch the addon's release type, so test there first.
 on:
   push:
     tags:
@@ -23,5 +25,20 @@ jobs:
 
       - name: Validate database
         run: python3 tests/validate_db.py
+
+      - name: Lua tests
+        run: |
+          pip install lupa
+          python3 tests/test_saved_data.py
+          python3 tests/test_related.py
+          python3 tests/test_timeline.py
+          python3 tests/test_options.py
+          python3 tests/test_guard.py
+          python3 tests/test_met.py
+          python3 tests/test_portrait.py
+          python3 tests/test_toast.py
+          python3 tests/test_atlas.py
+          python3 tests/test_share.py
+          python3 tests/test_mappins.py
 
       - uses: BigWigsMods/packager@v2
