@@ -34,5 +34,6 @@ jobs:
           python3 tests/test_timeline.py
           python3 tests/test_options.py
           python3 tests/test_guard.py
+          python3 tests/test_met.py
 
       - uses: BigWigsMods/packager@v2
