@@ -13,6 +13,9 @@ local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 local VERSION = "WCL1:"
 local DIGITS = "0123456789abcdefghijklmnopqrstuvwxyz"
 local CHECK_MOD = 36 ^ 4
+local MIN_FIRST = 1072915200 -- 1 Jan 2004, before the game existed
+local MAX_FIRST = 4102444800 -- 1 Jan 2100
+local MAX_COUNT = 99999
 
 local function toBase36(n)
     n = math.floor(tonumber(n) or 0)
@@ -98,6 +101,9 @@ function Share.Decode(str)
             if not id or not first or not count or count < 1 then
                 return nil, "damaged"
             end
+            -- A hand-edited string can carry silly values; keep them in a believable range.
+            first = math.min(math.max(first, MIN_FIRST), MAX_FIRST)
+            count = math.min(count, MAX_COUNT)
             list[#list + 1] = { id = id, first = first, count = count }
         end
     end
@@ -153,6 +159,12 @@ end
 local WIDTH, HEIGHT = 440, 250
 local TITLE_EXPORT, TITLE_IMPORT = "Export met veterans", "Import met veterans"
 local frame, box, importBtn, hint, titleFs
+local exportMode = false
+
+-- Width of the edit box: window - two vine bands - holder insets (2 * 16) - scroll insets (2 * 6).
+function Share.EditWidth(windowWidth, band)
+    return windowWidth - 2 * band - 32 - 12
+end
 
 local function say(msg)
     C.Print(PREFIX .. msg)
@@ -174,15 +186,8 @@ local function build()
 
     S.buildFrameArt(f, WIDTH, HEIGHT)
     local inner = S.buildInner(f)
-    S.buildHeader(inner, TITLE_EXPORT, function() f:Hide() end)
-    -- buildHeader does not return its title, so find it to change the text for import.
-    pcall(function()
-        for _, region in ipairs({ inner:GetRegions() }) do
-            if region.GetText and region:GetText() == TITLE_EXPORT then
-                titleFs = region
-            end
-        end
-    end)
+    local _, title = S.buildHeader(inner, TITLE_EXPORT, function() f:Hide() end)
+    titleFs = title
 
     hint = S.text(inner, C.FONT_BODY, 12, S.COL.text)
     hint:SetPoint("TOPLEFT", 16, -42)
@@ -206,14 +211,31 @@ local function build()
     local ok = pcall(function()
         b:SetMultiLine(true)
         b:SetMaxLetters(0)
-        b:SetWidth(WIDTH - 2 * 24 - 12 - 16)
-        b:SetHeight(400)
+        b:SetWidth(Share.EditWidth(WIDTH, S.BAND))
+        b:SetHeight(HEIGHT - 64 - 48 - 12) -- start as tall as the view; a multi-line box grows with its text
         b:SetTextColor(S.COL.title[1], S.COL.title[2], S.COL.title[3])
         b:SetScript("OnEscapePressed", function() f:Hide() end)
         scroll:SetScrollChild(b)
-        scroll:SetScript("OnMouseWheel", function(_, delta)
+        local function wheel(_, delta)
             local max = math.max(0, b:GetHeight() - scroll:GetHeight())
             scroll:SetVerticalScroll(math.min(max, math.max(0, scroll:GetVerticalScroll() - delta * 30)))
+        end
+        scroll:SetScript("OnMouseWheel", wheel)
+        b:EnableMouseWheel(true) -- the box covers the scroll frame, so it needs the wheel too
+        b:SetScript("OnMouseWheel", wheel)
+        -- Keep the cursor in view while typing or pasting.
+        b:SetScript("OnCursorChanged", function(_, _, y, _, h)
+            y = -y
+            local top, view = scroll:GetVerticalScroll(), scroll:GetHeight()
+            if y < top then
+                scroll:SetVerticalScroll(y)
+            elseif y + h > top + view then
+                scroll:SetVerticalScroll(y + h - view)
+            end
+        end)
+        -- In export mode a click would drop the highlight, so select everything again on focus.
+        b:SetScript("OnEditFocusGained", function(self)
+            if exportMode then self:HighlightText() end
         end)
     end)
     if not ok then
@@ -239,6 +261,9 @@ local function build()
             if ns.Browser and ns.Browser.Refresh then
                 pcall(ns.Browser.Refresh, true)
             end
+            if ns.UI and ns.UI.RefreshOpen then
+                pcall(ns.UI.RefreshOpen)
+            end
         end
     end
     importBtn:SetScript("OnClick", ns.Guard and ns.Guard("import", "the import", doImport) or doImport)
@@ -258,7 +283,12 @@ function Share.Open(which)
         if titleFs then titleFs:SetText(TITLE_EXPORT) end
         hint:SetText("Copy this text with Ctrl+C. Paste it with /wcl import on another account.")
         importBtn:Hide()
-        box:SetText(Share.Encode(type(WarcraftLoreDB) == "table" and WarcraftLoreDB.met or {}))
+        exportMode = true
+        local met = type(WarcraftLoreDB) == "table" and WarcraftLoreDB.met or {}
+        if next(met) == nil then
+            hint:SetText("You have not met any veterans yet. The string below is empty but valid.")
+        end
+        box:SetText(Share.Encode(met))
         frame:Show()
         box:SetFocus()
         box:HighlightText()
@@ -266,6 +296,7 @@ function Share.Open(which)
         if titleFs then titleFs:SetText(TITLE_IMPORT) end
         hint:SetText("Paste an export string below, then press Import. Nothing is ever deleted.")
         importBtn:Show()
+        exportMode = false
         box:SetText("")
         frame:Show()
         box:SetFocus()

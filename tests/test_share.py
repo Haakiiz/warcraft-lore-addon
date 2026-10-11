@@ -88,7 +88,7 @@ def main():
         incoming = ns.Share.Encode({
             [100] = { first = 1759449600, count = 3 },
             [200] = { first = 2000, count = 4 },
-            [4949] = { first = 42, count = 2 } })
+            [4949] = { first = 1100000000, count = 2 } })
         ok, line = ns.Share.Import(incoming)""")
     r.append(check("merge: earliest first wins (import earlier)", ev("WarcraftLoreDB.met[100].first") == 1759449600))
     r.append(check("merge: earlier import drops unknown 'by'", ev("WarcraftLoreDB.met[100].by") is None))
@@ -97,7 +97,7 @@ def main():
     r.append(check("merge: 'by' kept when local is earlier", ev("WarcraftLoreDB.met[200].by") == "Early-X"))
     r.append(check("merge: larger count wins (import larger)", ev("WarcraftLoreDB.met[200].count") == 4))
     r.append(check("merge: new entry added",
-                   ev("WarcraftLoreDB.met[4949].first") == 42 and ev("WarcraftLoreDB.met[4949].count") == 2))
+                   ev("WarcraftLoreDB.met[4949].first") == 1100000000 and ev("WarcraftLoreDB.met[4949].count") == 2))
     r.append(check("merge: nothing deleted", ev("WarcraftLoreDB.met[300].count") == 9))
     r.append(check("merge: chat line", ev("ok") is True and ev("line") == "Imported 3 veterans (1 new)."))
     r.append(check("singular wording",
@@ -111,6 +111,16 @@ def main():
     r.append(check("unknown NPC ID ignored",
                    ev("WarcraftLoreDB.met[999999]") is None and ev("WarcraftLoreDB.met[100] ~= nil")
                    and ev("line2") == "Imported 1 veteran (1 new)."))
+
+    # Edit box width: window 440, band 20 -> 356 px, exactly the scroll frame width (400 - 32 - 12).
+    r.append(check("edit box width fits scroll frame", ev("ns.Share.EditWidth(440, 20)") == 356))
+    r.append(check("edit box width follows the band", ev("ns.Share.EditWidth(440, 24)") == 348))
+
+    # Hand-edited values are clamped.
+    ex("""function signed2(body) return body .. '~' .. ns.Share.Checksum(body) end
+          wild = ns.Share.Decode(signed2('WCL1:2s.0.zzzzzzzz'))""")
+    r.append(check("first clamped to 2004 or later", ev("wild[1].first") >= 1072915200))
+    r.append(check("count clamped", ev("wild[1].count") == 99999))
 
     # Window guard: no edit box -> clear message, no error.
     ex("""local function obj() local o; o = setmetatable({}, { __index = function() return function() return o end end }); return o end
