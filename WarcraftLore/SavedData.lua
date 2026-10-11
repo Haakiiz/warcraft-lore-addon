@@ -30,6 +30,13 @@ local ACCOUNT_MIGRATIONS = {
             db.met = {}
         end
     end,
+    -- 3: achievements, earned[id] = time earned (Achievements.lua). Existing players get their
+    -- current achievements stored silently by the first Achievements.Check.
+    [3] = function(db)
+        if type(db.achievements) ~= "table" then
+            db.achievements = {}
+        end
+    end,
 }
 
 -- "Name-Realm" of the current character (nil when the client does not tell).

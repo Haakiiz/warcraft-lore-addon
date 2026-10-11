@@ -337,3 +337,76 @@ function Toast.Show(npcID, entry, name, unit, more)
     queue[#queue + 1] = { npcID = npcID, entry = entry, name = name, unit = unit, more = more }
     showNext()
 end
+
+-------------------------------------------------------------------- Achievement banner
+-- A small golden banner under the anchor: "Achievement earned" and the title (or the count when
+-- several came at once). One banner at a time; a new one replaces the old. Right-click or time dismisses it.
+local banner
+local BANNER_W, BANNER_H, BANNER_HOLD, BANNER_FADE = 260, 44, 6, 0.8
+
+local function buildBanner()
+    local b = CreateFrame("Button", nil, UIParent)
+    b:SetSize(BANNER_W, BANNER_H)
+    b:SetFrameStrata("FULLSCREEN_DIALOG")
+    b:EnableMouse(true)
+    C.RegisterClicks(b)
+    b.bg = b:CreateTexture(nil, "BACKGROUND")
+    b.bg:SetAllPoints()
+    b.bg:SetColorTexture(0.071, 0.059, 0.110, 0.94)
+    b.edges = S.outline(b, 0, 1, COL.gold, "BORDER")
+    b.head = S.text(b, C.FONT_BODY, 10, COL.gold)
+    b.head:SetPoint("TOPLEFT", b, "TOPLEFT", 12, -8)
+    b.head:SetText("ACHIEVEMENT EARNED")
+    b.title = S.text(b, C.FONT_TITLE, 14, COL.title)
+    b.title:SetPoint("TOPLEFT", b.head, "BOTTOMLEFT", 0, -3)
+    b.title:SetWidth(BANNER_W - 24)
+    b.title:SetWordWrap(false)
+    b.title:SetJustifyH("LEFT")
+    b:SetScript("OnClick", function(self, button)
+        if button == "RightButton" then
+            self.state = nil
+            self:Hide()
+        end
+    end)
+    b:SetScript("OnUpdate", function(self, dt)
+        if not self.state then
+            return
+        end
+        self.age = self.age + dt
+        local a = 1
+        if self.age < FADE_IN then
+            a = self.age / FADE_IN
+        elseif self.age > BANNER_HOLD + FADE_IN then
+            a = 1 - (self.age - BANNER_HOLD - FADE_IN) / BANNER_FADE
+        end
+        if a <= 0 then
+            self.state = nil
+            self:Hide()
+            return
+        end
+        self:SetAlpha(a)
+    end)
+    return b
+end
+
+-- title = the achievement; count = how many were earned at once (the banner says "3 achievements" then).
+function Toast.ShowAchievement(title, count)
+    ensureAnchor()
+    if not banner then
+        banner = buildBanner()
+    end
+    count = tonumber(count) or 1
+    if count > 1 then
+        banner.head:SetText("ACHIEVEMENTS EARNED")
+        banner.title:SetText(("%d new achievements"):format(count))
+    else
+        banner.head:SetText("ACHIEVEMENT EARNED")
+        banner.title:SetText(tostring(title or ""))
+    end
+    banner:ClearAllPoints()
+    banner:SetPoint("TOP", anchor, "TOP", 0, -(MAX_TOASTS * (TOAST_H + GAP)) - 8)
+    banner.age = 0
+    banner.state = "show"
+    banner:SetAlpha(0)
+    banner:Show()
+end
