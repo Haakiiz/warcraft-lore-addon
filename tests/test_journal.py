@@ -43,6 +43,7 @@ methods = {
     SetVertexColor = function(self, r, g, b) self.vertex = { r, g, b } end,
     SetDesaturated = function(self, v) self.desat = v end,
     SetTexture = function(self, p) self.texture = p end,
+    SetAlpha = function(self, a) self.alpha = a end,
     GetVerticalScroll = function(self) return self.scroll end,
     SetVerticalScroll = function(self, v) self.scroll = v end,
     GetVerticalScrollRange = function(self) return self.range or 0 end,
@@ -97,6 +98,7 @@ ACH = {
     { id = "f", title = "Second Game", desc = "Game two.", category = "game", progress = 12, total = 12, done = true, earned = 1759449600, icon = "ico/f" },
 }
 ns.Achievements = {
+    LEVEL_CAP = 30,
     List = function() return ACH end,
     Counts = function() return 3, 6 end,
 }
@@ -194,6 +196,30 @@ def main():
     r.append(check("Refresh updates summary and row",
                    ev("summaryText()").replace("|cffe0b84a", "").replace("|r", "") == "4 of 6 achievements" and ev("rowFor('b').done") is True))
 
+    # --- "later" rows: last, dimmed, tooltip line, summary count
+    lua.execute("""
+        table.insert(ACH, 2, { id = "g", title = "Far Away", desc = "Needs a far zone.", category = "zone", progress = 0, total = 4, done = false, later = true, icon = "ico/g" })
+        ns.Achievements.Counts = function() return 4, 6, 1 end
+        ns.Journal.Refresh()
+    """)
+    r.append(check("summary counts only achievements that are not later",
+                   ev("summaryText()").replace("|cffe0b84a", "").replace("|r", "") == "4 of 6 achievements \u00b7 1 later",
+                   ev("summaryText()")))
+    r.append(check("later row sorts last", ev("rowFor('g').points[1][5]") == -6 * 64, ev("rowFor('g').points[1][5]")))
+    r.append(check("the other rows keep their order", ev("rowFor('b').points[1][5]") == -1 * 64))
+    r.append(check("later row is dimmed and styled as not done",
+                   ev("rowFor('g').alpha") < 1 and ev("rowFor('g').done") is False and ev("rowFor('b').alpha") == 1))
+    lua.execute("rowFor('g').scripts.OnEnter(rowFor('g'))")
+    tip = lua.eval("tooltips[#tooltips]")
+    lines = [tip[i + 1][1] for i in range(len(tip))]
+    r.append(check("later tooltip: level line",
+                   "Needs zones above level 30 \u2013 coming with the next level cap." in lines, lines))
+    lua.execute("ns.Achievements.Counts = function() return 4, 6 end; ACH[2].later = false; ns.Journal.Refresh()")
+    r.append(check("no later: plain summary, row back in place",
+                   ev("summaryText()").replace("|cffe0b84a", "").replace("|r", "") == "4 of 6 achievements"
+                   and ev("rowFor('g').points[1][5]") == -1 * 64))
+    lua.execute("table.remove(ACH, 2); ns.Achievements.Counts = function() return 4, 6 end; ns.Journal.Refresh()")
+
     # --- wheel scrolling
     lua.execute("""
         local scroll
@@ -236,7 +262,7 @@ def core_ok():
 
 def minimap_ok():
     src = (ADDON / "Minimap.lua").read_text(encoding="utf-8")
-    return "Shift-click" in src and "Lore Journal" in src and "IsShiftKeyDown" in src and "ns.Journal.Toggle()" in src
+    return "Shift-click" in src and "Lore Journal" in src and "C.IsShiftDown()" in src and "IsShiftKeyDown" not in src and "ns.Journal.Toggle()" in src
 
 
 def browser_ok():

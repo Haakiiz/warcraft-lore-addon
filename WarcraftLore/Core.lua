@@ -318,7 +318,13 @@ function ns.MarkMet(npcID)
     -- called from inside a tooltip post-call, which should stay quick and must not be
     -- able to break the tooltip if one of our windows errors.
     C.After(function()
-        if not alreadyMet then
+        -- A meet that earns an achievement prints only the achievement line (and one sound).
+        local earnedNow = false
+        if not alreadyMet and ns.Achievements then
+            local ok, fresh = pcall(ns.Achievements.Check)
+            earnedNow = ok and type(fresh) == "table" and #fresh > 0
+        end
+        if not alreadyMet and not earnedNow then
             local _, overall = ns.MetCounts()
             chat(L["New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."]:format(
                 entry.name or "?", ns.GamesLabel(entry), overall.met, overall.total))
@@ -327,8 +333,8 @@ function ns.MarkMet(npcID)
         if ns.Browser then
             pcall(ns.Browser.Refresh)
         end
-        if not alreadyMet and ns.Achievements then
-            pcall(ns.Achievements.Check)
+        if ns.Journal and ns.Journal.IsShown and ns.Journal.IsShown() then
+            pcall(ns.Journal.Refresh) -- open progress bars move on every meet
         end
         if ns.MapPins and ns.MapPins.Refresh then
             pcall(ns.MapPins.Refresh) -- redraws only when the world map is shown

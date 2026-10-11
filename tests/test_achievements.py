@@ -71,7 +71,9 @@ def main():
     r.append(check("milestones <= veterans", counts["milestone"] == exp_ms, counts["milestone"]))
     exp_game = ev("""(function()
         local per, n = {}, 0
-        for _, g in ipairs(ns.Veterans()) do for _, c in ipairs(g.codes) do per[c] = (per[c] or 0) + 1 end end
+        for _, g in ipairs(ns.Veterans()) do
+            if ns.Achievements.IsReachable(g) then for _, c in ipairs(g.codes) do per[c] = (per[c] or 0) + 1 end end
+        end
         for code, k in pairs(per) do
             if k >= 3 then n = n + 1 end
             if code == "BOOK" then for _, s in ipairs({25, 50}) do if k >= 3 and s < k then n = n + 1 end end end
@@ -105,8 +107,8 @@ def main():
 
     # Totals.
     r.append(check("milestone_1 total 1", ev("by.milestone_1.total") == 1))
-    r.append(check("game total = veterans of that game", ev("""(function()
-        local n = 0 for _, g in ipairs(ns.Veterans()) do if hasCode(g, "WC3") then n = n + 1 end end
+    r.append(check("game total = reachable veterans of that game", ev("""(function()
+        local n = 0 for _, g in ipairs(ns.Veterans()) do if hasCode(g, "WC3") and ns.Achievements.IsReachable(g) then n = n + 1 end end
         return by.game_WC3.total == n end)()""") is True))
     r.append(check("BOOK steps", ev("by.game_BOOK_25 ~= nil and by.game_BOOK_25.total == 25 and by.game_BOOK.total >= 25")))
     r.append(check("circle total = 1 + related", ev("""(function()
@@ -136,7 +138,7 @@ def main():
     r.append(check("first run: returns nothing", lua.eval("#ns.Achievements.Check()") == 0))
     r.append(check("first run: stored", lua.eval("WarcraftLoreDB.achievements.milestone_1") == 1759449600))
     r.append(check("first run: one line 'already have'",
-                   lua.eval("#printed") == 1 and "you already have" in lua.eval("printed[1]") and "/wcl journal" in lua.eval("printed[1]"),
+                   lua.eval("#printed") == 1 and "You already have" in lua.eval("printed[1]") and "/wcl journal" in lua.eval("printed[1]"),
                    lua.eval("tostring(printed[1])")))
     r.append(check("first run: no banner or sound", lua.eval("#banners") == 0 and lua.eval("sounds") == 0))
 
@@ -153,8 +155,13 @@ def main():
     r.append(check("banner carries the count", lua.eval("banners[1][2]") > 1))
     lua.execute("printed = {}")
     r.append(check("second Check: nothing new", lua.eval("#ns.Achievements.Check()") == 0 and lua.eval("#printed") == 0))
-    e, t = lua.eval("ns.Achievements.Counts()")
-    r.append(check("all earned", e == t and t > 0, f"{e}/{t}"))
+    e, t, later = lua.eval("ns.Achievements.Counts()")
+    r.append(check("all reachable earned, later ones left", e == t and t > 0 and later > 0, f"{e}/{t} +{later}"))
+    r.append(check("later ones never stored", lua.eval("""(function()
+        for _, a in ipairs(ns.Achievements.List()) do
+            if a.later and (a.earned or WarcraftLoreDB.achievements[a.id]) then return a.id end
+        end
+        return true end)()""") is True))
     r.append(check("earned time in List", lua.eval("byId(ns.Achievements.List()).special_ages.earned") == 1759449700))
 
     # Single wording.
@@ -195,6 +202,118 @@ def main():
             end
         end
         return true end)()""") is True))
+
+    # --- level cap: reachable veterans and "later"
+    lua = runtime()
+    ev = lua.eval
+    cap = ev("ns.Achievements.LEVEL_CAP")
+    reach = ev("(function() local n = 0 for _, g in ipairs(ns.Veterans()) do if ns.Achievements.IsReachable(g) then n = n + 1 end end return n end)()")
+    lua.execute("list = ns.Achievements.List(); by = byId(list)")
+    n_later = ev("(function() local n = 0 for _, a in ipairs(list) do if a.later then n = n + 1 end end return n end)()")
+    print(f"level cap {cap}: {reach} of {total} veterans reachable, {n_later} of {ev('#list')} achievements later")
+    r.append(check("LEVEL_CAP is 30", cap == 30))
+    r.append(check("some veterans are unreachable, most are reachable", 0 < reach < total and reach > total // 2))
+    r.append(check("Tanaris is later, Stormwind is not",
+                   ev("by['zone_Tanaris'].later") is True and ev("by['zone_Stormwind City'].later") is False))
+    r.append(check("Temple of Ahn'Qiraj is later", ev('by["zone_Temple of Ahn\'Qiraj"].later') is True))
+    r.append(check("a veteran with only a 40+ zone is unreachable", ev("""(function()
+        for _, g in ipairs(ns.Veterans()) do
+            if g.entry.zone == "Tanaris" and #(ns.NPCS[g.id].alsoIn or {}) == 0 then return not ns.Achievements.IsReachable(g) end
+        end return false end)()""") is True))
+    r.append(check("a circle is later exactly when a member is unreachable", ev("""(function()
+        for _, a in ipairs(list) do
+            if a.id:sub(1, 7) == "circle_" then
+                local id = tonumber(a.id:sub(8))
+                local g = ns.VeteranOf(id)
+                local need = not ns.Achievements.IsReachable(g)
+                for _, rg in ipairs(ns.Related(id)) do need = need or not ns.Achievements.IsReachable(rg) end
+                if need ~= a.later then return a.id end
+            end
+        end return true end)()""") is True))
+    r.append(check("games count only reachable veterans (no game is later)", ev("""(function()
+        for _, a in ipairs(list) do if a.category == "game" and a.later then return a.id end end
+        return true end)()""") is True))
+    r.append(check("milestones above the reachable count are later", ev("""(function()
+        local open = %d
+        for _, a in ipairs(list) do
+            if a.category == "milestone" and (a.total > open) ~= a.later then return a.id end
+        end return true end)()""" % reach) is True))
+
+    # Check never awards a later one, even when every member is met.
+    lua.execute("WarcraftLoreDB.achievementsSeeded = true; for _, g in ipairs(ns.Veterans()) do metGroup(g) end")
+    lua.execute("list = ns.Achievements.List(); by = byId(list)")
+    r.append(check("a later one can be done by progress yet is not awarded", ev("by['zone_Tanaris'].done") is True))
+    lua.execute("fresh = ns.Achievements.Check()")
+    r.append(check("Check awards no later achievement", ev("""(function()
+        local now = byId(ns.Achievements.List())
+        for _, id in ipairs(fresh) do if now[id].later then return id end end
+        return WarcraftLoreDB.achievements['zone_Tanaris'] == nil end)()""") is True))
+    e, t, later = lua.eval("ns.Achievements.Counts()")
+    r.append(check("Counts: later ones are not in the total", t == ev("#list") - later and later == n_later and e == t, f"{e}/{t} +{later}"))
+
+    # Possessive.
+    lua = runtime()
+    lua.execute("by = byId(ns.Achievements.List())")
+    r.append(check("no s's Circle anywhere", lua.eval("""(function()
+        for _, a in ipairs(ns.Achievements.List()) do
+            if a.title:find("s's Circle", 1, true) then return a.title end
+        end return true end)()""") is True))
+    r.append(check("names ending in s get an apostrophe only; others 's", lua.eval("""(function()
+        local ends, plain = 0, 0
+        for _, g in ipairs(ns.Veterans()) do
+            local a = by['circle_' .. g.id]
+            if a then
+                local name = g.entry.name
+                local want = name:sub(-1) == "s" and (name .. "' Circle") or (name .. "'s Circle")
+                if a.title ~= want then return a.title end
+                if name:sub(-1) == "s" then ends = ends + 1 else plain = plain + 1 end
+            end
+        end
+        return ends >= 1 and plain >= 1 end)()""") is True))
+
+    # Earned stays done when the goal grows; real progress is kept.
+    lua = runtime("{ schema = 3, met = {}, achievements = { game_WC3 = 1759449600 }, achievementsSeeded = true }")
+    lua.execute("by = byId(ns.Achievements.List())")
+    r.append(check("earned but progress short: still done, date kept, progress honest",
+                   lua.eval("by.game_WC3.done") is True and lua.eval("by.game_WC3.earned") == 1759449600
+                   and lua.eval("by.game_WC3.progress") < lua.eval("by.game_WC3.total")))
+    r.append(check("earned counts once in Counts", lua.eval("(ns.Achievements.Counts())") == 1))
+
+    # Order and wording.
+    lua = runtime()
+    r.append(check("book steps stay together, smallest first", lua.eval("""(function()
+        local l, ids = ns.Achievements.List(), {}
+        for i, a in ipairs(l) do if a.id:sub(1, 9) == "game_BOOK" then ids[#ids + 1] = i end end
+        if #ids < 3 then return false end
+        for k = 2, #ids do if ids[k] ~= ids[k - 1] + 1 or l[ids[k]].total <= l[ids[k - 1]].total then return false end end
+        return true end)()""") is True))
+    r.append(check("flat old titles are gone and Across the Ages matches its rule", lua.eval("""(function()
+        local by = byId(ns.Achievements.List())
+        for _, a in ipairs(ns.Achievements.List()) do
+            if a.title:find("^All of ") or a.title == "Library Regular" or a.title:find("Heroes of Reign") then return a.title end
+        end
+        return by.game_WC3.title == "Veterans of the Third War" and by.special_ages.desc:find("strategy", 1, true) ~= nil end)()""") is True))
+
+    # Alerts off: the achievement still shows, but no sound.
+    lua = runtime("{ schema = 3, met = {}, achievements = {}, achievementsSeeded = true, alert = false }")
+    lua.execute("metGroup(ns.Veterans()[1])")
+    lua.eval("ns.Achievements.Check()")
+    r.append(check("alert off: line and banner, no sound",
+                   lua.eval("#printed") == 1 and lua.eval("#banners") == 1 and lua.eval("sounds") == 0))
+
+    # A meet that earns an achievement prints only the achievement line; a plain meet prints the meet line.
+    lua = runtime("{ schema = 3, met = {}, achievements = {}, achievementsSeeded = true, alert = true }")
+    lua.execute("first = ns.Veterans()[1].id; second = ns.Veterans()[2].id")
+    lua.execute("ns.MarkMet(first)")
+    r.append(check("meet with achievement: one line, the achievement; one sound",
+                   lua.eval("#printed") == 1 and "Achievement earned" in lua.eval("printed[1]")
+                   and "New veteran met" not in lua.eval("printed[1]") and lua.eval("sounds") == 1,
+                   lua.eval("table.concat(printed, ' | ')")))
+    lua.execute("printed = {}")
+    lua.execute("ns.MarkMet(second)")
+    r.append(check("plain meet: the meet line only, no new sound",
+                   lua.eval("#printed") == 1 and "New veteran met" in lua.eval("printed[1]") and lua.eval("sounds") == 1,
+                   lua.eval("table.concat(printed, ' | ')")))
 
     # Migration 3 from schema 2 data.
     lua = runtime(None, files=("Data.lua", "SavedData.lua"))

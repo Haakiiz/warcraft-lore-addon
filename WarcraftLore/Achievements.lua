@@ -2,8 +2,9 @@
 -- Generated from the veteran data, so they grow with Data.lua. Earned ones are stored account-wide:
 -- WarcraftLoreDB.achievements[id] = time earned.
 --
---   ns.Achievements.List()   array of { id, title, desc, category, progress, total, done, earned, icon }
---   ns.Achievements.Counts() earned, total
+--   ns.Achievements.List()   array of { id, title, desc, category, progress, total, done, earned, icon, later }
+--   ns.Achievements.Counts() earned, total, later (later ones are not in the total)
+--   ns.Achievements.IsReachable(veteran)  false when every zone it is found in is above LEVEL_CAP
 --   ns.Achievements.Check()  stores and announces newly done ones; returns their ids
 
 local _, ns = ...
@@ -12,6 +13,67 @@ local L = ns.L
 
 local Achievements = {}
 ns.Achievements = Achievements
+
+-- WoW Forever is capped at this player level for now. Raise it when the cap rises: veterans in
+-- zones with a higher minimum level are "later" until then, and the achievements that need them wait.
+local LEVEL_CAP = 30
+Achievements.LEVEL_CAP = LEVEL_CAP
+
+-- Minimum player level per zone or instance (Classic ranges). A zone that is not listed counts as 1.
+local ZONE_LEVEL = {
+    ["Elwynn Forest"] = 1, ["Durotar"] = 1, ["Mulgore"] = 1, ["Tirisfal Glades"] = 1, ["Dun Morogh"] = 1,
+    ["Teldrassil"] = 1, ["Stormwind City"] = 1, ["Ironforge"] = 1, ["Orgrimmar"] = 1, ["Thunder Bluff"] = 1,
+    ["Undercity"] = 1, ["Darnassus"] = 1, ["Moonglade"] = 1,
+    ["Loch Modan"] = 10, ["Darkshore"] = 10, ["Silverpine Forest"] = 10, ["Westfall"] = 10, ["The Barrens"] = 10,
+    ["Redridge Mountains"] = 15, ["Stonetalon Mountains"] = 15, ["Duskwood"] = 18, ["Ashenvale"] = 18,
+    ["Wetlands"] = 20, ["Hillsbrad Foothills"] = 20, ["Thousand Needles"] = 25,
+    ["Alterac Mountains"] = 30, ["Arathi Highlands"] = 30, ["Stranglethorn Vale"] = 30, ["Desolace"] = 30,
+    ["Dustwallow Marsh"] = 35, ["Badlands"] = 35, ["Swamp of Sorrows"] = 35,
+    ["Tanaris"] = 40, ["Feralas"] = 40, ["The Hinterlands"] = 40, ["Searing Gorge"] = 43, ["Azshara"] = 45,
+    ["Blasted Lands"] = 45, ["Un'Goro Crater"] = 48, ["Felwood"] = 48, ["Burning Steppes"] = 50,
+    ["Western Plaguelands"] = 51, ["Eastern Plaguelands"] = 53, ["Winterspring"] = 53, ["Silithus"] = 55,
+    ["Deadwind Pass"] = 55,
+    -- dungeons and raids
+    ["Ragefire Chasm"] = 13, ["The Deadmines"] = 15, ["Wailing Caverns"] = 15, ["Shadowfang Keep"] = 18,
+    ["Blackfathom Deeps"] = 20, ["The Stockade"] = 22, ["Gnomeregan"] = 24, ["Razorfen Kraul"] = 25,
+    ["Scarlet Monastery"] = 26, ["Razorfen Downs"] = 37, ["Uldaman"] = 40, ["Zul'Farrak"] = 42,
+    ["Maraudon"] = 45, ["Sunken Temple"] = 45, ["Blackrock Depths"] = 52, ["Lower Blackrock Spire"] = 55,
+    ["Upper Blackrock Spire"] = 58, ["Dire Maul"] = 56, ["Scholomance"] = 58, ["Stratholme"] = 58,
+    ["Molten Core"] = 60, ["Onyxia's Lair"] = 60, ["Blackwing Lair"] = 60, ["Ruins of Ahn'Qiraj"] = 60,
+    ["Temple of Ahn'Qiraj"] = 60, ["Naxxramas"] = 60,
+}
+Achievements.ZONE_LEVEL = ZONE_LEVEL
+
+local function zoneReachable(z)
+    return (ZONE_LEVEL[z] or 1) <= LEVEL_CAP
+end
+
+-- A veteran can be met at the cap when any zone it is found in is open; no known zone = open.
+local reachCache = {}
+local function reachable(g)
+    local r = reachCache[g]
+    if r == nil then
+        local any, open = false, false
+        local function visit(z)
+            if type(z) == "string" and z ~= "" then
+                any = true
+                if zoneReachable(z) then
+                    open = true
+                end
+            end
+        end
+        visit(g.entry.zone)
+        for _, id in ipairs(g.ids) do
+            for _, z in ipairs(ns.NPCS[id].alsoIn or {}) do
+                visit(z)
+            end
+        end
+        r = open or not any
+        reachCache[g] = r
+    end
+    return r
+end
+Achievements.IsReachable = reachable
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 local ICON = "Interface\\Icons\\"
@@ -22,10 +84,10 @@ local MILESTONES = {
 }
 local GAME_TITLE = {
     WC1 = L["Where It Began"], WC2 = L["Tides of Darkness"], BTDP = L["Beyond the Portal"],
-    WC3 = L["Heroes of Reign of Chaos"], TFT = L["Heroes of the Frozen Throne"],
-    FK = L["The Forsaken Kingdom"], BOOK = L["Keeper of the Books"],
+    WC3 = L["Veterans of the Third War"], TFT = L["Veterans of the Frozen Throne"],
+    FK = L["The Forsaken Kingdom"], BOOK = L["Grand Librarian"],
 }
-local BOOK_STEPS = { { 25, L["Bookworm"] }, { 50, L["Library Regular"] } }
+local BOOK_STEPS = { { 25, L["Bookworm"] }, { 50, L["Archivist"] } }
 local MIN_GROUP = 3 -- smallest set that gets a game, zone or circle achievement
 
 -- Static part: id, text, icon and the veterans that count. Built on first use.
@@ -38,23 +100,31 @@ end
 local function build()
     local list = {}
     local vets = ns.Veterans()
-    local total = #vets
+    local total, open = #vets, 0
+    for _, g in ipairs(vets) do
+        if reachable(g) then
+            open = open + 1
+        end
+    end
 
     for _, m in ipairs(MILESTONES) do
         if m[1] <= total then
             add(list, {
                 id = "milestone_" .. m[1], title = m[2], category = "milestone", icon = ICON .. "Achievement_Level_10",
                 desc = m[1] == 1 and L["Meet your first veteran."] or L["Meet %d veterans."]:format(m[1]),
-                total = m[1], all = true,
+                total = m[1], all = true, later = m[1] > open, -- more than can be met at the cap
             })
         end
     end
 
-    local perGame, perZone, zones = {}, {}, {}
+    local perGame, perZone, zones, codeAny = {}, {}, {}, {}
     for _, g in ipairs(vets) do
         for _, code in ipairs(g.codes) do
-            perGame[code] = perGame[code] or {}
-            table.insert(perGame[code], g)
+            codeAny[code] = true
+            if reachable(g) then -- games count only the veterans that can be met at the cap
+                perGame[code] = perGame[code] or {}
+                table.insert(perGame[code], g)
+            end
         end
         local seen = {}
         local function zone(z)
@@ -75,13 +145,14 @@ local function build()
         end
     end
 
-    local rtsCodes = {}
-    for _, code in ipairs(ns.GAME_ORDER) do
+    local rtsCodes, ageOpen = {}, true
+    for gi, code in ipairs(ns.GAME_ORDER) do
         local members = perGame[code]
+        if code ~= "BOOK" and codeAny[code] then
+            rtsCodes[#rtsCodes + 1] = code
+            ageOpen = ageOpen and members ~= nil
+        end
         if members then
-            if code ~= "BOOK" then
-                rtsCodes[#rtsCodes + 1] = code
-            end
             if #members >= MIN_GROUP then
                 local long = ns.GAME_LONG[code] or code
                 if code == "BOOK" then
@@ -90,7 +161,7 @@ local function build()
                             add(list, {
                                 id = "game_BOOK_" .. step[1], title = step[2], category = "game", icon = ICON .. "INV_Misc_Book_09",
                                 desc = L["Meet %d veterans from the Warcraft novels and books."]:format(step[1]),
-                                members = members, total = step[1],
+                                members = members, total = step[1], gameRank = gi,
                             })
                         end
                     end
@@ -99,7 +170,7 @@ local function build()
                     id = "game_" .. code, title = GAME_TITLE[code] or long, category = "game", icon = ICON .. "INV_Misc_Book_09",
                     desc = code == "BOOK" and L["Meet every veteran from the Warcraft novels and books."]
                         or L["Meet every veteran from %s."]:format(long),
-                    members = members, total = #members,
+                    members = members, total = #members, gameRank = gi,
                 })
             end
         end
@@ -109,8 +180,9 @@ local function build()
         local members = perZone[z]
         if #members >= MIN_GROUP then
             add(list, {
-                id = "zone_" .. z, title = L["All of %s"]:format(z), category = "zone", icon = ICON .. "INV_Misc_Map_01",
+                id = "zone_" .. z, title = L["Veterans of %s"]:format(z), category = "zone", icon = ICON .. "INV_Misc_Map_01",
                 desc = L["Meet every veteran in %s."]:format(z), members = members, total = #members,
+                later = not zoneReachable(z),
             })
         end
     end
@@ -118,13 +190,16 @@ local function build()
     for _, g in ipairs(vets) do
         local related = ns.Related(g.id)
         if #related >= MIN_GROUP then
-            local members = { g }
+            local members, later = { g }, not reachable(g)
             for _, r in ipairs(related) do
                 members[#members + 1] = r
+                later = later or not reachable(r)
             end
             local name = g.entry.name or "?"
+            -- "Thrall's Circle", but "Fizzle Brassbolts' Circle"
+            local title = name:sub(-1) == "s" and L["%s' Circle"]:format(name) or L["%s's Circle"]:format(name)
             add(list, {
-                id = "circle_" .. g.id, title = L["%s's Circle"]:format(name), category = "circle", icon = ICON .. "Achievement_Reputation_01",
+                id = "circle_" .. g.id, title = title, later = later, category = "circle", icon = ICON .. "Achievement_Reputation_01",
                 desc = L["Meet %s and everyone tied to them."]:format(name), members = members, total = #members,
             })
         end
@@ -133,7 +208,8 @@ local function build()
     if #rtsCodes >= 2 then
         add(list, {
             id = "special_ages", title = L["Across the Ages"], category = "special", icon = ICON .. "INV_Misc_Spyglass_03",
-            desc = L["Meet a veteran from every Warcraft game."], codes = rtsCodes, total = #rtsCodes,
+            desc = L["Meet a veteran from each Warcraft strategy game and its expansions."],
+            codes = rtsCodes, total = #rtsCodes, later = not ageOpen,
         })
     end
 
@@ -148,6 +224,12 @@ local function build()
         end
         if a.category == "milestone" then
             return a.total < b.total
+        end
+        if a.category == "game" and a.gameRank ~= b.gameRank then
+            return a.gameRank < b.gameRank
+        end
+        if a.category == "game" and a.total ~= b.total then
+            return a.total < b.total -- the book steps stay together, smallest first
         end
         if a.title ~= b.title then
             return a.title < b.title
@@ -210,24 +292,33 @@ function Achievements.List()
         end
         out[i] = {
             id = d.id, title = d.title, desc = d.desc, category = d.category, icon = d.icon,
-            progress = math.min(progress, d.total), total = d.total, done = progress >= d.total,
+            progress = math.min(progress, d.total), total = d.total, later = d.later == true,
             earned = tonumber(earned[d.id]),
         }
+        -- An earned one stays done when a data update grows its goal.
+        out[i].done = progress >= d.total or out[i].earned ~= nil
     end
     return out
 end
 
+-- earned, total of the ones that can be earned now, and how many wait for a higher level cap.
 function Achievements.Counts()
-    local n, list = 0, Achievements.List()
-    for _, a in ipairs(list) do
-        if a.earned then
-            n = n + 1
+    local n, total, later = 0, 0, 0
+    for _, a in ipairs(Achievements.List()) do
+        if a.later and not a.earned then
+            later = later + 1
+        else
+            total = total + 1
+            if a.earned then
+                n = n + 1
+            end
         end
     end
-    return n, #list
+    return n, total, later
 end
 
 local function announce(titles)
+    local db = WarcraftLoreDB
     local n = #titles
     if n == 0 then
         return
@@ -248,7 +339,9 @@ local function announce(titles)
     if ns.Toast and ns.Toast.ShowAchievement then
         pcall(ns.Toast.ShowAchievement, titles[1], n)
     end
-    pcall(C.PlayAlertSound)
+    if not db or db.alert ~= false then
+        pcall(C.PlayAlertSound) -- one sound, unless alerts are switched off
+    end
 end
 
 function Achievements.Check()
@@ -260,7 +353,7 @@ function Achievements.Check()
     local fresh, titles = {}, {}
     local now = time()
     for _, a in ipairs(Achievements.List()) do
-        if a.done and not a.earned then
+        if a.done and not a.earned and not a.later then
             store[a.id] = now
             fresh[#fresh + 1] = a.id
             titles[#titles + 1] = a.title
@@ -273,7 +366,7 @@ function Achievements.Check()
         -- First run with this feature: what is already done is stored without announcing.
         db.achievementsSeeded = true
         if #fresh > 0 then
-            C.Print(PREFIX .. L["you already have %d achievements – see /wcl journal."]:format(#fresh))
+            C.Print(PREFIX .. L["You already have %d achievements – see /wcl journal."]:format(#fresh))
         end
         return {}
     end

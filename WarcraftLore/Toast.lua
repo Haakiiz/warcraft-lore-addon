@@ -367,6 +367,10 @@ local function buildBanner()
         if button == "RightButton" then
             self.state = nil
             self:Hide()
+        elseif ns.Journal and ns.Journal.Show then
+            self.state = nil
+            self:Hide()
+            pcall(ns.Journal.Show) -- left-click: look at the achievements
         end
     end)
     b:SetScript("OnUpdate", function(self, dt)

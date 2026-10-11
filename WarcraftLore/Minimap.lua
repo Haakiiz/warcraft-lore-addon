@@ -119,7 +119,7 @@ local function build()
         end
         if mouseButton == "RightButton" then
             ns.ShowTarget()
-        elseif ns.Journal and IsShiftKeyDown and IsShiftKeyDown() then
+        elseif ns.Journal and C.IsShiftDown() then
             ns.Journal.Toggle()
         else
             ns.Browser.Toggle()

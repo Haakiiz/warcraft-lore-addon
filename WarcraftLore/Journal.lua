@@ -68,22 +68,27 @@ local function fetch()
     if not ok or type(list) ~= "table" then
         return nil
     end
-    local earned, total
+    local earned, total, later
     if type(A.Counts) == "function" then
-        local okC, e, t = pcall(A.Counts)
+        local okC, e, t, l = pcall(A.Counts)
         if okC then
-            earned, total = tonumber(e), tonumber(t)
+            earned, total, later = tonumber(e), tonumber(t), tonumber(l)
         end
     end
     if not earned or not total then
-        earned, total = 0, #list
+        earned, total, later = 0, 0, 0
         for _, a in ipairs(list) do
-            if a.done then
-                earned = earned + 1
+            if a.later and not a.earned then
+                later = later + 1
+            else
+                total = total + 1
+                if a.done then
+                    earned = earned + 1
+                end
             end
         end
     end
-    return list, earned, total
+    return list, earned, total, later or 0
 end
 
 -------------------------------------------------------------------- position
@@ -113,8 +118,10 @@ end
 
 -------------------------------------------------------------------- rows
 local function styleRow(row, a)
-    local done = a.done and true or false
+    row.later = a.later and not a.earned and true or false
+    local done = a.done and not row.later and true or false
     row.done = done
+    row:SetAlpha(row.later and 0.55 or 1)
     if done then
         row:SetColors(COL.gold, 0.08, COL.gold, 0.55)
         row.title:SetTextColor(COL.gold[1], COL.gold[2], COL.gold[3])
@@ -143,7 +150,11 @@ local function showRowTooltip(row)
         { tostring(a.desc or ""), x[1], x[2], x[3], true },
     }
     local total = tonumber(a.total)
-    if a.done then
+    if row.later then
+        lines[#lines + 1] = { L["Needs zones above level %d – coming with the next level cap."]:format(
+            ns.Achievements and tonumber(ns.Achievements.LEVEL_CAP) or 30), m[1], m[2], m[3], true }
+    end
+    if a.done and not row.later then
         local when = formatDate(a.earned)
         lines[#lines + 1] = { when and L["Earned %s"]:format(when) or L["Earned"], COL.gold[1], COL.gold[2], COL.gold[3] }
     elseif total and total > 1 then
@@ -248,7 +259,7 @@ function Journal.Refresh()
     if not frame or not frame:IsShown() then
         return
     end
-    local list, earned, total = fetch()
+    local list, earned, total, later = fetch()
     if not list then
         summary:SetText("")
         summaryFill:Hide()
@@ -260,7 +271,11 @@ function Journal.Refresh()
         updateThumb()
         return
     end
-    summary:SetText(L["%s%d%s of %d achievements"]:format(S.HEX_GOLD, earned, S.END, total))
+    if later > 0 then
+        summary:SetText(L["%s%d%s of %d achievements · %d later"]:format(S.HEX_GOLD, earned, S.END, total, later))
+    else
+        summary:SetText(L["%s%d%s of %d achievements"]:format(S.HEX_GOLD, earned, S.END, total))
+    end
     local fillW = total > 0 and math.floor(barWidth * earned / total + 0.5) or 0
     if earned > 0 then
         summaryFill:SetWidth(math.max(fillW, 2))
@@ -269,16 +284,20 @@ function Journal.Refresh()
         summaryFill:Hide()
     end
 
+    -- The ones that wait for a higher level cap go last, in the order they came.
     local n = 0
-    for _, a in ipairs(list) do
-        if type(a) == "table" and (filter == nil or a.category == filter) then
-            n = n + 1
-            local row = rows[n]
-            if not row then
-                row = newRow()
-                rows[n] = row
+    for pass = 1, 2 do
+        for _, a in ipairs(list) do
+            if type(a) == "table" and (filter == nil or a.category == filter)
+                and (pass == 2) == (a.later and not a.earned and true or false) then
+                n = n + 1
+                local row = rows[n]
+                if not row then
+                    row = newRow()
+                    rows[n] = row
+                end
+                fillRow(row, a, n)
             end
-            fillRow(row, a, n)
         end
     end
     for i = n + 1, #rows do
