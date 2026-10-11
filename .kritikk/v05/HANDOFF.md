@@ -87,6 +87,8 @@ python tests/validate_db.py; python tests/test_saved_data.py; python tests/test_
   P5 remove entries that cannot be met in Forever (removed NPCs, Season of Discovery-only IDs) per
   Håkon's "only sure" rule, rewrite dev wording, give "Major character"/"Mentioned" rows real text,
   add a phrase check to validate_db.py. Also verify FK year and Siln Skychaser's gender.
-- NEXT: round 2 workers, then one fresh critic per part (blind A/B against the v0.4 version of the same file/
+- 07:20 The scheduled night session got stuck on a permission prompt at 01:26 and did nothing.
+  Round 2 started from the main session: workers on v05/p1-r2, v05/p2-r2, v05/p3-r2, v05/p5-r2.
+- NEXT: merge round 2 branches, then one fresh critic per part (round 2) (blind A/B against the v0.4 version of the same file/
   render), round 2 workers for rejected parts, then the remaining roadmap parts, then a final whole-addon
   critic. Open/keep a PR from session/v0.5 to main (do not merge).
