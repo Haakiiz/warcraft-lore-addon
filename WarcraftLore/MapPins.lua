@@ -86,10 +86,14 @@ local function newPin()
 
     pin:SetScript("OnEnter", guarded("mappins", "the world map pins", function() showTooltip(pin) end))
     pin:SetScript("OnLeave", C.HideTooltip)
-    pin:SetScript("OnClick", guarded("mappins", "the world map pins", function()
+    pin:SetScript("OnClick", guarded("mappins", "the world map pins", function(_, button)
+        if button and button ~= "LeftButton" then
+            return -- only a left click opens the story
+        end
         local g = pin.group
         if g and ns.UI and ns.UI.ShowEntry then
-            ns.UI.ShowEntry(g.id, g.entry)
+            C.HideTooltip()
+            ns.UI.ShowEntry(g.id, g.entry, nil, nil, nil, true) -- raised above the world map
         end
     end))
     return pin

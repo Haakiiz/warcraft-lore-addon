@@ -319,6 +319,9 @@ function ns.MarkMet(npcID)
         if ns.Browser then
             pcall(ns.Browser.Refresh)
         end
+        if ns.MapPins and ns.MapPins.Refresh then
+            pcall(ns.MapPins.Refresh) -- redraws only when the world map is shown
+        end
         if ns.UI and not ns.FeatureOff("window") then
             pcall(ns.UI.RefreshMet, npcID)
         end
