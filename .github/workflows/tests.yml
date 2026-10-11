@@ -38,3 +38,4 @@ jobs:
           python tests/test_toast.py
           python tests/test_atlas.py
           python tests/test_share.py
+          python tests/test_mappins.py

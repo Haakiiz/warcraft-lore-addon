@@ -1,4 +1,4 @@
--- Options.lua – the Warcraft Lore page in the game's AddOns settings: four checkboxes and two
+-- Options.lua – the Warcraft Lore page in the game's AddOns settings: five checkboxes and two
 -- buttons, styled like the windows. Changes apply at once. If the client has no settings
 -- panel this file does nothing. ns.Options.Open() opens the page (used by /wcl options).
 
@@ -38,6 +38,14 @@ local OPTIONS = {
         function(_, on)
             if ns.Minimap and on == minimapHidden() then
                 ns.Minimap.Toggle() -- Toggle flips the state, so only call it when it differs
+            end
+        end },
+    { "Show veterans on the world map",
+        function(d) return d.mapPins ~= false end,
+        function(d, on)
+            d.mapPins = on
+            if ns.MapPins then
+                ns.MapPins.Refresh()
             end
         end },
     { "Hide book-only veterans in the list",
