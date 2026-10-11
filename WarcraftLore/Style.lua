@@ -181,5 +181,5 @@ function Style.buildHeader(inner, titleText, onClose)
         x:SetTextColor(COL.violet[1], COL.violet[2], COL.violet[3])
         for _, e in ipairs(edges) do e:SetColorTexture(COL.headerLine[1], COL.headerLine[2], COL.headerLine[3], 1) end
     end)
-    return close
+    return close, title
 end
