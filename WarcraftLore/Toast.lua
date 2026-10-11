@@ -5,6 +5,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local Toast = {}
 ns.Toast = Toast
@@ -183,7 +184,7 @@ local function build()
     t.chevron:SetPoint("RIGHT", -10, 0)
     t.chevron:SetVertexColor(COL.muted[1], COL.muted[2], COL.muted[3])
 
-    t:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self, button)
+    t:SetScript("OnClick", ns.Guard("alert", L["the nearby alert"], function(self, button)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return -- the mouse-up that ends a drag is not a click
         end
@@ -204,7 +205,7 @@ local function build()
     t.moreText = S.text(t.moreBtn, C.FONT_BODY, 10, COL.muted)
     t.moreText:SetAllPoints()
     t.moreText:SetJustifyH("RIGHT")
-    t.moreBtn:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self)
+    t.moreBtn:SetScript("OnClick", ns.Guard("alert", L["the nearby alert"], function(self)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return
         end
@@ -241,7 +242,7 @@ local function setGames(t)
     local n = t.more or 0
     t.games:SetText(ns.GamesLabel(t.entry))
     t.games:SetWidth(TOAST_W - 56 - 12 - 12 - 4 - (n > 0 and MORE_W or 0))
-    t.moreText:SetText("+" .. n .. " more")
+    t.moreText:SetText(L["+%d more"]:format(n))
     if n > 0 then
         t.moreBtn:Show()
     else

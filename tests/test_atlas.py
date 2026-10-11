@@ -23,6 +23,7 @@ zoneName = "Orgrimmar"
 met = {}
 local COL = setmetatable({}, { __index = function() return { 1, 1, 1 } end })
 ns = {
+    L = setmetatable({}, { __index = function(_, k) return k end }), 
     Style = {
         COL = COL, PAD = 12, HEADER = 28, BAND = 8,
         HEX_MUTED = "|cffa79d8a", HEX_MET = "|cff6fcf7f", END = "|r",

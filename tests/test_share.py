@@ -14,7 +14,7 @@ ADDON = Path(__file__).resolve().parent.parent / "WarcraftLore"
 STUBS = """
 local noop = function() end
 local function stub() return setmetatable({}, { __index = function() return noop end }) end
-ns = { Compat = stub(), Style = stub() }
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = stub(), Style = stub() }
 printed = {}
 ns.Compat.Print = function(msg) printed[#printed + 1] = msg end
 ns.NPCS = { [100] = {}, [200] = {}, [300] = {}, [4949] = {} }

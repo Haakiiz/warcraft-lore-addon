@@ -4,6 +4,7 @@
 
 local _, ns = ...
 local C = ns.Compat
+local L = ns.L
 local S = ns.Style
 
 local Share = {}
@@ -135,29 +136,29 @@ function Share.Merge(met, list, npcs)
 end
 
 local ERRORS = {
-    empty = "Nothing to import. Paste an export string first.",
-    format = "That is not a Warcraft Lore export string. Nothing was changed.",
-    version = "That string comes from a different version of the addon. Nothing was changed.",
-    damaged = "That string looks damaged or incomplete. Nothing was changed.",
+    empty = L["Nothing to import. Paste an export string first."],
+    format = L["That is not a Warcraft Lore export string. Nothing was changed."],
+    version = L["That string comes from a different version of the addon. Nothing was changed."],
+    damaged = L["That string looks damaged or incomplete. Nothing was changed."],
 }
 
 -- Decodes str and merges it into WarcraftLoreDB.met. Returns ok and the chat line.
 function Share.Import(str)
     local db = WarcraftLoreDB
     if type(db) ~= "table" or type(db.met) ~= "table" then
-        return false, "The met list is not available right now. Nothing was changed."
+        return false, L["The met list is not available right now. Nothing was changed."]
     end
     local list, reason = Share.Decode(str)
     if not list then
         return false, ERRORS[reason] or ERRORS.damaged
     end
     local imported, new = Share.Merge(db.met, list, ns.NPCS)
-    return true, ("Imported %d %s (%d new)."):format(imported, imported == 1 and "veteran" or "veterans", new)
+    return true, (imported == 1 and L["Imported %d veteran (%d new)."] or L["Imported %d veterans (%d new)."]):format(imported, new)
 end
 
 -------------------------------------------------------------------- window
 local WIDTH, HEIGHT = 440, 250
-local TITLE_EXPORT, TITLE_IMPORT = "Export met veterans", "Import met veterans"
+local TITLE_EXPORT, TITLE_IMPORT = L["Export met veterans"], L["Import met veterans"]
 local frame, box, importBtn, hint, titleFs
 local exportMode = false
 
@@ -254,7 +255,7 @@ local function build()
     C.RegisterClicks(importBtn)
     local label = S.text(importBtn, C.FONT_BODY, 12, S.COL.title)
     label:SetPoint("CENTER")
-    label:SetText("Import")
+    label:SetText(L["Import"])
     importBtn:SetScript("OnEnter", function() importBtn:SetColors(S.COL.header, 1, S.COL.violet, 1) end)
     importBtn:SetScript("OnLeave", function() importBtn:SetColors(S.COL.header, 1, S.COL.headerLine, 1) end)
     local function doImport()
@@ -270,7 +271,7 @@ local function build()
             end
         end
     end
-    importBtn:SetScript("OnClick", ns.Guard and ns.Guard("import", "the import", doImport) or doImport)
+    importBtn:SetScript("OnClick", ns.Guard and ns.Guard("import", L["the import"], doImport) or doImport)
     return f
 end
 
@@ -280,17 +281,17 @@ function Share.Open(which)
         frame = build()
     end
     if not frame then
-        say("Import and export are not available in this client.")
+        say(L["Import and export are not available in this client."])
         return
     end
     if which == "export" then
         if titleFs then titleFs:SetText(TITLE_EXPORT) end
-        hint:SetText("Copy this text with Ctrl+C. Paste it with /wcl import on another account.")
+        hint:SetText(L["Copy this text with Ctrl+C. Paste it with /wcl import on another account."])
         importBtn:Hide()
         exportMode = true
         local met = type(WarcraftLoreDB) == "table" and WarcraftLoreDB.met or {}
         if next(met) == nil then
-            hint:SetText("You have not met any veterans yet, so there is nothing to export.")
+            hint:SetText(L["You have not met any veterans yet, so there is nothing to export."])
         end
         box:SetText(Share.Encode(met))
         frame:Show()
@@ -298,7 +299,7 @@ function Share.Open(which)
         box:HighlightText()
     else
         if titleFs then titleFs:SetText(TITLE_IMPORT) end
-        hint:SetText("Paste an export string below, then press Import. Nothing is ever deleted.")
+        hint:SetText(L["Paste an export string below, then press Import. Nothing is ever deleted."])
         importBtn:Show()
         exportMode = false
         box:SetText("")
