@@ -394,18 +394,15 @@ local function fillGameBox(b, app)
     b.title:SetText((ns.GAME_LONG[app.game] or app.game) .. (year and ("  " .. HEX_MUTED .. year .. END) or ""))
     b.title:SetTextColor(c[1], c[2], c[3])
     C.SetIconTexture(b.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
-    -- Books use the same fields: campaign = book title, missions = chapters (optional).
-    local isBook = app.game == "BOOK"
     local lines = {}
     if app.role and app.role ~= "" then
         lines[#lines + 1] = app.role
     end
     if app.campaign and app.campaign ~= "" then
-        lines[#lines + 1] = HEX_MUTED .. (isBook and "Book" or "Campaign") .. END .. "  " .. app.campaign
+        lines[#lines + 1] = HEX_MUTED .. "Campaign" .. END .. "  " .. app.campaign
     end
     if app.missions and #app.missions > 0 then
-        local label = isBook and (#app.missions == 1 and "Chapter" or "Chapters")
-            or (#app.missions == 1 and "Mission" or "Missions")
+        local label = #app.missions == 1 and "Mission" or "Missions"
         lines[#lines + 1] = HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
     end
     b.body:SetText(table.concat(lines, "\n"))

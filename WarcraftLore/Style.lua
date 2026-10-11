@@ -25,16 +25,15 @@ local COL = {
     outer = { rgb("120f1c") }, inner = { rgb("100d18") }, header = { rgb("181226") },
     headerLine = { rgb("3d2a78") }, violet = { rgb("8b6cd6") }, teal = { rgb("2a6f68") },
     title = { rgb("d4c6f7") }, text = { rgb("d9d2c3") }, muted = { rgb("a79d8a") },
-    divider = { rgb("2d2347") }, uncertain = { rgb("e0b04a") }, dim = { rgb("4d4434") },
+    divider = { rgb("2d2347") }, dim = { rgb("4d4434") },
     met = { rgb("6fcf7f") },
-    amber = { rgb("c79b3e") }, hollow = { rgb("6b5f4a") },
+    hollow = { rgb("6b5f4a") },
 }
 Style.COL = COL
 Style.HEX_MUTED = "|cffa79d8a"
 Style.HEX_TITLE = "|cffd4c6f7"
 Style.HEX_MET = "|cff6fcf7f"
 Style.HEX_VIOLET = "|cff8b6cd6"
-Style.HEX_AMBER = "|cffc79b3e"
 Style.END = "|r"
 
 -------------------------------------------------------------------- small builders
