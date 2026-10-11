@@ -1177,7 +1177,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- Level 1-30 zones and dungeons (2026-10-08, Haiku workers + Haiku critics, checked by the orchestrator)
     -- ===================================================================== Stormwind City
     [1747] = {
         name = "Anduin Wrynn",
@@ -2156,7 +2155,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- Book rescan of Undercity and Thunder Bluff areas (2026-10-08, Haiku workers + Haiku critics)
     -- ===================================================================== Undercity (BOOK)
     [2055] = {
         name = "Master Apothecary Faranell",
@@ -2216,8 +2214,6 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
-
--- Checked by critic: book_thunderbluff. PASS and FIX entries only.
 
     [4046] = {
         name = "Magatha Grimtotem",
@@ -2339,7 +2335,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- Book rescan of Orgrimmar and Durotar (2026-10-08, Haiku worker + Haiku critic)
     [3144] = {
         name = "Eitrigg",
         zone = "Orgrimmar",
@@ -2566,8 +2561,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- Book rescan of Ashenvale and Hillsbrad (2026-10-08, Haiku worker + Haiku critic)
--- Checked by critic (book_ashenvale): PASS and FIX entries only.
 -- ===================================================================== Ashenvale
     [14753] = {
         name = "Illiyana Moonblaze",
@@ -2701,7 +2694,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- Stormwind entries the Haiku pass missed (2026-10-08, Opus comparison run)
     [1749] = {
         name = "Lady Katrana Prestor",
         zone = "Stormwind City",
@@ -2951,8 +2943,7 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    -- ===================================================================== Wetlands
--- ===================================================================== Durotar
+    -- ===================================================================== Durotar
     [3188] = {
         name = "Master Gadrin",
         zone = "Durotar",

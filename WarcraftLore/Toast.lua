@@ -1,7 +1,7 @@
 -- Toast.lua – the veteran alert pill, shown for nearby veterans (nameplate / map position) and when
 -- you target one: a small glowing pill at the top of the screen with a round portrait, the name
 -- and the game codes (max 3 at once, extra ones queue).
--- Click opens the lore window of the named veteran, "+N more" opens the Veterans list for the zone,, right-click dismisses, shift-drag moves them.
+-- Click opens the lore window of the named veteran, "+N more" opens the Veterans list for the zone, right-click dismisses, shift-drag moves them.
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
@@ -183,7 +183,7 @@ local function build()
     t.chevron:SetPoint("RIGHT", -10, 0)
     t.chevron:SetVertexColor(COL.muted[1], COL.muted[2], COL.muted[3])
 
-    t:SetScript("OnClick", function(self, button)
+    t:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self, button)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return -- the mouse-up that ends a drag is not a click
         end
@@ -193,7 +193,7 @@ local function build()
             ns.UI.ShowEntry(self.npcID, self.entry, nil)
             dismiss(self)
         end
-    end)
+    end))
 
     -- "+N more": its own small target; opens the Veterans list for the zone you are in.
     t.moreBtn = CreateFrame("Button", nil, t)
@@ -204,14 +204,14 @@ local function build()
     t.moreText = S.text(t.moreBtn, C.FONT_BODY, 10, COL.muted)
     t.moreText:SetAllPoints()
     t.moreText:SetJustifyH("RIGHT")
-    t.moreBtn:SetScript("OnClick", function(self)
+    t.moreBtn:SetScript("OnClick", ns.Guard("alert", "the nearby alert", function(self)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return
         end
         if ns.Browser and ns.Browser.ShowZone then
             ns.Browser.ShowZone(C.GetZoneName())
         end
-    end)
+    end))
     t.moreBtn:SetScript("OnEnter", function() setHover(t, true); t.moreText:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
     t.moreBtn:SetScript("OnLeave", function() t.moreText:SetTextColor(COL.muted[1], COL.muted[2], COL.muted[3]) end)
 

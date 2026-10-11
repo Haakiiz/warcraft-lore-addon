@@ -25,6 +25,7 @@ local function newObj(kind)
         GetTexture = function(self) return self.getTextureResult end,
         SetColorTexture = function(self) self.path = "color" end,
         SetTexCoord = function(self, ...) self.texCoord = { ... } end,
+        SetVertexColor = function(self, ...) self.vertexColor = { ... } end,
         SetScript = function(self, n, f) self.scripts[n] = f end,
         GetFrameLevel = function() return 1 end,
         GetName = function() return nil end,
@@ -221,9 +222,9 @@ def test_layout():
     assert descs[1] == "THROUGH THE AGES", descs
     # games in release order (WC1 1994 before WC3 2002), then the books header and block
     assert descs[2].startswith("game:") and descs[3].startswith("game:"), descs
-    assert len(descs) == 8, descs
+    assert len(descs) == 7, descs
     assert descs[4] == "IN THE BOOKS" and descs[5] == "block", descs
-    assert descs[6:] == ["ITEMS IN WOW", "SOURCES"], descs
+    assert descs[6:] == ["SOURCES"], descs   # no items: the Items section is hidden, no filler
     games = [f for d, f in blocks if d.startswith("game:")]
     t0, t1 = games[0].title.text, games[1].title.text
     assert "1994" in t0 and "2002" in t1, (t0, t1)
@@ -241,8 +242,24 @@ def test_layout():
     assert "very long and winding road" in a.tip[2][1], "tooltip holds the full role"
     assert "winding" in a.label.text, "row text carries the role (cut off by the client)"
     assert a.tip[3][1] == "Chapter: Ch 1"
+    assert a.hl is not None and not a.hl.shown, "book row highlight starts hidden"
+    a.scripts["OnEnter"](a)
+    assert a.hl.shown, "hovering a book row shows the highlight"
+    a.scripts["OnLeave"](a)
+    assert not a.hl.shown, "leaving a book row hides the highlight"
     a.scripts["OnEnter"](a)
     assert list(g.tipLines.values())[0] == "Book A" and "winding road" in list(g.tipLines.values())[1]
+
+    # an entry with items shows the Items section; an empty one never prints a filler line
+    lua.eval(
+        """function()
+            ns.UI.ShowEntry(4, { name = "Y", appearances = {}, items = { { id = 1, name = "Sword", note = "Carried" } } })
+        end"""
+    )()
+    assert "ITEMS IN WOW" in [d for d, _ in layout(lua)]
+    lua.eval("function() ns.UI.ShowEntry(4, { name = 'Y', appearances = {}, items = {} }) end")()
+    assert "ITEMS IN WOW" not in [d for d, _ in layout(lua)]
+    assert not any(t.text and "None recorded" in str(t.text) for t in g.textures.values())
 
     # a books-only entry has no THROUGH THE AGES header; the cover is shown with the model
     lua.eval(
@@ -255,6 +272,7 @@ def test_layout():
     assert descs[0] == "IN THE BOOKS", descs
     cover = next(t for t in g.textures.values() if t.path and str(t.path).endswith("PortraitCover"))
     assert cover.shown, "cover is shown while the model is shown"
+    assert cover.vertexColor is not None, "cover is white and tinted to COL.inner at runtime"
     # a message hides the model and the cover
     lua.eval("function() ns.UI.ShowMessage('hi') end")()
     assert not cover.shown and not g.models[1].shown

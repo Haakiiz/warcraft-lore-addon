@@ -133,13 +133,13 @@ def circle_mask():
 
 
 def portrait_cover():
-    """128x128 square in the window's inner color (100d18) with a transparent circular hole.
+    """128x128 white square (tinted to COL.inner in UI.lua) with a transparent circular hole.
 
     Shown at 64x64 over the square 3D model: the hole has a 27 px radius there (54 px here), so the
     model gets a true round crop. The ring sits on top and hides the hole's edge.
     """
     w = h = 128
-    img = Image.new("RGBA", (w * SS, h * SS), (16, 13, 24, 255))
+    img = Image.new("RGBA", (w * SS, h * SS), (255, 255, 255, 255))
     a = Image.new("L", img.size, 255)
     c = w * SS / 2
     r = 54 * SS
