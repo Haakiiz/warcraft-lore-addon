@@ -43,13 +43,13 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [x] Desolace – 0 new (Rexxar and Misha wander here; same NPC IDs as in Stonetalon)
 - [x] Dustwallow Marsh – 8 NPCs (Jaina, Tervosh*, Brother Karman*, Torq Ironblast*, Draz'Zilb, Tharg, Do'gol, Ogg'marr); Mok'Morokk rejected (link is book-only)
 - [x] Feralas – 1 NPC (Shandris Feathermoon); Rexxar and Misha also wander here
-- [ ] Tanaris
-- [ ] Azshara
-- [ ] Felwood
-- [ ] Un'Goro Crater
-- [ ] Moonglade
-- [ ] Winterspring
-- [ ] Silithus
+- [x] Tanaris – 6 NPCs (Anachronos, Chronalis, Tick, Marin Noggenfogger, Sprinkle, Trenton Lighthammer)
+- [x] Azshara – 0 NPCs
+- [x] Felwood – 1 NPC (Arei)
+- [x] Un'Goro Crater – 0 NPCs
+- [x] Moonglade – 1 NPC (Keeper Remulos)
+- [x] Winterspring – 2 NPCs (Gogo, Lunnix Sprocketslip)
+- [x] Silithus – 0 NPCs (its three dragons are listed under Temple of Ahn'Qiraj)
 
 ## Eastern Kingdoms
 
@@ -65,24 +65,29 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [x] Wetlands – 2 NPCs (Korialstrasz and Krasus, Season of Discovery NPCs at Grim Batol; Day of the Dragon)
 - [x] Hillsbrad Foothills – 0 NPCs
 - [x] Alterac Mountains – 2 NPCs (Mug'thol, Archmage Ansirem Runeweaver*)
-- [ ] Arathi Highlands
-- [ ] Stranglethorn Vale
-- [ ] Badlands
-- [ ] Swamp of Sorrows
-- [ ] The Hinterlands
-- [ ] Searing Gorge
-- [ ] Burning Steppes
-- [ ] Blasted Lands
-- [ ] Deadwind Pass
+- [x] Arathi Highlands – 2 NPCs (Prince Galen Trollbane, Innkeeper Adegwa)
+- [x] Stranglethorn Vale – 4 NPCs (Catelyn the Blade, Fleet Master Seahorn, Innkeeper Skindle, Ironpatch)
+- [x] Badlands – 0 NPCs
+- [x] Swamp of Sorrows – 0 NPCs
+- [x] The Hinterlands – 3 NPCs (Falstad Wildhammer, Rothos, Shadra)
+- [x] Searing Gorge – 0 NPCs
+- [x] Burning Steppes – 0 NPCs
+- [x] Blasted Lands – 0 NPCs
+- [x] Deadwind Pass – 0 NPCs
 - [x] Western Plaguelands – 4 NPCs (Uther, Gregory ×2, Araj the Summoner*); Uther and Gregory use Season of Discovery IDs
-- [ ] Eastern Plaguelands
+- [x] Eastern Plaguelands – 8 NPCs (Tirion Fordring, Nathanos Blightcaller, Lord Maxwell Tyrosus, Leonid Barthalomew the Revered, Craftsman Wilhelm, Aurora Skycaller, Mirador, Ranger Lord Hawkspear)
 
 ## Battlegrounds, dungeons and raids (optional)
 
 - [ ] Alterac Valley – lead: Drek'Thar (quest giver in "To Tame a Land")
 - [ ] Warsong Gulch, Arathi Basin
 - [x] Dungeons up to level 30 – Naralex, VanCleef*, Arugal*, Mograine + Whitemane (FK: A Scarlet Flame), Thermaplugg, Charlga; round 3: Baron Silverlaine*, Highlord Mograine* (SoD ID)
-- [ ] Higher dungeons and raids
+- [x] Zul'Farrak – 1 NPC (Chief Ukorz Sandscalp)
+- [x] Sunken Temple – 2 NPCs (Malfurion Stormrage, Shade of Eranikus)
+- [x] Temple of Ahn'Qiraj – 3 NPCs (Arygos, Caelestrasz, Merithra of the Dream)
+- [x] Uldaman – 0 NPCs
+- [x] Maraudon – 0 NPCs
+- [ ] Other higher dungeons and raids
 - [ ] Forever: Krol'Dok Stronghold (Riverglades), the new Dalaran dungeon, Hyjal Summit, Barrow Deeps (Mount Hyjal)
 
 ## Addon follow-ups
