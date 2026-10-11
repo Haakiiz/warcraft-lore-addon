@@ -17,3 +17,4 @@ Browser.lua
 Toast.lua
 Minimap.lua
 Options.lua
+Share.lua

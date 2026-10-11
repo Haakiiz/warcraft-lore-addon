@@ -38,5 +38,6 @@ jobs:
           python3 tests/test_portrait.py
           python3 tests/test_toast.py
           python3 tests/test_atlas.py
+          python3 tests/test_share.py
 
       - uses: BigWigsMods/packager@v2

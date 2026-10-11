@@ -686,6 +686,8 @@ local function cmdHelp()
     chat("/wcl test – show a test alert (small pill, chat line, sound)")
     chat("/wcl reset – move the windows back to the center")
     chat("/wcl options – open the Warcraft Lore settings")
+    chat("/wcl export – copy your met list as text")
+    chat("/wcl import – paste a met list from another account")
     chat("/wcl debug – show which APIs the client has")
 end
 
@@ -717,6 +719,20 @@ local COMMANDS = {
     end,
     reset = function()
         ns.ResetWindows()
+    end,
+    export = function()
+        if ns.Share then
+            ns.Share.Open("export")
+        else
+            chat("Import and export are not available in this client.")
+        end
+    end,
+    import = function()
+        if ns.Share then
+            ns.Share.Open("import")
+        else
+            chat("Import and export are not available in this client.")
+        end
     end,
 }
 local guardedCommands = {}
