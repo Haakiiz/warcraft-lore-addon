@@ -520,3 +520,8 @@ function C.CreateEditBox(parent, fontPath, size)
     end
     return box
 end
+
+-- Realm name of the player (nil when missing or secret).
+function C.GetRealmName()
+    return safeCall("GetRealmName", GetRealmName)
+end
