@@ -295,18 +295,24 @@ local function tooltipLine(tooltip, unit, guid)
     -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
     -- GUIDs give no entry above, so nothing is marked then.
     ns.MarkMet(npcID)
-    local line
-    if entry.confidence == "uncertain" then
-        line = "Warcraft Veteran? " .. ns.GamesLabel(entry) .. " |cffa79d8a(uncertain)|r"
-    else
-        line = "Warcraft Veteran: " .. ns.GamesLabel(entry)
-    end
-    C.AddTooltipLine(tooltip, line, 0.83, 0.78, 0.97)
+    C.AddTooltipLine(tooltip, "Warcraft Veteran: " .. ns.GamesLabel(entry), 0.83, 0.78, 0.97)
 end
 local onUnitTooltip = guard("tooltip", "the tooltip line", tooltipLine)
 
 -------------------------------------------------------------------- Slash commands
+-- The lore window failed to build: say so once instead of erroring in every feature.
+local function windowOff()
+    if ns.FeatureOff("window") or not ns.UI then
+        chat("The lore window is not available. Type /wcl debug for details.")
+        return true
+    end
+    return false
+end
+
 local function cmdShow()
+    if windowOff() then
+        return
+    end
     if not C.UnitExists("target") then
         ns.UI.ShowMessage("You have no target. Target an NPC and type /wcl again.")
         return
@@ -319,8 +325,8 @@ local function cmdShow()
     elseif guidType == "Player" then
         ns.UI.ShowMessage((name or "Your target") .. " is a player, not an NPC.")
     else
-        ns.UI.ShowMessage("Could not read the NPC ID of your target. The client may hide it right now "
-            .. "(for example in combat). Try again out of combat.")
+        ns.UI.ShowMessage("The game is not sharing this NPC's details right now (often in combat). "
+            .. "Try again out of combat.")
     end
 end
 
@@ -337,70 +343,92 @@ local function cmdID()
     elseif guidType == "Player" then
         chat(shownName .. " is a player, not an NPC.")
     elseif guidType then
-        chat(shownName .. " is not an NPC (GUID type " .. guidType .. ").")
+        chat(shownName .. " is not an NPC.")
     else
-        chat("Could not read the NPC ID. The client may hide the GUID right now (for example in combat).")
+        chat("The game is not sharing this NPC's details right now (often in combat). Try again out of combat.")
     end
 end
 
 ns.ShowTarget = cmdShow -- the minimap button's right-click does the same as /wcl
 
 local function cmdList()
+    if not ns.Browser then
+        chat("The veterans list is not available.")
+        return
+    end
     ns.Browser.Toggle()
+end
+
+-- Keeps the settings page's checkboxes in step when a setting changes by slash command.
+local function refreshOptions()
+    if ns.Options and ns.Options.Refresh then
+        ns.Options.Refresh()
+    end
 end
 
 local function cmdMinimap()
     local shown = ns.Minimap.Toggle()
     chat("The minimap button is now " .. (shown and "|cff40ff40shown|r" or "|cffff4040hidden|r") .. ".")
+    refreshOptions()
 end
 
 local function cmdAuto()
     WarcraftLoreDB.auto = not WarcraftLoreDB.auto
     chat("The alert when you target a veteran is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+    refreshOptions()
 end
 
 local function cmdAlert()
     WarcraftLoreDB.alert = not WarcraftLoreDB.alert
     chat("Nearby alerts are now " .. (WarcraftLoreDB.alert and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+    refreshOptions()
 end
 
 -------------------------------------------------------------------- Nearby alert
 -- When a nameplate appears for an NPC in the database, say so once per session.
 local alerted = {}
 
--- Several veterans appearing together (entering a city) are batched: after BATCH_WINDOW seconds
--- there is ONE chat line, ONE sound and ONE pill, for the first veteran, saying "+N more nearby".
+-- The first veteran is announced at once (chat line, sound, pill). Others appearing within
+-- BATCH_WINDOW seconds (entering a city) are collected into ONE follow-up chat line naming up to
+-- MAX_NAMED of them, with no extra sound; the pill gets a short "+N more".
 local BATCH_WINDOW = 1.5
-local batch -- nil, or { first = { npcID, entry, name, unit }, more = n }
+local MAX_NAMED = 3
+local batch -- nil, or { npcID = first veteran, list = { { entry, name }, ... } }
 
-local function show(npcID, entry, name, unit, more)
+local function show(npcID, entry, name, unit)
     local who = name or entry.name
-    local extra = (more or 0) > 0 and (" |cffa79d8a+%d more nearby|r"):format(more) or ""
-    chat(("Veteran nearby: |cffd4c6f7%s|r (%s).%s"):format(who, ns.GamesLabel(entry), extra))
+    chat(("Veteran nearby: |cffd4c6f7%s|r (%s)."):format(who, ns.GamesLabel(entry)))
     C.PlayAlertSound()
     if ns.Toast then
-        ns.Toast.Show(npcID, entry, who, unit, more)
+        ns.Toast.Show(npcID, entry, who, unit)
     end
 end
 
-local function flushBatch()
-    local b = batch
-    batch = nil
-    if not b then
+local function flushBatch(b)
+    local n = #b.list
+    if n == 0 then
         return
     end
-    local f = b.first
-    local unit = f.unit
-    if unit then
-        -- The nameplate may be gone or reused by now: only keep it if it still shows this NPC.
-        local id = C.NPCIDFromGUID(C.UnitGUID(unit))
-        if id ~= f.npcID then
-            unit = nil
-        end
+    local parts = {}
+    for i = 1, math.min(n, MAX_NAMED) do
+        local v = b.list[i]
+        parts[i] = ("|cffd4c6f7%s|r (%s)"):format(v.name or v.entry.name or "?", ns.GamesLabel(v.entry))
     end
-    show(f.npcID, f.entry, f.name, unit, b.more)
+    local more = n > MAX_NAMED and (" |cffa79d8a+%d more|r"):format(n - MAX_NAMED) or ""
+    chat("Also nearby: " .. table.concat(parts, ", ") .. more)
+    if ns.Toast and ns.Toast.SetMore then
+        ns.Toast.SetMore(b.npcID, n)
+    end
 end
 local flushGuarded = function() end -- set below, once guard() is used
+
+local function onBatchTimer()
+    local b = batch
+    batch = nil -- cleared first, so a failing flush can never leave the window stuck open
+    if b then
+        flushGuarded(b)
+    end
+end
 
 -- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
 -- unit = the nameplate unit token when there is one (used for the pill's portrait).
@@ -411,13 +439,15 @@ local function announce(npcID, entry, name, isTest, unit)
     end
     alerted[npcID] = true
     if batch then
-        batch.more = batch.more + 1
+        batch.list[#batch.list + 1] = { entry = entry, name = name }
         return
     end
-    batch = { first = { npcID = npcID, entry = entry, name = name, unit = unit }, more = 0 }
-    C.After(flushGuarded, BATCH_WINDOW)
+    batch = { npcID = npcID, list = {} }
+    C.After(onBatchTimer, BATCH_WINDOW)
+    show(npcID, entry, name, unit)
 end
-flushGuarded = guard("alert-batch", "the nearby alert", flushBatch)
+-- One guard key for the whole nearby-alert path (nameplates and the follow-up line).
+flushGuarded = guard("alert", "the nearby alert", flushBatch)
 
 -- /wcl test: shows the alert for the database NPC with the lowest ID.
 local function cmdTest()
@@ -567,9 +597,9 @@ local function cmdWhy()
         if guidType == "Player" then
             chat(shown .. " is a player, not an NPC, so there is nothing to recognise.")
         elseif guidType then
-            chat(shown .. " is not an NPC (GUID type " .. guidType .. ").")
+            chat(shown .. " is not an NPC.")
         else
-            chat(shown .. ": the client hides this unit's ID right now (a secret value, often in combat). Try again out of combat.")
+            chat(shown .. ": the game is not sharing this NPC's details right now (often in combat). Try again out of combat.")
         end
         return
     end
@@ -617,19 +647,34 @@ local function cmdHelp()
     chat("/wcl debug – show which APIs the client has")
 end
 
+-- Also used by the settings page's "Reset window positions" button.
+function ns.ResetWindows()
+    if ns.UI and not ns.FeatureOff("window") then
+        ns.UI.ResetPosition()
+    end
+    if ns.Browser then
+        ns.Browser.ResetPosition()
+    end
+    chat("The windows are back in the center.")
+end
+
 local COMMANDS = {
     [""] = cmdShow, id = cmdID, list = cmdList, browse = cmdList, minimap = cmdMinimap,
     auto = cmdAuto, alert = cmdAlert, test = cmdTest, ["alert test"] = cmdTest, why = cmdWhy,
     debug = cmdDebug,
     options = function()
-        if not (ns.Options and ns.Options.Open()) then
+        local hasPanel, opened = false, false
+        if ns.Options then
+            hasPanel, opened = ns.Options.Open()
+        end
+        if not hasPanel then
             chat("This client has no settings panel for Warcraft Lore.")
+        elseif opened == false then
+            chat("Could not open the settings right now.")
         end
     end,
     reset = function()
-        ns.UI.ResetPosition()
-        ns.Browser.ResetPosition()
-        chat("The windows are back in the center.")
+        ns.ResetWindows()
     end,
 }
 local guardedCommands = {}
@@ -672,7 +717,7 @@ local onTargetChanged = guard("target", "the target alert", function()
     local entry, npcID, _, name = ns.Lookup("target")
     if entry then
         ns.MarkMet(npcID)
-        if WarcraftLoreDB.auto then
+        if WarcraftLoreDB.auto and not ns.FeatureOff("window") then
             if ns.UI.IsShown() then
                 ns.UI.ShowEntry(npcID, entry, "target")   -- already open: follow the target
             elseif ns.Toast then

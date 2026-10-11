@@ -172,6 +172,9 @@ local function build()
 
     t.games = S.text(t, C.FONT_BODY, 10, COL.dim)   -- dim "·" separators; the codes carry their own color
     t.games:SetPoint("TOPLEFT", t.name, "BOTTOMLEFT", 0, -2)
+    t.games:SetWidth(TOAST_W - 56 - 12 - 12 - 4)     -- never runs under the chevron
+    t.games:SetWordWrap(false)
+    t.games:SetJustifyH("LEFT")
 
     t.chevron = t:CreateTexture(nil, "ARTWORK")
     t.chevron:SetTexture(TEX .. "ChevronRight")
@@ -185,7 +188,10 @@ local function build()
         end
         if button == "RightButton" then
             dismiss(self)
-        elseif self.npcID then
+        elseif (self.more or 0) > 0 and ns.Browser then
+            ns.Browser.Toggle() -- "+N more": the Veterans list shows who else is around
+            dismiss(self)
+        elseif self.npcID and not ns.FeatureOff("window") then
             ns.UI.ShowEntry(self.npcID, self.entry, nil)
             dismiss(self)
         end
@@ -209,6 +215,12 @@ local function build()
     end)
     t:SetScript("OnUpdate", onUpdate)
     return t
+end
+
+-- Game codes, plus a short "+N more" when other veterans appeared together with this one.
+local function setGames(t)
+    local n = t.more or 0
+    t.games:SetText(ns.GamesLabel(t.entry) .. (n > 0 and ("  |cffa79d8a+" .. n .. " more|r") or ""))
 end
 
 local function display(npcID, entry, name, unit, more)
@@ -237,8 +249,8 @@ local function display(npcID, entry, name, unit, more)
     t.ring:SetVertexColor(r, g, b)
     t.ringGlow:SetVertexColor(r, g, b, 0.8)
     t.name:SetText(name or entry.name or "?")
-    t.games:SetText(ns.GamesLabel(entry)
-        .. ((more or 0) > 0 and ("  |cffa79d8a+" .. more .. " more nearby|r") or ""))
+    t.more = more
+    setGames(t)
 
     t.portrait:SetTexCoord(0, 1, 0, 1)
     if entry.portrait and entry.portrait ~= "" then
@@ -262,6 +274,17 @@ showNext = function()
     while #active < MAX_TOASTS and #queue > 0 do
         local q = table.remove(queue, 1)
         display(q.npcID, q.entry, q.name, q.unit, q.more)
+    end
+end
+
+-- Adds "+N more" to the pill of a veteran that is already on screen (no-op if it is gone).
+function Toast.SetMore(npcID, more)
+    for _, t in ipairs(active) do
+        if t.npcID == npcID then
+            t.more = more
+            setGames(t)
+            return
+        end
     end
 end
 
