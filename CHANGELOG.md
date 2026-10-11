@@ -1,7 +1,15 @@
 ﻿# Warcraft Lore – changelog
 
-## v0.6.0 (in progress)
+## v0.6.0
 
+- **33 new veterans** in Tanaris, Winterspring, Moonglade, Felwood, Eastern Plaguelands, The Hinterlands,
+  Arathi Highlands, Stranglethorn Vale, Zul'Farrak, the Sunken Temple and the Temple of Ahn'Qiraj –
+  among them Tirion Fordring, Nathanos Blightcaller, Falstad Wildhammer and Keeper Remulos. 133 in total.
+- **Veterans on the world map:** small pins show where veterans stand, green once you've met them.
+  Hover for details, click for the story. Can be turned off in the settings.
+- **Zone atlas:** the zone picker in the Veterans list shows how many you've met in each zone, and
+  "This zone" jumps to where you are.
+- **Polish:** empty "Items" sections are gone, book rows highlight on hover, and clicks can never throw errors.
 - **Export and import:** `/wcl export` shows your met list as a short text you can copy, and `/wcl import` merges such a text into this account. The earliest first meeting and the higher count are kept, and nothing is ever deleted.
 
 ## v0.5.0
