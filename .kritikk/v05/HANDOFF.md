@@ -1,10 +1,24 @@
 # v0.5.0 handoff (gauntlet-loop)
 
 ## NEEDS HÅKON
-(nothing yet)
+- Test a beta in game before v0.5.0 goes to everyone (checklist in .kritikk/v05/critic_final.md,
+  "Must check in game"). Push a beta tag from session/v0.5 when you want to test.
+- Review and merge PR #9 (v0.4) and then PR #10 (v0.5).
 
-## Morning summary
-(to be written by the last session of the night)
+## Morning summary (2026-10-11, 08:15)
+Nattøkten sto fast på en godkjenning fra 01:26, så arbeidet ble gjort fra hovedøkten om morgenen.
+Alle fem delene er ferdige: P3, P4 og P5 er godkjent av kritikeren, og P1 og P2 er godkjent etter siste rettelse.
+Den siste kritikeren ga AVVIST på én enlinjes feil (+N more-knappen registrerte ikke klikk). Den er rettet og
+testet, og etter kritikerens eget utsagn er bygget da GODKJENT. 9 testskript er grønne, og det er 100 bekreftede veteraner.
+
+| Part | Rounds | Status | Last scores (min) | Left |
+|---|---|---|---|---|
+| P1 Portrait + Through the ages | 3 | approved after final fix | 8 | in-game check of 3D framing and icons |
+| P2 Robustness + alerts | 3 | approved after final fix | 8 | in-game check of +N more and Orgrimmar |
+| P3 Account-wide met | 2 | GODKJENT | 8 | merge across two real characters in game |
+| P4 Options | 1 | GODKJENT | 8 | /wcl options in game |
+| P5 Data audit | 2 | GODKJENT | 8 | /wcl id spot checks |
+| Whole addon | final | GODKJENT after RegisterClicks fix | 7→8 | polish list in critic_final.md |
 
 ## Goal
 Warcraft Lore v0.5.0: professional and polished for other players. Work through ROADMAP.md.

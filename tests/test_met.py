@@ -71,7 +71,7 @@ def main():
                    and ev("WarcraftLoreDB.met[S].first") == 1759449600))
     r.append(check("same session: counted once", ev("ns.MarkMet(S)") is False and ev("ns.MeetCount(S)") == 1))
     r.append(check("unknown NPC refused", ev("ns.MarkMet(999999999)") is False))
-    r.append(check("summary once", ev("ns.MetSummary(S)") == "Met once, on 3 Oct 2025 with Arthas"))
+    r.append(check("summary once", ev("ns.MetSummary(S)") == "Met once, on 3 Oct 2025 as Arthas"))
 
     # New session (fresh runtime) with an existing entry: count bumped, first/by kept.
     lua2 = runtime("{ schema = 2, met = {} }")
@@ -84,10 +84,10 @@ def main():
                    and lua2.eval("WarcraftLoreDB.met[S].first") == 1759449600))
     s = lua2.eval("ns.MetSummary(S)")
     r.append(check("summary: other character keeps realm",
-                   s.startswith("Met 4 times · first on ") and s.endswith(" with Jaina-Area52") and "2025" in s, s))
+                   s.startswith("Met 4 times · first on ") and s.endswith(" as Jaina-Area52") and "2025" in s, s))
     lua2.execute("WarcraftLoreDB.met[S].by = 'Arthas-Silvermoon'")
     s = lua2.eval("ns.MetSummary(S)")
-    r.append(check("summary: same realm drops realm", s.endswith(" with Arthas") and " 03 " not in s, s))
+    r.append(check("summary: same realm drops realm", s.endswith(" as Arthas") and " 03 " not in s, s))
 
     # Merged veteran with two NPC IDs.
     lua2.execute("""WarcraftLoreDB.met = {
@@ -95,7 +95,7 @@ def main():
         [B] = { first = 1700000000, count = 3, by = 'Early-Area52' } }""")
     s = lua2.eval("ns.MetSummary(A)")
     r.append(check("merged: counts add up, earliest wins",
-                   s.startswith("Met 5 times") and s.endswith(" with Early-Area52") and "2023" in s, s))
+                   s.startswith("Met 5 times") and s.endswith(" as Early-Area52") and "2023" in s, s))
     r.append(check("merged: same text from the other ID", lua2.eval("ns.MetSummary(B)") == s))
     r.append(check("merged: GroupMet", lua2.eval("ns.GroupMet(multi)") is True))
     lua2.execute("WarcraftLoreDB.met = { [A] = { count = 1 } }")

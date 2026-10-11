@@ -55,7 +55,7 @@ ns = {
 }
 ns.Compat = {
     FONT_TITLE = "t", FONT_BODY = "b",
-    RegisterClicks = noop, ApplyCircleMask = noop, SetBlendMode = noop, SetUnitPortrait = function() return false end,
+    RegisterClicks = function(b) b.clicksRegistered = true end, ApplyCircleMask = noop, SetBlendMode = noop, SetUnitPortrait = function() return false end,
     CreatePulse = function() return { Play = noop, Stop = noop } end,
     Now = function() return 1000 end,
     IsShiftDown = function() return false end,
@@ -89,6 +89,13 @@ def main():
         end
     """)
     r.append(check("pill and +N button exist", ev("pill ~= nil and more ~= nil")))
+    # Without RegisterClicks, OnClick never fires in the Forever client.
+    r.append(check("every clickable button registers for clicks", ev("""(function()
+        for _, f in ipairs(frames) do
+            if f.kind == 'Button' and f.scripts.OnClick and not f.clicksRegistered then return false end
+        end
+        return true
+    end)()""") is True))
     r.append(check("+N button shown with a count", ev("more.shown") is True and ev("pill.moreText.text") == "+2 more"))
     lua.execute("pill.scripts.OnClick(pill, 'LeftButton')")
     r.append(check("pill click opens the named veteran even with +N more",

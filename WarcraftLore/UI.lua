@@ -194,7 +194,8 @@ end
 -- or erroring) leave the 2D portrait visible.
 local function setPortrait(entry, unit, npcID)
     portrait:SetTexCoord(0, 1, 0, 1)
-    if entry and entry.portrait and entry.portrait ~= "" then
+    local custom = entry and entry.portrait and entry.portrait ~= ""
+    if custom then
         portrait:SetTexture(PORTRAITS .. entry.portrait)
     elseif unit and C.SetUnitPortrait(portrait, unit) then
         -- WoW's own portrait of the NPC
@@ -206,7 +207,7 @@ local function setPortrait(entry, unit, npcID)
     if not portraitModel then
         return
     end
-    if not npcID then
+    if not npcID or custom then -- a portrait the player added wins over the 3D model
         portraitModel:Hide()
         portraitCover:Hide()
         return

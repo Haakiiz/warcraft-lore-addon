@@ -241,7 +241,7 @@ function ns.MetSummary(npcID)
                 if name and mine and realm == (mine:gsub("%s", "")) then
                     by = name
                 end
-                text = text .. " with " .. by
+                text = text .. " as " .. by
             end
         end
     end
