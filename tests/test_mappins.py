@@ -55,6 +55,7 @@ STUBS = """
 SETUP = """
     clicks = {}
     shownEntries = {}
+    raisedFlags = {}
     tooltips = {}
     canvas = CreateFrame("Frame"); canvas.w, canvas.h = 1000, 500
     WorldMapFrame = CreateFrame("Frame")
@@ -86,7 +87,7 @@ SETUP = """
         MetSummary = function(id) return metIDs[id] and "Met once" or nil end,
         CodesLabel = function(codes) return table.concat(codes, "/") end,
         GameRGB = function(code) return 0.5, 0.25, 0.75 end,
-        UI = { ShowEntry = function(id, entry) shownEntries[#shownEntries + 1] = id end },
+        UI = { ShowEntry = function(id, entry, unit, dock, keep, raised) shownEntries[#shownEntries + 1] = id; raisedFlags[#raisedFlags + 1] = raised end },
     }
 """
 
@@ -162,6 +163,15 @@ def main():
                          and lua.eval("tooltips[2].lines[3][1]") == "Not met yet"))
     lua.execute("pin[1].frame.scripts.OnClick(pin[1].frame, 'LeftButton')")
     results.append(check("click opens the lore window", lua.eval("shownEntries[1]") == 3))
+    results.append(check("left click asks for the raised (above the map) window", lua.eval("raisedFlags[1]") is True))
+    lua.execute("pin[2].frame.scripts.OnClick(pin[2].frame, 'RightButton')")
+    results.append(check("right click does nothing", lua.eval("#shownEntries") == 1))
+
+    # met after the map is open: refresh redraws the pin as met
+    lua.execute("metIDs[9] = true; ns.MapPins.Refresh(); pin = ns.MapPins.Active()")
+    results.append(check("refresh after met: pin restyled as met",
+                         lua.eval("pin[2].met") is True and lua.eval("pin[2].frame.tick.shown") is True))
+    lua.execute("metIDs[9] = nil; ns.MapPins.Refresh(); pin = ns.MapPins.Active()")
 
     # map change re-lays out and hides pins
     lua.execute("WorldMapFrame.mapID = 1412; WorldMapFrame:OnMapChanged()")

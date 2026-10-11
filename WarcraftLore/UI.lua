@@ -594,8 +594,15 @@ end
 -------------------------------------------------------------------- public
 -- dock = optional frame to sit next to (the veterans list); nil = the saved position.
 -- keepPlace = true leaves the window where it is (used by the Related links).
-function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
+-- raised = true lifts the window above the world map (FULLSCREEN_DIALOG); a keepPlace call
+-- (Related link) keeps whatever level it has, any other open goes back to DIALOG.
+function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
     UI.Init()
+    if raised then
+        frame:SetFrameStrata("FULLSCREEN_DIALOG")
+    elseif not keepPlace then
+        frame:SetFrameStrata("DIALOG")
+    end
     local games = ns.GamesInOrder(entry)
     local ringColors, badges = {}, {}
     for _, g in ipairs(games) do
