@@ -15,7 +15,7 @@ def load(account, char, name="Arthas", realm="Silvermoon"):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(f"""
         printed = {{}}
-        ns = {{ Compat = {{
+        ns = {{ L = setmetatable({{}}, {{ __index = function(_, k) return k end }}), Compat = {{
             Print = function(msg) printed[#printed + 1] = msg end,
             UnitName = function(u) return UnitName(u) end,
             GetRealmName = function() return GetRealmName() end,

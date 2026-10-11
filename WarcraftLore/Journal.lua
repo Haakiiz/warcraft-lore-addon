@@ -5,6 +5,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local Journal = {}
 ns.Journal = Journal
@@ -26,12 +27,12 @@ local BAR_W = 190
 local CHIP_GAP = 4
 
 local CATEGORIES = {
-    { key = nil, label = "All" },
-    { key = "milestone", label = "Milestones" },
-    { key = "game", label = "Games" },
-    { key = "zone", label = "Zones" },
-    { key = "circle", label = "Circles" },
-    { key = "special", label = "Special" },
+    { key = nil, label = L["All"] },
+    { key = "milestone", label = L["Milestones"] },
+    { key = "game", label = L["Games"] },
+    { key = "zone", label = L["Zones"] },
+    { key = "circle", label = L["Circles"] },
+    { key = "special", label = L["Special"] },
 }
 
 local frame, summary, summaryBar, summaryFill, emptyText
@@ -144,9 +145,9 @@ local function showRowTooltip(row)
     local total = tonumber(a.total)
     if a.done then
         local when = formatDate(a.earned)
-        lines[#lines + 1] = { when and ("Earned " .. when) or "Earned", COL.gold[1], COL.gold[2], COL.gold[3] }
+        lines[#lines + 1] = { when and L["Earned %s"]:format(when) or L["Earned"], COL.gold[1], COL.gold[2], COL.gold[3] }
     elseif total and total > 1 then
-        lines[#lines + 1] = { ("Progress: %d/%d"):format(tonumber(a.progress) or 0, total), m[1], m[2], m[3] }
+        lines[#lines + 1] = { L["Progress: %d/%d"]:format(tonumber(a.progress) or 0, total), m[1], m[2], m[3] }
     end
     C.ShowTooltip(row, "ANCHOR_RIGHT", lines)
 end
@@ -252,14 +253,14 @@ function Journal.Refresh()
         summary:SetText("")
         summaryFill:Hide()
         for _, r in ipairs(rows) do r:Hide() end
-        emptyText:SetText("Achievements are not available.")
+        emptyText:SetText(L["Achievements are not available."])
         emptyText:Show()
         content:SetHeight(10)
         updateChips()
         updateThumb()
         return
     end
-    summary:SetText(("%s%d%s of %d achievements"):format(S.HEX_GOLD, earned, S.END, total))
+    summary:SetText(L["%s%d%s of %d achievements"]:format(S.HEX_GOLD, earned, S.END, total))
     local fillW = total > 0 and math.floor(barWidth * earned / total + 0.5) or 0
     if earned > 0 then
         summaryFill:SetWidth(math.max(fillW, 2))
@@ -284,7 +285,7 @@ function Journal.Refresh()
         rows[i]:Hide()
         rows[i].data = nil
     end
-    emptyText:SetText("Nothing here yet.")
+    emptyText:SetText(L["Nothing here yet."])
     if n == 0 then emptyText:Show() else emptyText:Hide() end
     content:SetHeight(math.max(10, n * ROW_STEP))
     updateChips()
@@ -346,7 +347,7 @@ local function build()
 
     S.buildFrameArt(frame, W, H)
     local inner = S.buildInner(frame)
-    S.buildHeader(inner, "Lore Journal", function() frame:Hide() end)
+    S.buildHeader(inner, L["Lore Journal"], function() frame:Hide() end)
 
     -- "12 of 48 achievements" over a thin progress bar
     local head = CreateFrame("Frame", nil, inner)

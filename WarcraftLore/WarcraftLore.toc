@@ -8,6 +8,9 @@
 ## X-Curse-Project-ID: 1732546
 
 Compat.lua
+Locale.lua
+Locales\deDE.lua
+Locales\frFR.lua
 Data.lua
 SavedData.lua
 Core.lua

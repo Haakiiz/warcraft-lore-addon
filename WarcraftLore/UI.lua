@@ -3,6 +3,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local UI = {}
 ns.UI = UI
@@ -138,7 +139,7 @@ local function buildPortrait(inner)
     metBadge.label = text(metBadge, C.FONT_BODY, 10, COL.met)
     metBadge.label:SetPoint("LEFT", 18, 0)
     metBadge.label:SetJustifyV("MIDDLE")
-    metBadge.label:SetText("MET")
+    metBadge.label:SetText(L["MET"])
     metBadge:SetColors(COL.met, 0.12, COL.met, 1)
     metBadge:EnableMouse(true)
     metBadge:SetScript("OnEnter", function(self)
@@ -293,7 +294,7 @@ local function relatedRow(i)
     C.RegisterClicks(r)
     r:SetScript("OnEnter", function(self) self.hl:Show() end)
     r:SetScript("OnLeave", function(self) self.hl:Hide() end)
-    r:SetScript("OnClick", ns.Guard("window", "the lore window", function(self)
+    r:SetScript("OnClick", ns.Guard("window", L["the lore window"], function(self)
         UI.ShowEntry(self.group.id, self.group.entry, nil, nil, true)
     end))
     rows[i] = r
@@ -305,7 +306,7 @@ local function fillRelated(groups)
         relatedBlock = newSection()
         relatedBlock.body:Hide()
         relatedBlock.rows = {}
-        relatedBlock.label:SetText("RELATED")
+        relatedBlock.label:SetText(L["RELATED"])
     end
     for _, r in ipairs(relatedBlock.rows) do r:Hide() end
     for i, g in ipairs(groups) do
@@ -314,7 +315,7 @@ local function fillRelated(groups)
         local line = HEX_TITLE .. (g.entry.name or "?") .. END .. "  " .. ns.CodesLabel(g.codes)
             .. "  " .. HEX_MUTED .. (g.entry.zone or "") .. END
         if ns.GroupMet(g) then
-            line = line .. "  " .. HEX_MET .. "met" .. END
+            line = line .. "  " .. HEX_MET .. L["met"] .. END
         end
         r.label:SetText(line)
         r:Show()
@@ -402,10 +403,10 @@ local function fillGameBox(b, app)
         lines[#lines + 1] = app.role
     end
     if app.campaign and app.campaign ~= "" then
-        lines[#lines + 1] = HEX_MUTED .. "Campaign" .. END .. "  " .. app.campaign
+        lines[#lines + 1] = HEX_MUTED .. L["Campaign"] .. END .. "  " .. app.campaign
     end
     if app.missions and #app.missions > 0 then
-        local label = #app.missions == 1 and "Mission" or "Missions"
+        local label = #app.missions == 1 and L["Mission"] or L["Missions"]
         lines[#lines + 1] = HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
     end
     b.body:SetText(table.concat(lines, "\n"))
@@ -413,7 +414,7 @@ local function fillGameBox(b, app)
 end
 
 local function fillSection(s, label, body, color)
-    s.label:SetText(label:upper())
+    s.label:SetText(label)
     s.body:SetText(body)
     local c = color or COL.text
     s.body:SetTextColor(c[1], c[2], c[3])
@@ -466,7 +467,7 @@ local function fillBooks(books)
             bookRows[i] = r
         end
         C.SetIconTexture(r.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
-        local title = (app.campaign and app.campaign ~= "") and app.campaign or "Book"
+        local title = (app.campaign and app.campaign ~= "") and app.campaign or L["Book"]
         local role = app.role or ""
         r.label:SetText(HEX_TITLE .. title .. END .. (role ~= "" and ("  " .. HEX_MUTED .. role .. END) or ""))
         r.tip = { { title, 1, 1, 1 } }
@@ -474,7 +475,7 @@ local function fillBooks(books)
             r.tip[2] = { role, 0.8, 0.8, 0.8, true }
         end
         if app.missions and #app.missions > 0 then
-            r.tip[#r.tip + 1] = { (#app.missions == 1 and "Chapter: " or "Chapters: ") .. table.concat(app.missions, ", "), 0.6, 0.6, 0.6, true }
+            r.tip[#r.tip + 1] = { (#app.missions == 1 and L["Chapter: %s"] or L["Chapters: %s"]):format(table.concat(app.missions, ", ")), 0.6, 0.6, 0.6, true }
         end
         r:Show()
     end
@@ -505,7 +506,7 @@ function UI.Init()
 
     S.buildFrameArt(frame, W, H)
     local inner = S.buildInner(frame)
-    S.buildHeader(inner, "Warcraft Lore", function() frame:Hide() end)
+    S.buildHeader(inner, L["Warcraft Lore"], function() frame:Hide() end)
     buildPortrait(inner)
 
     scroll = CreateFrame("ScrollFrame", nil, inner)
@@ -596,7 +597,7 @@ local function showHeader(name, place, npcID, badges)
     metBadge:Hide()
     nameText:SetText(name or "")
     placeText:SetText(place or "")
-    idText:SetText(npcID and ("NPC ID " .. npcID) or "")
+    idText:SetText(npcID and L["NPC ID %s"]:format(npcID) or "")
     badgeCount = math.min(#badges, #headerBadges)
     for i, b in ipairs(headerBadges) do
         local spec = badges[i]
@@ -632,7 +633,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         place = place .. " · " .. entry.coords
     end
     if entry.alsoIn and #entry.alsoIn > 0 then
-        place = place .. "\n" .. HEX_MUTED .. "Also in " .. table.concat(entry.alsoIn, ", ") .. END
+        place = place .. "\n" .. HEX_MUTED .. L["Also in %s"]:format(table.concat(entry.alsoIn, ", ")) .. END
     end
     showHeader(entry.name, place, npcID, badges)
     shownNPC = npcID
@@ -651,7 +652,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         blocks[#blocks + 1] = s
     end
     if entry.story and entry.story ~= "" then
-        add("Story", entry.story)
+        add(L["STORY"], entry.story)
     end
     local games, books = {}, {}
     for _, app in ipairs(UI.Timeline(entry)) do
@@ -659,7 +660,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         list[#list + 1] = app
     end
     if #games > 0 then
-        agesHeader = agesHeader or heading("THROUGH THE AGES")
+        agesHeader = agesHeader or heading(L["THROUGH THE AGES"])
         blocks[#blocks + 1] = agesHeader
         for i, app in ipairs(games) do
             local b = gameBox(i)
@@ -668,7 +669,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         end
     end
     if #books > 0 then
-        booksHeader = booksHeader or heading("IN THE BOOKS")
+        booksHeader = booksHeader or heading(L["IN THE BOOKS"])
         local block = fillBooks(books)
         blocks[#blocks + 1] = booksHeader
         blocks[#blocks + 1] = block
@@ -679,16 +680,16 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
     end
     local items = {}
     for _, item in ipairs(entry.items or {}) do
-        local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · item ID " .. tostring(item.id) .. END
+        local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · " .. L["item ID %s"]:format(tostring(item.id)) .. END
         if item.note and item.note ~= "" then
             line = line .. "\n" .. HEX_MUTED .. item.note .. END
         end
         items[#items + 1] = line
     end
     if #items > 0 then
-        add("Items in WoW", table.concat(items, "\n"))
+        add(L["ITEMS IN WOW"], table.concat(items, "\n"))
     end
-    add("Sources", table.concat(entry.sources or {}, "\n"), COL.muted)
+    add(L["SOURCES"], table.concat(entry.sources or {}, "\n"), COL.muted)
     layout(blocks)
     if dock then
         dockTo(dock)
@@ -701,13 +702,13 @@ end
 
 function UI.ShowUnknown(name, npcID, unit)
     UI.Init()
-    showHeader(name or "Unknown NPC", "", npcID, {})
+    showHeader(name or L["Unknown NPC"], "", npcID, {})
     setRing({ COL.dim }, 0.6)
     setPortrait(nil, unit, npcID)
     clearContent()
     local s = section(1)
-    fillSection(s, "No record yet",
-        ("No known Warcraft history recorded for %s (NPC ID %d) yet."):format(name or "this NPC", npcID))
+    fillSection(s, L["NO RECORD YET"],
+        L["No known Warcraft history recorded for %s (NPC ID %d) yet."]:format(name or L["this NPC"], npcID))
     layout({ s })
     if docked then
         applyPosition()
@@ -718,12 +719,12 @@ end
 
 function UI.ShowMessage(msg)
     UI.Init()
-    showHeader("Warcraft Lore", "", nil, {})
+    showHeader(L["Warcraft Lore"], "", nil, {})
     setRing({ COL.dim }, 0.6)
     setPortrait(nil, nil)
     clearContent()
     local s = section(1)
-    fillSection(s, "Notice", msg)
+    fillSection(s, L["NOTICE"], msg)
     layout({ s })
     if docked then
         applyPosition()

@@ -42,6 +42,7 @@ local Style = { COL = setmetatable({}, { __index = function() return { 1, 1, 1 }
     text = function() return newObj("FontString") end,
     outline = function() return { newObj("Texture") } end }
 ns = {
+    L = setmetatable({}, { __index = function(_, k) return k end }), 
     Style = Style,
     FeatureOff = function() return false end,
     Guard = function(key, label, fn)

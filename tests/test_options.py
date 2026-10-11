@@ -45,6 +45,7 @@ def run(with_settings, legacy=False):
     lua.execute("""
         WarcraftLoreDB = { auto = true, alert = false, minimap = {} }
         ns = {
+            L = setmetatable({}, { __index = function(_, k) return k end }), 
             Compat = { RegisterClicks = function() end, SetFont = function() end,
                        FONT_BODY = "b", FONT_TITLE = "t" },
             Minimap = { Toggle = function() minimapToggles = minimapToggles + 1
