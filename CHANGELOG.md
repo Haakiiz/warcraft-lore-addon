@@ -1,4 +1,22 @@
-# Warcraft Lore – changelog
+﻿# Warcraft Lore – changelog
+
+## v0.5.0
+
+- **Live 3D portraits:** the lore window shows the veteran as they look in WoW today, framed inside the
+  round ring. If the model can't load, you get the classic portrait instead.
+- **Story first, then "Through the ages":** the story now opens the window. Below it, every game
+  appearance in release order with its year and role, and the books as compact one-line rows.
+- **Met counter for your whole account:** a veteran you meet on one character counts on all of them.
+  Your existing progress from every character is merged automatically. Hover a met veteran to see how
+  often you met them, and when and with which character you met them first.
+- **Calmer alerts in cities:** the first veteran is announced right away; anyone else nearby is named in
+  one follow-up line ("Also nearby: …") without extra sounds. Click "+N more" to open the Veterans list.
+- **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
+- **`/wcl why`:** explains in plain words why your target is or isn't recognised.
+- **Safer after game patches:** if a patch changes something the addon relies on, only that feature
+  switches off, with one chat line, instead of throwing errors.
+- **Cleaner lore:** every entry was reviewed. Roles and stories read as proper text, and characters you
+  can't actually meet in this version of the game were removed. 100 confirmed veterans and 42 related links.
 
 ## v0.4.0
 
