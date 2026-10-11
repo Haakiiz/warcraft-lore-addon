@@ -12,8 +12,11 @@ What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
 - **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a live 3D model of the NPC inside a round ring that glows in the game's color (the classic portrait if the model can't load). The story comes first, followed by "Through the ages": every game appearance in release order with its year and role, and the books as compact one-line rows. You also get related veterans (click a name to follow the thread), related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 100" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 133" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
 - **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. In busy cities the first veteran is announced right away and anyone else nearby is named in one follow-up line ("Also nearby: ..."); click "+N more" to open the Veterans list. Click the pill for the story, right-click to dismiss, shift-drag to move.
+- **World map pins:** small round pins show where veterans stand on the map of the zone you are looking at, colored by their first game and green once you have met them. Hover a pin for the name and status, left-click it for the story. Turn them off in the settings ("Show veterans on the world map").
+- **Zone atlas:** the zone picker in the Veterans list shows how many veterans you have met in each zone. "This zone" jumps to the zone you are standing in, and a line under the filters says "N of M met here".
+- **Export and import:** `/wcl export` shows your met list as a short text you can copy; `/wcl import` merges such a text into this account (earliest first meeting and higher count win, nothing is deleted).
 - **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
 - **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
 - **`/wcl why`:** explains in plain words why your target is or isn't recognised.
@@ -33,14 +36,13 @@ Preview renders of the real addon code (made offline with substitute fonts and a
 | ![Small glowing alert when a veteran is nearby](media/screenshots/nearby-alert.png) | ![Minimap button with tooltip](media/screenshots/minimap-button.png) |
 | A small glowing alert when a veteran is nearby; click it for the story | Minimap button: left-click for the list, right-click for your target |
 
-## What's new in 0.5
+## What's new in 0.6
 
-- Live 3D portrait in the lore window, with the story first and a "Through the ages" section for every game appearance.
-- The met counter now covers your whole account. Existing progress from all characters is merged, and a tooltip shows how often and when you met each veteran.
-- Calmer alerts in cities: one alert, one follow-up line for everyone else nearby.
-- A settings page (`/wcl options`) and `/wcl why`.
-- Safer after game patches: if a patch breaks something, only that feature switches off.
-- Every entry reviewed: 100 confirmed veterans and 42 related links.
+- **33 new veterans** in Tanaris, Winterspring, Moonglade, Felwood, Eastern Plaguelands, The Hinterlands, Arathi Highlands, Stranglethorn Vale, Zul'Farrak, the Sunken Temple and the Temple of Ahn'Qiraj, among them Tirion Fordring, Nathanos Blightcaller, Falstad Wildhammer and Keeper Remulos. 133 in total.
+- **Veterans on the world map:** small pins show where veterans stand, green once you've met them. Hover for details, click for the story. Can be turned off in the settings.
+- **Zone atlas:** the zone picker in the Veterans list shows how many you've met in each zone, and "This zone" jumps to where you are.
+- **Export and import:** `/wcl export` shows your met list as a short text you can copy, and `/wcl import` merges such a text into this account. The earliest first meeting and the higher count are kept, and nothing is ever deleted.
+- **Polish:** empty "Items" sections are gone, book rows highlight on hover, and clicks can never throw errors.
 
 See `CHANGELOG.md` for older versions.
 
@@ -71,6 +73,7 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl options` | Opens the Warcraft Lore settings page. If this client has no settings panel it says so in chat |
 | `/wcl export` | Opens a window with your met list as a short text (starts with `WCL1:`), already selected so you can copy it with Ctrl+C |
 | `/wcl import` | Opens the same window empty. Paste an export string and press Import: the earliest first meeting and the larger count are kept, nothing is deleted, unknown NPCs are ignored, and a damaged string changes nothing |
+| `/wcl help` (or any unknown command) | Lists the commands in chat |
 | `/wcl debug` | Shows build, interface and which APIs the client has |
 
 ## Test NPCs
@@ -82,6 +85,8 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 |---|---|---|---|---|
 | Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
 | Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
+| Innkeeper Adegwa | 9501 | Arathi Highlands | 73.8, 32.4 | BOOK |
+| Prince Galen Trollbane | 2607 | Arathi Highlands | 26.2, 58.0 | BOOK |
 | Illiyana Moonblaze | 14753 | Ashenvale | 61.4, 83.8 | BOOK |
 | Shael'dryn | 3916 | Ashenvale | 53.4, 46.2 | BOOK |
 | Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
@@ -102,9 +107,18 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Overlord Mok'Morokk | 4500 | Dustwallow Marsh | 36.2, 31.4 | BOOK |
 | Pained | 4965 | Dustwallow Marsh | 66.2, 49.0 | BOOK |
 | Tharg | 4502 | Dustwallow Marsh | 37.2, 31.4 | TFT |
+| Aurora Skycaller | 10304 | Eastern Plaguelands | 53.5, 22.0 | BOOK |
+| Craftsman Wilhelm | 16376 | Eastern Plaguelands | 81.0, 59.5 | BOOK |
+| Leonid Barthalomew the Revered | 11036 | Eastern Plaguelands | 81.6, 57.8 | FK |
+| Lord Maxwell Tyrosus | 11034 | Eastern Plaguelands | 81.6, 58.0 | FK, BOOK |
+| Mirador | 11710 | Eastern Plaguelands | 7.5, 43.5 | BOOK |
+| Nathanos Blightcaller | 11878 | Eastern Plaguelands | 26.5, 74.8 | BOOK |
+| Ranger Lord Hawkspear | 10824 | Eastern Plaguelands | 52.8, 18.2 | BOOK |
+| Tirion Fordring | 1855 | Eastern Plaguelands | 7.5, 43.5 | BOOK |
 | Innkeeper Farley | 295 | Elwynn Forest | 43.8, 65.8 | BOOK |
 | Marshal Dughan | 240 | Elwynn Forest | 42.2, 65.8 | BOOK |
 | Zaldimar Wefhellt | 328 | Elwynn Forest | 43.2, 66.2 | BOOK |
+| Arei | 9598 | Felwood | 48.2, 28.8 | BOOK |
 | Shandris Feathermoon | 3936 | Feralas | 30.2, 46.0 | WC3 |
 | Apothecary Lydon | 2216 | Hillsbrad Foothills | 61.4, 19.2 | BOOK |
 | Marshal Redpath | 2263 | Hillsbrad Foothills | 49.6, 58.6 | BOOK |
@@ -120,6 +134,7 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | King Magni Bronzebeard | 2784 | Ironforge | 39.4, 55.8 | BOOK |
 | Reyna Stonebranch | 5137 | Ironforge | 55.4, 58.8 | BOOK |
 | Vyrin Swiftwind | 1156 | Loch Modan | 81.8, 64.2 | BOOK |
+| Keeper Remulos | 11832 | Moonglade | 36.2, 41.8 | BOOK |
 | Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT, BOOK |
 | Narm Skychaser | 3066 | Mulgore | 48.4, 59.2 | BOOK |
 | Eitrigg | 3144 | Orgrimmar | 34.2, 39.0 | BOOK |
@@ -150,9 +165,22 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Ol' Emma | 3520 | Stormwind City | 52.4, 41.8 | BOOK |
 | Osric Strang | 1323 | Stormwind City | 74.2, 47.4 | BOOK |
 | Renzik "The Shiv" | 6946 | Stormwind City | 75.8, 60.2 | BOOK |
+| Catelyn the Blade | 2542 | Stranglethorn Vale | 27.2, 77.4 | BOOK |
+| Fleet Master Seahorn | 2487 | Stranglethorn Vale | 27.2, 77.0 | BOOK |
+| Innkeeper Skindle | 6807 | Stranglethorn Vale | 27.0, 77.2 | BOOK |
+| Ironpatch | 2547 | Stranglethorn Vale | 30.4, 90.2 | BOOK |
+| Anachronos | 15192 | Tanaris | 65.2, 50.0 | BOOK |
+| Chronalis | 8197 | Tanaris | 64.5, 50.4 | BOOK |
+| Marin Noggenfogger | 7564 | Tanaris | 51.8, 28.6 | BOOK |
+| Sprinkle | 7583 | Tanaris | 51.0, 26.8 | BOOK |
+| Tick | 8198 | Tanaris | 63.2, 50.4 | BOOK |
+| Trenton Lighthammer | 7804 | Tanaris | 51.4, 28.6 | BOOK |
 | Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT, BOOK |
 | Jorn Skyseer | 3387 | The Barrens | 44.8, 59.0 | BOOK |
 | Wharfmaster Dizzywig | 3453 | The Barrens | 63.2, 38.4 | BOOK |
+| Falstad Wildhammer | 5635 | The Hinterlands | 11.8, 46.8 | BOOK |
+| Rothos | 5718 | The Hinterlands | 65.6, 35.0 | BOOK |
+| Shadra | 2707 | The Hinterlands | 33.4, 72.6 | BOOK |
 | Daisy | 4507 | Thousand Needles | 78.8, 75.4 | BOOK |
 | Fizzle Brassbolts | 4454 | Thousand Needles | 78.0, 77.0 | BOOK |
 | Jinky Twizzlefixxit | 6730 | Thousand Needles | 77.6, 77.8 | BOOK |
@@ -172,6 +200,8 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Parqual Fintallas | 4488 | Undercity | 57.4, 65.4 | BOOK |
 | Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT, BOOK |
 | Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK, BOOK |
+| Gogo | 11753 | Winterspring | 61.2, 38.5 | BOOK |
+| Lunnix Sprocketslip | 11186 | Winterspring | 61.7, 38.5 | BOOK |
 
 Entries without known coordinates are left out of this table.
 
@@ -237,6 +267,8 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 - `WarcraftLore/UI.lua`: the lore window.
 - `WarcraftLore/Browser.lua`: the veterans list window (`/wcl list`).
 - `WarcraftLore/Options.lua`: the settings page (`/wcl options`).
+- `WarcraftLore/MapPins.lua`: the veteran pins on the world map.
+- `WarcraftLore/Share.lua`: the export and import window (`/wcl export`, `/wcl import`).
 - `WarcraftLore/SavedData.lua`: saved-data versions and migrations.
 - `WarcraftLore/Textures/`: frame, vines and rings. Regenerate them with `python tools/make_textures.py` (needs Pillow).
 - `WarcraftLore/Portraits/`: your own portrait images (optional).

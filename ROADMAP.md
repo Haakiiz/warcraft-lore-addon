@@ -34,21 +34,27 @@ Versjonsnummeret i parentes er der simuleringen legger funksjonen, ikke et løft
 - [x] **Schema-versjon for lagrede data** (`SavedData.lua`, testet av `tests/test_saved_data.py`).
       `schema` i både `WarcraftLoreDB` og `WarcraftLoreCharDB`, og en liste med migreringer som kjøres ved `ADDON_LOADED`.
       Data fra en nyere versjon blir ikke rørt. En migrering som feiler, prøves igjen ved neste innlasting.
-- [ ] **Kontodekkende møtt-teller** (1.3): det du har møtt på én karakter teller på alle.
+- [x] **Kontodekkende møtt-teller** (1.3): det du har møtt på én karakter teller på alle.
+      Ferdig i 0.5: møtt-listen ligger i `WarcraftLoreDB`, og gamle `WarcraftLoreCharDB` er slått sammen automatisk.
       *Forslag:* flytt tellingen til `WarcraftLoreDB`, og migrer eksisterende `WarcraftLoreCharDB` inn ved første innlogging.
-- [ ] **Telle antall møter**, ikke bare møtt/ikke møtt. Gir grunnlag for statistikk som «mest møtte veteraner» (3.2).
-- [ ] **Eksport og import av møtt-listen** som tekststreng (1.3).
+- [x] **Telle antall møter**, ikke bare møtt/ikke møtt. Gir grunnlag for statistikk som «mest møtte veteraner» (3.2).
+      Ferdig i 0.5: antall møter og første møte (tid og karakter) lagres og vises i musepekeren i listen.
+- [x] **Eksport og import av møtt-listen** som tekststreng (1.3).
+      Ferdig i 0.6: `/wcl export` og `/wcl import` (`Share.lua`), uten bibliotek; tidligste første møte og høyeste antall beholdes, ingenting slettes.
       *Forslag:* LibSerialize + LibDeflate (`EncodeForPrint`), vist i en tekstboks man kan kopiere fra.
-- [ ] **Bedre søk** med apostrofer og delvis treff, f.eks. «mugthol» → Mug'thol (1.3).
+- [x] **Bedre søk** med apostrofer og delvis treff, f.eks. «mugthol» → Mug'thol (1.3).
+      Ferdig i 0.4: søket ignorerer apostrof, bindestrek og mellomrom, og treffer også sonenavn.
       *Forslag:* normaliser både søkeord og navn (fjern `'`, `-` og mellomrom, gjør alt til små bokstaver).
 - [ ] **Fulltekstsøk** i lore-tekstene (3.0).
       *Forslag:* bygg en enkel ordindeks første gang søket brukes, ikke ved innlasting.
 
 ## 2. Kart og navigasjon
 
-- [ ] **Kartnåler på verdenskartet**, farget etter spill (0.4), med filter per spill (ønske i simuleringen).
+- [x] **Kartnåler på verdenskartet**, farget etter spill (0.4), med filter per spill (ønske i simuleringen).
+      Ferdig i 0.6 (`MapPins.lua`): runde nåler farget etter første spill, grønne når veteranen er møtt, av/på i innstillingene. Laget uten HereBeDragons. Filter per spill og TomTom gjenstår.
       *Forslag:* biblioteket **HereBeDragons-2.0 + HereBeDragons-Pins**. Koordinatene finnes allerede i Data.lua.
-- [ ] **Sone-atlas**: sjekkliste over veteraner per sone (1.1).
+- [x] **Sone-atlas**: sjekkliste over veteraner per sone (1.1).
+      Ferdig i 0.6: sonevelgeren i Veteranlisten viser møtt/totalt per sone, «This zone»-knapp og linjen «N of M met here».
       *Forslag:* gjenbruk veteranlisten med fast sonefilter, og vis «3/8 møtt» per sone.
 - [ ] **Spor en veteran med pil** ved høyreklikk på en nål (1.1).
       *Forslag:* bruk **TomTom** hvis det er installert (`TomTom:AddWaypoint`), i stedet for å lage egen pil.
@@ -79,17 +85,21 @@ Versjonsnummeret i parentes er der simuleringen legger funksjonen, ikke et løft
 
 ## 5. Ytelse og robusthet
 
-- [ ] **Samle varsler** når mange veteraner står i samme by (1.2).
+- [x] **Samle varsler** når mange veteraner står i samme by (1.2).
+      Ferdig i 0.5: første veteran varsles med en gang, resten nevnes i én oppfølgingslinje («Also nearby: …»), og «+N more» åpner listen.
       *Forslag:* buffre `NAME_PLATE_UNIT_ADDED` i 1–2 sekunder med `C_Timer.After`, og vis én samlet toast.
 - [ ] **Raskere lister** med 350+ oppføringer, og ingen hakking i atlas eller Dalaran (1.1, 3.1).
       *Forslag:* bygg lister først når de åpnes, gjenbruk rader og cache oppslag på NPC-ID.
-- [ ] **Tåle at en patch endrer API-et** (1.3.1, 2.0). *Dette er det viktigste punktet i simuleringen.*
+- [x] **Tåle at en patch endrer API-et** (1.3.1, 2.0). *Dette er det viktigste punktet i simuleringen.*
+      Ferdig i 0.5: hver funksjon er vernet, og bare den som feiler slås av, med én melding i chatten.
       Der knakk navneskilt-API-et i en patch, og addonen kastet Lua-feil.
       *Forslag:* slå av bare funksjonen som feiler (f.eks. nærhetsvarselet) og skriv én melding i chatten,
       i stedet for å kaste feil hver gang. Utvid mønsteret som allerede finnes i Compat.lua.
-- [ ] **Portretter fra spillet** også når NPC-en ikke er target (2.0).
+- [x] **Portretter fra spillet** også når NPC-en ikke er target (2.0).
+      Ferdig i 0.5: levende 3D-modell i lore-vinduet, med det klassiske portrettet som reserve.
       *Forslag:* `SetPortraitTexture` når enheten finnes, ellers en 3D-modell med `PlayerModel:SetCreature(npcId)`.
-- [ ] **Innstillingsside** i spillets meny (1.0).
+- [x] **Innstillingsside** i spillets meny (1.0).
+      Ferdig i 0.5: finnes i spillets AddOns-innstillinger og med `/wcl options`.
       *Forslag:* `Settings.RegisterCanvasLayoutCategory` (Mainline-API).
 - [ ] **Rydde gamle innstillinger** fra 0.x (3.2). Løses av schema-versjonen i del 1.
 
