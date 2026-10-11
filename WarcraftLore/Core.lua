@@ -319,6 +319,9 @@ function ns.MarkMet(npcID)
         if ns.Browser then
             pcall(ns.Browser.Refresh)
         end
+        if not alreadyMet and ns.Achievements then
+            pcall(ns.Achievements.Check)
+        end
         if ns.MapPins and ns.MapPins.Refresh then
             pcall(ns.MapPins.Refresh) -- redraws only when the world map is shown
         end

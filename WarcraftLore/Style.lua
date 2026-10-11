@@ -27,6 +27,7 @@ local COL = {
     title = { rgb("d4c6f7") }, text = { rgb("d9d2c3") }, muted = { rgb("a79d8a") },
     divider = { rgb("2d2347") }, dim = { rgb("4d4434") },
     met = { rgb("6fcf7f") },
+    gold = { rgb("e0b04a") },
     hollow = { rgb("6b5f4a") },
 }
 Style.COL = COL

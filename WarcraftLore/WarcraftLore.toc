@@ -11,6 +11,7 @@ Compat.lua
 Data.lua
 SavedData.lua
 Core.lua
+Achievements.lua
 Style.lua
 UI.lua
 Browser.lua
