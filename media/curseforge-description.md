@@ -1,37 +1,35 @@
-Ever run into a random level-15 quest giver and later found out they were in a Warcraft II mission? This addon tells you.
+Ever run into a random quest giver and later found out they were in a Warcraft II mission? This addon tells you.
 
-It flags NPCs who also appear in the real-time strategy games:
+Warcraft Lore flags NPCs who also appear in the real-time strategy games and the novels:
 
 - Warcraft: Orcs & Humans
 - Warcraft II: Tides of Darkness and Beyond the Dark Portal
 - Warcraft III: Reign of Chaos and The Frozen Throne
 - Warcraft III Reforged: Forsaken Kingdom
-- Warcraft novels and books (labelled "Book", never presented as a game appearance)
+- Warcraft novels and short stories (labelled "Book", never presented as a game appearance)
 
-Every veteran is checked against a source: 100 confirmed so far, with more as new zones open.
+**133 confirmed veterans**, from Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
 
 ## What you get
 
-- **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
-- **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a live 3D model of the NPC in a glowing ring. The story comes first, then "Through the ages": every game appearance in release order, with the books as compact rows. You also get related WoW items and sources. A "Related" section links family, allies and rivals: click a name to follow the thread from Thrall to Cairne to Baine.
-- **Veterans list:** `/wcl list` (or the minimap button) shows every veteran in the database. Search by name or zone, filter by game, zone, campaign or met status, hide NPCs who only appear in books, hover a row for full names, and click one to read their story.
-- **Met counter:** the addon remembers which veterans you have met, across your whole account: "Veterans met 13 of 100" with a progress bar and a chip per game. Target or mouse over a veteran to tick them off. Hover a met veteran to see how often you met them. The lore window shows a green MET badge.
-- **Small glowing alert:** a small pill with a portrait, the name and game codes when you target a veteran or one is close by. Nearby alerts also print a chat line and play a sound. In cities the first veteran is announced right away and everyone else nearby gets one follow-up line. Click for the story, right-click to dismiss.
-- **Minimap button:** left-click for the Veterans list, right-click for the story of your target, drag to move.
-- **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
+- **Tooltip line:** veterans get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", each game in its own color. Other NPCs stay clean.
+- **Lore window with a live 3D portrait:** the veteran as they look in WoW today, inside a ring that glows in the game's colors. Their story comes first, then "Through the ages": every game appearance in release order with year and role, and the books as compact rows. A "Related" section links family, allies and rivals.
+- **Veterans list** (`/wcl list` or the minimap button): search by name or zone, filter by game, zone, campaign or met status. The zone picker shows how many you've met in each zone, and "This zone" jumps to where you are.
+- **World map pins:** see where veterans stand on the world map, green once you've met them. Hover for details, click for the story.
+- **Met counter for your whole account:** target or mouse over a veteran to tick them off. Progress is shared by all your characters, and the tooltip shows how often you met them and with which character first.
+- **Calm alerts:** a small glowing pill when a veteran is nearby. In cities you get one alert and one "Also nearby: …" line, not a flood.
+- **Settings page** in the game's AddOns options, and export/import of your met list as a short text.
+- **Safe after patches:** if a game patch changes something, only that feature switches off, with one chat line, instead of throwing errors.
 
 ## Commands
 
-- `/wcl` – open the window for your target
-- `/wcl list` – browse all veterans, with search, filters and your met counter
-- `/wcl id` – print your target's NPC ID
-- `/wcl auto` – toggle the small alert when you target a veteran
-- `/wcl minimap` – show or hide the minimap button
-- `/wcl alert` – toggle the "veteran nearby" alert
-- `/wcl test` – show a test alert for the lowest-ID veteran
+- `/wcl` – open the story of your target
+- `/wcl list` – browse all veterans
 - `/wcl why` – explain why your target is or isn't recognised
 - `/wcl options` – open the settings
-- `/wcl reset` – move the windows back to the center
-- `/wcl debug` – show which APIs the client has
+- `/wcl export` / `/wcl import` – copy or merge your met list
+- `/wcl minimap` – show or hide the minimap button
+- `/wcl auto` / `/wcl alert` – toggle the target alert / the nearby alert
+- `/wcl test`, `/wcl reset`, `/wcl id`, `/wcl debug`
 
-Built for WoW: Forever (interface 16001). All lore ships inside the addon.
+Built for WoW: Forever. All lore ships inside the addon; nothing is downloaded in game.
