@@ -18,15 +18,17 @@ local HEX_MUTED, HEX_TITLE, HEX_MET, END = S.HEX_MUTED, S.HEX_TITLE, S.HEX_MET, 
 
 local W, H = 460, 580      -- window size
 local RING = 96            -- portrait ring size
+local MODEL = 60           -- 3D model size (the cover texture rounds it off)
 local INNER_W = W - 2 * BAND
 local CONTENT_W = INNER_W - 2 * PAD
 
 -------------------------------------------------------------------- the window
-local frame, nameText, placeText, idText, metBadge, portrait, portraitRing, portraitModel
+local frame, nameText, placeText, idText, metBadge, portrait, portraitRing, portraitModel, portraitCover
+local expectedNPC         -- NPC the 3D model was asked for; a load event for any other NPC is ignored
 local shownNPC            -- NPC ID the lore window currently shows (nil for messages)
 local ringParts = {}
 local headerBadges = {}
-local badgeCount = 0       -- game/uncertain badges currently shown (the MET badge follows them)
+local badgeCount = 0       -- game badges currently shown (the MET badge follows them)
 local function notifyBrowser()   -- tells the veterans list which row to highlight
     if ns.Browser then
         ns.Browser.RefreshSelection()
@@ -36,7 +38,9 @@ local docked = false       -- true while the window sits next to the browser ins
 local scroll, content
 local gameBoxes, sections = {}, {}
 local relatedBlock         -- "Related" section with one clickable row per related veteran
-local agesHeader           -- "Through the ages" heading above the per-game rows
+local agesHeader, booksHeader   -- "Through the ages" / "In the books" headings
+local booksBlock
+local bookRows = {}      -- compact one-line rows, one per book appearance
 
 local function savePosition()
     local point, _, relativePoint, x, y = frame:GetPoint(1)
@@ -67,32 +71,45 @@ local function buildPortrait(inner)
     holder:SetSize(RING, RING)
     holder:SetPoint("TOPLEFT", PAD - 6, -(HEADER + 8))
 
-    for i = 1, 4 do
-        local t = holder:CreateTexture(nil, "BORDER")
-        t:SetTexture(TEX .. "RingGlow")
-        ringParts[i] = t
-    end
-
     portrait = holder:CreateTexture(nil, "ARTWORK")
     portrait:SetSize(58, 58)
     portrait:SetPoint("CENTER")
     C.ApplyCircleMask(portrait, TEX .. "CircleMask")
 
-    -- Live 3D model of the NPC, framed on the face, inside the ring (the ring sits on a frame above it).
-    portraitModel = C.CreateCreatureModel(holder, function()
+    -- Live 3D model of the NPC, framed on the face. Models cannot be masked, so a cover frame
+    -- above it (a square in the window color with a round hole) gives the round crop.
+    portraitModel = C.CreateCreatureModel(holder, function(model)
         -- the model is ready: the flat portrait behind it turns into a dark disc
+        if not (expectedNPC and model and model.wclNPC == expectedNPC) then
+            return
+        end
         portrait:SetTexCoord(0, 1, 0, 1)
         portrait:SetColorTexture(COL.inner[1], COL.inner[2], COL.inner[3], 1)
     end)
+    local coverFrame = CreateFrame("Frame", nil, holder)
+    coverFrame:SetAllPoints()
+    coverFrame:SetFrameLevel(holder:GetFrameLevel() + 2)
+    portraitCover = coverFrame:CreateTexture(nil, "ARTWORK")
+    portraitCover:SetTexture(TEX .. "PortraitCover")
+    portraitCover:SetSize(64, 64)
+    portraitCover:SetPoint("CENTER")
+    portraitCover:Hide()
     if portraitModel then
-        portraitModel:SetSize(44, 44)
+        portraitModel:SetSize(MODEL, MODEL)
         portraitModel:SetPoint("CENTER")
         portraitModel:SetFrameLevel(holder:GetFrameLevel() + 1)
         portraitModel:Hide()
     end
+
+    -- The ring and its glow sit on the top frame, above the cover.
     local ringFrame = CreateFrame("Frame", nil, holder)
     ringFrame:SetAllPoints()
     ringFrame:SetFrameLevel(holder:GetFrameLevel() + 3)
+    for i = 1, 4 do
+        local t = ringFrame:CreateTexture(nil, "BORDER")
+        t:SetTexture(TEX .. "RingGlow")
+        ringParts[i] = t
+    end
     portraitRing = ringFrame:CreateTexture(nil, "OVERLAY")
     portraitRing:SetTexture(TEX .. "RingThin")
     portraitRing:SetSize(66, 66)
@@ -121,6 +138,14 @@ local function buildPortrait(inner)
     metBadge.label:SetJustifyV("MIDDLE")
     metBadge.label:SetText("MET")
     metBadge:SetColors(COL.met, 0.12, COL.met, 1)
+    metBadge:EnableMouse(true)
+    metBadge:SetScript("OnEnter", function(self)
+        local summary = ns.MetSummary and shownNPC and ns.MetSummary(shownNPC)
+        if summary then
+            C.ShowTooltip(self, "ANCHOR_BOTTOM", { { summary, 1, 1, 1, true } })
+        end
+    end)
+    metBadge:SetScript("OnLeave", function() C.HideTooltip() end)
     metBadge:SetWidth(math.floor(18 + metBadge.label:GetStringWidth() + 8))
     metBadge:Hide()
 
@@ -177,14 +202,18 @@ local function setPortrait(entry, unit, npcID)
         portrait:SetTexture(QUESTION_MARK)
         portrait:SetTexCoord(0.08, 0.92, 0.08, 0.92)
     end
+    expectedNPC = nil
     if not portraitModel then
         return
     end
     if not npcID then
         portraitModel:Hide()
+        portraitCover:Hide()
         return
     end
+    expectedNPC = npcID
     portraitModel:Show()
+    portraitCover:Show()
     if C.SetCreatureModel(portraitModel, npcID, unit) then
         portrait:SetTexCoord(0, 1, 0, 1)
         portrait:SetColorTexture(COL.inner[1], COL.inner[2], COL.inner[3], 1)
@@ -296,6 +325,8 @@ local function clearContent()
     for _, s in ipairs(sections) do s:Hide() end
     if relatedBlock then relatedBlock:Hide() end
     if agesHeader then agesHeader:Hide() end
+    if booksHeader then booksHeader:Hide() end
+    if booksBlock then booksBlock:Hide() end
 end
 
 local function layout(blocks)
@@ -310,13 +341,13 @@ local function layout(blocks)
     scroll:SetVerticalScroll(0)
 end
 
--- Year each game came out (FK = Warcraft III: Reforged, 2020); books have none.
-local GAME_YEAR = { WC1 = 1994, WC2 = 1995, BTDP = 1996, WC3 = 2002, TFT = 2003, FK = 2020 }
+-- Year each game came out; books and Forsaken Kingdom (release year not confirmed) show none.
+local GAME_YEAR = { WC1 = 1994, WC2 = 1995, BTDP = 1996, WC3 = 2002, TFT = 2003 }
 
 -- WoW icon per kind of role; C.SetIconTexture falls back to the question mark when missing.
 local ROLE_ICONS = {
     { "mention", "INV_Misc_Note_01" }, { "hero", "INV_Sword_27" }, { "playable", "INV_Sword_27" },
-    { "quest", "INV_Scroll_03" }, { "cutscene", "INV_Misc_Bell_01" },
+    { "quest", "INV_Scroll_03" }, { "cutscene", "INV_Misc_Map_01" },
 }
 
 local function roleIcon(app)
@@ -331,6 +362,9 @@ local function roleIcon(app)
     end
     return "INV_Misc_Map_01"
 end
+
+UI.GAME_YEAR = GAME_YEAR
+UI.RoleIcon = roleIcon
 
 -- The entry's appearances in release order (WC1 first, books last); ties keep data order.
 function UI.Timeline(entry)
@@ -384,6 +418,64 @@ local function fillSection(s, label, body, color)
     local c = color or COL.text
     s.body:SetTextColor(c[1], c[2], c[3])
     s:SetHeight(24 + s.body:GetStringHeight() + 2)
+end
+
+local function heading(label)
+    local h = newSection()
+    h.body:Hide()
+    h.label:SetText(label)
+    h:SetHeight(24)
+    return h
+end
+
+local BOOK_ROW_H = 20
+
+-- One block with a compact one-line row per book: icon, title and the role (cut off at the edge;
+-- hover for the full text).
+local function fillBooks(books)
+    if not booksBlock then
+        booksBlock = CreateFrame("Frame", nil, content)
+        booksBlock:SetWidth(CONTENT_W)
+    end
+    for _, r in ipairs(bookRows) do r:Hide() end
+    for i, app in ipairs(books) do
+        local r = bookRows[i]
+        if not r then
+            r = CreateFrame("Frame", nil, booksBlock)
+            r:SetSize(CONTENT_W, BOOK_ROW_H)
+            r:SetPoint("TOPLEFT", 0, -(i - 1) * BOOK_ROW_H)
+            r:EnableMouse(true)
+            r.icon = r:CreateTexture(nil, "ARTWORK")
+            r.icon:SetSize(14, 14)
+            r.icon:SetPoint("LEFT", 4, 0)
+            r.label = text(r, C.FONT_BODY, 11, COL.text)
+            r.label:SetPoint("LEFT", r.icon, "RIGHT", 6, 0)
+            r.label:SetPoint("RIGHT", -4, 0)
+            r.label:SetJustifyV("MIDDLE")
+            r.label:SetWordWrap(false)
+            r:SetScript("OnEnter", function(self)
+                if self.tip then
+                    C.ShowTooltip(self, "ANCHOR_TOP", self.tip)
+                end
+            end)
+            r:SetScript("OnLeave", function() C.HideTooltip() end)
+            bookRows[i] = r
+        end
+        C.SetIconTexture(r.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
+        local title = (app.campaign and app.campaign ~= "") and app.campaign or "Book"
+        local role = app.role or ""
+        r.label:SetText(HEX_TITLE .. title .. END .. (role ~= "" and ("  " .. HEX_MUTED .. role .. END) or ""))
+        r.tip = { { title, 1, 1, 1 } }
+        if role ~= "" then
+            r.tip[2] = { role, 0.8, 0.8, 0.8, true }
+        end
+        if app.missions and #app.missions > 0 then
+            r.tip[#r.tip + 1] = { (#app.missions == 1 and "Chapter: " or "Chapters: ") .. table.concat(app.missions, ", "), 0.6, 0.6, 0.6, true }
+        end
+        r:Show()
+    end
+    booksBlock:SetHeight(#books * BOOK_ROW_H)
+    return booksBlock
 end
 
 -------------------------------------------------------------------- init
@@ -508,9 +600,6 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
         ringColors[#ringColors + 1] = c
         badges[#badges + 1] = { ns.GAME_SHORT[g], c }
     end
-    if entry.confidence == "uncertain" then
-        badges[#badges + 1] = { "UNCERTAIN", COL.uncertain }
-    end
     local place = entry.zone or ""
     if entry.coords and entry.coords ~= "" then
         place = place .. " · " .. entry.coords
@@ -526,21 +615,6 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
 
     clearContent()
     local blocks = {}
-    local timeline = UI.Timeline(entry)
-    if #timeline > 0 then
-        if not agesHeader then
-            agesHeader = newSection()
-            agesHeader.body:Hide()
-            agesHeader.label:SetText("THROUGH THE AGES")
-            agesHeader:SetHeight(24)
-        end
-        blocks[#blocks + 1] = agesHeader
-    end
-    for i, app in ipairs(timeline) do
-        local b = gameBox(i)
-        fillGameBox(b, app)
-        blocks[#blocks + 1] = b
-    end
     local n = 0
     local function add(label, body, color)
         n = n + 1
@@ -548,11 +622,28 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
         fillSection(s, label, body, color)
         blocks[#blocks + 1] = s
     end
-    if entry.confidence == "uncertain" then
-        add("Why uncertain", entry.searched or "", COL.uncertain)
-    end
     if entry.story and entry.story ~= "" then
         add("Story", entry.story)
+    end
+    local games, books = {}, {}
+    for _, app in ipairs(UI.Timeline(entry)) do
+        local list = app.game == "BOOK" and books or games
+        list[#list + 1] = app
+    end
+    if #games > 0 then
+        agesHeader = agesHeader or heading("THROUGH THE AGES")
+        blocks[#blocks + 1] = agesHeader
+        for i, app in ipairs(games) do
+            local b = gameBox(i)
+            fillGameBox(b, app)
+            blocks[#blocks + 1] = b
+        end
+    end
+    if #books > 0 then
+        booksHeader = booksHeader or heading("IN THE BOOKS")
+        local block = fillBooks(books)
+        blocks[#blocks + 1] = booksHeader
+        blocks[#blocks + 1] = block
     end
     local related = ns.Related(npcID)
     if #related > 0 then

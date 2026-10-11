@@ -132,6 +132,22 @@ def circle_mask():
     return img, w, h
 
 
+def portrait_cover():
+    """128x128 square in the window's inner color (100d18) with a transparent circular hole.
+
+    Shown at 64x64 over the square 3D model: the hole has a 27 px radius there (54 px here), so the
+    model gets a true round crop. The ring sits on top and hides the hole's edge.
+    """
+    w = h = 128
+    img = Image.new("RGBA", (w * SS, h * SS), (16, 13, 24, 255))
+    a = Image.new("L", img.size, 255)
+    c = w * SS / 2
+    r = 54 * SS
+    ImageDraw.Draw(a).ellipse([c - r, c - r, c + r, c + r], fill=0)
+    img.putalpha(a)
+    return img, w, h
+
+
 def pill_glow():
     """256x64 soft glow for the nearby-alert pill. White, tinted in the addon, drawn with ADD blend.
 
@@ -227,7 +243,7 @@ def save_exact(img, name):
 
 if __name__ == "__main__":
     for name, fn in [("VineH.tga", vine_h), ("VineV.tga", vine_v), ("Corner.tga", corner), ("RingGlow.tga", ring_glow),
-                     ("RingThin.tga", ring_thin), ("CircleMask.tga", circle_mask), ("PillGlow.tga", pill_glow),
+                     ("RingThin.tga", ring_thin), ("CircleMask.tga", circle_mask), ("PortraitCover.tga", portrait_cover), ("PillGlow.tga", pill_glow),
                      ("ChevronDown.tga", chevron_down), ("ChevronRight.tga", chevron_right), ("Magnifier.tga", magnifier)]:
         img, w, h = fn()
         save(img, name, w, h)

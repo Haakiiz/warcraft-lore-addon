@@ -200,6 +200,7 @@ end
 -- Returns true when the model is already loaded; false when it may still load (OnModelLoaded
 -- follows) or the call failed.
 function C.SetCreatureModel(model, npcID, unit)
+    model.wclNPC = npcID       -- which NPC this model was asked for (UI checks it on OnModelLoaded)
     local ok = pcall(function()
         if model.ClearModel then model:ClearModel() end
         if unit and C.UnitExists(unit) and model.SetUnit then
@@ -357,7 +358,10 @@ end
 -- Sets a texture to an icon; falls back to `fallback` when the path is rejected or the
 -- client reports no texture afterwards.
 function C.SetIconTexture(texture, path, fallback)
-    local ok = pcall(texture.SetTexture, texture, path)
+    local ok, res = pcall(texture.SetTexture, texture, path)
+    if ok and res == false then
+        ok = false       -- the client reports a bad path through SetTexture's return value
+    end
     if ok and texture.GetTexture then
         local okGet, current = pcall(texture.GetTexture, texture)
         if okGet and current == nil then
