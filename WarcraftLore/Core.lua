@@ -230,7 +230,7 @@ function ns.MetSummary(npcID)
     if first then
         local ok, d = pcall(date, "%d %b %Y", first)
         if ok and type(d) == "string" then
-            text = text .. " 9483 first on " .. d
+            text = text .. " \194\183 first on " .. d
             if type(by) == "string" and by ~= "" then
                 local name, realm = by:match("^(.-)%-(.+)$")
                 local mine = C.GetRealmName()
