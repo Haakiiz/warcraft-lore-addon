@@ -45,6 +45,7 @@ local POPUP_HEAD = {
 local state = { games = {}, zone = nil, campaign = nil, status = 1, query = "" }
 
 local frame, searchEdit, searchHint
+local journalBtn
 local zoneBtn, hereBtn, campaignBtn, statusBtn, clearBtn, bookToggle
 local progress, countText, emptyText, emptyHint
 local scroll, content, track, thumb
@@ -690,7 +691,8 @@ local function updateProgress(overall)
     progress.count:SetText(tostring(overall.met))
     progress.of:SetText("of " .. overall.total)
     local used = progress.label:GetStringWidth() + 10 + progress.count:GetStringWidth() + 10 + progress.of:GetStringWidth() + 10
-    local barW = math.max(10, math.floor(CONTENT_W - used))
+    local reserved = journalBtn and (journalBtn:GetWidth() or 0) + 10 or 0   -- room for the Journal button
+    local barW = math.max(10, math.floor(CONTENT_W - used - reserved))
     progress.track:ClearAllPoints()
     progress.track:SetPoint("TOPLEFT", progress, "TOPLEFT", math.ceil(used), -10)
     progress.track:SetSize(barW, 4)
@@ -847,6 +849,26 @@ local function buildProgress(inner)
     progress.fill = solid(progress, "ARTWORK", COL.met)
     progress.fill:SetPoint("TOPLEFT", progress.track, "TOPLEFT")
     progress.fill:SetPoint("BOTTOMLEFT", progress.track, "BOTTOMLEFT")
+
+    -- Small text button at the right end: opens the Lore Journal (achievements).
+    local jb = raise(CreateFrame("Button", nil, progress))
+    jb:SetHeight(14)
+    C.RegisterClicks(jb)
+    local jl = text(jb, C.FONT_BODY, 11, COL.violet)
+    jl:SetPoint("LEFT", 0, 0)
+    jl:SetJustifyV("MIDDLE")
+    jl:SetText("Journal")
+    jb:SetWidth(math.ceil(jl:GetStringWidth()))
+    jb:SetPoint("BOTTOMRIGHT", progress, "BOTTOMRIGHT", 0, 4)
+    jb:SetScript("OnEnter", function() jl:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
+    jb:SetScript("OnLeave", function() jl:SetTextColor(COL.violet[1], COL.violet[2], COL.violet[3]) end)
+    jb:SetScript("OnClick", function()
+        closePopup()
+        if ns.Journal then
+            ns.Journal.Toggle()
+        end
+    end)
+    journalBtn = jb
 end
 
 -- One chip per game: code, met/total and a thin bar. Clicking toggles the game filter.

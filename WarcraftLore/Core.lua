@@ -697,6 +697,7 @@ local function cmdHelp()
     chat("/wcl minimap – show or hide the minimap button (now: " .. ((WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and "hidden" or "shown") .. ")")
     chat("/wcl why – explain why your target is or is not recognised")
     chat("/wcl test – show a test alert (small pill, chat line, sound)")
+    chat("/wcl journal – open the Lore Journal (your achievements)")
     chat("/wcl reset – move the windows back to the center")
     chat("/wcl options – open the Warcraft Lore settings")
     chat("/wcl export – copy your met list as text")
@@ -712,6 +713,9 @@ function ns.ResetWindows()
     if ns.Browser then
         ns.Browser.ResetPosition()
     end
+    if ns.Journal then
+        ns.Journal.ResetPosition()
+    end
     chat("The windows are back in the center.")
 end
 
@@ -719,6 +723,13 @@ local COMMANDS = {
     [""] = cmdShow, id = cmdID, list = cmdList, browse = cmdList, minimap = cmdMinimap,
     auto = cmdAuto, alert = cmdAlert, test = cmdTest, ["alert test"] = cmdTest, why = cmdWhy,
     debug = cmdDebug,
+    journal = function()
+        if ns.Journal then
+            ns.Journal.Toggle()
+        else
+            chat("The Lore Journal is not available in this client.")
+        end
+    end,
     options = function()
         local hasPanel, opened = false, false
         if ns.Options then
