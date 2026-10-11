@@ -1,5 +1,9 @@
 ﻿# Warcraft Lore – changelog
 
+## v0.6.0 (in progress)
+
+- **Export and import:** `/wcl export` shows your met list as a short text you can copy, and `/wcl import` merges such a text into this account. The earliest first meeting and the higher count are kept, and nothing is ever deleted.
+
 ## v0.5.0
 
 - **Live 3D portraits:** the lore window shows the veteran as they look in WoW today, framed inside the
