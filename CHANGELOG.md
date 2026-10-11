@@ -1,4 +1,8 @@
-﻿# Warcraft Lore – changelog
+# Warcraft Lore – changelog
+
+## v0.6.1
+
+- Lore fixes: corrected roles and stories for 15 of the new veterans and removed 3 whose link to the books could not be confirmed (130 confirmed veterans).
 
 ## v0.6.0
 
