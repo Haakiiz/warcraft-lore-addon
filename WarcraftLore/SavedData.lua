@@ -35,7 +35,7 @@ local ACCOUNT_MIGRATIONS = {
 -- "Name-Realm" of the current character (nil when the client does not tell).
 local function characterName()
     local ok, name = pcall(function()
-        local n, realm = UnitName("player"), GetRealmName()
+        local n, realm = C.UnitName("player"), C.GetRealmName()
         if n and realm and realm ~= "" then
             return n .. "-" .. (realm:gsub("%s", ""))
         end

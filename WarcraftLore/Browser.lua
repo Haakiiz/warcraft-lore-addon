@@ -479,12 +479,8 @@ local function showRowTip(r)
     end
     local entry = it.entry
     local nc, mc = COL.title, COL.muted
-    local name = it.name
-    if entry.confidence == "uncertain" then
-        name = name .. " " .. S.HEX_AMBER .. "(uncertain)" .. END
-    end
     local lines = {
-        { name, nc[1], nc[2], nc[3] },
+        { it.name, nc[1], nc[2], nc[3] },
         { entry.zone or "", mc[1], mc[2], mc[3] },
     }
     for _, code in ipairs(it.group.codes) do          -- one game per line, in its color
@@ -492,7 +488,7 @@ local function showRowTip(r)
         lines[#lines + 1] = { ns.GAME_LONG[code] or code, gr, gg, gb }
     end
     if ns.GroupMet(it.group) then
-        lines[#lines + 1] = { "Met", COL.met[1], COL.met[2], COL.met[3] }
+        lines[#lines + 1] = { ns.MetSummary(it.group.ids[1]) or "Met", COL.met[1], COL.met[2], COL.met[3] }
     else
         lines[#lines + 1] = { "Not met yet", mc[1], mc[2], mc[3] }
     end
@@ -549,10 +545,6 @@ local function acquireRow(i)
     r.nameText:SetPoint("LEFT", COL_MARK, 0)
     r.nameText:SetJustifyV("MIDDLE")
     r.nameText:SetWordWrap(false)
-    r.tagText = text(r, C.FONT_BODY, 10, COL.amber)
-    r.tagText:SetJustifyV("MIDDLE")
-    r.tagText:SetText("uncertain")
-    r.tagText:Hide()
     r.zoneText = text(r, C.FONT_BODY, 11, COL.muted)
     r.zoneText:SetPoint("LEFT", COL_MARK + COL_NAME, 0)
     r.zoneText:SetWidth(ZONE_W - 4)
@@ -597,21 +589,10 @@ local function fillRow(r, it)
         r.metMark:Hide()
         r.hollow:Show()
     end
-    local uncertain = it.entry.confidence == "uncertain"
     r.nameText:SetWidth(0)
     r.nameText:SetText(it.name)
     local limit = COL_NAME - 8
-    if uncertain then
-        r.tagText:Show()
-        limit = limit - r.tagText:GetStringWidth() - 6
-    else
-        r.tagText:Hide()
-    end
     r.nameText:SetWidth(math.max(20, math.min(math.ceil(r.nameText:GetStringWidth()) + 1, limit)))
-    if uncertain then
-        r.tagText:ClearAllPoints()
-        r.tagText:SetPoint("LEFT", r.nameText, "RIGHT", 6, 0)
-    end
     r.zoneText:SetText(it.entry.zone or "")
     r.gamesText:SetText(it.label)
     applyRowState(r)

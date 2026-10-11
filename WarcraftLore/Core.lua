@@ -207,6 +207,43 @@ function ns.MeetCount(npcID)
     return e and tonumber(e.count) or 0
 end
 
+-- Short player-facing line for a met veteran ("Met 4 times · first on 3 Oct 2026 by Arthas"),
+-- summed over the merged veteran group; nil when never met.
+function ns.MetSummary(npcID)
+    local group = npcID and ns.VeteranOf(npcID)
+    local ids = group and group.ids or { npcID }
+    local count, first, by = 0, nil, nil
+    for _, id in ipairs(ids) do
+        local e = metEntry(id)
+        if e then
+            count = count + math.max(1, tonumber(e.count) or 1)
+            local t = tonumber(e.first)
+            if t and (not first or t < first) then
+                first, by = t, e.by
+            end
+        end
+    end
+    if count == 0 then
+        return nil
+    end
+    local text = count == 1 and "Met once" or ("Met %d times"):format(count)
+    if first then
+        local ok, d = pcall(date, "%d %b %Y", first)
+        if ok and type(d) == "string" then
+            text = text .. " 9483 first on " .. d
+            if type(by) == "string" and by ~= "" then
+                local name, realm = by:match("^(.-)%-(.+)$")
+                local mine = C.GetRealmName()
+                if name and mine and realm == (mine:gsub("%s", "")) then
+                    by = name
+                end
+                text = text .. " by " .. by
+            end
+        end
+    end
+    return text
+end
+
 -- A merged veteran is met when any of its NPC IDs is met.
 function ns.GroupMet(g)
     for _, id in ipairs(g.ids) do
