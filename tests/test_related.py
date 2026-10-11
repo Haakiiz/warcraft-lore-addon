@@ -54,8 +54,9 @@ def main():
     jaina = related_names(lua, 4968)
     results.append(check("Jaina: incoming only", {"Thrall", "Rexxar", "Pained"} == set(jaina), jaina))
 
-    results.append(check("Krasus <-> Korialstrasz", related_names(lua, 232624) == ["Korialstrasz"]))
-    results.append(check("no relations: empty list", related_names(lua, 15460) == []))  # Grunt Maug
+    katrana = related_names(lua, 1749)
+    results.append(check("Katrana: incoming only", set(katrana) == {"Anduin Wrynn", "Highlord Bolvar Fordragon"}, katrana))
+    results.append(check("no relations: empty list", related_names(lua, 2257) == []))  # Mug'thol
     results.append(check("unknown ID: empty list", related_names(lua, 999999) == []))
 
     print(f"\n{sum(results)}/{len(results)} passed")

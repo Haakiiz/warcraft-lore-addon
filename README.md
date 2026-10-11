@@ -12,7 +12,7 @@ What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
 - **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a round portrait that glows in the game's color. It shows the games, campaigns, missions, the NPC's role there, a short story of what happened between the RTS games and WoW, related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 112" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, per character, which veterans you have met (targeted or moused over), shows "Veterans met 13 of 100" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. The lore window shows a green MET badge for veterans you have met.
 - **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. Click the pill for the story, right-click to dismiss, shift-drag to move.
 - **Minimap button:** left-click opens the Veterans list, right-click opens the story of your target, drag moves it around the minimap. Hover it to see your met count.
 
@@ -113,7 +113,6 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Baine Bloodhoof | 2993 | Mulgore | 47.4, 60.2 | TFT, BOOK |
 | Narm Skychaser | 3066 | Mulgore | 48.4, 59.2 | BOOK |
 | Eitrigg | 3144 | Orgrimmar | 34.2, 39.0 | BOOK |
-| Grunt Maug | 15460 | Orgrimmar | 31.0, 65.2 | TFT |
 | High Overlord Saurfang | 14720 | Orgrimmar | 50.4, 76.0 | BOOK |
 | Kor'jus | 3329 | Orgrimmar | 49.0, 54.0 | BOOK |
 | Nazgrel | 3230 | Orgrimmar | 32.4, 36.0 | TFT, BOOK |
@@ -142,8 +141,6 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Osric Strang | 1323 | Stormwind City | 74.2, 47.4 | BOOK |
 | Renzik "The Shiv" | 6946 | Stormwind City | 75.8, 60.2 | BOOK |
 | Gazlowe | 3391 | The Barrens | 62.6, 36.2 | TFT, BOOK |
-| Innkeeper Wiley | 6791 | The Barrens | 62.0, 39.4 | BOOK |
-| Jazzik | 3498 | The Barrens | 61.8, 38.8 | BOOK |
 | Jorn Skyseer | 3387 | The Barrens | 44.8, 59.0 | BOOK |
 | Wharfmaster Dizzywig | 3453 | The Barrens | 63.2, 38.4 | BOOK |
 | Daisy | 4507 | Thousand Needles | 78.8, 75.4 | BOOK |
@@ -165,11 +162,6 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Parqual Fintallas | 4488 | Undercity | 57.4, 65.4 | BOOK |
 | Sharlindra | 2227 | Undercity | 57.4, 93.4 | TFT, BOOK |
 | Varimathras | 2425 | Undercity | 56.4, 92.4 | TFT, FK, BOOK |
-| Gregory | 231500 | Western Plaguelands | 69.4, 79.6 | WC3 |
-| Gregory | 232932 | Western Plaguelands | 39.4, 67.2 | WC3 |
-| Uther | 232920 | Western Plaguelands | 47.0, 69.4 | WC2, WC3 |
-| Korialstrasz | 233382 | Wetlands | 74.2, 70.0 | BOOK |
-| Krasus | 232624 | Wetlands | 74.4, 70.0 | BOOK |
 
 Some NPCs in the Western Plaguelands and the Wetlands use Season of Discovery NPC IDs and may not exist in Forever.
 

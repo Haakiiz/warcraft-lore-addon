@@ -24,6 +24,15 @@ REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
 ITEM_FIELDS = {"id", "name", "note"}
 
+# Warcraft Lore ships for WoW Forever (classic-era). Higher IDs are Season of Discovery or later content.
+MAX_NPC_ID = 200000
+# Research notes and dev wording must never reach the player. Checked in name, role, story and campaign.
+BANNED_PHRASES = [
+    "game files", "removed from the game", "Classic", "ADP", "wiki", "listed", "pg.",
+    "Season of Discovery", "Major character", "Minor character", "Supporting character",
+    "Mentioned in the book", "may not exist",
+]
+
 
 class LuaError(Exception):
     pass
@@ -178,6 +187,14 @@ def load_npcs(path):
 
 
 # --------------------------------------------------------------------------- validation
+def banned_phrase_in(text):
+    """Return the first banned phrase found in text (case-insensitive, whole words), or None."""
+    for phrase in BANNED_PHRASES:
+        if re.search(r"(?<![A-Za-z])" + re.escape(phrase) + r"(?![A-Za-z])", text, re.IGNORECASE):
+            return phrase
+    return None
+
+
 def check_entries(npcs):
     errors, warnings = [], []
     if npcs.is_list and npcs.data:
@@ -191,10 +208,24 @@ def check_entries(npcs):
 
         if not isinstance(npc_id, int) or isinstance(npc_id, bool) or npc_id <= 0:
             err("the NPC ID must be a positive integer")
+        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID:
+            err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
+                "and cannot be met in WoW Forever. Remove the entry")
         if not isinstance(entry, LuaTable) or entry.is_list:
             err("the entry must be a table with named fields")
             continue
         e = entry.data
+
+        texts = [("name", e.get("name")), ("story", e.get("story"))]
+        for n, a in enumerate(getattr(e.get("appearances"), "data", None) or [], 1):
+            if isinstance(a, LuaTable) and not a.is_list:
+                texts += [(f"appearances[{n}].role", a.data.get("role")), (f"appearances[{n}].campaign", a.data.get("campaign"))]
+        for field, text in texts:
+            if isinstance(text, str):
+                bad = banned_phrase_in(text)
+                if bad:
+                    err(f"{field} contains the banned phrase \"{bad}\" (research or dev wording): "
+                        "rewrite it as plain player-facing text")
         for f in sorted(set(e) - ENTRY_FIELDS):
             err(f"unknown field '{f}' (typo?)")
         for f in sorted(REQUIRED - set(e)):
