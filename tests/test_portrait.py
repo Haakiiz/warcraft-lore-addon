@@ -30,7 +30,10 @@ local function newObj(kind)
         GetName = function() return nil end,
         GetStringWidth = function() return 10 end,
         GetStringHeight = function() return 12 end,
-        GetHeight = function() return 10 end,
+        GetHeight = function(self) return self.h or 10 end,
+        SetHeight = function(self, h) self.h = h end,
+        SetPoint = function(self, ...) self.pt = { ... } end,
+        ClearAllPoints = function(self) self.pt = nil end,
         GetWidth = function() return 10 end,
         GetParent = function(self) return self.parent end,
         GetVerticalScroll = function() return 0 end,
@@ -42,11 +45,19 @@ local function newObj(kind)
         SetText = function(self, t) self.text = t end,
     }
     return setmetatable(o, { __index = function(_, k)
-        return methods[k] or function() end
+        if methods[k] then return methods[k] end
+        if type(k) == "string" and k:match("^%u") then return function() end end  -- unknown API call
     end })
 end
 models = {}
 textures = {}
+frames = {}
+tipLines = {}
+GameTooltip = {
+    SetOwner = function() end, ClearLines = function() tipLines = {} end, ClearAllPoints = function() end,
+    SetPoint = function() end, SetMinimumWidth = function() end, Show = function() end, Hide = function() end,
+    AddLine = function(_, t) tipLines[#tipLines + 1] = t end,
+}
 modelBehavior = { create = true, setCreatureError = false, fileID = 0 }
 CreateFrame = function(kind, name, parent)
     if kind == "PlayerModel" then
@@ -62,6 +73,7 @@ CreateFrame = function(kind, name, parent)
     end
     local f = newObj(kind)
     f.parent = parent
+    frames[#frames + 1] = f
     return f
 end
 """
@@ -154,6 +166,105 @@ def main():
     assert lua4.globals().models[1].shown is False
     print("portrait ok")
 
+LAYOUT_LUA = """
+function()
+    -- blocks laid out in the scroll content, top to bottom, as short descriptions
+    local out = {}
+    for _, f in ipairs(frames) do
+        local pt = f.pt
+        if f.shown and pt and type(pt[2]) == "table" and pt[2].parent and pt[2].parent.kind == "ScrollFrame" then
+            local desc
+            if f.label and f.label.text then
+                desc = f.label.text
+            elseif f.title and f.title.text then
+                desc = "game:" .. f.title.text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):match("^%s*(.-)%s*$")
+            else
+                desc = "block"
+            end
+            out[#out + 1] = { y = -pt[5], desc = desc, frame = f }
+        end
+    end
+    table.sort(out, function(a, b) return a.y < b.y end)
+    return out
+end
+"""
+
+
+def layout(lua):
+    items = lua.eval(LAYOUT_LUA)()
+    return [(items[i + 1]["desc"], items[i + 1]["frame"]) for i in range(len(items))]
+
+
+def test_layout():
+    lua = load()
+    g = lua.globals()
+    g.modelBehavior.fileID = 123
+    ents = lua.eval(
+        """function()
+            local role = "Quest giver in the second campaign, later seen advising the council of the Horde about a very long and winding road"
+            local e = { name = "Thrall", zone = "Orgrimmar", story = "A story.", sources = { "wowpedia" },
+                appearances = {
+                    { game = "WC3", role = "Hero (playable)", campaign = "Chapter One", missions = { "M1", "M2" } },
+                    { game = "BOOK", role = role, campaign = "Book A", missions = { "Ch 1" } },
+                    { game = "WC1", role = "Mentioned", campaign = "Orcs" },
+                    { game = "BOOK", role = "Protagonist", campaign = "Book B" },
+                    { game = "BOOK", role = "Cameo", campaign = "Book C" },
+                } }
+            ns.Related = function() return {} end
+            ns.UI.ShowEntry(3, e, nil, nil)
+        end"""
+    )
+    ents()
+    blocks = layout(lua)
+    descs = [d for d, _ in blocks]
+    assert descs[0] == "STORY", descs
+    assert descs[1] == "THROUGH THE AGES", descs
+    # games in release order (WC1 1994 before WC3 2002), then the books header and block
+    assert descs[2].startswith("game:") and descs[3].startswith("game:"), descs
+    assert len(descs) == 8, descs
+    assert descs[4] == "IN THE BOOKS" and descs[5] == "block", descs
+    assert descs[6:] == ["ITEMS IN WOW", "SOURCES"], descs
+    games = [f for d, f in blocks if d.startswith("game:")]
+    t0, t1 = games[0].title.text, games[1].title.text
+    assert "1994" in t0 and "2002" in t1, (t0, t1)
+    # the books block holds exactly the three books as one-line rows
+    books = blocks[5][1]
+    assert books.h == 3 * 20, books.h
+    rows = [f for f in g.frames.values() if f.tip and lua.eval("rawequal")(f.parent, books)]
+    assert len(rows) == 3
+    by_title = {}
+    for r in rows:
+        by_title[r.tip[1][1]] = r
+        assert r.h == 20, "book rows are one line high"
+    assert set(by_title) == {"Book A", "Book B", "Book C"}
+    a = by_title["Book A"]
+    assert "very long and winding road" in a.tip[2][1], "tooltip holds the full role"
+    assert "winding" in a.label.text, "row text carries the role (cut off by the client)"
+    assert a.tip[3][1] == "Chapter: Ch 1"
+    a.scripts["OnEnter"](a)
+    assert list(g.tipLines.values())[0] == "Book A" and "winding road" in list(g.tipLines.values())[1]
+
+    # a books-only entry has no THROUGH THE AGES header; the cover is shown with the model
+    lua.eval(
+        """function()
+            ns.UI.ShowEntry(5, { name = "X", appearances = { { game = "BOOK", campaign = "Only", role = "Cameo" } } })
+        end"""
+    )()
+    descs = [d for d, _ in layout(lua)]
+    assert "THROUGH THE AGES" not in descs and "IN THE BOOKS" in descs, descs
+    assert descs[0] == "IN THE BOOKS", descs
+    cover = next(t for t in g.textures.values() if t.path and str(t.path).endswith("PortraitCover"))
+    assert cover.shown, "cover is shown while the model is shown"
+    # a message hides the model and the cover
+    lua.eval("function() ns.UI.ShowMessage('hi') end")()
+    assert not cover.shown and not g.models[1].shown
+    # an NPC without a PlayerModel never shows the cover
+    lua2 = load_without_model()
+    lua2.eval("function() ns.UI.ShowEntry(3, { name = 'T', appearances = {} }) end")()
+    cover2 = next(t for t in lua2.globals().textures.values() if t.path and str(t.path).endswith("PortraitCover"))
+    assert not cover2.shown, "2D fallback keeps the cover hidden"
+    print("layout ok")
+
 
 def load_without_model():
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
@@ -166,3 +277,4 @@ def load_without_model():
 
 
 main()
+test_layout()
