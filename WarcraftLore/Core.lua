@@ -552,6 +552,7 @@ local ZONE_MAPS = {
     ["Duskwood"] = { 1431, 47 },
     ["Loch Modan"] = { 1432, 48 },
     ["Thousand Needles"] = { 1441, 64 },
+    ["Ashenvale"] = { 1440, 63 },
     ["Tanaris"] = { 1446, 71 },
     ["Winterspring"] = { 1452, 83 },
     ["Moonglade"] = { 1450, 80 },
