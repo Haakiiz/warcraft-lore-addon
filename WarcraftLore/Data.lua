@@ -3124,54 +3124,6 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Arathi Highlands
-    [2607] = {
-        name = "Prince Galen Trollbane",
-        zone = "Arathi Highlands",
-        coords = "26.2, 58.0",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Is slain by the Forsaken, who then claim the sword Trol'kalar (chapter 29)",
-            },
-        },
-        story = "Galen Trollbane was the only son of King Thoras Trollbane and led the defenders of Stromgarde, a human kingdom in the Arathi Highlands. "
-             .. "In World of Warcraft he guards the last sigil that opens his family's tomb in Stromgarde Keep, and Horde adventurers kill him there to take the sword Trol'kalar. "
-             .. "In the book Before the Storm (chapter 29), the Forsaken slay him and claim the sword.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Galen_Trollbane",
-            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
-            "https://www.wowhead.com/classic/npc=2607",
-        },
-        confidence = "confirmed",
-    },
-
-    [9501] = {
-        name = "Innkeeper Adegwa",
-        zone = "Arathi Highlands",
-        coords = "73.8, 32.4",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "War Crimes",
-                missions = {},
-                role = "Tells Shokia during the trial of Garrosh Hellscream that a letter is waiting for her",
-            },
-        },
-        story = "Innkeeper Adegwa is a tauren innkeeper in Hammerfall, the Horde town in the Arathi Highlands. "
-             .. "He is affiliated with Orgrimmar and the United tauren tribes. "
-             .. "In the book War Crimes, during the trial of Garrosh Hellscream, he tells Shokia that a letter is waiting for her.",
-        items = {},
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Innkeeper_Adegwa",
-            "https://warcraft.wiki.gg/wiki/War_Crimes",
-            "https://www.wowhead.com/classic/npc=9501",
-        },
-        confidence = "confirmed",
-    },
-
 
     -- ===================================================================== Eastern Plaguelands
     [1855] = {
@@ -3220,7 +3172,7 @@ ns.NPCS = {
             },
         },
         story = "Aurora Skycaller is a high elf priestess who helped Alliance adventurers recreate the Crystal of Zin-Malor at Northpass Tower. "
-             .. "When the tower became a battlefield she moved to the area below Quel'Lithien Lodge, where she gives quests in the Eastern Plaguelands. "
+             .. "When the tower became a battlefield she moved just outside Northpass Tower, where she still gives quests in the Eastern Plaguelands. "
              .. "In the short story In the Shadow of the Sun she and Renthar Hawkspear reject the Regent Lord's offer of supplies.",
         items = {
         },
@@ -3307,13 +3259,13 @@ ns.NPCS = {
                 game = "FK",
                 campaign = "Forsaken Kingdom (Undead)",
                 missions = { "A Scarlet Flame", "War of the Damned" },
-                role = "Joins Garek Bandarion and Dark Ranger Anya to defend Brill, then helps them bring down Naxxramas's central crystal to save the Undercity",
+                role = "Helps Garek Bandarion and Dark Ranger Anya take Dawn's Watch from the Crushridge clan, then destroys the central crystal of Naxxramas with them",
             },
         },
-        story = "Leonid Barthalomew the Revered is an undead member of the Argent Dawn who was raised as a mindless thrall of the Scourge during the Third War before Sylvanas Windrunner freed him. "
+        story = "Leonid Barthalomew the Revered is an undead member of the Argent Dawn who was raised as a mindless thrall of the Scourge before Sylvanas Windrunner freed him. "
              .. "In World of Warcraft he stands at Light's Hope Chapel in the Eastern Plaguelands and helps adventurers deal with Ras Frostwhisper. "
              .. "Later he tricks Tinkee Steamboil into sending the adventurers back to him with frozen black dragon eggs, then has them deliver the eggs to Betina Bigglezink. "
-             .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he fights alongside Garek Bandarion and Dark Ranger Anya to save the Undercity.",
+             .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he helps Garek Bandarion and Dark Ranger Anya destroy the central crystal of Naxxramas.",
         items = {
         },
         sources = {
@@ -3371,13 +3323,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Shadows Rising",
                 missions = {},
-                role = "Sent by Sylvanas to kill the loa Bwonsamdi, a failed gambit after which he returns to Marris Stead",
+                role = "Sent by Sylvanas to kill the loa Bwonsamdi, fails, and returns to the Marris Stead to await orders",
             },
             {
                 game = "BOOK",
                 campaign = "Dark Mirror",
                 missions = {},
-                role = "Undergoes a ritual with the Val'kyr that transforms him at Sylvanas's command, sacrificing his cousin Stephon Marris",
+                role = "Agrees to a ritual Sylvanas calls him to, in which the Val'kyr sacrifice his cousin Stephon Marris to make him stronger",
             },
             {
                 game = "BOOK",
@@ -3475,7 +3427,7 @@ ns.NPCS = {
                 role = "Refuses to let Hamuul Runetotem and Elerethe Renferal meet in Moonglade, but allows a second meeting there if the first goes well",
             },
         },
-        story = "Keeper Remulos is one of the sons of Cenarius and a keeper of the grove who maintains Moonglade, the sacred center of all druidic studies. "
+        story = "Keeper Remulos is a keeper of the grove and one of the sons of Cenarius. "
              .. "A few years after the Third War, Moonglade was opened to all druid races and Keeper Remulos became its new guardian. "
              .. "In the novel Stormrage, Xavius uses Remulos as a pawn to lure Malfurion Stormrage into a trap, and Remulos is defeated and cleansed of his corruption. "
              .. "At the end of the novel he is one of many who witness the marriage of Tyrande and Malfurion. "
@@ -3557,7 +3509,7 @@ ns.NPCS = {
         },
         story = "Ironpatch is an orc member of the Bloodsail Buccaneers, in charge of the guns and cannons aboard The Crimson Veil off the southern coast of Stranglethorn Vale. "
              .. "He is the captain of the Killmonger. "
-             .. "When an adventurer infiltrates the Bloodsails, he tells them to use the cannons on the Venture Company goblins drilling for oil to the north. "
+             .. "Killing him earns reputation with Booty Bay and costs reputation with the Bloodsail Buccaneers. "
              .. "In the book Traveler: The Spiral Path he attacks the Sea King of the Blackwater Raiders and executes its captain, Adashe Flintwill.",
         items = {},
         sources = {
@@ -3603,12 +3555,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "Despondent green dragon who is reluctant to help Tyrande and Broll, but later helps them reach the heart of the Emerald Dream",
+                role = "Refuses at first to help for fear of being corrupted again, then carries Tyrande and Broll to Bough Shadow and later sacrifices himself so Ysera can escape",
             },
         },
         story = "Eranikus, former consort of Ysera the Dreamer, was sent to guard the ruins of Atal'Hakkar and prevent Hakkar's emergence. "
              .. "Once inside the temple he and his retinue were corrupted, and he became a shade pulled between the Emerald Dream and the physical world. "
-             .. "In the novel Stormrage he is despondent about the growing corruption and reluctant to help, but he later helps Tyrande and Broll reach the heart of the Emerald Dream, and he dies in the heroes' defense. "
+             .. "In the novel Stormrage he is despondent about the growing corruption and reluctant to help, but he later carries Tyrande and Broll to Bough Shadow, and he sacrifices himself so that Ysera can escape. "
              .. "In World of Warcraft the Shade of Eranikus is an elite boss in the Temple of Atal'Hakkar, and you must defeat Jammal'an the Prophet before you can fight him.",
         items = {},
         sources = {
@@ -3633,7 +3585,7 @@ ns.NPCS = {
             {
                 game = "TFT",
                 campaign = "Terror of the Tides (Night Elf)",
-                missions = { "Unfinished Business", "Balancing the Scales", "Malfurion's Vision", "Shards of the Alliance", "The Ruins of Dalaran", "The Brothers Stormrage" },
+                missions = { "Balancing the Scales", "The Ruins of Dalaran", "The Brothers Stormrage" },
                 role = "Archdruid hero who joins Tyrande and Maiev against Illidan and his naga",
             },
         },
@@ -3696,12 +3648,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Traveler: The Spiral Path",
                 missions = {},
-                role = "Takes Aramar Thorne and his companions out of Gadgetzan in her caravan, hides the children inside, and suggests Winifred's home as a safe house",
+                role = "Smuggles Aramar Thorne's companions into Gadgetzan hidden in her caravan during a staged picnic, and suggests Winifred's home as a safe house",
             },
         },
-        story = "In World of Warcraft, Sprinkle is a Gadgetzan chef whose secret ingredient is the Violet Tragan mushroom from Valorwind Lake. "
+        story = "In World of Warcraft, Sprinkle is a Gadgetzan chef whose secret ingredient is the Violet Tragan mushroom from the Hinterlands. "
              .. "She has adventurers gather the mushroom, turns it into a powder, and hands it back to them with a message that Marin owes her a favor. "
-             .. "In Traveler: The Spiral Path, she gets Gazlowe, Aramar Thorne and his companions out of the city in her caravan on a picnic. "
+             .. "In Traveler: The Spiral Path, she meets Gazlowe and Aramar Thorne on a staged picnic and hides the children in her caravan to bring them into Gadgetzan unseen. "
              .. "Later she tells her husband that the Crustacean is where the travelers have booked passage, and he passes this on to Malus.",
         items = {
         },
@@ -3725,7 +3677,7 @@ ns.NPCS = {
                 role = "Lets Aramar Thorne and his companions sleep in his tower, and forges a harpoon with Aram for Makasa Flintwill",
             },
         },
-        story = "In World of Warcraft, Trenton Lighthammer is a high elf blacksmith at Sandsorrow Watch in Tanaris, searching for the sword Sul'thraze. "
+        story = "In World of Warcraft, Trenton Lighthammer is a night elf blacksmith of the Mithril Order near Gadgetzan's southern gate, where he trains armorsmiths and asks adventurers for troll temper from Zul'Farrak. "
              .. "In Traveler: The Spiral Path, he lets Aramar Thorne and his companions sleep in his tower. "
              .. "Aram and Trenton forge a new harpoon for Makasa, and Trenton gives Aram a new iron chain for his compass.",
         items = {
@@ -3772,12 +3724,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Thrall: Twilight of the Aspects",
                 missions = {},
-                role = "Escorts Thrall to Desolace to confront the Life-Binder, and later takes him back to Aggra's side",
+                role = "Takes Thrall to meet the other dragonflights and carries him in the battle to retake Wyrmrest Temple, then returns him to the Maelstrom",
             },
         },
         story = "In World of Warcraft, Tick is a bronze drake that guards the entrance to the Caverns of Time in eastern Tanaris, together with Chronalis. "
-             .. "In Thrall: Twilight of the Aspects, Thrall and Tick set out to confront the bereaved Life-Binder in Desolace. "
-             .. "Tick later takes Thrall back to Aggra's side, where the two orcs overcome their past differences.",
+             .. "In Thrall: Twilight of the Aspects, she takes Thrall to meet the other dragonflights. "
+             .. "She later carries him in the battle to retake Wyrmrest Temple from the Twilight's Hammer and returns him to the Maelstrom.",
         items = {
         },
         sources = {
@@ -3834,7 +3786,7 @@ ns.NPCS = {
                 role = "Holds the qiraji back at the gates of Ahn'Qiraj with Caelestrasz and Arygos until the barrier is raised",
             },
         },
-        story = "In World of Warcraft, Merithra is an elite in the Temple of Ahn'Qiraj. "
+        story = "In World of Warcraft, Merithra waits in the Temple of Ahn'Qiraj, where adventurers bring her Imperial Qiraji Regalia and Elementium Ore. "
              .. "In the short story The War of the Shifting Sands, Anachronos calls her, the child of Ysera, to join the fight against the qiraji. "
              .. "She and the other dragon progeny hold the gates until the magical barrier is raised.",
         items = {
@@ -3859,7 +3811,7 @@ ns.NPCS = {
                 role = "Holds the qiraji back at the gates of Ahn'Qiraj with Merithra and Arygos until they are overwhelmed",
             },
         },
-        story = "In World of Warcraft, Caelestrasz is a quest giver in the Temple of Ahn'Qiraj. "
+        story = "In World of Warcraft, Caelestrasz waits in the Temple of Ahn'Qiraj and gives the quest The Savior of Kalimdor. "
              .. "In the short story The War of the Shifting Sands, Anachronos calls on the red dragonflight's progeny, Caelestrasz, to fight the qiraji. "
              .. "He, Merithra and Arygos hold the gates until the barrier is raised, and are overwhelmed when the qiraji surge forth.",
         items = {
@@ -3887,12 +3839,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Thrall: Twilight of the Aspects",
                 missions = {},
-                role = "Grants Thrall an audience at the Nexus, alongside Kalecgos",
+                role = "Orders his guards to kill Thrall when he arrives at the Nexus, until Kalecgos intervenes",
             },
         },
         story = "In World of Warcraft, Arygos, in the form of a gnome, offers the quest Imperial Qiraji Armaments in the Temple of Ahn'Qiraj. "
              .. "In the short story The War of the Shifting Sands, he is one of the dragon progeny who hold the qiraji back at the gates of Ahn'Qiraj. "
-             .. "In Thrall: Twilight of the Aspects, Thrall travels to the Nexus and is admitted to an audience with Arygos and Kalecgos.",
+             .. "In Thrall: Twilight of the Aspects, he orders his guards to kill Thrall when Thrall comes to the Nexus, until Kalecgos intervenes.",
         items = {
         },
         sources = {
@@ -3964,31 +3916,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [5718] = {
-        name = "Rothos",
-        zone = "The Hinterlands",
-        coords = "65.6, 35.0",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "Thrall: Twilight of the Aspects",
-                missions = {},
-                role = "Alexstrasza sends him to gather the dragons while the dragonflights liberate Wyrmrest Temple",
-            },
-        },
-        story = "Rothos is a large green dragon who patrols Seradane in the Hinterlands as a hostile elite drake. "
-             .. "In the novel Thrall: Twilight of the Aspects he makes a brief appearance during the war against Deathwing. "
-             .. "There Alexstrasza sends him to gather the dragons before the battle.",
-        items = {
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Rothos",
-            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
-            "https://www.wowhead.com/classic/npc=5718",
-        },
-        confidence = "confirmed",
-    },
-
 
     -- ===================================================================== Winterspring
     [11186] = {
@@ -4007,7 +3934,7 @@ ns.NPCS = {
         story = "Lunnix Sprocketslip, nicknamed Lunny, is a goblin mining vendor in Everlook in Winterspring. "
              .. "In the novel Before the Storm, Kezzig Klackwhistle works for her in her mining supply shop, and the two enter a relationship. "
              .. "She ends it once she catches Kezzig hanging around Gogo, and her anger drives Kezzig to leave Everlook for Silithus. "
-             .. "In World of Warcraft she still sells mining supplies in Everlook.",
+             .. "In World of Warcraft she sells mining supplies in Everlook.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Lunnix_Sprocketslip",
@@ -4054,7 +3981,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Traveler: The Spiral Path",
                 missions = {},
-                role = "Leads the sand trolls who summon the loa Kimbul, Shadra and Mueh'zala with the blood of captured prisoners (chapter 33)",
+                role = "Joins the sand trolls in summoning the loa Kimbul, Shadra and Mueh'zala with the blood of his prisoners (chapters 33-34)",
             },
         },
         story = "Chief Ukorz Sandscalp is the leader of the Sandfury tribe and the ruler of Zul'Farrak, and he is accompanied by his right hand Ruuzlu. "

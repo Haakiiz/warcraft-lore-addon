@@ -65,11 +65,11 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [x] Wetlands – 2 NPCs (Korialstrasz and Krasus, Season of Discovery NPCs at Grim Batol; Day of the Dragon)
 - [x] Hillsbrad Foothills – 0 NPCs
 - [x] Alterac Mountains – 2 NPCs (Mug'thol, Archmage Ansirem Runeweaver*)
-- [x] Arathi Highlands – 2 NPCs (Prince Galen Trollbane, Innkeeper Adegwa)
+- [x] Arathi Highlands – 0 NPCs (Galen Trollbane and Adegwa removed in v0.6.1: book link unconfirmed)
 - [x] Stranglethorn Vale – 4 NPCs (Catelyn the Blade, Fleet Master Seahorn, Innkeeper Skindle, Ironpatch)
 - [x] Badlands – 0 NPCs
 - [x] Swamp of Sorrows – 0 NPCs
-- [x] The Hinterlands – 3 NPCs (Falstad Wildhammer, Rothos, Shadra)
+- [x] The Hinterlands – 2 NPCs (Falstad Wildhammer, Shadra; Rothos removed in v0.6.1)
 - [x] Searing Gorge – 0 NPCs
 - [x] Burning Steppes – 0 NPCs
 - [x] Blasted Lands – 0 NPCs

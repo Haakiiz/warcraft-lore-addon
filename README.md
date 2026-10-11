@@ -12,7 +12,7 @@ What you get:
 
 - **Tooltip line:** NPCs in the database get one extra line, e.g. "Warcraft Veteran: WC3 · TFT", with each game in its own color. Other NPCs get no line, so ordinary tooltips stay clean.
 - **Lore window:** `/wcl` (or clicking the alert pill, a row in the list, or the minimap button's right-click) opens a small window with a live 3D model of the NPC inside a round ring that glows in the game's color (the classic portrait if the model can't load). The story comes first, followed by "Through the ages": every game appearance in release order with its year and role, and the books as compact one-line rows. You also get related veterans (click a name to follow the thread), related WoW items with item IDs, and sources. You can drag the window, close it with X or Esc, and it remembers where you put it.
-- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 133" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
+- **Veterans list and met counter:** `/wcl list` (or a left-click on the minimap button) opens a browse window with every veteran in the database. The addon remembers, for your whole account, which veterans you have met (targeted or moused over), so a veteran met on one character counts on all of them. It shows "Veterans met 13 of 130" with a progress bar and a chip per game ("WC3 3/15"), and prints a chat line the first time you meet one. Search by name or zone, filter by game, zone, campaign or met status, and tick "Hide book-only" to leave out NPCs who only appear in novels. Hover a row for the full name, zone and games; click it to open the lore window next to the list. Hover a met veteran to see how often you met them, and when and with which character you met them first. The lore window shows a green MET badge for veterans you have met.
 - **Small glowing alert:** when you target a veteran, or one is close by (nameplate or map position), a small pill with a portrait, the name and the game codes pulses at the top of the screen. Nearby alerts also print one chat line and play a sound. In busy cities the first veteran is announced right away and anyone else nearby is named in one follow-up line ("Also nearby: ..."); click "+N more" to open the Veterans list. Click the pill for the story, right-click to dismiss, shift-drag to move.
 - **World map pins:** small round pins show where veterans stand on the map of the zone you are looking at, colored by their first game and green once you have met them. Hover a pin for the name and status, left-click it for the story. Turn them off in the settings ("Show veterans on the world map").
 - **Zone atlas:** the zone picker in the Veterans list shows how many veterans you have met in each zone. "This zone" jumps to the zone you are standing in, and a line under the filters says "N of M met here".
@@ -38,7 +38,7 @@ Preview renders of the real addon code (made offline with substitute fonts and a
 
 ## What's new in 0.6
 
-- **33 new veterans** in Tanaris, Winterspring, Moonglade, Felwood, Eastern Plaguelands, The Hinterlands, Arathi Highlands, Stranglethorn Vale, Zul'Farrak, the Sunken Temple and the Temple of Ahn'Qiraj, among them Tirion Fordring, Nathanos Blightcaller, Falstad Wildhammer and Keeper Remulos. 133 in total.
+- **30 new veterans** in Tanaris, Winterspring, Moonglade, Felwood, Eastern Plaguelands, The Hinterlands, Stranglethorn Vale, Zul'Farrak, the Sunken Temple and the Temple of Ahn'Qiraj, among them Tirion Fordring, Nathanos Blightcaller, Falstad Wildhammer and Keeper Remulos. 130 in total.
 - **Veterans on the world map:** small pins show where veterans stand, green once you've met them. Hover for details, click for the story. Can be turned off in the settings.
 - **Zone atlas:** the zone picker in the Veterans list shows how many you've met in each zone, and "This zone" jumps to where you are.
 - **Export and import:** `/wcl export` shows your met list as a short text you can copy, and `/wcl import` merges such a text into this account. The earliest first meeting and the higher count are kept, and nothing is ever deleted.
@@ -85,8 +85,6 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 |---|---|---|---|---|
 | Lord Aliden Perenolde | 2423 | Alterac Mountains | 39.4, 15.2 | BOOK |
 | Mug'thol | 2257 | Alterac Mountains | 35.2, 54.0 | TFT |
-| Innkeeper Adegwa | 9501 | Arathi Highlands | 73.8, 32.4 | BOOK |
-| Prince Galen Trollbane | 2607 | Arathi Highlands | 26.2, 58.0 | BOOK |
 | Illiyana Moonblaze | 14753 | Ashenvale | 61.4, 83.8 | BOOK |
 | Shael'dryn | 3916 | Ashenvale | 53.4, 46.2 | BOOK |
 | Athrikus Narassin | 3660 | Darkshore | 56.0, 26.0 | TFT |
@@ -179,7 +177,6 @@ FK = Warcraft III Reforged: Forsaken Kingdom. "Reforged only" means Reforged add
 | Jorn Skyseer | 3387 | The Barrens | 44.8, 59.0 | BOOK |
 | Wharfmaster Dizzywig | 3453 | The Barrens | 63.2, 38.4 | BOOK |
 | Falstad Wildhammer | 5635 | The Hinterlands | 11.8, 46.8 | BOOK |
-| Rothos | 5718 | The Hinterlands | 65.6, 35.0 | BOOK |
 | Shadra | 2707 | The Hinterlands | 33.4, 72.6 | BOOK |
 | Daisy | 4507 | Thousand Needles | 78.8, 75.4 | BOOK |
 | Fizzle Brassbolts | 4454 | Thousand Needles | 78.0, 77.0 | BOOK |
