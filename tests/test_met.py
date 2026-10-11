@@ -27,6 +27,11 @@ WarcraftLoreDB = { schema = 2, met = {} }
 """
 
 PICK = """
+-- The data has no character under two NPC IDs any more, so add a synthetic twin of Thrall
+-- (same name and zone) before the merged veteran list is built.
+local twin = {}
+for k, v in pairs(ns.NPCS[4949]) do twin[k] = v end
+ns.NPCS[999001] = twin
 for _, g in ipairs(ns.Veterans()) do
     if #g.ids >= 2 and not multi then multi = g end
     if #g.ids == 1 and not single then single = g end
