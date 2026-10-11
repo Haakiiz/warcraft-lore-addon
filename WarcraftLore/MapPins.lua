@@ -69,6 +69,10 @@ local function newPin()
     local pin = CreateFrame("Button", nil, holder)
     pin:SetSize(PIN_SIZE, PIN_SIZE)
     C.RegisterClicks(pin)
+    -- Left click only, so a right-click passes through to the map (zoom out works over a pin).
+    if pin.RegisterForClicks then
+        pcall(pin.RegisterForClicks, pin, "LeftButtonUp")
+    end
 
     pin.fill = S.solid(pin, "ARTWORK", COL.violet)
     pin.fill:SetAllPoints()
@@ -191,6 +195,14 @@ local function setup()
     try(function() hooksecurefunc(wm, "OnMapChanged", guardedRefresh) end)
     try(function() hooksecurefunc(wm, "OnCanvasScaleChanged", guardedRefresh) end)
     try(function() wm:HookScript("OnShow", guardedRefresh) end)
+    -- The map closing puts a raised lore window back to its normal level.
+    try(function()
+        wm:HookScript("OnHide", function()
+            if ns.UI and ns.UI.LowerWindow then
+                pcall(ns.UI.LowerWindow)
+            end
+        end)
+    end)
     try(function() canvas:HookScript("OnSizeChanged", guardedRefresh) end)
     if hooks == 0 then
         error("no map hooks")

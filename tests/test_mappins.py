@@ -35,6 +35,7 @@ STUBS = """
             SetAlpha = function(self, a) self.alpha = a end,
             UnregisterAllEvents = function(self) self.unregistered = true end,
             GetParent = function(self) return self.parent end,
+            RegisterForClicks = function(self, ...) self.clickTypes = { ... } end,
         }
         return setmetatable(f, { __index = function(t, k) return methods[k] or function() end end })
     end
@@ -56,6 +57,7 @@ SETUP = """
     clicks = {}
     shownEntries = {}
     raisedFlags = {}
+    lowered = 0
     tooltips = {}
     canvas = CreateFrame("Frame"); canvas.w, canvas.h = 1000, 500
     WorldMapFrame = CreateFrame("Frame")
@@ -87,7 +89,7 @@ SETUP = """
         MetSummary = function(id) return metIDs[id] and "Met once" or nil end,
         CodesLabel = function(codes) return table.concat(codes, "/") end,
         GameRGB = function(code) return 0.5, 0.25, 0.75 end,
-        UI = { ShowEntry = function(id, entry, unit, dock, keep, raised) shownEntries[#shownEntries + 1] = id; raisedFlags[#raisedFlags + 1] = raised end },
+        UI = { LowerWindow = function() lowered = lowered + 1 end, ShowEntry = function(id, entry, unit, dock, keep, raised) shownEntries[#shownEntries + 1] = id; raisedFlags[#raisedFlags + 1] = raised end },
     }
 """
 
@@ -154,6 +156,11 @@ def main():
     # every pin registered for clicks
     results.append(check("every pin button registered for clicks",
                          lua.eval("#clicks") == 2 and lua.eval("clicks[1].clicksRegistered and clicks[2].clicksRegistered")))
+
+    results.append(check("pins take left clicks only (right click passes to the map)",
+                         lua.eval("#pin[1].frame.clickTypes") == 1 and lua.eval("pin[1].frame.clickTypes[1]") == "LeftButtonUp"))
+    lua.execute("WorldMapFrame.hooks.OnHide()")
+    results.append(check("map hiding lowers the raised lore window", lua.eval("lowered") == 1))
 
     # tooltip and click
     lua.execute("pin[1].frame.scripts.OnEnter(); pin[2].frame.scripts.OnEnter()")

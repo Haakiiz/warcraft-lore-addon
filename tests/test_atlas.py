@@ -127,6 +127,15 @@ def main():
     r.append(check("This zone does not overlap Clear filters", here_x0 >= clear_x0 + clear + 14))
     r.append(check("count text stays left of Clear filters", 150 <= count_w <= clear_x0, str(count_w)))
 
+    # The zone line with a second filter active must fit the count text (real string, 6 px/char).
+    import re
+    zones = set(re.findall(r'\bzone\s*=\s*"([^"]+)"', (ADDON / "Data.lua").read_text(encoding="utf-8")))
+    longest = max(zones, key=len)
+    strip = lambda t: re.sub(r"\|c[0-9a-fA-F]{8}|\|r", "", t)
+    worst = strip(lua.eval("ns.Browser.ZoneLine")(99, 99, 98))
+    r.append(check(f"zone line (longest zone '{longest}', plus 'showing') fits the count text",
+                   px(worst) <= count_w and longest not in worst, f"{px(worst)} > {count_w}: {worst}"))
+
     print(f"\n{sum(r)}/{len(r)} passed")
     raise SystemExit(0 if all(r) else 1)
 

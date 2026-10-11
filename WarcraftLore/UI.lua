@@ -25,6 +25,7 @@ local CONTENT_W = INNER_W - 2 * PAD
 -------------------------------------------------------------------- the window
 local frame, nameText, placeText, idText, metBadge, portrait, portraitRing, portraitModel, portraitCover
 local expectedNPC         -- NPC the 3D model was asked for; a load event for any other NPC is ignored
+local shownEntry          -- data entry behind shownNPC
 local shownNPC            -- NPC ID the lore window currently shows (nil for messages)
 local ringParts = {}
 local headerBadges = {}
@@ -557,6 +558,21 @@ function UI.GetShownNPC()
     return nil
 end
 
+-- Draws the open lore window again (e.g. after an import changed who is met). Does nothing
+-- when the window is closed or shows a message.
+function UI.RefreshOpen()
+    if frame and frame:IsShown() and shownNPC and shownEntry then
+        UI.ShowEntry(shownNPC, shownEntry, nil, nil, true)
+    end
+end
+
+-- The world map closed: a window raised above it goes back to the normal level.
+function UI.LowerWindow()
+    if frame and frame:GetFrameStrata() == "FULLSCREEN_DIALOG" then
+        frame:SetFrameStrata("DIALOG")
+    end
+end
+
 function UI.IsShown()
     return frame ~= nil and frame:IsShown()
 end
@@ -576,6 +592,7 @@ end
 
 local function showHeader(name, place, npcID, badges)
     shownNPC = nil
+    shownEntry = nil
     metBadge:Hide()
     nameText:SetText(name or "")
     placeText:SetText(place or "")
@@ -619,6 +636,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
     end
     showHeader(entry.name, place, npcID, badges)
     shownNPC = npcID
+    shownEntry = entry
     setMetBadge(npcID)
     setRing(ringColors, 1)
     setPortrait(entry, unit, npcID)

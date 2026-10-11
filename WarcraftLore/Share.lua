@@ -212,7 +212,7 @@ local function build()
         b:SetMultiLine(true)
         b:SetMaxLetters(0)
         b:SetWidth(Share.EditWidth(WIDTH, S.BAND))
-        b:SetHeight(HEIGHT - 64 - 48 - 12) -- start as tall as the view; a multi-line box grows with its text
+        b:SetHeight(HEIGHT - 2 * S.BAND - 124) -- start as tall as the view; a multi-line box grows with its text
         b:SetTextColor(S.COL.title[1], S.COL.title[2], S.COL.title[3])
         b:SetScript("OnEscapePressed", function() f:Hide() end)
         scroll:SetScrollChild(b)
@@ -235,6 +235,10 @@ local function build()
         end)
         -- In export mode a click would drop the highlight, so select everything again on focus.
         b:SetScript("OnEditFocusGained", function(self)
+            if exportMode then self:HighlightText() end
+        end)
+        -- The box already has focus when it opens, so a click needs this too.
+        b:SetScript("OnMouseUp", function(self)
             if exportMode then self:HighlightText() end
         end)
     end)
@@ -286,7 +290,7 @@ function Share.Open(which)
         exportMode = true
         local met = type(WarcraftLoreDB) == "table" and WarcraftLoreDB.met or {}
         if next(met) == nil then
-            hint:SetText("You have not met any veterans yet. The string below is empty but valid.")
+            hint:SetText("You have not met any veterans yet, so there is nothing to export.")
         end
         box:SetText(Share.Encode(met))
         frame:Show()

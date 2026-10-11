@@ -792,11 +792,9 @@ function Browser.Refresh(resetScroll)
 
     local zn = state.zone and getZoneCounts()[state.zone]
     if zn then
-        -- With a zone picked, the line shows that zone's progress ("Orgrimmar: 3 of 8 met").
-        local line = ("%s: %s%d of %d met%s"):format(state.zone, HEX_MET, zn.met, zn.total, END)
-        if shown ~= zn.total then
-            line = line .. ("  -  showing %d"):format(shown)
-        end
+        -- With a zone picked, the line shows that zone's progress ("1 of 6 met here"). The zone
+        -- name is left out: the Zone button already shows it, and the row is narrow.
+        local line = Browser.ZoneLine(zn.met, zn.total, shown)
         countText:SetText(line)
     elseif anyFilter() or hideBooks then
         countText:SetText(("Showing %d of %d"):format(shown, #items))
@@ -1025,6 +1023,15 @@ local function buildFilters(inner, above)
         refreshFiltered()
     end)
     return zoneBtn
+end
+
+-- Count line with a zone picked; "showing N" only when other filters shrink the zone's list.
+function Browser.ZoneLine(met, total, shown)
+    local line = ("%s%d of %d%s met here"):format(HEX_MET, met, total, END)
+    if shown ~= total then
+        line = line .. ("  ·  showing %d"):format(shown)
+    end
+    return line
 end
 
 -- "Showing all N veterans" ... "Clear filters" ... [ ] Hide book-only

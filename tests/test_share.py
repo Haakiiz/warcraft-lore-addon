@@ -116,6 +116,14 @@ def main():
     r.append(check("edit box width fits scroll frame", ev("ns.Share.EditWidth(440, 20)") == 356))
     r.append(check("edit box width follows the band", ev("ns.Share.EditWidth(440, 24)") == 348))
 
+    # Window source: band-aware box height, highlight kept on click, player wording, open window refreshed.
+    src = (ADDON / "Share.lua").read_text(encoding="utf-8")
+    r.append(check("box height accounts for the band", "HEIGHT - 2 * S.BAND - 124" in src))
+    r.append(check("export text re-highlighted on click", 'SetScript("OnMouseUp"' in src and "HighlightText" in src))
+    r.append(check("no developer wording", "empty but valid" not in src and "nothing to export" in src))
+    r.append(check("import refreshes an open lore window",
+                   "ns.UI.RefreshOpen" in src and "RefreshOpen" in (ADDON / "UI.lua").read_text(encoding="utf-8")))
+
     # Hand-edited values are clamped.
     ex("""function signed2(body) return body .. '~' .. ns.Share.Checksum(body) end
           wild = ns.Share.Decode(signed2('WCL1:2s.0.zzzzzzzz'))""")

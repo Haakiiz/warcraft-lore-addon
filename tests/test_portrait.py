@@ -19,6 +19,8 @@ local function newObj(kind)
     local o = { kind = kind, shown = true, scripts = {}, texCoord = nil }
     local methods = {
         Hide = function(self) self.shown = false end,
+        SetFrameStrata = function(self, v) self.strata = v end,
+        GetFrameStrata = function(self) return self.strata or 'MEDIUM' end,
         Show = function(self) self.shown = true end,
         IsShown = function(self) return self.shown end,
         SetTexture = function(self, p) self.path = p; return self.setTextureResult end,
@@ -165,6 +167,19 @@ def main():
     # 6. window message (no NPC) hides the model
     lua4.eval("function() ns.UI.ShowMessage('hi') end")()
     assert lua4.globals().models[1].shown is False
+    # 7. raised window, RefreshOpen and LowerWindow
+    lua5 = load()
+    lua5.eval("function() ns.UI.RefreshOpen() end")()  # before the window exists: no-op
+    lua5.eval("function() ns.UI.ShowEntry(3, { name = 'Thrall', appearances = {} }, nil, nil, nil, true) end")()
+    frames = lua5.globals().frames
+    top = [f for f in frames.values() if getattr(f, "strata", None)]
+    assert any(f.strata == "FULLSCREEN_DIALOG" for f in top), "raised open must use FULLSCREEN_DIALOG"
+    lua5.eval("function() ns.UI.RefreshOpen() end")()
+    assert lua5.eval("function() return ns.UI.GetShownNPC() end")() == 3, "RefreshOpen redraws the open entry"
+    assert any(f.strata == "FULLSCREEN_DIALOG" for f in top), "RefreshOpen keeps the raised level"
+    lua5.eval("function() ns.UI.LowerWindow() end")()
+    assert not any(f.strata == "FULLSCREEN_DIALOG" for f in top), "LowerWindow goes back to DIALOG"
+    assert any(f.strata == "DIALOG" for f in top)
     print("portrait ok")
 
 LAYOUT_LUA = """
