@@ -91,6 +91,7 @@ local function buildPortrait(inner)
     coverFrame:SetFrameLevel(holder:GetFrameLevel() + 2)
     portraitCover = coverFrame:CreateTexture(nil, "ARTWORK")
     portraitCover:SetTexture(TEX .. "PortraitCover")
+    portraitCover:SetVertexColor(COL.inner[1], COL.inner[2], COL.inner[3])   -- the texture is white
     portraitCover:SetSize(64, 64)
     portraitCover:SetPoint("CENTER")
     portraitCover:Hide()
@@ -291,9 +292,9 @@ local function relatedRow(i)
     C.RegisterClicks(r)
     r:SetScript("OnEnter", function(self) self.hl:Show() end)
     r:SetScript("OnLeave", function(self) self.hl:Hide() end)
-    r:SetScript("OnClick", function(self)
+    r:SetScript("OnClick", ns.Guard("window", "the lore window", function(self)
         UI.ShowEntry(self.group.id, self.group.entry, nil, nil, true)
-    end)
+    end))
     rows[i] = r
     return r
 end
@@ -443,6 +444,9 @@ local function fillBooks(books)
             r:SetSize(CONTENT_W, BOOK_ROW_H)
             r:SetPoint("TOPLEFT", 0, -(i - 1) * BOOK_ROW_H)
             r:EnableMouse(true)
+            r.hl = solid(r, "BACKGROUND", COL.violet, 0.14)
+            r.hl:SetAllPoints()
+            r.hl:Hide()
             r.icon = r:CreateTexture(nil, "ARTWORK")
             r.icon:SetSize(14, 14)
             r.icon:SetPoint("LEFT", 4, 0)
@@ -452,11 +456,12 @@ local function fillBooks(books)
             r.label:SetJustifyV("MIDDLE")
             r.label:SetWordWrap(false)
             r:SetScript("OnEnter", function(self)
+                self.hl:Show()
                 if self.tip then
                     C.ShowTooltip(self, "ANCHOR_TOP", self.tip)
                 end
             end)
-            r:SetScript("OnLeave", function() C.HideTooltip() end)
+            r:SetScript("OnLeave", function(self) self.hl:Hide(); C.HideTooltip() end)
             bookRows[i] = r
         end
         C.SetIconTexture(r.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
@@ -655,7 +660,9 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace)
         end
         items[#items + 1] = line
     end
-    add("Items in WoW", #items > 0 and table.concat(items, "\n") or (HEX_MUTED .. "None recorded." .. END))
+    if #items > 0 then
+        add("Items in WoW", table.concat(items, "\n"))
+    end
     add("Sources", table.concat(entry.sources or {}, "\n"), COL.muted)
     layout(blocks)
     if dock then

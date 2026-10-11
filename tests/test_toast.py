@@ -36,7 +36,7 @@ CreateFrame = function(kind, name, parent)
 end
 UIParent = newObj("Frame")
 WarcraftLoreDB = {}
-opened, browserCalls = {}, {}
+opened, browserCalls, guardErrors = {}, {}, {}
 zoneName = "Orgrimmar"
 local Style = { COL = setmetatable({}, { __index = function() return { 1, 1, 1 } end }),
     text = function() return newObj("FontString") end,
@@ -44,6 +44,12 @@ local Style = { COL = setmetatable({}, { __index = function() return { 1, 1, 1 }
 ns = {
     Style = Style,
     FeatureOff = function() return false end,
+    Guard = function(key, label, fn)
+        return function(...)
+            local ok, err = pcall(fn, ...)
+            if not ok then guardErrors[#guardErrors + 1] = tostring(err) end
+        end
+    end,
     GamesLabel = function() return "WC3" end,
     GamesInOrder = function() return { "WC3" } end,
     GameRGB = function() return 1, 1, 1 end,
@@ -142,6 +148,17 @@ def main():
     """)
     r.append(check("queued pill shows +5 more once it appears",
                    ev("waiting ~= nil") and ev("waiting.moreText.text") == "+5 more" and ev("waiting.moreBtn.shown") is True))
+
+    # Click handlers run inside ns.Guard: an error in the lore window or the list never escapes.
+    lua.execute("""
+        ns.UI.ShowEntry = function() error("boom") end
+        ns.Browser.ShowZone = function() error("boom") end
+        guardErrors = {}
+    """)
+    r.append(check("pill click error is caught by the guard",
+                   ev("pcall(pill.scripts.OnClick, pill, 'LeftButton')") is True and ev("#guardErrors") == 1))
+    r.append(check("+N click error is caught by the guard",
+                   ev("pcall(more.scripts.OnClick, more, 'LeftButton')") is True and ev("#guardErrors") == 2))
 
     print(f"\n{sum(r)}/{len(r)} passed")
     raise SystemExit(0 if all(r) else 1)
