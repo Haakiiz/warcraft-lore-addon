@@ -36,5 +36,6 @@ jobs:
           python3 tests/test_guard.py
           python3 tests/test_met.py
           python3 tests/test_portrait.py
+          python3 tests/test_toast.py
 
       - uses: BigWigsMods/packager@v2

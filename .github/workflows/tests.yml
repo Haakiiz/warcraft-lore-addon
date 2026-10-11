@@ -35,3 +35,4 @@ jobs:
           python tests/test_guard.py
           python tests/test_met.py
           python tests/test_portrait.py
+          python tests/test_toast.py
