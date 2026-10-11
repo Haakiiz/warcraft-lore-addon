@@ -207,7 +207,7 @@ function ns.MeetCount(npcID)
     return e and tonumber(e.count) or 0
 end
 
--- Short player-facing line for a met veteran ("Met 4 times · first on 3 Oct 2026 by Arthas"),
+-- Short player-facing line for a met veteran ("Met 4 times · first on 3 Oct 2026 with Arthas"),
 -- summed over the merged veteran group; nil when never met.
 function ns.MetSummary(npcID)
     local group = npcID and ns.VeteranOf(npcID)
@@ -228,16 +228,20 @@ function ns.MetSummary(npcID)
     end
     local text = count == 1 and "Met once" or ("Met %d times"):format(count)
     if first then
-        local ok, d = pcall(date, "%d %b %Y", first)
-        if ok and type(d) == "string" then
-            text = text .. " \194\183 first on " .. d
+        -- The day is built by hand: "%d" would give "03" and "%e" is not available on Windows.
+        local okD, day = pcall(date, "%d", first)
+        local okR, rest = pcall(date, "%b %Y", first)
+        day = okD and tonumber(day)
+        if day and okR and type(rest) == "string" then
+            local when = ("%d %s"):format(day, rest)
+            text = text .. (count == 1 and ", on " or " \194\183 first on ") .. when
             if type(by) == "string" and by ~= "" then
                 local name, realm = by:match("^(.-)%-(.+)$")
                 local mine = C.GetRealmName()
                 if name and mine and realm == (mine:gsub("%s", "")) then
                     by = name
                 end
-                text = text .. " by " .. by
+                text = text .. " with " .. by
             end
         end
     end

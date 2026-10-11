@@ -1136,3 +1136,21 @@ function Browser.Toggle()
         frame:Show()
     end
 end
+
+-- Opens the window (never closes it), filtered to a zone. A zone no veteran is in leaves the list unfiltered.
+function Browser.ShowZone(zoneName)
+    Browser.Init()
+    buildIndex()
+    local known = false
+    for _, z in ipairs(zoneItems or {}) do
+        if z.value and z.value == zoneName then
+            known = true
+        end
+    end
+    state.zone = known and zoneName or nil
+    if frame:IsShown() then
+        Browser.Refresh(true)
+    else
+        frame:Show()
+    end
+end

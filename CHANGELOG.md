@@ -10,7 +10,7 @@
   Your existing progress from every character is merged automatically. Hover a met veteran to see how
   often you met them, and when and with which character you met them first.
 - **Calmer alerts in cities:** the first veteran is announced right away; anyone else nearby is named in
-  one follow-up line ("Also nearby: …") without extra sounds. Click "+N more" to open the Veterans list.
+  one follow-up line ("Also nearby: …") without extra sounds. Click the pill for the story, or "+N more" for the veterans in this zone.
 - **Settings page:** find Warcraft Lore in the game's AddOns settings, or type `/wcl options`.
 - **`/wcl why`:** explains in plain words why your target is or isn't recognised.
 - **Safer after game patches:** if a patch changes something the addon relies on, only that feature
