@@ -1289,6 +1289,20 @@ end
 
 -- The zone the player is in, when at least one veteran is found there (otherwise nil).
 local function hereZone()
+    -- By uiMapID first: the map name is translated in a German or French client, Data.lua is English.
+    local mapID = C.GetZoneMapID and C.GetZoneMapID()
+    if mapID and type(ns.ZONE_MAPS) == "table" then
+        local counts = getZoneCounts()
+        for name, ids in pairs(ns.ZONE_MAPS) do
+            if counts[name] then
+                for _, id in ipairs(ids) do
+                    if id == mapID then
+                        return name
+                    end
+                end
+            end
+        end
+    end
     local zone = C.GetZoneName()
     if zone and getZoneCounts()[zone] then
         return zone

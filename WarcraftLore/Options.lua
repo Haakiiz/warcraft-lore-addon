@@ -116,6 +116,8 @@ local function addButton(parent, y, label, onClick)
     fs:SetJustifyH("CENTER")
     fs:SetJustifyV("MIDDLE")
     fs:SetText(label)
+    -- 170 px is enough for the shipped texts; a longer label widens the button instead of spilling.
+    b:SetWidth(math.max(170, math.ceil(fs:GetStringWidth()) + 24))
     b:SetScript("OnEnter", function() b:SetColors(COL.header, 1, COL.violet, 1) end)
     b:SetScript("OnLeave", function() b:SetColors(COL.header, 1, COL.headerLine, 1) end)
     b:SetScript("OnClick", onClick)

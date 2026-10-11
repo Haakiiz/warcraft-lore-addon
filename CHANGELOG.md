@@ -1,8 +1,22 @@
 # Warcraft Lore – changelog
 
-## v0.7.0 (in progress)
+## v0.7.0
 
-- German and French interface (the lore itself is still in English).
+- **Lore Journal with achievements:** 39 achievements made from the addon's own data – milestones
+  (1 to 100 veterans), one per Warcraft game (with extra steps for the novels and books), one per zone,
+  one "Circle" per well-connected character and "Across the Ages". 29 can be earned now; the rest
+  (the ones that need zones above level 30) are marked "later" and open up when the level cap rises.
+  Achievements are stored for the whole account.
+- **Open it your way:** `/wcl journal`, the new Journal button in the Veterans list, or Shift-click
+  on the minimap button. Filter by category, see progress bars and the date you earned each one.
+- **Achievement banner:** a small gold banner when you earn one, with one chat line and one sound (no
+  sound when alerts are off). Left-click opens the Journal, right-click closes it. It stays on screen.
+- **Existing players** get the achievements they already deserve silently on first login, with one line
+  pointing to `/wcl journal`.
+- **German and French interface.** The stories, names and zones stay in English. Dates show the month
+  in your language.
+- **"This zone"** now also works in German and French clients.
+- `/wcl reset` also resets the Journal window.
 
 ## v0.6.1
 

@@ -89,6 +89,20 @@ def main():
             ok = ok and bool(fmt(v, *args)[0])
         results.append(check("%s: format strings format" % code, ok))
 
+    # Dates: month names in the client language, no leading zero, never the English date("%b").
+    for code, expected in (("enUS", "3 Oct 2025"), ("deDE", "3. Okt. 2025"), ("frFR", "3 oct. 2025")):
+        lua, _ = run_locale(code)
+        lua.execute("date = os.date")
+        results.append(check("%s: ns.FormatDate(3 Oct 2025) = %s" % (code, expected),
+                             lua.eval("ns.FormatDate(1759449600)") == expected))
+        results.append(check("%s: ns.FormatDate rejects a non-number" % code, lua.eval("ns.FormatDate('x')") is None))
+    lua, _ = run_locale("deDE")
+    lua.execute("date = os.date")
+    months = [lua.eval("ns.FormatDate(os.time{year = 2025, month = %d, day = 15, hour = 12})" % m) for m in range(1, 13)]
+    results.append(check("deDE: twelve different German month names", len({x.split()[1] for x in months}) == 12))
+    src = "".join(p.read_text(encoding="utf-8") for p in ROOT.glob("*.lua") if p.name != "Data.lua")
+    results.append(check("no date('%b') (always English in the client) anywhere", 'date("%b' not in src and "date('%b" not in src))
+
     # The other language's file stays silent in a deDE client.
     lua, tr = run_locale("deDE")
     results.append(check("deDE client loads only German", lua.eval("ns.L['Import']") == "Importieren"))

@@ -45,7 +45,7 @@ def runtime(db="{ schema = 2, met = {} }"):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(STUBS)
     run = lua.eval("function(src, name) assert(loadstring(src, name))('WarcraftLore', ns) end")
-    for name in ("Data.lua", "SavedData.lua", "Core.lua"):
+    for name in ("Locale.lua", "Data.lua", "SavedData.lua", "Core.lua"):
         run((ADDON / name).read_text(encoding="utf-8"), name)
     lua.execute("WarcraftLoreDB = " + db)
     lua.execute(PICK)

@@ -43,19 +43,9 @@ local filter = nil          -- category key; nil = all (session only)
 local barWidth = CONTENT_W
 
 -------------------------------------------------------------------- helpers
--- "3 Oct 2026": the day is built by hand ("%d" would give "03", "%e" is missing on Windows).
+-- "3 Oct 2026" in the client language (ns.FormatDate, Locale.lua).
 local function formatDate(t)
-    t = tonumber(t)
-    if not t then
-        return nil
-    end
-    local okD, day = pcall(date, "%d", t)
-    local okR, rest = pcall(date, "%b %Y", t)
-    day = okD and tonumber(day)
-    if day and okR and type(rest) == "string" then
-        return ("%d %s"):format(day, rest)
-    end
-    return nil
+    return ns.FormatDate and ns.FormatDate(t) or nil
 end
 Journal.FormatDate = formatDate
 

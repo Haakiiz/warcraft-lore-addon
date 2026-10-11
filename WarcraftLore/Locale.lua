@@ -16,3 +16,28 @@ ns.L = setmetatable({}, {
         return key
     end,
 })
+
+-- "3 Oct 2026" / "3. Okt. 2026" / "3 oct. 2026". Built from the numbers (day, month, year) and a
+-- translated month list, because the "%b" date format is always English in the WoW client. The day has no
+-- leading zero. Returns nil when the time is not a number or date() fails.
+local L = ns.L
+
+function ns.FormatDate(t)
+    -- Looked up on each call: the locale files load after this file.
+    local MONTHS = {
+        L["Jan"], L["Feb"], L["Mar"], L["Apr"], L["May"], L["Jun"],
+        L["Jul"], L["Aug"], L["Sep"], L["Oct"], L["Nov"], L["Dec"],
+    }
+    t = tonumber(t)
+    if not t then
+        return nil
+    end
+    local okD, day = pcall(date, "%d", t)
+    local okM, month = pcall(date, "%m", t)
+    local okY, year = pcall(date, "%Y", t)
+    day, month, year = okD and tonumber(day), okM and tonumber(month), okY and tonumber(year)
+    if not (day and month and year) or not MONTHS[month] then
+        return nil
+    end
+    return L["%d %s %d"]:format(day, MONTHS[month], year)
+end

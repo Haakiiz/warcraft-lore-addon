@@ -18,7 +18,7 @@ local PORTRAITS = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Portraits\\"
 local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
 
 local TOAST_W, TOAST_H = 236, 48
-local MORE_W = 56               -- width of the "+N more" target
+local MORE_W = 64               -- width of the "+N more" target
 local GAP = 16                  -- room for two glows, so neighbours do not mix
 local MAX_TOASTS = 3
 local FADE_IN, HOLD, FADE_OUT = 0.4, 12, 0.8
@@ -349,6 +349,7 @@ local function buildBanner()
     local b = CreateFrame("Button", nil, UIParent)
     b:SetSize(BANNER_W, BANNER_H)
     b:SetFrameStrata("FULLSCREEN_DIALOG")
+    b:SetClampedToScreen(true)   -- stays on screen even when the alert anchor sits near an edge
     b:EnableMouse(true)
     C.RegisterClicks(b)
     b.bg = b:CreateTexture(nil, "BACKGROUND")

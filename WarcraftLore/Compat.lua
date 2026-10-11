@@ -299,6 +299,19 @@ function C.GetZoneName()
     return name
 end
 
+-- uiMapID of the zone the player is in (the same in every client language), or nil when unknown.
+function C.GetZoneMapID()
+    if type(C_Map) ~= "table" or type(C_Map.GetBestMapForUnit) ~= "function" then
+        noteMissing("C_Map.GetBestMapForUnit")
+        return nil
+    end
+    local okMap, mapID = pcall(C_Map.GetBestMapForUnit, "player")
+    if not okMap or type(mapID) ~= "number" or C.IsSecret(mapID) then
+        return nil
+    end
+    return mapID
+end
+
 -- Player position on the current map: mapID, x, y (x and y in 0..1), or nil if unknown
 -- (no map, instance, or secret values).
 function C.GetPlayerMapPos()

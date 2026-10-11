@@ -43,5 +43,6 @@ jobs:
           python3 tests/test_achievements.py
           python3 tests/test_journal.py
           python3 tests/test_locale.py
+          python3 tests/test_widths.py
 
       - uses: BigWigsMods/packager@v2

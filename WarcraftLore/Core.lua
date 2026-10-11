@@ -229,12 +229,8 @@ function ns.MetSummary(npcID)
     end
     local text = count == 1 and L["Met once"] or L["Met %d times"]:format(count)
     if first then
-        -- The day is built by hand: "%d" would give "03" and "%e" is not available on Windows.
-        local okD, day = pcall(date, "%d", first)
-        local okR, rest = pcall(date, "%b %Y", first)
-        day = okD and tonumber(day)
-        if day and okR and type(rest) == "string" then
-            local when = ("%d %s"):format(day, rest)
+        local when = ns.FormatDate and ns.FormatDate(first) -- Locale.lua: month names in the client language
+        if when then
             local who
             if type(by) == "string" and by ~= "" then
                 local name, realm = by:match("^(.-)%-(.+)$")

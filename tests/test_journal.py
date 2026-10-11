@@ -77,7 +77,7 @@ local C = {
     end,
     ShowTooltip = function(owner, anchor, lines) tooltips[#tooltips + 1] = lines end,
     HideTooltip = function() hidden = hidden + 1 end,
-    Now = function() return 1000 end,
+    Now = function() return 1000 end, GetLocale = function() return "enUS" end,
 }
 ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = C, MetCounts = function() return {}, { met = 3, total = 10 } end }
 """
@@ -117,6 +117,7 @@ def main():
     ev = lua.eval
     load = lua.eval("load")
     # Real Style.lua on the fake client, then Journal.lua; Core's journal command is tested separately.
+    load((ADDON / "Locale.lua").read_text(encoding="utf-8"), "Locale.lua")
     load((ADDON / "Style.lua").read_text(encoding="utf-8"), "Style.lua")
     load((ADDON / "Journal.lua").read_text(encoding="utf-8"), "Journal.lua")
     r = []
