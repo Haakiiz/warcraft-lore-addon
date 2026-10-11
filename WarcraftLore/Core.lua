@@ -311,11 +311,12 @@ function ns.MarkMet(npcID)
             chat(("New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."):format(
                 entry.name or "?", ns.GamesLabel(entry), overall.met, overall.total))
         end
+        -- Window refreshes are best effort: a broken window must not stop the meeting being recorded.
         if ns.Browser then
-            ns.Browser.Refresh()
+            pcall(ns.Browser.Refresh)
         end
-        if ns.UI then
-            ns.UI.RefreshMet(npcID)
+        if ns.UI and not ns.FeatureOff("window") then
+            pcall(ns.UI.RefreshMet, npcID)
         end
     end)
     return true
