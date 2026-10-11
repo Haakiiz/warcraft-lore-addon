@@ -102,6 +102,31 @@ def main():
     r.append(check("This zone works for an alsoIn-only zone", ev("ns.Browser.ThisZone()") is True and ev("shown[1]") == "Durotar"))
     r.append(check("UpdateHere before the window exists is harmless", ev("pcall(ns.Browser.UpdateHere)") is True))
 
+    # Widths: ~6 px per character (a pessimistic Friz Quadrata estimate at size 12).
+    px = lambda t: 6 * len(t)
+    lay = lua.eval("ns.Browser.FilterLayout()")
+    zone_room = lay.zone - lay.chevronInset - lay.labelInset
+    camp_room = lay.campaign - lay.chevronInset - lay.labelInset
+    stat_room = lay.status - lay.labelInset * 2
+    r.append(check("filter row keeps the v0.5 widths (Zone 168, Status 104)",
+                   lay.zone == 168 and lay.status == 104 and lay.campaign >= 168))
+    r.append(check("default 'Zone All zones' fits", px("Zone All zones") <= zone_room))
+    r.append(check("default 'Campaign All campaigns' fits", px("Campaign All campaigns") <= camp_room,
+                   f"{px('Campaign All campaigns')}>{camp_room}"))
+    r.append(check("'Show Not met' fits", px("Show Not met") <= stat_room))
+    src = (ADDON / "Browser.lua").read_text(encoding="utf-8")
+    r.append(check("filter labels are one line (ellipsis when long)",
+                   "b.label:SetWordWrap(false)" in src and 'SetPoint("RIGHT", withChevron' in src))
+    r.append(check("This zone is no longer a filter-row button", "hereBtn = filterButton" not in src))
+    # Count row: This zone, Clear filters and Hide book-only never overlap each other or the count text.
+    book, here, clear = px("Hide book-only") + 16, px("This zone"), px("Clear filters")
+    count_w = lua.eval("ns.Browser.CountRowWidth")(book, here, clear)
+    book_x0 = lay.contentW - book
+    here_x0 = book_x0 - 14 - here
+    clear_x0 = here_x0 - 14 - clear
+    r.append(check("This zone does not overlap Clear filters", here_x0 >= clear_x0 + clear + 14))
+    r.append(check("count text stays left of Clear filters", 150 <= count_w <= clear_x0, str(count_w)))
+
     print(f"\n{sum(r)}/{len(r)} passed")
     raise SystemExit(0 if all(r) else 1)
 

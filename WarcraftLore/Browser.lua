@@ -29,7 +29,10 @@ local POPUP_MAX_H = 282
 local POPUP_PAD = 3
 local STATUS_LABELS = { "All", "Met", "Not met" }
 local FILTER_GAP = 8
-local ZONE_BTN_W, HERE_BTN_W, STATUS_BTN_W = 150, 62, 96
+local ZONE_BTN_W, STATUS_BTN_W = 168, 104
+local COUNT_GAP = 14                      -- gap between the items at the right end of the count row
+local CHEVRON_INSET = 22                  -- label room taken by the chevron on a filter button
+local LABEL_INSET = 9
 
 -- Group headers in the campaign picker.
 local POPUP_HEAD = {
@@ -946,8 +949,8 @@ local function filterButton(parent, width, withChevron)
     b:SetSize(width, 22)
     C.RegisterClicks(b)
     b.label = text(b, C.FONT_BODY, 11, COL.text)
-    b.label:SetPoint("LEFT", 9, 0)
-    b.label:SetPoint("RIGHT", withChevron and -22 or -9, 0)
+    b.label:SetPoint("LEFT", LABEL_INSET, 0)
+    b.label:SetPoint("RIGHT", withChevron and -CHEVRON_INSET or -LABEL_INSET, 0)
     b.label:SetJustifyV("MIDDLE")
     b.label:SetWordWrap(false)
     if withChevron then
@@ -989,7 +992,7 @@ local function filterButton(parent, width, withChevron)
 end
 
 local function buildFilters(inner, above)
-    local campaignW = CONTENT_W - ZONE_BTN_W - HERE_BTN_W - STATUS_BTN_W - 3 * FILTER_GAP
+    local campaignW = CONTENT_W - ZONE_BTN_W - STATUS_BTN_W - 2 * FILTER_GAP
 
     zoneBtn = filterButton(inner, ZONE_BTN_W, true)
     zoneBtn:SetPoint("TOPLEFT", above, "BOTTOMLEFT", 0, -8)
@@ -1004,17 +1007,8 @@ local function buildFilters(inner, above)
         end)
     end)
 
-    -- "This zone": filters to the zone the player is standing in (dimmed when it has no veterans).
-    hereBtn = filterButton(inner, HERE_BTN_W, false)
-    hereBtn:SetPoint("TOPLEFT", zoneBtn, "TOPRIGHT", FILTER_GAP, 0)
-    hereBtn:SetValue("", "This zone", false)
-    hereBtn:SetScript("OnClick", function()
-        closePopup()
-        Browser.ThisZone()
-    end)
-
     campaignBtn = filterButton(inner, campaignW, true)
-    campaignBtn:SetPoint("TOPLEFT", hereBtn, "TOPRIGHT", FILTER_GAP, 0)
+    campaignBtn:SetPoint("TOPLEFT", zoneBtn, "TOPRIGHT", FILTER_GAP, 0)
     campaignBtn:SetScript("OnClick", function(self)
         buildIndex()
         openPopup(self, campaignItems, state.campaign, function(value)
@@ -1034,6 +1028,21 @@ local function buildFilters(inner, above)
 end
 
 -- "Showing all N veterans" ... "Clear filters" ... [ ] Hide book-only
+-- Width left for the count text once "Clear filters", "This zone" and the book toggle sit at
+-- the right end of the row (each separated by COUNT_GAP, plus one gap before the text).
+function Browser.CountRowWidth(bookW, hereW, clearW)
+    return CONTENT_W - bookW - hereW - clearW - 3 * COUNT_GAP
+end
+
+-- Layout numbers for tests: filter button widths and the room a label has inside a button.
+function Browser.FilterLayout()
+    return {
+        zone = ZONE_BTN_W, status = STATUS_BTN_W,
+        campaign = CONTENT_W - ZONE_BTN_W - STATUS_BTN_W - 2 * FILTER_GAP,
+        chevronInset = CHEVRON_INSET, labelInset = LABEL_INSET, contentW = CONTENT_W,
+    }
+end
+
 local function buildCountRow(inner, above)
     local row = CreateFrame("Frame", nil, inner)
     row:SetSize(CONTENT_W, 14)
@@ -1042,7 +1051,6 @@ local function buildCountRow(inner, above)
     countText = text(row, C.FONT_BODY, 11, COL.muted)
     countText:SetPoint("LEFT", 0, 0)
     countText:SetJustifyV("MIDDLE")
-    countText:SetWidth(280)                    -- stays clear of "Clear filters" and the book toggle
     countText:SetJustifyH("LEFT")
     countText:SetWordWrap(false)
 
@@ -1071,6 +1079,29 @@ local function buildCountRow(inner, above)
         refreshFiltered()
     end)
 
+    -- "This zone": small text button that filters to the zone the player is standing in
+    -- (dimmed when that zone has no veterans or is already the filter).
+    hereBtn = raise(CreateFrame("Button", nil, row))
+    hereBtn:SetHeight(14)
+    C.RegisterClicks(hereBtn)
+    hereBtn.label = text(hereBtn, C.FONT_BODY, 11, COL.violet)
+    hereBtn.label:SetPoint("LEFT", 0, 0)
+    hereBtn.label:SetJustifyV("MIDDLE")
+    hereBtn.label:SetWordWrap(false)
+    hereBtn.label:SetText("This zone")
+    hereBtn:SetWidth(math.ceil(hereBtn.label:GetStringWidth()))
+    hereBtn:SetPoint("RIGHT", bookToggle, "LEFT", -COUNT_GAP, 0)
+    hereBtn:SetScript("OnEnter", function(self)
+        if self.usable ~= false then
+            self.label:SetTextColor(COL.title[1], COL.title[2], COL.title[3])
+        end
+    end)
+    hereBtn:SetScript("OnLeave", function() Browser.UpdateHere() end)
+    hereBtn:SetScript("OnClick", function()
+        closePopup()
+        Browser.ThisZone()
+    end)
+
     clearBtn = raise(CreateFrame("Button", nil, row))
     clearBtn:SetHeight(14)
     C.RegisterClicks(clearBtn)
@@ -1079,7 +1110,7 @@ local function buildCountRow(inner, above)
     clearLabel:SetJustifyV("MIDDLE")
     clearLabel:SetText("Clear filters")
     clearBtn:SetWidth(math.ceil(clearLabel:GetStringWidth()))
-    clearBtn:SetPoint("RIGHT", bookToggle, "LEFT", -14, 0)
+    clearBtn:SetPoint("RIGHT", hereBtn, "LEFT", -COUNT_GAP, 0)
     clearBtn:SetScript("OnEnter", function() clearLabel:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
     clearBtn:SetScript("OnLeave", function() clearLabel:SetTextColor(COL.violet[1], COL.violet[2], COL.violet[3]) end)
     clearBtn:SetScript("OnClick", function()
@@ -1092,6 +1123,7 @@ local function buildCountRow(inner, above)
         refreshFiltered()
     end)
     clearBtn:Hide()
+    countText:SetWidth(Browser.CountRowWidth(bookToggle:GetWidth(), hereBtn:GetWidth(), clearBtn:GetWidth()))
     return row
 end
 
@@ -1242,7 +1274,7 @@ function Browser.UpdateHere()
     end
     local zone = hereZone()
     hereBtn.usable = zone ~= nil and zone ~= state.zone
-    local c = hereBtn.usable and COL.text or COL.dim
+    local c = hereBtn.usable and COL.violet or COL.dim
     hereBtn.label:SetTextColor(c[1], c[2], c[3])
 end
 
