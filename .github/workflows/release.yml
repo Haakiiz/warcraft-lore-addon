@@ -37,5 +37,6 @@ jobs:
           python3 tests/test_met.py
           python3 tests/test_portrait.py
           python3 tests/test_toast.py
+          python3 tests/test_mappins.py
 
       - uses: BigWigsMods/packager@v2

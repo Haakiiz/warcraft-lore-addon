@@ -30,7 +30,7 @@ STUBS = """
 
 def run(with_settings, legacy=False):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
-    lua.execute("frames = {}; calls = {}; minimapToggles = 0; refreshes = 0; resets = 0")
+    lua.execute("frames = {}; calls = {}; minimapToggles = 0; refreshes = 0; resets = 0; pinRefreshes = 0")
     lua.execute(STUBS)
     if with_settings:
         lua.execute("""
@@ -51,6 +51,7 @@ def run(with_settings, legacy=False):
                         WarcraftLoreDB.minimap.hide = not WarcraftLoreDB.minimap.hide or nil end },
             Browser = { Toggle = function() end, Refresh = function() refreshes = refreshes + 1 end,
                         ResetPosition = function() resets = resets + 1 end },
+            MapPins = { Refresh = function() pinRefreshes = pinRefreshes + 1 end },
             UI = { ResetPosition = function() resets = resets + 1 end },
         }
     """)
@@ -72,12 +73,12 @@ def main():
     lua.execute("loader = frames[#frames]; loader.scripts.OnEvent(loader)")
     results.append(check("registers canvas category", lua.eval("calls[1]") == "canvas:Warcraft Lore" and lua.eval("calls[2]") == "addon"))
     results.append(check("Open() opens the category", lua.eval("ns.Options.Open()") and lua.eval("calls[3]") == "open:7"))
-    # Controls with an OnClick, in creation order: 4 checkboxes, then 2 buttons.
+    # Controls with an OnClick, in creation order: 5 checkboxes, then 2 buttons.
     lua.execute("""
         clickable = {}
         for _, f in ipairs(frames) do if f.scripts.OnClick then clickable[#clickable + 1] = f end end
     """)
-    results.append(check("six clickable controls", lua.eval("#clickable") == 6))
+    results.append(check("seven clickable controls", lua.eval("#clickable") == 7))
     lua.execute("clickable[1].scripts.OnClick(); clickable[2].scripts.OnClick()")
     results.append(check("checkbox toggles auto/alert", lua.eval("WarcraftLoreDB.auto") is False and lua.eval("WarcraftLoreDB.alert") is True))
     lua.execute("clickable[3].scripts.OnClick()")
@@ -85,8 +86,10 @@ def main():
     lua.execute("clickable[3].scripts.OnClick()")
     results.append(check("minimap checkbox shows it again", lua.eval("minimapToggles") == 2 and lua.eval("WarcraftLoreDB.minimap.hide") is None))
     lua.execute("clickable[4].scripts.OnClick()")
+    results.append(check("world map checkbox turns pins off and refreshes", lua.eval("WarcraftLoreDB.mapPins") is False and lua.eval("pinRefreshes") == 1))
+    lua.execute("clickable[5].scripts.OnClick()")
     results.append(check("book-only toggled and list refreshed", lua.eval("WarcraftLoreDB.hideBookOnly") is True and lua.eval("refreshes") == 1))
-    lua.execute("ns.ResetWindows = nil; clickable[6].scripts.OnClick()")
+    lua.execute("ns.ResetWindows = nil; clickable[7].scripts.OnClick()")
     results.append(check("reset button does nothing (no error) without ns.ResetWindows", lua.eval("resets") == 0))
 
     # Open() returns (true, true) normally, (true, false) when opening fails, false when no panel.
@@ -113,7 +116,7 @@ def main():
 
     # "Reset window positions" goes through ns.ResetWindows (same chat line as /wcl reset).
     lua.execute("resetCalls = 0; ns.ResetWindows = function() resetCalls = resetCalls + 1 end")
-    lua.execute("clickable[6].scripts.OnClick()")
+    lua.execute("clickable[7].scripts.OnClick()")
     results.append(check("reset button uses ns.ResetWindows", lua.eval("resetCalls") == 1))
 
     lua = run(False)

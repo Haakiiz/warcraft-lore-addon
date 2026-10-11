@@ -16,4 +16,5 @@ UI.lua
 Browser.lua
 Toast.lua
 Minimap.lua
+MapPins.lua
 Options.lua

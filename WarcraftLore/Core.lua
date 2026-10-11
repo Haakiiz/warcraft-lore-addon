@@ -550,6 +550,7 @@ local ZONE_MAPS = {
     ["Loch Modan"] = { 1432, 48 },
     ["Thousand Needles"] = { 1441, 64 },
 }
+ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
 
 -- True when the entry has stored coordinates in a zone we can match to a map.
 local function hasCoords(entry)
