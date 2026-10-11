@@ -40,3 +40,4 @@ jobs:
           python tests/test_share.py
           python tests/test_mappins.py
           python tests/test_achievements.py
+          python tests/test_journal.py

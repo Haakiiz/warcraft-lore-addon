@@ -50,6 +50,7 @@ local function showTooltip()
         { " ", 1, 1, 1 },
         { v .. "Left-click" .. S.END .. "  Veterans list", x[1], x[2], x[3] },
         { v .. "Right-click" .. S.END .. "  Story of your target", x[1], x[2], x[3] },
+        { v .. "Shift-click" .. S.END .. "  Lore Journal", x[1], x[2], x[3] },
         { v .. "Drag" .. S.END .. "  Move around the minimap", x[1], x[2], x[3] },
     })
 end
@@ -117,6 +118,8 @@ local function build()
         end
         if mouseButton == "RightButton" then
             ns.ShowTarget()
+        elseif ns.Journal and IsShiftKeyDown and IsShiftKeyDown() then
+            ns.Journal.Toggle()
         else
             ns.Browser.Toggle()
         end

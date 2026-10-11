@@ -41,5 +41,6 @@ jobs:
           python3 tests/test_share.py
           python3 tests/test_mappins.py
           python3 tests/test_achievements.py
+          python3 tests/test_journal.py
 
       - uses: BigWigsMods/packager@v2

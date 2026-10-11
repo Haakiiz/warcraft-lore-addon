@@ -15,6 +15,7 @@ Achievements.lua
 Style.lua
 UI.lua
 Browser.lua
+Journal.lua
 Toast.lua
 Minimap.lua
 MapPins.lua
