@@ -552,6 +552,14 @@ local ZONE_MAPS = {
     ["Duskwood"] = { 1431, 47 },
     ["Loch Modan"] = { 1432, 48 },
     ["Thousand Needles"] = { 1441, 64 },
+    ["Tanaris"] = { 1446, 71 },
+    ["Winterspring"] = { 1452, 83 },
+    ["Moonglade"] = { 1450, 80 },
+    ["Felwood"] = { 1448, 77 },
+    ["Eastern Plaguelands"] = { 1423, 23 },
+    ["The Hinterlands"] = { 1425, 26 },
+    ["Arathi Highlands"] = { 1417, 14 },
+    ["Stranglethorn Vale"] = { 1434 }, -- Mainline splits the zone in two, so only the Classic ID
 }
 ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
 

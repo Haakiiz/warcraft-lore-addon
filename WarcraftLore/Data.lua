@@ -3123,4 +3123,950 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
+    -- ===================================================================== Arathi Highlands
+    [2607] = {
+        name = "Prince Galen Trollbane",
+        zone = "Arathi Highlands",
+        coords = "26.2, 58.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Is slain by the Forsaken, who then claim the sword Trol'kalar (chapter 29)",
+            },
+        },
+        story = "Galen Trollbane was the only son of King Thoras Trollbane and led the defenders of Stromgarde, a human kingdom in the Arathi Highlands. "
+             .. "In World of Warcraft he guards the last sigil that opens his family's tomb in Stromgarde Keep, and Horde adventurers kill him there to take the sword Trol'kalar. "
+             .. "In the book Before the Storm (chapter 29), the Forsaken slay him and claim the sword.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Galen_Trollbane",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=2607",
+        },
+        confidence = "confirmed",
+    },
+
+    [9501] = {
+        name = "Innkeeper Adegwa",
+        zone = "Arathi Highlands",
+        coords = "73.8, 32.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Tells Shokia during the trial of Garrosh Hellscream that a letter is waiting for her",
+            },
+        },
+        story = "Innkeeper Adegwa is a tauren innkeeper in Hammerfall, the Horde town in the Arathi Highlands. "
+             .. "He is affiliated with Orgrimmar and the United tauren tribes. "
+             .. "In the book War Crimes, during the trial of Garrosh Hellscream, he tells Shokia that a letter is waiting for her.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Innkeeper_Adegwa",
+            "https://warcraft.wiki.gg/wiki/War_Crimes",
+            "https://www.wowhead.com/classic/npc=9501",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Eastern Plaguelands
+    [1855] = {
+        name = "Tirion Fordring",
+        zone = "Eastern Plaguelands",
+        coords = "7.5, 43.5",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Of Blood and Honor",
+                missions = {},
+                role = "Rides to Stratholme to free Eitrigg from execution and flees with him into the wilds (chapters 6-7)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Arthas: Rise of the Lich King",
+                missions = {},
+                role = "Attends Arthas's induction as a paladin in Stormwind",
+            },
+        },
+        story = "Tirion Fordring was governor of Hearthglen and a hero of the Second War until he was stripped of his titles and excommunicated from the Knights of the Silver Hand. "
+             .. "In Of Blood and Honor he rides to Stratholme to save the orc Eitrigg from execution, and the two escape together into the wilds. "
+             .. "Years later he lives in exile in a cottage on the shores of the Thondroril River in the Eastern Plaguelands, with his horse Mirador. "
+             .. "In the novel Arthas: Rise of the Lich King he is present when Arthas becomes a paladin in Stormwind.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Tirion_Fordring",
+            "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
+            "https://warcraft.wiki.gg/wiki/Arthas:_Rise_of_the_Lich_King",
+            "https://www.wowhead.com/classic/npc=1855",
+        },
+        confidence = "confirmed",
+    },
+
+    [10304] = {
+        name = "Aurora Skycaller",
+        zone = "Eastern Plaguelands",
+        coords = "53.5, 22.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "In the Shadow of the Sun",
+                missions = {},
+                role = "Joins Renthar Hawkspear in turning down Lor'themar Theron's offer of supplies at Quel'Lithien Lodge",
+            },
+        },
+        story = "Aurora Skycaller is a high elf priestess who helped Alliance adventurers recreate the Crystal of Zin-Malor at Northpass Tower. "
+             .. "When the tower became a battlefield she moved to the area below Quel'Lithien Lodge, where she gives quests in the Eastern Plaguelands. "
+             .. "In the short story In the Shadow of the Sun she and Renthar Hawkspear reject the Regent Lord's offer of supplies.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Aurora_Skycaller",
+            "https://warcraft.wiki.gg/wiki/In_the_Shadow_of_the_Sun",
+            "https://www.wowhead.com/classic/npc=10304",
+        },
+        confidence = "confirmed",
+    },
+
+    [10824] = {
+        name = "Ranger Lord Hawkspear",
+        zone = "Eastern Plaguelands",
+        coords = "52.8, 18.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "World of Warcraft: Sylvanas",
+                missions = {},
+                role = "Leads the hunters of Quel'Lithien Lodge and investigates the slaying of Lireesa and Verath Windrunner with the Farstriders",
+            },
+            {
+                game = "BOOK",
+                campaign = "In the Shadow of the Sun",
+                missions = {},
+                role = "Refuses Lor'themar Theron's aid and reveals that the Regent Lord banished the lodge's quel'dorei",
+            },
+        },
+        story = "Renthar Hawkspear led the hunters of Quel'Lithien Lodge in the Eastern Plaguelands as a high elf ranger lord. "
+             .. "In World of Warcraft he is a rare ranger found south of the lodge. "
+             .. "In the novel World of Warcraft: Sylvanas he and the other Farstriders investigate the deaths of Lireesa and Verath Windrunner. "
+             .. "In the short story In the Shadow of the Sun he turns down Lor'themar Theron's offer of aid and tells him the lodge's quel'dorei were banished from Quel'Thalas.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Death-Hunter_Hawkspear",
+            "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Sylvanas",
+            "https://warcraft.wiki.gg/wiki/In_the_Shadow_of_the_Sun",
+            "https://www.wowhead.com/classic/npc=10824",
+        },
+        confidence = "confirmed",
+    },
+
+    [11034] = {
+        name = "Lord Maxwell Tyrosus",
+        zone = "Eastern Plaguelands",
+        coords = "81.6, 58.0",
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "A Scarlet Flame" },
+                role = "Leads the Argent Dawn forces at Dawn's Watch, which the Crushridge clan attacks until Garek, Anya and Leonid liberate it",
+            },
+            {
+                game = "BOOK",
+                campaign = "Blood Ties",
+                missions = {},
+                role = "Turns down Arator the Redeemer's request for promotion at Light's Hope Chapel, then inducts three new paladins into the order",
+            },
+        },
+        story = "Lord Maxwell Tyrosus leads the Argent Dawn from Light's Hope Chapel in the Eastern Plaguelands. "
+             .. "He plans with Duke Nicholas Zverenhoff an offensive on Stratholme to eliminate Baron Rivendare. "
+             .. "In the novel Blood Ties he turns down Arator the Redeemer's bid for promotion, but later inducts three new paladins into the Silver Hand. "
+             .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he leads the Argent Dawn forces at Dawn's Watch when the Crushridge clan attacks.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Lord_Maxwell_Tyrosus",
+            "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/Blood_Ties",
+            "https://www.wowhead.com/classic/npc=11034",
+        },
+        confidence = "confirmed",
+    },
+
+    [11036] = {
+        name = "Leonid Barthalomew the Revered",
+        zone = "Eastern Plaguelands",
+        coords = "81.6, 57.8",
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "A Scarlet Flame", "War of the Damned" },
+                role = "Joins Garek Bandarion and Dark Ranger Anya to defend Brill, then helps them bring down Naxxramas's central crystal to save the Undercity",
+            },
+        },
+        story = "Leonid Barthalomew the Revered is an undead member of the Argent Dawn who was raised as a mindless thrall of the Scourge during the Third War before Sylvanas Windrunner freed him. "
+             .. "In World of Warcraft he stands at Light's Hope Chapel in the Eastern Plaguelands and helps adventurers deal with Ras Frostwhisper. "
+             .. "Later he tricks Tinkee Steamboil into sending the adventurers back to him with frozen black dragon eggs, then has them deliver the eggs to Betina Bigglezink. "
+             .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he fights alongside Garek Bandarion and Dark Ranger Anya to save the Undercity.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Leonid_Barthalomew",
+            "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/War_of_the_Damned_(WC3_Undead)",
+            "https://www.wowhead.com/classic/npc=11036",
+        },
+        confidence = "confirmed",
+    },
+
+    [11710] = {
+        name = "Mirador",
+        zone = "Eastern Plaguelands",
+        coords = "7.5, 43.5",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Of Blood and Honor",
+                missions = {},
+                role = "Carries the wounded Tirion Fordring back to Mardenholde after his duel with Eitrigg, then carries him to Stratholme to save Eitrigg from execution (chapters 2 and 6-7)",
+            },
+        },
+        story = "Mirador is the faithful stallion of Tirion Fordring. "
+             .. "In World of Warcraft he stands outside Tirion's cottage beside the Thondroril River in the Eastern Plaguelands. "
+             .. "In the novella Of Blood and Honor he carries the wounded Tirion home after his duel with Eitrigg, and later carries him to Stratholme to save the orc.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Mirador",
+            "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
+            "https://www.wowhead.com/classic/npc=11710",
+        },
+        confidence = "confirmed",
+    },
+
+    [11878] = {
+        name = "Nathanos Blightcaller",
+        zone = "Eastern Plaguelands",
+        coords = "26.5, 74.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "A Good War",
+                missions = {},
+                role = "Accompanies Varok Saurfang on the trip to Felwood",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Serves as Sylvanas's champion and bodyguard and reports on the Undercity to her",
+            },
+            {
+                game = "BOOK",
+                campaign = "Shadows Rising",
+                missions = {},
+                role = "Sent by Sylvanas to kill the loa Bwonsamdi, a failed gambit after which he returns to Marris Stead",
+            },
+            {
+                game = "BOOK",
+                campaign = "Dark Mirror",
+                missions = {},
+                role = "Undergoes a ritual with the Val'kyr that transforms him at Sylvanas's command, sacrificing his cousin Stephon Marris",
+            },
+            {
+                game = "BOOK",
+                campaign = "World of Warcraft: Sylvanas",
+                missions = {},
+                role = "Asks Sylvanas to run away with him once her plans come to fruition",
+            },
+        },
+        story = "Nathanos Blightcaller was the first and only human ranger lord trained by the high elves of Quel'Thalas, and he joined Sylvanas's rogue Forsaken after dying in the Third War. "
+             .. "In World of Warcraft he returns to the Marris Stead in the Eastern Plaguelands with his blighthounds, recruiting Horde soldiers against plaguebats, the Scourge and the Scarlet Crusaders of Tyr's Hand. "
+             .. "In the novel Before the Storm he serves as Sylvanas's champion and bodyguard and reports on the Undercity to her. "
+             .. "In the novel Shadows Rising he is sent to kill the loa Bwonsamdi, and the attempt fails.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Nathanos_Blightcaller",
+            "https://warcraft.wiki.gg/wiki/A_Good_War",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://warcraft.wiki.gg/wiki/Shadows_Rising",
+            "https://warcraft.wiki.gg/wiki/Dark_Mirror",
+            "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Sylvanas",
+            "https://www.wowhead.com/classic/npc=11878",
+        },
+        confidence = "confirmed",
+    },
+
+    [16376] = {
+        name = "Craftsman Wilhelm",
+        zone = "Eastern Plaguelands",
+        coords = "81.0, 59.5",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Blood Ties",
+                missions = {},
+                role = "Works at his forge at Light's Hope Chapel while Arator the Redeemer visits him",
+            },
+        },
+        story = "Craftsman Wilhelm is a dwarf blacksmith vendor at Light's Hope Chapel in the Eastern Plaguelands, affiliated with the Brotherhood of the Light. "
+             .. "In the novel Blood Ties he usually repairs the weapons and armor of the paladins of the Order of the Silver Hand. "
+             .. "In the same book he keeps working at his forge and drinks Thunderbrew lager while Arator the Redeemer visits him.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Master_Craftsman_Wilhelm",
+            "https://warcraft.wiki.gg/wiki/Blood_Ties",
+            "https://www.wowhead.com/classic/npc=16376",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Felwood
+    [9598] = {
+        name = "Arei",
+        zone = "Felwood",
+        coords = "48.2, 28.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Ancient of War who fights the Emerald Nightmare from inside the Emerald Dream, finds Broll Bearmantle there and leads him to Zaetar",
+            },
+        },
+        story = "In World of Warcraft Arei appears in Irontree Woods in Felwood when you play the Flute of the Ancients. "
+             .. "You then escort his spirit through the corrupted woods. "
+             .. "In the novel Stormrage he battles the Emerald Nightmare from within the Emerald Dream alongside Zaetar and other guardians of nature.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Arei",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=9598/arei",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Moonglade
+    [11832] = {
+        name = "Keeper Remulos",
+        zone = "Moonglade",
+        coords = "36.2, 41.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Turns on Malfurion after Xavius uses him as a pawn to lure Malfurion into a trap, until he is cleansed of his corruption",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "Refuses to let Hamuul Runetotem and Elerethe Renferal meet in Moonglade, but allows a second meeting there if the first goes well",
+            },
+        },
+        story = "Keeper Remulos is one of the sons of Cenarius and a keeper of the grove who maintains Moonglade, the sacred center of all druidic studies. "
+             .. "A few years after the Third War, Moonglade was opened to all druid races and Keeper Remulos became its new guardian. "
+             .. "In the novel Stormrage, Xavius uses Remulos as a pawn to lure Malfurion Stormrage into a trap, and Remulos is defeated and cleansed of his corruption. "
+             .. "At the end of the novel he is one of many who witness the marriage of Tyrande and Malfurion. "
+             .. "In the novel The Shattering: Prelude to Cataclysm, he refuses to let Hamuul Runetotem and Elerethe Renferal meet in Moonglade, but allows a second meeting there if the first goes well.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Keeper_Remulos",
+            "https://warcraft.wiki.gg/wiki/Moonglade",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://www.wowhead.com/classic/npc=11832",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Stranglethorn Vale
+    [2487] = {
+        name = "Fleet Master Seahorn",
+        zone = "Stranglethorn Vale",
+        coords = "27.2, 77.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Gives the ship Sea King to the new captain Adashe Flintwill (chapter 32)",
+            },
+        },
+        story = "Fleet Master Seahorn is a tauren pirate of the Blackwater Raiders, located on the top floor of the Salty Sailor Tavern in Booty Bay. "
+             .. "He is Baron Revilgaz's most trusted advisor. "
+             .. "In the book Traveler: The Spiral Path he gives the ship Sea King to the new captain Adashe Flintwill.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Fleet_Master_Seahorn",
+            "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=2487",
+        },
+        confidence = "confirmed",
+    },
+
+    [2542] = {
+        name = "Catelyn the Blade",
+        zone = "Stranglethorn Vale",
+        coords = "27.2, 77.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Quest for Pandaria",
+                missions = {},
+                role = "Steals the Pearl of Pandaria from Li Li Stormstout to pay her debt to the Steamwheedle Cartel, then gives it back",
+            },
+        },
+        story = "Catelyn Runeweaver, known as Catelyn the Blade, is a human quest giver in the Salty Sailor Tavern in Booty Bay. "
+             .. "She is the best knife fighter in Booty Bay and the daughter of Archmage Ansirem Runeweaver. "
+             .. "She joined the Blackwater Raiders as a pirate and became captain of the raider ship Neptulon's Bride. "
+             .. "In the book Quest for Pandaria she owes a debt to the Steamwheedle Cartel, steals the Pearl of Pandaria from Li Li Stormstout, and later gives it back.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Catelyn_the_Blade",
+            "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
+            "https://www.wowhead.com/classic/npc=2542",
+        },
+        confidence = "confirmed",
+    },
+
+    [2547] = {
+        name = "Ironpatch",
+        zone = "Stranglethorn Vale",
+        coords = "30.4, 90.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Attacks the Sea King with the Killmonger and executes its captain, Adashe Flintwill",
+            },
+        },
+        story = "Ironpatch is an orc member of the Bloodsail Buccaneers, in charge of the guns and cannons aboard The Crimson Veil off the southern coast of Stranglethorn Vale. "
+             .. "He is the captain of the Killmonger. "
+             .. "When an adventurer infiltrates the Bloodsails, he tells them to use the cannons on the Venture Company goblins drilling for oil to the north. "
+             .. "In the book Traveler: The Spiral Path he attacks the Sea King of the Blackwater Raiders and executes its captain, Adashe Flintwill.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Ironpatch",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=2547",
+        },
+        confidence = "confirmed",
+    },
+
+    [6807] = {
+        name = "Innkeeper Skindle",
+        zone = "Stranglethorn Vale",
+        coords = "27.0, 77.2",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Quest for Pandaria",
+                missions = {},
+                role = "Tells Chen Stormstout everything about Catelyn after Chen pays him",
+            },
+        },
+        story = "Innkeeper Skindle is a goblin innkeeper in the Salty Sailor Tavern in Booty Bay. "
+             .. "He sells food and drink to travelers in the inn. "
+             .. "In the book Quest for Pandaria, Chen Stormstout pays him some coins and Skindle tells him everything about Catelyn.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Innkeeper_Skindle",
+            "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
+            "https://www.wowhead.com/classic/npc=6807",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Sunken Temple
+    [5709] = {
+        name = "Shade of Eranikus",
+        zone = "Sunken Temple",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Despondent green dragon who is reluctant to help Tyrande and Broll, but later helps them reach the heart of the Emerald Dream",
+            },
+        },
+        story = "Eranikus, former consort of Ysera the Dreamer, was sent to guard the ruins of Atal'Hakkar and prevent Hakkar's emergence. "
+             .. "Once inside the temple he and his retinue were corrupted, and he became a shade pulled between the Emerald Dream and the physical world. "
+             .. "In the novel Stormrage he is despondent about the growing corruption and reluctant to help, but he later helps Tyrande and Broll reach the heart of the Emerald Dream, and he dies in the heroes' defense. "
+             .. "In World of Warcraft the Shade of Eranikus is an elite boss in the Temple of Atal'Hakkar, and you must defeat Jammal'an the Prophet before you can fight him.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Shade_of_Eranikus",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://www.wowhead.com/classic/npc=5709/shade-of-eranikus",
+        },
+        confidence = "confirmed",
+    },
+
+    [15362] = {
+        name = "Malfurion Stormrage",
+        zone = "Sunken Temple",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "Eternity's End (Night Elf)",
+                missions = { "The Awakening of Stormrage", "The Druids Arise", "Brothers in Blood", "Twilight of the Gods" },
+                role = "Keeper of the Grove hero, called Furion in these missions, who is woken by Tyrande and rouses the druids against the Burning Legion",
+            },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "Unfinished Business", "Balancing the Scales", "Malfurion's Vision", "Shards of the Alliance", "The Ruins of Dalaran", "The Brothers Stormrage" },
+                role = "Archdruid hero who joins Tyrande and Maiev against Illidan and his naga",
+            },
+        },
+        story = "Malfurion Stormrage is the first of the druids and the Keeper of the Grove. "
+             .. "In World of Warcraft he appears as an apparition, once in Moonglade and once in the Temple of Atal'Hakkar during the Scepter of the Shifting Sands quest chain. "
+             .. "In the Temple of Atal'Hakkar he confirms that an Old God is corrupting the Emerald Dream. "
+             .. "In Warcraft III he is called Furion Stormrage in Eternity's End, and Tyrande wakes him to fight the Burning Legion.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Malfurion_Stormrage",
+            "https://warcraft.wiki.gg/wiki/Brothers_in_Blood_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Balancing_the_Scales_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Terror_of_the_Tides",
+            "https://www.wowhead.com/classic/npc=15362/malfurion-stormrage",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Tanaris
+    [7564] = {
+        name = "Marin Noggenfogger",
+        zone = "Tanaris",
+        coords = "51.8, 28.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Tips off Malus that Aramar Thorne booked passage on the Crustacean, which sends Malus out of Gadgetzan",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Goblin Way",
+                missions = {},
+                role = "Agrees to join Monte Gazlowe's cartel after Gazlowe demands an inspection of his mine",
+            },
+        },
+        story = "In World of Warcraft, Marin Noggenfogger sends adventurers into the desert to collect Laden Dew Glands for his new elixir. "
+             .. "He sends them to his friend Sprinkle, a Gadgetzan chef, who turns a Violet Tragan mushroom into a powder that makes the elixir palatable. "
+             .. "In Traveler: The Spiral Path, he supervises the Thunderdrome bets and tips off Malus about the Crustacean. "
+             .. "In the short story The Goblin Way, he joins Gazlowe's cartel after Gazlowe demands an inspection of his mine.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Marin_Noggenfogger",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://warcraft.wiki.gg/wiki/The_Goblin_Way",
+            "https://www.wowhead.com/classic/npc=7564",
+        },
+        confidence = "confirmed",
+    },
+
+    [7583] = {
+        name = "Sprinkle",
+        zone = "Tanaris",
+        coords = "51.0, 26.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Takes Aramar Thorne and his companions out of Gadgetzan in her caravan, hides the children inside, and suggests Winifred's home as a safe house",
+            },
+        },
+        story = "In World of Warcraft, Sprinkle is a Gadgetzan chef whose secret ingredient is the Violet Tragan mushroom from Valorwind Lake. "
+             .. "She has adventurers gather the mushroom, turns it into a powder, and hands it back to them with a message that Marin owes her a favor. "
+             .. "In Traveler: The Spiral Path, she gets Gazlowe, Aramar Thorne and his companions out of the city in her caravan on a picnic. "
+             .. "Later she tells her husband that the Crustacean is where the travelers have booked passage, and he passes this on to Malus.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Sprinkle_Noggenfogger",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=7583",
+        },
+        confidence = "confirmed",
+    },
+
+    [7804] = {
+        name = "Trenton Lighthammer",
+        zone = "Tanaris",
+        coords = "51.4, 28.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Lets Aramar Thorne and his companions sleep in his tower, and forges a harpoon with Aram for Makasa Flintwill",
+            },
+        },
+        story = "In World of Warcraft, Trenton Lighthammer is a high elf blacksmith at Sandsorrow Watch in Tanaris, searching for the sword Sul'thraze. "
+             .. "In Traveler: The Spiral Path, he lets Aramar Thorne and his companions sleep in his tower. "
+             .. "Aram and Trenton forge a new harpoon for Makasa, and Trenton gives Aram a new iron chain for his compass.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Trenton_Lighthammer",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=7804",
+        },
+        confidence = "confirmed",
+    },
+
+    [8197] = {
+        name = "Chronalis",
+        zone = "Tanaris",
+        coords = "64.5, 50.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Denies Thrall and Desharin entry to the Caverns of Time, then escorts them in once they are shown to be acting under Ysera's direction",
+            },
+        },
+        story = "In World of Warcraft, Chronalis is an elite bronze drake that guards the entrance to the Caverns of Time in eastern Tanaris, together with Tick. "
+             .. "In Thrall: Twilight of the Aspects, he at first refuses Thrall and Desharin entry to the Caverns of Time. "
+             .. "He lets them through only after learning they were acting under Ysera's direction.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Chronalis",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://www.wowhead.com/classic/npc=8197",
+        },
+        confidence = "confirmed",
+    },
+
+    [8198] = {
+        name = "Tick",
+        zone = "Tanaris",
+        coords = "63.2, 50.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Escorts Thrall to Desolace to confront the Life-Binder, and later takes him back to Aggra's side",
+            },
+        },
+        story = "In World of Warcraft, Tick is a bronze drake that guards the entrance to the Caverns of Time in eastern Tanaris, together with Chronalis. "
+             .. "In Thrall: Twilight of the Aspects, Thrall and Tick set out to confront the bereaved Life-Binder in Desolace. "
+             .. "Tick later takes Thrall back to Aggra's side, where the two orcs overcome their past differences.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Tick_(drake)",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://www.wowhead.com/classic/npc=8198",
+        },
+        confidence = "confirmed",
+    },
+
+    [15192] = {
+        name = "Anachronos",
+        zone = "Tanaris",
+        coords = "65.2, 50.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Calls the bronze dragonflight and the other dragon flights to fight the qiraji, and summons the barrier at Ahn'Qiraj",
+            },
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Is present when Thrall returns Nozdormu to the Caverns of Time after the Cataclysm",
+            },
+        },
+        story = "In World of Warcraft, Anachronos is the heir of Nozdormu and guards the Caverns of Time in Tanaris. "
+             .. "In the short story The War of the Shifting Sands, he calls the other dragonflights to fight the qiraji. "
+             .. "In Thrall: Twilight of the Aspects, he is present when Nozdormu is brought back to the Caverns of Time after the Cataclysm.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Anachronos",
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://www.wowhead.com/classic/npc=15192",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Temple of Ahn'Qiraj
+    [15378] = {
+        name = "Merithra of the Dream",
+        zone = "Temple of Ahn'Qiraj",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Caelestrasz and Arygos until the barrier is raised",
+            },
+        },
+        story = "In World of Warcraft, Merithra is an elite in the Temple of Ahn'Qiraj. "
+             .. "In the short story The War of the Shifting Sands, Anachronos calls her, the child of Ysera, to join the fight against the qiraji. "
+             .. "She and the other dragon progeny hold the gates until the magical barrier is raised.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Merithra",
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
+            "https://www.wowhead.com/classic/npc=15378",
+        },
+        confidence = "confirmed",
+    },
+
+    [15379] = {
+        name = "Caelestrasz",
+        zone = "Temple of Ahn'Qiraj",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Merithra and Arygos until they are overwhelmed",
+            },
+        },
+        story = "In World of Warcraft, Caelestrasz is a quest giver in the Temple of Ahn'Qiraj. "
+             .. "In the short story The War of the Shifting Sands, Anachronos calls on the red dragonflight's progeny, Caelestrasz, to fight the qiraji. "
+             .. "He, Merithra and Arygos hold the gates until the barrier is raised, and are overwhelmed when the qiraji surge forth.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Caelestrasz",
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
+            "https://www.wowhead.com/classic/npc=15379",
+        },
+        confidence = "confirmed",
+    },
+
+    [15380] = {
+        name = "Arygos",
+        zone = "Temple of Ahn'Qiraj",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Merithra and Caelestrasz",
+            },
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Grants Thrall an audience at the Nexus, alongside Kalecgos",
+            },
+        },
+        story = "In World of Warcraft, Arygos, in the form of a gnome, offers the quest Imperial Qiraji Armaments in the Temple of Ahn'Qiraj. "
+             .. "In the short story The War of the Shifting Sands, he is one of the dragon progeny who hold the qiraji back at the gates of Ahn'Qiraj. "
+             .. "In Thrall: Twilight of the Aspects, Thrall travels to the Nexus and is admitted to an audience with Arygos and Kalecgos.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Arygos",
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://www.wowhead.com/classic/npc=15380",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== The Hinterlands
+    [2707] = {
+        name = "Shadra",
+        zone = "The Hinterlands",
+        coords = "33.4, 72.6",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Vol'jin: Shadows of the Horde",
+                missions = {},
+                role = "Communicates with Vol'jin through visions shortly after the Landfall",
+            },
+        },
+        story = "Elortha no Shadra, the spider loa, is worshipped by the Witherbark and Vilebranch tribes in the Hinterlands. "
+             .. "In World of Warcraft Horde adventurers summon her at an altar, where she is killed and her venom is sent to the Undercity. "
+             .. "In the novel Vol'jin: Shadows of the Horde she communicates with Vol'jin through visions shortly after the Landfall.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Shadra",
+            "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
+            "https://www.wowhead.com/classic/npc=2707",
+        },
+        confidence = "confirmed",
+    },
+
+    [5635] = {
+        name = "Falstad Wildhammer",
+        zone = "The Hinterlands",
+        coords = "11.8, 46.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Day of the Dragon",
+                missions = {},
+                role = "Leads a flight of gryphon riders that protects Hasic, then transports Rhonin and his companions across the Great Sea to Khaz Modan",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Welcomes King Anduin Wrynn to Ironforge as a member of the Council of Three Hammers",
+            },
+        },
+        story = "Falstad Wildhammer is the High Thane of the Wildhammer clan at Aerie Peak in the Hinterlands. "
+             .. "In World of Warcraft he was a quest giver at Aerie Peak, where he dealt with the encroaching forest trolls. "
+             .. "In the novel Day of the Dragon he leads gryphon riders who protect Hasic and carry Rhonin's group across the Great Sea to Khaz Modan. "
+             .. "In the novel Before the Storm he welcomes King Anduin Wrynn to Ironforge as a member of the Council of Three Hammers.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Falstad_Wildhammer",
+            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=5635",
+        },
+        confidence = "confirmed",
+    },
+
+    [5718] = {
+        name = "Rothos",
+        zone = "The Hinterlands",
+        coords = "65.6, 35.0",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Alexstrasza sends him to gather the dragons while the dragonflights liberate Wyrmrest Temple",
+            },
+        },
+        story = "Rothos is a large green dragon who patrols Seradane in the Hinterlands as a hostile elite drake. "
+             .. "In the novel Thrall: Twilight of the Aspects he makes a brief appearance during the war against Deathwing. "
+             .. "There Alexstrasza sends him to gather the dragons before the battle.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Rothos",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://www.wowhead.com/classic/npc=5718",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Winterspring
+    [11186] = {
+        name = "Lunnix Sprocketslip",
+        zone = "Winterspring",
+        coords = "61.7, 38.5",
+        related = { 11753 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Ends her relationship with Kezzig Klackwhistle after she catches him hanging around Gogo",
+            },
+        },
+        story = "Lunnix Sprocketslip, nicknamed Lunny, is a goblin mining vendor in Everlook in Winterspring. "
+             .. "In the novel Before the Storm, Kezzig Klackwhistle works for her in her mining supply shop, and the two enter a relationship. "
+             .. "She ends it once she catches Kezzig hanging around Gogo, and her anger drives Kezzig to leave Everlook for Silithus. "
+             .. "In World of Warcraft she still sells mining supplies in Everlook.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Lunnix_Sprocketslip",
+            "https://warcraft.wiki.gg/wiki/Gogo",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=11186",
+        },
+        confidence = "confirmed",
+    },
+
+    [11753] = {
+        name = "Gogo",
+        zone = "Winterspring",
+        coords = "61.2, 38.5",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Kezzig Klackwhistle hangs around her while he is in a relationship with Lunnix Sprocketslip",
+            },
+        },
+        story = "Gogo is a goblin located in Everlook in Winterspring. "
+             .. "In the novel Before the Storm, Kezzig Klackwhistle hangs around her while he is in a relationship with Lunnix Sprocketslip. "
+             .. "When Lunnix caught them, her ire caused Kezzig to leave Everlook for Silithus.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Gogo",
+            "https://warcraft.wiki.gg/wiki/Lunnix_Sprocketslip",
+            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://www.wowhead.com/classic/npc=11753",
+        },
+        confidence = "confirmed",
+    },
+
+
+    -- ===================================================================== Zul'Farrak
+    [7267] = {
+        name = "Chief Ukorz Sandscalp",
+        zone = "Zul'Farrak",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Leads the sand trolls who summon the loa Kimbul, Shadra and Mueh'zala with the blood of captured prisoners (chapter 33)",
+            },
+        },
+        story = "Chief Ukorz Sandscalp is the leader of the Sandfury tribe and the ruler of Zul'Farrak, and he is accompanied by his right hand Ruuzlu. "
+             .. "He is obsessed with restoring his tribe to its former glory. "
+             .. "In the novel Traveler: The Spiral Path, Aramar Thorne and his group of friends are captured in Zul'Farrak and set to be sacrificed to the loa. "
+             .. "In World of Warcraft he is the end boss of Zul'Farrak, and you can reach him by talking to Weegli Blastfuse or by starting the optional fight with Sergeant Bly.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Chief_Ukorz_Sandscalp",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
+            "https://www.wowhead.com/classic/npc=7267/chief-ukorz-sandscalp",
+        },
+        confidence = "confirmed",
+    },
 }
