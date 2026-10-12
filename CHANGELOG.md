@@ -2,7 +2,7 @@
 
 ## v0.7.0
 
-- **Memorials:** graves, tombs and monuments for heroes of Warcraft I and II who are no longer around – Uther's Tomb, the plaques in Stormwind's Valley of Heroes, Trollbane's Tomb and more. Hover or read them to tick them off.
+- **Memorials:** tombs, plaques and monuments for Warcraft heroes you can't meet in person – Uther's Tomb, the plaques in Stormwind's Valley of Heroes, Trollbane's Tomb, Grom Hellscream's monument and more. Hover or read them to tick them off.
   Open them from the new Memorials button in the Veterans list or on the world map (stone-colored square pins).
   Two new achievements, "Pay Your Respects" and "Heroes of the Second War", have their own Memorials chip in the Journal.
 - **Lore Journal with achievements:** 41 achievements made from the addon's own data – milestones

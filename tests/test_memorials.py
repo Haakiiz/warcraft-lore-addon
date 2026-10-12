@@ -117,7 +117,7 @@ def main():
     ex("hover('General Turalyon')")
     line = ev("tooltipLines[1]") or ""
     r.append(check("hover adds the memorial line with honors and games",
-                   line.startswith("Warcraft Memorial: Turalyon (") and "WC2" in line and "BtDP" in line and ev("#tooltipLines") == 1, line))
+                   line.startswith("Warcraft Memorial: Turalyon (") and "BtDP" in line and ev("#tooltipLines") == 1, line))
     r.append(check("hover marks it visited", ev("ns.IsVisited('turalyon')") is True
                    and ev("WarcraftLoreDB.visited.turalyon.first") == 1759449600))
     r.append(check("first visit: one chat line naming memorial and honors",

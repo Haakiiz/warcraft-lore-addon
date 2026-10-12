@@ -219,7 +219,7 @@ local function build()
     if #mems >= MIN_GROUP then
         add(list, {
             id = "memorial_all", title = L["Pay Your Respects"], category = "memorial", icon = ICON .. "INV_Misc_Note_02",
-            desc = L["Visit every memorial to a hero of the strategy games."],
+            desc = L["Visit every memorial."],
             members = reachableMems, total = math.max(#reachableMems, 1), later = #reachableMems == 0,
         })
     end

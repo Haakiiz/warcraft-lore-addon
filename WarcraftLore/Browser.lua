@@ -861,7 +861,13 @@ end
 local function updateFilterButtons()
     zoneBtn:SetValue(L["Zone"] .. " ", state.zone or L["All zones"], state.zone ~= nil)
     campaignBtn:SetValue(L["Campaign"] .. " ", state.campaign or L["All campaigns"], state.campaign ~= nil)
-    statusBtn:SetValue(L["Show"] .. " ", STATUS_LABELS[state.status], state.status ~= 1)
+    local statusText = STATUS_LABELS[state.status]
+    if state.memorials and state.status == 2 then
+        statusText = L["Visited"]
+    elseif state.memorials and state.status == 3 then
+        statusText = L["Not visited"]
+    end
+    statusBtn:SetValue(L["Show"] .. " ", statusText, state.status ~= 1)
     -- Memorials have no zone, campaign or book filters: the Show button moves up to take their place.
     local mem = state.memorials
     zoneBtn:SetShown(not mem)

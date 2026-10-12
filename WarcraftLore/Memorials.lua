@@ -33,19 +33,19 @@ ns.MEMORIALS = {
             {
                 game = "WC2",
                 campaign = "Tides of Darkness (Human)",
-                missions = { "The Battle at Darrowmere", "Betrayal and the Destruction of Alterac" },
+                missions = { "The Battle at Darrowmere" },
                 role = "Paladin hero who fights for the Alliance",
             },
             {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "Defense of Strahnbrad", "Blackrock and Roll" },
+                missions = { "The Defense of Strahnbrad", "Blackrock and Roll" },
                 role = "Paladin hero who fights beside Prince Arthas",
             },
         },
         story = "Uther the Lightbringer was the first paladin and the founder of the Order of the Silver Hand. "
             .. "His tomb lies south of Andorhal, and a stone in front of his statue carries his name. "
-            .. "The marker reads that he was the First Paladin and founder of the Order of the Silver Hand. "
+            .. "The marker beneath his statue reads: Here lies Uther the Lightbringer. "
             .. "Players of Warcraft II knew him as a hero of the Alliance at the Battle at Darrowmere. "
             .. "Players of Warcraft III followed him into the Scourge war at Arthas's side.",
         sources = {
@@ -72,8 +72,8 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "The Warning" },
-                role = "King of Lordaeron and father of Prince Arthas",
+                missions = {},
+                role = "King of Lordaeron, who ignores the Prophet's warning in the opening cinematic",
             },
         },
         story = "Terenas Menethil II was the king of Lordaeron and the leader of the Alliance in Warcraft II. "
@@ -98,8 +98,8 @@ ns.MEMORIALS = {
             {
                 game = "WC2",
                 campaign = "Tides of Darkness (Orc)",
-                missions = { "Tol Barad", "The Badlands", "The Fall of Stromgarde" },
-                role = "Lord of Stromgarde, an Alliance leader the orcs fight",
+                missions = {},
+                role = "Lord of Stromgarde, whose kingdom the Horde attacks",
             },
         },
         story = "Thoras Trollbane was the lord of Stromgarde and one of the leaders of the Alliance. "
@@ -178,12 +178,6 @@ ns.MEMORIALS = {
         honors = { "Turalyon" },
         appearances = {
             {
-                game = "WC2",
-                campaign = "Tides of Darkness (Human)",
-                missions = { "The Great Portal" },
-                role = "Knight of the Silver Hand and Alliance commander",
-            },
-            {
                 game = "BTDP",
                 campaign = "Beyond the Dark Portal (Human)",
                 missions = { "Alleria's Journey", "The Bitter Taste of Victory" },
@@ -193,7 +187,7 @@ ns.MEMORIALS = {
         story = "Turalyon was a knight of the Silver Hand and a lieutenant to Anduin Lothar. "
             .. "After the Second War he led the Alliance Expedition through the Dark Portal. "
             .. "His statue greets visitors at the end of the main road in the Valley of Heroes. "
-            .. "The plaque names him High General of the Alliance Expedition and also remembers Lothar and Uther.",
+            .. "The plaque names him High General of the Alliance Expedition and is signed by Uther the Lightbringer.",
         sources = {
             "https://www.wowhead.com/classic/object=25330",
             "https://warcraft.wiki.gg/wiki/Valley_of_Heroes",
@@ -210,14 +204,14 @@ ns.MEMORIALS = {
             {
                 game = "BTDP",
                 campaign = "Beyond the Dark Portal (Human)",
-                missions = { "Alleria's Journey", "Khadgar's Sacrifice" },
-                role = "Archmage hero who speaks in most of the Human briefings",
+                missions = { "Once More Unto the Breach", "The Bitter Taste of Victory" },
+                role = "Archmage hero who must survive to seal the Dark Portal",
             },
         },
         story = "Khadgar was the apprentice of Medivh and later an archmage of the Kirin Tor. "
             .. "He served as the supreme commander of the Alliance Expedition beyond the Dark Portal. "
             .. "His statue stands on the left side of the Valley of Heroes. "
-            .. "The plaque also remembers his master Medivh and the archmage Antonidas.",
+            .. "The plaque names his old master Medivh and is signed by Antonidas, Archmage of Dalaran.",
         sources = {
             "https://www.wowhead.com/classic/object=25333",
             "https://warcraft.wiki.gg/wiki/Valley_of_Heroes",
@@ -314,14 +308,15 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "The Blood of Mannoroth", "By Demons Be Driven", "The Death of Hellscream" },
-                role = "Chieftain of the Warsong Clan and playable hero",
+                missions = { "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
+                role = "Chieftain of the Warsong Clan, a playable hero who later becomes an enemy to capture",
             },
         },
         story = "Grom Hellscream was the chieftain of the Warsong Clan. "
             .. "The monument stands in Demon Fall Canyon in Ashenvale, where he stood alone against the demon Mannoroth. "
             .. "Its inscription remembers him as the one who gave his life to break the demon's hold on the orcs. "
-            .. "Warcraft III lets players take him through the hunt for Mannoroth.",
+            .. "Warcraft III lets players lead him in The Hunter of Shadows, then makes him an enemy in By Demons Be Driven. "
+            .. "Its final cinematic shows him killing Mannoroth and dying freed from the demon's curse.",
         sources = {
             "https://www.wowhead.com/classic/object=21004",
             "https://warcraft.wiki.gg/wiki/Monument_to_Grom_Hellscream",
@@ -335,19 +330,19 @@ ns.MEMORIALS = {
         zone = "Orgrimmar",
         coords = "45.3, 34.9",
         objectIDs = { 175658 },
-        honors = { "Mannoroth the Destructor" },
+        honors = { "Grom Hellscream" },
         appearances = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "The Blood of Mannoroth", "The Death of Hellscream" },
-                role = "Pit lord whose blood corrupted the orcs and whom Grom Hellscream defeated",
+                missions = { "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
+                role = "Chieftain of the Warsong Clan who kills Mannoroth in the final cinematic",
             },
         },
-        story = "Mannoroth the Destructor was the pit lord who bound the orcs to the Burning Legion with his blood. "
+        story = "This trophy remembers how Grom Hellscream freed the orcs by slaying the pit lord Mannoroth. "
             .. "His armor and skull hang on the white tree in the Valley of Wisdom in Orgrimmar. "
-            .. "The plaque says that he is no more and that the plates shall always remind the Horde. "
-            .. "Warcraft III shows him as the demon Grom Hellscream gave his life to destroy.",
+            .. "The plaque says that Mannoroth is no more and that the plates shall always remind the Horde. "
+            .. "Warcraft III ends its orc campaign with that fight.",
         sources = {
             "https://www.wowhead.com/classic/object=175658",
             "https://warcraft.wiki.gg/wiki/The_Armor_of_Mannoroth",
