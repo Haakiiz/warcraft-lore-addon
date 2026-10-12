@@ -308,7 +308,7 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
+                missions = { "The Hunter of Shadows", "By Demons Be Driven" },
                 role = "Chieftain of the Warsong Clan, a playable hero who later becomes an enemy to capture",
             },
         },
@@ -335,7 +335,7 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
+                missions = { "The Hunter of Shadows", "By Demons Be Driven" },
                 role = "Chieftain of the Warsong Clan who kills Mannoroth in the final cinematic",
             },
         },
