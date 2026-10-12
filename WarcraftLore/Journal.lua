@@ -32,6 +32,7 @@ local CATEGORIES = {
     { key = "game", label = L["Games"] },
     { key = "zone", label = L["Zones"] },
     { key = "circle", label = L["Circles"] },
+    { key = "memorial", label = L["Memorials"] },
     { key = "special", label = L["Special"] },
 }
 
@@ -310,15 +311,35 @@ function Journal.SetFilter(key)
 end
 
 -------------------------------------------------------------------- build
+local CHIP_PAD = 16     -- room a chip keeps around its label
+
+-- Width of a chip label in the chip font, measured on one shared hidden string.
+local meter
+local function chipTextWidth(parent, label)
+    meter = meter or text(parent, C.FONT_BODY, 10, COL.muted)
+    meter:SetText(label)
+    local w = meter:GetStringWidth() or 0
+    meter:SetText("")
+    return w
+end
+
 local function buildChips(inner, above)
     local holder = CreateFrame("Frame", nil, inner)
     holder:SetSize(CONTENT_W, 22)
     holder:SetPoint("TOPLEFT", above, "BOTTOMLEFT", 0, -10)
-    local w = math.floor((CONTENT_W - CHIP_GAP * (#CATEGORIES - 1)) / #CATEGORIES)
+    -- Each chip is as wide as its label needs (plus padding); the room left over is shared equally.
+    local room = CONTENT_W - CHIP_GAP * (#CATEGORIES - 1)
     local prev
-    for _, cat in ipairs(CATEGORIES) do
+    local labels, need = {}, 0
+    for i, cat in ipairs(CATEGORIES) do
+        labels[i] = math.ceil(chipTextWidth(holder, cat.label)) + CHIP_PAD
+        need = need + labels[i]
+    end
+    local extra = math.max(0, math.floor((room - need) / #CATEGORIES))
+    local shrink = need > room and room / need or 1
+    for i, cat in ipairs(CATEGORIES) do
         local chip = box(holder, "Button")
-        chip:SetSize(w, 22)
+        chip:SetSize(math.floor((labels[i] + extra) * shrink), 22)
         C.RegisterClicks(chip)
         chip.key = cat.key
         chip.label = text(chip, C.FONT_BODY, 10, COL.muted)

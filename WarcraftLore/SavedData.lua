@@ -38,6 +38,12 @@ local ACCOUNT_MIGRATIONS = {
             db.achievements = {}
         end
     end,
+    -- 4: visited memorials, visited[key] = { first = time, by = "Name-Realm" } (Memorials.lua).
+    [4] = function(db)
+        if type(db.visited) ~= "table" then
+            db.visited = {}
+        end
+    end,
 }
 
 -- "Name-Realm" of the current character (nil when the client does not tell).

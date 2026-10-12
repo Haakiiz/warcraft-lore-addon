@@ -43,3 +43,4 @@ jobs:
           python tests/test_journal.py
           python tests/test_locale.py
           python tests/test_widths.py
+          python tests/test_memorials.py

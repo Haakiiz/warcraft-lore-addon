@@ -104,16 +104,18 @@ def main():
         for key in ("Open Veterans list", "Reset window positions"):
             check(tag + f"Options button '{t(key)}'", px(t(key)) <= button_w - 16, f"{px(t(key))} > {button_w - 16}")
 
-        # Journal chips: six equal chips in the 456 px content width.
-        chip_w = (456 - 4 * 5) // 6
-        for key in ("All", "Milestones", "Games", "Zones", "Circles", "Special"):
-            check(tag + f"Journal chip '{t(key)}'", px(t(key)) <= chip_w - 8, f"{px(t(key))} > {chip_w - 8}")
+        # Journal chips: each as wide as its label plus 16 px padding; together with the 4 px gaps
+        # they must fit the 456 px content width (Journal.lua shares the leftover room equally).
+        chip_keys = ("All", "Milestones", "Games", "Zones", "Circles", "Memorials", "Special")
+        need = sum(px(t(key)) + 16 for key in chip_keys) + 4 * (len(chip_keys) - 1)
+        check(tag + f"Journal chips ({', '.join(t(k) for k in chip_keys)}) fit in 456 px", need <= 456, f"{need} > 456")
 
         # Journal rows: titles (bold 12 pt) have 304 px, dates have the 100 px column.
         titles = [t(k) for k in ("First Contact", "Old Soldiers", "Seasoned Traveller", "Keeper of Lore",
                                  "Living Archive", "Where It Began", "Tides of Darkness", "Beyond the Portal",
                                  "The Forsaken Kingdom", "Bookworm", "Veterans of the Third War",
-                                 "Veterans of the Frozen Throne", "Grand Librarian", "Archivist", "Across the Ages")]
+                                 "Veterans of the Frozen Throne", "Grand Librarian", "Archivist", "Across the Ages",
+                                 "Pay Your Respects", "Heroes of the Second War")]
         zone_title = t("Veterans of %s") % longest_zone
         circle_titles = [t("%s's Circle") % longest_name, t("%s' Circle") % longest_name]
         for title in titles + [zone_title] + circle_titles:

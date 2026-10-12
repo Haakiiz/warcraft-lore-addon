@@ -77,7 +77,9 @@ Achievements.IsReachable = reachable
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 local ICON = "Interface\\Icons\\"
-local CATEGORY_ORDER = { "milestone", "game", "zone", "circle", "special" }
+local CATEGORY_ORDER = { "milestone", "game", "zone", "circle", "memorial", "special" }
+-- The five plaques of the Valley of Heroes in Stormwind (keys in Memorials.lua).
+local VALLEY_OF_HEROES = { "turalyon", "khadgar", "alleria", "danath", "kurdran" }
 local MILESTONES = {
     { 1, L["First Contact"] }, { 10, L["Old Soldiers"] }, { 25, L["Seasoned Traveller"] },
     { 50, L["Keeper of Lore"] }, { 100, L["Living Archive"] },
@@ -205,6 +207,39 @@ local function build()
         end
     end
 
+    -- Memorials (Memorials.lua): items are { key, entry, memorial = true }. The first goal counts the ones
+    -- in zones open at the level cap and grows when the cap rises, like the games' veterans.
+    local mems = ns.MemorialList and ns.MemorialList() or {}
+    local reachableMems = {}
+    for _, m in ipairs(mems) do
+        if zoneReachable(m.entry.zone) then
+            reachableMems[#reachableMems + 1] = m
+        end
+    end
+    if #mems >= MIN_GROUP then
+        add(list, {
+            id = "memorial_all", title = L["Pay Your Respects"], category = "memorial", icon = ICON .. "INV_Misc_Note_02",
+            desc = L["Visit every memorial to a hero of the strategy games."],
+            members = reachableMems, total = math.max(#reachableMems, 1), later = #reachableMems == 0,
+        })
+    end
+    local valley, valleyOpen = {}, true
+    for _, key in ipairs(VALLEY_OF_HEROES) do
+        for _, m in ipairs(mems) do
+            if m.key == key then
+                valley[#valley + 1] = m
+                valleyOpen = valleyOpen and zoneReachable(m.entry.zone)
+            end
+        end
+    end
+    if #valley == #VALLEY_OF_HEROES then
+        add(list, {
+            id = "memorial_valley", title = L["Heroes of the Second War"], category = "memorial", icon = ICON .. "INV_Sword_27",
+            desc = L["Visit all five plaques in Stormwind's Valley of Heroes."],
+            members = valley, total = #valley, later = not valleyOpen,
+        })
+    end
+
     if #rtsCodes >= 2 then
         add(list, {
             id = "special_ages", title = L["Across the Ages"], category = "special", icon = ICON .. "INV_Misc_Spyglass_03",
@@ -253,7 +288,11 @@ function Achievements.List()
     local function met(g)
         local m = metCache[g]
         if m == nil then
-            m = ns.GroupMet(g)
+            if g.memorial then
+                m = ns.IsVisited ~= nil and ns.IsVisited(g.key) == true
+            else
+                m = ns.GroupMet(g)
+            end
             metCache[g] = m
         end
         return m

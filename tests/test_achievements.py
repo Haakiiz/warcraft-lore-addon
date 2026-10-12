@@ -320,7 +320,7 @@ def main():
     lua.execute("WarcraftLoreDB = { schema = 2, auto = true, alert = true, minimap = {}, met = { [4949] = { first = 5, count = 2 } } }")
     lua.execute("WarcraftLoreCharDB = { schema = 2 }")
     lua.execute("ns.SavedData.Load()")
-    r.append(check("migration 3: schema 3", lua.eval("WarcraftLoreDB.schema") == 3 and lua.eval("ns.SavedData.ACCOUNT_SCHEMA") == 3))
+    r.append(check("migration 3: runs on to the latest schema", lua.eval("WarcraftLoreDB.schema") == 4 and lua.eval("ns.SavedData.ACCOUNT_SCHEMA") == 4))
     r.append(check("migration 3: achievements table, met kept",
                    lua.eval("type(WarcraftLoreDB.achievements)") == "table" and lua.eval("WarcraftLoreDB.met[4949].count") == 2))
     r.append(check("migration 3: not yet seeded", lua.eval("WarcraftLoreDB.achievementsSeeded") is None))

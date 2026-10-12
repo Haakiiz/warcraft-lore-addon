@@ -29,6 +29,7 @@ local COL = {
     met = { rgb("6fcf7f") },
     gold = { rgb("e0b84a") },
     hollow = { rgb("6b5f4a") },
+    stone = { rgb("9e9689") },
 }
 Style.COL = COL
 Style.HEX_MUTED = "|cffa79d8a"

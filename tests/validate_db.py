@@ -15,12 +15,15 @@ import sys
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "WarcraftLore" / "Data.lua"
+MEMORIALS = DATA.parent / "Memorials.lua"
 
 GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
 ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
+MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources"}
+MEMORIAL_KINDS = {"plaque", "tomb", "monument"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
 ITEM_FIELDS = {"id", "name", "note"}
 
@@ -177,13 +180,16 @@ class LuaTable:
         return isinstance(self.data, list)
 
 
-def load_npcs(path):
+def load_table(path, field):
     tokens = tokenize(path.read_text(encoding="utf-8-sig"))
     for i in range(len(tokens) - 4):
-        if [t[1] for t in tokens[i:i + 4]] == ["ns", ".", "NPCS", "="]:
-            tbl = Parser(tokens, i + 4).table()
-            return tbl
-    raise LuaError("could not find 'ns.NPCS = {' in Data.lua")
+        if [t[1] for t in tokens[i:i + 4]] == ["ns", ".", field, "="]:
+            return Parser(tokens, i + 4).table()
+    raise LuaError(f"could not find 'ns.{field} = {{' in {path.name}")
+
+
+def load_npcs(path):
+    return load_table(path, "NPCS")
 
 
 # --------------------------------------------------------------------------- validation
@@ -193,6 +199,118 @@ def banned_phrase_in(text):
         if re.search(r"(?<![A-Za-z])" + re.escape(phrase) + r"(?![A-Za-z])", text, re.IGNORECASE):
             return phrase
     return None
+
+
+def check_appearances(e, err):
+    """Rules for an entry's `appearances` list (NPCs and memorials share them)."""
+    apps = e.get("appearances")
+    if "appearances" not in e:
+        return
+    if not isinstance(apps, LuaTable) or not apps.is_list or not apps.data:
+        err("'appearances' must be a list with at least one appearance")
+        return
+    for n, a in enumerate(apps.data, 1):
+        if not isinstance(a, LuaTable) or a.is_list:
+            err(f"appearances[{n}] must be a table with named fields")
+            continue
+        d = a.data
+        for f in sorted(set(d) - APPEARANCE_FIELDS):
+            err(f"appearances[{n}]: unknown field '{f}'")
+        if d.get("game") not in GAMES:
+            err(f"appearances[{n}].game must be one of {sorted(GAMES)}, found {d.get('game')!r}")
+        if not (isinstance(d.get("role"), str) and d["role"].strip()):
+            err(f"appearances[{n}].role is missing")
+        if "campaign" in d and not isinstance(d["campaign"], str):
+            err(f"appearances[{n}].campaign must be a string")
+        m = d.get("missions")
+        if m is not None and not (isinstance(m, LuaTable) and (m.is_list or not m.data)
+                                  and all(isinstance(x, str) and x.strip() for x in (m.data or []))):
+            err(f"appearances[{n}].missions must be a list of strings")
+
+
+def check_story(e, err):
+    story = e.get("story")
+    if isinstance(story, str) and story.strip():
+        n = len(re.findall(r"[.!?](?=\s|$)", story.strip()))
+        if not 3 <= n <= 6:
+            err(f"'story' must have 3–6 sentences, found {n}")
+
+
+def check_sources(e, err):
+    src = e.get("sources")
+    if "sources" not in e:
+        return
+    if not isinstance(src, LuaTable) or not src.is_list or not src.data:
+        err("'sources' must be a list with at least one link")
+        return
+    for n, url in enumerate(src.data, 1):
+        if not (isinstance(url, str) and re.match(r"https?://\S+$", url)):
+            err(f"sources[{n}] is not a valid link: {url!r}")
+
+
+def check_memorials(mems):
+    """Rules for ns.MEMORIALS in Memorials.lua: the same text rules as the NPCs."""
+    errors = []
+    if mems.is_list and mems.data:
+        return ["ns.MEMORIALS must use short keys: key = { ... }"]
+    names, object_ids = {}, {}
+    for key, entry in mems.data.items():
+        where = f"memorial {key!r} (line {mems.key_lines[key]})"
+
+        def err(msg, where=where):
+            errors.append(f"{where}: {msg}")
+
+        if not (isinstance(key, str) and re.fullmatch(r"[a-z][a-z0-9_]*", key)):
+            err("the key must be a short lower-case word")
+        if not isinstance(entry, LuaTable) or entry.is_list:
+            err("the entry must be a table with named fields")
+            continue
+        e = entry.data
+        texts = [("name", e.get("name")), ("story", e.get("story"))]
+        for n, a in enumerate(getattr(e.get("appearances"), "data", None) or [], 1):
+            if isinstance(a, LuaTable) and not a.is_list:
+                texts += [(f"appearances[{n}].role", a.data.get("role")), (f"appearances[{n}].campaign", a.data.get("campaign"))]
+        for field, text in texts:
+            if isinstance(text, str):
+                bad = banned_phrase_in(text)
+                if bad:
+                    err(f"{field} contains the banned phrase \"{bad}\" (research or dev wording)")
+        for f in sorted(set(e) - MEMORIAL_FIELDS):
+            err(f"unknown field '{f}' (typo?)")
+        for f in sorted(MEMORIAL_FIELDS - set(e)):
+            err(f"missing required field '{f}'")
+        for f in ("name", "zone", "story"):
+            if f in e and not (isinstance(e[f], str) and e[f].strip()):
+                err(f"'{f}' must be a non-empty string")
+        if isinstance(e.get("name"), str):
+            low = e["name"].strip().lower()
+            if low in names:
+                err(f"the name is already used by memorial {names[low]!r}")
+            names[low] = key
+        if "kind" in e and e["kind"] not in MEMORIAL_KINDS:
+            err(f"'kind' must be one of {sorted(MEMORIAL_KINDS)}, found {e['kind']!r}")
+        if "coords" in e and not (isinstance(e["coords"], str)
+                                  and re.fullmatch(r"\d{1,2}(\.\d)?, \d{1,2}(\.\d)?", e["coords"])):
+            err(f"'coords' must look like \"63.8, 75.1\", found {e['coords']!r}")
+        if "objectIDs" in e:
+            ids = e["objectIDs"]
+            vals = ids.data if isinstance(ids, LuaTable) and ids.is_list else None
+            if not vals or not all(isinstance(i, int) and not isinstance(i, bool) and i > 0 for i in vals):
+                err("'objectIDs' must be a list of positive object IDs")
+            else:
+                for i in vals:
+                    if i in object_ids:
+                        err(f"object ID {i} is also used by memorial {object_ids[i]!r}")
+                    object_ids[i] = key
+        if "honors" in e:
+            honors = e["honors"]
+            vals = honors.data if isinstance(honors, LuaTable) and honors.is_list else None
+            if not vals or not all(isinstance(h, str) and h.strip() for h in vals):
+                err("'honors' must be a list of names")
+        check_story(e, err)
+        check_appearances(e, err)
+        check_sources(e, err)
+    return errors
 
 
 def check_entries(npcs):
@@ -280,34 +398,9 @@ def check_entries(npcs):
                         if isinstance(back, LuaTable) and back.is_list and npc_id in back.data and npc_id < r:
                             warnings.append(f"{where}: {r} is related both ways; one side is enough")
 
-        story = e.get("story")
-        if isinstance(story, str) and story.strip():
-            n = len(re.findall(r"[.!?](?=\s|$)", story.strip()))
-            if not 3 <= n <= 6:
-                err(f"'story' must have 3–6 sentences, found {n}")
+        check_story(e, err)
 
-        apps = e.get("appearances")
-        if "appearances" in e:
-            if not isinstance(apps, LuaTable) or not apps.is_list or not apps.data:
-                err("'appearances' must be a list with at least one appearance")
-            else:
-                for n, a in enumerate(apps.data, 1):
-                    if not isinstance(a, LuaTable) or a.is_list:
-                        err(f"appearances[{n}] must be a table with named fields")
-                        continue
-                    d = a.data
-                    for f in sorted(set(d) - APPEARANCE_FIELDS):
-                        err(f"appearances[{n}]: unknown field '{f}'")
-                    if d.get("game") not in GAMES:
-                        err(f"appearances[{n}].game must be one of {sorted(GAMES)}, found {d.get('game')!r}")
-                    if not (isinstance(d.get("role"), str) and d["role"].strip()):
-                        err(f"appearances[{n}].role is missing")
-                    if "campaign" in d and not isinstance(d["campaign"], str):
-                        err(f"appearances[{n}].campaign must be a string")
-                    m = d.get("missions")
-                    if m is not None and not (isinstance(m, LuaTable) and (m.is_list or not m.data)
-                                              and all(isinstance(x, str) and x.strip() for x in (m.data or []))):
-                        err(f"appearances[{n}].missions must be a list of strings")
+        check_appearances(e, err)
 
         items = e.get("items")
         if items is not None:
@@ -331,14 +424,7 @@ def check_entries(npcs):
                     if not (isinstance(d.get("name"), str) and d["name"].strip()):
                         err(f"items[{n}].name is missing")
 
-        src = e.get("sources")
-        if "sources" in e:
-            if not isinstance(src, LuaTable) or not src.is_list or not src.data:
-                err("'sources' must be a list with at least one link")
-            else:
-                for n, url in enumerate(src.data, 1):
-                    if not (isinstance(url, str) and re.match(r"https?://\S+$", url)):
-                        err(f"sources[{n}] is not a valid link: {url!r}")
+        check_sources(e, err)
     return errors, warnings
 
 
@@ -364,6 +450,19 @@ def main():
     print(f"OK: {count} entries, no duplicate NPC IDs, all fields valid.")
     for z, n in sorted(zones.items()):
         print(f"  {z}: {n}")
+    if len(sys.argv) <= 1 and MEMORIALS.exists():
+        try:
+            mems = load_table(MEMORIALS, "MEMORIALS")
+        except LuaError as ex:
+            print(f"ERROR in {MEMORIALS.name}: {ex}")
+            return 1
+        mem_errors = check_memorials(mems)
+        for e in mem_errors:
+            print("ERROR:", e)
+        if mem_errors:
+            print(f"\n{len(mem_errors)} error(s) in {len(mems.data)} memorials.")
+            return 1
+        print(f"OK: {len(mems.data)} memorials, all fields valid.")
     return 0
 
 

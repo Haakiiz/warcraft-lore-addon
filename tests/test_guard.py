@@ -35,6 +35,8 @@ ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat =
     missing = {},
     Report = function() return {} end,
     HookUnitTooltip = function() return "stub" end,
+    HookObjectTooltip = function() return "stub" end,
+    ItemTextName = function() return nil end,
     AddTooltipLine = noop,
 } }
 ns.Toast = { Show = function(id, e, who, unit, more) toasts[#toasts + 1] = { id = id, who = who, more = more } end,

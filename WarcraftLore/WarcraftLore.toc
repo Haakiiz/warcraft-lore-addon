@@ -12,6 +12,7 @@ Locale.lua
 Locales\deDE.lua
 Locales\frFR.lua
 Data.lua
+Memorials.lua
 SavedData.lua
 Core.lua
 Achievements.lua

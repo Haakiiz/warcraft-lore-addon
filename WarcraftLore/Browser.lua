@@ -43,10 +43,11 @@ local POPUP_HEAD = {
 
 -- Filter state. Lives for the session only (not saved). "Hide book-only" is a preference and
 -- is saved in WarcraftLoreDB.hideBookOnly instead.
-local state = { games = {}, zone = nil, campaign = nil, status = 1, query = "" }
+-- state.memorials = true shows the memorials (Memorials.lua) instead of the veterans.
+local state = { games = {}, zone = nil, campaign = nil, status = 1, query = "", memorials = false }
 
 local frame, searchEdit, searchHint
-local journalBtn
+local journalBtn, memBtn
 local zoneBtn, hereBtn, campaignBtn, statusBtn, clearBtn, bookToggle
 local progress, countText, emptyText, emptyHint
 local scroll, content, track, thumb
@@ -173,7 +174,84 @@ local function buildIndex()
     end
 end
 
+-- The memorials as list items (same fields the rows use), sorted by name. Built on first use.
+local memItems
+local function buildMemorialIndex()
+    if memItems then
+        return
+    end
+    memItems = {}
+    for _, m in ipairs(ns.MemorialList and ns.MemorialList() or {}) do
+        local entry = m.entry
+        local it = {
+            memorial = true, key = m.key, id = m.key, entry = entry, name = entry.name or "?",
+            label = ns.CodesLabel(m.codes), games = {}, zones = {}, campaigns = {}, codes = m.codes,
+        }
+        it.lower = it.name:lower()
+        for _, code in ipairs(m.codes) do
+            it.games[code] = true
+        end
+        it.search = table.concat({ normalize(it.name), normalize(entry.zone or ""),
+            normalize(table.concat(entry.honors or {}, " ")) }, "\1")
+        memItems[#memItems + 1] = it
+    end
+end
+
+-- A veteran counts as met, a memorial as visited.
+local function isMet(it)
+    if it.memorial then
+        return ns.IsVisited ~= nil and ns.IsVisited(it.key) == true
+    end
+    return ns.GroupMet(it.group)
+end
+
+-- Memorials per game: { code = { met = visited, total = n } }, a memorial with several games counts in each.
+local function memorialCounts()
+    buildMemorialIndex()
+    local perGame, overall = {}, { met = 0, total = #memItems }
+    for _, it in ipairs(memItems) do
+        local met = isMet(it)
+        if met then
+            overall.met = overall.met + 1
+        end
+        for _, code in ipairs(it.codes) do
+            local n = perGame[code]
+            if not n then
+                n = { met = 0, total = 0 }
+                perGame[code] = n
+            end
+            n.total = n.total + 1
+            if met then
+                n.met = n.met + 1
+            end
+        end
+    end
+    return perGame, overall
+end
+
 local function matches(it, anyGame, hideBooks)
+    if it.memorial then
+        -- Memorials: game chips, visited status and the search box. No zone, campaign or book filters.
+        if anyGame then
+            local ok = false
+            for code in pairs(state.games) do
+                if it.games[code] then
+                    ok = true
+                    break
+                end
+            end
+            if not ok then
+                return false
+            end
+        end
+        local visited = isMet(it)
+        if state.status == 2 and not visited then
+            return false
+        elseif state.status == 3 and visited then
+            return false
+        end
+        return state.query == "" or string.find(it.search, state.query, 1, true) ~= nil
+    end
     if hideBooks and it.bookOnly then
         return false
     end
@@ -533,11 +611,19 @@ local function showRowTip(r)
         { it.name, nc[1], nc[2], nc[3] },
         { entry.zone or "", mc[1], mc[2], mc[3] },
     }
-    for _, code in ipairs(it.group.codes) do          -- one game per line, in its color
+    for _, code in ipairs(it.memorial and it.codes or it.group.codes) do          -- one game per line, in its color
         local gr, gg, gb = ns.GameRGB(code)
         lines[#lines + 1] = { ns.GAME_LONG[code] or code, gr, gg, gb }
     end
-    if ns.GroupMet(it.group) then
+    if it.memorial then
+        table.insert(lines, 3, { L["Honors %s"]:format(table.concat(entry.honors or {}, ", ")), COL.text[1], COL.text[2], COL.text[3] })
+        local visit = isMet(it) and ns.VisitSummary(it.key)
+        if visit then
+            lines[#lines + 1] = { visit, COL.met[1], COL.met[2], COL.met[3] }
+        else
+            lines[#lines + 1] = { L["Not visited yet"], mc[1], mc[2], mc[3] }
+        end
+    elseif ns.GroupMet(it.group) then
         lines[#lines + 1] = { ns.MetSummary(it.group.ids[1]) or L["Met"], COL.met[1], COL.met[2], COL.met[3] }
     else
         lines[#lines + 1] = { L["Not met yet"], mc[1], mc[2], mc[3] }
@@ -551,8 +637,13 @@ local function applyRowState(r)
     if not r.item then
         return
     end
-    local shownID = ns.UI.GetShownNPC()
-    local selected = shownID ~= nil and r.item.group.idSet[shownID] == true
+    local selected
+    if r.item.memorial then
+        selected = ns.UI.GetShownMemorial ~= nil and ns.UI.GetShownMemorial() == r.item.key
+    else
+        local shownID = ns.UI.GetShownNPC()
+        selected = shownID ~= nil and r.item.group.idSet[shownID] == true
+    end
     if selected then
         r.sel:Show()
     else
@@ -622,7 +713,11 @@ local function acquireRow(i)
         if self.item then
             -- The lore window sits in a higher strata than this window, so it opens on top,
             -- docked next to this one.
-            ns.UI.ShowEntry(self.item.id, self.item.entry, nil, frame)
+            if self.item.memorial then
+                ns.UI.ShowMemorial(self.item.key, frame)
+            else
+                ns.UI.ShowEntry(self.item.id, self.item.entry, nil, frame)
+            end
         end
     end)
     rows[i] = r
@@ -631,7 +726,7 @@ end
 
 local function fillRow(r, it)
     r.item = it
-    r.met = ns.GroupMet(it.group)
+    r.met = isMet(it)
     if r.met then
         r.metMark:Show()
         r.hollow:Hide()
@@ -693,6 +788,9 @@ local function updateProgress(overall)
     progress.of:SetText(L["of %d"]:format(overall.total))
     local used = progress.label:GetStringWidth() + 10 + progress.count:GetStringWidth() + 10 + progress.of:GetStringWidth() + 10
     local reserved = journalBtn and (journalBtn:GetWidth() or 0) + 10 or 0   -- room for the Journal button
+    if memBtn then
+        reserved = reserved + (memBtn:GetWidth() or 0) + 14                 -- ... and the Memorials button
+    end
     local barW = math.max(10, math.floor(CONTENT_W - used - reserved))
     progress.track:ClearAllPoints()
     progress.track:SetPoint("TOPLEFT", progress, "TOPLEFT", math.ceil(used), -10)
@@ -710,7 +808,21 @@ local function updateProgress(overall)
 end
 
 local function updateCounters()
-    local perGame, overall = ns.MetCounts()
+    local perGame, overall
+    if state.memorials then
+        perGame, overall = memorialCounts()
+    else
+        perGame, overall = ns.MetCounts()
+    end
+    progress.label:SetText(state.memorials and L["MEMORIALS VISITED"] or L["VETERANS MET"])
+    if memBtn then
+        local _, all = memorialCounts()
+        memBtn.label:SetText(state.memorials and L["Veterans"] or (L["Memorials"] .. " " .. all.met .. "/" .. all.total))
+        memBtn:SetWidth(math.ceil(memBtn.label:GetStringWidth()))
+        memBtn:SetShown(all.total > 0)
+        local c = state.memorials and COL.title or COL.violet
+        memBtn.label:SetTextColor(c[1], c[2], c[3])
+    end
     updateProgress(overall)
     local shown = {}
     for _, code in ipairs(ns.GAME_ORDER) do
@@ -750,6 +862,18 @@ local function updateFilterButtons()
     zoneBtn:SetValue(L["Zone"] .. " ", state.zone or L["All zones"], state.zone ~= nil)
     campaignBtn:SetValue(L["Campaign"] .. " ", state.campaign or L["All campaigns"], state.campaign ~= nil)
     statusBtn:SetValue(L["Show"] .. " ", STATUS_LABELS[state.status], state.status ~= 1)
+    -- Memorials have no zone, campaign or book filters: the Show button moves up to take their place.
+    local mem = state.memorials
+    zoneBtn:SetShown(not mem)
+    campaignBtn:SetShown(not mem)
+    hereBtn:SetShown(not mem)
+    bookToggle:SetShown(not mem)
+    statusBtn:ClearAllPoints()
+    if mem then
+        statusBtn:SetPoint("TOPLEFT", zoneBtn, "TOPLEFT", 0, 0)
+    else
+        statusBtn:SetPoint("TOPLEFT", campaignBtn, "TOPRIGHT", FILTER_GAP, 0)
+    end
     Browser.UpdateHere()
     if anyFilter() then
         clearBtn:Show()
@@ -770,13 +894,15 @@ function Browser.Refresh(resetScroll)
         return
     end
     buildIndex()
+    buildMemorialIndex()
     updateCounters()
     updateFilterButtons()
 
     local anyGame = next(state.games) ~= nil
-    local hideBooks = hideBookOnly()
+    local hideBooks = hideBookOnly() and not state.memorials
+    local list = state.memorials and memItems or items
     local shown = 0
-    for _, it in ipairs(items) do
+    for _, it in ipairs(list) do
         if matches(it, anyGame, hideBooks) then
             shown = shown + 1
             fillRow(acquireRow(shown), it)
@@ -793,8 +919,14 @@ function Browser.Refresh(resetScroll)
     scroll:SetVerticalScroll(resetScroll and 0 or math.min(previous, maxScroll))
     updateThumb()
 
-    local zn = state.zone and getZoneCounts()[state.zone]
-    if zn then
+    local zn = state.zone and not state.memorials and getZoneCounts()[state.zone]
+    if state.memorials then
+        if anyFilter() then
+            countText:SetText(L["Showing %d of %d"]:format(shown, #list))
+        else
+            countText:SetText(L["Showing all %d memorials"]:format(#list))
+        end
+    elseif zn then
         -- With a zone picked, the line shows that zone's progress ("1 of 6 met here"). The zone
         -- name is left out: the Zone button already shows it, and the row is narrow.
         local line = Browser.ZoneLine(zn.met, zn.total, shown)
@@ -804,6 +936,7 @@ function Browser.Refresh(resetScroll)
     else
         countText:SetText(L["Showing all %d veterans"]:format(#items))
     end
+    emptyText:SetText(state.memorials and L["No memorials match."] or L["No veterans match."])
     if shown == 0 then
         emptyText:Show()
         emptyHint:Show()
@@ -870,6 +1003,39 @@ local function buildProgress(inner)
         end
     end)
     journalBtn = jb
+
+    -- Next to it: switches the list between the veterans and the memorials (graves, plaques, monuments).
+    local mb = raise(CreateFrame("Button", nil, progress))
+    mb:SetHeight(14)
+    C.RegisterClicks(mb)
+    mb.label = text(mb, C.FONT_BODY, 11, COL.violet)
+    mb.label:SetPoint("LEFT", 0, 0)
+    mb.label:SetJustifyV("MIDDLE")
+    mb.label:SetText(L["Memorials"])
+    mb:SetWidth(math.ceil(mb.label:GetStringWidth()))
+    mb:SetPoint("BOTTOMRIGHT", jb, "BOTTOMLEFT", -14, 0)
+    mb:SetScript("OnEnter", function(self) self.label:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
+    mb:SetScript("OnLeave", function(self)
+        local c = state.memorials and COL.title or COL.violet
+        self.label:SetTextColor(c[1], c[2], c[3])
+    end)
+    mb:SetScript("OnClick", function()
+        closePopup()
+        Browser.SetMemorials(not state.memorials)
+    end)
+    memBtn = mb
+end
+
+-- Shows the memorials instead of the veterans (true) or back (false). Zone and campaign filters
+-- belong to the veterans and are cleared.
+function Browser.SetMemorials(on)
+    state.memorials = on == true
+    state.zone, state.campaign = nil, nil
+    Browser.Refresh(true)
+end
+
+function Browser.IsShowingMemorials()
+    return state.memorials == true
 end
 
 -- One chip per game: code, met/total and a thin bar. Clicking toggles the game filter.
@@ -1280,6 +1446,7 @@ function Browser.ShowZone(zoneName)
         end
     end
     state.zone = known and zoneName or nil
+    state.memorials = false -- a zone is a list of veterans
     if frame:IsShown() then
         Browser.Refresh(true)
     else

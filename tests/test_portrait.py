@@ -309,5 +309,6 @@ def load_without_model():
     return lua
 
 
-main()
-test_layout()
+if __name__ == "__main__":
+    main()
+    test_layout()

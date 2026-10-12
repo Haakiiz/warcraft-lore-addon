@@ -2,9 +2,12 @@
 
 ## v0.7.0
 
-- **Lore Journal with achievements:** 39 achievements made from the addon's own data – milestones
+- **Memorials:** graves, tombs and monuments for heroes of Warcraft I and II who are no longer around – Uther's Tomb, the plaques in Stormwind's Valley of Heroes, Trollbane's Tomb and more. Hover or read them to tick them off.
+  Open them from the new Memorials button in the Veterans list or on the world map (stone-colored square pins).
+  Two new achievements, "Pay Your Respects" and "Heroes of the Second War", have their own Memorials chip in the Journal.
+- **Lore Journal with achievements:** 41 achievements made from the addon's own data – milestones
   (1 to 100 veterans), one per Warcraft game (with extra steps for the novels and books), one per zone,
-  one "Circle" per well-connected character and "Across the Ages". 29 can be earned now; the rest
+  one "Circle" per well-connected character, two for the memorials and "Across the Ages". 31 can be earned now; the rest
   (the ones that need zones above level 30) are marked "later" and open up when the level cap rises.
   Achievements are stored for the whole account.
 - **Open it your way:** `/wcl journal`, the new Journal button in the Veterans list, or Shift-click

@@ -47,7 +47,7 @@ def main():
     lua = load("nil", "nil")
     g = lua.globals()
     results.append(check("fresh: defaults set", g.WarcraftLoreDB.auto is True and g.WarcraftLoreDB.alert is True))
-    results.append(check("fresh: schemas set", g.WarcraftLoreDB.schema == 3 and g.WarcraftLoreCharDB.schema == 2))
+    results.append(check("fresh: schemas set", g.WarcraftLoreDB.schema == 4 and g.WarcraftLoreCharDB.schema == 2))
     results.append(check("fresh: account met table", lua.eval("type(WarcraftLoreDB.met)") == "table"))
     results.append(check("fresh: no char met table", lua.eval("WarcraftLoreCharDB.met") is None))
     results.append(check("fresh: silent", lua.eval("#printed") == 0))
@@ -60,7 +60,7 @@ def main():
     e = g.WarcraftLoreDB.met[4949]
     results.append(check("v0.3: met moved to account", e.first == 1700000000 and e.count == 1 and e.by == "Arthas-Silvermoon"))
     results.append(check("v0.3: char met removed", lua.eval("WarcraftLoreCharDB.met") is None))
-    results.append(check("v0.3: schemas set", g.WarcraftLoreDB.schema == 3 and g.WarcraftLoreCharDB.schema == 2))
+    results.append(check("v0.3: schemas set", g.WarcraftLoreDB.schema == 4 and g.WarcraftLoreCharDB.schema == 2))
 
     # Damaged data: wrong types are replaced.
     lua = load("'oops'", "{ met = 5 }")

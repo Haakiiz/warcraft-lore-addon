@@ -342,6 +342,167 @@ function ns.MarkMet(npcID)
     return true
 end
 
+-------------------------------------------------------------------- Memorials
+-- Graves, plaques and monuments for characters of the strategy games (Memorials.lua). They are
+-- found by the object's name: reading its text (ITEM_TEXT_BEGIN) or hovering it counts as a visit.
+-- Stored account-wide: WarcraftLoreDB.visited[key] = { first = time(), by = "Name-Realm" }.
+local memList, memByName    -- sorted list of { key, entry, codes, memorial = true }; lower-case name -> that item
+
+local function normalizeName(s)
+    if type(s) ~= "string" then
+        return nil
+    end
+    s = s:gsub("^%s+", ""):gsub("%s+$", ""):lower()
+    return s ~= "" and s or nil
+end
+
+-- All memorials, sorted by name. Each item is { key, entry, codes (games in release order), memorial = true }.
+function ns.MemorialList()
+    if not memList then
+        memList, memByName = {}, {}
+        for key, entry in pairs(ns.MEMORIALS or {}) do
+            local item = { key = key, entry = entry, codes = ns.GamesInOrder(entry), memorial = true }
+            memList[#memList + 1] = item
+            local low = normalizeName(entry.name)
+            if low then
+                memByName[low] = item
+            end
+        end
+        table.sort(memList, function(a, b) return (a.entry.name or "") < (b.entry.name or "") end)
+    end
+    return memList
+end
+
+-- The memorial item for a key.
+function ns.MemorialOf(key)
+    for _, m in ipairs(ns.MemorialList()) do
+        if m.key == key then
+            return m
+        end
+    end
+    return nil
+end
+
+-- The memorial whose object name is `name` (ignoring case and surrounding spaces), or nil.
+function ns.MemorialByName(name)
+    ns.MemorialList()
+    local low = normalizeName(name)
+    return low and memByName[low] or nil
+end
+
+-- "Uther the Lightbringer" / "Danath Trollbane, Kurdran Wildhammer": who the memorial honors.
+function ns.MemorialHonors(entry)
+    return table.concat(entry.honors or {}, ", ")
+end
+
+local function visitEntry(key)
+    local db = WarcraftLoreDB
+    local e = db and type(db.visited) == "table" and key and db.visited[key]
+    return type(e) == "table" and e or nil
+end
+
+function ns.IsVisited(key)
+    return visitEntry(key) ~= nil
+end
+
+-- "Visited on 3 Oct 2026 as Arthas" for the hover text; nil when not visited.
+function ns.VisitSummary(key)
+    local e = visitEntry(key)
+    if not e then
+        return nil
+    end
+    local when = ns.FormatDate and ns.FormatDate(e.first)
+    if not when then
+        return L["Visited"]
+    end
+    local by = type(e.by) == "string" and e.by ~= "" and e.by or nil
+    if by then
+        local name, realm = by:match("^(.-)%-(.+)$")
+        local mine = C.GetRealmName()
+        if name and mine and realm == (mine:gsub("%s", "")) then
+            by = name
+        end
+        return L["Visited on %s as %s"]:format(when, by)
+    end
+    return L["Visited on %s"]:format(when)
+end
+
+function ns.VisitedCounts()
+    local n, total = 0, 0
+    for _, m in ipairs(ns.MemorialList()) do
+        total = total + 1
+        if ns.IsVisited(m.key) then
+            n = n + 1
+        end
+    end
+    return n, total
+end
+
+-- Records a visit. Returns true if it was the first ever. The chat line and window refreshes wait
+-- for the next frame (this is usually called from a tooltip post-call).
+function ns.MarkVisited(key)
+    local db = WarcraftLoreDB
+    local item = key and ns.MemorialOf(key)
+    if not db or not item then
+        return false -- before ADDON_LOADED, or not a memorial
+    end
+    if type(db.visited) ~= "table" then
+        return false -- account data from a newer version: left alone
+    end
+    if db.visited[key] then
+        return false
+    end
+    db.visited[key] = { first = time(), by = ns.SavedData.CharacterName() }
+    C.After(function()
+        local earnedNow = false
+        if ns.Achievements then
+            local ok, fresh = pcall(ns.Achievements.Check)
+            earnedNow = ok and type(fresh) == "table" and #fresh > 0
+        end
+        if not earnedNow then
+            chat(L["Memorial visited: %s – honors %s"]:format(item.entry.name or "?", ns.MemorialHonors(item.entry)))
+            if WarcraftLoreDB and WarcraftLoreDB.alert ~= false then
+                C.PlayAlertSound() -- one sound, unless alerts are switched off
+            end
+        end
+        if ns.Browser then
+            pcall(ns.Browser.Refresh)
+        end
+        if ns.Journal and ns.Journal.IsShown and ns.Journal.IsShown() then
+            pcall(ns.Journal.Refresh)
+        end
+        if ns.MapPins and ns.MapPins.Refresh then
+            pcall(ns.MapPins.Refresh)
+        end
+        if ns.UI and ns.UI.RefreshVisited and not ns.FeatureOff("window") then
+            pcall(ns.UI.RefreshVisited, key)
+        end
+    end)
+    return true
+end
+
+-- Reading a plaque or tomb: the title of the opened text is the object's name.
+local onItemText = guard("memorial-text", L["the memorial reading"], function()
+    local item = ns.MemorialByName(C.ItemTextName())
+    if item then
+        ns.MarkVisited(item.key)
+    end
+end)
+
+-- Hovering a world object: add the memorial line and count the visit. Never on a unit tooltip.
+local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"], function(tooltip, firstLine, hasUnit)
+    if hasUnit then
+        return
+    end
+    local item = ns.MemorialByName(firstLine)
+    if not item then
+        return
+    end
+    ns.MarkVisited(item.key)
+    C.AddTooltipLine(tooltip, L["Warcraft Memorial: %s (%s)"]:format(
+        ns.MemorialHonors(item.entry), ns.CodesLabel(item.codes)), 0.83, 0.78, 0.97)
+end)
+
 -------------------------------------------------------------------- Tooltip
 local function tooltipLine(tooltip, unit, guid)
     local entry, npcID = ns.Lookup(unit, guid)
@@ -792,6 +953,7 @@ local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
 C.RegisterEventSafe(events, C.EVENT_NAMEPLATE_ADDED)
+C.RegisterEventSafe(events, "ITEM_TEXT_BEGIN")
 local onAddonLoaded = guard("init", L["the addon setup"], function()
     -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
     ns.SavedData.Load()
@@ -803,6 +965,9 @@ local onAddonLoaded = guard("init", L["the addon setup"], function()
         if not ns.tooltipHook then
             chat(L["Found no way to hook tooltips in this client, so the tooltip line is off. Type /wcl debug."])
         end
+    end)()
+    guard("memorial-hook", L["the memorial tooltip line"], function()
+        ns.memorialHook = C.HookObjectTooltip(onObjectTooltip)
     end)()
 end)
 
@@ -831,5 +996,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
         onAddonLoaded()
     elseif event == "PLAYER_TARGET_CHANGED" then
         onTargetChanged()
+    elseif event == "ITEM_TEXT_BEGIN" then
+        onItemText()
     end
 end)
