@@ -42,6 +42,7 @@ local Style = { COL = setmetatable({}, { __index = function() return { 1, 1, 1 }
     text = function() return newObj("FontString") end,
     outline = function() return { newObj("Texture") } end }
 ns = {
+    L = setmetatable({}, { __index = function(_, k) return k end }), 
     Style = Style,
     FeatureOff = function() return false end,
     Guard = function(key, label, fn)
@@ -159,6 +160,22 @@ def main():
                    ev("pcall(pill.scripts.OnClick, pill, 'LeftButton')") is True and ev("#guardErrors") == 1))
     r.append(check("+N click error is caught by the guard",
                    ev("pcall(more.scripts.OnClick, more, 'LeftButton')") is True and ev("#guardErrors") == 2))
+
+    # Achievement banner: left-click opens the Lore Journal and hides the banner, right-click only hides it.
+    lua.execute("""
+        journalShown = 0
+        ns.Journal = { Show = function() journalShown = journalShown + 1 end }
+        ns.Toast.ShowAchievement('First Contact', 1)
+        banner = nil
+        for _, f in ipairs(frames) do if f.kind == 'Button' and f.scripts.OnUpdate then banner = f end end
+    """)
+    r.append(check("achievement banner is shown", ev("banner ~= nil and banner.shown == true")))
+    lua.execute("banner.scripts.OnClick(banner, 'RightButton')")
+    r.append(check("banner right-click hides it without opening the journal",
+                   ev("banner.shown") is False and ev("journalShown") == 0))
+    lua.execute("ns.Toast.ShowAchievement('First Contact', 1); banner.scripts.OnClick(banner, 'LeftButton')")
+    r.append(check("banner left-click opens the journal and hides the banner",
+                   ev("journalShown") == 1 and ev("banner.shown") is False))
 
     print(f"\n{sum(r)}/{len(r)} passed")
     raise SystemExit(0 if all(r) else 1)

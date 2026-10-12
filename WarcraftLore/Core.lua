@@ -3,6 +3,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 
@@ -15,7 +16,7 @@ ns.GAME_LONG = {
     WC3 = "Warcraft III: Reign of Chaos",
     TFT = "Warcraft III: The Frozen Throne",
     FK = "Warcraft III Reforged: Forsaken Kingdom",
-    BOOK = "Warcraft novels and books",
+    BOOK = L["Warcraft novels and books"],
 }
 -- One color per game: bronze, red, violet, orange, ice blue, lime (Reforged's new Forsaken campaign), parchment (books).
 ns.GAME_COLOR = { WC1 = "c9a46a", WC2 = "e0533f", BTDP = "b07cf0", WC3 = "f0a24a", TFT = "7cc7ef", FK = "9bd46a", BOOK = "e8dcb5" }
@@ -41,7 +42,7 @@ local function fail(key, label, err)
         failureOrder[#failureOrder + 1] = key
     end
     failures[key] = { label = label, err = tostring(err) }
-    pcall(chat, ("%s hit an error and is off until you /reload. Type /wcl debug for details."):format(label))
+    pcall(chat, L["%s is off after an error until you /reload. Type /wcl debug for details."]:format(label))
 end
 
 -- Returns a wrapper that calls fn unless the feature is off. An error turns the feature off.
@@ -226,22 +227,25 @@ function ns.MetSummary(npcID)
     if count == 0 then
         return nil
     end
-    local text = count == 1 and "Met once" or ("Met %d times"):format(count)
+    local text = count == 1 and L["Met once"] or L["Met %d times"]:format(count)
     if first then
-        -- The day is built by hand: "%d" would give "03" and "%e" is not available on Windows.
-        local okD, day = pcall(date, "%d", first)
-        local okR, rest = pcall(date, "%b %Y", first)
-        day = okD and tonumber(day)
-        if day and okR and type(rest) == "string" then
-            local when = ("%d %s"):format(day, rest)
-            text = text .. (count == 1 and ", on " or " \194\183 first on ") .. when
+        local when = ns.FormatDate and ns.FormatDate(first) -- Locale.lua: month names in the client language
+        if when then
+            local who
             if type(by) == "string" and by ~= "" then
                 local name, realm = by:match("^(.-)%-(.+)$")
                 local mine = C.GetRealmName()
                 if name and mine and realm == (mine:gsub("%s", "")) then
                     by = name
                 end
-                text = text .. " as " .. by
+                who = by
+            end
+            if who then
+                text = count == 1 and L["Met once, on %s as %s"]:format(when, who)
+                    or L["Met %d times · first on %s as %s"]:format(count, when, who)
+            else
+                text = count == 1 and L["Met once, on %s"]:format(when)
+                    or L["Met %d times · first on %s"]:format(count, when)
             end
         end
     end
@@ -310,14 +314,23 @@ function ns.MarkMet(npcID)
     -- called from inside a tooltip post-call, which should stay quick and must not be
     -- able to break the tooltip if one of our windows errors.
     C.After(function()
-        if not alreadyMet then
+        -- A meet that earns an achievement prints only the achievement line (and one sound).
+        local earnedNow = false
+        if not alreadyMet and ns.Achievements then
+            local ok, fresh = pcall(ns.Achievements.Check)
+            earnedNow = ok and type(fresh) == "table" and #fresh > 0
+        end
+        if not alreadyMet and not earnedNow then
             local _, overall = ns.MetCounts()
-            chat(("New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."):format(
+            chat(L["New veteran met: |cffd4c6f7%s|r (%s) – %d/%d met."]:format(
                 entry.name or "?", ns.GamesLabel(entry), overall.met, overall.total))
         end
         -- Window refreshes are best effort: a broken window must not stop the meeting being recorded.
         if ns.Browser then
             pcall(ns.Browser.Refresh)
+        end
+        if ns.Journal and ns.Journal.IsShown and ns.Journal.IsShown() then
+            pcall(ns.Journal.Refresh) -- open progress bars move on every meet
         end
         if ns.MapPins and ns.MapPins.Refresh then
             pcall(ns.MapPins.Refresh) -- redraws only when the world map is shown
@@ -328,6 +341,167 @@ function ns.MarkMet(npcID)
     end)
     return true
 end
+
+-------------------------------------------------------------------- Memorials
+-- Graves, plaques and monuments for characters of the strategy games (Memorials.lua). They are
+-- found by the object's name: reading its text (ITEM_TEXT_BEGIN) or hovering it counts as a visit.
+-- Stored account-wide: WarcraftLoreDB.visited[key] = { first = time(), by = "Name-Realm" }.
+local memList, memByName    -- sorted list of { key, entry, codes, memorial = true }; lower-case name -> that item
+
+local function normalizeName(s)
+    if type(s) ~= "string" then
+        return nil
+    end
+    s = s:gsub("^%s+", ""):gsub("%s+$", ""):lower()
+    return s ~= "" and s or nil
+end
+
+-- All memorials, sorted by name. Each item is { key, entry, codes (games in release order), memorial = true }.
+function ns.MemorialList()
+    if not memList then
+        memList, memByName = {}, {}
+        for key, entry in pairs(ns.MEMORIALS or {}) do
+            local item = { key = key, entry = entry, codes = ns.GamesInOrder(entry), memorial = true }
+            memList[#memList + 1] = item
+            local low = normalizeName(entry.name)
+            if low then
+                memByName[low] = item
+            end
+        end
+        table.sort(memList, function(a, b) return (a.entry.name or "") < (b.entry.name or "") end)
+    end
+    return memList
+end
+
+-- The memorial item for a key.
+function ns.MemorialOf(key)
+    for _, m in ipairs(ns.MemorialList()) do
+        if m.key == key then
+            return m
+        end
+    end
+    return nil
+end
+
+-- The memorial whose object name is `name` (ignoring case and surrounding spaces), or nil.
+function ns.MemorialByName(name)
+    ns.MemorialList()
+    local low = normalizeName(name)
+    return low and memByName[low] or nil
+end
+
+-- "Uther the Lightbringer" / "Danath Trollbane, Kurdran Wildhammer": who the memorial honors.
+function ns.MemorialHonors(entry)
+    return table.concat(entry.honors or {}, ", ")
+end
+
+local function visitEntry(key)
+    local db = WarcraftLoreDB
+    local e = db and type(db.visited) == "table" and key and db.visited[key]
+    return type(e) == "table" and e or nil
+end
+
+function ns.IsVisited(key)
+    return visitEntry(key) ~= nil
+end
+
+-- "Visited on 3 Oct 2026 as Arthas" for the hover text; nil when not visited.
+function ns.VisitSummary(key)
+    local e = visitEntry(key)
+    if not e then
+        return nil
+    end
+    local when = ns.FormatDate and ns.FormatDate(e.first)
+    if not when then
+        return L["Visited"]
+    end
+    local by = type(e.by) == "string" and e.by ~= "" and e.by or nil
+    if by then
+        local name, realm = by:match("^(.-)%-(.+)$")
+        local mine = C.GetRealmName()
+        if name and mine and realm == (mine:gsub("%s", "")) then
+            by = name
+        end
+        return L["Visited on %s as %s"]:format(when, by)
+    end
+    return L["Visited on %s"]:format(when)
+end
+
+function ns.VisitedCounts()
+    local n, total = 0, 0
+    for _, m in ipairs(ns.MemorialList()) do
+        total = total + 1
+        if ns.IsVisited(m.key) then
+            n = n + 1
+        end
+    end
+    return n, total
+end
+
+-- Records a visit. Returns true if it was the first ever. The chat line and window refreshes wait
+-- for the next frame (this is usually called from a tooltip post-call).
+function ns.MarkVisited(key)
+    local db = WarcraftLoreDB
+    local item = key and ns.MemorialOf(key)
+    if not db or not item then
+        return false -- before ADDON_LOADED, or not a memorial
+    end
+    if type(db.visited) ~= "table" then
+        return false -- account data from a newer version: left alone
+    end
+    if db.visited[key] then
+        return false
+    end
+    db.visited[key] = { first = time(), by = ns.SavedData.CharacterName() }
+    C.After(function()
+        local earnedNow = false
+        if ns.Achievements then
+            local ok, fresh = pcall(ns.Achievements.Check)
+            earnedNow = ok and type(fresh) == "table" and #fresh > 0
+        end
+        if not earnedNow then
+            chat(L["Memorial visited: %s – honors %s"]:format(item.entry.name or "?", ns.MemorialHonors(item.entry)))
+            if WarcraftLoreDB and WarcraftLoreDB.alert ~= false then
+                C.PlayAlertSound() -- one sound, unless alerts are switched off
+            end
+        end
+        if ns.Browser then
+            pcall(ns.Browser.Refresh)
+        end
+        if ns.Journal and ns.Journal.IsShown and ns.Journal.IsShown() then
+            pcall(ns.Journal.Refresh)
+        end
+        if ns.MapPins and ns.MapPins.Refresh then
+            pcall(ns.MapPins.Refresh)
+        end
+        if ns.UI and ns.UI.RefreshVisited and not ns.FeatureOff("window") then
+            pcall(ns.UI.RefreshVisited, key)
+        end
+    end)
+    return true
+end
+
+-- Reading a plaque or tomb: the title of the opened text is the object's name.
+local onItemText = guard("memorial-text", L["the memorial reading"], function()
+    local item = ns.MemorialByName(C.ItemTextName())
+    if item then
+        ns.MarkVisited(item.key)
+    end
+end)
+
+-- Hovering a world object: add the memorial line and count the visit. Never on a unit tooltip.
+local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"], function(tooltip, firstLine, hasUnit)
+    if hasUnit then
+        return
+    end
+    local item = ns.MemorialByName(firstLine)
+    if not item then
+        return
+    end
+    ns.MarkVisited(item.key)
+    C.AddTooltipLine(tooltip, L["Warcraft Memorial: %s (%s)"]:format(
+        ns.MemorialHonors(item.entry), ns.CodesLabel(item.codes)), 0.83, 0.78, 0.97)
+end)
 
 -------------------------------------------------------------------- Tooltip
 local function tooltipLine(tooltip, unit, guid)
@@ -340,15 +514,15 @@ local function tooltipLine(tooltip, unit, guid)
     -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
     -- GUIDs give no entry above, so nothing is marked then.
     ns.MarkMet(npcID)
-    C.AddTooltipLine(tooltip, "Warcraft Veteran: " .. ns.GamesLabel(entry), 0.83, 0.78, 0.97)
+    C.AddTooltipLine(tooltip, L["Warcraft Veteran: %s"]:format(ns.GamesLabel(entry)), 0.83, 0.78, 0.97)
 end
-local onUnitTooltip = guard("tooltip", "the tooltip line", tooltipLine)
+local onUnitTooltip = guard("tooltip", L["the tooltip line"], tooltipLine)
 
 -------------------------------------------------------------------- Slash commands
 -- The lore window failed to build: say so once instead of erroring in every feature.
 local function windowOff()
     if ns.FeatureOff("window") or not ns.UI then
-        chat("The lore window is not available. Type /wcl debug for details.")
+        chat(L["The lore window is not available. Type /wcl debug for details."])
         return true
     end
     return false
@@ -359,7 +533,7 @@ local function cmdShow()
         return
     end
     if not C.UnitExists("target") then
-        ns.UI.ShowMessage("You have no target. Target an NPC and type /wcl again.")
+        ns.UI.ShowMessage(L["You have no target. Target an NPC and type /wcl again."])
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
@@ -368,29 +542,28 @@ local function cmdShow()
     elseif npcID then
         ns.UI.ShowUnknown(name, npcID, "target")
     elseif guidType == "Player" then
-        ns.UI.ShowMessage((name or "Your target") .. " is a player, not an NPC.")
+        ns.UI.ShowMessage(L["%s is a player, not an NPC."]:format(name or L["Your target"]))
     else
-        ns.UI.ShowMessage("The game is not sharing this NPC's details right now (often in combat). "
-            .. "Try again out of combat.")
+        ns.UI.ShowMessage(L["The game is not sharing this NPC's details right now (often in combat). Try again out of combat."])
     end
 end
 
 local function cmdID()
     if not C.UnitExists("target") then
-        chat("You have no target.")
+        chat(L["You have no target."])
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
-    local shownName = name or "<unknown name>"
+    local shownName = name or L["<unknown name>"]
     if npcID then
-        local status = entry and "|cff40ff40in the database|r" or "|cffaaaaaanot in the database|r"
-        chat(("%s – NPC ID |cffffffff%d|r (%s)"):format(shownName, npcID, status))
+        local status = entry and L["|cff40ff40in the database|r"] or L["|cffaaaaaanot in the database|r"]
+        chat(L["%s – NPC ID |cffffffff%d|r (%s)"]:format(shownName, npcID, status))
     elseif guidType == "Player" then
-        chat(shownName .. " is a player, not an NPC.")
+        chat(L["%s is a player, not an NPC."]:format(shownName))
     elseif guidType then
-        chat(shownName .. " is not an NPC.")
+        chat(L["%s is not an NPC."]:format(shownName))
     else
-        chat("The game is not sharing this NPC's details right now (often in combat). Try again out of combat.")
+        chat(L["The game is not sharing this NPC's details right now (often in combat). Try again out of combat."])
     end
 end
 
@@ -398,7 +571,7 @@ ns.ShowTarget = cmdShow -- the minimap button's right-click does the same as /wc
 
 local function cmdList()
     if not ns.Browser then
-        chat("The veterans list is not available.")
+        chat(L["The veterans list is not available."])
         return
     end
     ns.Browser.Toggle()
@@ -413,19 +586,19 @@ end
 
 local function cmdMinimap()
     local shown = ns.Minimap.Toggle()
-    chat("The minimap button is now " .. (shown and "|cff40ff40shown|r" or "|cffff4040hidden|r") .. ".")
+    chat(L["The minimap button is now %s."]:format(shown and L["|cff40ff40shown|r"] or L["|cffff4040hidden|r"]))
     refreshOptions()
 end
 
 local function cmdAuto()
     WarcraftLoreDB.auto = not WarcraftLoreDB.auto
-    chat("The alert when you target a veteran is now " .. (WarcraftLoreDB.auto and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+    chat(L["The alert when you target a veteran is now %s."]:format(WarcraftLoreDB.auto and L["|cff40ff40ON|r"] or L["|cffff4040OFF|r"]))
     refreshOptions()
 end
 
 local function cmdAlert()
     WarcraftLoreDB.alert = not WarcraftLoreDB.alert
-    chat("Nearby alerts are now " .. (WarcraftLoreDB.alert and "|cff40ff40ON|r" or "|cffff4040OFF|r") .. ".")
+    chat(L["Nearby alerts are now %s."]:format(WarcraftLoreDB.alert and L["|cff40ff40ON|r"] or L["|cffff4040OFF|r"]))
     refreshOptions()
 end
 
@@ -442,7 +615,7 @@ local batch -- nil, or { npcID = first veteran, list = { { entry, name }, ... } 
 
 local function show(npcID, entry, name, unit)
     local who = name or entry.name
-    chat(("Veteran nearby: |cffd4c6f7%s|r (%s)."):format(who, ns.GamesLabel(entry)))
+    chat(L["Veteran nearby: |cffd4c6f7%s|r (%s)."]:format(who, ns.GamesLabel(entry)))
     C.PlayAlertSound()
     if ns.Toast then
         ns.Toast.Show(npcID, entry, who, unit)
@@ -459,8 +632,8 @@ local function flushBatch(b)
         local v = b.list[i]
         parts[i] = ("|cffd4c6f7%s|r (%s)"):format(v.name or v.entry.name or "?", ns.GamesLabel(v.entry))
     end
-    local more = n > MAX_NAMED and (" |cffa79d8a+%d more|r"):format(n - MAX_NAMED) or ""
-    chat("Also nearby: " .. table.concat(parts, ", ") .. more)
+    local more = n > MAX_NAMED and (" " .. L["|cffa79d8a+%d more|r"]:format(n - MAX_NAMED)) or ""
+    chat(L["Also nearby: %s"]:format(table.concat(parts, ", ") .. more))
     if ns.Toast and ns.Toast.SetMore then
         ns.Toast.SetMore(b.npcID, n)
     end
@@ -492,7 +665,7 @@ local function announce(npcID, entry, name, isTest, unit)
     show(npcID, entry, name, unit)
 end
 -- One guard key for the whole nearby-alert path (nameplates and the follow-up line).
-flushGuarded = guard("alert", "the nearby alert", flushBatch)
+flushGuarded = guard("alert", L["the nearby alert"], flushBatch)
 
 -- /wcl test: shows the alert for the database NPC with the lowest ID.
 local function cmdTest()
@@ -503,7 +676,7 @@ local function cmdTest()
         end
     end
     if not lowest then
-        chat("The database is empty.")
+        chat(L["The database is empty."])
         return
     end
     announce(lowest, ns.NPCS[lowest], nil, true)
@@ -519,7 +692,7 @@ local function nameplateAdded(unit)
     end
     announce(npcID, entry, name, false, unit)
 end
-local onNameplateAdded = guard("alert", "the nearby alert", nameplateAdded)
+local onNameplateAdded = guard("alert", L["the nearby alert"], nameplateAdded)
 
 -------------------------------------------------------------------- Nearby alert (coordinates)
 -- Compares the player's map position with `coords` in Data.lua (Wowhead map percent).
@@ -613,11 +786,11 @@ local function positionCheck()
         end
     end
 end
-local checkPosition = guard("position", "the nearby alert by map position", positionCheck)
+local checkPosition = guard("position", L["the nearby alert by map position"], positionCheck)
 
 local function cmdDebug()
     local r = C.Report()
-    chat(("build %s, interface %s, issecretvalue=%s, TooltipDataProcessor=%s, tooltip hook=%s")
+    chat(L["build %s, interface %s, issecretvalue=%s, TooltipDataProcessor=%s, tooltip hook=%s"]
         :format(tostring(r.build), tostring(r.interface), tostring(r.issecretvalue),
             tostring(r.tooltipDataProcessor), tostring(ns.tooltipHook)))
     local missing = {}
@@ -625,83 +798,86 @@ local function cmdDebug()
         missing[#missing + 1] = k
     end
     table.sort(missing)
-    chat("Missing: " .. (#missing > 0 and table.concat(missing, ", ") or "nothing"))
+    chat(L["Missing: %s"]:format(#missing > 0 and table.concat(missing, ", ") or L["nothing"]))
     local n = 0
     for _ in pairs(ns.NPCS) do
         n = n + 1
     end
-    chat("NPCs in the database: " .. n)
+    chat(L["NPCs in the database: %d"]:format(n))
     if #failureOrder == 0 then
-        chat("Errors: none")
+        chat(L["Errors: none"])
     end
     for _, key in ipairs(failureOrder) do
         local f = failures[key]
-        chat(("Error in %s (off for this session): %s"):format(f.label, f.err))
+        chat(L["Error in %s (off for this session): %s"]:format(f.label, f.err))
     end
 end
 
 -- /wcl why: explains in one or two lines why the target is or is not recognised.
 local function cmdWhy()
     if not C.UnitExists("target") then
-        chat("You have no target. Target an NPC and type /wcl why.")
+        chat(L["You have no target. Target an NPC and type /wcl why."])
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
-    local shown = name or "Your target"
+    local shown = name or L["Your target"]
     if not npcID then
         if guidType == "Player" then
-            chat(shown .. " is a player, not an NPC, so there is nothing to recognise.")
+            chat(L["%s is a player, not an NPC, so there is nothing to recognise."]:format(shown))
         elseif guidType then
-            chat(shown .. " is not an NPC.")
+            chat(L["%s is not an NPC."]:format(shown))
         else
-            chat(shown .. ": the game is not sharing this NPC's details right now (often in combat). Try again out of combat.")
+            chat(L["%s: the game is not sharing this NPC's details right now (often in combat). Try again out of combat."]:format(shown))
         end
         return
     end
     if not entry then
-        chat(("%s has NPC ID %d, which is not in the database, so there is no tooltip line, alert or story."):format(shown, npcID))
+        chat(L["%s has NPC ID %d, which is not in the database, so there is no tooltip line, alert or story."]:format(shown, npcID))
         return
     end
-    chat(("%s is a veteran (NPC ID %d, %s)."):format(shown, npcID, ns.GamesLabel(entry)))
+    chat(L["%s is a veteran (NPC ID %d, %s)."]:format(shown, npcID, ns.GamesLabel(entry)))
     local notes = {}
     if not WarcraftLoreDB.alert then
-        notes[#notes + 1] = "nearby alerts are off (/wcl alert)"
+        notes[#notes + 1] = L["nearby alerts are off (/wcl alert)"]
     else
         if disabled.alert then
-            notes[#notes + 1] = "the nameplate alert is off after an error"
+            notes[#notes + 1] = L["the nameplate alert is off after an error"]
         end
         if disabled.position then
-            notes[#notes + 1] = "the map position alert is off after an error"
+            notes[#notes + 1] = L["the map position alert is off after an error"]
         elseif C.InInstance() then
-            notes[#notes + 1] = "you are in an instance, so map position alerts are off"
+            notes[#notes + 1] = L["you are in an instance, so map position alerts are off"]
         elseif not hasCoords(entry) then
-            notes[#notes + 1] = "no map position is stored for this NPC, so only its nameplate can trigger an alert"
+            notes[#notes + 1] = L["no map position is stored for this NPC, so only its nameplate can trigger an alert"]
         end
         if alerted[npcID] then
-            notes[#notes + 1] = "you were already alerted about it this session"
+            notes[#notes + 1] = L["you were already alerted about it this session"]
         end
     end
     if disabled.tooltip then
-        notes[#notes + 1] = "the tooltip line is off after an error"
+        notes[#notes + 1] = L["the tooltip line is off after an error"]
     end
-    chat(#notes > 0 and ("Note: " .. table.concat(notes, "; ") .. ".")
-        or "Its tooltip line, alerts and story are all active.")
+    chat(#notes > 0 and L["Note: %s."]:format(table.concat(notes, "; "))
+        or L["Its tooltip line, alerts and story are all active."])
 end
 
 local function cmdHelp()
-    chat("/wcl – open the window for your target")
-    chat("/wcl id – print your target's NPC ID and name in chat")
-    chat("/wcl list (or /wcl browse) – open or close the veterans list: search, filter, see who you have met")
-    chat("/wcl auto – show a small alert when you target a veteran (now: " .. (WarcraftLoreDB.auto and "on" or "off") .. ")")
-    chat("/wcl alert – toggle the nearby alert (now: " .. (WarcraftLoreDB.alert and "on" or "off") .. "); by nameplate and map position")
-    chat("/wcl minimap – show or hide the minimap button (now: " .. ((WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and "hidden" or "shown") .. ")")
-    chat("/wcl why – explain why your target is or is not recognised")
-    chat("/wcl test – show a test alert (small pill, chat line, sound)")
-    chat("/wcl reset – move the windows back to the center")
-    chat("/wcl options – open the Warcraft Lore settings")
-    chat("/wcl export – copy your met list as text")
-    chat("/wcl import – paste a met list from another account")
-    chat("/wcl debug – show which APIs the client has")
+    local on, off = L["on"], L["off"]
+    chat(L["/wcl – open the window for your target"])
+    chat(L["/wcl id – print your target's NPC ID and name in chat"])
+    chat(L["/wcl list (or /wcl browse) – open or close the veterans list: search, filter, see who you have met"])
+    chat(L["/wcl auto – show a small alert when you target a veteran (now: %s)"]:format(WarcraftLoreDB.auto and on or off))
+    chat(L["/wcl alert – toggle the nearby alert (now: %s); by nameplate and map position"]:format(WarcraftLoreDB.alert and on or off))
+    chat(L["/wcl minimap – show or hide the minimap button (now: %s)"]:format(
+        (WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and L["hidden"] or L["shown"]))
+    chat(L["/wcl why – explain why your target is or is not recognised"])
+    chat(L["/wcl test – show a test alert (small pill, chat line, sound)"])
+    chat(L["/wcl journal – open the Lore Journal (your achievements)"])
+    chat(L["/wcl reset – move the windows back to the center"])
+    chat(L["/wcl options – open the Warcraft Lore settings"])
+    chat(L["/wcl export – copy your met list as text"])
+    chat(L["/wcl import – paste a met list from another account"])
+    chat(L["/wcl debug – show which APIs the client has"])
 end
 
 -- Also used by the settings page's "Reset window positions" button.
@@ -712,22 +888,32 @@ function ns.ResetWindows()
     if ns.Browser then
         ns.Browser.ResetPosition()
     end
-    chat("The windows are back in the center.")
+    if ns.Journal then
+        ns.Journal.ResetPosition()
+    end
+    chat(L["The windows are back in the center."])
 end
 
 local COMMANDS = {
     [""] = cmdShow, id = cmdID, list = cmdList, browse = cmdList, minimap = cmdMinimap,
     auto = cmdAuto, alert = cmdAlert, test = cmdTest, ["alert test"] = cmdTest, why = cmdWhy,
     debug = cmdDebug,
+    journal = function()
+        if ns.Journal then
+            ns.Journal.Toggle()
+        else
+            chat(L["The Lore Journal is not available in this client."])
+        end
+    end,
     options = function()
         local hasPanel, opened = false, false
         if ns.Options then
             hasPanel, opened = ns.Options.Open()
         end
         if not hasPanel then
-            chat("This client has no settings panel for Warcraft Lore.")
+            chat(L["This client has no settings panel for Warcraft Lore."])
         elseif opened == false then
-            chat("Could not open the settings right now.")
+            chat(L["Could not open the settings right now."])
         end
     end,
     reset = function()
@@ -737,23 +923,23 @@ local COMMANDS = {
         if ns.Share then
             ns.Share.Open("export")
         else
-            chat("Import and export are not available in this client.")
+            chat(L["Import and export are not available in this client."])
         end
     end,
     import = function()
         if ns.Share then
             ns.Share.Open("import")
         else
-            chat("Import and export are not available in this client.")
+            chat(L["Import and export are not available in this client."])
         end
     end,
 }
 local guardedCommands = {}
 for name, fn in pairs(COMMANDS) do
     local shown = name == "" and "/wcl" or ("/wcl " .. name)
-    guardedCommands[name] = guard("cmd:" .. name, "the " .. shown .. " command", fn)
+    guardedCommands[name] = guard("cmd:" .. name, L["the %s command"]:format(shown), fn)
 end
-guardedCommands.help = guard("cmd:help", "the /wcl help command", cmdHelp)
+guardedCommands.help = guard("cmd:help", L["the /wcl help command"], cmdHelp)
 
 SLASH_WARCRAFTLORE1 = "/wcl"
 SlashCmdList.WARCRAFTLORE = function(msg)
@@ -767,21 +953,25 @@ local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
 C.RegisterEventSafe(events, C.EVENT_NAMEPLATE_ADDED)
-local onAddonLoaded = guard("init", "the addon setup", function()
+C.RegisterEventSafe(events, "ITEM_TEXT_BEGIN")
+local onAddonLoaded = guard("init", L["the addon setup"], function()
     -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
     ns.SavedData.Load()
-    guard("window", "the lore window", ns.UI.Init)()
-    guard("minimap", "the minimap button", ns.Minimap.Init)()
+    guard("window", L["the lore window"], ns.UI.Init)()
+    guard("minimap", L["the minimap button"], ns.Minimap.Init)()
     C.StartTicker(CHECK_INTERVAL, checkPosition)
-    guard("tooltip-hook", "the tooltip line", function()
+    guard("tooltip-hook", L["the tooltip line"], function()
         ns.tooltipHook = C.HookUnitTooltip(onUnitTooltip)
         if not ns.tooltipHook then
-            chat("Found no way to hook tooltips in this client, so the tooltip line is off. Type /wcl debug.")
+            chat(L["Found no way to hook tooltips in this client, so the tooltip line is off. Type /wcl debug."])
         end
+    end)()
+    guard("memorial-hook", L["the memorial tooltip line"], function()
+        ns.memorialHook = C.HookObjectTooltip(onObjectTooltip)
     end)()
 end)
 
-local onTargetChanged = guard("target", "the target alert", function()
+local onTargetChanged = guard("target", L["the target alert"], function()
     if not WarcraftLoreDB then
         return
     end
@@ -806,5 +996,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
         onAddonLoaded()
     elseif event == "PLAYER_TARGET_CHANGED" then
         onTargetChanged()
+    elseif event == "ITEM_TEXT_BEGIN" then
+        onItemText()
     end
 end)

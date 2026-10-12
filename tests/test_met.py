@@ -13,7 +13,7 @@ ADDON = Path(__file__).resolve().parent.parent / "WarcraftLore"
 STUBS = """
 local noop = function() end
 local function stub() return setmetatable({}, { __index = function() return noop end }) end
-ns = { Compat = stub() }
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = stub() }
 ns.Compat.UnitName = function() return "Arthas" end
 ns.Compat.GetRealmName = function() return "Silvermoon" end
 ns.Compat.After = function(fn) fn() end
@@ -45,7 +45,7 @@ def runtime(db="{ schema = 2, met = {} }"):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(STUBS)
     run = lua.eval("function(src, name) assert(loadstring(src, name))('WarcraftLore', ns) end")
-    for name in ("Data.lua", "SavedData.lua", "Core.lua"):
+    for name in ("Locale.lua", "Data.lua", "SavedData.lua", "Core.lua"):
         run((ADDON / name).read_text(encoding="utf-8"), name)
     lua.execute("WarcraftLoreDB = " + db)
     lua.execute(PICK)

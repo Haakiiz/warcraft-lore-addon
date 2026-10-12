@@ -3,6 +3,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local UI = {}
 ns.UI = UI
@@ -27,6 +28,7 @@ local frame, nameText, placeText, idText, metBadge, portrait, portraitRing, port
 local expectedNPC         -- NPC the 3D model was asked for; a load event for any other NPC is ignored
 local shownEntry          -- data entry behind shownNPC
 local shownNPC            -- NPC ID the lore window currently shows (nil for messages)
+local shownMemorial       -- memorial key the window shows (nil unless ShowMemorial opened it)
 local ringParts = {}
 local headerBadges = {}
 local badgeCount = 0       -- game badges currently shown (the MET badge follows them)
@@ -138,11 +140,12 @@ local function buildPortrait(inner)
     metBadge.label = text(metBadge, C.FONT_BODY, 10, COL.met)
     metBadge.label:SetPoint("LEFT", 18, 0)
     metBadge.label:SetJustifyV("MIDDLE")
-    metBadge.label:SetText("MET")
+    metBadge.label:SetText(L["MET"])
     metBadge:SetColors(COL.met, 0.12, COL.met, 1)
     metBadge:EnableMouse(true)
     metBadge:SetScript("OnEnter", function(self)
-        local summary = ns.MetSummary and shownNPC and ns.MetSummary(shownNPC)
+        local summary = shownMemorial and ns.VisitSummary and ns.VisitSummary(shownMemorial)
+            or (ns.MetSummary and shownNPC and ns.MetSummary(shownNPC))
         if summary then
             C.ShowTooltip(self, "ANCHOR_BOTTOM", { { summary, 1, 1, 1, true } })
         end
@@ -293,7 +296,7 @@ local function relatedRow(i)
     C.RegisterClicks(r)
     r:SetScript("OnEnter", function(self) self.hl:Show() end)
     r:SetScript("OnLeave", function(self) self.hl:Hide() end)
-    r:SetScript("OnClick", ns.Guard("window", "the lore window", function(self)
+    r:SetScript("OnClick", ns.Guard("window", L["the lore window"], function(self)
         UI.ShowEntry(self.group.id, self.group.entry, nil, nil, true)
     end))
     rows[i] = r
@@ -305,7 +308,7 @@ local function fillRelated(groups)
         relatedBlock = newSection()
         relatedBlock.body:Hide()
         relatedBlock.rows = {}
-        relatedBlock.label:SetText("RELATED")
+        relatedBlock.label:SetText(L["RELATED"])
     end
     for _, r in ipairs(relatedBlock.rows) do r:Hide() end
     for i, g in ipairs(groups) do
@@ -314,7 +317,7 @@ local function fillRelated(groups)
         local line = HEX_TITLE .. (g.entry.name or "?") .. END .. "  " .. ns.CodesLabel(g.codes)
             .. "  " .. HEX_MUTED .. (g.entry.zone or "") .. END
         if ns.GroupMet(g) then
-            line = line .. "  " .. HEX_MET .. "met" .. END
+            line = line .. "  " .. HEX_MET .. L["met"] .. END
         end
         r.label:SetText(line)
         r:Show()
@@ -402,10 +405,10 @@ local function fillGameBox(b, app)
         lines[#lines + 1] = app.role
     end
     if app.campaign and app.campaign ~= "" then
-        lines[#lines + 1] = HEX_MUTED .. "Campaign" .. END .. "  " .. app.campaign
+        lines[#lines + 1] = HEX_MUTED .. L["Campaign"] .. END .. "  " .. app.campaign
     end
     if app.missions and #app.missions > 0 then
-        local label = #app.missions == 1 and "Mission" or "Missions"
+        local label = #app.missions == 1 and L["Mission"] or L["Missions"]
         lines[#lines + 1] = HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
     end
     b.body:SetText(table.concat(lines, "\n"))
@@ -413,7 +416,7 @@ local function fillGameBox(b, app)
 end
 
 local function fillSection(s, label, body, color)
-    s.label:SetText(label:upper())
+    s.label:SetText(label)
     s.body:SetText(body)
     local c = color or COL.text
     s.body:SetTextColor(c[1], c[2], c[3])
@@ -466,7 +469,7 @@ local function fillBooks(books)
             bookRows[i] = r
         end
         C.SetIconTexture(r.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
-        local title = (app.campaign and app.campaign ~= "") and app.campaign or "Book"
+        local title = (app.campaign and app.campaign ~= "") and app.campaign or L["Book"]
         local role = app.role or ""
         r.label:SetText(HEX_TITLE .. title .. END .. (role ~= "" and ("  " .. HEX_MUTED .. role .. END) or ""))
         r.tip = { { title, 1, 1, 1 } }
@@ -474,7 +477,7 @@ local function fillBooks(books)
             r.tip[2] = { role, 0.8, 0.8, 0.8, true }
         end
         if app.missions and #app.missions > 0 then
-            r.tip[#r.tip + 1] = { (#app.missions == 1 and "Chapter: " or "Chapters: ") .. table.concat(app.missions, ", "), 0.6, 0.6, 0.6, true }
+            r.tip[#r.tip + 1] = { (#app.missions == 1 and L["Chapter: %s"] or L["Chapters: %s"]):format(table.concat(app.missions, ", ")), 0.6, 0.6, 0.6, true }
         end
         r:Show()
     end
@@ -505,7 +508,7 @@ function UI.Init()
 
     S.buildFrameArt(frame, W, H)
     local inner = S.buildInner(frame)
-    S.buildHeader(inner, "Warcraft Lore", function() frame:Hide() end)
+    S.buildHeader(inner, L["Warcraft Lore"], function() frame:Hide() end)
     buildPortrait(inner)
 
     scroll = CreateFrame("ScrollFrame", nil, inner)
@@ -526,12 +529,18 @@ end
 
 -- The green MET badge after the last game badge. Only for database entries you have met;
 -- not met shows nothing.
+local function setBadgeLabel(label)
+    metBadge.label:SetText(label)
+    metBadge:SetWidth(math.floor(18 + metBadge.label:GetStringWidth() + 8))
+end
+
 local function setMetBadge(npcID)
     local group = npcID and ns.VeteranOf(npcID)
     if not (group and ns.GroupMet(group)) then
         metBadge:Hide()
         return
     end
+    setBadgeLabel(L["MET"])
     metBadge:ClearAllPoints()
     if badgeCount > 0 then
         metBadge:SetPoint("LEFT", headerBadges[badgeCount], "RIGHT", 6, 0)
@@ -550,6 +559,37 @@ function UI.RefreshMet(npcID)
     end
 end
 
+-- The green badge of a memorial you have visited (same place as MET).
+local function setVisitedBadge(key)
+    if not ns.IsVisited(key) then
+        metBadge:Hide()
+        return
+    end
+    setBadgeLabel(L["VISITED"])
+    metBadge:ClearAllPoints()
+    if badgeCount > 0 then
+        metBadge:SetPoint("LEFT", headerBadges[badgeCount], "RIGHT", 6, 0)
+    else
+        metBadge:SetPoint("TOPLEFT", idText, "BOTTOMLEFT", 0, -6)
+    end
+    metBadge:Show()
+end
+
+-- Called when a memorial is visited while the lore window already shows it.
+function UI.RefreshVisited(key)
+    if frame and frame:IsShown() and shownMemorial and shownMemorial == key then
+        setVisitedBadge(key)
+    end
+end
+
+-- The memorial the lore window shows right now (nil when closed or showing something else).
+function UI.GetShownMemorial()
+    if frame and frame:IsShown() then
+        return shownMemorial
+    end
+    return nil
+end
+
 -- The NPC the lore window shows right now (nil when closed or showing a message).
 function UI.GetShownNPC()
     if frame and frame:IsShown() then
@@ -563,6 +603,8 @@ end
 function UI.RefreshOpen()
     if frame and frame:IsShown() and shownNPC and shownEntry then
         UI.ShowEntry(shownNPC, shownEntry, nil, nil, true)
+    elseif frame and frame:IsShown() and shownMemorial then
+        UI.ShowMemorial(shownMemorial, nil, true)
     end
 end
 
@@ -593,10 +635,12 @@ end
 local function showHeader(name, place, npcID, badges)
     shownNPC = nil
     shownEntry = nil
+    shownMemorial = nil
     metBadge:Hide()
+    C.SetFont(nameText, C.FONT_TITLE, 22)
     nameText:SetText(name or "")
     placeText:SetText(place or "")
-    idText:SetText(npcID and ("NPC ID " .. npcID) or "")
+    idText:SetText(npcID and L["NPC ID %s"]:format(npcID) or "")
     badgeCount = math.min(#badges, #headerBadges)
     for i, b in ipairs(headerBadges) do
         local spec = badges[i]
@@ -632,7 +676,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         place = place .. " · " .. entry.coords
     end
     if entry.alsoIn and #entry.alsoIn > 0 then
-        place = place .. "\n" .. HEX_MUTED .. "Also in " .. table.concat(entry.alsoIn, ", ") .. END
+        place = place .. "\n" .. HEX_MUTED .. L["Also in %s"]:format(table.concat(entry.alsoIn, ", ")) .. END
     end
     showHeader(entry.name, place, npcID, badges)
     shownNPC = npcID
@@ -651,7 +695,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         blocks[#blocks + 1] = s
     end
     if entry.story and entry.story ~= "" then
-        add("Story", entry.story)
+        add(L["STORY"], entry.story)
     end
     local games, books = {}, {}
     for _, app in ipairs(UI.Timeline(entry)) do
@@ -659,7 +703,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         list[#list + 1] = app
     end
     if #games > 0 then
-        agesHeader = agesHeader or heading("THROUGH THE AGES")
+        agesHeader = agesHeader or heading(L["THROUGH THE AGES"])
         blocks[#blocks + 1] = agesHeader
         for i, app in ipairs(games) do
             local b = gameBox(i)
@@ -668,7 +712,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         end
     end
     if #books > 0 then
-        booksHeader = booksHeader or heading("IN THE BOOKS")
+        booksHeader = booksHeader or heading(L["IN THE BOOKS"])
         local block = fillBooks(books)
         blocks[#blocks + 1] = booksHeader
         blocks[#blocks + 1] = block
@@ -679,16 +723,16 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
     end
     local items = {}
     for _, item in ipairs(entry.items or {}) do
-        local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · item ID " .. tostring(item.id) .. END
+        local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · " .. L["item ID %s"]:format(tostring(item.id)) .. END
         if item.note and item.note ~= "" then
             line = line .. "\n" .. HEX_MUTED .. item.note .. END
         end
         items[#items + 1] = line
     end
     if #items > 0 then
-        add("Items in WoW", table.concat(items, "\n"))
+        add(L["ITEMS IN WOW"], table.concat(items, "\n"))
     end
-    add("Sources", table.concat(entry.sources or {}, "\n"), COL.muted)
+    add(L["SOURCES"], table.concat(entry.sources or {}, "\n"), COL.muted)
     layout(blocks)
     if dock then
         dockTo(dock)
@@ -701,13 +745,13 @@ end
 
 function UI.ShowUnknown(name, npcID, unit)
     UI.Init()
-    showHeader(name or "Unknown NPC", "", npcID, {})
+    showHeader(name or L["Unknown NPC"], "", npcID, {})
     setRing({ COL.dim }, 0.6)
     setPortrait(nil, unit, npcID)
     clearContent()
     local s = section(1)
-    fillSection(s, "No record yet",
-        ("No known Warcraft history recorded for %s (NPC ID %d) yet."):format(name or "this NPC", npcID))
+    fillSection(s, L["NO RECORD YET"],
+        L["No known Warcraft history recorded for %s (NPC ID %d) yet."]:format(name or L["this NPC"], npcID))
     layout({ s })
     if docked then
         applyPosition()
@@ -718,14 +762,105 @@ end
 
 function UI.ShowMessage(msg)
     UI.Init()
-    showHeader("Warcraft Lore", "", nil, {})
+    showHeader(L["Warcraft Lore"], "", nil, {})
     setRing({ COL.dim }, 0.6)
     setPortrait(nil, nil)
     clearContent()
     local s = section(1)
-    fillSection(s, "Notice", msg)
+    fillSection(s, L["NOTICE"], msg)
     layout({ s })
     if docked then
+        applyPosition()
+    end
+    frame:Show()
+    notifyBrowser()
+end
+
+-- The lore window for a memorial (Memorials.lua): an icon in the portrait ring instead of a 3D model,
+-- the object's name as the title, who it honors, then Story, Through the ages and Sources.
+-- dock, keepPlace and raised work as in ShowEntry.
+local MEMORIAL_ICON = {
+    plaque = "INV_Misc_Note_02", tomb = "INV_Misc_Bone_HumanSkull_01", monument = "INV_Misc_Statue_04",
+}
+
+function UI.ShowMemorial(key, dock, keepPlace, raised)
+    UI.Init()
+    local item = key and ns.MemorialOf and ns.MemorialOf(key)
+    if not item then
+        return UI.ShowMessage(L["This memorial is not in the database."])
+    end
+    local entry = item.entry
+    if raised then
+        frame:SetFrameStrata("FULLSCREEN_DIALOG")
+    elseif not keepPlace then
+        frame:SetFrameStrata("DIALOG")
+    end
+    local ringColors, badges = {}, {}
+    for _, g in ipairs(item.codes) do
+        local c = { ns.GameRGB(g) }
+        ringColors[#ringColors + 1] = c
+        badges[#badges + 1] = { ns.GAME_SHORT[g], c }
+    end
+    local place = entry.zone or ""
+    if entry.coords and entry.coords ~= "" then
+        place = place .. " · " .. entry.coords
+    end
+    showHeader(entry.name, L["Honors %s"]:format(ns.MemorialHonors(entry)), nil, badges)
+    idText:SetText(HEX_MUTED .. place .. END)
+    if #(entry.name or "") > 24 then
+        C.SetFont(nameText, C.FONT_TITLE, 16) -- a long object name must fit the one-line title
+    end
+    shownMemorial = key
+    setVisitedBadge(key)
+    setRing(ringColors, 1)
+
+    -- The portrait ring holds a plaque, tomb or monument icon; there is no creature to show.
+    expectedNPC = nil
+    if portraitModel then
+        portraitModel:Hide()
+    end
+    if portraitCover then
+        portraitCover:Hide()
+    end
+    portrait:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+    local icons = "Interface\\Icons\\"
+    if not C.SetIconTexture(portrait, icons .. (MEMORIAL_ICON[entry.kind] or MEMORIAL_ICON.plaque),
+        icons .. MEMORIAL_ICON.plaque) then
+        C.SetIconTexture(portrait, icons .. MEMORIAL_ICON.plaque, QUESTION_MARK)
+    end
+
+    clearContent()
+    local blocks = {}
+    local n = 0
+    local function add(label, body, color)
+        n = n + 1
+        local s = section(n)
+        fillSection(s, label, body, color)
+        blocks[#blocks + 1] = s
+    end
+    if entry.story and entry.story ~= "" then
+        add(L["STORY"], entry.story)
+    end
+    local games = {}
+    for _, app in ipairs(UI.Timeline(entry)) do
+        if app.game ~= "BOOK" then
+            games[#games + 1] = app
+        end
+    end
+    if #games > 0 then
+        agesHeader = agesHeader or heading(L["THROUGH THE AGES"])
+        blocks[#blocks + 1] = agesHeader
+        for i, app in ipairs(games) do
+            local b = gameBox(i)
+            fillGameBox(b, app)
+            blocks[#blocks + 1] = b
+        end
+    end
+    add(L["SOURCES"], table.concat(entry.sources or {}, "\n"), COL.muted)
+    layout(blocks)
+    if dock then
+        dockTo(dock)
+    elseif docked and not keepPlace then
         applyPosition()
     end
     frame:Show()

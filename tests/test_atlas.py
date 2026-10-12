@@ -20,15 +20,19 @@ CreateFrame = function() return newObj() end
 UIParent = newObj()
 WarcraftLoreDB = {}
 zoneName = "Orgrimmar"
+mapID = nil
 met = {}
 local COL = setmetatable({}, { __index = function() return { 1, 1, 1 } end })
 ns = {
+    L = setmetatable({}, { __index = function(_, k) return k end }), 
     Style = {
         COL = COL, PAD = 12, HEADER = 28, BAND = 8,
         HEX_MUTED = "|cffa79d8a", HEX_MET = "|cff6fcf7f", END = "|r",
         solid = newObj, text = newObj, box = newObj, outline = newObj,
     },
-    Compat = { FONT_TITLE = "t", FONT_BODY = "b", GetZoneName = function() return zoneName end },
+    Compat = { FONT_TITLE = "t", FONT_BODY = "b", GetZoneName = function() return zoneName end,
+               GetZoneMapID = function() return mapID end },
+    ZONE_MAPS = { Orgrimmar = { 1454, 85 }, Durotar = { 1411, 1 }, ["Thunder Bluff"] = { 1456, 88 } },
     GAME_ORDER = { "WC3" },
     CodesLabel = function() return "WC3" end,
     GameRGB = function() return 1, 1, 1 end,
@@ -100,6 +104,14 @@ def main():
                    ev("ns.Browser.ThisZone()") is False and ev("#shown") == 0))
     lua.execute("zoneName = 'Durotar'")
     r.append(check("This zone works for an alsoIn-only zone", ev("ns.Browser.ThisZone()") is True and ev("shown[1]") == "Durotar"))
+    # A German client: the map name is translated, the uiMapID is not.
+    lua.execute("shown = {}; zoneName = 'Durotar (de)'; mapID = 1454")
+    r.append(check("This zone matches by uiMapID when the zone name is translated",
+                   ev("ns.Browser.ThisZone()") is True and ev("shown[1]") == "Orgrimmar"))
+    lua.execute("shown = {}; zoneName = 'Orgrimmar'; mapID = 9999")
+    r.append(check("unknown uiMapID falls back to the zone name",
+                   ev("ns.Browser.ThisZone()") is True and ev("shown[1]") == "Orgrimmar"))
+    lua.execute("mapID = nil; zoneName = 'Durotar'")
     r.append(check("UpdateHere before the window exists is harmless", ev("pcall(ns.Browser.UpdateHere)") is True))
 
     # Widths: ~6 px per character (a pessimistic Friz Quadrata estimate at size 12).

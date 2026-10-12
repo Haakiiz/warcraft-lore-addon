@@ -1,4 +1,5 @@
--- MapPins.lua – small round pins on the world map for the veterans of the zone you are looking at.
+-- MapPins.lua – small round pins on the world map for the veterans of the zone you are looking at
+-- (and small stone-colored squares for its memorials).
 -- Colored by the veteran's first game; a green ring and dot once met. Hover for the name and
 -- status, click for the story. No libraries: pins are plain buttons on the map canvas, pooled
 -- and re-laid out only when the map changes, is shown or is zoomed. Option: WarcraftLoreDB.mapPins
@@ -6,6 +7,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 local S = ns.Style
 local COL = S.COL
 
@@ -43,6 +45,27 @@ local function buildIndex()
             end
         end
     end
+    -- Memorials (Memorials.lua) get a pin of their own kind on the map of their zone.
+    for _, m in ipairs(ns.MemorialList and ns.MemorialList() or {}) do
+        local entry = m.entry
+        local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+        x, y = tonumber(x), tonumber(y)
+        local maps = zoneMaps[entry.zone]
+        if x and y and maps then
+            for _, mapID in ipairs(maps) do
+                byMap[mapID] = byMap[mapID] or {}
+                table.insert(byMap[mapID], { m, x, y })
+            end
+        end
+    end
+end
+
+-- A veteran group counts as met, a memorial item as visited.
+local function isMet(g)
+    if g.memorial then
+        return ns.IsVisited ~= nil and ns.IsVisited(g.key) == true
+    end
+    return ns.GroupMet ~= nil and ns.GroupMet(g) or false
 end
 
 local function showTooltip(pin)
@@ -51,6 +74,17 @@ local function showTooltip(pin)
         return
     end
     local t, m, x = COL.title, COL.muted, COL.text
+    if g.memorial then
+        local visit = isMet(g) and ns.VisitSummary and ns.VisitSummary(g.key)
+        C.ShowTooltip(pin, "ANCHOR_RIGHT", {
+            { g.entry.name or "?", t[1], t[2], t[3] },
+            { L["Honors %s"]:format(table.concat(g.entry.honors or {}, ", ")), x[1], x[2], x[3] },
+            { ns.CodesLabel(g.codes), x[1], x[2], x[3] },
+            visit and { visit, COL.met[1], COL.met[2], COL.met[3] } or { L["Not visited yet"], m[1], m[2], m[3] },
+            { L["Click to read the story"], m[1], m[2], m[3] },
+        })
+        return
+    end
     local met = ns.MetSummary and ns.MetSummary(g.id)
     local lines = {
         { g.entry.name or "?", t[1], t[2], t[3] },
@@ -59,9 +93,9 @@ local function showTooltip(pin)
     if met then
         lines[#lines + 1] = { met, COL.met[1], COL.met[2], COL.met[3] }
     else
-        lines[#lines + 1] = { "Not met yet", m[1], m[2], m[3] }
+        lines[#lines + 1] = { L["Not met yet"], m[1], m[2], m[3] }
     end
-    lines[#lines + 1] = { "Click to read the story", m[1], m[2], m[3] }
+    lines[#lines + 1] = { L["Click to read the story"], m[1], m[2], m[3] }
     C.ShowTooltip(pin, "ANCHOR_RIGHT", lines)
 end
 
@@ -78,6 +112,13 @@ local function newPin()
     pin.fill:SetAllPoints()
     C.ApplyCircleMask(pin.fill, TEX .. "CircleMask")
 
+    -- Memorials look like a small stone block: a square in stone grey with a one pixel edge.
+    pin.stoneEdge = S.solid(pin, "ARTWORK", COL.violet)
+    pin.stoneEdge:SetAllPoints()
+    pin.stone = S.solid(pin, "OVERLAY", COL.stone)
+    pin.stone:SetPoint("TOPLEFT", 2, -2)
+    pin.stone:SetPoint("BOTTOMRIGHT", -2, 2)
+
     pin.ring = pin:CreateTexture(nil, "OVERLAY")
     pin.ring:SetTexture(TEX .. "RingThin")
     pin.ring:SetAllPoints()
@@ -88,14 +129,17 @@ local function newPin()
     pin.tick:SetPoint("TOPRIGHT", 2, 2)
     C.ApplyCircleMask(pin.tick, TEX .. "CircleMask")
 
-    pin:SetScript("OnEnter", guarded("mappins", "the world map pins", function() showTooltip(pin) end))
+    pin:SetScript("OnEnter", guarded("mappins", L["the world map pins"], function() showTooltip(pin) end))
     pin:SetScript("OnLeave", C.HideTooltip)
-    pin:SetScript("OnClick", guarded("mappins", "the world map pins", function(_, button)
+    pin:SetScript("OnClick", guarded("mappins", L["the world map pins"], function(_, button)
         if button and button ~= "LeftButton" then
             return -- only a left click opens the story
         end
         local g = pin.group
-        if g and ns.UI and ns.UI.ShowEntry then
+        if g and g.memorial and ns.UI and ns.UI.ShowMemorial then
+            C.HideTooltip()
+            ns.UI.ShowMemorial(g.key, nil, nil, true) -- raised above the world map
+        elseif g and ns.UI and ns.UI.ShowEntry then
             C.HideTooltip()
             ns.UI.ShowEntry(g.id, g.entry, nil, nil, nil, true) -- raised above the world map
         end
@@ -105,13 +149,23 @@ end
 
 local function stylePin(pin, g)
     pin.group = g
-    local met = ns.GroupMet and ns.GroupMet(g) or false
+    local met = isMet(g)
     pin.met = met and true or false
-    local r, gr, b = ns.GameRGB(g.codes[1])
-    pin.fill:SetVertexColor(r, gr, b)
-    pin.fill:SetAlpha(met and 1 or 0.7)
     local ring = met and COL.met or COL.violet
-    pin.ring:SetVertexColor(ring[1], ring[2], ring[3])
+    local mem = g.memorial == true
+    pin.fill:SetShown(not mem)
+    pin.ring:SetShown(not mem)
+    pin.stone:SetShown(mem)
+    pin.stoneEdge:SetShown(mem)
+    if mem then
+        pin.stoneEdge:SetColorTexture(ring[1], ring[2], ring[3], 1)
+        pin.stone:SetAlpha(met and 1 or 0.75)
+    else
+        local r, gr, b = ns.GameRGB(g.codes[1])
+        pin.fill:SetVertexColor(r, gr, b)
+        pin.fill:SetAlpha(met and 1 or 0.7)
+        pin.ring:SetVertexColor(ring[1], ring[2], ring[3])
+    end
     pin.tick:SetShown(met and true or false)
 end
 
@@ -168,7 +222,7 @@ local function refresh()
     end
     layout()
 end
-local guardedRefresh = guarded("mappins", "the world map pins", refresh)
+local guardedRefresh = guarded("mappins", L["the world map pins"], refresh)
 
 local function setup()
     local wm = rawget(_G, "WorldMapFrame")
@@ -210,7 +264,7 @@ local function setup()
     hooked = true
     refresh()
 end
-local guardedSetup = guarded("mappins", "the world map pins", setup)
+local guardedSetup = guarded("mappins", L["the world map pins"], setup)
 
 -- Called by the settings checkbox.
 function MP.Refresh()

@@ -40,5 +40,10 @@ jobs:
           python3 tests/test_atlas.py
           python3 tests/test_share.py
           python3 tests/test_mappins.py
+          python3 tests/test_achievements.py
+          python3 tests/test_journal.py
+          python3 tests/test_locale.py
+          python3 tests/test_widths.py
+          python3 tests/test_memorials.py
 
       - uses: BigWigsMods/packager@v2

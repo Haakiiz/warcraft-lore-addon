@@ -12,7 +12,7 @@ ADDON = Path(__file__).resolve().parent.parent / "WarcraftLore"
 STUBS = """
 local noop = function() end
 local function stub() return setmetatable({}, { __index = function() return noop end }) end
-ns = { Compat = stub() }
+ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat = stub() }
 CreateFrame = function() return stub() end
 SlashCmdList = {}
 """

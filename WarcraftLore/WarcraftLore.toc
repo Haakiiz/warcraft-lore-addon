@@ -8,12 +8,18 @@
 ## X-Curse-Project-ID: 1732546
 
 Compat.lua
+Locale.lua
+Locales\deDE.lua
+Locales\frFR.lua
 Data.lua
+Memorials.lua
 SavedData.lua
 Core.lua
+Achievements.lua
 Style.lua
 UI.lua
 Browser.lua
+Journal.lua
 Toast.lua
 Minimap.lua
 MapPins.lua

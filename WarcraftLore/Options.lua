@@ -4,6 +4,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 local S = ns.Style
 local COL = S.COL
 
@@ -27,20 +28,20 @@ end
 
 -- Each option: the label, how to read it, how to write it.
 local OPTIONS = {
-    { "Alert when I target a veteran",
+    { L["Alert when I target a veteran"],
         function(d) return d.auto == true end,
         function(d, on) d.auto = on end },
-    { "Alert when a veteran is nearby",
+    { L["Alert when a veteran is nearby"],
         function(d) return d.alert == true end,
         function(d, on) d.alert = on end },
-    { "Show minimap button",
+    { L["Show minimap button"],
         function() return not minimapHidden() end,
         function(_, on)
             if ns.Minimap and on == minimapHidden() then
                 ns.Minimap.Toggle() -- Toggle flips the state, so only call it when it differs
             end
         end },
-    { "Show veterans on the world map",
+    { L["Show veterans on the world map"],
         function(d) return d.mapPins ~= false end,
         function(d, on)
             d.mapPins = on
@@ -48,7 +49,7 @@ local OPTIONS = {
                 ns.MapPins.Refresh()
             end
         end },
-    { "Hide book-only veterans in the list",
+    { L["Hide book-only veterans in the list"],
         function(d) return d.hideBookOnly == true end,
         function(d, on)
             d.hideBookOnly = on or nil
@@ -97,7 +98,7 @@ local function addCheck(parent, y, option)
     end
     cb:SetScript("OnClick", function()
         -- ns.Guard (Core.lua) keeps an error in a setting's side effect out of the error frame.
-        local run = ns.Guard and ns.Guard("options", "the settings page", onClick) or onClick
+        local run = ns.Guard and ns.Guard("options", L["the settings page"], onClick) or onClick
         run()
     end)
     checks[#checks + 1] = cb
@@ -115,6 +116,8 @@ local function addButton(parent, y, label, onClick)
     fs:SetJustifyH("CENTER")
     fs:SetJustifyV("MIDDLE")
     fs:SetText(label)
+    -- 170 px is enough for the shipped texts; a longer label widens the button instead of spilling.
+    b:SetWidth(math.max(170, math.ceil(fs:GetStringWidth()) + 24))
     b:SetScript("OnEnter", function() b:SetColors(COL.header, 1, COL.violet, 1) end)
     b:SetScript("OnLeave", function() b:SetColors(COL.header, 1, COL.headerLine, 1) end)
     b:SetScript("OnClick", onClick)
@@ -128,10 +131,10 @@ local function build()
 
     local title = S.text(panel, C.FONT_TITLE, 20, COL.title)
     title:SetPoint("TOPLEFT", PAD, -PAD)
-    title:SetText("Warcraft Lore")
+    title:SetText(L["Warcraft Lore"])
     local sub = S.text(panel, C.FONT_BODY, 12, COL.muted)
     sub:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -6)
-    sub:SetText("Choose when Warcraft Lore speaks up.")
+    sub:SetText(L["Choose when Warcraft Lore speaks up."])
     local line = S.solid(panel, "BORDER", COL.divider)
     line:SetPoint("TOPLEFT", PAD, -62)
     line:SetPoint("TOPRIGHT", -PAD, -62)
@@ -143,12 +146,12 @@ local function build()
         y = y - ROW_GAP
     end
     y = y - 10
-    addButton(panel, y, "Open Veterans list", function()
+    addButton(panel, y, L["Open Veterans list"], function()
         if ns.Browser then
             ns.Browser.Toggle()
         end
     end)
-    addButton(panel, y - 34, "Reset window positions", function()
+    addButton(panel, y - 34, L["Reset window positions"], function()
         if not db() then
             return
         end

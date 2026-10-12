@@ -114,6 +114,87 @@ function C.HookUnitTooltip(callback)
     return nil
 end
 
+-- Text of the tooltip's first line (the object's name for a world object), or nil.
+local function tooltipFirstLine(tooltip, data)
+    local text
+    local lines = type(data) == "table" and data.lines
+    if type(lines) == "table" and type(lines[1]) == "table" then
+        text = lines[1].leftText
+    end
+    if type(text) ~= "string" or C.IsSecret(text) then
+        text = nil
+        local fs = rawget(_G, "GameTooltipTextLeft1")
+        if fs and fs.GetText then
+            local ok, t = pcall(fs.GetText, fs)
+            if ok and type(t) == "string" and not C.IsSecret(t) then
+                text = t
+            end
+        end
+    end
+    return text
+end
+
+-- True when the tooltip shows a unit (an NPC or a player) rather than a world object.
+-- Anything unreadable counts as a unit, so we never add a line to something we cannot judge.
+local function tooltipHasUnit(tooltip, data)
+    local guid = type(data) == "table" and data.guid
+    if guid ~= nil and guid ~= false then
+        if type(guid) ~= "string" or C.IsSecret(guid) or not guid:find("^GameObject") then
+            return true
+        end
+    end
+    if tooltip.GetUnit then
+        local ok, _, unit = pcall(tooltip.GetUnit, tooltip)
+        if not ok or C.IsSecret(unit) or unit ~= nil then
+            return true
+        end
+    end
+    return false
+end
+
+-- Hooks callback(tooltip, firstLineText, hasUnit) into tooltips of world objects (plaques, tombs,
+-- herbs ...). Returns the name of the method used, or nil if none was found.
+function C.HookObjectTooltip(callback)
+    if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
+        and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Object then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Object, function(tooltip, data)
+            pcall(function()
+                if tooltip ~= GameTooltip then
+                    return
+                end
+                callback(tooltip, tooltipFirstLine(tooltip, data), tooltipHasUnit(tooltip, data))
+            end)
+        end)
+        return "TooltipDataProcessor.Object"
+    end
+    noteMissing("TooltipDataProcessor.Object")
+
+    if GameTooltip and GameTooltip.HookScript then
+        GameTooltip:HookScript("OnShow", function(tooltip)
+            pcall(function()
+                local before = tooltip.NumLines and tooltip:NumLines()
+                callback(tooltip, tooltipFirstLine(tooltip), tooltipHasUnit(tooltip))
+                if tooltip.NumLines and tooltip:NumLines() ~= before then
+                    tooltip:Show() -- a line was added after the tooltip was laid out: size it again
+                end
+            end)
+        end)
+        return "OnShow"
+    end
+    noteMissing("GameTooltip.HookScript")
+    return nil
+end
+
+-- The title of the text the player just opened (a plaque, book, letter), or nil.
+-- Meant for the ITEM_TEXT_BEGIN event.
+function C.ItemTextName()
+    local name = safeCall("ItemTextGetItem", ItemTextGetItem)
+    if type(name) ~= "string" then
+        return nil
+    end
+    return name
+end
+
 -- Adds a line. Both hook methods above run before the tooltip gets its final
 -- size, so there is no need to call Show() ourselves.
 function C.AddTooltipLine(tooltip, text, r, g, b)
@@ -297,6 +378,19 @@ function C.GetZoneName()
         return nil
     end
     return name
+end
+
+-- uiMapID of the zone the player is in (the same in every client language), or nil when unknown.
+function C.GetZoneMapID()
+    if type(C_Map) ~= "table" or type(C_Map.GetBestMapForUnit) ~= "function" then
+        noteMissing("C_Map.GetBestMapForUnit")
+        return nil
+    end
+    local okMap, mapID = pcall(C_Map.GetBestMapForUnit, "player")
+    if not okMap or type(mapID) ~= "number" or C.IsSecret(mapID) then
+        return nil
+    end
+    return mapID
 end
 
 -- Player position on the current map: mapID, x, y (x and y in 0..1), or nil if unknown
@@ -547,4 +641,14 @@ end
 -- Realm name of the player (nil when missing or secret).
 function C.GetRealmName()
     return safeCall("GetRealmName", GetRealmName)
+end
+
+-- The client's language code ("enUS", "deDE", "frFR" ...). Falls back to "enUS" if the API is
+-- missing or gives something unexpected.
+function C.GetLocale()
+    local value = safeCall("GetLocale", GetLocale)
+    if type(value) ~= "string" or value == "" then
+        return "enUS"
+    end
+    return value
 end

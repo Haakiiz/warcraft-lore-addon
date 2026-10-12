@@ -27,13 +27,16 @@ local COL = {
     title = { rgb("d4c6f7") }, text = { rgb("d9d2c3") }, muted = { rgb("a79d8a") },
     divider = { rgb("2d2347") }, dim = { rgb("4d4434") },
     met = { rgb("6fcf7f") },
+    gold = { rgb("e0b84a") },
     hollow = { rgb("6b5f4a") },
+    stone = { rgb("9e9689") },
 }
 Style.COL = COL
 Style.HEX_MUTED = "|cffa79d8a"
 Style.HEX_TITLE = "|cffd4c6f7"
 Style.HEX_MET = "|cff6fcf7f"
 Style.HEX_VIOLET = "|cff8b6cd6"
+Style.HEX_GOLD = "|cffe0b84a"
 Style.END = "|r"
 
 -------------------------------------------------------------------- small builders

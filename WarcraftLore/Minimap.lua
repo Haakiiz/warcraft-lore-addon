@@ -4,6 +4,7 @@
 
 local ADDON_NAME, ns = ...
 local C = ns.Compat
+local L = ns.L
 
 local MM = {}              -- not "Minimap": that is the game's minimap frame
 ns.Minimap = MM
@@ -45,12 +46,13 @@ local function showTooltip()
     local _, overall = ns.MetCounts()
     local t, m, v, x = COL.title, COL.muted, S.HEX_VIOLET, COL.text
     C.ShowTooltip(button, "ANCHOR_LEFT", {
-        { "Warcraft Lore", t[1], t[2], t[3] },
-        { ("Veterans met: %s%d%s of %d"):format(S.HEX_MET, overall.met, S.END, overall.total), m[1], m[2], m[3] },
+        { L["Warcraft Lore"], t[1], t[2], t[3] },
+        { L["Veterans met: %s%d%s of %d"]:format(S.HEX_MET, overall.met, S.END, overall.total), m[1], m[2], m[3] },
         { " ", 1, 1, 1 },
-        { v .. "Left-click" .. S.END .. "  Veterans list", x[1], x[2], x[3] },
-        { v .. "Right-click" .. S.END .. "  Story of your target", x[1], x[2], x[3] },
-        { v .. "Drag" .. S.END .. "  Move around the minimap", x[1], x[2], x[3] },
+        { v .. L["Left-click"] .. S.END .. "  " .. L["Veterans list"], x[1], x[2], x[3] },
+        { v .. L["Right-click"] .. S.END .. "  " .. L["Story of your target"], x[1], x[2], x[3] },
+        { v .. L["Shift-click"] .. S.END .. "  " .. L["Lore Journal"], x[1], x[2], x[3] },
+        { v .. L["Drag"] .. S.END .. "  " .. L["Move around the minimap"], x[1], x[2], x[3] },
     })
 end
 
@@ -117,6 +119,8 @@ local function build()
         end
         if mouseButton == "RightButton" then
             ns.ShowTarget()
+        elseif ns.Journal and C.IsShiftDown() then
+            ns.Journal.Toggle()
         else
             ns.Browser.Toggle()
         end
