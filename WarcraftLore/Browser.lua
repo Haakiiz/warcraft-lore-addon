@@ -13,7 +13,7 @@ ns.Browser = Browser
 local S = ns.Style
 local COL, solid, text, box, outline = S.COL, S.solid, S.text, S.box, S.outline
 local PAD, HEADER = S.PAD, S.HEADER
-local HEX_MUTED, HEX_MET, END = S.HEX_MUTED, S.HEX_MET, S.END
+local END = S.END
 
 local TEX = "Interface\\AddOns\\" .. ADDON_NAME .. "\\Textures\\"
 
@@ -312,9 +312,9 @@ end
 -- "3/8" with the met part in the met color; a complete zone is all in the met color.
 local function zoneCountText(n)
     if n.met >= n.total then
-        return HEX_MET .. n.met .. "/" .. n.total .. END
+        return S.HEX_MET .. n.met .. "/" .. n.total .. END
     end
-    return (n.met > 0 and (HEX_MET .. n.met .. END) or "0") .. "/" .. n.total
+    return (n.met > 0 and (S.HEX_MET .. n.met .. END) or "0") .. "/" .. n.total
 end
 
 -- A filter or search is active (hide book-only is a preference, so it does not count).
@@ -1169,7 +1169,7 @@ local function filterButton(parent, width, withChevron)
     end
     function b:SetValue(prefix, value, active)
         self.active = active
-        self.label:SetText(HEX_MUTED .. prefix .. END .. value)
+        self.label:SetText(S.HEX_MUTED .. prefix .. END .. value)
         local c = active and COL.title or COL.text
         self.label:SetTextColor(c[1], c[2], c[3])
         paint(self)
@@ -1222,7 +1222,7 @@ end
 
 -- Count line with a zone picked; "showing N" only when other filters shrink the zone's list.
 function Browser.ZoneLine(met, total, shown)
-    local line = L["%s%d of %d%s met here"]:format(HEX_MET, met, total, END)
+    local line = L["%s%d of %d%s met here"]:format(S.HEX_MET, met, total, END)
     if shown ~= total then
         line = line .. L["  ·  showing %d"]:format(shown)
     end
@@ -1411,7 +1411,8 @@ function Browser.Init()
 
     S.buildFrameArt(frame, W, H)
     local inner = S.buildInner(frame)
-    raise(S.buildHeader(inner, L["Warcraft Veterans"], function() frame:Hide() end))
+    local close = raise(S.buildHeader(inner, L["Warcraft Veterans"], function() frame:Hide() end))
+    raise(close.themeButton)
 
     buildProgress(inner)
     local chipRow = buildChips(inner)

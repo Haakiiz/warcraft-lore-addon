@@ -159,6 +159,10 @@ local function build()
             ns.ResetWindows() -- same as /wcl reset, including the chat line
         end
     end)
+    -- Same as the switch button in every window's title band and /wcl theme.
+    addButton(panel, y - 68, L["Switch to the %s"]:format(S.ThemeLabel(S.OtherTheme())), function()
+        S.RequestTheme(S.OtherTheme())
+    end)
 
     panel:SetScript("OnShow", refreshChecks)
     refreshChecks()

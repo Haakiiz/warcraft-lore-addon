@@ -874,6 +874,8 @@ local function cmdHelp()
     chat(L["/wcl test – show a test alert (small pill, chat line, sound)"])
     chat(L["/wcl journal – open the Lore Journal (your achievements)"])
     chat(L["/wcl reset – move the windows back to the center"])
+    chat(L["/wcl theme – switch between the Warcraft II look and the classic look (now: %s)"]:format(
+        ns.Style.ThemeLabel(ns.Style.theme)))
     chat(L["/wcl options – open the Warcraft Lore settings"])
     chat(L["/wcl export – copy your met list as text"])
     chat(L["/wcl import – paste a met list from another account"])
@@ -933,6 +935,16 @@ local COMMANDS = {
             chat(L["Import and export are not available in this client."])
         end
     end,
+    -- Switch between the Warcraft II look and the classic look (asks, then reloads the interface).
+    theme = function()
+        ns.Style.RequestTheme(ns.Style.OtherTheme())
+    end,
+    ["theme wc2"] = function()
+        ns.Style.RequestTheme("wc2")
+    end,
+    ["theme classic"] = function()
+        ns.Style.RequestTheme("classic")
+    end,
 }
 local guardedCommands = {}
 for name, fn in pairs(COMMANDS) do
@@ -957,6 +969,8 @@ C.RegisterEventSafe(events, "ITEM_TEXT_BEGIN")
 local onAddonLoaded = guard("init", L["the addon setup"], function()
     -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
     ns.SavedData.Load()
+    -- Before any window is drawn: the windows take the theme's art and colors when they are built.
+    ns.Style.ApplyTheme(WarcraftLoreDB.theme)
     guard("window", L["the lore window"], ns.UI.Init)()
     guard("minimap", L["the minimap button"], ns.Minimap.Init)()
     C.StartTicker(CHECK_INTERVAL, checkPosition)

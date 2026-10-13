@@ -1,5 +1,15 @@
 # Warcraft Lore – changelog
 
+## v0.8.0
+
+- **New look: Warcraft II.** Every window now looks like a remaster of the Warcraft II menus: a stone
+  frame, cracked leather, dark inset panels, red buttons and gold text. This is the new standard look.
+- **Prefer the old look?** Click the **Classic** button next to the close X in any window, use the
+  button in the settings, or type `/wcl theme`. You get a short confirmation, and the interface
+  reloads with the violet "classic" look. The same button (**WC2**) switches back. Your choice is
+  saved for the whole account.
+- `/wcl theme classic` and `/wcl theme wc2` pick a look directly.
+
 ## v0.7.0
 
 - **Memorials:** tombs, plaques and monuments for Warcraft heroes you can't meet in person – Uther's Tomb, the plaques in Stormwind's Valley of Heroes, Trollbane's Tomb, Grom Hellscream's monument and more. Hover or read them to tick them off.

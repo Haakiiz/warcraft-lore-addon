@@ -69,6 +69,7 @@ The client is interface 16001 (build 1.60.1). It is built on the modern Mainline
 | `/wcl alert` | Turns the "veteran nearby" alert (pill, chat line, sound) on or off. It fires once per NPC per session when the NPC's nameplate appears, or when you come within a few percent of the NPC's known map coordinates (not in instances). Nameplate alerts need friendly NPC nameplates enabled; the coordinate alert works without them |
 | `/wcl test` (or `/wcl alert test`) | Shows a test alert for the database NPC with the lowest ID: the small pill, chat line and sound. Click the pill to open the NPC's window, right-click to dismiss, shift-drag to move |
 | `/wcl reset` | Moves the windows back to the center |
+| `/wcl theme` | Switches between the Warcraft II look (the default) and the classic violet look, after a confirmation, by reloading the interface. `/wcl theme wc2` and `/wcl theme classic` pick one directly. The same switch is the small button next to the close X in every window and a button in the settings |
 | `/wcl why` | Explains in one or two chat lines why your target is or isn't recognised: a player, not in the database, or a veteran (with notes if alerts are off, you are in an instance, no map position is stored, or you were already alerted this session) |
 | `/wcl options` | Opens the Warcraft Lore settings page. If this client has no settings panel it says so in chat |
 | `/wcl export` | Opens a window with your met list as a short text (starts with `WCL1:`), already selected so you can copy it with Ctrl+C |

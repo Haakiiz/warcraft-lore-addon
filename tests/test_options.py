@@ -79,7 +79,7 @@ def main():
         clickable = {}
         for _, f in ipairs(frames) do if f.scripts.OnClick then clickable[#clickable + 1] = f end end
     """)
-    results.append(check("seven clickable controls", lua.eval("#clickable") == 7))
+    results.append(check("eight clickable controls (incl. the theme switch)", lua.eval("#clickable") == 8))
     lua.execute("clickable[1].scripts.OnClick(); clickable[2].scripts.OnClick()")
     results.append(check("checkbox toggles auto/alert", lua.eval("WarcraftLoreDB.auto") is False and lua.eval("WarcraftLoreDB.alert") is True))
     lua.execute("clickable[3].scripts.OnClick()")
