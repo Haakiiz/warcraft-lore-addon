@@ -1,4 +1,4 @@
-# TASKS – WarcraftLore-addon
+﻿# TASKS – WarcraftLore-addon
 
 Status: [x] ferdig · [ ] gjenstår. Etter hvert checkpoint: STOPP og vent på godkjenning fra Håkon (bare han kan kjøre addonen i spillet).
 
@@ -121,3 +121,10 @@ Målestokk: .kritikk/referanse/malestokk_simulering.md · kontrakt: simulering/C
 - [~] Sluttkritiker: AVVIST knapt (hero 7, polish 7, resten 8–9; leveransen likeverdig/bedre i blindtest). Rettet: HUD skjules etter
       tidslinjen, HUD viser månedstall i nedturskapitler, mini-kurven sier 2,1 mill. Ikke kritisert på nytt (92 % av 5-timersvinduet).
       Gjenstår: hero (tom høyre halvdel, tooltip ved ringkanten). Publisert v2: https://claude.ai/artifact/2hq7XRetf3PKrCvDYLs2WC
+
+## WC2-UI eksempelbilde (gauntlet-loop, 2026-10-12)
+Målestokk: .kritikk/referanse/malestokk_wc2.md · arbeidsmappe: .kritikk/wc2ui/ · maks 3 kritikerrunder per del
+- [x] D1 Stilsett — r1 AVVIST, r2 GODKJENT (min 8/10). Igjen: synlig 256px-flis i lær, FK-grønn ~ MET-grønn
+- [x] D2 Veterans-vinduet — r1 AVVIST, r2 AVVIST (avkuttet navn), r3 GODKJENT (min 8/10)
+- [x] D3 Lore-vinduet (lore.html) — r1 GODKJENT (min 8/10); finpuss + ny render etter kit-endring
+- [x] Helhet — r1 AVVIST (ulik tittelhøyde/knapper), r2 GODKJENT; publisert på Design-canvas, venter på Håkons godkjenning

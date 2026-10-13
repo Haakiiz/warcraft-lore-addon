@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Warcraft Lore</title>
+<link rel="stylesheet" href="wc2.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 560px; height: 680px; overflow: hidden;
+    display: grid; place-items: center;
+    background: #1d1a15;
+  }
+
+  /* ---- window shell ---- */
+  .lore {
+    width: 520px; height: 640px;
+    display: flex; flex-direction: column;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .lore .wc2-body {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 10px 12px 12px;
+  }
+  .lore * { font-variant-numeric: lining-nums tabular-nums; }
+  /* Alegreya SC only has old-style figures; use Alegreya (which has lnum)
+     for anything containing digits so "WC3" never reads as a subscript. */
+  .lore .wc2-tag { font-family: var(--wc2-font-body); font-weight: 700; font-size: 11.5px; letter-spacing: .07em; }
+  .lore .wc2-stat b { font-family: var(--wc2-font-body); font-weight: 500; font-size: 16px; }
+
+  /* red orcish close box instead of the stone one */
+  .lore .wc2-close svg { width: 11px; height: 11px; }
+
+  /* ---- unit-info header ---- */
+  .unit { display: flex; gap: 14px; align-items: stretch; padding: 10px 12px 10px 10px; }
+  .unit-left { flex: none; width: 92px; display: flex; flex-direction: column; gap: 4px; }
+  .portrait.wc2-cmd {
+    width: 92px; height: 80px; cursor: default;
+    background: radial-gradient(circle at 50% 45%, #3a2814 0%, #1a0f05 75%);
+  }
+  .portrait.wc2-cmd svg { width: 84px; height: 74px; }
+  .metbar.wc2-bar { width: 92px; height: 7px; }
+  .metcap {
+    font: 500 12px/1 var(--wc2-font-label);
+    color: var(--wc2-gold-dim); text-align: center; letter-spacing: .06em;
+    text-shadow: var(--wc2-shadow-text);
+  }
+  .unit-right {
+    flex: 1; min-width: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .unit-name {
+    margin: 0 0 4px;
+    font-family: var(--wc2-font-title); font-weight: 700; font-size: 26px; line-height: 1.05;
+    letter-spacing: .05em; color: var(--wc2-gold-hi);
+    text-shadow: 0 1px 0 #000, 0 2px 3px rgba(0,0,0,.7);
+  }
+  .unit-right .wc2-stat { font-size: 15px; line-height: 1.3; }
+  .tags { display: flex; gap: 5px; margin-top: 8px; }
+
+  /* ---- scroll area ---- */
+  .scroller { flex: 1; min-height: 0; display: flex; gap: 6px; }
+  .viewport.wc2-panel {
+    flex: 1; min-width: 0;
+    padding: 6px 6px 9px;
+    /* softer outer frame so it doesn't double up with the section bevels */
+    border-color: #060302 rgba(184,173,148,.45) rgba(184,173,148,.45) #060302;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.6);
+  }
+  .clip { position: relative; height: 100%; overflow: hidden; }
+  .clip::after {          /* short fade where the list continues below */
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 14px;
+    background: linear-gradient(to top, #0e0904, rgba(14,9,4,0));
+    pointer-events: none;
+  }
+  .sections { display: flex; flex-direction: column; gap: 10px; }
+  .scroller .wc2-scroll { width: 16px; }
+  .scroller .wc2-scroll-thumb { top: 0; height: 40%; }
+
+  /* ---- title bar: a subtle carved line under it ---- */
+  .lore .wc2-titlebar {
+    box-shadow:
+      inset 0 -1px 0 rgba(0,0,0,.85),
+      inset 0 1px 0 rgba(0,0,0,.6),
+      0 1px 0 rgba(184,173,148,.30),
+      0 2px 0 rgba(0,0,0,.45);
+  }
+
+  /* ---- a lore section ---- */
+  .sec.wc2-panel {
+    padding: 9px 12px 10px;
+    /* keep the 1px light bevel edge, drop the second inner light line */
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.85), inset 0 2px 8px rgba(0,0,0,.55);
+  }
+  .sec-head {
+    display: flex; align-items: center; gap: 9px;
+    padding-bottom: 6px; margin-bottom: 6px;
+    border-bottom: 1px solid rgba(0,0,0,.85);
+    box-shadow: 0 1px 0 rgba(184,173,148,.22);
+  }
+  .sec-head .wc2-label { font-size: 17px; line-height: 1.2; }
+  .sec-head .wc2-tag { flex: none; }
+  .rows {
+    display: grid; grid-template-columns: max-content 1fr;
+    column-gap: 8px; row-gap: 3px;
+    margin: 0;
+  }
+  .rows dt {
+    font-family: var(--wc2-font-label); font-weight: 500; font-size: 15px; line-height: 21px;
+    color: var(--wc2-gold); text-shadow: var(--wc2-shadow-text);
+  }
+  .rows dd {
+    margin: 0;
+    font-family: var(--wc2-font-body); font-size: 15px; line-height: 21px;
+    color: var(--wc2-text);
+  }
+
+  /* ---- bottom button row ---- */
+  .actions { display: flex; justify-content: center; gap: 14px; }
+  .actions .wc2-btn { width: 150px; }
+  /* same title band and red buttons as the Veterans window */
+  .lore .wc2-titlebar { min-height: 30px; flex: none; }
+  .lore .wc2-title { font-size: 18px; }
+  .lore .wc2-close svg { width: 11px; height: 11px; }
+  .actions .wc2-btn {
+    border-color: #c0553c #1f0402 #1f0402 #c0553c;
+    box-shadow: inset 1px 1px 0 #a8402a, inset -1px -1px 0 #3a0804, 0 2px 3px rgba(0,0,0,.6);
+    min-height: 25px; font-size: 15px; padding-top: 2px; padding-bottom: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wc2-window lore">
+  <div class="wc2-titlebar">
+    <h2 class="wc2-title">Warcraft Lore</h2>
+    <button class="wc2-btn wc2-close" aria-label="Close">
+      <svg viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#e8c547" stroke-width="2.2" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+
+  <div class="wc2-body">
+
+    <!-- unit info -->
+    <div class="wc2-panel unit">
+      <div class="unit-left">
+        <div class="wc2-cmd portrait" role="img" aria-label="Clan war banner">
+          <svg viewBox="0 0 84 74" aria-hidden="true">
+            <defs>
+              <linearGradient id="cloth" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0"   stop-color="#4a0b06"/>
+                <stop offset=".18" stop-color="#8a2214"/>
+                <stop offset=".34" stop-color="#5e110a"/>
+                <stop offset=".55" stop-color="#9a2a18"/>
+                <stop offset=".78" stop-color="#641309"/>
+                <stop offset="1"   stop-color="#3e0904"/>
+              </linearGradient>
+              <linearGradient id="clothV" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0"  stop-color="#000" stop-opacity=".35"/>
+                <stop offset=".25" stop-color="#000" stop-opacity="0"/>
+                <stop offset="1"  stop-color="#000" stop-opacity=".45"/>
+              </linearGradient>
+              <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#b08250"/>
+                <stop offset=".45" stop-color="#7a5430"/>
+                <stop offset="1" stop-color="#3a2410"/>
+              </linearGradient>
+              <linearGradient id="woodH" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#3a2410"/>
+                <stop offset=".4" stop-color="#9a7044"/>
+                <stop offset="1" stop-color="#3a2410"/>
+              </linearGradient>
+              <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1e8d0"/>
+                <stop offset=".45" stop-color="#b8ad94"/>
+                <stop offset="1" stop-color="#5a5040"/>
+              </linearGradient>
+              <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f6dc7a"/>
+                <stop offset=".5" stop-color="#d4a83a"/>
+                <stop offset="1" stop-color="#7a5a18"/>
+              </linearGradient>
+            </defs>
+
+            <!-- banner cloth, swallow-tailed -->
+            <path d="M14 10 H70 V64 L56 56 L42 70 L28 56 L14 64 Z" fill="url(#cloth)" stroke="#1a0402" stroke-width="1.4"/>
+            <path d="M14 10 H70 V64 L56 56 L42 70 L28 56 L14 64 Z" fill="url(#clothV)"/>
+            <!-- gold trim -->
+            <path d="M18 13 H66 V58 L56 52 L42 65 L28 52 L18 58 Z" fill="none" stroke="url(#gold)" stroke-width="1.6"/>
+            <!-- fold highlights -->
+            <path d="M27 13 V54 M51 13 V54" stroke="#c2402a" stroke-opacity=".28" stroke-width="2"/>
+
+            <!-- crossbar with knobs -->
+            <rect x="4" y="5" width="76" height="7" rx="1" fill="url(#wood)" stroke="#1a0f05" stroke-width="1"/>
+            <path d="M6 6.5 H78" stroke="#e0b47a" stroke-opacity=".55" stroke-width="1"/>
+            <circle cx="5" cy="8.5" r="4.2" fill="url(#gold)" stroke="#2a1a06" stroke-width="1"/>
+            <circle cx="79" cy="8.5" r="4.2" fill="url(#gold)" stroke="#2a1a06" stroke-width="1"/>
+            <circle cx="4" cy="7.2" r="1.3" fill="#fff2c0" fill-opacity=".7"/>
+            <circle cx="78" cy="7.2" r="1.3" fill="#fff2c0" fill-opacity=".7"/>
+            <!-- cords -->
+            <path d="M18 12 L18 15 M66 12 L66 15" stroke="#1a0402" stroke-width="2"/>
+
+            <!-- double-bladed war axe -->
+            <rect x="39.6" y="16" width="4.8" height="44" rx="1" fill="url(#woodH)" stroke="#1a0f05" stroke-width="1"/>
+            <path d="M39.6 50 H44.4 M39.6 54 H44.4" stroke="#1a0f05" stroke-width="1.2"/>
+            <!-- left blade -->
+            <path d="M40 22 C34 22 28 18 22 15 C18 22 18 34 22 41 C28 38 34 34 40 34 Z"
+                  fill="url(#steel)" stroke="#1c160e" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M23 17 C20 23 20 33 23 39" fill="none" stroke="#fffaf0" stroke-opacity=".75" stroke-width="1.2"/>
+            <!-- right blade -->
+            <path d="M44 22 C50 22 56 18 62 15 C66 22 66 34 62 41 C56 38 50 34 44 34 Z"
+                  fill="url(#steel)" stroke="#1c160e" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M61 17 C64 23 64 33 61 39" fill="none" stroke="#3a3226" stroke-opacity=".8" stroke-width="1.2"/>
+            <!-- gold collar and spike -->
+            <rect x="37.5" y="20" width="9" height="16" rx="1" fill="url(#gold)" stroke="#2a1a06" stroke-width="1"/>
+            <path d="M39 24 H45 M39 28 H45 M39 32 H45" stroke="#6a4a10" stroke-width=".9"/>
+            <path d="M42 12 L45 20 H39 Z" fill="url(#steel)" stroke="#1c160e" stroke-width="1"/>
+            <circle cx="42" cy="61" r="2.6" fill="url(#gold)" stroke="#2a1a06" stroke-width=".9"/>
+          </svg>
+        </div>
+        <div class="wc2-bar metbar"><i style="width:100%"></i></div>
+        <div class="metcap">Met</div>
+      </div>
+
+      <div class="unit-right">
+        <h1 class="unit-name">Thrall</h1>
+        <span class="wc2-stat">Zone: <b>Orgrimmar</b></span>
+        <span class="wc2-stat">Location: <b>32.0, 37.8</b></span>
+        <span class="wc2-stat">NPC ID: <b>4949</b></span>
+        <div class="tags">
+          <span class="wc2-tag" data-game="wc3">WC3</span>
+          <span class="wc2-tag" data-game="tft">TFT</span>
+          <span class="wc2-tag" data-game="book">BOOK</span>
+          <span class="wc2-tag is-met">MET</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- sections -->
+    <div class="scroller">
+      <div class="wc2-panel wc2-panel--frame viewport">
+        <div class="clip"><div class="sections">
+
+          <section class="wc2-panel sec">
+            <div class="sec-head">
+              <span class="wc2-tag" data-game="wc3">WC3</span>
+              <span class="wc2-label">Warcraft III: Reign of Chaos</span>
+            </div>
+            <dl class="rows">
+              <dt>Campaign:</dt><dd>The Invasion of Kalimdor (Orc)</dd>
+              <dt>Missions:</dt><dd>Landfall, The Long March, Cry of the Warsong, Where Wyverns Dare, The Oracle, By Demons Be Driven</dd>
+              <dt>Role:</dt><dd>Playable hero (Far Seer); absent from chapters 4&ndash;5, which belong to Grom Hellscream</dd>
+            </dl>
+          </section>
+
+          <section class="wc2-panel sec">
+            <div class="sec-head">
+              <span class="wc2-tag" data-game="tft">TFT</span>
+              <span class="wc2-label">Warcraft III: The Frozen Throne</span>
+            </div>
+            <dl class="rows">
+              <dt>Campaign:</dt><dd>The Founding of Durotar (Orc bonus campaign)</dd>
+              <dt>Mission:</dt><dd>To Tame a Land</dd>
+              <dt>Role:</dt><dd>Allied NPC; the Warchief who gives Rexxar his orders</dd>
+            </dl>
+          </section>
+
+          <section class="wc2-panel sec">
+            <div class="sec-head">
+              <span class="wc2-tag" data-game="book">BOOK</span>
+              <span class="wc2-label">Warcraft novels and books</span>
+            </div>
+            <dl class="rows">
+              <dt>Book:</dt><dd>Lord of the Clans</dd>
+              <dt>Role:</dt><dd>Protagonist: Go'el's life in the internment camps, his escape from Durnholde Keep, and his rise to Warchief (novel, not a game appearance)</dd>
+            </dl>
+          </section>
+
+          <section class="wc2-panel sec">
+            <div class="sec-head">
+              <span class="wc2-tag" data-game="book">BOOK</span>
+              <span class="wc2-label">Warcraft novels and books</span>
+            </div>
+            <dl class="rows">
+              <dt>Book:</dt><dd>Cycle of Hatred</dd>
+              <dt>Role:</dt><dd>Tries to keep the peace with Theramore while his chief warrior Burx attacks Northwatch Hold (novel, not a game appearance)</dd>
+            </dl>
+          </section>
+
+        </div></div>
+      </div>
+      <div class="wc2-scroll">
+        <div class="wc2-scroll-btn"><svg viewBox="0 0 8 6"><path d="M4 0 L8 6 H0 Z" fill="#e8c547"/></svg></div>
+        <div class="wc2-scroll-track"><div class="wc2-scroll-thumb"></div></div>
+        <div class="wc2-scroll-btn"><svg viewBox="0 0 8 6"><path d="M0 0 H8 L4 6 Z" fill="#e8c547"/></svg></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="wc2-btn">Related</button>
+      <button class="wc2-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

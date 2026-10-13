@@ -15,7 +15,7 @@ local QUESTION_MARK = "Interface\\Icons\\INV_Misc_QuestionMark"
 local S = ns.Style
 local COL, solid, text, box, badge = S.COL, S.solid, S.text, S.box, S.badge
 local BAND, PAD, HEADER = S.BAND, S.PAD, S.HEADER
-local HEX_MUTED, HEX_TITLE, HEX_MET, END = S.HEX_MUTED, S.HEX_TITLE, S.HEX_MET, S.END
+local END = S.END
 
 local W, H = 460, 580      -- window size
 local RING = 96            -- portrait ring size
@@ -314,10 +314,10 @@ local function fillRelated(groups)
     for i, g in ipairs(groups) do
         local r = relatedRow(i)
         r.group = g
-        local line = HEX_TITLE .. (g.entry.name or "?") .. END .. "  " .. ns.CodesLabel(g.codes)
-            .. "  " .. HEX_MUTED .. (g.entry.zone or "") .. END
+        local line = S.HEX_TITLE .. (g.entry.name or "?") .. END .. "  " .. ns.CodesLabel(g.codes)
+            .. "  " .. S.HEX_MUTED .. (g.entry.zone or "") .. END
         if ns.GroupMet(g) then
-            line = line .. "  " .. HEX_MET .. L["met"] .. END
+            line = line .. "  " .. S.HEX_MET .. L["met"] .. END
         end
         r.label:SetText(line)
         r:Show()
@@ -397,7 +397,7 @@ local function fillGameBox(b, app)
     b.bar:SetColorTexture(c[1], c[2], c[3], 1)
     b.badge:Set(ns.GAME_SHORT[app.game] or app.game, c)
     local year = GAME_YEAR[app.game]
-    b.title:SetText((ns.GAME_LONG[app.game] or app.game) .. (year and ("  " .. HEX_MUTED .. year .. END) or ""))
+    b.title:SetText((ns.GAME_LONG[app.game] or app.game) .. (year and ("  " .. S.HEX_MUTED .. year .. END) or ""))
     b.title:SetTextColor(c[1], c[2], c[3])
     C.SetIconTexture(b.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
     local lines = {}
@@ -405,11 +405,11 @@ local function fillGameBox(b, app)
         lines[#lines + 1] = app.role
     end
     if app.campaign and app.campaign ~= "" then
-        lines[#lines + 1] = HEX_MUTED .. L["Campaign"] .. END .. "  " .. app.campaign
+        lines[#lines + 1] = S.HEX_MUTED .. L["Campaign"] .. END .. "  " .. app.campaign
     end
     if app.missions and #app.missions > 0 then
         local label = #app.missions == 1 and L["Mission"] or L["Missions"]
-        lines[#lines + 1] = HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
+        lines[#lines + 1] = S.HEX_MUTED .. label .. END .. "  " .. table.concat(app.missions, ", ")
     end
     b.body:SetText(table.concat(lines, "\n"))
     b:SetHeight(30 + b.body:GetStringHeight() + 10)
@@ -471,7 +471,7 @@ local function fillBooks(books)
         C.SetIconTexture(r.icon, "Interface\\Icons\\" .. roleIcon(app), QUESTION_MARK)
         local title = (app.campaign and app.campaign ~= "") and app.campaign or L["Book"]
         local role = app.role or ""
-        r.label:SetText(HEX_TITLE .. title .. END .. (role ~= "" and ("  " .. HEX_MUTED .. role .. END) or ""))
+        r.label:SetText(S.HEX_TITLE .. title .. END .. (role ~= "" and ("  " .. S.HEX_MUTED .. role .. END) or ""))
         r.tip = { { title, 1, 1, 1 } }
         if role ~= "" then
             r.tip[2] = { role, 0.8, 0.8, 0.8, true }
@@ -676,7 +676,7 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
         place = place .. " · " .. entry.coords
     end
     if entry.alsoIn and #entry.alsoIn > 0 then
-        place = place .. "\n" .. HEX_MUTED .. L["Also in %s"]:format(table.concat(entry.alsoIn, ", ")) .. END
+        place = place .. "\n" .. S.HEX_MUTED .. L["Also in %s"]:format(table.concat(entry.alsoIn, ", ")) .. END
     end
     showHeader(entry.name, place, npcID, badges)
     shownNPC = npcID
@@ -723,9 +723,9 @@ function UI.ShowEntry(npcID, entry, unit, dock, keepPlace, raised)
     end
     local items = {}
     for _, item in ipairs(entry.items or {}) do
-        local line = HEX_TITLE .. (item.name or "?") .. END .. HEX_MUTED .. " · " .. L["item ID %s"]:format(tostring(item.id)) .. END
+        local line = S.HEX_TITLE .. (item.name or "?") .. END .. S.HEX_MUTED .. " · " .. L["item ID %s"]:format(tostring(item.id)) .. END
         if item.note and item.note ~= "" then
-            line = line .. "\n" .. HEX_MUTED .. item.note .. END
+            line = line .. "\n" .. S.HEX_MUTED .. item.note .. END
         end
         items[#items + 1] = line
     end
@@ -806,7 +806,7 @@ function UI.ShowMemorial(key, dock, keepPlace, raised)
         place = place .. " · " .. entry.coords
     end
     showHeader(entry.name, L["Honors %s"]:format(ns.MemorialHonors(entry)), nil, badges)
-    idText:SetText(HEX_MUTED .. place .. END)
+    idText:SetText(S.HEX_MUTED .. place .. END)
     if #(entry.name or "") > 24 then
         C.SetFont(nameText, C.FONT_TITLE, 16) -- a long object name must fit the one-line title
     end

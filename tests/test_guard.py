@@ -44,6 +44,8 @@ ns.Toast = { Show = function(id, e, who, unit, more) toasts[#toasts + 1] = { id 
 ns.UI = { Init = noop, IsShown = function() return false end }
 ns.Minimap = { Init = noop }
 ns.SavedData = { Load = function() end }
+ns.Style = { theme = "wc2", ApplyTheme = function() end, ThemeLabel = function(n) return n end,
+             OtherTheme = function() return "classic" end, RequestTheme = function() end }
 WarcraftLoreDB = { alert = true, auto = false }
 WarcraftLoreCharDB = { met = {} }
 strtrim = function(s) return (s:gsub("^%s+", ""):gsub("%s+$", "")) end

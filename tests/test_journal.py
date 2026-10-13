@@ -119,6 +119,8 @@ def main():
     # Real Style.lua on the fake client, then Journal.lua; Core's journal command is tested separately.
     load((ADDON / "Locale.lua").read_text(encoding="utf-8"), "Locale.lua")
     load((ADDON / "Style.lua").read_text(encoding="utf-8"), "Style.lua")
+    # The checks below use the classic theme's flat borders (the WC2 theme is covered in test_theme.py).
+    lua.execute('ns.Style.ApplyTheme("classic")')
     load((ADDON / "Journal.lua").read_text(encoding="utf-8"), "Journal.lua")
     r = []
     r.append(check("Journal.lua loads", ev("ns.Journal ~= nil")))

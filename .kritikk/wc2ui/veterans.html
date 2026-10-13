@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Warcraft Veterans (WC2 style)</title>
+<link rel="stylesheet" href="wc2.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 560px; height: 680px; overflow: hidden;
+    display: grid; place-items: center;
+    background: #1d1a15;
+  }
+  * { font-variant-numeric: lining-nums tabular-nums !important; font-feature-settings: 'lnum' 1, 'tnum' 1; }
+
+  .vet { width: 520px; height: 640px; display: flex; flex-direction: column; }
+  .vet .wc2-titlebar { min-height: 30px; flex: none; }
+  .vet .wc2-title { font-size: 18px; }
+  /* 12px leather gaps between panel groups, like the minimap / unit-info spacing in WC2 */
+  .vet .wc2-body { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 10px 14px 12px; min-height: 0; }
+  .vet .wc2-close svg { width: 11px; height: 11px; }
+
+  /* muted TFT blue (palette) */
+  .vet .wc2-tag[data-game="tft"] { color: #8e9cab; }
+  .vet .wc2-titlebar {
+    box-shadow:
+      inset 0 -1px 0 rgba(0,0,0,.85),
+      inset 0 1px 0 rgba(0,0,0,.6),
+      0 1px 0 rgba(184,173,148,.30),
+      0 2px 0 rgba(0,0,0,.45);
+  }
+
+  /* Menu/Pause style top row */
+  .toprow { display: flex; gap: 12px; flex: none; }
+  .toprow .wc2-btn {
+    border-color: #c0553c #1f0402 #1f0402 #c0553c;
+    box-shadow: inset 1px 1px 0 #a8402a, inset -1px -1px 0 #3a0804, 0 2px 3px rgba(0,0,0,.6);
+  }
+  .toprow .wc2-btn { flex: 1; min-height: 25px; font-size: 15px; padding-top: 2px; padding-bottom: 3px; }
+  .toprow .wc2-btn svg { width: 15px; height: 15px; margin-right: 7px; flex: none; }
+
+  /* progress */
+  .prog { padding: 4px 14px 7px; flex: none; }
+  .prog .wc2-stat { font-size: 16px; }
+
+  /* clearer inset bar track */
+  .vet .wc2-bar.trk {
+    height: 8px; background: #050301;
+    border: 1px solid; border-color: #000 #cfc3a6 #cfc3a6 #000;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.9), inset 0 0 0 1px rgba(90,70,40,.35);
+  }
+  .vet .wc2-bar.trk > i { box-shadow: inset 0 1px 0 rgba(200,255,200,.35); }
+  .prog .wc2-bar.trk { margin-top: 5px; height: 9px; }
+
+  /* game counters as WC2 command cards */
+  .cards { display: flex; justify-content: space-between; flex: none; }
+  .vet .gcard.wc2-cmd {
+    width: 70px; height: 52px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: 4px 6px 5px;
+  }
+  .gcard .wc2-tag { height: 16px; font-size: 11px; padding: 0 5px; }
+  .gcard .n { font: 500 15px/1 var(--wc2-font-label); color: var(--wc2-gold); text-shadow: var(--wc2-shadow-text); }
+  .gcard .n b { color: var(--wc2-gold-hi); font-weight: 700; }
+  .gcard .wc2-bar.trk { width: 100%; height: 9px; }
+  .gcard .alltag {
+    height: 16px; display: flex; align-items: center;
+    font: 700 12px/1 var(--wc2-font-label); letter-spacing: .08em; color: var(--wc2-gold);
+    text-shadow: var(--wc2-shadow-text);
+  }
+
+  /* filters */
+  .filters { padding: 7px 8px; display: flex; flex-direction: column; gap: 6px; flex: none; }
+  .search { position: relative; }
+  .search .wc2-input { width: 100%; height: 27px; padding-left: 30px; font-size: 15px; }
+  .search svg { position: absolute; left: 9px; top: 7px; width: 14px; height: 14px; }
+  .drops { display: grid; grid-template-columns: 0.95fr 1.45fr 0.7fr; gap: 6px; }
+  .drop {
+    position: relative; display: flex; align-items: center; gap: 6px;
+    height: 27px; padding: 0 27px 0 8px; white-space: nowrap; overflow: hidden;
+    font-size: 14px;
+  }
+  .drop .k { font: 500 14px var(--wc2-font-label); color: var(--wc2-gold); text-shadow: var(--wc2-shadow-text); }
+  .drop .v { color: var(--wc2-text); }
+  .drop .arr {
+    position: absolute; right: 2px; top: 2px; bottom: 2px; width: 20px;
+    box-sizing: border-box; display: grid; place-items: center;
+    border: 2px solid; border-color: var(--wc2-red-light) var(--wc2-red-dark) var(--wc2-red-dark) var(--wc2-red-light);
+    background: linear-gradient(var(--wc2-red-hi), var(--wc2-red-lo));
+  }
+  .drop .arr svg { width: 9px; height: 6px; display: block; }
+  /* own dark inset band so this line never sits on leather */
+  .frow {
+    display: flex; gap: 14px; align-items: center;
+    height: 24px; padding: 0 9px; box-sizing: border-box;
+    background: rgba(6,3,1,.88);
+    border: 1px solid; border-color: #000 rgba(184,173,148,.55) rgba(184,173,148,.55) #000;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.8);
+  }
+  .frow .count { font: 500 14px var(--wc2-font-label); color: var(--wc2-gold-dim); text-shadow: var(--wc2-shadow-text); letter-spacing: .02em; }
+  .frow .count b { color: var(--wc2-gold-hi); font-weight: 500; }
+  .frow .wc2-check { font-size: 14px; margin-left: auto; }
+  .frow .wc2-check .box { width: 15px; height: 15px; }
+
+  /* list */
+  .listwrap { flex: 1; min-height: 0; display: flex; gap: 5px; }
+  .list { flex: 1; padding: 0 0 2px; display: flex; flex-direction: column; overflow: hidden; }
+  .rows { flex: 1; min-height: 0; overflow: hidden; }
+  .cols { display: grid; grid-template-columns: 14px minmax(0,1fr) 116px 72px; column-gap: 6px; align-items: center; }
+  .head {
+    height: 19px; flex: none; padding: 0 7px 0 0;
+    font: 700 12px var(--wc2-font-label); letter-spacing: .07em; color: var(--wc2-gold);
+    text-shadow: var(--wc2-shadow-text);
+    border-bottom: 1px solid rgba(0,0,0,.9);
+    box-shadow: 0 1px 0 rgba(184,173,148,.30);
+    background: rgba(60,38,16,.35);
+  }
+  .head .r { white-space: nowrap; }  .head .r, .row .r { text-align: right; justify-self: end; }
+  .row {
+    height: 18px; padding: 0 7px 0 0;
+    font: 14px/18px var(--wc2-font-body); color: var(--wc2-text);
+    white-space: nowrap;
+  }
+  .row:nth-child(even) { background: rgba(60,38,16,.22); }
+  .row.hover { background: rgba(232,197,71,.08); box-shadow: inset 0 1px 0 rgba(232,197,71,.12), inset 0 -1px 0 rgba(232,197,71,.12); }
+  .row.sel { background: rgba(76,184,76,.13); box-shadow: inset 2px 0 0 var(--wc2-green); }
+  /* name cell: name ellipsizes, the "uncertain" note never shrinks or crosses into Zone */
+  .row .nm { display: flex; align-items: center; min-width: 0; }
+  .row .nm .t { white-space: nowrap; }
+  /* uncertain = small gold-outlined "?" badge (SVG), legend in the band above the list */
+  .unc { flex: none; display: inline-grid; place-items: center; width: 13px; height: 13px; box-sizing: border-box; margin-left: 6px;
+    background: #140c06; border: 1px solid var(--wc2-gold-dim); box-shadow: inset 0 0 0 1px rgba(0,0,0,.6); }
+  .unc svg { width: 7px; height: 9px; display: block; }
+  .legend { display: inline-flex; align-items: center; gap: 5px; font: italic 13px var(--wc2-font-body); color: var(--wc2-text-dim); }
+  .legend .unc { margin: 0; }
+  .row .zn { font-size: 13px; color: var(--wc2-text-dim); white-space: nowrap; }
+  .row .r { display: flex; gap: 3px; }
+  .row .wc2-tag { height: 14px; font-size: 10px; padding: 0 4px 0 5px; }
+
+  /* met marker: green bevelled gem (CSS); unmet: empty inset socket */
+  .mk { justify-self: center; width: 8px; height: 8px; box-sizing: border-box; transform: rotate(45deg); }
+  .mk.off { background: #070402; border: 1px solid #9c917a; }
+  .mk.met {
+    width: 9px; height: 9px;
+    background: linear-gradient(135deg, #8ee68e 0%, #4cb84c 45%, #24701f 100%);
+    box-shadow: 0 0 0 1px #0b2a09, 0 1px 1px rgba(0,0,0,.8);
+  }
+  .row.met .nm { color: #f0e8d2; }
+  .listwrap .wc2-scroll { width: 16px; }
+</style>
+</head>
+<body>
+
+<div class="vet wc2-window">
+  <div class="wc2-titlebar">
+    <h2 class="wc2-title">Warcraft Veterans</h2>
+    <button class="wc2-btn wc2-close" aria-label="Close">
+      <svg viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#e8c547" stroke-width="2.2" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+
+  <div class="wc2-body">
+    <div class="toprow">
+      <button class="wc2-btn">
+        <svg viewBox="0 0 16 16"><path d="M2 3 C5 2 7 2.5 8 4 C9 2.5 11 2 14 3 V13 C11 12 9 12.5 8 14 C7 12.5 5 12 2 13 Z" fill="#c9a64a" stroke="#2a0503" stroke-width="1"/><path d="M8 4 V14" stroke="#5a0e08" stroke-width="1.2"/><path d="M3.5 4.5 C5 4.2 6.3 4.5 7 5.3 M9 5.3 C9.7 4.5 11 4.2 12.5 4.5" stroke="#f2d36b" stroke-width=".9" fill="none"/></svg>
+        Journal</button>
+      <button class="wc2-btn">
+        <svg viewBox="0 0 16 16"><path d="M4 15 V6 C4 3 6 1.5 8 1.5 C10 1.5 12 3 12 6 V15 Z" fill="#9a8f78" stroke="#2a0503" stroke-width="1"/><path d="M5 6.2 C5 4 6.4 2.6 8 2.6" stroke="#e2d8bf" stroke-width="1" fill="none"/><path d="M8 5 V11 M6 7 H10" stroke="#3b342a" stroke-width="1.4"/><rect x="2" y="13.5" width="12" height="2" fill="#6b5f48" stroke="#2a0503" stroke-width=".8"/></svg>
+        Memorials</button>
+    </div>
+
+    <div class="wc2-panel prog">
+      <span class="wc2-stat">Veterans met: <b>2 of 127</b></span>
+      <div class="wc2-bar trk"><i style="width:1.6%"></i></div>
+    </div>
+
+    <div class="cards">
+      <button class="wc2-cmd gcard is-active"><span class="alltag">ALL</span><span class="n"><b>2</b>/127</span><div class="wc2-bar trk"><i style="width:1.6%"></i></div></button>
+      <button class="wc2-cmd gcard"><span class="wc2-tag" data-game="wc2">WC2</span><span class="n"><b>0</b>/1</span><div class="wc2-bar trk"><i style="width:0%"></i></div></button>
+      <button class="wc2-cmd gcard"><span class="wc2-tag" data-game="wc3">WC3</span><span class="n"><b>1</b>/14</span><div class="wc2-bar trk"><i style="width:7%"></i></div></button>
+      <button class="wc2-cmd gcard"><span class="wc2-tag" data-game="tft">TFT</span><span class="n"><b>2</b>/24</span><div class="wc2-bar trk"><i style="width:8.3%"></i></div></button>
+      <button class="wc2-cmd gcard"><span class="wc2-tag" data-game="fk">FK</span><span class="n"><b>0</b>/7</span><div class="wc2-bar trk"><i style="width:0%"></i></div></button>
+      <button class="wc2-cmd gcard"><span class="wc2-tag" data-game="book">BOOK</span><span class="n"><b>2</b>/103</span><div class="wc2-bar trk"><i style="width:2%"></i></div></button>
+    </div>
+
+    <div class="wc2-panel filters">
+      <div class="search">
+        <svg viewBox="0 0 14 14"><circle cx="5.8" cy="5.8" r="4.2" fill="none" stroke="#c9a64a" stroke-width="1.8"/><path d="M8.9 8.9 L12.8 12.8" stroke="#c9a64a" stroke-width="2.2" stroke-linecap="square"/></svg>
+        <input class="wc2-input" placeholder="Search by name">
+      </div>
+      <div class="drops">
+        <div class="wc2-input drop"><span class="k">Zone</span><span class="v">All zones</span><span class="arr"><svg viewBox="0 0 9 6"><path d="M0 0 H9 L4.5 6 Z" fill="#e8c547"/></svg></span></div>
+        <div class="wc2-input drop"><span class="k">Campaign</span><span class="v">All campaigns</span><span class="arr"><svg viewBox="0 0 9 6"><path d="M0 0 H9 L4.5 6 Z" fill="#e8c547"/></svg></span></div>
+        <div class="wc2-input drop"><span class="k">Show</span><span class="v">All</span><span class="arr"><svg viewBox="0 0 9 6"><path d="M0 0 H9 L4.5 6 Z" fill="#e8c547"/></svg></span></div>
+      </div>
+      <div class="frow">
+        <span class="count">Showing all <b>127</b> veterans</span>
+        <span class="legend"><span class="unc"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span>uncertain</span>
+        <label class="wc2-check"><input type="checkbox"><span class="box"></span>Hide book-only</label>
+      </div>
+    </div>
+
+    <div class="listwrap">
+      <div class="wc2-panel list">
+        <div class="cols head"><span></span><span>Name</span><span>Zone</span><span class="r">Appears in</span></div>
+        <div class="rows">
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Advisor Belgrum</span></span><span class="zn">Ironforge</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row met"><i class="mk met"></i><span class="nm"><span class="t">Anduin Wrynn</span></span><span class="zn">Stormwind City</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Apothecary Helbrim</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">The Barrens</span><span class="r"><span class="wc2-tag" data-game="tft">TFT</span></span></div>
+          <div class="cols row hover"><i class="mk off"></i><span class="nm"><span class="t">Apothecary Keever</span></span><span class="zn">Undercity</span><span class="r"><span class="wc2-tag" data-game="fk">FK</span><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Apothecary Lydon</span></span><span class="zn">Hillsbrad Foothills</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Araj the Summoner</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">Western Plaguelands</span><span class="r"><span class="wc2-tag" data-game="wc3">WC3</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Arch Druid Fandral Staghelm</span></span><span class="zn">Darnassus</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Archbishop Benedictus</span></span><span class="zn">Stormwind City</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Archmage Ansirem Runeweaver</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">Alterac Mountains</span><span class="r"><span class="wc2-tag" data-game="wc3">WC3</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Archmage Arugal</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">Shadowfang Keep</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Archmage Malin</span></span><span class="zn">Stormwind City</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Archmage Tervosh</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">Dustwallow Marsh</span><span class="r"><span class="wc2-tag" data-game="wc3">WC3</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Athrikus Narassin</span></span><span class="zn">Darkshore</span><span class="r"><span class="wc2-tag" data-game="tft">TFT</span></span></div>
+          <div class="cols row met sel"><i class="mk met"></i><span class="nm"><span class="t">Baine Bloodhoof</span></span><span class="zn">Mulgore</span><span class="r"><span class="wc2-tag" data-game="tft">TFT</span><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Baron Silverlaine</span><span class="unc" title="uncertain"><svg viewBox="0 0 10 12"><path d="M2.2 4 C2.2 1.2 7.8 1.2 7.8 4 C7.8 5.8 5 5.9 5 7.6" fill="none" stroke="#e8c547" stroke-width="1.9" stroke-linecap="square"/><rect x="4" y="9" width="2" height="2" fill="#e8c547"/></svg></span></span><span class="zn">Shadowfang Keep</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Baros Alexston</span></span><span class="zn">Stormwind City</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+          <div class="cols row"><i class="mk off"></i><span class="nm"><span class="t">Beram Skychaser</span></span><span class="zn">Thunder Bluff</span><span class="r"><span class="wc2-tag" data-game="book">BOOK</span></span></div>
+        </div>
+      </div>
+      <div class="wc2-scroll">
+        <div class="wc2-scroll-btn"><svg viewBox="0 0 8 6"><path d="M4 0 L8 6 H0 Z" fill="#e8c547"/></svg></div>
+        <div class="wc2-scroll-track"><div class="wc2-scroll-thumb" style="top:2px;height:34px"></div></div>
+        <div class="wc2-scroll-btn"><svg viewBox="0 0 8 6"><path d="M0 0 H8 L4 6 Z" fill="#e8c547"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* a scroll list never shows a half-cut row: hide rows that do not fully fit */
+  addEventListener('load', () => document.fonts.ready.then(() => {
+    const box = document.querySelector('.rows'), lim = box.getBoundingClientRect().bottom;
+    box.querySelectorAll('.row').forEach(r => { if (r.getBoundingClientRect().bottom > lim + 0.5) r.style.display = 'none'; });
+    const bad = []; document.querySelectorAll('.row .nm, .row .zn, .drop, .frow, .gcard, .row .r').forEach(e => { if (e.scrollWidth > e.clientWidth + 0.5) bad.push(e.textContent.trim()); });
+    document.querySelectorAll('.row').forEach(r => { if (r.style.display === 'none') return; const n = r.querySelector('.nm').getBoundingClientRect(), z = r.querySelector('.zn').getBoundingClientRect(), last = r.querySelector('.nm').lastElementChild.getBoundingClientRect(); if (last.right > z.left - 6) bad.push('gap:' + r.textContent.trim()); });
+    document.body.dataset.overflow = bad.join(' | ') || 'none';
+  }));
+</script>
+</body>
+</html>
