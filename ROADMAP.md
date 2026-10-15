@@ -1,125 +1,99 @@
 # ROADMAP – Warcraft Lore
 
-Funksjoner som den simulerte tidslinjen «Sagaen om Warcraft Lore» antar at addonen får
-(se `simulering/story.js` og https://claude.ai/artifact/2hq7XRetf3PKrCvDYLs2WC),
-med forslag til hvordan de kan bygges. Laget 2026-10-10.
+**Mål: 1000 downloads på CurseForge.**
+Nå: **59** (2026-10-15, v0.8.0). Siden: https://www.curseforge.com/wow/addons/rts-veterans
 
-Status: [x] finnes allerede · [ ] gjenstår.
-Versjonsnummeret i parentes er der simuleringen legger funksjonen, ikke et løfte.
+Status: [x] ferdig · [~] delvis · [ ] gjenstår · ★ = størst effekt på downloads.
 
-> Viktig: WoW Forever (interface 16001) bygger på **Mainline/Midnight 12.x-API-et**, ikke Classic
-> (se notatene i TASKS.md). Forslagene under bruker derfor Retail-API der ikke noe annet står.
-> API-navnene er forslag og må sjekkes med `/wcl debug` eller i spillet før de tas i bruk.
+> Addonen har allerede mer innhold enn de fleste lore-addons (130 veteraner, journal, 41 achievements,
+> kartnåler, minnesmerker, to temaer, tre språk). Det som stopper veksten nå er **synlighet og publikum**,
+> ikke funksjoner. Derfor kommer markedsføring og flere spillklienter før nye funksjoner i denne planen.
+>
+> Merk: CurseForge teller hver nedlasting av en fil, også når appen oppdaterer addonen for en eksisterende
+> bruker. Jevne, ekte oppdateringer (f.eks. annenhver uke) gir derfor både flere tellinger og plass på
+> «Recently updated». Ikke lag tomme versjoner bare for tellingens skyld.
 
-## Finnes allerede (v0.1.0–v0.3.0)
+## Måling
 
-- [x] Tooltip-linje «Warcraft Veteran: WC3 · TFT», én farge per spill
-- [x] Lore-vindu med rundt portrett og glød i spillets farge
-- [x] Nærhetsvarsel (navneskilt + kartkoordinater), toast og `/wcl test`
-- [x] BOOK-koblinger, og filter for å skjule rene bokoppføringer
-- [x] Veteranliste `/wcl list` med søk og filtre for spill, sone og kampanje
-- [x] Møtt-teller per karakter (`WarcraftLoreCharDB`), f.eks. «WC3: 12/40»
-- [x] Minimapknapp (`/wcl minimap`)
-- [x] `/wcl auto`, `/wcl alert`, `/wcl reset`, `/wcl id`, `/wcl debug`
-- [x] Vern mot «secret values» (`issecretvalue` + `pcall` i Compat.lua)
-- [x] Validering av databasen utenfor spillet (`tests/validate_db.py`)
-- [x] Automatisk pakking til CurseForge (`.github/workflows/release.yml`)
+Skriv inn tallet fra CurseForge-siden hver mandag.
 
-## 1. Data og kjerne
+| Dato       | Downloads | Versjon | Hva skjedde siden sist |
+|------------|----------:|---------|------------------------|
+| 2026-10-15 |        59 | v0.8.0  | Utgangspunkt           |
 
-- [x] **Relaterte NPC-er** (0.3): følg tråden Thrall → Nazgrel → …
-      Feltet `related = { 3230, ... }` i Data.lua, vist som klikkbare rader («Related») i lore-vinduet.
-      Det holder å skrive koblingen på én side. `validate_db.py` sjekker at ID-ene finnes, og `tests/test_related.py` tester oppslaget.
-      13 koblinger er lagt inn så langt. Flere kan legges til etter hvert som sonene fylles.
-- [x] **Schema-versjon for lagrede data** (`SavedData.lua`, testet av `tests/test_saved_data.py`).
-      `schema` i både `WarcraftLoreDB` og `WarcraftLoreCharDB`, og en liste med migreringer som kjøres ved `ADDON_LOADED`.
-      Data fra en nyere versjon blir ikke rørt. En migrering som feiler, prøves igjen ved neste innlasting.
-- [x] **Kontodekkende møtt-teller** (1.3): det du har møtt på én karakter teller på alle.
-      Ferdig i 0.5: møtt-listen ligger i `WarcraftLoreDB`, og gamle `WarcraftLoreCharDB` er slått sammen automatisk.
-      *Forslag:* flytt tellingen til `WarcraftLoreDB`, og migrer eksisterende `WarcraftLoreCharDB` inn ved første innlogging.
-- [x] **Telle antall møter**, ikke bare møtt/ikke møtt. Gir grunnlag for statistikk som «mest møtte veteraner» (3.2).
-      Ferdig i 0.5: antall møter og første møte (tid og karakter) lagres og vises i musepekeren i listen.
-- [x] **Eksport og import av møtt-listen** som tekststreng (1.3).
-      Ferdig i 0.6: `/wcl export` og `/wcl import` (`Share.lua`), uten bibliotek; tidligste første møte og høyeste antall beholdes, ingenting slettes.
-      *Forslag:* LibSerialize + LibDeflate (`EncodeForPrint`), vist i en tekstboks man kan kopiere fra.
-- [x] **Bedre søk** med apostrofer og delvis treff, f.eks. «mugthol» → Mug'thol (1.3).
-      Ferdig i 0.4: søket ignorerer apostrof, bindestrek og mellomrom, og treffer også sonenavn.
-      *Forslag:* normaliser både søkeord og navn (fjern `'`, `-` og mellomrom, gjør alt til små bokstaver).
-- [ ] **Fulltekstsøk** i lore-tekstene (3.0).
-      *Forslag:* bygg en enkel ordindeks første gang søket brukes, ikke ved innlasting.
+## Milepæl 1 – Butikkvinduet (59 → 100)
 
-## 2. Kart og navigasjon
+Folk som finner siden skal forstå addonen på fem sekunder. Billig, og må gjøres først.
 
-- [x] **Kartnåler på verdenskartet**, farget etter spill (0.4), med filter per spill (ønske i simuleringen).
-      Ferdig i 0.6 (`MapPins.lua`): runde nåler farget etter første spill, grønne når veteranen er møtt, av/på i innstillingene. Laget uten HereBeDragons. Filter per spill og TomTom gjenstår.
-      *Forslag:* biblioteket **HereBeDragons-2.0 + HereBeDragons-Pins**. Koordinatene finnes allerede i Data.lua.
-- [x] **Sone-atlas**: sjekkliste over veteraner per sone (1.1).
-      Ferdig i 0.6: sonevelgeren i Veteranlisten viser møtt/totalt per sone, «This zone»-knapp og linjen «N of M met here».
-      *Forslag:* gjenbruk veteranlisten med fast sonefilter, og vis «3/8 møtt» per sone.
-- [ ] **Spor en veteran med pil** ved høyreklikk på en nål (1.1).
-      *Forslag:* bruk **TomTom** hvis det er installert (`TomTom:AddWaypoint`), i stedet for å lage egen pil.
-- [ ] **Lore-stier**: guidede tråder som «Thrall til Orgrimmar», med en kort fortelling per stopp (2.1).
-      *Forslag:* en ordnet liste `{ npcId, tekst }` per sti, og TomTom-waypoints mellom stegene.
+- [~] ★ **Oppdater CurseForge-beskrivelsen** (`media/curseforge-description.md`): skrevet om 2026-10-15 med
+      v0.7 og v0.8 (Journal, achievements, minnesmerker, tysk/fransk, WC2-temaet). Gjenstår: lime den inn på CurseForge.
+- [ ] ★ **Nye skjermbilder i WC2-temaet** + én kort GIF (target Thrall → tooltip → lore-vindu → achievement-banner).
+      Hovedbildet er det første folk ser i søket. De seks bildene i galleriet viser det gamle utseendet.
+- [ ] **Kategorier og tagger på CurseForge**: legg til «Achievements», «Map & Minimap», «Roleplay» og «Quests & Leveling»
+      i tillegg til dagens, så addonen dukker opp i flere lister.
+- [x] **Forklar `/wcl auto`** og hvordan man slår av alerts på siden (avsnittet «Too chatty?» i beskrivelsen).
+- [ ] **Spilltest-gjelden** (se TODO.md og TASKS.md): alert-pill, minimapknapp, toast-teksturer, `/wcl list`, WC2-temaet.
+      Én Lua-feil i første økt gir avinstallasjon og en dårlig kommentar.
 
-## 3. Samling og belønning
+## Milepæl 2 – Bli funnet (100 → 250)
 
-- [ ] **Achievements** per spill, per sone og totalt, med toast (0.6).
-      *Merk:* addons kan ikke lage ekte Blizzard-achievements. Lag et eget system og gjenbruk Toast.lua.
-- [ ] **Lore Journal**: egen fane med sider som låses opp når du møter veteraner (1.0), senere med søk (3.0).
-- [ ] **Lore Week**: dobbel møtt-teller i en bestemt uke (3.1).
-      *Forslag:* datosjekk med `C_DateAndTime.GetCurrentCalendarTime()`.
-- [ ] **Delbare veterankort i chatten** (3.1).
-      *Forslag:* egen lenke `|Hwclvet:ID|h[Thrall]|h`, håndtert ved å hooke `SetItemRef`.
-      Spillere uten addonen ser bare teksten.
+- [ ] ★ **Lore-innlegg der Forever-spillerne er**: Forever-subreddit og Discord.
+      Ikke «sjekk ut addonen min», men «Visste du at denne NPC-en i Barrens var med i et Warcraft III-oppdrag?»
+      med et skjermbilde, og lenken nederst. Én historie per innlegg; 130 veteraner = mange innlegg.
+- [ ] **Last opp til Wago Addons og WoWInterface** i tillegg til CurseForge.
+      Packageren støtter begge (`WAGO_API_TOKEN`, `WOWI_API_TOKEN` + `X-Wago-ID`/`X-WoWI-ID` i .toc).
+      Teller ikke mot CurseForge-målet, men gir nye brukere og ryktespredning.
+- [ ] **Gjør GitHub-repoet offentlig** og lenk til det fra CurseForge (Source/Issues). Gir tillit og bidragsytere.
+- [ ] **Svar på hver kommentar** på CurseForge innen et døgn, og nevn rettelsen i changelogen.
 
-## 4. Språk og klienter
+## Milepæl 3 – Større publikum (250 → 1000)
 
-- [ ] **Oversettelser**: deDE og frFR (0.5), esES og ruRU (0.7), ptBR, koKR og zhCN (2.2). Språkvalg uten omstart.
-      *Forslag:* en `L`-tabell for UI-tekst. Lore-tekstene legges i egne **LoadOnDemand**-addons per språk
-      (`WarcraftLore_deDE`, med `## LoadOnDemand: 1`), lastet med `C_AddOns.LoadAddOn`. Da ligger bare valgt språk i minnet.
-- [ ] **Fontstøtte for koreansk og kinesisk** (2.2).
-      *Forslag:* bruk klientens standardfont (`STANDARD_TEXT_FONT`) i stedet for en fast font.
-- [ ] **Bygg for Classic Era og Retail** ved siden av Forever (1.2).
-      *Forslag:* flere `.toc`-filer (`WarcraftLore_Vanilla.toc`, `WarcraftLore_Mainline.toc`) med felles kode.
-      Compat.lua har allerede samlet versjonsavhengige kall. Classic har andre uiMapID-er og mangler `issecretvalue`.
+Forever er en liten klient. De store publikumene er Classic Era/Anniversary og Retail.
 
-## 5. Ytelse og robusthet
+- [ ] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`). Det meste av databasen er hentet fra Wowhead Classic,
+      så NPC-ID-ene og koordinatene passer allerede. Compat.lua samler de versjonsavhengige kallene.
+      *Gjenstår:* Classic har andre uiMapID-er, mangler `issecretvalue`, har ikke `Settings.RegisterCanvasLayoutCategory`
+      på alle klienter, og Season of Discovery-ID-ene (Uther, Gregory) finnes bare der.
+      Krever at du (eller en tester) kan logge inn på Classic. Dette er det enkeltpunktet som kan gi flest downloads.
+- [ ] ★ **Retail-bygg** (`WarcraftLore_Mainline.toc`). Samme API som Forever, men mange NPC-er har ny ID, nytt sted
+      eller er borte etter Cataclysm. Krever en egen gjennomgang av dataene, sone for sone. Gjør Classic Era først.
+- [ ] **Delbare veterankort i chatten** (`|Hwclvet:ID|h[Thrall]|h`, hook på `SetItemRef`). Andre spillere ser lenken
+      og spør hva det er – gratis reklame inne i spillet.
+- [ ] **Flere språk**: esES og ruRU (store CurseForge-publikum), senere ptBR, koKR, zhCN.
+      `L`-tabellen fra v0.7 finnes; koreansk og kinesisk trenger `STANDARD_TEXT_FONT`.
 
-- [x] **Samle varsler** når mange veteraner står i samme by (1.2).
-      Ferdig i 0.5: første veteran varsles med en gang, resten nevnes i én oppfølgingslinje («Also nearby: …»), og «+N more» åpner listen.
-      *Forslag:* buffre `NAME_PLATE_UNIT_ADDED` i 1–2 sekunder med `C_Timer.After`, og vis én samlet toast.
-- [ ] **Raskere lister** med 350+ oppføringer, og ingen hakking i atlas eller Dalaran (1.1, 3.1).
-      *Forslag:* bygg lister først når de åpnes, gjenbruk rader og cache oppslag på NPC-ID.
-- [x] **Tåle at en patch endrer API-et** (1.3.1, 2.0). *Dette er det viktigste punktet i simuleringen.*
-      Ferdig i 0.5: hver funksjon er vernet, og bare den som feiler slås av, med én melding i chatten.
-      Der knakk navneskilt-API-et i en patch, og addonen kastet Lua-feil.
-      *Forslag:* slå av bare funksjonen som feiler (f.eks. nærhetsvarselet) og skriv én melding i chatten,
-      i stedet for å kaste feil hver gang. Utvid mønsteret som allerede finnes i Compat.lua.
-- [x] **Portretter fra spillet** også når NPC-en ikke er target (2.0).
-      Ferdig i 0.5: levende 3D-modell i lore-vinduet, med det klassiske portrettet som reserve.
-      *Forslag:* `SetPortraitTexture` når enheten finnes, ellers en 3D-modell med `PlayerModel:SetCreature(npcId)`.
-- [x] **Innstillingsside** i spillets meny (1.0).
-      Ferdig i 0.5: finnes i spillets AddOns-innstillinger og med `/wcl options`.
-      *Forslag:* `Settings.RegisterCanvasLayoutCategory` (Mainline-API).
-- [ ] **Rydde gamle innstillinger** fra 0.x (3.2). Løses av schema-versjonen i del 1.
+## Milepæl 4 – Folk kommer tilbake (holder tallet oppe)
 
-## 6. Fellesskap
+- [ ] **Nye soner når level cap stiger** i Forever: Mount Hyjal (Renewed), Dalaran, Shen'dralas, Riverglades,
+      Zephras Isle (se TODO.md). Hver sone = en oppdatering med en nyhet å poste om.
+- [ ] **Spor en veteran med pil** via TomTom (`TomTom:AddWaypoint`) ved høyreklikk på en kartnål.
+- [ ] **Lore-stier**: guidede tråder som «Thrall til Orgrimmar», en kort tekst per stopp, TomTom mellom stegene.
+- [ ] **Lore Week**: dobbel møtt-teller én uke (`C_DateAndTime.GetCurrentCalendarTime()`) – en grunn til å poste.
+- [ ] **Fulltekstsøk** i lore-tekstene (ordindeks bygget første gang søket brukes).
+- [ ] **Raskere lister** med 350+ oppføringer: bygg ved åpning, gjenbruk rader, cache på NPC-ID.
+- [ ] **Bidragsformat** for nye NPC-er og rettelser: GitHub issue-mal + `tests/validate_db.py` i Actions på hver PR.
 
-- [ ] **Bidragsformat for lore-rettelser** (3.0): fast format for nye NPC-er og rettelser.
-      *Forslag:* en GitHub-mal (issue/PR template), og kjør `tests/validate_db.py` automatisk i GitHub Actions på hver PR.
-- [ ] **Sone-dekning** følger level cap i Forever: 40 (1.0), 50 (2.0), 60 (3.0). Se TODO.md for sonelisten.
+## Ferdig (v0.1–v0.8)
 
-## Små ting fra spillersitatene i simuleringen
-
-- [ ] Forklar `/wcl auto` på CurseForge-siden, så folk vet at auto-åpning kan slås av
-- [ ] Musehjul-scroll i lange lister (står også som test i TODO.md)
-- [ ] Behold titler uoversatt der det er naturlig (Thrall = «Warchief»)
-- [ ] Debug-hjelp for «veteraner jeg ikke finner»: vis hvorfor en NPC ikke registreres (feil ID, mangler koordinater, i instans)
+- [x] Tooltip-linje, lore-vindu med 3D-portrett, «Through the ages» og «Related» (v0.1–v0.5)
+- [x] Nærhetsvarsel med samlede varsler i byer, `/wcl test`, `/wcl why` (v0.1–v0.5)
+- [x] Veteranliste med søk (ignorerer apostrof), filtre og sone-atlas (v0.3–v0.6)
+- [x] Kontodekkende møtt-teller med antall og første møte; eksport/import (v0.5–v0.6)
+- [x] Kartnåler på verdenskartet (v0.6)
+- [x] Innstillingsside, schema-versjon med migreringer, vern mot API-endringer i patcher (v0.4–v0.5)
+- [x] Lore Journal med 41 achievements og banner (v0.7)
+- [x] Minnesmerker: 12 graver, plaketter og monumenter (v0.7)
+- [x] Tysk og fransk grensesnitt (v0.7)
+- [x] Warcraft II-tema som standard, med bryter til klassisk utseende (v0.8)
+- [x] Automatisk utgivelse til CurseForge ved tag (`.github/workflows/release.yml`)
 
 ## Anbefalt rekkefølge
 
-1. Schema-versjon + robusthet ved API-endringer. Billig nå, dyrt senere.
-2. Relaterte NPC-er og kontoteller (bygger på møtt-telleren som finnes).
-3. Kartnåler + TomTom + sone-atlas.
-4. Achievements og Lore Journal.
-5. Oversettelser og flere klienter.
+1. Milepæl 1 i sin helhet (en kveld eller to): beskrivelse, bilder, GIF, tagger, spilltest.
+2. Første lore-innlegg på Reddit/Discord samme uke som de nye bildene er oppe.
+3. Classic Era-bygget. Størst effekt, men mest arbeid og krever testing på en Classic-klient.
+4. Deretter én synlig nyhet per oppdatering (chatlenker, språk, nye soner), hver med et eget innlegg.
+
+Bakgrunn: den simulerte tidslinjen «Sagaen om Warcraft Lore» (`simulering/story.js`,
+https://claude.ai/artifact/2hq7XRetf3PKrCvDYLs2WC) var kilden til mange av funksjonsønskene over.
+API-navn i forslagene må sjekkes med `/wcl debug` eller i spillet før de tas i bruk.
