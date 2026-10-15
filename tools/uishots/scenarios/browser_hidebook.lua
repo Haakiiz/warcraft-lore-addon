@@ -1,0 +1,5 @@
+startAddon({ [4949] = 111, [3230] = 222 })
+SlashCmdList.WARCRAFTLORE("list")
+MOCK.click(toggleBook())
+print("rows", visibleRows())
+MOCK.dump(SHOTDIR .. "/browser_hidebook.json")

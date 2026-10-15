@@ -1,0 +1,5 @@
+startProgress("classic")
+SlashCmdList.WARCRAFTLORE("list")
+typeSearch("orgrimmar")
+MOCK.click(rowFor("Thrall"))
+MOCK.dump(SHOTDIR .. "/m_classic.json")

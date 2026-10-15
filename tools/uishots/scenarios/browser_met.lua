@@ -1,0 +1,5 @@
+startAddon({ [4949] = 111, [3230] = 222 })
+SlashCmdList.WARCRAFTLORE("list")
+MOCK.click(btnWithText("Show "))
+print("rows", visibleRows())
+MOCK.dump(SHOTDIR .. "/browser_met.json")

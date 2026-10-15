@@ -1,0 +1,6 @@
+startProgress()
+target(4949, "Thrall")
+target(3230, "Nazgrel")
+__NS.Toast.ShowAchievement("Keeper of Lore", 1)
+showAllFading()
+MOCK.dump(SHOTDIR .. "/m_banner.json")

@@ -1,0 +1,5 @@
+startProgress()
+SlashCmdList.WARCRAFTLORE("list")
+typeSearch("thrall")
+hover(rowFor("Thrall"))
+MOCK.dump(SHOTDIR .. "/m_tip.json")
