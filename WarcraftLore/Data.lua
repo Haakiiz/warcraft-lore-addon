@@ -225,6 +225,12 @@ ns.NPCS = {
         coords = "18.8, 78.5",
         appearances = {
             {
+                game = "WC3",
+                campaign = "Path of the Damned (Undead)",
+                missions = { "Under the Burning Sky" },
+                role = "Enemy archmage hero who fights Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
+            },
+            {
                 game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
@@ -245,12 +251,14 @@ ns.NPCS = {
         },
         story = "Archmage Ansirem Runeweaver is a human quest giver located at Dalaran Crater in the Alterac Mountains. "
              .. "He is a member of the Council of Six, the leaders of the Kirin Tor of Dalaran. "
+             .. "In Warcraft III: Reforged he is one of the archmagi who fight Arthas and the Scourge outside Dalaran while Kel'Thuzad summons Archimonde. "
              .. "In the game he offers the quest Ansirem's Key and completes Magical Analysis. "
              .. "The novel Jaina Proudmoore: Tides of War tells that he stayed at the crater until the Cataclysm and kept serving the Kirin Tor. "
              .. "In the novella Quest for Pandaria he arrives near Booty Bay with other magi to save his daughter Catelyn from the Bloodsail Buccaneers.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Ansirem_Runeweaver",
+            "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
             "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
             "https://warcraft.wiki.gg/wiki/In_the_Shadow_of_the_Sun",
