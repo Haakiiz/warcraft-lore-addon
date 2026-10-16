@@ -210,6 +210,71 @@ def main():
     r.append(check("switching back lists the veterans again", total > 12 and mem == 0, (total, mem)))
     r.append(check("a zone from the atlas leaves memorial mode", (lambda: (lua.execute("ns.Browser.SetMemorials(true); ns.Browser.ShowZone('Orgrimmar')"), ev("ns.Browser.IsShowingMemorials()"))[1])() is False))
 
+    # --- zone, campaign and "This zone" filters on the memorials
+    ex("ns.Browser.SetMemorials(true)")
+    memZones = ev("(function() local s, n = {}, 0 for _, m in pairs(ns.MEMORIALS) do if not s[m.zone] then s[m.zone] = true n = n + 1 end end return n end)()")
+    inZone = lambda z: ev("(function() local n = 0 for _, m in pairs(ns.MEMORIALS) do if m.zone == '%s' then n = n + 1 end end return n end)()" % z)
+    btn = lambda needle: ev("""(function() for _, f in ipairs(frames) do
+        if f.label and type(f.label.text) == 'string' and f.label.text:find('%s', 1, true) and f.scripts.OnClick then return f end
+        end end)()""" % needle)
+    pick = lambda value: ev("""(function() for _, f in ipairs(frames) do
+        if f.value == '%s' and f.shown and f.scripts.OnClick and not f.item then return f end
+        end end)()""" % value)
+    zoneBtn = btn("All zones")
+    r.append(check("Zone button is shown in memorial mode", zoneBtn is not None and zoneBtn.shown))
+    zoneBtn.scripts.OnClick(zoneBtn)
+    picks = ev("(function() local n = 0 for _, f in ipairs(frames) do if f.value and f.shown and f.isHeader == false then n = n + 1 end end return n end)()")
+    r.append(check("memorial zone picker lists only memorial zones", picks == memZones, (picks, memZones)))
+    row = pick("Stormwind City")
+    row.scripts.OnClick(row)
+    total, mem = rows()
+    r.append(check("picking Stormwind City shows its memorials", total == inZone("Stormwind City") and mem == total, total))
+    campBtn = btn("All campaigns")
+    r.append(check("Campaign button is shown in memorial mode", campBtn is not None and campBtn.shown))
+    campBtn.scripts.OnClick(campBtn)
+    row = pick("Tides of Darkness (Human)")
+    row.scripts.OnClick(row)
+    total, _ = rows()
+    r.append(check("zone + campaign narrow the memorials", 0 < total < inZone("Stormwind City"), total))
+    ex("ns.Compat.GetZoneMapID = nil; ns.Compat.GetZoneName = function() return 'Orgrimmar' end")
+    r.append(check("This zone in memorial mode stays on the memorials",
+                   ev("ns.Browser.ThisZone()") is True and ev("ns.Browser.IsShowingMemorials()") is True))
+    total, mem = rows()
+    r.append(check("This zone filters the memorials to Orgrimmar (campaign kept)", mem == total and total <= inZone("Orgrimmar")))
+    ex("ns.Browser.SetMemorials(false)")
+
+    # --- dragging the list's scrollbar
+    ex("""
+        hit, sf = nil, nil
+        for _, f in ipairs(frames) do
+            if f.kind == 'Frame' and f.scripts.OnMouseDown and f.scripts.OnMouseUp then hit = hit or f end
+            if f.kind == 'ScrollFrame' and f.scripts.OnVerticalScroll then sf = sf or f end
+        end
+        local track = hit.parent
+        for _, t in ipairs(textures) do if t.parent == track then thumbTex = t end end
+        scrolledTo = nil
+        sf.GetVerticalScrollRange = function() return 200 end
+        sf.SetVerticalScroll = function(_, v) scrolledTo = v end
+        track.GetTop = function() return 300 end
+        track.GetHeight = function() return 100 end
+        thumbTex.GetTop = function() return 300 end
+        thumbTex.GetHeight = function() return 20 end
+        thumbTex.shown = true
+        cursorY = 250
+        GetCursorPosition = function() return 0, cursorY end
+    """)
+    r.append(check("the list has a draggable scrollbar", ev("hit ~= nil and sf ~= nil")))
+    ex("hit.scripts.OnMouseDown(hit, 'LeftButton')")
+    r.append(check("pressing the track beside the thumb jumps there", ev("scrolledTo") == 100, ev("scrolledTo")))
+    ex("cursorY = 150; hit.scripts.OnUpdate(hit)")
+    r.append(check("dragging past the end stops at the bottom", ev("scrolledTo") == 200, ev("scrolledTo")))
+    ex("cursorY = 295; hit.scripts.OnMouseUp(hit); hit.scripts.OnMouseDown(hit, 'LeftButton')")
+    r.append(check("grabbing the thumb does not jump it", ev("scrolledTo") == 0, ev("scrolledTo")))
+    ex("cursorY = 255; hit.scripts.OnUpdate(hit)")
+    r.append(check("dragging the thumb follows the mouse", ev("scrolledTo") == 100, ev("scrolledTo")))
+    ex("hit.scripts.OnMouseUp(hit)")
+    r.append(check("releasing the mouse stops the drag", ev("hit.scripts.OnUpdate") is None))
+
     # --- the world map
     ex("""
         mapId = 1453

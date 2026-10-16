@@ -50,7 +50,7 @@ local frame, searchEdit, searchHint
 local journalBtn, memBtn
 local zoneBtn, hereBtn, campaignBtn, statusBtn, clearBtn, bookToggle
 local progress, countText, emptyText, emptyHint
-local scroll, content, track, thumb
+local scroll, content, track, thumb, scrollHit
 local chips = {}
 local rows = {}
 local popup, popupOwner
@@ -67,11 +67,75 @@ local items            -- all veterans sorted by name: { id, entry, name, lower,
 local zoneItems        -- popup list: "All zones" + every zone, sorted
 local campaignItems    -- popup list: "All campaigns" + campaigns grouped under their (earliest) game
 local zoneCounts       -- zone -> { met, total }; built on demand, dropped on every Refresh (met can change)
+local memZoneItems, memCampaignItems   -- the same picker lists for the memorials
 
 -- Search text: lower case without spaces or punctuation, so "mugthol" finds Mug'thol and
 -- "thousandneedles" or "needles" finds Thousand Needles.
 local function normalize(s)
     return (s:lower():gsub("[%s%p]", ""))
+end
+
+-- Picker lists for the Zone and Campaign buttons, shared by the veterans and the memorials.
+-- zoneSet = { zone = true }; campaignRank = { campaign = rank of its earliest game }.
+local function zonePicker(zoneSet)
+    local zones = {}
+    for z in pairs(zoneSet) do
+        zones[#zones + 1] = z
+    end
+    table.sort(zones)
+    local list = { { label = L["All zones"], indent = 8 } }
+    for _, z in ipairs(zones) do
+        list[#list + 1] = { label = z, value = z, indent = 8 }
+    end
+    return list
+end
+
+local function campaignPicker(campaignRank)
+    local camps = {}
+    for camp in pairs(campaignRank) do
+        camps[#camps + 1] = camp
+    end
+    table.sort(camps, function(a, b)
+        if campaignRank[a] ~= campaignRank[b] then
+            return campaignRank[a] < campaignRank[b]
+        end
+        return a < b
+    end)
+    local list = { { label = L["All campaigns"], indent = 8 } }
+    local lastRank
+    for _, camp in ipairs(camps) do
+        local rank = campaignRank[camp]
+        if rank ~= lastRank then
+            lastRank = rank
+            local code = ns.GAME_ORDER[rank]
+            list[#list + 1] = {
+                header = true, label = (code and POPUP_HEAD[code]) or L["OTHER"],
+                color = code and { ns.GameRGB(code) } or COL.muted,
+            }
+        end
+        list[#list + 1] = { label = camp, value = camp, indent = 16 }
+    end
+    return list
+end
+
+local function gameRanks()
+    local gameRank = {}
+    for i, code in ipairs(ns.GAME_ORDER) do
+        gameRank[code] = i
+    end
+    return gameRank
+end
+
+-- Adds an appearance's campaign to it.campaigns and keeps the earliest game rank per campaign.
+local function addCampaign(it, a, campaignRank, gameRank)
+    local camp = a.campaign
+    if type(camp) == "string" and camp ~= "" then
+        it.campaigns[camp] = true
+        local rank = gameRank[a.game] or 99
+        if not campaignRank[camp] or rank < campaignRank[camp] then
+            campaignRank[camp] = rank
+        end
+    end
 end
 
 local function buildIndex()
@@ -80,10 +144,7 @@ local function buildIndex()
     end
     items = {}
     local zoneSet, campaignRank = {}, {}
-    local gameRank = {}
-    for i, code in ipairs(ns.GAME_ORDER) do
-        gameRank[code] = i
-    end
+    local gameRank = gameRanks()
     for _, group in ipairs(ns.Veterans()) do
         -- One row per veteran: NPC IDs with the same name and zone are merged (opens the lowest ID).
         local npcID, entry = group.id, group.entry
@@ -113,14 +174,7 @@ local function buildIndex()
                 addZone(z)
             end
             for _, a in ipairs(e.appearances or {}) do
-                local camp = a.campaign
-                if type(camp) == "string" and camp ~= "" then
-                    it.campaigns[camp] = true
-                    local rank = gameRank[a.game] or 99
-                    if not campaignRank[camp] or rank < campaignRank[camp] then
-                        campaignRank[camp] = rank
-                    end
-                end
+                addCampaign(it, a, campaignRank, gameRank)
             end
         end
         -- The search box matches the name and every zone the veteran is found in.
@@ -138,40 +192,8 @@ local function buildIndex()
         return a.id < b.id
     end)
 
-    local zones = {}
-    for z in pairs(zoneSet) do
-        zones[#zones + 1] = z
-    end
-    table.sort(zones)
-    zoneItems = { { label = L["All zones"], indent = 8 } }
-    for _, z in ipairs(zones) do
-        zoneItems[#zoneItems + 1] = { label = z, value = z, indent = 8 }
-    end
-
-    local camps = {}
-    for camp in pairs(campaignRank) do
-        camps[#camps + 1] = camp
-    end
-    table.sort(camps, function(a, b)
-        if campaignRank[a] ~= campaignRank[b] then
-            return campaignRank[a] < campaignRank[b]
-        end
-        return a < b
-    end)
-    campaignItems = { { label = L["All campaigns"], indent = 8 } }
-    local lastRank
-    for _, camp in ipairs(camps) do
-        local rank = campaignRank[camp]
-        if rank ~= lastRank then
-            lastRank = rank
-            local code = ns.GAME_ORDER[rank]
-            campaignItems[#campaignItems + 1] = {
-                header = true, label = (code and POPUP_HEAD[code]) or L["OTHER"],
-                color = code and { ns.GameRGB(code) } or COL.muted,
-            }
-        end
-        campaignItems[#campaignItems + 1] = { label = camp, value = camp, indent = 16 }
-    end
+    zoneItems = zonePicker(zoneSet)
+    campaignItems = campaignPicker(campaignRank)
 end
 
 -- The memorials as list items (same fields the rows use), sorted by name. Built on first use.
@@ -181,6 +203,7 @@ local function buildMemorialIndex()
         return
     end
     memItems = {}
+    local zoneSet, campaignRank, gameRank = {}, {}, gameRanks()
     for _, m in ipairs(ns.MemorialList and ns.MemorialList() or {}) do
         local entry = m.entry
         local it = {
@@ -191,10 +214,19 @@ local function buildMemorialIndex()
         for _, code in ipairs(m.codes) do
             it.games[code] = true
         end
+        if type(entry.zone) == "string" and entry.zone ~= "" then
+            it.zones[entry.zone] = true
+            zoneSet[entry.zone] = true
+        end
+        for _, a in ipairs(entry.appearances or {}) do
+            addCampaign(it, a, campaignRank, gameRank)
+        end
         it.search = table.concat({ normalize(it.name), normalize(entry.zone or ""),
             normalize(table.concat(entry.honors or {}, " ")) }, "\1")
         memItems[#memItems + 1] = it
     end
+    memZoneItems = zonePicker(zoneSet)
+    memCampaignItems = campaignPicker(campaignRank)
 end
 
 -- A veteran counts as met, a memorial as visited.
@@ -231,7 +263,7 @@ end
 
 local function matches(it, anyGame, hideBooks)
     if it.memorial then
-        -- Memorials: game chips, visited status and the search box. No zone, campaign or book filters.
+        -- Memorials: game chips, zone, campaign, visited status and the search box. No book filter.
         if anyGame then
             local ok = false
             for code in pairs(state.games) do
@@ -243,6 +275,12 @@ local function matches(it, anyGame, hideBooks)
             if not ok then
                 return false
             end
+        end
+        if state.zone and not it.zones[state.zone] then
+            return false
+        end
+        if state.campaign and not it.campaigns[state.campaign] then
+            return false
         end
         local visited = isMet(it)
         if state.status == 2 and not visited then
@@ -309,6 +347,29 @@ local function getZoneCounts()
     return zoneCounts
 end
 
+-- Memorials visited / total per zone (not cached: a dozen entries).
+local function memZoneCounts()
+    buildMemorialIndex()
+    local counts = {}
+    for _, it in ipairs(memItems) do
+        local met = isMet(it)
+        for z in pairs(it.zones) do
+            local n = counts[z] or { met = 0, total = 0 }
+            counts[z] = n
+            n.total = n.total + 1
+            if met then
+                n.met = n.met + 1
+            end
+        end
+    end
+    return counts
+end
+
+-- Zone counts for the list on show: memorials or veterans.
+local function shownZoneCounts()
+    return state.memorials and memZoneCounts() or getZoneCounts()
+end
+
 -- "3/8" with the met part in the met color; a complete zone is all in the met color.
 local function zoneCountText(n)
     if n.met >= n.total then
@@ -372,6 +433,67 @@ local function closePopup()
     if searchEdit then
         searchEdit:ClearFocus()
     end
+end
+
+-------------------------------------------------------------------- draggable scrollbar
+-- The thumb is a texture, which cannot take the mouse, so an invisible frame a bit wider than
+-- the 3 px track does: press on the thumb and drag it, or press elsewhere on the track to jump
+-- there and keep dragging. The thumb lights up while the mouse is over the bar.
+-- onPress (optional) runs when the bar is pressed.
+local function cursorY(f)
+    local _, y = GetCursorPosition()
+    return y / (f:GetEffectiveScale() or 1)
+end
+
+local function makeDraggable(track, thumb, sf, onPress)
+    local hit = CreateFrame("Frame", nil, track)
+    hit:SetPoint("TOPLEFT", track, "TOPLEFT", -6, 0)
+    hit:SetPoint("BOTTOMRIGHT", track, "BOTTOMRIGHT", 4, 0)
+    hit:EnableMouse(true)
+    local hover, dragging = false, false
+    local function paint()
+        local c = (hover or dragging) and COL.title or COL.violet
+        thumb:SetColorTexture(c[1], c[2], c[3], 1)
+    end
+    local function stop(self)
+        dragging = false
+        self:SetScript("OnUpdate", nil)
+        paint()
+    end
+    hit:SetScript("OnEnter", function() hover = true paint() end)
+    hit:SetScript("OnLeave", function() hover = false paint() end)
+    hit:SetScript("OnMouseDown", function(self, button)
+        if button and button ~= "LeftButton" then
+            return
+        end
+        if onPress then
+            onPress()
+        end
+        local range = sf:GetVerticalScrollRange() or 0
+        if range <= 0.5 or not thumb:IsShown() then
+            return
+        end
+        local top, trackH, thumbH = track:GetTop(), track:GetHeight(), thumb:GetHeight()
+        local thumbTop = thumb:GetTop()
+        if not (top and thumbTop and trackH and thumbH) then
+            return
+        end
+        local y = cursorY(track)
+        -- Where on the thumb it was grabbed; a press beside it grabs the middle (the thumb jumps there).
+        local grab = (y <= thumbTop and y >= thumbTop - thumbH) and (thumbTop - y) or thumbH / 2
+        local function follow()
+            local offset = top - cursorY(track) - grab
+            local frac = math.max(0, math.min(1, offset / math.max(1, trackH - thumbH)))
+            sf:SetVerticalScroll(frac * (sf:GetVerticalScrollRange() or range))
+        end
+        dragging = true
+        paint()
+        follow()
+        self:SetScript("OnUpdate", follow)
+    end)
+    hit:SetScript("OnMouseUp", stop)
+    hit:SetScript("OnHide", stop)
+    return hit
 end
 
 local function updatePopupScroll()
@@ -470,6 +592,7 @@ local function buildPopup()
     trackBg:SetAllPoints()
     p.thumb = solid(p.track, "ARTWORK", COL.violet)
     p.thumb:SetSize(3, 18)
+    p.scrollHit = makeDraggable(p.track, p.thumb, p.scroll)
     popup = p
 end
 
@@ -758,7 +881,7 @@ end
 
 -------------------------------------------------------------------- scrollbar thumb
 local function updateThumb()
-    if not (scroll and track and thumb) then
+    if not (scroll and track and thumb and scrollHit) then
         return
     end
     local range = scroll:GetVerticalScrollRange() or 0
@@ -766,8 +889,10 @@ local function updateThumb()
     local trackH = track:GetHeight() or viewH
     if range <= 0.5 or viewH <= 0 or trackH <= 0 then
         thumb:Hide()
+        scrollHit:Hide() -- nothing to drag: the rows' right edge takes the clicks again
         return
     end
+    scrollHit:Show()
     local thumbH = math.max(18, trackH * viewH / (viewH + range))
     local y = (scroll:GetVerticalScroll() / range) * (trackH - thumbH)
     thumb:ClearAllPoints()
@@ -868,17 +993,13 @@ local function updateFilterButtons()
         statusText = L["Not visited"]
     end
     statusBtn:SetValue(L["Show"] .. " ", statusText, state.status ~= 1)
-    -- Memorials have no zone, campaign or book filters: the Show button moves up to take their place.
-    local mem = state.memorials
-    zoneBtn:SetShown(not mem)
-    campaignBtn:SetShown(not mem)
-    hereBtn:SetShown(not mem)
-    bookToggle:SetShown(not mem)
-    statusBtn:ClearAllPoints()
-    if mem then
-        statusBtn:SetPoint("TOPLEFT", zoneBtn, "TOPLEFT", 0, 0)
+    -- Memorials have no book-only entries, so the book toggle is hidden there.
+    bookToggle:SetShown(not state.memorials)
+    hereBtn:ClearAllPoints()
+    if state.memorials then
+        hereBtn:SetPoint("RIGHT", hereBtn:GetParent(), "RIGHT", 0, 0)
     else
-        statusBtn:SetPoint("TOPLEFT", campaignBtn, "TOPRIGHT", FILTER_GAP, 0)
+        hereBtn:SetPoint("RIGHT", bookToggle, "LEFT", -COUNT_GAP, 0)
     end
     Browser.UpdateHere()
     if anyFilter() then
@@ -926,7 +1047,11 @@ function Browser.Refresh(resetScroll)
     updateThumb()
 
     local zn = state.zone and not state.memorials and getZoneCounts()[state.zone]
-    if state.memorials then
+    local mzn = state.zone and state.memorials and memZoneCounts()[state.zone]
+    if mzn then
+        countText:SetText(L["%s%d of %d%s visited here"]:format(S.HEX_MET, mzn.met, mzn.total, END)
+            .. (shown ~= mzn.total and L["  ·  showing %d"]:format(shown) or ""))
+    elseif state.memorials then
         if anyFilter() then
             countText:SetText(L["Showing %d of %d"]:format(shown, #list))
         else
@@ -1033,7 +1158,7 @@ local function buildProgress(inner)
 end
 
 -- Shows the memorials instead of the veterans (true) or back (false). Zone and campaign filters
--- belong to the veterans and are cleared.
+-- are cleared: the two lists have their own zones and campaigns.
 function Browser.SetMemorials(on)
     state.memorials = on == true
     state.zone, state.campaign = nil, nil
@@ -1190,11 +1315,14 @@ local function buildFilters(inner, above)
     zoneBtn = filterButton(inner, ZONE_BTN_W, true)
     zoneBtn:SetPoint("TOPLEFT", above, "BOTTOMLEFT", 0, -8)
     zoneBtn:SetScript("OnClick", function(self)
-        local counts = getZoneCounts()
-        for _, z in ipairs(zoneItems) do
+        buildIndex()
+        buildMemorialIndex()
+        local counts = shownZoneCounts()
+        local list = state.memorials and memZoneItems or zoneItems
+        for _, z in ipairs(list) do
             z.right = z.value and counts[z.value] and zoneCountText(counts[z.value]) or nil
         end
-        openPopup(self, zoneItems, state.zone, function(value)
+        openPopup(self, list, state.zone, function(value)
             state.zone = value
             refreshFiltered()
         end)
@@ -1204,7 +1332,8 @@ local function buildFilters(inner, above)
     campaignBtn:SetPoint("TOPLEFT", zoneBtn, "TOPRIGHT", FILTER_GAP, 0)
     campaignBtn:SetScript("OnClick", function(self)
         buildIndex()
-        openPopup(self, campaignItems, state.campaign, function(value)
+        buildMemorialIndex()
+        openPopup(self, state.memorials and memCampaignItems or campaignItems, state.campaign, function(value)
             state.campaign = value
             refreshFiltered()
         end)
@@ -1375,6 +1504,7 @@ local function buildList(inner, above)
     thumb = solid(track, "ARTWORK", COL.violet)
     thumb:SetSize(3, 18)
     thumb:Hide()
+    scrollHit = makeDraggable(track, thumb, scroll, closePopup)
 
     emptyText = text(inner, C.FONT_BODY, 12, COL.muted)
     emptyText:SetPoint("TOP", scroll, "TOP", 0, -40)
@@ -1461,12 +1591,12 @@ function Browser.ShowZone(zoneName)
     end
 end
 
--- The zone the player is in, when at least one veteran is found there (otherwise nil).
+-- The zone the player is in, when at least one veteran (or memorial, in memorial mode) is there.
 local function hereZone()
     -- By uiMapID first: the map name is translated in a German or French client, Data.lua is English.
+    local counts = shownZoneCounts()
     local mapID = C.GetZoneMapID and C.GetZoneMapID()
     if mapID and type(ns.ZONE_MAPS) == "table" then
-        local counts = getZoneCounts()
         for name, ids in pairs(ns.ZONE_MAPS) do
             if counts[name] then
                 for _, id in ipairs(ids) do
@@ -1478,7 +1608,7 @@ local function hereZone()
         end
     end
     local zone = C.GetZoneName()
-    if zone and getZoneCounts()[zone] then
+    if zone and counts[zone] then
         return zone
     end
     return nil
@@ -1501,6 +1631,11 @@ function Browser.ThisZone()
     local zone = hereZone()
     if not zone then
         return false
+    end
+    if state.memorials then
+        state.zone = zone
+        Browser.Refresh(true)
+        return true
     end
     Browser.ShowZone(zone)
     return true

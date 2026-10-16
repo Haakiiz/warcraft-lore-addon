@@ -1,0 +1,5 @@
+startProgress(nil)
+SlashCmdList.WARCRAFTLORE("list")
+typeSearch("orgrimmar")
+MOCK.click(rowFor("Thrall"))
+MOCK.dump(SHOTDIR .. "/m_both.json")

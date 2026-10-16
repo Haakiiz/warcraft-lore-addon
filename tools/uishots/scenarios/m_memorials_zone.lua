@@ -1,0 +1,5 @@
+startProgress()
+SlashCmdList.WARCRAFTLORE("list")
+MOCK.click(btnWithText("Memorials"))
+MOCK.click(btnWithText("All zones"))
+MOCK.dump(SHOTDIR .. "/m_memorials_zone.json")

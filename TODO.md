@@ -114,5 +114,8 @@ No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion 
 - [x] **Browse and search window:** list the whole database, filter by game, campaign and zone, search by name. Clicking an entry opens its lore window. (done 2026-10-09, not tested in game; `/wcl list`, merged with the met counter)
 - [ ] **In-game test: alert pill.** Check the glow and its slow pulse, the pill appears for a nearby veteran and when you target one, click opens the lore window, right-click dismisses, shift-drag moves the stack and the spot is remembered, the portrait shows (unit portrait, or the question mark fallback), and up to 3 pills stack with room for the glow.
 - [ ] **In-game test: minimap button.** Check the book icon exists (else the question mark shows), it sits on the minimap edge, drag moves it and the spot is remembered, left-click toggles the Veterans list, right-click opens your target's story, the tooltip shows the live met count, and `/wcl minimap` hides and shows it.
-- [ ] **Related NPCs:** link characters to each other (e.g. Thrall → Grom → Nazgrel) so players can follow a lore thread.
-- [ ] **Localization and wider client support:** translations, plus Classic Era and Retail builds alongside Forever.
+- [x] **Related NPCs:** link characters to each other (e.g. Thrall → Grom → Nazgrel) so players can follow a lore thread. (done in v0.4)
+- [ ] **Localization and wider client support:** German and French done in v0.7; Classic Era and Retail builds are now milestone 3 in ROADMAP.md.
+- [ ] **In-game test: Warcraft II theme (v0.8).** Check every window in both themes and that the switch button swaps them without a reload.
+
+See ROADMAP.md for the plan towards 1000 downloads.
