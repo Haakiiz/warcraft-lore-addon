@@ -1,5 +1,15 @@
 # Warcraft Lore – changelog
 
+## v0.8.1
+
+- **Filter the memorials:** the Memorials list now has the Zone and Campaign filters and the
+  "This zone" button, just like the veterans. The zone list shows how many memorials you have visited in each zone.
+- **Drag the scrollbar:** the scrollbars in the Veterans list and in the dropdowns can now be dragged with
+  the mouse. Click anywhere on the bar to jump there.
+- **New veteran:** Archmage Ansirem Runeweaver at Dalaran Crater in the Alterac Mountains, a member of the
+  Council of Six. He appears in *Jaina Proudmoore: Tides of War*, *Quest for Pandaria* and *In the Shadow of the Sun*,
+  and as one of the archmagi you fight in "Under the Burning Sky" (Warcraft III: Reforged).
+
 ## v0.8.0
 
 - **New look: Warcraft II.** Every window now looks like a remaster of the Warcraft II menus: a stone
