@@ -256,7 +256,7 @@ ns.NPCS = {
                 game = "WC3",
                 campaign = "Path of the Damned (Undead)",
                 missions = { "Under the Burning Sky" },
-                role = "Enemy archmage hero who fights Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
+                role = "One of seven randomly named enemy archmage heroes (six appear per game) who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
             },
             {
                 game = "BOOK",
@@ -270,16 +270,10 @@ ns.NPCS = {
                 missions = {},
                 role = "Arrives near Booty Bay with other magi to save his daughter Catelyn when the Bloodsail Buccaneers attack her crew",
             },
-            {
-                game = "BOOK",
-                campaign = "In the Shadow of the Sun",
-                missions = {},
-                role = "Does nothing while Grand Marshal Garithos locks Kael'thas in the Dungeons of Dalaran",
-            },
         },
         story = "Archmage Ansirem Runeweaver is a human quest giver located at Dalaran Crater in the Alterac Mountains. "
              .. "He is a member of the Council of Six, the leaders of the Kirin Tor of Dalaran. "
-             .. "In Warcraft III: Reforged he is one of the archmagi who fight Arthas and the Scourge outside Dalaran while Kel'Thuzad summons Archimonde. "
+             .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde. "
              .. "In the game he offers the quest Ansirem's Key and completes Magical Analysis. "
              .. "The novel Jaina Proudmoore: Tides of War tells that he stayed at the crater until the Cataclysm and kept serving the Kirin Tor. "
              .. "In the novella Quest for Pandaria he arrives near Booty Bay with other magi to save his daughter Catelyn from the Bloodsail Buccaneers.",
@@ -289,7 +283,6 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
             "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
-            "https://warcraft.wiki.gg/wiki/In_the_Shadow_of_the_Sun",
             "https://www.wowhead.com/classic/npc=2543",
         },
         confidence = "confirmed",
@@ -1068,7 +1061,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Beyond the Dark Portal",
                 missions = { "Chapter 7", "Chapter 10" },
-                role = "Crown prince of Alterac and eldest son of King Aiden Perenolde, the Alterac ruler who betrays the Alliance in Warcraft II (chapters 7 and 10)",
+                role = "Crown prince of Alterac whom the Alliance leaders discuss as heir in chapter 7; in chapter 10 he punches his father Aiden for trading the Book of Medivh to the Horde",
             },
         },
         story = "In the novel Beyond the Dark Portal, Aliden is the eldest son of King Aiden Perenolde and crown prince of Alterac. "
@@ -1835,6 +1828,12 @@ ns.NPCS = {
             },
             {
                 game = "BOOK",
+                campaign = "The Shattering: Prelude to Cataclysm",
+                missions = {},
+                role = "King of Ironforge who performs a ritual from a tablet from Ulduar in Old Ironforge to commune with Azeroth and is turned into diamond",
+            },
+            {
+                game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
                 role = "Former king and Herald of Azeroth who recruits Alliance and Horde leaders to help restore Azeroth after Sargeras's destruction, meeting Warchief Sylvanas Windrunner and Baine Bloodhoof in Thunder Bluff",
@@ -1945,6 +1944,18 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
+                campaign = "Beyond the Dark Portal",
+                missions = { "Chapter 5" },
+                role = "Gnome engineer who keeps General Turalyon informed about the Deeprun Tram project and a problem with rats",
+            },
+            {
+                game = "BOOK",
+                campaign = "Cut Short",
+                missions = {},
+                role = "High Tinker who leads the gnomes' push to retake Gnomeregan, survives Sicco Thermaplugg's trap in his old quarters in Sector 17 and cuts Thermaplugg's battle suit in half",
+            },
+            {
+                game = "BOOK",
                 campaign = "Wolfheart",
                 missions = {},
                 role = "High Tinker of Gnomeregan who represents the gnomes at a meeting in Darnassus, makes peace with Drukan and votes to accept Gilneas into the Alliance (chapters 9, 10 and 29)",
@@ -1961,17 +1972,27 @@ ns.NPCS = {
                 missions = {},
                 role = "Gnome engineer who studies Azerite samples and sends Sapphronetta Flivvers to Silithus, and meets Magni Bronzebeard in Ironforge (chapters 8 and 14)",
             },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = { "Chapter 2" },
+                role = "Joins the Horde and Alliance leaders who meet before Garrosh Hellscream's trial and mocks Jastor Gallywix's call for compensation",
+            },
         },
         story = "Gelbin Mekkatorque is the High Tinker of Gnomeregan and a brilliant gnomish inventor. "
              .. "After the Second War, King Magni asked him for a faster solution to the slow travel to and from the north, and he prepared the schematics for the Deeprun Tram. "
              .. "The gnomish electorate later chose him as High Tinker, and his friend Sicco Thermaplugg became his chief advisor, though Thermaplugg coveted the role of High Tinker. "
+             .. "In the short story Cut Short he leads the gnomes' push to retake Gnomeregan and survives Thermaplugg's trap in his old quarters. "
              .. "In the novels he takes part in Alliance politics, including the vote on Gilneas and the planning after the Attack on Theramore Isle.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Gelbin_Mekkatorque",
+            "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
+            "https://warcraft.wiki.gg/wiki/Cut_Short",
             "https://warcraft.wiki.gg/wiki/Wolfheart",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
             "https://warcraft.wiki.gg/wiki/Before_the_Storm",
+            "https://warcraft.wiki.gg/wiki/War_Crimes",
             "https://www.wowhead.com/classic/npc=7937",
         },
         confidence = "confirmed",
@@ -2212,7 +2233,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Quest for Pandaria",
                 missions = {},
-                role = "Talithar Swiftwind's estranged wife, to whom Baenan delivers the wedding rings and Talithar's message",
+                role = "Talithar Swiftwind's estranged wife, who tells the dwarf Baenan of her longing for her husband; Talithar asks Baenan to bring her their wedding rings",
             },
         },
         story = "Vyrin Swiftwind is a high elf married to Talithar Swiftwind, though the two became estranged after the fall of the high elves following the Third War. "
@@ -2323,13 +2344,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Cut Short",
                 missions = {},
-                role = "Gelbin Mekkatorque's former closest friend, the betrayer the gnomes must face",
+                role = "Self-styled king of Gnomeregan who traps Gelbin Mekkatorque in his old quarters and attacks him in a battle suit until Gelbin's trap cuts the suit in half",
             },
         },
         story = "In his youth, Sicco Thermaplugg was the closest friend of Gelbin Mekkatorque, and Gelbin later employed him at his foundry. "
              .. "Sicco resented Gelbin for being elected High Tinker of Gnomeregan and believed the gnomes should use their inventions to expand their power instead of trading them to allies. "
              .. "Gelbin kept Sicco in a prominent role in the Tinkers' Court despite his flawed work, and Sicco went on to serve as Gelbin's chief advisor for many years. "
-             .. "In Cut Short the gnomes must face him as a betrayer who is obsessed with ruling the gnomish race or destroying it. "
+             .. "In the short story Cut Short he sets a trap for Gelbin in his old quarters in Sector 17 and attacks him in a battle suit, but Gelbin cuts the suit in half and leaves him for dead. "
              .. "In World of Warcraft he is a boss in Gnomeregan.",
         items = {},
         sources = {
@@ -3077,26 +3098,18 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "Advisor to Magni Bronzebeard who gives orders on the King's authority",
-            },
-            {
-                game = "BOOK",
-                campaign = "Before the Storm",
-                missions = {},
-                role = "Mentioned in chapter 7: Moira asks him to take Dagran away after the Argus Campaign",
+                role = "Explorers' League dwarf who helps Muninn Magellas decipher the tablet from Ulduar, speaks at Magni's ritual and fills in as head of Ironforge's government after Magni is petrified",
             },
         },
-        story = "Advisor Belgrum is a dwarf of Old Ironforge and a member of the Explorers' League. "
+        story = "Advisor Belgrum is a dwarf and a member of the Explorers' League. "
              .. "As an advisor to Magni Bronzebeard, he gives orders on the King's authority. "
              .. "In World of Warcraft he stands in the Library of the Hall of Explorers, where he acts on Historian Karnik's warning about the Shadowforge dwarves in Uldaman and sends adventurers back for the Tablet of Will. "
-             .. "In the novel The Shattering, he fills in as head of Ironforge's government for a while after Magni turns to stone. "
-             .. "In the novel Before the Storm, after the Argus Campaign, Moira asks him to take Dagran away from Ironforge.",
+             .. "In the novel The Shattering, he fills in as head of Ironforge's government for a while after Magni turns to stone.",
         items = {
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Advisor_Belgrum",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
-            "https://warcraft.wiki.gg/wiki/Before_the_Storm",
             "https://www.wowhead.com/classic/npc=2918",
         },
         confidence = "confirmed",
@@ -3111,16 +3124,23 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The Shattering: Prelude to Cataclysm",
                 missions = {},
-                role = "In chapter 12 Anduin recognizes him as High Explorer Muninn Magellas, head of the Explorers' League",
+                role = "Head of the Explorers' League who tries to decipher the tablet from Ulduar and translates the unknown language of Magni's ritual for Anduin Wrynn",
+            },
+            {
+                game = "BOOK",
+                campaign = "Before the Storm",
+                missions = {},
+                role = "Meets Magni Bronzebeard in the Hall of Explorers and agrees to send an Explorers' League team to Silithus to study Azerite (chapter 8)",
             },
         },
-        story = "High Explorer Muninn Magellas leads the Explorers' League and stands in the Hall of Explorers in Ironforge. "
-             .. "The World of Warcraft game manual names him as the League's High Explorer. "
-             .. "In the novel The Shattering, Prince Anduin recognizes him as the head of the Explorers' League.",
+        story = "High Explorer Muninn Magellas leads the Explorers' League from the Library of the Hall of Explorers in Ironforge. "
+             .. "He maps the world and catalogues its relics for the dwarves, and he is excited when an adventurer brings him platinum discs from Uldaman. "
+             .. "In the novel The Shattering, he tries to decipher the phrases of a tablet from Ulduar and translates the unknown language of Magni's ritual in Old Ironforge for Anduin Wrynn. "
+             .. "In the novel Before the Storm, he agrees to send a team from the Explorers' League to Silithus after Magni speaks about Azerite.",
         items = {
         },
         sources = {
-            "https://warcraft.wiki.gg/wiki/High_Explorer_Magellas",
+            "https://warcraft.wiki.gg/wiki/High_Explorer_Muninn_Magellas",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
             "https://warcraft.wiki.gg/wiki/Before_the_Storm",
             "https://www.wowhead.com/classic/npc=5387",
@@ -3153,30 +3173,6 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
-    [15457] = {
-        name = "Huntress Swiftriver",
-        zone = "Ironforge",
-        coords = "71.2, 69.7",
-        appearances = {
-            {
-                game = "BOOK",
-                campaign = "The War Effort",
-                missions = {},
-                role = "Mentioned: the intended recipient of Saegan's fish supplies for the Ahn'Qiraj War, which he carries to the Military Ward",
-            },
-        },
-        story = "Huntress Swiftriver is a night elf quest giver in the Military Ward of Ironforge. "
-             .. "During the war effort before the Ahn'Qiraj War she gathers spotted yellowtail fish, aiming for 17,000, to feed the soldiers. "
-             .. "In the short story The War Effort, the fish that Saegan and Daryl Riknussun prepare are meant for her.",
-        items = {
-        },
-        sources = {
-            "https://warcraft.wiki.gg/wiki/Huntress_Swiftriver",
-            "https://warcraft.wiki.gg/wiki/The_War_Effort",
-            "https://www.wowhead.com/classic/npc=15457",
-        },
-        confidence = "confirmed",
-    },
 
     -- ===================================================================== Durotar
     [3188] = {
@@ -4115,6 +4111,12 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = { "Chapter 34" },
+                role = "Spider loa Elortha no Shadra who refuses to claim the captive Taryndrella and Murky when the Sandfury trolls prepare to sacrifice them at Zul'Farrak",
+            },
+            {
+                game = "BOOK",
                 campaign = "Vol'jin: Shadows of the Horde",
                 missions = {},
                 role = "Communicates with Vol'jin through visions shortly after the Landfall",
@@ -4122,11 +4124,13 @@ ns.NPCS = {
         },
         story = "Elortha no Shadra, the spider loa, is worshipped by the Witherbark and Vilebranch tribes in the Hinterlands. "
              .. "In World of Warcraft Horde adventurers summon her at an altar, where she is killed and her venom is sent to the Undercity. "
+             .. "In the novel Traveler: The Spiral Path the Sandfury trolls call on her at Zul'Farrak to judge their captives, but she refuses to claim the dryad Taryndrella and Murky. "
              .. "In the novel Vol'jin: Shadows of the Horde she communicates with Vol'jin through visions shortly after the Landfall.",
         items = {
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Shadra",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
             "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
             "https://www.wowhead.com/classic/npc=2707",
         },
@@ -4146,6 +4150,24 @@ ns.NPCS = {
             },
             {
                 game = "BOOK",
+                campaign = "Stormrage",
+                missions = { "Chapter 3" },
+                role = "Attends the wedding of Malfurion Stormrage and Tyrande Whisperwind after the War Against the Nightmare",
+            },
+            {
+                game = "BOOK",
+                campaign = "Quest for Pandaria",
+                missions = {},
+                role = "Sits on the Council of Three Hammers that cannot help Li Li Stormstout find Magni, and laughs at how rude she is",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = { "Chapter 1" },
+                role = "Attends the trial of Garrosh Hellscream in the Temple of the White Tiger with his fellow Council of Three Hammers members",
+            },
+            {
+                game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
                 role = "Welcomes King Anduin Wrynn to Ironforge as a member of the Council of Three Hammers",
@@ -4154,12 +4176,16 @@ ns.NPCS = {
         story = "Falstad Wildhammer is the High Thane of the Wildhammer clan at Aerie Peak in the Hinterlands. "
              .. "In World of Warcraft he was a quest giver at Aerie Peak, where he dealt with the encroaching forest trolls. "
              .. "In the novel Day of the Dragon he leads gryphon riders who protect Hasic and carry Rhonin's group across the Great Sea to Khaz Modan. "
+             .. "In the novel Stormrage he attends the wedding of Malfurion and Tyrande, and in War Crimes he attends Garrosh's trial. "
              .. "In the novel Before the Storm he welcomes King Anduin Wrynn to Ironforge as a member of the Council of Three Hammers.",
         items = {
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Falstad_Wildhammer",
             "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
+            "https://warcraft.wiki.gg/wiki/War_Crimes",
             "https://warcraft.wiki.gg/wiki/Before_the_Storm",
             "https://www.wowhead.com/classic/npc=5635",
         },
