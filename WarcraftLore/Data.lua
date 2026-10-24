@@ -59,10 +59,16 @@ ns.NPCS = {
                 role = "Playable hero (Far Seer); absent from chapters 4–5, which belong to Grom Hellscream",
             },
             {
+                game = "WC3",
+                campaign = "Eternity's End (Night Elf)",
+                missions = { "Twilight of the Gods" },
+                role = "Allied hero (Far Seer) who fortifies the Horde base on Mount Hyjal against Archimonde's army",
+            },
+            {
                 game = "TFT",
                 campaign = "The Founding of Durotar (Orc bonus campaign)",
-                missions = { "To Tame a Land" },
-                role = "Allied NPC; the Warchief who gives Rexxar his orders",
+                missions = { "To Tame a Land", "Old Hatreds", "A Blaze of Glory" },
+                role = "Allied NPC; the Warchief who gives Rexxar his orders and commands the Horde against Admiral Proudmoore",
             },
             {
                 game = "BOOK",
@@ -94,6 +100,18 @@ ns.NPCS = {
                 missions = {},
                 role = "Leader of the Earthen Ring; meets Jaina in secret and refuses to return to the Horde to rein in Garrosh",
             },
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Protagonist: sent by Ysera through the Caverns of Time into an alternate timeline, where he relives the murder of his parents",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Suggests Baine Bloodhoof as Garrosh's defender and is called as Tyrande's witness at Garrosh's trial",
+            },
         },
         story = "After the Third War, Thrall gathered the orcs and found them a new home in Kalimdor. "
              .. "He founded Durotar, named after his father Durotan, with Orgrimmar as its capital, named after Orgrim Doomhammer. "
@@ -105,6 +123,9 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Thrall",
             "https://warcraft.wiki.gg/wiki/The_Invasion_of_Kalimdor",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land",
+            "https://warcraft.wiki.gg/wiki/Old_Hatreds_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/A_Blaze_of_Glory_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Twilight_of_the_Gods_(WC3_Night_Elf)",
             "https://www.wowhead.com/classic/npc=4949/thrall",
         },
         confidence = "confirmed",
@@ -153,7 +174,13 @@ ns.NPCS = {
                 game = "TFT",
                 campaign = "The Founding of Durotar (Orc bonus campaign)",
                 missions = { "To Tame a Land", "Old Hatreds" },
-                role = "Quest giver and advisor (Witch Doctor); the Darkspear chieftain turns Rexxar, Rokhan and Chen into invisible wyverns",
+                role = "Quest giver and advisor (Shadow Hunter); the Darkspear chieftain turns Rexxar, Rokhan and Chen into spirit wyverns",
+            },
+            {
+                game = "BOOK",
+                campaign = "The Judgment",
+                missions = {},
+                role = "Protagonist: sent into First Home with his best friend Zalazane to be tested by the loa and become a shadow hunter",
             },
             {
                 game = "BOOK",
@@ -184,6 +211,7 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Vol'jin",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
             "https://warcraft.wiki.gg/wiki/Old_Hatreds_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/The_Judgment",
             "https://www.wowhead.com/classic/npc=10540",
         },
         confidence = "confirmed",
@@ -624,6 +652,12 @@ ns.NPCS = {
                 missions = {},
                 role = "On his \"factfinding\" tours he strong-arms Marin Noggenfogger into letting him inspect his mine, and the two agree to align their cartels",
             },
+            {
+                game = "BOOK",
+                campaign = "Traveler: The Spiral Path",
+                missions = {},
+                role = "Sponsors the Speedbarge boat race, lets Aram pilot for him, and helps the travelers into Gadgetzan and out again aboard his zeppelin Cloudkicker",
+            },
         },
         story = "Gazlowe was chief engineer when Orgrimmar was built, and dug tunnels under the city in search of water. "
              .. "When the city was finished, Thrall paid him for the work. "
@@ -636,6 +670,7 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Monte_Gazlowe",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land",
             "https://warcraft.wiki.gg/wiki/The_Founding_of_Durotar",
+            "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
             "https://www.wowhead.com/classic/npc=3391/gazlowe",
             "https://www.wowhead.com/classic/item=5080",
         },
@@ -1062,7 +1097,7 @@ ns.NPCS = {
             {
                 game = "WC3",
                 campaign = "Path of the Damned (Undead)",
-                missions = { "The Fall of Silvermoon" },
+                missions = { "Into the Realm Eternal", "Key of the Three Moons", "The Fall of Silvermoon" },
                 role = "Enemy hero (Ranger) defending Quel'Thalas; turned into a banshee",
             },
             {
@@ -1072,9 +1107,15 @@ ns.NPCS = {
                 role = "Playable hero (Dark Ranger)",
             },
             {
+                game = "TFT",
+                campaign = "Legacy of the Damned (Undead)",
+                missions = { "A Kingdom Divided", "Sylvanas' Farewell" },
+                role = "Banshee in the story interludes: meets the dreadlords in secret, then ambushes Arthas with a poisoned arrow",
+            },
+            {
                 game = "FK",
                 campaign = "Forsaken Kingdom (Undead)",
-                missions = { "City of the Dead" },
+                missions = { "City of the Dead", "A Scarlet Flame" },
                 role = "Leader of the Forsaken; gives the player orders",
             },
             {
@@ -1113,6 +1154,18 @@ ns.NPCS = {
                 missions = {},
                 role = "Travels to Sunfury Spire to gain the blood elves' support for the war effort",
             },
+            {
+                game = "BOOK",
+                campaign = "World of Warcraft: Sylvanas",
+                missions = {},
+                role = "Protagonist: her story from Ranger-General of Silvermoon through her death at Arthas' hands to the founding of the Forsaken",
+            },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Offers to defend Garrosh but is told she would serve better as an accuser, opposes Baine Bloodhoof as defender, and quarrels with him over his defense",
+            },
         },
         story = "When the Lich King's power waned, Sylvanas regained her free will and turned against Arthas. "
              .. "She took Lordaeron from the three dreadlords and gathered the freed undead as the Forsaken. "
@@ -1126,6 +1179,9 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Path_of_the_Damned",
             "https://warcraft.wiki.gg/wiki/Legacy_of_the_Damned",
             "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/Into_the_Realm_Eternal_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/Key_of_the_Three_Moons_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/A_Kingdom_Divided_(WC3_Undead)",
             "https://www.wowhead.com/classic/npc=10181",
         },
         confidence = "confirmed",
@@ -1139,20 +1195,26 @@ ns.NPCS = {
             {
                 game = "TFT",
                 campaign = "Legacy of the Damned (Undead)",
+                missions = { "The Dark Lady" },
+                role = "Enemy hero (Dreadlord): offers Sylvanas a place in the dreadlords' new order, then begs for his life and defects to her",
+            },
+            {
+                game = "TFT",
+                campaign = "Legacy of the Damned (Undead)",
                 missions = { "Dreadlord's Fall", "A New Power in Lordaeron" },
                 role = "Playable hero (Dreadlord)",
             },
             {
                 game = "FK",
                 campaign = "Forsaken Kingdom (Undead)",
-                missions = { "City of the Dead" },
+                missions = { "City of the Dead", "A Scarlet Flame" },
                 role = "Quest NPC: the player reports to him",
             },
             {
                 game = "BOOK",
                 campaign = "Stormrage",
                 missions = {},
-                role = "In the Battle for the Undercity he fights with his summoned Legion minions and is defeated by Sylvanas herself (chapter 18)",
+                role = "Appears in Sylvanas' Emerald Nightmare dream, where he torments her alongside Arthas (chapter 18)",
             },
             {
                 game = "BOOK",
@@ -1170,13 +1232,15 @@ ns.NPCS = {
         story = "Varimathras was one of three dreadlords who ruled Lordaeron after Arthas left for Northrend. "
              .. "He secretly made a deal with Sylvanas to overthrow Arthas, and put his own life above the nathrezim code by attacking his brother Balnazzar. "
              .. "On Sylvanas' order he killed Lord Garithos, securing his place among the Forsaken. "
-             .. "After the Undercity was founded, he formed the city guard that became the basis of the Deathguard. "
+             .. "After the Undercity was founded, he tasked Garek Bandarion and Dark Ranger Anya with putting together a city guard that later became the basis of the Deathguard. "
              .. "In World of Warcraft he stands at Sylvanas' side in the Royal Quarter.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Varimathras",
             "https://warcraft.wiki.gg/wiki/Legacy_of_the_Damned",
+            "https://warcraft.wiki.gg/wiki/The_Dark_Lady_(WC3_Undead)",
             "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
+            "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
             "https://www.wowhead.com/classic/npc=2425",
         },
         confidence = "confirmed",
@@ -1207,7 +1271,7 @@ ns.NPCS = {
             },
         },
         story = "Sharlindra is one of the banshees in Sylvanas' forces when Sylvanas breaks free of Arthas and turns on the dreadlords. "
-             .. "After the Forsaken took Lordaeron, she stayed at Sylvanas' side. "
+             .. "She went with Sylvanas' forces to attack the stronghold of the dreadlord Detheroc. "
              .. "In World of Warcraft she stands in the Royal Quarter of the Undercity, where her lieutenant Melisara sends adventurers after the Crown of Will.",
         items = {},
         sources = {
@@ -2545,14 +2609,28 @@ ns.NPCS = {
                 missions = {},
                 role = "Remains at Warsong Hold as leader of the Warsong Offensive and the Horde Expedition after Cairne Bloodhoof visits Garrosh",
             },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Goes with Go'el and Eitrigg to Garrosh's trial, agrees with Baine as defender, and testifies as Tyrande's third witness about his conflicts with Garrosh in Northrend",
+            },
+            {
+                game = "BOOK",
+                campaign = "A Good War",
+                missions = {},
+                role = "Leads the Horde's attack on Darnassus in the War of the Thorns, lets Malfurion and Tyrande go, and watches Sylvanas burn Teldrassil",
+            },
         },
         story = "Varok Saurfang was a renowned Blackrock orc warrior, the younger brother of Broxigar, and second-in-command to Warchief Orgrim Doomhammer. "
              .. "In the novel The Shattering: Prelude to Cataclysm, Cairne Bloodhoof traveled to Warsong Hold to meet Garrosh, and Saurfang was to stay there as leader of the Warsong Offensive and the Horde Expedition. "
-             .. "In World of Warcraft he is High Overlord of the Horde and High Overlord of the Kor'kron Guard.",
+             .. "In World of Warcraft he is High Overlord Saurfang, leader of the Kor'kron Guard, and during the war against Ahn'Qiraj he is Supreme Commander of the Might of Kalimdor.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Varok_Saurfang",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
+            "https://warcraft.wiki.gg/wiki/War_Crimes",
+            "https://warcraft.wiki.gg/wiki/A_Good_War",
             "https://www.wowhead.com/classic/npc=14720",
         },
         confidence = "confirmed",
@@ -2593,14 +2671,22 @@ ns.NPCS = {
                 missions = {},
                 role = "Shopkeeper arrested and beaten by Malkorok and Kor'kron soldiers for not fully supporting Garrosh Hellscream",
             },
+            {
+                game = "BOOK",
+                campaign = "War Crimes",
+                missions = {},
+                role = "Called as the second witness at Garrosh's trial, where the court sees Malkorok's attack on him in a vision",
+            },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Malkorok and a few Kor'kron soldiers attacked Kor'jus when his shop was closed, because he was not fully supportive of Garrosh Hellscream. "
              .. "They arrested and beat him, and he returned to his shop after a few days. "
+             .. "In the novel War Crimes, he was called as the second witness at Garrosh's trial. "
              .. "In World of Warcraft he is a Mushroom Vendor in Orgrimmar.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Kor%27jus",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://warcraft.wiki.gg/wiki/War_Crimes",
             "https://www.wowhead.com/classic/npc=3329",
         },
         confidence = "confirmed",
@@ -2621,7 +2707,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "War Crimes",
                 missions = {},
-                role = "Appears in a vision",
+                role = "Shown in a vision at Garrosh's trial, where he maintains that he knew nothing about the inn explosion",
             },
         },
         story = "In the novel Jaina Proudmoore: Tides of War, Grosk served drinks to Malkorok and his Kor'kron soldiers, then disappeared. "
@@ -2643,18 +2729,19 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
-                campaign = "Vol'jin: Shadows of the Horde",
+                campaign = "The Judgment",
                 missions = {},
-                role = "Vol'jin's best friend in childhood, shown in the novel's account of their youth",
+                role = "Vol'jin's childhood best friend; he joins Vol'jin in First Home to be tested by the loa and emerges a witch doctor",
             },
         },
-        story = "In the novel Vol'jin: Shadows of the Horde, Zalazane grew up as the best friend of Vol'jin, who was the son of the Darkspear chieftain Sen'jin. "
+        story = "In the short story The Judgment, Zalazane grew up as the best friend of Vol'jin, who was the son of the Darkspear chieftain Sen'jin. "
+             .. "The two young trolls were tested by the loa at First Home, and Zalazane became a witch doctor under Master Gadrin. "
              .. "In World of Warcraft he became the Hexmaster and Traitor of the Darkspears, and used dark voodoo to rob most of the Darkspear trolls of their free will. "
              .. "He declared himself ruler of the Echo Isles, and the Darkspears and their allies often struck at his holdings there.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Zalazane",
-            "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
+            "https://warcraft.wiki.gg/wiki/The_Judgment",
             "https://www.wowhead.com/classic/npc=3205",
         },
         confidence = "confirmed",
@@ -3100,6 +3187,12 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
+                campaign = "The Judgment",
+                missions = {},
+                role = "Mentor of Vol'jin and Zalazane: after their return from First Home he tells them they were gone three months, confirms the death of Sen'jin and takes over the evacuation",
+            },
+            {
+                game = "BOOK",
                 campaign = "Before the Storm",
                 missions = {},
                 role = "Present at Spirit Rise in Thunder Bluff beside Baine Bloodhoof when Magni Bronzebeard arrives to speak about healing Azeroth (chapter 12)",
@@ -3112,8 +3205,8 @@ ns.NPCS = {
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Master_Gadrin",
+            "https://warcraft.wiki.gg/wiki/The_Judgment",
             "https://warcraft.wiki.gg/wiki/Before_the_Storm",
-            "https://warcraft.wiki.gg/wiki/Vol%27jin:_Shadows_of_the_Horde",
             "https://www.wowhead.com/classic/npc=3188/master-gadrin",
         },
         confidence = "confirmed",
@@ -3159,7 +3252,7 @@ ns.NPCS = {
         },
         story = "Wharfmaster Dizzywig is a goblin dockmaster in Ratchet in the Barrens. "
              .. "In the novel Night of the Dragon he provided transport for Velinde Starsong, and later for Iridi when she came through Ratchet to purchase a boat. "
-             .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Southsea Freebooters and Mutiny, Mon!",
+             .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Passage to Booty Bay and The Missing Shipment.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Wharfmaster_Dizzywig",
