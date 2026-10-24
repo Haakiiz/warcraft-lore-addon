@@ -87,6 +87,7 @@ Forever er en liten klient. De store publikumene er Classic Era/Anniversary og R
 - [x] Tysk og fransk grensesnitt (v0.7)
 - [x] Warcraft II-tema som standard, med bryter til klassisk utseende (v0.8)
 - [x] Automatisk utgivelse til CurseForge ved tag (`.github/workflows/release.yml`)
+- [x] Bibliotek: 15 History of Warcraft-bøker, 16 veteraner i høynivå-dungeons/raids/AV, full kvalitetssjekk (v0.9)
 
 ## Anbefalt rekkefølge
 
