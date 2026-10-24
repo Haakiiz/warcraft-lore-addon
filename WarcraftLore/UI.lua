@@ -781,6 +781,7 @@ end
 -- dock, keepPlace and raised work as in ShowEntry.
 local MEMORIAL_ICON = {
     plaque = "INV_Misc_Note_02", tomb = "INV_Misc_Bone_HumanSkull_01", monument = "INV_Misc_Statue_04",
+    book = "INV_Misc_Book_09",
 }
 
 function UI.ShowMemorial(key, dock, keepPlace, raised)
@@ -805,7 +806,11 @@ function UI.ShowMemorial(key, dock, keepPlace, raised)
     if entry.coords and entry.coords ~= "" then
         place = place .. " · " .. entry.coords
     end
-    showHeader(entry.name, L["Honors %s"]:format(ns.MemorialHonors(entry)), nil, badges)
+    if type(entry.locations) == "table" and #entry.locations > 1 then
+        place = place .. " · " .. L["%d places"]:format(#entry.locations)
+    end
+    local honors = entry.kind == "book" and L["Tells of %s"] or L["Honors %s"]
+    showHeader(entry.name, honors:format(ns.MemorialHonors(entry)), nil, badges)
     idText:SetText(S.HEX_MUTED .. place .. END)
     if #(entry.name or "") > 24 then
         C.SetFont(nameText, C.FONT_TITLE, 16) -- a long object name must fit the one-line title

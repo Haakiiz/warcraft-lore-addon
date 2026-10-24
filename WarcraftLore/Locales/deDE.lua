@@ -296,3 +296,9 @@ L["Reload"] = "Neu laden"
 L["Cancel"] = "Abbrechen"
 L["Reloads the interface. Also in the settings and with /wcl theme."] = "Lädt die Oberfläche neu. Auch in den Einstellungen und mit /wcl theme."
 L["/wcl theme – switch between the Warcraft II look and the classic look (now: %s)"] = "/wcl theme – zwischen Warcraft-II-Look und klassischem Look wechseln (jetzt: %s)"
+
+-- History of Warcraft books (v0.9)
+L["Tells of %s"] = "Erzählt von %s"
+L["%d places"] = "%d Orte"
+L["Student of History"] = "Geschichtsstudent"
+L["Read every History of Warcraft book."] = "Lies jedes Buch der Reihe „History of Warcraft“."
