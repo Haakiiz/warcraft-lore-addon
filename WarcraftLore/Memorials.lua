@@ -34,19 +34,25 @@ ns.MEMORIALS = {
                 game = "WC2",
                 campaign = "Tides of Darkness (Human)",
                 missions = { "The Battle at Darrowmere" },
-                role = "Paladin hero who fights for the Alliance",
+                role = "Paladin and assistant to the Archbishop whom the Alliance fleet must escort safely to Caer Darrow",
             },
             {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "The Defense of Strahnbrad", "Blackrock and Roll" },
-                role = "Paladin hero who fights beside Prince Arthas",
+                missions = { "The Defense of Strahnbrad", "Blackrock and Roll", "March of the Scourge", "The Culling" },
+                role = "Paladin who fights beside Prince Arthas, brings reinforcements to Hearthglen and confronts him after the Culling of Stratholme",
+            },
+            {
+                game = "WC3",
+                campaign = "Path of the Damned (Undead)",
+                missions = { "Digging up the Dead" },
+                role = "Guards King Terenas's urn at Andorhal and is killed by Arthas",
             },
         },
         story = "Uther the Lightbringer was the first paladin and the founder of the Order of the Silver Hand. "
             .. "His tomb lies south of Andorhal, and a stone in front of his statue carries his name. "
-            .. "The marker beneath his statue reads: Here lies Uther the Lightbringer. "
-            .. "Players of Warcraft II knew him as a hero of the Alliance at the Battle at Darrowmere. "
+            .. "The marker reads: Here lies Uther the Lightbringer, First Paladin and Founder of the Order of the Silver Hand. "
+            .. "Players of Warcraft II knew him as the paladin the Alliance escorts to Caer Darrow at the Battle at Darrowmere. "
             .. "Players of Warcraft III followed him into the Scourge war at Arthas's side.",
         sources = {
             "https://www.wowhead.com/classic/object=2082",
@@ -73,7 +79,7 @@ ns.MEMORIALS = {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
                 missions = {},
-                role = "King of Lordaeron, who ignores the Prophet's warning in the opening cinematic",
+                role = "King of Lordaeron, who ignores the Prophet's warning in the opening cinematic and is killed by his son Arthas in the closing one",
             },
         },
         story = "Terenas Menethil II was the king of Lordaeron and the leader of the Alliance in Warcraft II. "
@@ -96,19 +102,21 @@ ns.MEMORIALS = {
         honors = { "Thoras Trollbane" },
         appearances = {
             {
-                game = "WC2",
-                campaign = "Tides of Darkness (Orc)",
+                game = "BOOK",
+                campaign = "Tides of Darkness",
                 missions = {},
-                role = "Lord of Stromgarde, whose kingdom the Horde attacks",
+                role = "Sends half of Stromgarde's army to the Alliance and later leads his troops to cut off Horde reinforcements through the Alterac Mountains",
             },
         },
-        story = "Thoras Trollbane was the lord of Stromgarde and one of the leaders of the Alliance. "
+        story = "Thoras Trollbane was the king of Stromgarde and one of the leaders of the Alliance. "
             .. "His remains rest in a sanctum behind the chapel of Stromgarde Keep. "
             .. "The tomb is an object in a quest chain that sends adventurers to retrieve Trol'kalar from it. "
-            .. "In Warcraft II the orc campaign includes the fall of his city.",
+            .. "In Warcraft II the orc campaign includes the mission The Fall of Stromgarde, in which the Horde destroys his kingdom's capital, though he does not appear by name.",
         sources = {
             "https://www.wowhead.com/classic/object=2703",
             "https://warcraft.wiki.gg/wiki/Trol%27kalar_(Classic)",
+            "https://warcraft.wiki.gg/wiki/Thoras_Trollbane",
+            "https://warcraft.wiki.gg/wiki/The_Fall_of_Stromgarde_(WC2_Orc)",
         },
     },
 
@@ -204,7 +212,7 @@ ns.MEMORIALS = {
             {
                 game = "BTDP",
                 campaign = "Beyond the Dark Portal (Human)",
-                missions = { "Once More Unto the Breach", "The Bitter Taste of Victory" },
+                missions = { "Deathwing", "The Bitter Taste of Victory" },
                 role = "Archmage hero who must survive to seal the Dark Portal",
             },
         },
@@ -276,7 +284,7 @@ ns.MEMORIALS = {
             {
                 game = "BTDP",
                 campaign = "Beyond the Dark Portal (Human)",
-                missions = { "The Fall of Auchindoun", "Deathwing" },
+                missions = { "Deathwing", "The Bitter Taste of Victory" },
                 role = "Dwarven gryphon rider hero, with his gryphon Sky'ree",
             },
         },
@@ -308,13 +316,13 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "By Demons Be Driven" },
+                missions = { "The Spirits of Ashenvale", "The Hunter of Shadows", "By Demons Be Driven" },
                 role = "Chieftain of the Warsong Clan, a playable hero who later becomes an enemy to capture",
             },
         },
         story = "Grom Hellscream was the chieftain of the Warsong Clan. "
             .. "The monument stands in Demon Fall Canyon in Ashenvale, where he stood alone against the demon Mannoroth. "
-            .. "Its inscription remembers him as the one who gave his life to break the demon's hold on the orcs. "
+            .. "Its inscription, signed by Thrall, says he stood alone before Mannoroth and won the orcs' freedom with his blood. "
             .. "Warcraft III lets players lead him in The Hunter of Shadows, then makes him an enemy in By Demons Be Driven. "
             .. "Its final cinematic shows him killing Mannoroth and dying freed from the demon's curse.",
         sources = {
@@ -341,7 +349,7 @@ ns.MEMORIALS = {
         },
         story = "This trophy remembers how Grom Hellscream freed the orcs by slaying the pit lord Mannoroth. "
             .. "His armor and skull hang on the white tree in the Valley of Wisdom in Orgrimmar. "
-            .. "The plaque says that Mannoroth is no more and that the plates shall always remind the Horde. "
+            .. "The plaque, signed by Thrall, says that Mannoroth is no more and that the plates shall always remind the orcs how hard they fought to regain their honor. "
             .. "Warcraft III ends its orc campaign with that fight.",
         sources = {
             "https://www.wowhead.com/classic/object=175658",

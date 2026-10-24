@@ -2524,7 +2524,7 @@ ns.NPCS = {
     [11833] = {
         name = "Rahauro",
         zone = "Thunder Bluff",
-        coords = "",
+        coords = "70.0, 29.2",
         appearances = {
             {
                 game = "BOOK",
@@ -3371,6 +3371,12 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
+                campaign = "Tides of Darkness",
+                missions = {},
+                role = "Studies under Archbishop Alonsus Faol and is chosen with Uther, Saidan, Turalyon and Gavinrad as one of the first knights of the Silver Hand (chapter 5)",
+            },
+            {
+                game = "BOOK",
                 campaign = "Of Blood and Honor",
                 missions = {},
                 role = "Rides to Stratholme to free Eitrigg from execution and flees with him into the wilds (chapters 6-7)",
@@ -3392,6 +3398,7 @@ ns.NPCS = {
             "https://warcraft.wiki.gg/wiki/Tirion_Fordring",
             "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
             "https://warcraft.wiki.gg/wiki/Arthas:_Rise_of_the_Lich_King",
+            "https://warcraft.wiki.gg/wiki/Tides_of_Darkness",
             "https://www.wowhead.com/classic/npc=1855",
         },
         confidence = "confirmed",
@@ -3410,7 +3417,7 @@ ns.NPCS = {
             },
         },
         story = "Aurora Skycaller is a high elf priestess who helped Alliance adventurers recreate the Crystal of Zin-Malor at Northpass Tower. "
-             .. "When the tower became a battlefield she moved just outside Northpass Tower, where she still gives quests in the Eastern Plaguelands. "
+             .. "When the tower became a battlefield she moved to a spot just outside it, below Quel'Lithien Lodge, where she still gives quests in the Eastern Plaguelands. "
              .. "In the short story In the Shadow of the Sun she and Renthar Hawkspear reject the Regent Lord's offer of supplies.",
         items = {
         },
@@ -3573,7 +3580,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "World of Warcraft: Sylvanas",
                 missions = {},
-                role = "Asks Sylvanas to run away with him once her plans come to fruition",
+                role = "Saves Sylvanas and Lor'themar from an Amani ambush, is inducted into the Farstriders at her command, and after Garrosh's trial promises to stand by her side (chapter 23)",
             },
         },
         story = "Nathanos Blightcaller was the first and only human ranger lord trained by the high elves of Quel'Thalas, and he joined Sylvanas's rogue Forsaken after dying in the Third War. "
@@ -3745,10 +3752,10 @@ ns.NPCS = {
                 role = "Attacks the Sea King with the Killmonger and executes its captain, Adashe Flintwill",
             },
         },
-        story = "Ironpatch is an orc member of the Bloodsail Buccaneers, in charge of the guns and cannons aboard The Crimson Veil off the southern coast of Stranglethorn Vale. "
-             .. "He is the captain of the Killmonger. "
+        story = "Ironpatch is an orc member of the Bloodsail Buccaneers, found on the pirate ship The Crimson Veil off the southern coast of Stranglethorn Vale. "
              .. "Killing him earns reputation with Booty Bay and costs reputation with the Bloodsail Buccaneers. "
-             .. "In the book Traveler: The Spiral Path he attacks the Sea King of the Blackwater Raiders and executes its captain, Adashe Flintwill.",
+             .. "In the book Traveler: The Spiral Path he is the captain of the Killmonger and attacks the Sea King of the Blackwater Raiders. "
+             .. "He executes its captain, Adashe Flintwill, and is finally killed by Makasa Flintwill with Adashe's harpoon.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Ironpatch",
@@ -3821,22 +3828,42 @@ ns.NPCS = {
                 role = "Keeper of the Grove hero, called Furion in these missions, who is woken by Tyrande and rouses the druids against the Burning Legion",
             },
             {
+                game = "WC3",
+                campaign = "Eternity's End (Night Elf)",
+                missions = { "A Destiny of Flame and Sorrow", "The Last Guardian" },
+                role = "Cutscenes only, as Furion: he and Tyrande confront the transformed Illidan in Felwood and meet Medivh on Mount Hyjal",
+            },
+            {
                 game = "TFT",
                 campaign = "Terror of the Tides (Night Elf)",
                 missions = { "Balancing the Scales", "The Ruins of Dalaran", "The Brothers Stormrage" },
                 role = "Archdruid hero who joins Tyrande and Maiev against Illidan and his naga",
             },
+            {
+                game = "TFT",
+                campaign = "Terror of the Tides (Night Elf)",
+                missions = { "Shards of the Alliance", "Unfinished Business", "Malfurion's Vision", "A Parting of Ways" },
+                role = "Speaking character in the cutscenes: he learns of Illidan's naga from Maiev's messenger, sees the Eye of Sargeras plan in a vision and lets Illidan go",
+            },
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Held captive in the Emerald Dream by the Nightmare Lord until Thura frees him, then heals Teldrassil and marries Tyrande",
+            },
         },
         story = "Malfurion Stormrage is the first of the druids and the Keeper of the Grove. "
              .. "In World of Warcraft he appears as an apparition, once in Moonglade and once in the Temple of Atal'Hakkar during the Scepter of the Shifting Sands quest chain. "
              .. "In the Temple of Atal'Hakkar he confirms that an Old God is corrupting the Emerald Dream. "
-             .. "In Warcraft III he is called Furion Stormrage in Eternity's End, and Tyrande wakes him to fight the Burning Legion.",
+             .. "In Warcraft III he is called Furion Stormrage in Eternity's End, and Tyrande wakes him to fight the Burning Legion. "
+             .. "In the novel Stormrage he is held captive in the Emerald Dream by the Nightmare Lord until he is freed, and he later marries Tyrande.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Malfurion_Stormrage",
             "https://warcraft.wiki.gg/wiki/Brothers_in_Blood_(WC3_Night_Elf)",
             "https://warcraft.wiki.gg/wiki/Balancing_the_Scales_(WC3_Night_Elf)",
             "https://warcraft.wiki.gg/wiki/Terror_of_the_Tides",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
             "https://www.wowhead.com/classic/npc=15362/malfurion-stormrage",
         },
         confidence = "confirmed",
@@ -4029,12 +4056,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The War of the Shifting Sands",
                 missions = {},
-                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Caelestrasz and Arygos until the barrier is raised",
+                role = "Charges into Ahn'Qiraj with Caelestrasz and Arygos to hold the qiraji back while the barrier is raised, and is overwhelmed",
             },
         },
         story = "In World of Warcraft, Merithra waits in the Temple of Ahn'Qiraj, where adventurers bring her Imperial Qiraji Regalia and Elementium Ore. "
              .. "In the short story The War of the Shifting Sands, Anachronos calls her, the child of Ysera, to join the fight against the qiraji. "
-             .. "She and the other dragon progeny hold the gates until the magical barrier is raised.",
+             .. "She and the other dragon progeny fly into the city to hold the qiraji back while the magical barrier is raised.",
         items = {
         },
         sources = {
@@ -4054,12 +4081,12 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The War of the Shifting Sands",
                 missions = {},
-                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Merithra and Arygos until they are overwhelmed",
+                role = "Charges into Ahn'Qiraj with Merithra and Arygos to hold the qiraji back while the barrier is raised, and is overwhelmed",
             },
         },
         story = "In World of Warcraft, Caelestrasz waits in the Temple of Ahn'Qiraj and gives the quest The Savior of Kalimdor. "
              .. "In the short story The War of the Shifting Sands, Anachronos calls on the red dragonflight's progeny, Caelestrasz, to fight the qiraji. "
-             .. "He, Merithra and Arygos hold the gates until the barrier is raised, and are overwhelmed when the qiraji surge forth.",
+             .. "He, Merithra and Arygos fly into the city to hold the qiraji back while the barrier is raised, and are overwhelmed when the qiraji surge forth.",
         items = {
         },
         sources = {
@@ -4079,7 +4106,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "The War of the Shifting Sands",
                 missions = {},
-                role = "Holds the qiraji back at the gates of Ahn'Qiraj with Merithra and Caelestrasz",
+                role = "Charges into Ahn'Qiraj with Merithra and Caelestrasz to hold the qiraji back while the barrier is raised",
             },
             {
                 game = "BOOK",
@@ -4089,7 +4116,7 @@ ns.NPCS = {
             },
         },
         story = "In World of Warcraft, Arygos, in the form of a gnome, offers the quest Imperial Qiraji Armaments in the Temple of Ahn'Qiraj. "
-             .. "In the short story The War of the Shifting Sands, he is one of the dragon progeny who hold the qiraji back at the gates of Ahn'Qiraj. "
+             .. "In the short story The War of the Shifting Sands, he is one of the dragon progeny who fly into Ahn'Qiraj to hold the qiraji back. "
              .. "In Thrall: Twilight of the Aspects, he orders his guards to kill Thrall when Thrall comes to the Nexus, until Kalecgos intervenes.",
         items = {
         },
