@@ -9,15 +9,15 @@
 - **16 new veterans in the high-level dungeons, raids and Alterac Valley**, ready for when the level cap rises:
   Kel'Thuzad, Drek'Thar, Rend Blackhand, Nefarian and Lord Victor Nefarius, Onyxia, Princess Moira Bronzebeard,
   Baron Rivendare, Balnazzar and Grand Crusader Dathrohan, Ras Frostwhisper, Magistrate Barthilas, Sapphiron,
-  Sir Zeliek, Renferal and General Rajaxx. 144 veterans in total.
+  Sir Zeliek, Renferal and General Rajaxx. 146 veterans in total.
 - **Every veteran checked again.** All 131 veterans and 12 memorials were re-checked against their sources
   before this release:
   - about 60 entries got corrections: exact mission names, concrete roles, missing novels and short stories
     (Anduin, Shaw, Tyrande, Shandris, Jaina, Kel'Thuzad and many more) and coordinates for Rahauro, Emeriss and Lethon;
   - lines that described events from much later expansions as if they happen now are gone;
-  - three entries were removed because they could not be backed by a real game or novel appearance:
-    Morbent Fel (only named in a short story), Overlord Mok'Morokk (only in a guidebook) and Huntress
-    Swiftriver (only at the one-time Ahn'Qiraj war effort).
+  - Overlord Mok'Morokk was removed: his only source was a guidebook, not a game or a novel;
+  - the cinematics now count as appearances too, e.g. Thrall in *The Death of Hellscream* and
+    Malfurion in *Eternity's End*.
 - **Sturdier:** the minimap button, the nearby alert and the Veterans list now switch themselves off quietly
   after an unexpected error instead of repeating it.
 

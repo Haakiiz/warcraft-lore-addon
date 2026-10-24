@@ -55,8 +55,8 @@ ns.NPCS = {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
                 missions = { "Landfall", "The Long March", "Cry of the Warsong",
-                             "Where Wyverns Dare", "The Oracle", "By Demons Be Driven" },
-                role = "Playable hero (Far Seer); absent from chapters 4–5, which belong to Grom Hellscream",
+                             "Where Wyverns Dare", "The Oracle", "By Demons Be Driven", "The Death of Hellscream" },
+                role = "Playable hero (Far Seer); absent from chapters 4–5, which belong to Grom Hellscream; in the closing cinematic he faces Mannoroth with Grom",
             },
             {
                 game = "WC3",
@@ -2097,6 +2097,29 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
+    [1200] = {
+        name = "Morbent Fel",
+        zone = "Duskwood",
+        coords = "17.2, 33.4",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Terror by Torchlight",
+                missions = {},
+                role = "Remembered as the dead lich of the Forlorn Rowe; the stolen Torch of Holy Flame is placed outside his old house",
+            },
+        },
+        story = "Morbent Fel was a human necromancer who ruled over the undead of Duskwood from his house atop the Forlorn Rowe in Raven Hill Cemetery. "
+             .. "He was an ally of the Dark Riders and was responsible for raising the undead in Duskwood. "
+             .. "In World of Warcraft he is guarded by his undead minions and a magical barrier, which had to be removed with Morbent's Bane before he could be defeated.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Morbent_Fel",
+            "https://warcraft.wiki.gg/wiki/Terror_by_Torchlight",
+            "https://www.wowhead.com/classic/npc=1200",
+        },
+        confidence = "confirmed",
+    },
 
 
     -- ================================================================ Thousand Needles
@@ -3173,6 +3196,30 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
+    [15457] = {
+        name = "Huntress Swiftriver",
+        zone = "Ironforge",
+        coords = "71.2, 69.7",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "The War Effort",
+                missions = {},
+                role = "Waits for the fish that Saegan and Daryl Riknussun prepare for the Ahn'Qiraj war effort, which Saegan carries to the Military Ward",
+            },
+        },
+        story = "Huntress Swiftriver is a night elf quest giver in the Military Ward of Ironforge. "
+             .. "During the war effort before the Ahn'Qiraj War she gathers spotted yellowtail fish, aiming for 17,000, to feed the soldiers. "
+             .. "In the short story The War Effort, the fish that Saegan and Daryl Riknussun prepare are meant for her.",
+        items = {
+        },
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Huntress_Swiftriver",
+            "https://warcraft.wiki.gg/wiki/The_War_Effort",
+            "https://www.wowhead.com/classic/npc=15457",
+        },
+        confidence = "confirmed",
+    },
 
 
     -- ===================================================================== Durotar
@@ -3831,8 +3878,8 @@ ns.NPCS = {
             {
                 game = "WC3",
                 campaign = "Eternity's End (Night Elf)",
-                missions = { "A Destiny of Flame and Sorrow", "The Last Guardian" },
-                role = "Cutscenes only, as Furion: he and Tyrande confront the transformed Illidan in Felwood and meet Medivh on Mount Hyjal",
+                missions = { "A Destiny of Flame and Sorrow", "The Last Guardian", "Eternity's End" },
+                role = "Cutscenes only, as Furion: he and Tyrande confront the transformed Illidan in Felwood and meet Medivh on Mount Hyjal; in the final cinematic he unleashes Nordrassil's power to destroy Archimonde",
             },
             {
                 game = "TFT",

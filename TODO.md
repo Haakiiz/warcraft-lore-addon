@@ -118,7 +118,7 @@ No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion 
 - [ ] **Localization and wider client support:** German and French done in v0.7; Classic Era and Retail builds are now milestone 3 in ROADMAP.md.
 - [ ] **In-game test: Warcraft II theme (v0.8).** Check every window in both themes and that the switch button swaps them without a reload.
 
-- [x] 2026-10-24 release QA: every veteran and memorial re-checked by Sonnet workers (.kritikk/QA_release/); 3 removed (Morbent Fel, Mok'Morokk, Huntress Swiftriver).
+- [x] 2026-10-24 release QA: every veteran and memorial re-checked by Sonnet workers (.kritikk/QA_release/); Mok'Morokk removed (guidebook only). Håkon 2026-10-24: event NPCs (Swiftriver) and cinematics are included; Morbent Fel stays.
 - [ ] In-game test: History of Warcraft books (v0.9). Read one, check the visit counts, the book icon, the pins on every copy, and Student of History.
 
 See ROADMAP.md for the plan towards 1000 downloads.

@@ -81,7 +81,7 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
-                missions = {},
+                missions = { "The Warning", "Arthas' Betrayal" },
                 role = "King of Lordaeron, who ignores the Prophet's warning in the opening cinematic and is killed by his son Arthas in the closing one",
             },
         },
@@ -319,7 +319,7 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Spirits of Ashenvale", "The Hunter of Shadows", "By Demons Be Driven" },
+                missions = { "The Spirits of Ashenvale", "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
                 role = "Chieftain of the Warsong Clan, a playable hero who later becomes an enemy to capture",
             },
         },
@@ -346,7 +346,7 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
-                missions = { "The Hunter of Shadows", "By Demons Be Driven" },
+                missions = { "The Hunter of Shadows", "By Demons Be Driven", "The Death of Hellscream" },
                 role = "Chieftain of the Warsong Clan who kills Mannoroth in the final cinematic",
             },
         },
