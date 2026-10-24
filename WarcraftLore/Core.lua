@@ -700,7 +700,7 @@ local CHECK_INTERVAL = 2      -- seconds between checks
 local ALERT_RADIUS = 3        -- distance in map percent (0-100) that counts as "nearby"
 
 -- Zone name -> uiMapIDs. Classic-era IDs first, Mainline IDs after; the client only
--- knows one set, so listing both is harmless. Only zones with coords in Data.lua.
+-- knows one set, so listing both is harmless. Only zones with coords in Data.lua or Memorials.lua.
 local ZONE_MAPS = {
     ["Orgrimmar"] = { 1454, 85 },
     ["Durotar"] = { 1411, 1 },
@@ -734,6 +734,13 @@ local ZONE_MAPS = {
     ["The Hinterlands"] = { 1425, 26 },
     ["Arathi Highlands"] = { 1417, 14 },
     ["Stranglethorn Vale"] = { 1434 }, -- Mainline splits the zone in two, so only the Classic ID
+    -- zones that only have memorials or History of Warcraft books
+    ["Westfall"] = { 1436, 52 },
+    ["Dun Morogh"] = { 1426, 27 },
+    ["Desolace"] = { 1443, 66 },
+    ["Swamp of Sorrows"] = { 1435, 51 },
+    ["Blasted Lands"] = { 1419, 17 },
+    ["Wetlands"] = { 1437, 56 },
 }
 ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
 

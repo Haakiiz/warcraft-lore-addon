@@ -1,0 +1,48 @@
+[
+ {
+  "id": 4075,
+  "name": "Rat",
+  "tag": "",
+  "wiki_title": "Rat",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...|icon=Rat}} in [[Kun-Lai Summit]], [[Thundering Pandaren Spirit]]'s battle pet. *{{wc3-inline}} {{NPC||Filson the Rat|icon=Rat}} in the [[The Culling (WC3 Human)|Stratholme]] zoo during the [[Warcraft III: Reign of Chaos|Third War]]. *{{NPC|Neutral|Flora (rat)||Flora|icon=Rat2}} in the [[Vatworks]] in [[Undermine]]. *{{NPC|Neutral|Flumpers|icon=Rat2}} on the top floor of the [[Leaky Roof Motel]] in the Undermine. *{{NPC|Neutral|Gnawface|icon=Rat}} in the [[Garrison]] menagerie. *{{wc3-inline}} {{NPC||Grank the Rat|icon=Rat}} in the [[Wrath of the Betrayer (WC3 Night Elf)|Broken Isles]] during the Third War. *{{NPC|Neutral|Keepers (rat)||Keepers|icon=Rat}} at [[Breaker's Crown]] in [[Gorgrond]], one of {{au|Rexxar}}'s pets. *{{NPC|Alliance|Littl...",
+   "  [italic-ref] ...nivorous rodents thrive almost anywhere. Rats usually run away. They bite only as a last resort. They are stealthy and good at balancing and swimming.<ref>''[[Monster Guide Web Supplement]]'', pg. 16</ref>  '''Dire rats''' are a large species of rat living in the [[Emerald Dream]].<ref>''[[Shadows & Light]]'', pg. 145</ref>  ==Notes== *The intrepid archaeologist [[Harrison Jones]] has a well-documented fear of rats.<ref>[[Rat (critter)|Rat]]</ref> *Rats appear as [[Critter (Warcraft III)|critters]] in {{g|wc3}}. *In the canceled ''[[Warcraft Adventures: Lord of the Clans|Warcraft Adventures]]'', [[Thrall]] encountered a species called \"[[razor-rat]]s\" within the [[Alterac Mountains]].  ==Gallery== <gallery> File:Dig Rat.jpg|Classic rat model. File:Plague (rat).jpg|{{g|legion}} mod..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 12997,
+  "name": "Monty",
+  "tag": "Rat Extermination Specialist",
+  "wiki_title": "Monty",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the ''Warcraft III'' pandaren|Monty (pandaren)|the human villager named Monty in Reforged|Hebon|the orc|Monty the Plunderer}} {{Npcbox |name=Monty |title=Rat Extermination Specialist |image=Monty.jpg |level=Dun Morogh |race=Gnome |gender=Male |creature=Humanoid |faction=Alliance |aggro={{aggro|1|-1}} |affiliation=[[Ironforge (faction)|Ironforge]] |location=[[Deeprun Tram]] | status = Alive |relatives = [[Nipsy]] (brother) }}  '''Monty''' is a [[gnome]] and \"Rat Extermination Specialist\" located on the [[Ironforge]] side of the [[Deeprun Tram]]. Ever since the [[fall of Gnomeregan]], he's been acting like a [[pi..."
+  ]
+ }
+]

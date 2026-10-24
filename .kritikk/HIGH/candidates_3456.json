@@ -1,0 +1,228 @@
+[
+ {
+  "id": 4075,
+  "name": "Rat",
+  "tag": "",
+  "wiki_title": "Rat",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...|icon=Rat}} in [[Kun-Lai Summit]], [[Thundering Pandaren Spirit]]'s battle pet. *{{wc3-inline}} {{NPC||Filson the Rat|icon=Rat}} in the [[The Culling (WC3 Human)|Stratholme]] zoo during the [[Warcraft III: Reign of Chaos|Third War]]. *{{NPC|Neutral|Flora (rat)||Flora|icon=Rat2}} in the [[Vatworks]] in [[Undermine]]. *{{NPC|Neutral|Flumpers|icon=Rat2}} on the top floor of the [[Leaky Roof Motel]] in the Undermine. *{{NPC|Neutral|Gnawface|icon=Rat}} in the [[Garrison]] menagerie. *{{wc3-inline}} {{NPC||Grank the Rat|icon=Rat}} in the [[Wrath of the Betrayer (WC3 Night Elf)|Broken Isles]] during the Third War. *{{NPC|Neutral|Keepers (rat)||Keepers|icon=Rat}} at [[Breaker's Crown]] in [[Gorgrond]], one of {{au|Rexxar}}'s pets. *{{NPC|Alliance|Littl...",
+   "  [italic-ref] ...nivorous rodents thrive almost anywhere. Rats usually run away. They bite only as a last resort. They are stealthy and good at balancing and swimming.<ref>''[[Monster Guide Web Supplement]]'', pg. 16</ref>  '''Dire rats''' are a large species of rat living in the [[Emerald Dream]].<ref>''[[Shadows & Light]]'', pg. 145</ref>  ==Notes== *The intrepid archaeologist [[Harrison Jones]] has a well-documented fear of rats.<ref>[[Rat (critter)|Rat]]</ref> *Rats appear as [[Critter (Warcraft III)|critters]] in {{g|wc3}}. *In the canceled ''[[Warcraft Adventures: Lord of the Clans|Warcraft Adventures]]'', [[Thrall]] encountered a species called \"[[razor-rat]]s\" within the [[Alterac Mountains]].  ==Gallery== <gallery> File:Dig Rat.jpg|Classic rat model. File:Plague (rat).jpg|{{g|legion}} mod..."
+  ]
+ },
+ {
+  "id": 14881,
+  "name": "Spider",
+  "tag": "",
+  "wiki_title": "Spider",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... of [[Ashenvale Forest]]. Though not necessarily evil, wild spiders can become fearsome opponents if they feel their nests have been defiled.<ref>''[[Warcraft III: Reign of Chaos Game Manual]]'', pg. 144</ref>  Spiders commonly rely on poisonous attacks and webbing when hunting or defending themselves, often striking from a distance. Their bite can be venomous, while their many legs make them agile opponents. Some grow to enormous sizes after years of hunting increasingly larger prey, learning to hide in dark places and attack from the shadows.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Spider|Monster Descriptions]]'', Spider</ref> Not all spiders remain carnivorous, however. [[Amethyst Spiderling]]s have entirely lo...",
+   "  [italic-ref] ...y corners of [[Ashenvale Forest]]. Though not necessarily evil, wild spiders can become fearsome opponents if they feel their nests have been defiled.<ref>''[[Warcraft III: Reign of Chaos Game Manual]]'', pg. 144</ref>  Spiders commonly rely on poisonous attacks and webbing when hunting or defending themselves, often striking from a distance. Their bite can be venomous, while their many legs make them agile opponents. Some grow to enormous sizes after years of hunting increasingly larger prey, learning to hide in dark places and attack from the shadows.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Spider|Monster Descriptions]]'', Spider</ref> Not all spiders remain carnivorous, however. [[Amethyst Spiderling]]s have entirely lost their appetite for meat and i..."
+  ]
+ },
+ {
+  "id": 15989,
+  "name": "Sapphiron",
+  "tag": "",
+  "wiki_title": "Sapphiron",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||his ''[[Warcraft III: The Frozen Throne|The Frozen Throne]]'' statistics|Sapphiron (Warcraft III)|his pre-''[[World of Warcraft: Wrath of the Lich King|Wrath of the Lich King]]'' encounter|Sapphiron (Classic)|strategy on his current encounter|Sapphiron (tactics)}} {{Npcbox  | name = Sapphiron  | image = Sapphiron Maldraxxus.jpg  | faction = Combat  | gender = Male  | race = Frost wyrm  | creature = Undead  | level = sl-max  | type = Elite  | aggro = {{Aggro|-1|-1}}  | affiliation = [[Kel'Thuzad]]   | faffiliation = [[Scourge]], [[Blue dragonflight]]  | occupation = Minion of Kel'Thuzad  | foccupation = Guardian o...",
+   "  [italic-ref] ...olis]] [[Naxxramas]], where he protected the [[Frostwyrm Lair]] against intruders seeking to reach the chamber of the citadel's master [[Kel'Thuzad]].<ref>''[[Exploring Azeroth: Northrend]]'', pg. 89</ref> With his magical powers having been amplified when he was resurrected by Arthas, Sapphiron used his frost magic to defend Kel'Thuzad at all costs.<ref name=\"Classic Naxxramas\"/> Even in undeath, he continued to hold onto his key to the Focusing Iris, which was retrieved by [[adventurer]]s when they defeated the frost wyrm on their way to Kel'Thuzad.<ref name=\"Key\"/><ref name=\"Heroic Key\"/>  ===Shadowlands=== {{Sl-section}} Another several years later in the afterlife of [[Maldraxxus]], Kel'Thuzad and [[Baroness Ninadar]] betrayed [[Margrave Sin'dane]] to usurp control of the [[H..."
+  ]
+ },
+ {
+  "id": 15990,
+  "name": "Kel'Thuzad",
+  "tag": "",
+  "wiki_title": "Kel'Thuzad",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Blood of the Highborne |  | *{{RaceIcon|Kel'Thuzad}} [[Kel'Thuzad]]",
+   "Cycle of Hatred |  | *{{RaceIcon|Kel'Thuzad}} [[Kel'Thuzad]]",
+   "Jaina Proudmoore: Tides of War |  | *{{RaceIcon|Kel'Thuzad}} [[Kel'Thuzad]]",
+   "Road to Damnation |  | *{{RaceIcon|Human|Male}} [[Kel'Thuzad]]",
+   "Tides of Darkness | Alliance | *{{RaceIcon|Human|Male}} [[Kel'Thuzad]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...d ''{{HS|Scholomance Academy}}'', and he is a playable character in ''[[Heroes of the Storm]]''.  {{OTOC|400|275}}  ==Biography== ===The Kirin Tor=== {{Novel-section}} [[File:Kel'thuzadhuman.jpg|thumb|upright=.5|Archmage Kel'Thuzad of the Kirin Tor before the [[Third War]].]] Before the [[Second War]], Kel'Thuzad was a member of the [[Council of Six]], the high council of the [[Kirin Tor]] — the masters of [[Dalaran]]. Of the Kirin Tor's leaders, Kel'Thuzad was the most eager to gain access to the [[Guardian's Library]] — the depository of knowledge hoarded by [[Medivh]] in his tower of [[Karazhan]] - and thus he was most upset when the library was lost. After Medivh's death, Kel'Thuzad and the other senior members of the Kirin Tor questioned Medivh's app...",
+   "  [book-or-game-characters-category] ...] [[Category:Scourge]] [[Category:Quest givers]] [[Category:Unique models]] [[Category:Old Hillsbrad Foothills NPCs]] [[Category:Borean Tundra NPCs]] [[Category:Tides of Darkness characters]] [[Category:World of Warcraft: Ashbringer characters]] [[Category:Road to Damnation characters]] [[Category:Arthas: Rise of the Lich King characters]] [[Category:Blood of the Highborne characters]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Pet Journal characters]] [[Category:Heroes of the Storm characters]] [[Category:Hearthstone legendary cards]] [[Category:Hearthstone heroes]] [[Category:Maldraxxus NPCs]] [[Category:Maldraxxus souls]] [[Category:World of Warcraft: Sylvanas characters]]...",
+   "  [rts-words] ...d exiled from [[Dalaran]] by the [[Antonidas|Grand Magus Antonidas]]. Driven by the voice in his head, he traveled to [[Northrend]] and climbed the [[Frozen Throne]] to offer his soul to the [[Lich King]].  Now a necromancer of the [[Scourge]], Kel'Thuzad returned to [[Lordaeron]] and founded in secret the [[Cult of the Damned]], recruiting cultists among the nobility and the lower classes of the kingdoms with promises of immortality. Years later, he became one of the principal agents of the Lich King responsible for spreading the [[Plague of Undeath|plague]] of [[undeath]] across [[Lordaeron (kingdom)|Lordaeron]],<ref>[[Kel'Thuzad and the Forming of the Scourge]]</ref><ref>[[The Scourge of Lordaeron (History of Warcraft)]]</ref> resulting in his death ...",
+   "  [italic-ref] ...lich of [[Naxxramas]], leader and founder of the [[Cult of the Damned]], member of the Council of Six, [[Archmage]] of the [[Kirin Tor]], [[Sorcerer]]<ref>''[[World of Warcraft: Game Manual#Sunwell – The Fall of Quel'Thalas|World of Warcraft: Game Manual]]'', pg. 158</ref> | location = [[Throne of the Damned]] (lore);<br> [[#Locations|Various]] (in-game) | status = Deceased (lore)<br> Killable {{Sl-inline}} | mentors = [[Ner'zhul|Lich King Ner'zhul]] | students = [[Helcular]], [[Ras Frostwhisper]], [[Bronjahm]], [[Acolyte Nelesis|Nelesis]] | companions = [[Mr. Bigglesworth]] (pet), [[Obrahiim, the Traveler|Obrahiim]] (trusted adviser) }} {{QuoteWiki|I was cast out by [[Kirin Tor|my comrades]], exiled, forced to wander the [[Northrend|frozen wastes]]. But I was not alone. Not entirely. The [[Lich King|voice]], now my only companion, guided me to m..."
+  ]
+ },
+ {
+  "id": 16062,
+  "name": "Highlord Mograine",
+  "tag": "The Ashbringer",
+  "wiki_title": "Alexandros Mograine",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "We Ride Forth |  | *{{RaceIcon|Mograine}} [[Alexandros Mograine]]"
+  ],
+  "excerpts": [
+   "  [rts-words] ...he [[Four Horsemen]].<ref>[[Eligor Dawnbringer#Dragonblight]]</ref>  Following the [[Icecrown Citadel (instance)|fall]] of the [[Lich King]] at the [[Frozen Throne]], one of the champions of Azeroth wielding [[:Shadowmourne]] found [[:Alexandros' Soul Shard]] in an [[:Unsealed Chest]] taken from Arthas' corpse. When they returned it to Darion Mograine, Alexandros' spirit appeared for the final time, thanking his son for saving him from damnation, and explained that the memory of his sacrifice had been the only thing that allowed him to resist [[Frostmourne]]'s torments, before finally disappearing.<ref>[[Mograine's Reunion]]</ref>  ===Shadowlands=== {{Shadowlands-section}} [[File:Alexandros and Darion reunion.jpg|thumb|Alexandros and [[Darion Mograine|D...",
+   "  [italic-ref] ...xus.jpg {{!}} Maldraxxi File:Ashbringer1CoverArtworkB.jpg {{!}} Human | faction = Neutral | titles = The Ashbringer, Baron,<br> Scourge of the Scourge<ref name=Ashbringer20>''[[World of Warcraft: Ashbringer]]'', pg. 20</ref><br/> '''Formerly:'''<br/> Highlord of the Silver Hand, Commander, Lord, Sir<ref name=\"DeathIsContagious\" /> | gender = Male | resource = Mana | races = [[Maldraxxi]], formerly [[human]] | creature = Humanoid / Undead | character = [[Death knight]] (formerly [[paladin]]) | affiliation = [[House of the Chosen]], [[Undying Army]], [[Necrolord Covenant]] | faffiliation = [[Four Horsemen]], [[Scourge]] (unwillingly), [[Knights of the Silver Hand]], [[Lordaeron (kingdom)|Kingdom of Lordaeron]],<ref name=\"DeathIsContagious\" /> [[Alliance of Lordaeron]] | occupation = Baron of the House..."
+  ]
+ },
+ {
+  "id": 16063,
+  "name": "Sir Zeliek",
+  "tag": "",
+  "wiki_title": "Sir Zeliek",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...the [[Light]] still heeded his call, smiting his foes in battle.<ref>[[Commander Eligor Dawnbringer#Quotes]]</ref><ref name=WC3FK>[[War of the Damned (WC3 Undead)]]</ref> Though his body was forced to obey [[Kel'Thuzad]]'s commands, he managed to retain his sanity and morals despite his corruption. This makes him a tragic character, forced to slay what he once held dear in his heart against his will.  ==Background== ===Forsaken Kingdom=== {{WC3FK-section}} [[Garek Bandarion]], [[Dark Ranger Anya]], and [[Leonid Barthalomew]] encountered Sir Zeliek in their incursion on Naxxramas. Garek and Leonid both noted Zeliek's ability to wield the [[Light]] despite being undead; Leonid exclaimed it was sacrilege. Zeliek responded \"I pray the Light destroy...",
+   "  [italic-ref] ...ref>  ===Ashbringer=== {{Comic-section}} Following the [[Third War]], Sir Zeliek witnessed the enslaving of [[Alexandros Mograine]] by [[Kel'Thuzad]].<ref>''[[World of Warcraft: Ashbringer]]'', Issue #2 [[Ashes to Ashes]]</ref> He later fought against the party [[Darion Mograine]] led into [[Naxxramas]], begging them to turn around before it was too late. He eventually stabbed [[Brannigan Thundermaul]] in the back, asking for forgiveness as he did so. Before he died, Brannigan managed to strike Zeliek in the head, temporarily taking him out of the fight. When Zeliek stirred, the battle was over, and he was left alone to lament his cursed existence.<ref>''[[World of Warcraft: Ashbringer|World of Warcraft: Ashbringer]]'': ''[[Naxxramas (comic)|Naxxramas]]''</ref>  ===World of Warcraf..."
+  ]
+ },
+ {
+  "id": 16064,
+  "name": "Thane Korth'azz",
+  "tag": "",
+  "wiki_title": "Thane Korth'azz",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... of the [[Knights of the Silver Hand]]. This is at least partially confirmed when [[Alexandros Mograine]] refers to Korth'azz as \"one of Uther's men\".<ref>''[[World of Warcraft: Ashbringer]]'', Issue #2</ref>  ==Biography== He was once known as a fallen [[dwarf]] [[paladin]] named [[Orthas]].  ===Ashbringer=== {{Comic-section}} Following the [[Third War]], Thane Korth'azz witnessed the enslaving of [[Alexandros Mograine]] by [[Kel'Thuzad]].<ref>''[[World of Warcraft: Ashbringer]]'', Issue #2 [[Ashes to Ashes]]</ref> He later fought against the party [[Darion Mograine]] led into [[Naxxramas]], trading blows (and insults) with [[Brannigan Thundermaul]] until the latter was slain by [[Sir Zeliek]]. He then struck [[Castillian]] in the back of the head and used his fire magic to free [..."
+  ]
+ },
+ {
+  "id": 16065,
+  "name": "Lady Blaumeux",
+  "tag": "",
+  "wiki_title": "Lady Blaumeux",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...== ===Ashbringer=== {{Comic-section}} Following the [[Third War]], Lady Blaumeux witnessed the enslaving of [[Alexandros Mograine]] by [[Kel'Thuzad]].<ref>''[[World of Warcraft: Ashbringer]]'', Issue #2 [[Ashes to Ashes]]</ref> She later fought against the party [[Darion Mograine]] led into [[Naxxramas]]. She was eventually defeated when [[Grunn'Holde]] struck her in the head with a throwing axe.<ref>''[[World of Warcraft: Ashbringer]]'', Issue #3 [[Naxxramas (comic)]]</ref>  ===World of Warcraft=== {{Wow-section}} Along with her fellow horsemen, Lady Blaumeux stood in Naxxramas above [[Stratholme]] and oversaw [[the Military Quarter]]. They later fought the champions of the [[Alliance]] and [[Horde]] and the [[Argent Dawn]] assaulting the [[necropolis]].<ref>[[Four Horsemen (Class..."
+  ]
+ },
+ {
+  "id": 16146,
+  "name": "Deathknight",
+  "tag": "",
+  "wiki_title": "Death knight",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... and decay, spreading infection and controlling undead minions to do their bidding.<ref name=\"DK class\"/>  Death knights were first introduced in ''[[Warcraft II: Tides of Darkness|Warcraft II]]'', then as a [[Hero (Warcraft III)|hero unit]] in ''[[Warcraft III: Reign of Chaos|Warcraft III]]''. The death knight was the first [[hero class]] of ''[[World of Warcraft]]'', introduced in the {{g|wotlk}} expansion. Each death knight of the game's original 8 races begins at level 8 and has a [[Death knight starting experience|unique starting experience]] in [[Plaguelands: The Scarlet Enclave]]. However, the more recent death knights risen by [[Bolvar Fordragon]] in the {{g|sl}} expansion, instead, start at level 10 and are sent directly to their faction's ca...",
+   "  [italic-ref] ... *[[Death Knight#Unholy|Unholy death knights]] are masters of death and decay, spreading infection and controlling undead minions to do their bidding.<ref name=\"DK class\"/>  Death knights were first introduced in ''[[Warcraft II: Tides of Darkness|Warcraft II]]'', then as a [[Hero (Warcraft III)|hero unit]] in ''[[Warcraft III: Reign of Chaos|Warcraft III]]''. The death knight was the first [[hero class]] of ''[[World of Warcraft]]'', introduced in the {{g|wotlk}} expansion. Each death knight of the game's original 8 races begins at level 8 and has a [[Death knight starting experience|unique starting experience]] in [[Plaguelands: The Scarlet Enclave]]. However, the more recent death knights risen by [[Bolvar Fordragon]] in the {{g|sl}} expansion, instead, start at level 10 and are sent directly to their faction's capital city.  {{OTOC|300|275}}  ==Class overview== ''When the Lich King's control of his death knights was broken, his former champions sought revenge for the horrors committed under his command. After their ve..."
+  ]
+ },
+ {
+  "id": 16368,
+  "name": "Necropolis Acolyte",
+  "tag": "",
+  "wiki_title": "Necropolis Acolyte",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...tes=Hits for ~800 shadow damage.}}  ==Strategies== Separate them and burn them down from range.  ==Trivia== They bear a striking resemblance with ''[[Warcraft III]]'' [[Acolyte (Warcraft III)|Acolyte]]s.  ==Patch changes== *{{Patch 3.0.2|note=Removed.}} *{{Patch 1.11.0|note=Added.}}  ==External links== {{Elinks-NPC|16368}}  [[Category:Human characters]] [[Category:Acolytes]] [[Category:Cult of the Damned]] [[Category:Removed Naxxramas mobs]]..."
+  ]
+ },
+ {
+  "id": 238286,
+  "name": "Scarlet Crusader",
+  "tag": "",
+  "wiki_title": "Scarlet crusader",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...arlet Crusader who has mastered the art of interrogation can inflict such pain that a creature cannot help but reveal all the Crusader wishes to know.<ref>''[[Lands of Conflict]]'', pg. 186-188</ref>  ==References== {{Reflist}}  {{Warcraft RPG classes}}  [[Category:Scarlet Crusade]] [[Category:Prestige classes]] [[Category:Lands of Conflict]]..."
+  ]
+ },
+ {
+  "id": 238448,
+  "name": "Skeletal Warrior",
+  "tag": "",
+  "wiki_title": "Skeletal warrior",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... War veteran who turned mad and became an undead monstrosity | [[Independent]] | [[Raven Hill Cemetery]], [[Duskwood]] | {{Status|Killable}} |}  ==In Warcraft III== {{WC3-section}} {{Main|Skeleton Warrior (Warcraft III)|Giant Skeleton Warrior}} Called forth from the grave by the insidious [[necromancer]]s, skeletal warriors are mindless slaves of the [[Lich King]]'s powers. These lumbering fighters are highly resilient and tireless. When operating in great numbers, skeleton warriors serve as an invaluable part of the Scourge's combat force.<ref>''[[Warcraft III: Reign of Chaos]]'' [[Warcraft III: Reign of Chaos Game Manual|manual]], pg. 42</ref>  During combat, necromancers, through the powers of [[Ner'zhul]], can raise again the corpses of the recentl...",
+   "  [italic-ref] ...hters are highly resilient and tireless. When operating in great numbers, skeleton warriors serve as an invaluable part of the Scourge's combat force.<ref>''[[Warcraft III: Reign of Chaos]]'' [[Warcraft III: Reign of Chaos Game Manual|manual]], pg. 42</ref>  During combat, necromancers, through the powers of [[Ner'zhul]], can raise again the corpses of the recently slain as skeleton warriors. Though relentless and fearless, these mindless automatons of death soon fall apart and fall to dust.<ref>''[[Warcraft III: Reign of Chaos]]'' [[Warcraft III: Reign of Chaos Game Manual|manual]], pg. 80</ref>  [[Skeleton Warrior (Warcraft III)|Skeleton Warriors]] can be encountered as creeps in the Dungeon, Underground and Northrend tilesets. They can also be summoned from creeps of other tile..."
+  ]
+ },
+ {
+  "id": 238449,
+  "name": "Abomination",
+  "tag": "",
+  "wiki_title": "Abomination",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...isease-ridden slaughterhouses. They carry large cleavers into combat and wield various sickle-bladed hooks on their disproportionate limbs.<ref name=\"Warcraft III manual 102\">''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos Game Manual|manual]], pg. 102</ref> Almost all abominations lack any real intelligence, being outwardly strangely joyful due to their absent-minded expressions and mannerisms, though this is most likely due to their low level of mental capacity. Like the other undead, abominations lust for flesh and are known to eat not only the living but the dead as well.  ==Background== [[File:Hulking Warflesh.png|thumb|A [[Maldraxxi]] abomination in the [[Shadowlands]].]] On [[Azeroth]], the abominations were created by [[Kel'Thuzad]],<ref>[[...",
+   "  [italic-ref] ...mell like disease-ridden slaughterhouses. They carry large cleavers into combat and wield various sickle-bladed hooks on their disproportionate limbs.<ref name=\"Warcraft III manual 102\">''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos Game Manual|manual]], pg. 102</ref> Almost all abominations lack any real intelligence, being outwardly strangely joyful due to their absent-minded expressions and mannerisms, though this is most likely due to their low level of mental capacity. Like the other undead, abominations lust for flesh and are known to eat not only the living but the dead as well.  ==Background== [[File:Hulking Warflesh.png|thumb|A [[Maldraxxi]] abomination in the [[Shadowlands]].]] On [[Azeroth]], the abominations were created by [[Kel'Thuzad]],<ref>[[Rottgut#Notes and trivia|Rottgut]..."
+  ]
+ },
+ {
+  "id": 238450,
+  "name": "Crypt Fiend",
+  "tag": "",
+  "wiki_title": "Crypt fiend",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the ''Warcraft III'' unit|Crypt Fiend (Warcraft III)|the Battle for Mount Hyjal mob|Crypt Fiend (Hyjal Summit)}} {{Infobox race |image = Crypt Keeper HS.jpg |name = Crypt fiend |faction = [[Scourge]] |character = [[Webspinner]], [[Nerubian worker|Worker]], [[Nerubian warrior|Warrior]] |capital = [[Azjol-Nerub]] |homeworld = [[Azeroth]] |language = [[Nerubian (language)|Nerubian]] }}  '''Crypt fiends''' (or '''cryptfiends''')<ref>[[A Soldier in Need]]</ref> are [[undead]] [[nerubian]]s. These large, [[Mummy|mummified]] creatures appear to be a genetic cross between humans and spiders. Their lower bodies are supp..."
+  ]
+ }
+]

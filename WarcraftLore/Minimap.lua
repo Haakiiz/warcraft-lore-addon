@@ -113,7 +113,7 @@ local function build()
         lastDragEnd = C.Now()
         button:SetScript("OnUpdate", nil)
     end)
-    button:SetScript("OnClick", function(_, mouseButton)
+    button:SetScript("OnClick", ns.Guard("minimap", L["the minimap button"], function(_, mouseButton)
         if dragging or C.Now() - lastDragEnd < CLICK_GRACE then
             return
         end
@@ -124,7 +124,7 @@ local function build()
         else
             ns.Browser.Toggle()
         end
-    end)
+    end))
     place()
 end
 

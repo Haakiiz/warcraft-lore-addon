@@ -31,6 +31,8 @@ SHOTS = [  # scenario, crop (frame names, or box:x0,y0,x1,y1 on the 1920x1080 sc
     ("m_memorials_zone", "WarcraftLoreBrowser"),
     ("m_tip", "WarcraftLoreBrowser,GameTooltip"),
     ("m_banner", "box:800,30,1120,330"),
+    ("m_book", BOTH),
+    ("m_book_tip", "WarcraftLoreBrowser,GameTooltip"),
 ]
 
 

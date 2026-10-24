@@ -1,0 +1,122 @@
+[
+ {
+  "id": 883,
+  "name": "Deer",
+  "tag": "",
+  "wiki_title": "Deer",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... only at this time are they commonly found with females.<ref>''[[Monster Guide Web Supplement]]'', pg. 22</ref>  ==Notes== *Deer appear as [[Critter (Warcraft III)|critters]] in ''[[Warcraft III: Reign of Chaos]]''.  ==Gallery== <gallery> File:Mother of Bambina.jpg|Classic deer model. File:Great Courser.jpg|Classic stag model. File:Reforged - Stag concept.jpg|''[[Warcraft III: Reforged]]'' concept art. </gallery>  ==Patch changes== *{{Patch 7.0.3|note=New models added.}} *{{Patch 5.0.4|note=New stag model added.}}  ==References== {{Reflist}}  {{Creaturefooter|Beast}} {{Creaturefooter|Critter}}  [[Category:Deer| ]]...",
+   "  [italic-ref] ..., they are the primary prey of wolves and other predators. Humans typically hunt the smaller deer, while orcs prefer the challenge of an elk or moose.<ref>''[[Manual of Monsters]]'', pg. 164</ref>  Stags are common in forested areas throughout [[Azeroth]]. Though they generally avoid conflict, their mighty antlers and ferocity can make them difficult prey, and they may become aggressive when startled or gathered in larger groups. They are particularly aggressive during mating season in the fall, and only at this time are they commonly found with females.<ref>''[[Monster Guide Web Supplement]]'', pg. 22</ref>  ==Notes== *Deer appear as [[Critter (Warcraft III)|critters]] in ''[[Warcraft III: Reign of Chaos]]''.  ==Gallery== <gallery> File:Mother of Bambina.jpg|Classic dee..."
+  ]
+ },
+ {
+  "id": 1933,
+  "name": "Sheep",
+  "tag": "",
+  "wiki_title": "Sheep",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...endors in the [[Eastern Kingdoms]] and [[Kalimdor]]. *The spell [[Polymorph]] allows mages to transform their enemies into sheep temporarily. *In ''[[Warcraft II]]'', if annoyed, sheep will say \"Baa-ram-ewe\" which is a reference to the sheep's password from {{wp|Babe (film)|Babe, the gallant pig}}. *In ''[[Warcraft III]]'', if a flying unit was polymorphed in lands where sheep were common, they became flying sheep. Likewise, if a waterborne creature were polymorphed, the unit could become two types of aquatic sheep.  ==Gallery== <gallery> File:Farm Sheep.jpg|Old sheep model before the update in {{g|legion}}. File:Tekton.jpg|[[Mechanical sheep]] in ''Legion''. File:Stolen Ram.jpg|[[Ram]] updated model in {{g|sl}}. File:Wild Argali.jpg|[[Argali]] in {{g...",
+   "  [italic-ref] ...e infamous for [[polymorph]]ing their opponents into sheep. Sheep flee rather than attack. Rumors of them exploding spontaneously are unsubstantiated.<ref>''[[Monster Guide Web Supplement]]'', pg. 18</ref>  ==Notes== *[[Highland Sheep Cheese]] is sold by a number of food vendors in the [[Eastern Kingdoms]] and [[Kalimdor]]. *The spell [[Polymorph]] allows mages to transform their enemies into sheep temporarily. *In ''[[Warcraft II]]'', if annoyed, sheep will say \"Baa-ram-ewe\" which is a reference to the sheep's password from {{wp|Babe (film)|Babe, the gallant pig}}. *In ''[[Warcraft III]]'', if a flying unit was polymorphed in lands where sheep were common, they became flying sheep. Likewise, if a waterborne creature were polymorphed, the unit could become two types of aquatic she..."
+  ]
+ },
+ {
+  "id": 2257,
+  "name": "Mug'thol",
+  "tag": "",
+  "wiki_title": "Mug'thol",
+  "already_in_Data_lua": true,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{For|statistics in Warcraft III|Mug'thol (Warcraft III)}} {{Npcbox |name = Mug'thol |image = Mugthol.jpg |titles = Ogre Warlord |gender = Male |race = Ogre |creature = Humanoid |faction = Combat |aggro = {{Aggro|-1|-1}} | level = Hillsbrad Foothills |character = [[Warrior]] |affiliation = [[Crushridge]] |faffiliation = [[Stonemaul clan]], [[Sylvanas' Forces]], [[Forsaken]] |occupation = Warlord of the Crushridge ogres |foccupation = Lord of the Stonemaul, Servant of the Dark Lady  |location = [[Ruins of Alterac]], [[Alterac Mountains]] |status = Killable (WoW)<br>Unknown (lore) }}  '''Mug'thol''' is a ferocious and crafty [...",
+   "  [italic-ref] ... would fall, but Sylvanas had one of her [[banshee]] sisters to possess the ogre, who then declared that his allegiance was now to the \"pretty ghost\".<ref>''[[The Dark Lady (WC3 Undead)]]''</ref>  ===World of Warcraft=== {{wow-section}} Later, Mug'thol and his ogre warband were sent to [[Ruins of Alterac|Alterac]] to retrieve the [[Crown of Will]] for Lady Sylvanas. Unfortunately, instead of returning it, he decided to try it on. The Crown of Will enabled him to free himself from the banshee's possession, and he defected, establishing himself and his band of ogres in the ruins of Alterac as the [[Crushridge]] ogres.<ref>[[The Crown of Will]]</ref>  From the ruins of the [[Alterac palace|old palace]], Mug'thol had three loyal lieutenants named [[Muckrake]], [[Targ]], and [[Glommu..."
+  ]
+ },
+ {
+  "id": 2415,
+  "name": "Warden Belamoore",
+  "tag": "",
+  "wiki_title": "Warden Belamoore",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...], but desires to study them under controlled conditions. It is believed that perhaps she will invent something that will help defeat the [[Scourge]].<ref>''[[Lands of Conflict]]'', pg. 87</ref>  ==Objective of== One of a number of [[mobs]] that drop a quest item for [[Stone Tokens]].  ==Notable drops== *[[Belamoore's Research Journal]] *[[Worn Stone Token]] (Quest item)  ==Abilities== *{{Abilities|Cone of Cold|id=20828|Inflicts Frost damage to enemies in a cone in front of the caster, reducing their movement speed for 8 sec.|icon=spell_frost_glacier}} *{{Abilities|Fireball|id=20823|Inflicts Fire damage to an enemy.|icon=spell_fire_flamebolt}} *{{Abilities|Polymorph|id=13323|Transforms an enemy into a sheep, forcing it to wander around for up to 20 sec. While wandering,..."
+  ]
+ },
+ {
+  "id": 2423,
+  "name": "Lord Aliden Perenolde",
+  "tag": "",
+  "wiki_title": "Aliden Perenolde",
+  "already_in_Data_lua": true,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Beyond the Dark Portal | Alliance | *{{RaceIcon|Human|Male}} [[Aliden Perenolde]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...event)|Cataclysm]], presumably having been killed by [[Lord Aliden Perenolde (quest)|Horde adventurers]].  ==Biography== ===Beyond the Dark Portal=== {{Novel-section}} Aliden was [[Aiden Perenolde|King Aiden Perenolde]]'s eldest son,<ref name=\"BtDP 10\"/> and as such the crown prince of [[Alterac (kingdom)|Alterac]]. According to [[Terenas Menethil II]] of [[Lordaeron (kingdom)|Lordaeron]] (who disliked both father and son), Aliden was pampered as a youth, never knowing hardship or danger. As far as the [[Alliance of Lordaeron|Alliance]] was aware, there is no evidence that Aliden knew of his father's treacherous collaboration with the [[Old Horde|Horde]] during the [[Second War]].<ref name=\"BtDP 7\"/>  Aliden spent the two years after the Second War trying...",
+   "  [book-or-game-characters-category] ...crats]] [[Category:Alterac (kingdom)]] [[Category:Syndicate]] [[Category:Lordaeron army]] [[Category:Alterac Mountains mobs]] [[Category:Named mobs]] [[Category:Beyond the Dark Portal characters]] [[Category:Dark Factions]] [[Category:Alliance Player's Guide]]...",
+   "  [rts-words] ...status = Deceased (lore)<br/> Killable {{wow-inline}} | relatives = [[Aiden Perenolde|Aiden]] (father),<br/> Unnamed siblings,<ref name=\"BtDP 10\">''[[Beyond the Dark Portal]]'', chapter 10</ref><br/> [[Isiden Perenolde|Isiden]] (cousin),<ref>''[[Day of the Dragon]]'', chapter 1, pg. 7</ref><ref name=\"BtDP 7\">''[[Beyond the Dark Portal]]'', chapter 7</ref><br/>[[Elysa]] (mistress) | mentors = [[Aedelas Blackmoore]]<ref name=\"Blackmoore's Legacy\"/> }}  '''Lord Aliden Perenolde''' was the last known leader of the [[Syndicate]]<ref name=\"Blackmoore's Legacy\">[[Blackmoore's Legacy]]</ref> and the eldest son<ref name=\"BtDP 10\"/> of King [[Aiden Perenolde]], the ruler of the [[Alterac (kingdom)|kingdom of Alterac]] during the [[Second War]].  Aliden has not been seen s...",
+   "  [italic-ref] ...Mountains (Classic)}} | status = Deceased (lore)<br/> Killable {{wow-inline}} | relatives = [[Aiden Perenolde|Aiden]] (father),<br/> Unnamed siblings,<ref name=\"BtDP 10\">''[[Beyond the Dark Portal]]'', chapter 10</ref><br/> [[Isiden Perenolde|Isiden]] (cousin),<ref>''[[Day of the Dragon]]'', chapter 1, pg. 7</ref><ref name=\"BtDP 7\">''[[Beyond the Dark Portal]]'', chapter 7</ref><br/>[[Elysa]] (mistress) | mentors = [[Aedelas Blackmoore]]<ref name=\"Blackmoore's Legacy\"/> }}  '''Lord Aliden Perenolde''' was the last known leader of the [[Syndicate]]<ref name=\"Blackmoore's Legacy\">[[Blackmoore's Legacy]]</ref> and the eldest son<ref name=\"BtDP 10\"/> of King [[Aiden Perenolde]], the ruler of the [[Alterac (kingdom)|kingdom of Alterac]] during the [[Second War]].  Aliden has not been seen since..."
+  ]
+ },
+ {
+  "id": 2543,
+  "name": "Archmage Ansirem Runeweaver",
+  "tag": "Kirin Tor",
+  "wiki_title": "Archmage Ansirem Runeweaver",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...isited [[Stranglethorn]] and found a troll relic, a [[Catelyn's Blade|blade]], and later gave it to Catelyn who ran with it off.  ===Cataclysm era=== {{novel-section}} Ansirem Runeweaver remained at the site of the crater left behind by Dalaran's literally earth-shaking exit until the [[Cataclysm (event)|Cataclysm]] of the world. Despite his disappearance, he still served the Kirin Tor and was, in fact, a member of [[The Six]].<ref name=\"ToW\">[[Jaina Proudmoore: Tides of War]]</ref>  Ansirem, [[Modera]], and a few other magi arrived near [[Booty Bay]] to save his daughter Catelyn when she and her crew were under attack from the [[Bloodsail Buccaneers]]. He gave her his cheating gem (having to admit where it came from, as the other magi knew about it) to p...",
+   "  [book-or-game-characters-category] ...Quest givers]] [[Category:Alterac Mountains NPCs]] [[Category:Dalaran (Deadwind Pass) NPCs]] [[Category:Dalaran NPCs]] [[Category:Lands of Conflict]] [[Category:Jaina Proudmoore: Tides of War characters]] [[Category:Destination: Pandaria characters]] [[Category:Warcraft III campaign human heroes]]...",
+   "  [rts-words] ...ng the mages who fought outside [[Dalaran]] against [[Arthas Menethil]] and the [[Scourge]] when [[Kel'Thuzad]] was summoning [[Archimonde]].<ref>''[[Warcraft III: Reforged]]'': [[Under the Burning Sky (WC3 Undead)]]</ref>  [[Grand Magister Rommath]] still holds Ansirem (and [[Archmage Modera|Modera]]) in contempt for doing nothing when Grand Marshal [[Othmar Garithos|Garithos]] locked Prince [[Kael'thas Sunstrider|Kael'thas]] and his followers away in the [[Dungeons of Dalaran]].<ref>[[In the Shadow of the Sun]]</ref>  ===World of Warcraft=== {{wow-section}} Archmage Ansirem Runeweaver was a [[human]] [[quest giver]] located at [[Dalaran Crater]] in the [[Alterac Mountains]]. At some point, he at least worked with [[Baron Revilgaz]].<ref>[[Magical Ana...",
+   "  [italic-ref] ...e it to help him cheat during his exams, but he failed them anyway. After learning that cheaters never prosper, he learned his magecraft the hard way.<ref name=\"QfP\">''[[Quest for Pandaria]]'', part 2</ref>  Ansirem has a daughter named [[Catelyn the Blade|Catelyn]]. Rejecting the \"boring life\" of a mage, she decided to become a pirate and joined the [[Blackwater Raiders]]. Ansirem still cares for his daughter and has a few \"friends\" he keeps plied with gold in Booty Bay who keep him updated when things happen there.<ref name=\"QfP\"/>  By the time of the [[Third War]], Ansirem was a member of the [[Council of Six]]. Moments after the death of [[Antonidas]], Ansirem was among the mages who fought outside [[Dalaran]] against [[Arthas Menethil]] and the [[Scourge]] when [[Kel'Thuzad]] ..."
+  ]
+ },
+ {
+  "id": 6768,
+  "name": "Lord Jorach Ravenholdt",
+  "tag": "Lord of the Assassin's League",
+  "wiki_title": "Lord Jorach Ravenholdt",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...],<ref>[[The Tomb of Sargeras trailer]]</ref> as the Uncrowned joined the other orders to form the [[Armies of Legionfall]].  ===Exploring Azeroth=== {{novel-section}} Following the [[Argus Campaign]] and the [[Fourth War]], [[Mathias Shaw|Spymaster Mathias Shaw]] mentioned in his report that the [[Uncrowned]] were still active with Jorach Ravenholdt at their head.<ref name=\"Exploring Azeroth\" />  ===The War Within=== {{Tww-section}} Following the destruction of [[Dalaran]] by [[Xal'atath]], he could be found along with the Uncrowned leaders in the [[Kindling Parlor]] in [[Dornogal]].  ==Locations== {{Npclocations|align=|start=|loc=[[Ravenholdt Manor]], [[Hillsbrad Foothills]]{{co|71.6|45.0|Hillsbrad Foothills}}|level=Hillsbrad Foothills|reaction={{Aggro|...",
+   "  [italic-ref] ...liction who wandered the part of the Highlands where his headquarter is located, housing the base of operations out of his [[Ravenholdt Manor|manor]].<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 71</ref>  ===World of Warcraft=== {{Wow-section}} [[File:Lord Jorach Ravenholdt.jpg|thumb|upright|Jorach Ravenholdt in his [[Ravenholdt Manor|manor]].]] Years later, Lord Jorach Ravenholdt was present in his [[Ravenholdt Manor|manor]] in the [[Alterac Mountains]] from where he led his organization and continued to fight against the [[Syndicate]]. After being stolen by some thieves, whom he had eliminated, he summoned a promising [[rogue]] [[adventurer]] to retrieve a [[Sealed Azure Bag]],<ref>[[A Simple Request]]</ref> which was sold with its secret contents as a holy relic to some [[Tim..."
+  ]
+ }
+]

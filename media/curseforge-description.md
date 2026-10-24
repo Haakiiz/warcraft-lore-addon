@@ -8,12 +8,18 @@ Warcraft Lore flags NPCs who also appear in the real-time strategy games and the
 - Warcraft III Reforged: Forsaken Kingdom
 - Warcraft novels and short stories (labelled "Book", never presented as a game appearance)
 
-**130 confirmed veterans, 12 memorials and 41 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
+**146 confirmed veterans, 12 memorials, 18 History of Warcraft books and 54 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
+
+## New in v0.9
+
+- **Library:** the 18 in-game *History of Warcraft* books retell the strategy games, from *The Last Guardian* to *Old Hatreds*. Read them on the shelves of Stormwind, Ironforge, Undercity and the inns, find every copy on the world map, and earn **Student of History**.
+- **Ready for the higher levels:** Kel'Thuzad, Drek'Thar, Rend Blackhand, Onyxia, Nefarian, Baron Rivendare and ten more wait in the dungeons, raids and Alterac Valley.
+- **Every veteran re-checked** against its sources, with dozens of new novel appearances.
 
 ## New in v0.8 and v0.7
 
 - **Warcraft II look:** every window now looks like a remaster of the Warcraft II menus: stone frame, cracked leather, red buttons and gold text. Prefer the old violet look? One click on the **Classic** button next to the close X switches.
-- **Lore Journal with 41 achievements:** milestones from 1 to 100 veterans, one per Warcraft game, one per zone, "Circles" of related characters and more. A small gold banner pops up when you earn one.
+- **Lore Journal with 54 achievements:** milestones from 1 to 100 veterans, one per Warcraft game, one per zone, "Circles" of related characters and more. A small gold banner pops up when you earn one.
 - **Memorials:** the heroes you can't meet in person still count. Uther's Tomb, the plaques in Stormwind's Valley of Heroes, Trollbane's Tomb, Grom Hellscream's monument and more are on the world map, ready to be visited.
 - **Deutsch und Français:** the interface speaks German and French. The stories stay in English.
 

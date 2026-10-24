@@ -1,0 +1,229 @@
+[
+ {
+  "id": 89,
+  "name": "Infernal",
+  "tag": "",
+  "wiki_title": "Infernal",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... limited, the mighty infernals have been known to destroy entire cities before their energies dissipated back into the [[Great Dark Beyond]].<ref>''[[Warcraft III: Reign of Chaos manual#Infernal|Warcraft III: Reign of Chaos manual: Infernal]]''</ref>  ==Background== [[File:Sargeras in Combat.jpg|thumb|left|upright=0.5|Titan [[Sargeras]] fighting demons including a infernal.]] [[File:Infernal (warlock minion).jpg|thumb|A [[warlock]]'s [[Infernal (warlock minion)|infernal minion]].]] The infernals are the embodiment of primal force. They are creatures that exist only to crush, pummel, or crash through whatever obstacles-living or not-lay in their path. The spells of the warlocks and other dark sorcerers of the [[Burning Legion]] make them a force nigh un...",
+   "  [italic-ref] ...s|icon=DarkTitan Male}} | language = [[Eredun]], [[Common (language)|Common]], [[Orcish (language)|Orcish]] <br/> {{RPG-inline}} Understand [[Eredun]]<ref name=\"ReferenceA\">''[[Monster Guide]]'', pg. 92</ref> }}  '''Infernals''' are nearly mindless<ref>[[World of Warcraft: Illidan]], ''\"The ozone scent in the Outland air brought back the memory of her first encounter with an infernal. She recalled the stench of the near-mindless thing as vividly as the night blossoms blooming amid the pavilions of Darnassus.\"''</ref> amalgamations of matter and [[fel]] energy, created by more powerful and intelligent [[demon]]s.<ref>''[[World of Warcraft: Chronicle Volume 1]]'', pg. 21</ref> Acting as living siege weapons, these brutes use blazing fists of fel fire and stone to hammer down the defens..."
+  ]
+ },
+ {
+  "id": 10981,
+  "name": "Frostwolf",
+  "tag": "",
+  "wiki_title": "Frostwolf",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...Orcs]], the [[alternate universe]] faction **[[Frostwolf clan (film universe)]] *[[Frost wolf]], a wolf species native to [[Draenor]] **[[Frost Wolf (Warcraft III)]], a creep in ''[[Warcraft III]]'' **[[Frost Wolf (Alterac Valley)]], a mob in [[Alterac Valley]] **[[Frost Wolf (NPC)]], an NPC in Frostfire Ridge and {{au|Nagrand}} **[[Frost Wolf (mob)]], a mob in Frostfire Ridge **[[Horn of the Frostwolf Howler]], a mount *Alterac Valley locations: **[[Frostwolf Graveyard]] (\"FW\" or \"Frostwolf\" commonly refer to this in Alterac Valley.) **[[Frostwolf Village]] **[[Frostwolf Keep]] **[[Frostwolf Relief Hut]] *Realms: **[[Server:Frostwolf US]] **[[Server:Frostwolf Europe]]..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 11946,
+  "name": "Drek'Thar",
+  "tag": "Frostwolf General",
+  "wiki_title": "Drek'Thar",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Charge of the Aspects |  | *{{RaceIcon|Drek'Thar}} [[Drek'Thar]]",
+   "Cycle of Hatred |  | *{{RaceIcon|Drek'Thar}} [[Drek'Thar]]",
+   "Lord of the Clans |  | *{{RaceIcon|Drek'Thar}} [[Drek'Thar]]",
+   "Rise of the Horde |  | *{{RaceIcon|OrcBrown|Male}}{{RaceIcon|Drek'Thar}} [[Drek'Thar]]",
+   "War Crimes |  | *{{RaceIcon|Drek'Thar}} [[Drek'Thar]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...e [[Fourth War]].  He is also an elite boss located at [[Frostwolf Keep]] in [[Alterac Valley]].  {{OTOC|400|300}}  ==Biography== ===Early history=== {{Novel-section}} Some claim that Drek'Thar was blind from birth,<ref name=\"ReferenceA\"/><ref name=\"UVG\"/><ref>''[[Ultimate Visual Guide, Updated and Expanded]]'', pg. 134</ref> and others that he went blind later in life.<ref>[[BlizzCon 2013]] The Adventure Continues panel</ref><ref name=\"RotH\">''[[Rise of the Horde]]''</ref> Drek'Thar was an apprentice shaman to the Frostwolf far seer, [[Mother Kashur]], for many years on [[Draenor]]. When Kashur was killed while hunting, Drek'Thar became the senior Frostwolf shaman. Unlike his chieftain, [[Durotan]], Drek'Thar was willing to accept [[Ner'zhul]]'s announce...",
+   "  [book-or-game-characters-category] ...Cs]] [[Category:Hillsbrad Foothills NPCs]] [[Category:Heart of Azeroth NPCs]] [[Category:Undercity NPCs]] [[Category:Warcraft Adventures characters]] [[Category:Lord of the Clans characters]] [[Category:Rise of the Horde characters]] [[Category:Legends characters]] [[Category:The Shattering: Prelude to Cataclysm characters]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Charge of the Aspects characters]] [[Category:World of Warcraft: Shaman characters]] [[Category:War Crimes characters]] [[Category:Magic & Mayhem]] [[Category:Hearthstone legendary cards]]...",
+   "  [rts-words] ...ernate timeline|alternate universe]]|Drek'Thar (alternate universe)|the character from the [[Warcraft film universe]]|Drek'Thar (film universe)|the ''Warcraft III'' hero unit|Drek'Thar (Warcraft III)}} {{Npcbox | name = Drek'Thar | image = Drek'Thar HS.jpg | titles = Frostwolf General,<br> Elder Shaman<br/> '''Formerly:'''<br/> Farseer | faction = Horde | resource = Mana | affiliation = [[Frostwolf clan]], [[Horde]], [[Earthen Ring]] | faffiliation = [[Old Horde]] | race = Orc | creature = Humanoid | gender = Male | character = [[Shaman]], [[Far seer]], [[Warlock]] (formerly) | occupation = Leader and elder shaman of the Frostwolf clan, [[Seer]] of the Earthen Ring | foccupation = [[Farseer]] of the Frostwolf clan, Advisor to Thrall | location = [[#Loc...",
+   "  [italic-ref] ...ing | foccupation = [[Farseer]] of the Frostwolf clan, Advisor to Thrall | location = [[#Locations|Various]] | status = Alive | relatives = None known<ref name=\"UVG\">''[[Ultimate Visual Guide]]'', pg. 122</ref><br>{{WA-inline}} [[Kal'Thar]] (son) | mentors = [[Mother Kashur]] | students = [[Thrall]], [[Palkar]] | companions = [[Wise-ear]], [[Duros]], [[Drakan]] (wolf companions) | instance = Alterac Valley | profession = Pickpocket }} {{QuoteWiki|The land will weep, and the world will break!|Drek'Thar prior to the [[Cataclysm (event)|Cataclysm]] of [[Azeroth]]<ref>''[[The Shattering: Prelude to Cataclysm]]'', pg. 323</ref>}}  '''Drek'Thar''' (sometimes spelled '''Drek'thar''') is the elder [[shaman]] and former [[farseer]] of the [[Frostwolf clan]], and served as [[Thrall]]'s tutor ma..."
+  ]
+ },
+ {
+  "id": 12121,
+  "name": "Draka",
+  "tag": "",
+  "wiki_title": "Draka",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Heartlands |  | *{{RaceIcon|Draka}} [[Draka]]",
+   "Lord of the Clans |  | *{{RaceIcon|Draka}} [[Draka]]",
+   "Rise of the Horde |  | *{{RaceIcon|OrcBrown|Female}}{{RaceIcon|Draka}} [[Draka]]",
+   "War Crimes |  | *{{RaceIcon|Draka}} [[Draka]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...where she was noticed by [[Durotan]] and [[Orgrim Doomhammer]].<ref>''[[A Warrior Made--Part 2]]''</ref><ref name=\"RotH5\" />  ===Rise of the Horde=== {{novel-section}} [[File:Draka TCG.jpg|thumb|upright|Draka as she appeared in life.]] Durotan met Draka again at the [[Kosh'harg]] celebration without first recognizing her, now that she was healthy and strong. He was not sure whether she was of the Frostwolves, but finally understood who she was after seeing her eyes. [[Orgrim Doomhammer|Orgrim]] regretted that she was of another clan, for he would have claimed her otherwise.  The next day, Durotan asked her to join him on a hunt, something which often meant that a male orc intended to choose a female mate. Draka responded that she was too young to be anyon...",
+   "  [book-or-game-characters-category] ...tegory:Rogue characters]] [[Category:Aristocrats]] [[Category:Spies]] [[Category:Frostwolf clan]] [[Category:Undying Army]] [[Category:Quest givers]] [[Category:Lord of the Clans characters]] [[Category:Rise of the Horde characters]] [[Category:Legends characters]] [[Category:War Crimes characters]] [[Category:Deceased characters]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Maldraxxus NPCs]] [[Category:Seat of the Primus NPCs]] [[Category:Oribos NPCs]] [[Category:Revendreth NPCs]] [[Category:Sinfall NPCs]] [[Category:Afterlives characters]] [[Category:Maldraxxus souls]] [[Category:Korthia NPCs]] [[Category:The Maw NPCs]] [[Category:Durotar NPCs]] [[Category:Hearthstone legendary cards]] [[Category:Heartlands characters]] [[Category:Pages with stay a while a...",
+   "  [italic-ref] ...}</ref><br/>matron of wolves<ref name=\"A Traitor's Due\">[[A Traitor's Due]]</ref><br/>'''Formerly:'''<br/>Baroness,<br/> Warrior of the Frostwolf Clan<ref>''[[World of Warcraft: Ultimate Visual Guide|Ultimate Visual Guide]]'', pg. 120</ref> | gender = Female | races = [[Maldraxxi]], formerly [[orc]]<ref name=\"You're Dead To Me\">[[You're Dead To Me]]</ref> | creature = Humanoid / Undead | level = Maldraxxus | type = Normal / Elite | character = [[Warrior]], [[Rogue]] | affiliation = [[House of the Chosen]], [[Undying Army]] | faffiliation = [[House of Eyes]], [[Frostwolf clan]], [[Old Horde]] | occupation = Margrave of the House of the Chosen, [[Spy]] | foccupation = Warrior of the Frostwolf clan | location = [[Maldraxxus]] | status = Active {{Sl-inline}} | relatives = [[Rhakish]] (paternal grandfather)<br/> [[Kelk..."
+  ]
+ },
+ {
+  "id": 12997,
+  "name": "Monty",
+  "tag": "Rat Extermination Specialist",
+  "wiki_title": "Monty",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the ''Warcraft III'' pandaren|Monty (pandaren)|the human villager named Monty in Reforged|Hebon|the orc|Monty the Plunderer}} {{Npcbox |name=Monty |title=Rat Extermination Specialist |image=Monty.jpg |level=Dun Morogh |race=Gnome |gender=Male |creature=Humanoid |faction=Alliance |aggro={{aggro|1|-1}} |affiliation=[[Ironforge (faction)|Ironforge]] |location=[[Deeprun Tram]] | status = Alive |relatives = [[Nipsy]] (brother) }}  '''Monty''' is a [[gnome]] and \"Rat Extermination Specialist\" located on the [[Ironforge]] side of the [[Deeprun Tram]]. Ever since the [[fall of Gnomeregan]], he's been acting like a [[pi..."
+  ]
+ },
+ {
+  "id": 13145,
+  "name": "Lieutenant Grummus",
+  "tag": "",
+  "wiki_title": "Lieutenant Grummus",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... Valley |type=Elite |race=Abomination |creature=Undead |faction=Horde |aggro={{Aggro|-1|1}}  | affiliation = [[Frostwolf clan]], [[Forsaken (kingdom)|Forsaken kingdom]] |occupation=[[Lieutenant]] |status=Unknown |location=Unknown }}__NOTOC__  '''Lieutenant Grummus''' is an [[abomination]] who serves the [[Horde]] in [[Alterac Valley]] during [[Korrak's Revenge]]. He is situated in the southern part of the [[Field of Strife]].  ==Abilities== *{{Abilities|Mortal Strike|id=15708|Inflicts 300% weapon damage and leaves the target wounded, reducing the effectiveness of any healing by 50% for 5 sec.|icon=ability_warrior_savageblow}}  ==Trivia== *Grummus may be a reference to an ''Everquest'' NPC of the [https://everquest.allakhazam.com/db/npc.html?id=10244 same n..."
+  ]
+ },
+ {
+  "id": 13146,
+  "name": "Lieutenant Murp",
+  "tag": "",
+  "wiki_title": "Lieutenant Murp",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... = Horde | aggro = {{Aggro|-1|1}} | occupation = [[Lieutenant]] | character = [[Warrior]] | affiliation = [[Warsong Offensive]], [[Forsaken (kingdom)|Forsaken kingdom]] | faffiliation = [[Frostwolf clan]] | location = [[Wintergrasp]] | status = Active }}  '''Lieutenant Murp''' is an [[abomination]] [[quest giver]] serving the [[Horde]] in [[Wintergrasp]] who previously served the [[Frostwolf Clan]] in [[Alterac Valley]].  ==Abilities== *{{Abilities|Mortal Strike|id=15708|Inflicts 300% weapon damage and leaves the target wounded, reducing the effectiveness of any healing by 50% for 5 sec.|icon=ability_warrior_savageblow}}  ==Quests== *[[Defend the Siege (Horde)]] {{queststartfinish}} *[[Stop the Siege (Horde)]] {{queststartfinish}}  ==Quotes== *{{Text|say|D..."
+  ]
+ },
+ {
+  "id": 13147,
+  "name": "Lieutenant Lewis",
+  "tag": "",
+  "wiki_title": "Lieutenant Lewis",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...e=Elite |race=Forsaken |creature=Humanoid |gender=Male |faction=Horde |aggro={{aggro|-1|1}}  | affiliation = [[Frostwolf clan]], [[Forsaken (kingdom)|Forsaken kingdom]] |occupation = [[Lieutenant]] |character = [[Warrior]] |location=Unknown |status=Unknown }}  '''Lieutenant Lewis''' is an [[elite]] [[Forsaken]] serving the [[Horde]] in [[Alterac Valley]]. Lewis was situated outside [[Iceblood Garrison]].  ==Abilities== *{{Abilities|Mortal Strike|id=15708|Inflicts 300% weapon damage and leaves the target wounded, reducing the effectiveness of any healing by 50% for 5 sec.|icon=ability_warrior_savageblow}}  ==Relatives== {{Relatives}} He could be related to [[Abby Lewis]], [[Jonathan Lewis]], [[Marcy Lewis]], [[Dockmaster Lewis]] and [[Quartermaster Lewis]]...."
+  ]
+ },
+ {
+  "id": 13180,
+  "name": "Wing Commander Jeztor",
+  "tag": "",
+  "wiki_title": "Wing Commander Jeztor",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ge = Jeztor.jpg  | level = 108  | type = Elite  | faction = Horde  | aggro = {{Aggro|-1|1}}  | affiliation = [[Frostwolf clan]], [[Forsaken (kingdom)|Forsaken kingdom]]  | race = Forsaken  | creature = Humanoid  | gender = Female  | class = [[Warrior]]  | occupation = [[Wing commander]], [[Wind rider]]  | location = [[Alterac Valley]]  | instance = Alterac Valley }}  '''Wing Commander Jeztor''' is a [[Forsaken]] serving as senior wing commander of the [[Frostwolf clan]] in [[Alterac Valley]]. At the beginning of each match, she is held prisoner at the Stormpike lumber yard. She provides [[Jeztor's Beacon]] when enough items have been turned in.  ==Abilities== *{{Abilities|Strike|id=15580|Strikes at an enemy, inflicting increased melee damage.|icon=ability_..."
+  ]
+ },
+ {
+  "id": 13181,
+  "name": "Wing Commander Mulverick",
+  "tag": "",
+  "wiki_title": "Wing Commander Mulverick",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...verick}} [[Category:Orc characters]] [[Category:Warrior characters]] [[Category:Wind riders]] [[Category:Frostwolf clan]] [[Category:Dragonmaw clan]] [[Category:Netherwing characters]] [[Category:Quest givers]] [[Category:Alterac Valley NPCs]] [[Category:Shadowmoon Valley NPCs]] [[Category:Durotar NPCs]] [[Category:Hearthstone legendary cards]]..."
+  ]
+ },
+ {
+  "id": 13216,
+  "name": "Gaelden Hammersmith",
+  "tag": "Stormpike Supply Officer",
+  "wiki_title": "Gaelden Hammersmith",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...hp=1}} || Unlimited |}  ==Patch changes== *{{Patch 1.5.0|note=Added.}}  ==External links== {{Elinks-NPC|13216}}  {{DEFAULTSORT:Hammersmith, Gaelden}} [[Category:Wildhammer dwarf characters]] [[Category:Mount vendors]] [[Category:PvP vendors]] [[Category:Stormpike Guard]] [[Category:Alterac Valley NPCs]]..."
+  ]
+ },
+ {
+  "id": 13437,
+  "name": "Wing Commander Ichman",
+  "tag": "",
+  "wiki_title": "Wing Commander Ichman",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...}} [[Category:Human characters]] [[Category:Warrior characters]] [[Category:Gryphon riders]] [[Category:Stormpike Guard]] [[Category:Dragonmaw clan]] [[Category:Netherwing characters]] [[Category:Quest givers]] [[Category:Alterac Valley NPCs]] [[Category:Shadowmoon Valley NPCs]] [[Category:Hearthstone legendary cards]]..."
+  ]
+ },
+ {
+  "id": 13442,
+  "name": "Arch Druid Renferal",
+  "tag": "",
+  "wiki_title": "Elerethe Renferal",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Stormrage |  | *{{RaceIcon|NightElf|Female}} [[Elerethe Renferal|Archdruid Elerethe Renferal]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...er the Alliance and Horde war ended, she swore to restore the valley and spent the next several years trying.<ref name=\"Stormrage\"/>  ===Stormrage=== {{Novel-section}} Elerethe was one of the [[druid]]s who attended the Cenarion Circle convocation that [[Fandral Staghelm]] called in [[Teldrassil]] shortly before the [[War Against the Nightmare]]. [[Broll Bearmantle]] saw her speaking with [[Naralex]], another druid who had similarly tried and failed to restore life to a [[Barrens|wounded region]].<ref name=\"Stormrage\"/>  After the War Against the Nightmare, Elerethe was among the guests at [[Malfurion Stormrage|Malfurion]] and [[Tyrande Whisperwind|Tyrande]]'s wedding. She assisted Naralex, who had been injured during the war.<ref>''[[Stormrage]]'', chapt...",
+   "  [book-or-game-characters-category] ...acters]] [[Category:Archdruids]] [[Category:Cenarion Circle]] [[Category:Stormpike Guard]] [[Category:Quest givers]] [[Category:Alterac Valley NPCs]] [[Category:Stormrage characters]] [[Category:The Shattering: Prelude to Cataclysm characters]] [[Category:Emerald Nightmare NPCs]] [[Category:Deceased characters]]...",
+   "  [italic-ref] ...enture Guide|Elerethe Renferal: Adventure Guide]]</ref> she was a friend of both [[Malfurion Stormrage]]<ref name=\"Quotes\"/> and [[Hamuul Runetotem]].<ref name=\"The Shattering\">''[[The Shattering: Prelude to Cataclysm]]'', chapter 20</ref> She fought for the [[Stormpike Guard]] in [[Alterac Valley]], where she led the summoning of [[Ivus the Forest Lord]] to fight the [[Frostwolf clan]], while personally seeking to save the valley's wildlife.<ref name=\"Stormrage\">''[[Stormrage]]'', chapter 2</ref> Just prior to the [[Cataclysm (event)|Cataclysm]], she was killed by [[Twilight's Hammer]] agents posing as members of the [[Horde]] while attending a peace meeting with Hamuul.<ref name=\"The Shattering\"/> Believing Hamuul to be responsible for her death, her spirit was tormented in the [[Emerald Nightmare]] until sh..."
+  ]
+ }
+]

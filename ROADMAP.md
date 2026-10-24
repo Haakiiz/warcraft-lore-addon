@@ -1,7 +1,7 @@
 # ROADMAP – Warcraft Lore
 
 **Mål: 1000 downloads på CurseForge.**
-Nå: **59** (2026-10-15, v0.8.0). Siden: https://www.curseforge.com/wow/addons/rts-veterans
+Nå: **69** (2026-10-20, v0.8.1). Siden: https://www.curseforge.com/wow/addons/rts-veterans
 
 Status: [x] ferdig · [~] delvis · [ ] gjenstår · ★ = størst effekt på downloads.
 
@@ -20,14 +20,15 @@ Skriv inn tallet fra CurseForge-siden hver mandag.
 | Dato       | Downloads | Versjon | Hva skjedde siden sist |
 |------------|----------:|---------|------------------------|
 | 2026-10-15 |        59 | v0.8.0  | Utgangspunkt           |
+| 2026-10-20 |        69 | v0.8.1  | Ny beskrivelse og nye skjermbilder; v0.8.1 (minnesmerke-filtre, Ansirem) |
 
 ## Milepæl 1 – Butikkvinduet (59 → 100)
 
 Folk som finner siden skal forstå addonen på fem sekunder. Billig, og må gjøres først.
 
-- [~] ★ **Oppdater CurseForge-beskrivelsen** (`media/curseforge-description.md`): skrevet om 2026-10-15 med
-      v0.7 og v0.8 (Journal, achievements, minnesmerker, tysk/fransk, WC2-temaet). Gjenstår: lime den inn på CurseForge.
-- [ ] ★ **Nye skjermbilder i WC2-temaet** + én kort GIF (target Thrall → tooltip → lore-vindu → achievement-banner).
+- [x] ★ **Oppdater CurseForge-beskrivelsen** (`media/curseforge-description.md`): skrevet om 2026-10-15 med
+      v0.7 og v0.8 (Journal, achievements, minnesmerker, tysk/fransk, WC2-temaet). Limt inn på CurseForge.
+- [~] ★ **Nye skjermbilder i WC2-temaet** (lagt inn 2026-10-20) + én kort GIF (gjenstår) (target Thrall → tooltip → lore-vindu → achievement-banner).
       Hovedbildet er det første folk ser i søket. De seks bildene i galleriet viser det gamle utseendet.
 - [ ] **Kategorier og tagger på CurseForge**: legg til «Achievements», «Map & Minimap», «Roleplay» og «Quests & Leveling»
       i tillegg til dagens, så addonen dukker opp i flere lister.
@@ -86,6 +87,7 @@ Forever er en liten klient. De store publikumene er Classic Era/Anniversary og R
 - [x] Tysk og fransk grensesnitt (v0.7)
 - [x] Warcraft II-tema som standard, med bryter til klassisk utseende (v0.8)
 - [x] Automatisk utgivelse til CurseForge ved tag (`.github/workflows/release.yml`)
+- [x] Bibliotek: 18 History of Warcraft-bøker, 16 veteraner i høynivå-dungeons/raids/AV, full kvalitetssjekk (v0.9)
 
 ## Anbefalt rekkefølge
 

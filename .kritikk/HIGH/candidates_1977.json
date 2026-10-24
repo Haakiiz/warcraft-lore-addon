@@ -1,0 +1,210 @@
+[
+ {
+  "id": 89,
+  "name": "Infernal",
+  "tag": "",
+  "wiki_title": "Infernal",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... limited, the mighty infernals have been known to destroy entire cities before their energies dissipated back into the [[Great Dark Beyond]].<ref>''[[Warcraft III: Reign of Chaos manual#Infernal|Warcraft III: Reign of Chaos manual: Infernal]]''</ref>  ==Background== [[File:Sargeras in Combat.jpg|thumb|left|upright=0.5|Titan [[Sargeras]] fighting demons including a infernal.]] [[File:Infernal (warlock minion).jpg|thumb|A [[warlock]]'s [[Infernal (warlock minion)|infernal minion]].]] The infernals are the embodiment of primal force. They are creatures that exist only to crush, pummel, or crash through whatever obstacles-living or not-lay in their path. The spells of the warlocks and other dark sorcerers of the [[Burning Legion]] make them a force nigh un...",
+   "  [italic-ref] ...s|icon=DarkTitan Male}} | language = [[Eredun]], [[Common (language)|Common]], [[Orcish (language)|Orcish]] <br/> {{RPG-inline}} Understand [[Eredun]]<ref name=\"ReferenceA\">''[[Monster Guide]]'', pg. 92</ref> }}  '''Infernals''' are nearly mindless<ref>[[World of Warcraft: Illidan]], ''\"The ozone scent in the Outland air brought back the memory of her first encounter with an infernal. She recalled the stench of the near-mindless thing as vividly as the night blossoms blooming amid the pavilions of Darnassus.\"''</ref> amalgamations of matter and [[fel]] energy, created by more powerful and intelligent [[demon]]s.<ref>''[[World of Warcraft: Chronicle Volume 1]]'', pg. 21</ref> Acting as living siege weapons, these brutes use blazing fists of fel fire and stone to hammer down the defens..."
+  ]
+ },
+ {
+  "id": 1420,
+  "name": "Toad",
+  "tag": "",
+  "wiki_title": "Frog",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the critters|Frog (critter)|and|Toad (critter)|the hunter pet family|Hopper|the ''Warcraft III'' unit|Frog (Warcraft III)}} [[File:Toad of the Wilds HS.jpg|thumb|{{HS|Toad of the Wilds}} in {{g|hs}}.]]  '''Frogs''' are common amphibians found in the worlds of [[Azeroth]], [[Outland]], and [[Bonich]].  ==Characteristics== [[File:Speckled Bullfrog.jpg|thumb|A [[Speckled Bullfrog]], using the toad model introduced in ''Battle for Azeroth''.]] {{Stub/Lore-section}}<!-- +could use a better structure/formatting --> Most brightly colored frogs are incredibly poisonous.<Ref>[[Roseate Hopper#Pet Journal]]</ref><Ref>[[Starkstripe Hopper#Pet Journal]]</ref> The skin of a teal frog sometimes shimm..."
+  ]
+ },
+ {
+  "id": 2914,
+  "name": "Snake",
+  "tag": "",
+  "wiki_title": "Snake",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...nakes. When pierced by these spears, the riders' enemies are weakened and slowly eaten alive as the vile poison courses through their bodies.<ref>''[[Warcraft III: Reign of Chaos]]'' manual, ''[[Warcraft III: Reign of Chaos Game Manual#Wyvern Rider|Orc Units]]'', Wyvern Rider</ref> Brave assassins sometimes capture [[Coral Snake|coral snakes]] to use their highly toxic venom to poison weapons.<ref>[[Coral Snake]]</ref> The [[Jade Forest]]'s mountain [[hozen]] fear the venomous [[Grove Viper|grove vipers]] and often hunt them out of pure spite.<ref>[[Grove Viper]]</ref> [[Bamboo python]]s are a type of snake used by the [[Shado-Pan]] in their Trial of the Red Blossoms.<ref>''[[The Trial of the Red Blossoms]]''</ref> The cobras of [[Azeroth]] are renowne...",
+   "  [italic-ref] ... jungle snakes. When pierced by these spears, the riders' enemies are weakened and slowly eaten alive as the vile poison courses through their bodies.<ref>''[[Warcraft III: Reign of Chaos]]'' manual, ''[[Warcraft III: Reign of Chaos Game Manual#Wyvern Rider|Orc Units]]'', Wyvern Rider</ref> Brave assassins sometimes capture [[Coral Snake|coral snakes]] to use their highly toxic venom to poison weapons.<ref>[[Coral Snake]]</ref> The [[Jade Forest]]'s mountain [[hozen]] fear the venomous [[Grove Viper|grove vipers]] and often hunt them out of pure spite.<ref>[[Grove Viper]]</ref> [[Bamboo python]]s are a type of snake used by the [[Shado-Pan]] in their Trial of the Red Blossoms.<ref>''[[The Trial of the Red Blossoms]]''</ref> The cobras of [[Azeroth]] are renowned for their fast-acting venom and swift strikes.<ref>[[Cobra Hatchling]]</ref>  Years ago, [[human]]..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 13321,
+  "name": "Frog",
+  "tag": "",
+  "wiki_title": "Frog",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the critters|Frog (critter)|and|Toad (critter)|the hunter pet family|Hopper|the ''Warcraft III'' unit|Frog (Warcraft III)}} [[File:Toad of the Wilds HS.jpg|thumb|{{HS|Toad of the Wilds}} in {{g|hs}}.]]  '''Frogs''' are common amphibians found in the worlds of [[Azeroth]], [[Outland]], and [[Bonich]].  ==Characteristics== [[File:Speckled Bullfrog.jpg|thumb|A [[Speckled Bullfrog]], using the toad model introduced in ''Battle for Azeroth''.]] {{Stub/Lore-section}}<!-- +could use a better structure/formatting --> Most brightly colored frogs are incredibly poisonous.<Ref>[[Roseate Hopper#Pet Journal]]</ref><Ref>[[Starkstripe Hopper#Pet Journal]]</ref> The skin of a teal frog sometimes shimm..."
+  ]
+ },
+ {
+  "id": 14507,
+  "name": "High Priest Venoxis",
+  "tag": "",
+  "wiki_title": "High Priest Venoxis",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... channel power into the blood god. Ultimately, Venoxis and the other priests were slain by the [[adventurer]]s who entered the city and killed Hakkar.<ref name=Compendium/>  ===Cataclysm=== {{cata-section}} Several years later, the shade of [[Jin'do]] recovered the body of Venoxis and the other High Priests. He enlisted the aid of [[Zanzil the Outcast]] to resurrect them in the service of Hakkar. Agents of the [[Zandalar Tribe]] attempted to stop the ritual and managed to destroy the body of [[Jeklik]]. Seen as the Spirit of Venoxis in the snake form, the adventurers failed to prevent Venoxis from being successfully restored to life as Hakkar's slave.  After [[Zul]] pledged to aid the Gurubashi reach their former greatness, the latter began attacking [[Stranglethorn]] and Venoxis personally sent serpents to attack the towns of [[Bambala]], [[Fort Livingston]], [[Nesingwary's Expedition]], [[Grom'gol Base Camp]] and the [[Rebel Camp]]. He was ultimately defeated once more in the [[Zul'Gurub (instance)|revamped Zul'Gurub]].  ==Locations== {{Npchealth|align=  | loc1 = High Priest Venoxis (Classic)  | level1 = ??  | health1 = 210,000  | loc2 = High Priest Venoxis (quest)  | level2 = ??  | health2 = 10,670  | loc3 = Northern Stranglethorn  | level3 = 32 - 37  | health3 = 267  | loc4 = High Priest Venoxis (tactics)  | level4 = 87  | health4 = 670,950 }}  ==Abilities== ;Spirit of Venoxis *{{Abilities|Heal|id=83849|Calls upon Holy magic to heal an ally.|icon=spell_holy_heal}}  ==Quotes== {{main|High Priest Venoxis (Classic)#Quotes}} {{main|Spirits Are With Us#Notes}} {{main|High Priest Venoxis (tactics)#Quotes}}  ==Trivia== *Venoxis was voiced by [[Marc Graue]] in ''[[World of Warcraft|Vanilla]]''. He is now voiced by [[J.B. Blanc]] in ''[[World of Warcraft: Cataclysm|Cataclysm]]''.  ==Gallery== <gallery> Venorix.jpg|Venoxis' old model, and his snake form High Priest Venoxis (Classic).jpg|In Zul'Gurub </gallery>  ==Patch changes== *{{Patch 4.1.0|note=Now a boss encounter in the updated version of Zul'Gurub.}} *{{Patch 4.0.3a|note=Zul'Gurub removed. Now part of a quest in the [[Cape of Stranglethorn]].}} *{{Patch 1.7.0|note=Added in Zul'Gurub.}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC2|43323|43839|loc1=High Priest Venoxis|loc2=Spirit of Venoxis}}  {{DEFAULTSORT:Venoxis}} [[Category:Zandalari troll ghosts]] [[Category:Priest characters]] [[Category:Sl..."
+  ]
+ },
+ {
+  "id": 14509,
+  "name": "High Priest Thekal",
+  "tag": "",
+  "wiki_title": "High Priest Thekal",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... channel power into the blood god. Ultimately, Thekal and the other priests were slain by the [[adventurer]]s who entered the city, and killed Hakkar.<ref name=Compendium/>  ==Abilities== ===Phase One: Thekal's Council=== The encounter begins as a council fight. High Priest Thekal is joined by [[Zealot Lor'Khan]] and [[Zealot Zath]], as well as two [[Zulian Tiger]] adds. In order to progress to phase two, all three council members must be killed within 10 seconds of each other. Otherwise, defeated members are resurrected with full health.  ====High Priest Thekal==== *{{Abilities|Bloodlust|id=24185|Increases an ally's attack speed by 75% for 30 sec. Dispellable.|icon=spell_nature_bloodlust}} *{{Abilities|Mortal Cleave|id=22859|Cleaves for 150% weapon damage and leaves struck targets wounded, reducing healing taken by 50% for 5 sec.|icon=ability_warrior_savageblow}} *{{Abilities|Silence|id=22666|Silences an enemy, preventing it from casting spells for 6 sec. Can be dispelled.|icon=spell_holy_silence}}  ====Zealot Lor'Khan==== Level 62 Healer with 90,650 health. *{{Abilities|Disarm|id=6713|Disarms an enemy for 5 sec.|icon=ability_warrior_disarm}} *{{Abilities|Dispel Magic|id=17201|Dispels 1 magic debuff from an ally. Cast approximately every 20 sec.|icon=spell_holy_dispelmagic}} *{{Abilities|Great Heal|id=24208|Heals an ally for 37000 to 43000. 4 sec cast.|icon=spell_holy_heal}} *{{Abilities|Lightning Shield|id=20545|Lightning shield with 20 charges. 25% chance of striking melee or ranged attackers for 496 Nature damage.|icon=spell_nature_lightningshield}}  ====Zealot Zath==== Level 62 Rogue with 113,295 health. *{{Abilities|Blind|id=21060|Blinds an enemy for 10 sec. Cannot be dispelled.|icon=spell_shadow_mindsteal}} *{{Abilities|Gouge|id=12540|Zath incapacitates his primary target for up to 4 sec. While incapacitated, Zath will ignore this player and attack others instead.|icon=ability_gouge}} *{{Abilities|Kick|id=15614|Interrupts spellcasting for 6 sec.|icon=ability_kick}} *{{Abilities|Sinister Strike|id=15581|Inflicts weapon damage plus 226 to an enemy.|icon=spell_shadow_ritualofsacrifice}} *{{Abilities|Sweeping Strikes|id=18765|Causes attacks to strike an additional nearby enemy.|icon=ability_rogue_slicedice}}  ===Phase Two: Aspect of Shirvallah=== Upon successfully defeating the council, High Priest Thekal resurrects with full health and transforms into the Aspect of Shirvallah, permanently increasing his attack speed by 100% and gaining new abilities. Additionally, Thekal summons two Zulian Guardians upon transforming and once every minute after. ====High Priest Thekal==== *{{Abilities|Charge|id=24193|Charges an enemy, inflicting normal damage plus 75 and stuns the opponent for 2 sec.|icon=ability_warrior_charge}} *{{Abilities|Enrage|id=8269|Enrages at 20% health, increasing attack speed by 60% and Physical damage dealt by 50 for 2 min. Cannot be removed.|icon=spell_shadow_unholyfrenzy}} *{{Abilities|Force Punch|id=24189|Deals 875 to 1125 damage all enemies and significantly knocks them back. 1 sec cast.|icon=inv_gauntlets_31}} *{{Abilities|Speed Slash|id=24192|Slashes all enemies in melee range, causing them to bleed for 438 to 562 damage instantly and every second for 6 seconds.|icon=ability_ghoulfrenzy}} *{{Abilities|Summon Zulian Guardian|id=24183|Summons 2 Zulian Guardians.|icon=ability_hunter_pet_cat}} ====Zulian Guardian==== Level 60 with 6,104 health. *{{Abilities|Claw|id=24187|Deals a vicious attack, damaging the target.|icon=ability_druid_rake}}  ==Strategy== This fight is another two-phase affair. Phase 1 has three tanks grabbing the Priest and the Zealots. The offtanks take the Zealots about halfway to each corner of the lower area. The Priest is tanked just south of his hut. Lor'Khan needs to be far enough away from the others so he cannot heal them. Alternatively Lor'Khan can be mana drained by priests/locks and a hunter. Once he's at 0 mana a hunter can keep him down alone. Zath can be closer to Thekal, but again needs to be away from Lor'Khan.  Note: Zealot Lor'Khan has been confirmed that she's susceptible to chain rogue stuns - not sure if this also works for Zealot Zath. Also Note: Zealot Zath can both Gouge and Blind, so you need either two tanks to keep him controlled or a mage to stay second on the aggro list ready to blink to the tank upon gouge/blind.  If you're really unlucky, he'll gouge one tank, blind the other, and go for the healer.  Be on your toes.  All 3 can be disarmed in phase one, so be sure to do this whenever the cooldown is over.  Once the MT has enough aggro on Thekal, everyone attacks until 20%. They then switch to Zath, and take him to 15%. Finally, Lor'Khan is taken to 10%. Rogues need to kick and mages need to silence to avoid him healing, and making this a longer fight, and a potential wipe.  By this time, Thekal and Zath will be at around 10% as well. Then all that is needed is to kill all three in quick succession. It is recommended that most of the DPS kills Lor'Khan, and a few of the ranged start to kill Zath. As Lor'Khan gets lower, more of the DPS can move on to Thekal and Zath, but the Rogues must stay until Lor'Khan dies, since a Heal at any point will mean everyone has to either get back on Lor'Khan, or run out and start again. Once Lor'Khan dies, the Rogues and other melee can move on to Thekal, whilst the ranged finish off Zath.  An alternate strategy is to simply split into three groups and try to keep the DPS even all the way down, but this can be easily ruined by a single heal from Lor'Khan. By having Thekal and Zath at 15-10%, the Tanks can simply stand there and take a beating, getting healed, until Lor'Khan is ready to be killed. This strategy is more forgiving of lag, mistakes, and mistimed kicks/silences.  Another finishing off strategy is once you have them down around 10 percent health bring all 3 together and AOE as much as possible.  This is an easy way to kill them all at the same time.  From the time of the first death, you have about 10 seconds before they start resurrecting.  Some more info! As Zealot Lor'Khan can be stunned it really helps the healers out on conserving mana. You assign one healer for the tank with Lor'Khan. 2 healers on Zealot Zath's tank, and 3 healers on Thekal's tank. This worked for us and we didn't go out of mana by the time we pulled em all together and AoE'd em down when they were all low percent. The rogues chain stunning Lor'Khan is also good for kicking to interrupt the heals she can cast. In any case she does get a heal off during the AoEing, just have all single target DPS focus on her.  During phase 2 We pulled Thekal to the right side near where we tanked Zealot Lor'Khan and had the rest of the raid on the other side where Zealot Zath is tanked. We then have 2 mages polying the tigers as they come in. All extra melee DPS is tasked with breaking a poly of one of the tigers (hibernate and cheap shot work on these tigers also) and DPSing down these tigers down one at a time. Meanwhile, all ranged DPS focus on Thekal and you'll have two tanks for Thekal. Once Thekal does his AoE punch he'll lose aggro on the main tank. That's where the 2nd tank intercepts and brings him to his tanking spot. The old tank then takes his place for intercept *away* from the punch standing toward the middle. Note: It's a good idea to keep the tank in between the majority of the raid and the boss or else the punch will hit them as well.  Alternate Phase 2 Strategy: Since the AoE stomp is nearly unavoidable, it can help to have the whole raid run up into the small alcove where Thekal and his guards started before the encounter. The MT and melee fight Thekal against one wall while the OT, healers, and ranged DPS stand against the other. When he unleashes the AoE attack, the walls allow everyone to quickly recover and prevents the raid from being scattered about on the battlefield. Everyone's close proximity also allows for extremely quick disposal of tiger adds.  A variation on the above which we've found to work well is to AoE the three down from 10% in the small alcove in front of the cage, then tanking Thekal in the niche to the left facing the cage, and having the ranged in the cage. Ranged takes tigers, melee's behind Thekal, the tank doesn't go anywhere if there's a knockback, ranged can get out of LoS to bandage, and, if there's a random charge, an offtank in the cage's mouth can deal with it straight away.  ==Loot== {| class=\"darktable zebra\" style=\"display: inline-table;\" |+ [[Primal Hakkari]] armor tokens |- ! Item !! Class |- | [[Primal Hakkari Armsplint]] | Rogue, Shaman, Warrior |- | [[Primal Hakkari Bindings]] | Hunter, Mage, Paladin |- | [[Primal Hakkari Stanchion]] | Druid, Priest, Warlock |- | [[Primal Hakkari Girdle]] | Rogue, Shaman, Warrior |- | [[Primal Hakkari Shawl]] | Hunter, Mage, Paladin |- | [[Primal Hakkari Sash]] | Druid, Priest, Warlock |- | [[Primal Hakkari Aegis]] | Rogue, Hunter, Priest |- | [[Primal Hakkari Kossack]] | Mage, Warlock, Warrior |- | [[Primal Hakkari Tabard]] | Druid, Paladin, Shaman |} {| class=\"darktable zebra\" style=\"display: inline-table;\" |+ Thekal's Drops |- ! Item  |- | [[Betrayer's Boots]] |- | [[Swift Zulian Tiger]] |- | [[Thekal's Grasp]] |- | [[Peacekeeper Leggings]] |- | [[Ritualistic Legguards]] |- | [[Seafury Leggings]] |- | [[Seal of Jin]] |- | [[Zulian Slicer]] |} {| class=\"darktable zebra\" style=\"display: inline-table;\" |+Shared High Priest Drops |- ! Item |- | [[Band of Servitude]] |- | [[Seal of the Gurubashi Berserker]] |- | [[Belt of Untapped Power]] |-  | [[Blooddrenched Mask]] |- | [[Cloak of the Hakkari Worshipers]] |- | [[Gloves of the Tormented]] |- | [[Might of the Tribe]] |- | [[Sacrificial Gauntlets]] |- | [[Zulian Headdress]] |- | [[Zulian Scepter of Rites]] |- | [[Channeler's Head]] |}  ==Quotes== Phase 2: :{{text|yell|Shirvallah, fill me with your RAGE!}}  Death: :{{text|yell|Hakkar binds me no more! Peace at last!}}  Reset: :{{text|yell|Hakkar|Do not be lured into the mortals' trap. Bathe in my power! Be renewed and destroy the heretics!}}  ==In Hearthstone== {{HS-section}} In the ''[[Hearthstone (game)|Hearthstone]]'' expansion ''[[Hearthstone: Rastakhan's Rumble|Rastakhan's Rumble]]'', Thekal serves as the champion of Shirvallah's Tigers, a proud and righteous team of troll [[paladin]]s, and appears as {{Hs|High Priest Thekal|a legendary paladin card}}. His flavor text reads: ''\"\"…and then I beat him with 1 Health!\"\"''  ==Trivia== *Thekal is voiced by [[Marc Graue]].  ==Patch changes== *{{Patch 4.0.3a|note=Removed.}} *{{Patch 1.9.3|note=Reduced the overall damage of High Priest Thekal.}} *{{Patch 1.7.0|note=Added.}}  ==See also== *[[Thekal's Claws]]  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|14509}}  {{DEFAULTSORT:Thekal}} [[Category:Zandalari troll chara..."
+  ]
+ },
+ {
+  "id": 14510,
+  "name": "High Priestess Mar'li",
+  "tag": "",
+  "wiki_title": "High Priestess Mar'li",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ribe]], [[Zandalari Invaders]] |class=[[Priest]] |occupation=[[High priest]] |location=[[Lightning Promenade]], [[Throne of Thunder]] |status=Deceased<ref name=\"UVG\">''[[Ultimate Visual Guide]]'', pg. 135</ref> (lore)<br/> Killable (WoW) }}  '''Mar'li''' was the high priestess of the spider [[loa]], [[Shadra]]. Sent by [[King Rastakhan]] to [[Zul'Gurub]] to stop [[Hakkar the Soulflayer]] with the other loa high priests, she was corrupted by the blood god and had to be defeated at the Zandalari's behest. She somehow returned during the events of ''[[Mists of Pandaria]]'' as part of the [[Council of Elders]], but was slain at the [[Throne of Thunder]].  ==Background== ===World of Warcraft=== {{wow-section}} In order to quell [[Hakkar the Soulflayer]], the trolls of the land banded toget..."
+  ]
+ },
+ {
+  "id": 14881,
+  "name": "Spider",
+  "tag": "",
+  "wiki_title": "Spider",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... of [[Ashenvale Forest]]. Though not necessarily evil, wild spiders can become fearsome opponents if they feel their nests have been defiled.<ref>''[[Warcraft III: Reign of Chaos Game Manual]]'', pg. 144</ref>  Spiders commonly rely on poisonous attacks and webbing when hunting or defending themselves, often striking from a distance. Their bite can be venomous, while their many legs make them agile opponents. Some grow to enormous sizes after years of hunting increasingly larger prey, learning to hide in dark places and attack from the shadows.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Spider|Monster Descriptions]]'', Spider</ref> Not all spiders remain carnivorous, however. [[Amethyst Spiderling]]s have entirely lo...",
+   "  [italic-ref] ...y corners of [[Ashenvale Forest]]. Though not necessarily evil, wild spiders can become fearsome opponents if they feel their nests have been defiled.<ref>''[[Warcraft III: Reign of Chaos Game Manual]]'', pg. 144</ref>  Spiders commonly rely on poisonous attacks and webbing when hunting or defending themselves, often striking from a distance. Their bite can be venomous, while their many legs make them agile opponents. Some grow to enormous sizes after years of hunting increasingly larger prey, learning to hide in dark places and attack from the shadows.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Spider|Monster Descriptions]]'', Spider</ref> Not all spiders remain carnivorous, however. [[Amethyst Spiderling]]s have entirely lost their appetite for meat and i..."
+  ]
+ },
+ {
+  "id": 213450,
+  "name": "Felguard",
+  "tag": "",
+  "wiki_title": "Felguard",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ran the Crazed||icon=Felguard}} *{{mob|Taragaman the Hungerer||icon=Felguard}} *{{mob|Rathorian||icon=Felguard}} *{{mob|Tzerak||icon=Felguard}}  ==In Warcraft III== {{WC3-section}} [[File:Warcraft III - Felguard.gif|thumb|A felguard in ''[[Warcraft III: The Frozen Throne|The Frozen Throne]]''.]] *[[Felguard (Warcraft III)|Felguard]] *[[Bloodfiend]] *[[Overlord (Warcraft III)|Overlord]]  <gallery> File:Felguardblue Reforged.jpg|Overlord in ''Warcraft III: Reforged''. </gallery>  ==In the RPG== {{RPG-section}} [[File:Felguardsamwise.JPG|thumb|Felguard art used in the ''[[Manual of Monsters]]''.]] The demonic being stands about 8 feet tall. It has well-defined muscles under red scaly flesh, its legs, and in cloven hooves. Three small horns protrude from i...",
+   "  [italic-ref] ...| homeworld = {{RPG-inline}} Unknown world in the [[Twisting Nether]] | leader = {{RaceIcon|DarkTitan|Male}} {{NPC||Sargeras}} | language = [[Eredun]]<ref name=\"MG 69\">''[[Monster Guide]]'', pg. 69</ref> }}  '''Felguard''' (or '''Fel Guard'''<ref>''[[War of the Ancients Trilogy]]''</ref> and sometimes pluralized as '''felguards''')<ref>[[The Vile Blood of Demons]]</ref> are [[demon]]s of the [[mo'arg]] race that serve as the [[Burning Legion|Legion]]'s rank and file demonic soldiers and front-line troops.<ref>[https://twitter.com/Muffinus/status/617019153145331712 Jeremy Feasel on Twitter]: \"Wrathguards and Felguards tend to be the front-line troops of the legion, Doomguards act as commanders.\"</ref> They are fearless and unwaveringly loyal to their [[Sargeras|master's]] godlike..."
+  ]
+ },
+ {
+  "id": 231980,
+  "name": "Shadra",
+  "tag": "Loa of Spiders",
+  "wiki_title": "Shadra",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref",
+   "book-cite-template"
+  ],
+  "reverse_book_hits": [
+   "Shadows Rising |  | *{{RaceIcon|SpiderGiant}} [[Shadra]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...he Eye of Shadra]]</ref> She was eventually summoned and killed once more by the [[adventurer]]s in [[Shadra'Alor]].  ===Traveler: The Spiral Path=== {{novel-section}} Shadra was later summoned by the [[Sandfury tribe]] at [[Zul'Farrak]] so they could sacrifice their prisoners - [[Aramar Thorne]], [[Makasa Flintwill]], [[Taryndrella]], [[Hackle]], and [[Murky (Traveler)|Murky]] - to her. But Taryndrella, [[dryad]] daughter of [[Cenarius]], stopped her from doing so because as a child of nature there was no venom that could harm her, no spider that was not her friend, and death was as natural as life. Furthermore, Taryndrella stopped Shadra from going after her other companions, who backed away and nodded her head out of respect — or perhaps out of fear.<r...",
+   "  [book-or-game-characters-category] ...31980|sub=Classic}} |}  {{Loa}} {{Wild Gods}}  [[Category:Spiders]] [[Category:Zandalar Tribe]] [[Category:Hinterlands mobs]] [[Category:Named mobs]] [[Category:Traveler characters]] [[Category:Vol'jin: Shadows of the Horde characters]] [[Category:Zuldazar NPCs]] [[Category:Deceased characters]] [[Category:Shadows Rising characters]] [[Category:Ardenweald souls]] [[Category:Zul'Gurub NPCs]] [[Category:Season of Discovery NPCs]] [[Category:The Maw NPCs]] [[Category:Heart of the Forest NPCs]] [[Category:Zul'Aman NPCs]]...",
+   "  [italic-ref] ...ermore, Taryndrella stopped Shadra from going after her other companions, who backed away and nodded her head out of respect — or perhaps out of fear.<ref>''[[Traveler: The Spiral Path]]'', pg. 332 - 333</ref>  ===Shadows of the Horde=== {{novel-section}} Shortly after the [[Landfall]] in 30 ADP, Shadra communicated with [[Vol'jin]] — betrayed by [[Garrosh Hellscream]] — through visions. According to [[Khal'ak]], in the distant past a few [[Zandalari troll|Zandalari]] turned away from her worship to the powers of [[mogu]], which displeased the Mother of Venom.<ref>''[[Vol'jin: Shadows of the Horde]]'', chapter 10</ref><ref>''[[Vol'jin: Shadows of the Horde]]'', chapter 20</ref> Following the Zandalari's defeat at the [[Shado-Pan Monastery]], [[Bwonsamdi]] remarked that the silk...",
+   "  [book-cite-template] ...dra who are led by her former high Priestess [[Yazma]].  ==Tales of the Loa== [[File:Tales of de Loa - Shadra.jpg|thumb|[[Tales of de Loa: Shadra]]]] {{Book|content=In de shadows, Shadra lurks.<br> Finding secrets as she works.<br> Webs she weaves 'round those in power,<br> Dark of night her waking hour.<br> Ya seek us out with ill intent?<br> Den writhe to poison most potent!  Her eyes are everywhere, dey see all.<br> Dey hear ya words, where dey can crawl.<br> What ya know, she knows as well,<br> Keeper of secrets she'll never tell.<br> Powerful strings she pulls in time of need,<br> With advice and warnings ya better heed.<br>  Should her faith in us be lost,<br> Her good will falls, at terrible cost.<br> Betray her and ya soon will find,<br> H..."
+  ]
+ },
+ {
+  "id": 231991,
+  "name": "Shirvallah",
+  "tag": "Loa of Tigers",
+  "wiki_title": "Shirvallah",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...b=Classic}}  {{Loa}} {{Wild Gods}}  [[Category:Tigers]] [[Category:Zandalar Tribe]] [[Category:Zul'Gurub NPCs]] [[Category:Season of Discovery NPCs]] [[Category:Vol'jin: Shadows of the Horde characters]] [[Category:Hearthstone legendary cards]]...",
+   "  [italic-ref] ... of his father [[Sen'jin]]. During the conversation, he noticed distant laughter that suggested Shirvallah and [[Hir'eek]] were enjoying the exchange.<ref name=\"SotH chapter 2\">''[[Vol'jin: Shadows of the Horde]]'', chapter 2</ref>   {{Wod-section}} By the time of the [[war in Draenor]], troll [[druid]]s<ref>[https://twitter.com/Celestalon/status/492536878931771393 Chadd Nervig on Twitter] - \"I'll leave the lore discussion up to @DaveKosak, but I think it's safe to say that it started with troll Druids, at least.\"</ref> had created a way for all druids to take on a half-tiger form like those of Shirvallah's champions, called the [[Claws of Shirvallah]].  {{Bfa-section}} [[Priest of Shirvallah|Priests of Shirvallah]] are present in the [[Hall of the Lesser Loa]] in [[Zuldazar]].  ==Quotes== {{Classic sea..."
+  ]
+ },
+ {
+  "id": 231992,
+  "name": "Hir'eek",
+  "tag": "Loa of Bats",
+  "wiki_title": "Hir'eek",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref",
+   "book-cite-template"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...e of the Hexxer]] after they placed a [[:Gurubashi Incense]] at the [[Totem of Hir'eek]].<ref>[[Backdoor Dealings]]</ref>  ===Shadows of the Horde=== {{Novel-section}} Before entering the [[Ancient Passage]] just prior to his [[Dagger in the Dark|assassination attempt]], [[Vol'jin]] noticed a flock of bats flying out of the cave. He thought of Hir'eek and wondered if it was a warning from the gods.<ref name=\"SotH chapter 2\">''[[Vol'jin: Shadows of the Horde]]'', chapter 2</ref>  After surviving the attempt on his life, Vol'jin conversed with [[Bwonsamdi]] and the spirit of his father [[Sen'jin]]. During the conversation, he noticed distant laughter that suggested Hir'eek and [[Shirvallah]] were enjoying the exchange.<ref name=\"SotH chapter 2\"/>  While Vol...",
+   "  [book-or-game-characters-category] ...search|Hir'eek}} |{{Elinks-NPC|231992|sub=Classic}} |}  {{Loa}} {{Wild Gods}}  [[Category:Bats]] [[Category:Zandalar Tribe]] [[Category:Nazmir mobs]] [[Category:Vol'jin: Shadows of the Horde characters]] [[Category:Hearthstone legendary cards]] [[Category:Unique models]] [[Category:Ardenweald souls]] [[Category:The Maw NPCs]] [[Category:Zul'Gurub NPCs]] [[Category:Season of Discovery NPCs]]...",
+   "  [italic-ref] ...ssination attempt]], [[Vol'jin]] noticed a flock of bats flying out of the cave. He thought of Hir'eek and wondered if it was a warning from the gods.<ref name=\"SotH chapter 2\">''[[Vol'jin: Shadows of the Horde]]'', chapter 2</ref>  After surviving the attempt on his life, Vol'jin conversed with [[Bwonsamdi]] and the spirit of his father [[Sen'jin]]. During the conversation, he noticed distant laughter that suggested Hir'eek and [[Shirvallah]] were enjoying the exchange.<ref name=\"SotH chapter 2\"/>  While Vol'jin lay asleep one night weeks later, Hir'eek granted him a vision of the ancient [[Amani Empire]] and of Amani trolls sacrificing [[aqir]]i captives. When a priest used a knife adorned with loa symbols to rip open an aqir's belly, Hir'eek himself manifested above the altar and breathed in the aqir...",
+   "  [book-cite-template] ...c5 = To Kill a Loa  | level5 = 110 - 120  | health5 = 194,506  | loc6 = Maw  | level6 = 60 }}  ==Objective of== *[[Loa Rescue]]  ==Tales of the Loa== {{Book|content=Hir'eek guards de weak,<br> He can find de things you seek.<br>  He be blind, and so kind.<br> He brings clarity of mind.<br>  His screech dat you hear,<br> Can dispel your every fear.<br>  Softest wings glide through de night.<br> Taste and sound bring different sight.<br>  When ya lost and all alone,<br> In de darkness where you roam,<br> His voice will guide ya home.<ref>[[Tales of de Loa: Hir'eek]]</ref>}}  ==Followers== *[[Hir'eek Guardian]] *[[Hir'eek Worshipper]] *[[Priest of Hir'eek]]  ==Quotes== {{Classic season only-section}} {{Dialogue| You have my gratittude for freeing me ..."
+  ]
+ }
+]

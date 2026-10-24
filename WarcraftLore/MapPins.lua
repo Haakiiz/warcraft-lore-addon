@@ -46,15 +46,20 @@ local function buildIndex()
         end
     end
     -- Memorials (Memorials.lua) get a pin of their own kind on the map of their zone.
+    -- A book (kind "book") stands in several places: one pin for each of its locations.
     for _, m in ipairs(ns.MemorialList and ns.MemorialList() or {}) do
         local entry = m.entry
-        local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
-        x, y = tonumber(x), tonumber(y)
-        local maps = zoneMaps[entry.zone]
-        if x and y and maps then
-            for _, mapID in ipairs(maps) do
-                byMap[mapID] = byMap[mapID] or {}
-                table.insert(byMap[mapID], { m, x, y })
+        local spots = type(entry.locations) == "table" and #entry.locations > 0 and entry.locations
+            or { { zone = entry.zone, coords = entry.coords } }
+        for _, spot in ipairs(spots) do
+            local x, y = tostring(spot.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+            x, y = tonumber(x), tonumber(y)
+            local maps = zoneMaps[spot.zone]
+            if x and y and maps then
+                for _, mapID in ipairs(maps) do
+                    byMap[mapID] = byMap[mapID] or {}
+                    table.insert(byMap[mapID], { m, x, y })
+                end
             end
         end
     end

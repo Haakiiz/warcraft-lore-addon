@@ -79,15 +79,15 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 
 ## Battlegrounds, dungeons and raids (optional)
 
-- [ ] Alterac Valley – lead: Drek'Thar (quest giver in "To Tame a Land")
-- [ ] Warsong Gulch, Arathi Basin
+- [x] Alterac Valley – 2 NPCs (Drek'Thar, Renferal) (2026-10-24)
+- [x] Warsong Gulch, Arathi Basin – 0 NPCs (2026-10-24)
 - [x] Dungeons up to level 30 – Naralex, VanCleef*, Arugal*, Mograine + Whitemane (FK: A Scarlet Flame), Thermaplugg, Charlga; round 3: Baron Silverlaine*, Highlord Mograine* (SoD ID)
 - [x] Zul'Farrak – 1 NPC (Chief Ukorz Sandscalp)
 - [x] Sunken Temple – 2 NPCs (Malfurion Stormrage, Shade of Eranikus)
 - [x] Temple of Ahn'Qiraj – 3 NPCs (Arygos, Caelestrasz, Merithra of the Dream)
 - [x] Uldaman – 0 NPCs
 - [x] Maraudon – 0 NPCs
-- [ ] Other higher dungeons and raids
+- [x] Other higher dungeons and raids (2026-10-24, worker + critic): BRS (Rend, Nefarius), BRD (Moira), BWL (Nefarian), Onyxia's Lair (Onyxia), Scholomance (Ras Frostwhisper), Stratholme (Rivendare, Balnazzar, Dathrohan, Barthilas), Naxxramas (Kel'Thuzad, Sapphiron, Sir Zeliek), AQ20 (Rajaxx); 0 in MC, ZG, Dire Maul (King Gordok rejected: title). Rejected: Ramstein (forces list only), Dagran Thaurissan, Ragnaros, Gandling.
 - [ ] Forever: Krol'Dok Stronghold (Riverglades), the new Dalaran dungeon, Hyjal Summit, Barrow Deeps (Mount Hyjal)
 
 ## Addon follow-ups
@@ -117,5 +117,8 @@ No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion 
 - [x] **Related NPCs:** link characters to each other (e.g. Thrall → Grom → Nazgrel) so players can follow a lore thread. (done in v0.4)
 - [ ] **Localization and wider client support:** German and French done in v0.7; Classic Era and Retail builds are now milestone 3 in ROADMAP.md.
 - [ ] **In-game test: Warcraft II theme (v0.8).** Check every window in both themes and that the switch button swaps them without a reload.
+
+- [x] 2026-10-24 release QA: every veteran and memorial re-checked by Sonnet workers (.kritikk/QA_release/); Mok'Morokk removed (guidebook only). Håkon 2026-10-24: event NPCs (Swiftriver) and cinematics are included; Morbent Fel stays.
+- [ ] In-game test: History of Warcraft books (v0.9). Read one, check the visit counts, the book icon, the pins on every copy, and Student of History.
 
 See ROADMAP.md for the plan towards 1000 downloads.

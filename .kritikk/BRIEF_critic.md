@@ -1,7 +1,7 @@
 # Critic brief: verify proposed Warcraft Lore entries
 
 ★ v4 (2026-10-11): apply the "v4 overrides" at the top of BRIEF_zone_worker.md. Reject (do not downgrade to "uncertain")
-any entry whose identity is not explicit, any ID above 200000, removed/event-only NPCs, bare "Major/Minor/Mentioned"
+any entry whose identity is not explicit, any ID above 200000, removed NPCs (event-only NPCs and RTS cinematics are allowed, see BRIEF_zone_worker.md), bare "Major/Minor/Mentioned"
 roles and banned words. Run `py -3 -I <repo>/tests/validate_db.py <path to a Data.lua copy with the entries merged>` if you can.
 
 Work dir: given by the orchestrator in your prompt. Cached wiki text (read with this, never with head/tail):

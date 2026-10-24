@@ -1,0 +1,457 @@
+[
+{
+"id": 416,
+"name": "Imp",
+"tag": ""
+},
+{
+"id": 417,
+"name": "Felhunter",
+"tag": ""
+},
+{
+"id": 8477,
+"name": "Skeletal Servant",
+"tag": ""
+},
+{
+"id": 10381,
+"name": "Ravaged Cadaver",
+"tag": ""
+},
+{
+"id": 10382,
+"name": "Mangled Cadaver",
+"tag": ""
+},
+{
+"id": 10383,
+"name": "Broken Cadaver",
+"tag": ""
+},
+{
+"id": 10384,
+"name": "Spectral Citizen",
+"tag": ""
+},
+{
+"id": 10385,
+"name": "Ghostly Citizen",
+"tag": ""
+},
+{
+"id": 10387,
+"name": "Vengeful Phantom",
+"tag": ""
+},
+{
+"id": 10388,
+"name": "Spiteful Phantom",
+"tag": ""
+},
+{
+"id": 10389,
+"name": "Wrath Phantom",
+"tag": ""
+},
+{
+"id": 10390,
+"name": "Skeletal Guardian",
+"tag": ""
+},
+{
+"id": 10391,
+"name": "Skeletal Berserker",
+"tag": ""
+},
+{
+"id": 10393,
+"name": "Skul",
+"tag": ""
+},
+{
+"id": 10394,
+"name": "Black Guard Sentry",
+"tag": ""
+},
+{
+"id": 10398,
+"name": "Thuzadin Shadowcaster",
+"tag": ""
+},
+{
+"id": 10399,
+"name": "Thuzadin Acolyte",
+"tag": ""
+},
+{
+"id": 10400,
+"name": "Thuzadin Necromancer",
+"tag": ""
+},
+{
+"id": 10405,
+"name": "Plague Ghoul",
+"tag": ""
+},
+{
+"id": 10406,
+"name": "Ghoul Ravener",
+"tag": ""
+},
+{
+"id": 10407,
+"name": "Fleshflayer Ghoul",
+"tag": ""
+},
+{
+"id": 10408,
+"name": "Rockwing Gargoyle",
+"tag": ""
+},
+{
+"id": 10409,
+"name": "Rockwing Screecher",
+"tag": ""
+},
+{
+"id": 10411,
+"name": "Eye of Naxxramas",
+"tag": ""
+},
+{
+"id": 10412,
+"name": "Crypt Crawler",
+"tag": ""
+},
+{
+"id": 10413,
+"name": "Crypt Beast",
+"tag": ""
+},
+{
+"id": 10414,
+"name": "Patchwork Horror",
+"tag": ""
+},
+{
+"id": 10416,
+"name": "Bile Spewer",
+"tag": ""
+},
+{
+"id": 10417,
+"name": "Venom Belcher",
+"tag": ""
+},
+{
+"id": 10418,
+"name": "Crimson Guardsman",
+"tag": ""
+},
+{
+"id": 10419,
+"name": "Crimson Conjuror",
+"tag": ""
+},
+{
+"id": 10420,
+"name": "Crimson Initiate",
+"tag": ""
+},
+{
+"id": 10421,
+"name": "Crimson Defender",
+"tag": ""
+},
+{
+"id": 10422,
+"name": "Crimson Sorcerer",
+"tag": ""
+},
+{
+"id": 10423,
+"name": "Crimson Priest",
+"tag": ""
+},
+{
+"id": 10424,
+"name": "Crimson Gallant",
+"tag": ""
+},
+{
+"id": 10425,
+"name": "Crimson Battle Mage",
+"tag": ""
+},
+{
+"id": 10426,
+"name": "Crimson Inquisitor",
+"tag": ""
+},
+{
+"id": 10435,
+"name": "Magistrate Barthilas",
+"tag": ""
+},
+{
+"id": 10436,
+"name": "Baroness Anastari",
+"tag": ""
+},
+{
+"id": 10437,
+"name": "Nerub'enkan",
+"tag": ""
+},
+{
+"id": 10438,
+"name": "Maleki the Pallid",
+"tag": ""
+},
+{
+"id": 10439,
+"name": "Ramstein the Gorger",
+"tag": ""
+},
+{
+"id": 10440,
+"name": "Baron Rivendare",
+"tag": ""
+},
+{
+"id": 10441,
+"name": "Plagued Rat",
+"tag": ""
+},
+{
+"id": 10461,
+"name": "Plagued Insect",
+"tag": ""
+},
+{
+"id": 10463,
+"name": "Shrieking Banshee",
+"tag": ""
+},
+{
+"id": 10464,
+"name": "Wailing Banshee",
+"tag": ""
+},
+{
+"id": 10516,
+"name": "The Unforgiven",
+"tag": ""
+},
+{
+"id": 10536,
+"name": "Plagued Maggot",
+"tag": ""
+},
+{
+"id": 10558,
+"name": "Hearthsinger Forresten",
+"tag": ""
+},
+{
+"id": 10697,
+"name": "Bile Slime",
+"tag": ""
+},
+{
+"id": 10808,
+"name": "Timmy the Cruel",
+"tag": ""
+},
+{
+"id": 10809,
+"name": "Stonespine",
+"tag": ""
+},
+{
+"id": 10811,
+"name": "Archivist Galford",
+"tag": ""
+},
+{
+"id": 10812,
+"name": "Grand Crusader Dathrohan",
+"tag": ""
+},
+{
+"id": 10813,
+"name": "Balnazzar",
+"tag": ""
+},
+{
+"id": 10876,
+"name": "Undead Scarab",
+"tag": ""
+},
+{
+"id": 10917,
+"name": "Aurius",
+"tag": ""
+},
+{
+"id": 10955,
+"name": "Summoned Water Elemental",
+"tag": ""
+},
+{
+"id": 10997,
+"name": "Cannon Master Willey",
+"tag": ""
+},
+{
+"id": 11030,
+"name": "Mindless Undead",
+"tag": ""
+},
+{
+"id": 11032,
+"name": "Malor the Zealous",
+"tag": ""
+},
+{
+"id": 11043,
+"name": "Crimson Monk",
+"tag": ""
+},
+{
+"id": 11054,
+"name": "Crimson Rifleman",
+"tag": ""
+},
+{
+"id": 11058,
+"name": "Ezra Grimm",
+"tag": ""
+},
+{
+"id": 11082,
+"name": "Stratholme Courier",
+"tag": ""
+},
+{
+"id": 11120,
+"name": "Crimson Hammersmith",
+"tag": ""
+},
+{
+"id": 11121,
+"name": "Black Guard Swordsmith",
+"tag": ""
+},
+{
+"id": 11122,
+"name": "Restless Soul",
+"tag": ""
+},
+{
+"id": 11142,
+"name": "Undead Postman",
+"tag": ""
+},
+{
+"id": 11143,
+"name": "Postmaster Malown",
+"tag": ""
+},
+{
+"id": 11197,
+"name": "Mindless Skeleton",
+"tag": ""
+},
+{
+"id": 14684,
+"name": "Balzaphon",
+"tag": ""
+},
+{
+"id": 15607,
+"name": "Elder Farwhisper",
+"tag": ""
+},
+{
+"id": 16031,
+"name": "Ysida Harmon",
+"tag": ""
+},
+{
+"id": 16101,
+"name": "Jarien",
+"tag": ""
+},
+{
+"id": 16102,
+"name": "Sothos",
+"tag": ""
+},
+{
+"id": 16103,
+"name": "Spirit of Jarien",
+"tag": ""
+},
+{
+"id": 16104,
+"name": "Spirit of Sothos",
+"tag": ""
+},
+{
+"id": 16387,
+"name": "Atiesh",
+"tag": "Hand of Sargeras"
+},
+{
+"id": 227511,
+"name": "Pedestal",
+"tag": ""
+},
+{
+"id": 228619,
+"name": "Orthas",
+"tag": "Dwarven Spirit"
+},
+{
+"id": 235164,
+"name": "G00 DV-1B3 Generator",
+"tag": ""
+},
+{
+"id": 243056,
+"name": "Knight Farris",
+"tag": ""
+},
+{
+"id": 243057,
+"name": "Knight Stearn",
+"tag": ""
+},
+{
+"id": 243250,
+"name": "Knight-Captain Caldoran",
+"tag": ""
+},
+{
+"id": 243252,
+"name": "Leonid Barthalomew",
+"tag": ""
+},
+{
+"id": 243331,
+"name": "Liliana Barthalomew",
+"tag": ""
+},
+{
+"id": 243332,
+"name": "Percival Barthalomew",
+"tag": ""
+},
+{
+"id": 243393,
+"name": "Leonid Barthalomew the Revered",
+"tag": "The Argent Dawn"
+}
+]

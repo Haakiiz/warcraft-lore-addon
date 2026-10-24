@@ -3,3 +3,7 @@ __pycache__/
 .claude/settings.local.json
 .idea/
 tools/research/npcs_*.json
+.kritikk/QA_release/*_tmp/
+.kritikk/HIGH/_pages.json
+.kritikk/HIGH/_books.json
+.kritikk/HIGH/*_tmp/

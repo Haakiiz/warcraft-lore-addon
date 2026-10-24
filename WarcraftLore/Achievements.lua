@@ -40,7 +40,9 @@ local ZONE_LEVEL = {
     ["Maraudon"] = 45, ["Sunken Temple"] = 45, ["Blackrock Depths"] = 52, ["Lower Blackrock Spire"] = 55,
     ["Upper Blackrock Spire"] = 58, ["Dire Maul"] = 56, ["Scholomance"] = 58, ["Stratholme"] = 58,
     ["Molten Core"] = 60, ["Onyxia's Lair"] = 60, ["Blackwing Lair"] = 60, ["Ruins of Ahn'Qiraj"] = 60,
-    ["Temple of Ahn'Qiraj"] = 60, ["Naxxramas"] = 60,
+    ["Temple of Ahn'Qiraj"] = 60, ["Naxxramas"] = 60, ["Zul'Gurub"] = 60,
+    -- battlegrounds
+    ["Warsong Gulch"] = 10, ["Arathi Basin"] = 20, ["Alterac Valley"] = 51,
 }
 Achievements.ZONE_LEVEL = ZONE_LEVEL
 
@@ -209,11 +211,25 @@ local function build()
 
     -- Memorials (Memorials.lua): items are { key, entry, memorial = true }. The first goal counts the ones
     -- in zones open at the level cap and grows when the cap rises, like the games' veterans.
-    local mems = ns.MemorialList and ns.MemorialList() or {}
-    local reachableMems = {}
-    for _, m in ipairs(mems) do
-        if zoneReachable(m.entry.zone) then
-            reachableMems[#reachableMems + 1] = m
+    -- The History of Warcraft books (kind "book") have a goal of their own; a book counts as soon as
+    -- one of the places it stands in is open.
+    local all = ns.MemorialList and ns.MemorialList() or {}
+    local mems, books, reachableMems, reachableBooks = {}, {}, {}, {}
+    for _, m in ipairs(all) do
+        if m.entry.kind == "book" then
+            books[#books + 1] = m
+            local open = zoneReachable(m.entry.zone)
+            for _, spot in ipairs(type(m.entry.locations) == "table" and m.entry.locations or {}) do
+                open = open or zoneReachable(spot.zone)
+            end
+            if open then
+                reachableBooks[#reachableBooks + 1] = m
+            end
+        else
+            mems[#mems + 1] = m
+            if zoneReachable(m.entry.zone) then
+                reachableMems[#reachableMems + 1] = m
+            end
         end
     end
     if #mems >= MIN_GROUP then
@@ -237,6 +253,13 @@ local function build()
             id = "memorial_valley", title = L["Heroes of the Second War"], category = "memorial", icon = ICON .. "INV_Sword_27",
             desc = L["Visit all five plaques in Stormwind's Valley of Heroes."],
             members = valley, total = #valley, later = not valleyOpen,
+        })
+    end
+    if #books >= MIN_GROUP then
+        add(list, {
+            id = "memorial_library", title = L["Student of History"], category = "memorial", icon = ICON .. "INV_Misc_Book_09",
+            desc = L["Read every History of Warcraft book."],
+            members = reachableBooks, total = math.max(#reachableBooks, 1), later = #reachableBooks == 0,
         })
     end
 

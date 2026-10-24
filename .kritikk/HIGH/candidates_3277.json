@@ -1,0 +1,32 @@
+[
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 12997,
+  "name": "Monty",
+  "tag": "Rat Extermination Specialist",
+  "wiki_title": "Monty",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the ''Warcraft III'' pandaren|Monty (pandaren)|the human villager named Monty in Reforged|Hebon|the orc|Monty the Plunderer}} {{Npcbox |name=Monty |title=Rat Extermination Specialist |image=Monty.jpg |level=Dun Morogh |race=Gnome |gender=Male |creature=Humanoid |faction=Alliance |aggro={{aggro|1|-1}} |affiliation=[[Ironforge (faction)|Ironforge]] |location=[[Deeprun Tram]] | status = Alive |relatives = [[Nipsy]] (brother) }}  '''Monty''' is a [[gnome]] and \"Rat Extermination Specialist\" located on the [[Ironforge]] side of the [[Deeprun Tram]]. Ever since the [[fall of Gnomeregan]], he's been acting like a [[pi..."
+  ]
+ }
+]

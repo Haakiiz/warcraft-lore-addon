@@ -1,0 +1,527 @@
+[
+{
+"id": 2110,
+"name": "Black Rat",
+"tag": ""
+},
+{
+"id": 4076,
+"name": "Roach",
+"tag": ""
+},
+{
+"id": 9045,
+"name": "Scarshield Acolyte",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9096,
+"name": "Rage Talon Dragonspawn",
+"tag": ""
+},
+{
+"id": 9097,
+"name": "Scarshield Legionnaire",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9098,
+"name": "Scarshield Spellbinder",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9196,
+"name": "Highlord Omokk",
+"tag": ""
+},
+{
+"id": 9197,
+"name": "Spirestone Battle Mage",
+"tag": ""
+},
+{
+"id": 9198,
+"name": "Spirestone Mystic",
+"tag": ""
+},
+{
+"id": 9199,
+"name": "Spirestone Enforcer",
+"tag": ""
+},
+{
+"id": 9200,
+"name": "Spirestone Reaver",
+"tag": ""
+},
+{
+"id": 9201,
+"name": "Spirestone Ogre Magus",
+"tag": ""
+},
+{
+"id": 9216,
+"name": "Spirestone Warlord",
+"tag": ""
+},
+{
+"id": 9217,
+"name": "Spirestone Lord Magus",
+"tag": ""
+},
+{
+"id": 9218,
+"name": "Spirestone Battle Lord",
+"tag": ""
+},
+{
+"id": 9219,
+"name": "Spirestone Butcher",
+"tag": ""
+},
+{
+"id": 9236,
+"name": "Shadow Hunter Vosh'gajin",
+"tag": ""
+},
+{
+"id": 9237,
+"name": "War Master Voone",
+"tag": ""
+},
+{
+"id": 9239,
+"name": "Smolderthorn Mystic",
+"tag": ""
+},
+{
+"id": 9240,
+"name": "Smolderthorn Shadow Priest",
+"tag": ""
+},
+{
+"id": 9241,
+"name": "Smolderthorn Headhunter",
+"tag": ""
+},
+{
+"id": 9257,
+"name": "Scarshield Warlock",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9258,
+"name": "Scarshield Raider",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9259,
+"name": "Firebrand Grunt",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9260,
+"name": "Firebrand Legionnaire",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9261,
+"name": "Firebrand Darkweaver",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9262,
+"name": "Firebrand Invoker",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9263,
+"name": "Firebrand Dreadweaver",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9264,
+"name": "Firebrand Pyromancer",
+"tag": "Firebrand Legion"
+},
+{
+"id": 9265,
+"name": "Smolderthorn Shadow Hunter",
+"tag": ""
+},
+{
+"id": 9266,
+"name": "Smolderthorn Witch Doctor",
+"tag": ""
+},
+{
+"id": 9267,
+"name": "Smolderthorn Axe Thrower",
+"tag": ""
+},
+{
+"id": 9268,
+"name": "Smolderthorn Berserker",
+"tag": ""
+},
+{
+"id": 9269,
+"name": "Smolderthorn Seer",
+"tag": ""
+},
+{
+"id": 9416,
+"name": "Scarshield Worg",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9568,
+"name": "Overlord Wyrmthalak",
+"tag": ""
+},
+{
+"id": 9583,
+"name": "Bloodaxe Veteran",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9596,
+"name": "Bannok Grimaxe",
+"tag": "Firebrand Legion Champion"
+},
+{
+"id": 9692,
+"name": "Bloodaxe Raider",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9693,
+"name": "Bloodaxe Evoker",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9696,
+"name": "Bloodaxe Worg",
+"tag": "Scarshield Legion"
+},
+{
+"id": 9701,
+"name": "Spire Scorpid",
+"tag": ""
+},
+{
+"id": 9708,
+"name": "Burning Imp",
+"tag": ""
+},
+{
+"id": 9716,
+"name": "Bloodaxe Warmonger",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9717,
+"name": "Bloodaxe Summoner",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9718,
+"name": "Ghok Bashguud",
+"tag": "Bloodaxe Champion"
+},
+{
+"id": 9736,
+"name": "Quartermaster Zigris",
+"tag": "Bloodaxe Legion"
+},
+{
+"id": 9816,
+"name": "Pyroguard Emberseer",
+"tag": ""
+},
+{
+"id": 9817,
+"name": "Blackhand Dreadweaver",
+"tag": "Blackhand Legion"
+},
+{
+"id": 9818,
+"name": "Blackhand Summoner",
+"tag": "Blackhand Legion"
+},
+{
+"id": 9819,
+"name": "Blackhand Veteran",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10083,
+"name": "Rage Talon Flamescale",
+"tag": ""
+},
+{
+"id": 10161,
+"name": "Rookery Whelp",
+"tag": ""
+},
+{
+"id": 10162,
+"name": "Lord Victor Nefarius",
+"tag": "Lord of Blackrock"
+},
+{
+"id": 10177,
+"name": "Spire Scarab",
+"tag": ""
+},
+{
+"id": 10218,
+"name": "Superior Healing Ward",
+"tag": ""
+},
+{
+"id": 10220,
+"name": "Halycon",
+"tag": ""
+},
+{
+"id": 10221,
+"name": "Bloodaxe Worg Pup",
+"tag": ""
+},
+{
+"id": 10257,
+"name": "Bijou",
+"tag": ""
+},
+{
+"id": 10258,
+"name": "Rookery Guardian",
+"tag": ""
+},
+{
+"id": 10261,
+"name": "Burning Felhound",
+"tag": ""
+},
+{
+"id": 10263,
+"name": "Burning Felguard",
+"tag": ""
+},
+{
+"id": 10264,
+"name": "Solakar Flamewreath",
+"tag": ""
+},
+{
+"id": 10268,
+"name": "Gizrul the Slavener",
+"tag": ""
+},
+{
+"id": 10299,
+"name": "Scarshield Infiltrator",
+"tag": "Scarshield Legion"
+},
+{
+"id": 10316,
+"name": "Blackhand Incarcerator",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10317,
+"name": "Blackhand Elite",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10318,
+"name": "Blackhand Assassin",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10319,
+"name": "Blackhand Iron Guard",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10339,
+"name": "Gyth",
+"tag": "Rend Blackhand's Mount"
+},
+{
+"id": 10340,
+"name": "Vaelastrasz the Red",
+"tag": ""
+},
+{
+"id": 10363,
+"name": "General Drakkisath",
+"tag": ""
+},
+{
+"id": 10366,
+"name": "Rage Talon Dragon Guard",
+"tag": ""
+},
+{
+"id": 10371,
+"name": "Rage Talon Captain",
+"tag": ""
+},
+{
+"id": 10372,
+"name": "Rage Talon Fire Tongue",
+"tag": ""
+},
+{
+"id": 10374,
+"name": "Spire Spider",
+"tag": ""
+},
+{
+"id": 10375,
+"name": "Spire Spiderling",
+"tag": ""
+},
+{
+"id": 10376,
+"name": "Crystal Fang",
+"tag": ""
+},
+{
+"id": 10429,
+"name": "Warchief Rend Blackhand",
+"tag": ""
+},
+{
+"id": 10430,
+"name": "The Beast",
+"tag": ""
+},
+{
+"id": 10442,
+"name": "Chromatic Whelp",
+"tag": ""
+},
+{
+"id": 10447,
+"name": "Chromatic Dragonspawn",
+"tag": ""
+},
+{
+"id": 10509,
+"name": "Jed Runewatcher",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10584,
+"name": "Urok Doomhowl",
+"tag": ""
+},
+{
+"id": 10596,
+"name": "Mother Smolderweb",
+"tag": ""
+},
+{
+"id": 10601,
+"name": "Urok Enforcer",
+"tag": ""
+},
+{
+"id": 10602,
+"name": "Urok Ogre Magus",
+"tag": ""
+},
+{
+"id": 10680,
+"name": "Summoned Blackhand Dreadweaver",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10681,
+"name": "Summoned Blackhand Veteran",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10683,
+"name": "Rookery Hatcher",
+"tag": ""
+},
+{
+"id": 10740,
+"name": "Awbee",
+"tag": ""
+},
+{
+"id": 10742,
+"name": "Blackhand Dragon Handler",
+"tag": "Blackhand Legion"
+},
+{
+"id": 10762,
+"name": "Blackhand Thug",
+"tag": ""
+},
+{
+"id": 10776,
+"name": "Pip Quickwit",
+"tag": ""
+},
+{
+"id": 10799,
+"name": "Warosh",
+"tag": "The Cursed"
+},
+{
+"id": 10814,
+"name": "Chromatic Elite Guard",
+"tag": ""
+},
+{
+"id": 10899,
+"name": "Goraluk Anvilcrack",
+"tag": "Blackhand Legion Armorsmith"
+},
+{
+"id": 11859,
+"name": "Doomguard",
+"tag": ""
+},
+{
+"id": 15560,
+"name": "Elder Stonefort",
+"tag": ""
+},
+{
+"id": 16042,
+"name": "Lord Valthalak",
+"tag": ""
+},
+{
+"id": 16066,
+"name": "Spectral Assassin",
+"tag": ""
+},
+{
+"id": 16073,
+"name": "Spirit of Lord Valthalak",
+"tag": ""
+},
+{
+"id": 16080,
+"name": "Mor Grayhoof",
+"tag": ""
+},
+{
+"id": 230775,
+"name": "Rage Talon Quartermaster",
+"tag": "Razorgore's Appointee"
+},
+{
+"id": 231050,
+"name": "Syndicate Infiltrator",
+"tag": ""
+}
+]

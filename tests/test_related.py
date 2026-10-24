@@ -55,7 +55,7 @@ def main():
     results.append(check("Jaina: incoming only", {"Thrall", "Rexxar", "Pained"} == set(jaina), jaina))
 
     katrana = related_names(lua, 1749)
-    results.append(check("Katrana: incoming only", set(katrana) == {"Anduin Wrynn", "Highlord Bolvar Fordragon"}, katrana))
+    results.append(check("Katrana: incoming only", set(katrana) == {"Anduin Wrynn", "Highlord Bolvar Fordragon", "Onyxia"}, katrana))
     results.append(check("no relations: empty list", related_names(lua, 2257) == []))  # Mug'thol
     results.append(check("unknown ID: empty list", related_names(lua, 999999) == []))
 

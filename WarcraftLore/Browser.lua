@@ -739,7 +739,8 @@ local function showRowTip(r)
         lines[#lines + 1] = { ns.GAME_LONG[code] or code, gr, gg, gb }
     end
     if it.memorial then
-        table.insert(lines, 3, { L["Honors %s"]:format(table.concat(entry.honors or {}, ", ")), COL.text[1], COL.text[2], COL.text[3] })
+        local honors = entry.kind == "book" and L["Tells of %s"] or L["Honors %s"]
+        table.insert(lines, 3, { honors:format(table.concat(entry.honors or {}, ", ")), COL.text[1], COL.text[2], COL.text[3] })
         local visit = isMet(it) and ns.VisitSummary(it.key)
         if visit then
             lines[#lines + 1] = { visit, COL.met[1], COL.met[2], COL.met[3] }
@@ -833,7 +834,7 @@ local function acquireRow(i)
     end)
     r:SetScript("OnClick", function(self)
         closePopup()
-        if self.item then
+        if self.item and not ns.FeatureOff("window") then
             -- The lore window sits in a higher strata than this window, so it opens on top,
             -- docked next to this one.
             if self.item.memorial then

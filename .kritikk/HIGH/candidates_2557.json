@@ -1,0 +1,182 @@
+[
+ {
+  "id": 721,
+  "name": "Rabbit",
+  "tag": "",
+  "wiki_title": "Rabbit",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{Redirect|Bunny|the invisible NPCs|Invisible bunny|the ''Warcraft III'' bonus map race|Bunny (Funny Bunny's Egg Hunt)}} [[File:Rabbit.png|right|296px]]  A '''rabbit''' is a small, fluffy [[critter]] that can be found in almost all grassy or forested areas of [[Azeroth]]. It is a favorite target of predators.  When you have two rabbits, you'll often soon have three.<ref>[[Rabbit (critter)|Rabbit]]</ref> [[Spring Rabbit's Foot|Spring rabbits]] symbolize fertility, and they love to demonstrate why.<ref>[[Spring Rabbit's Foot]]</ref> Despite their idyllic surroundings, [[Grasslands Cottontail|grasslands cottontails]] hop at surprising speed when evading their pursu..."
+  ]
+ },
+ {
+  "id": 883,
+  "name": "Deer",
+  "tag": "",
+  "wiki_title": "Deer",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... only at this time are they commonly found with females.<ref>''[[Monster Guide Web Supplement]]'', pg. 22</ref>  ==Notes== *Deer appear as [[Critter (Warcraft III)|critters]] in ''[[Warcraft III: Reign of Chaos]]''.  ==Gallery== <gallery> File:Mother of Bambina.jpg|Classic deer model. File:Great Courser.jpg|Classic stag model. File:Reforged - Stag concept.jpg|''[[Warcraft III: Reforged]]'' concept art. </gallery>  ==Patch changes== *{{Patch 7.0.3|note=New models added.}} *{{Patch 5.0.4|note=New stag model added.}}  ==References== {{Reflist}}  {{Creaturefooter|Beast}} {{Creaturefooter|Critter}}  [[Category:Deer| ]]...",
+   "  [italic-ref] ..., they are the primary prey of wolves and other predators. Humans typically hunt the smaller deer, while orcs prefer the challenge of an elk or moose.<ref>''[[Manual of Monsters]]'', pg. 164</ref>  Stags are common in forested areas throughout [[Azeroth]]. Though they generally avoid conflict, their mighty antlers and ferocity can make them difficult prey, and they may become aggressive when startled or gathered in larger groups. They are particularly aggressive during mating season in the fall, and only at this time are they commonly found with females.<ref>''[[Monster Guide Web Supplement]]'', pg. 22</ref>  ==Notes== *Deer appear as [[Critter (Warcraft III)|critters]] in ''[[Warcraft III: Reign of Chaos]]''.  ==Gallery== <gallery> File:Mother of Bambina.jpg|Classic dee..."
+  ]
+ },
+ {
+  "id": 2914,
+  "name": "Snake",
+  "tag": "",
+  "wiki_title": "Snake",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...nakes. When pierced by these spears, the riders' enemies are weakened and slowly eaten alive as the vile poison courses through their bodies.<ref>''[[Warcraft III: Reign of Chaos]]'' manual, ''[[Warcraft III: Reign of Chaos Game Manual#Wyvern Rider|Orc Units]]'', Wyvern Rider</ref> Brave assassins sometimes capture [[Coral Snake|coral snakes]] to use their highly toxic venom to poison weapons.<ref>[[Coral Snake]]</ref> The [[Jade Forest]]'s mountain [[hozen]] fear the venomous [[Grove Viper|grove vipers]] and often hunt them out of pure spite.<ref>[[Grove Viper]]</ref> [[Bamboo python]]s are a type of snake used by the [[Shado-Pan]] in their Trial of the Red Blossoms.<ref>''[[The Trial of the Red Blossoms]]''</ref> The cobras of [[Azeroth]] are renowne...",
+   "  [italic-ref] ... jungle snakes. When pierced by these spears, the riders' enemies are weakened and slowly eaten alive as the vile poison courses through their bodies.<ref>''[[Warcraft III: Reign of Chaos]]'' manual, ''[[Warcraft III: Reign of Chaos Game Manual#Wyvern Rider|Orc Units]]'', Wyvern Rider</ref> Brave assassins sometimes capture [[Coral Snake|coral snakes]] to use their highly toxic venom to poison weapons.<ref>[[Coral Snake]]</ref> The [[Jade Forest]]'s mountain [[hozen]] fear the venomous [[Grove Viper|grove vipers]] and often hunt them out of pure spite.<ref>[[Grove Viper]]</ref> [[Bamboo python]]s are a type of snake used by the [[Shado-Pan]] in their Trial of the Red Blossoms.<ref>''[[The Trial of the Red Blossoms]]''</ref> The cobras of [[Azeroth]] are renowned for their fast-acting venom and swift strikes.<ref>[[Cobra Hatchling]]</ref>  Years ago, [[human]]..."
+  ]
+ },
+ {
+  "id": 4075,
+  "name": "Rat",
+  "tag": "",
+  "wiki_title": "Rat",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...|icon=Rat}} in [[Kun-Lai Summit]], [[Thundering Pandaren Spirit]]'s battle pet. *{{wc3-inline}} {{NPC||Filson the Rat|icon=Rat}} in the [[The Culling (WC3 Human)|Stratholme]] zoo during the [[Warcraft III: Reign of Chaos|Third War]]. *{{NPC|Neutral|Flora (rat)||Flora|icon=Rat2}} in the [[Vatworks]] in [[Undermine]]. *{{NPC|Neutral|Flumpers|icon=Rat2}} on the top floor of the [[Leaky Roof Motel]] in the Undermine. *{{NPC|Neutral|Gnawface|icon=Rat}} in the [[Garrison]] menagerie. *{{wc3-inline}} {{NPC||Grank the Rat|icon=Rat}} in the [[Wrath of the Betrayer (WC3 Night Elf)|Broken Isles]] during the Third War. *{{NPC|Neutral|Keepers (rat)||Keepers|icon=Rat}} at [[Breaker's Crown]] in [[Gorgrond]], one of {{au|Rexxar}}'s pets. *{{NPC|Alliance|Littl...",
+   "  [italic-ref] ...nivorous rodents thrive almost anywhere. Rats usually run away. They bite only as a last resort. They are stealthy and good at balancing and swimming.<ref>''[[Monster Guide Web Supplement]]'', pg. 16</ref>  '''Dire rats''' are a large species of rat living in the [[Emerald Dream]].<ref>''[[Shadows & Light]]'', pg. 145</ref>  ==Notes== *The intrepid archaeologist [[Harrison Jones]] has a well-documented fear of rats.<ref>[[Rat (critter)|Rat]]</ref> *Rats appear as [[Critter (Warcraft III)|critters]] in {{g|wc3}}. *In the canceled ''[[Warcraft Adventures: Lord of the Clans|Warcraft Adventures]]'', [[Thrall]] encountered a species called \"[[razor-rat]]s\" within the [[Alterac Mountains]].  ==Gallery== <gallery> File:Dig Rat.jpg|Classic rat model. File:Plague (rat).jpg|{{g|legion}} mod..."
+  ]
+ },
+ {
+  "id": 4076,
+  "name": "Roach",
+  "tag": "",
+  "wiki_title": "Roach",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...e times of [[Arathor]], the [[nathrezim]] [[Kathra'natir]] summoned a swarm of locusts in [[Silverpine Forest]] to destroy trees and ravage croplands.<ref>''[[The First Guardian]]''</ref>  ==References== {{Reflist}}  {{Creaturefooter|Critter}}  [[Category:Roaches| ]] [[Category:Critters]]..."
+  ]
+ },
+ {
+  "id": 11486,
+  "name": "Prince Tortheldrin",
+  "tag": "",
+  "wiki_title": "Prince Tortheldrin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... by [[Dath'Remar Sunstrider]],<ref>[[Verinias the Twisted (quest)]]</ref> 7,300 years [[BDP]].  1,200 years before the opening of the [[Dark Portal]],<ref>''[[World of Warcraft: Chronicle Volume 1]]'', pg. 139</ref> the powers that imprisoned Immol'thar and controlled the pylons began to wane. So Prince Tortheldrin decided to kill some Highborne<ref>[[Magister Kalendris#Dungeon Journal]]</ref> to maintain his source of unlimited power. At some point, he also killed [[Illyanna Ravenoak]], her pet bear [[Ferra]],<ref>[[Illyanna Ravenoak#Dungeon Journal]]</ref> and the elf [[Telmius Dreamseeker]]. He used his demonic power to bind Illyanna's spirit to her body.  The only way of killing the prince is to destroy the guardians surrounding the pylons to lower the force field. Only when this is do..."
+  ]
+ },
+ {
+  "id": 11492,
+  "name": "Alzzin the Wildshaper",
+  "tag": "",
+  "wiki_title": "Alzzin the Wildshaper",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...Burning Legion]] | occupation = [[Illusionist]] | location = [[Shrine of Eldretharr]], [[Warpwood Quarter]] | status = Killable (WoW), Deceased (lore)<ref name=\"Exploring Azeroth 100\">''[[World of Warcraft: Exploring Azeroth: Kalimdor]]'', pg. 100</ref> | instance = Dire Maul | mentors = [[Xavius]] }}  '''Alzzin the Wildshaper''' is a [[satyr]] found in the [[Warpwood Quarter]] of [[Dire Maul]]. He is the final [[boss]] of the wing. [[Old Ironbark]] opens the door to access Alzzin.  The [[Felvine Shard]] is located behind him. It is not required to have the quest [[Shards of the Felvine]] to pick up the shards.  ==History== Legends say that Alzzin was a talented [[arcane]] [[illusionist]], one of the first students of the satyr Lord [[Xavius]]. After the defeat of the [[Burning Legion]] in the [[Battle of Mount Hyjal]], Alzzin..."
+  ]
+ },
+ {
+  "id": 11496,
+  "name": "Immol'thar",
+  "tag": "",
+  "wiki_title": "Immol'thar",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ng Nether]].<ref>{{Ref WoWCV3|120}}</ref> The Highborne had drained him to a husk, and all that remained from the beast was the [[:Evil Eye Pendant]].<ref>''[[World of Warcraft: Exploring Azeroth: Kalimdor]]'', pg. 100</ref>  ==Adventure Guide== ''In a desperate bid to restore the power and immortality they lost when the Well of Eternity was destroyed, the Shen'dralar summoned a demon into the western wing of Dire Maul and captured him within a force field, allowing them to use the void terror's energy for their own spells. Unable to fight back or even move for nearly 10,000 years, Immol'thar could only watch and wait for the day he might break free and rend the flesh of his captors.''  ==Abilities== *{{abilities|[[Eye of Immol'thar]]|Immol'thar summons an Eye of Immol'thar periodically throughout ..."
+  ]
+ },
+ {
+  "id": 11501,
+  "name": "King Gordok",
+  "tag": "",
+  "wiki_title": "King Gordok",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...ion of Emerald Nightmare's power that drove Gordok to insanity and they knew they needed to eradicate it.<ref name=\"Chronicle3 119\"/>  ===Traveler=== {{novel-section}} [[File:Traveler-Ogres.jpg|thumb|Gordok and the ogre girl.]] At some point, King Gordok paid [[Chugara Razorflank]] to build him a dome of thorns in Dire Maul. He sent raiders to get new slaves for his gladiatorial combats.<ref>''[[Traveler: The Spiral Path]]'', chapter 19</ref>  King Gordok, seated on his throne in a great stone temple dedicated to a long-forgotten or long-ignored god, received new prisoners from [[Wordok]].  King Gordok then watched the matches of slaves his clan had enslaved, including the boy [[Aramar Thorne]]. He was constantly slapping a young [[ogre girl]] to show dom...",
+   "  [book-or-game-characters-category] ...boss}}  {{DEFAULTSORT:Gordok}} [[Category:Ogre characters]] [[Category:Warrior characters]] [[Category:Aristocrats]] [[Category:Deceased characters]] [[Category:Traveler characters]] [[Category:Dire Maul mobs]] [[Category:Bosses]]...",
+   "  [italic-ref] ...t, King Gordok paid [[Chugara Razorflank]] to build him a dome of thorns in Dire Maul. He sent raiders to get new slaves for his gladiatorial combats.<ref>''[[Traveler: The Spiral Path]]'', chapter 19</ref>  King Gordok, seated on his throne in a great stone temple dedicated to a long-forgotten or long-ignored god, received new prisoners from [[Wordok]].  King Gordok then watched the matches of slaves his clan had enslaved, including the boy [[Aramar Thorne]]. He was constantly slapping a young [[ogre girl]] to show dominance and threatening the gladiators to kill their opponents. When Aram refused to kill the [[Woodpaw]] [[gnoll]] [[Hackle]], Gordok ordered to summon the captured [[wyvern]] Old [[One-Eye]].  Soon the [[Hidden]] attacked Dire Maul and its leader, Captain [[Malu..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 13321,
+  "name": "Frog",
+  "tag": "",
+  "wiki_title": "Frog",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the critters|Frog (critter)|and|Toad (critter)|the hunter pet family|Hopper|the ''Warcraft III'' unit|Frog (Warcraft III)}} [[File:Toad of the Wilds HS.jpg|thumb|{{HS|Toad of the Wilds}} in {{g|hs}}.]]  '''Frogs''' are common amphibians found in the worlds of [[Azeroth]], [[Outland]], and [[Bonich]].  ==Characteristics== [[File:Speckled Bullfrog.jpg|thumb|A [[Speckled Bullfrog]], using the toad model introduced in ''Battle for Azeroth''.]] {{Stub/Lore-section}}<!-- +could use a better structure/formatting --> Most brightly colored frogs are incredibly poisonous.<Ref>[[Roseate Hopper#Pet Journal]]</ref><Ref>[[Starkstripe Hopper#Pet Journal]]</ref> The skin of a teal frog sometimes shimm..."
+  ]
+ },
+ {
+  "id": 14382,
+  "name": "Lorekeeper Mykos",
+  "tag": "",
+  "wiki_title": "Lorekeeper Mykos",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...nctum of Light]], and removed the Athenaeum mark on the book so that all [[paladin]]s of the [[Knights of the Silver Hand|Silver Hand]] could read it.<ref>''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 74</ref>  ==Quests== {{Classic only-section|patch=4.0.3a}} *[[Harnessing Shadows (quest)]] {{questfinish}} *[[The Greatest Race of Hunters (quest)]] {{questfinish}} *[[The Light and How To Swing It]] {{questfinish}}  ==Quotes== ;Gossip {{Dialogue| [[Lorekeeper Kildrath|Kildrath]] tends to overdramatize the situation. For example, \"[[:Garona: A Study on Stealth and Treachery]],\" has been stolen over 400 times.  The mark of the Athenaeum protects the tomes, preventing any unauthorized viewings. }}  :{{Text|emote|<Lorekeeper Mykos sighs.>}} *{{text|say|Lorekeeper Mykos|When will they learn?..."
+  ]
+ }
+]

@@ -22,8 +22,9 @@ CONFIDENCE = {"confirmed", "uncertain"}
 ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
-MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources"}
-MEMORIAL_KINDS = {"plaque", "tomb", "monument"}
+MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources", "locations", "order"}
+MEMORIAL_OPTIONAL = {"locations", "order"}
+MEMORIAL_KINDS = {"plaque", "tomb", "monument", "book"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
 ITEM_FIELDS = {"id", "name", "note"}
 
@@ -277,8 +278,19 @@ def check_memorials(mems):
                     err(f"{field} contains the banned phrase \"{bad}\" (research or dev wording)")
         for f in sorted(set(e) - MEMORIAL_FIELDS):
             err(f"unknown field '{f}' (typo?)")
-        for f in sorted(MEMORIAL_FIELDS - set(e)):
+        for f in sorted(MEMORIAL_FIELDS - MEMORIAL_OPTIONAL - set(e)):
             err(f"missing required field '{f}'")
+        if "locations" in e:
+            locs = e["locations"]
+            vals = locs.data if isinstance(locs, LuaTable) and locs.is_list else None
+            if not vals:
+                err("'locations' must be a non-empty list of { zone = ..., coords = ... }")
+            for n, loc in enumerate(vals or [], 1):
+                d = loc.data if isinstance(loc, LuaTable) and not loc.is_list else {}
+                if not (isinstance(d.get("zone"), str) and d["zone"].strip()):
+                    err(f"locations[{n}].zone must be a non-empty string")
+                if not (isinstance(d.get("coords"), str) and re.fullmatch(r"\d{1,2}(\.\d)?, \d{1,2}(\.\d)?", d["coords"])):
+                    err(f"locations[{n}].coords must look like \"63.8, 75.1\", found {d.get('coords')!r}")
         for f in ("name", "zone", "story"):
             if f in e and not (isinstance(e[f], str) and e[f].strip()):
                 err(f"'{f}' must be a non-empty string")

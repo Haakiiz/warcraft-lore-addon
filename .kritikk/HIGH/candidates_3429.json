@@ -1,0 +1,78 @@
+[
+ {
+  "id": 15339,
+  "name": "Ossirian the Unscarred",
+  "tag": "",
+  "wiki_title": "Ossirian the Unscarred",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... of Ossirian|handing in Head of Ossirian]] (one / kill).  ==Notes and trivia== *His backstory is a subject of an old [[Farraki tribe|Farraki]] legend.<ref>''[[World of Warcraft: Exploring Azeroth: Kalimdor]]'', pg. 112</ref> *Ossirian is voiced by [[Marc Graue]]. *In the game files, Ossirian is called a [[horusath]], misspelled as \"horisath,\" a reference to his appearance which resembles the Egyptian god Harakhty (\"Horus of the Horizon\"), one of the sun gods. The name \"Ossirian\" is a tribute to [[wikipedia:Osiris|Osiris]], god of death and rebirth.  ==Videos== <vplayer /> *{{#vlink:03KMVOAXAHg|Hunter solo The Ruins of Ahn'Qiraj (AQ20) Ossirian the Unscarred}}  ==Patches and hotfixeses== ;Retail *{{Patch 1.9.0|note=Added.}}  ;Classic *{{Hotfix|date=2020-09-14|classic=|note=Fixed an issue that caused..."
+  ]
+ },
+ {
+  "id": 15341,
+  "name": "General Rajaxx",
+  "tag": "",
+  "wiki_title": "General Rajaxx",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...EFAULTSORT:Rajaxx}} [[Category:Qiraji]] [[Category:Projections]] [[Category:Bosses]] [[Category:Ruins of Ahn'Qiraj mobs]] [[Category:Moonglade NPCs]] [[Category:War of the Shifting Sands characters]] [[Category:Tanaris NPCs]] [[Category:WoW's Anniversary NPCs]]...",
+   "  [italic-ref] ...ral]] and [[Valstann Staghelm]], the leaders of the [[night elf]] forces, and later personally executed Valstann by ripping him in two with his claws.<ref>''[[The War of the Shifting Sands (short story)|The War of the Shifting Sands]]''</ref>  ==Abilities== This is not a traditional fight. Before you actually fight Rajaxx, you must defeat an entourage of his War ranks, each with a pack of mobs.  Each wave consists of an Officer, and a varying mix of [[Swarmguard Needler]]s and [[Qiraji Warrior]]s.  There are seven waves before Rajaxx:  '''Wave 1''': Center  -  *{{abilities|[[Captain Qeez]]|Intimidating Shout}} **{{abilities|Intimidating Shout|Fear all nearby enemies}} *[[Swarmguard Needler]] x2 - [[Qiraji Warrior]] x4  '''Wave 2''': Left side -  *{{abilities|[[Captain Tuubid]]|Attack Order}} **{{abilities|Attack Order|Mark a..."
+  ]
+ },
+ {
+  "id": 15348,
+  "name": "Kurinnaxx",
+  "tag": "",
+  "wiki_title": "Kurinnaxx",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ture = Beast | affiliation = [[C'Thun]], [[Ahn'Qiraj]] | faction = Boss | location = [[Ruins of Ahn'Qiraj]] | status = Killable (WoW), Deceased (lore)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: Kalimdor]]'', pg. 111</ref> | pet = Aqiri | instance = Ruins of Ahn'Qiraj }}  '''Kurinnaxx''', a large [[sand reaver]], is the first [[boss]] found in the [[Ruins of Ahn'Qiraj]]. He has a wide aggro radius and can see stealthed rogues.  Deep in the marrow of the hive, the [[Horde]] led by [[Varok Saurfang]] faced Kurinnaxx when they raided the ruins.<ref name=\"Exploring Azeroth\"/>  ==Abilities== *{{Abilities|Frenzy|id=26527|Increases the caster's attack speed by 75% and the Physical damage it deals by 87 for 2 min.|icon=spell_shadow_unholyfrenzy}} *{{Abilities|Mortal Wound|id=25646|A punshing{{sic}} blow ..."
+  ]
+ },
+ {
+  "id": 15475,
+  "name": "Beetle",
+  "tag": "",
+  "wiki_title": "Beetle",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...e cloud are subject to chokemist disease.<ref>''[[Monster Guide Web Supplement]]'', pg. 28-29</ref>  ==Trivia== *[[Beetle Island]] is an official ''[[Warcraft II: Battle.net Edition]]'' custom map created by [[Blizzard Entertainment|Blizzard]] and released on the [[The Dark Portal (website)|''Warcraft II'' Strategy website]] for download on 29 October 1999.  ==Gallery== ;''World of Warcraft'' <gallery> File:Magmaspray Beetle.jpg|A [[Magmaspray Beetle]] using the classic beetle model. File:Turquoise Scarab.jpg|A [[Turquoise Scarab]] using the appearance introduced in {{g|cata}}. File:Beetle concept.jpg|Beetle concept art in {{g|bfa}}. File:Carrion Scarab.jpg|thumb|[[Carrion Scarab]] using the BfA beetle model. File:Aqir Scarab (Ny'alotha).jpg|[[Aqir sc...",
+   "  [italic-ref] ...rt of the [[Beetle (pet family)|Beetle]] [[pet family]].  ==In the RPG== {{RPG-section}} Scarabs are a species of beetle that live in the [[Barrens]].<ref>''[[Horde Player's Guide]]'', pg. 224-232</ref> Giant scarabs are enormous beetles that carried foul disease. The trolls of [[Zul'Farrak]] consider them sacred. A giant scarab attacks prey mindlessly, releasing a disease cloud as it closes. A giant scarab can release a cloud of diseased air that extends outward from the beetle in a 15-foot-radius spread. Creatures within the cloud are subject to chokemist disease.<ref>''[[Monster Guide Web Supplement]]'', pg. 28-29</ref>  ==Trivia== *[[Beetle Island]] is an official ''[[Warcraft II: Battle.net Edition]]'' custom map created by [[Blizzard Entertainment|Blizzard]] and rele..."
+  ]
+ },
+ {
+  "id": 15476,
+  "name": "Scorpion",
+  "tag": "",
+  "wiki_title": "Scorpid",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...emely painful and causes a slow and wicked death. They are hunters by nature and will attack anything that strays near their nests.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Scorpion|Monster Descriptions]]'', Scorpion</ref>  Hunters of the underground, these are as venomous and deadly as any creation of the [[Warlock (Warcraft I)|Warlocks]]. Their tails are tipped by a sharp spike and can tear through the armor and flesh of their prey to inject a deadly and painful poison into the unfortunate. [[Human]]s [[conjurer]]s have learned to command the smallest of these fiends, and can [[Summon Scorpions|summon]] them to do their bidding.<ref>''[[Warcraft: Orcs & Humans]]'' manual, ''[[Warcraft: Orcs & Humans manual#Scorpio...",
+   "  [italic-ref] ... eight-legged arachnids with front claws and a curved tail that holds a sharp, poisonous stinger. They are native to both [[Azeroth]] and [[Draenor]].<ref>''[[Rise of the Horde]]'', pg. 116</ref><ref>[[Tiny Bronze Scorpion]]</ref> [[Amber scorpion]]s are scorpids fed [[:kyparite]] by the [[mantid]], causing a mutation in which their armor is infused with amber.<ref>[[Meltdown]]</ref> [[Crystal scorpid]]s are a type of armored crystaline scorpids. There are also [[sea scorpion]]s in the seas of [[Draenor (alternate universe)|alternate Draenor]]. [[Flame scorpion]]s are a type of fire scorpid native to the [[Firelands]]. [[Juggernaut (mechanical)|Juggernauts]] are scorpid-like war machines. [[Arachnathid]] are creatures native to Northrend, resembling scorpids.  ==Charact..."
+  ]
+ }
+]

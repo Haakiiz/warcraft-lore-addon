@@ -9,7 +9,9 @@ The addon is public now and ships ONLY confirmed lore (tests/validate_db.py enfo
   only lists the name in a Characters table with no action, REJECT that appearance.
 - Banned words in role/story/campaign: "Classic", "Season of Discovery", "game files", "removed from the game", "ADP",
   "wiki", "listed", "pg.", "may not exist". Write for players, not researchers.
-- An NPC that was removed from the game or only appeared in a one-time event is REJECTED (players can't meet them).
+- An NPC that was removed from the game is REJECTED. ★ (Håkon, 2026-10-24) NPCs from one-time or seasonal world events
+  (e.g. the Ahn'Qiraj war effort) ARE included; say in the story when they appear. RTS cinematics and interludes count as
+  appearances: list them by their wiki title (e.g. "The Death of Hellscream") and say "cinematic" in the role.
 
 v2 (2026-10-08 morning) lifted Haiku from 14 to 19 of 21 NPCs on Stormwind/Elwynn. v3 (2026-10-08 evening) moves the
 mechanical part to the orchestrator: you get the wiki pages already fetched and a candidate list already flagged.
