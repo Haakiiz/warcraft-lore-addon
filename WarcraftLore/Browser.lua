@@ -833,7 +833,7 @@ local function acquireRow(i)
     end)
     r:SetScript("OnClick", function(self)
         closePopup()
-        if self.item then
+        if self.item and not ns.FeatureOff("window") then
             -- The lore window sits in a higher strata than this window, so it opens on top,
             -- docked next to this one.
             if self.item.memorial then

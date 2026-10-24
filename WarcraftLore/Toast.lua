@@ -233,7 +233,7 @@ local function build()
         anchor:StopMovingOrSizing()
         savePosition()
     end)
-    t:SetScript("OnUpdate", onUpdate)
+    t:SetScript("OnUpdate", ns.Guard("alert", L["the nearby alert"], onUpdate))
     return t
 end
 
