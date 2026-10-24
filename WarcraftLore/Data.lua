@@ -53,6 +53,12 @@ ns.NPCS = {
         appearances = {
             {
                 game = "WC3",
+                campaign = "Exodus of the Horde (Prologue)",
+                missions = { "Thrall's Vision" },
+                role = "Cinematic: wakes from a dream in which the Prophet tells him to lead the Horde west",
+            },
+            {
+                game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
                 missions = { "Landfall", "The Long March", "Cry of the Warsong",
                              "Where Wyverns Dare", "The Oracle", "By Demons Be Driven", "The Death of Hellscream" },
@@ -121,6 +127,7 @@ ns.NPCS = {
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/The_Last_Guardian_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Thrall%27s_Vision_(WC3_demo)",
             "https://warcraft.wiki.gg/wiki/Thrall",
             "https://warcraft.wiki.gg/wiki/The_Invasion_of_Kalimdor",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land",
@@ -1189,8 +1196,8 @@ ns.NPCS = {
             {
                 game = "TFT",
                 campaign = "Legacy of the Damned (Undead)",
-                missions = { "The Dark Lady" },
-                role = "Enemy hero (Dreadlord): offers Sylvanas a place in the dreadlords' new order, then begs for his life and defects to her",
+                missions = { "A Kingdom Divided", "The Dark Lady" },
+                role = "Enemy hero (Dreadlord): in the A Kingdom Divided interlude he and his brothers tell Sylvanas the Lich King is losing his power; offers her a place in the dreadlords' new order, then begs for his life and defects to her",
             },
             {
                 game = "TFT",

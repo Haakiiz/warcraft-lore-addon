@@ -42,8 +42,14 @@ ns.MEMORIALS = {
             {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
-                missions = { "The Defense of Strahnbrad", "Blackrock and Roll", "March of the Scourge", "The Culling" },
-                role = "Paladin who fights beside Prince Arthas, brings reinforcements to Hearthglen and confronts him after the Culling of Stratholme",
+                missions = { "The Defense of Strahnbrad", "Blackrock and Roll", "March of the Scourge", "The Culling", "Divergent Courses" },
+                role = "Paladin who fights beside Prince Arthas, brings reinforcements to Hearthglen and confronts him after the Culling of Stratholme; in the Divergent Courses interlude he finds Jaina in the ruins and learns Arthas has sailed for Northrend",
+            },
+            {
+                game = "FK",
+                campaign = "The Last Days of Lordaeron (Human)",
+                missions = { "Lightbringer" },
+                role = "Interlude (Reforged only): hears Lt. Garek Bandarion's report on the way to Andorhal and orders him to hold the town against the cult",
             },
             {
                 game = "WC3",
