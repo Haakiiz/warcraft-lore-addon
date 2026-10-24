@@ -1,0 +1,417 @@
+[
+{
+"id": 89,
+"name": "Infernal",
+"tag": ""
+},
+{
+"id": 1420,
+"name": "Toad",
+"tag": ""
+},
+{
+"id": 2914,
+"name": "Snake",
+"tag": ""
+},
+{
+"id": 11338,
+"name": "Hakkari Shadowcaster",
+"tag": ""
+},
+{
+"id": 11339,
+"name": "Hakkari Shadow Hunter",
+"tag": ""
+},
+{
+"id": 11340,
+"name": "Hakkari Blood Priest",
+"tag": ""
+},
+{
+"id": 11347,
+"name": "Zealot Lor'Khan",
+"tag": ""
+},
+{
+"id": 11348,
+"name": "Zealot Zath",
+"tag": ""
+},
+{
+"id": 11350,
+"name": "Gurubashi Axe Thrower",
+"tag": ""
+},
+{
+"id": 11351,
+"name": "Gurubashi Headhunter",
+"tag": ""
+},
+{
+"id": 11352,
+"name": "Gurubashi Berserker",
+"tag": ""
+},
+{
+"id": 11353,
+"name": "Gurubashi Blood Drinker",
+"tag": ""
+},
+{
+"id": 11356,
+"name": "Gurubashi Champion",
+"tag": ""
+},
+{
+"id": 11357,
+"name": "Son of Hakkar",
+"tag": ""
+},
+{
+"id": 11359,
+"name": "Soulflayer",
+"tag": ""
+},
+{
+"id": 11360,
+"name": "Zulian Cub",
+"tag": ""
+},
+{
+"id": 11361,
+"name": "Zulian Tiger",
+"tag": ""
+},
+{
+"id": 11365,
+"name": "Zulian Panther",
+"tag": ""
+},
+{
+"id": 11368,
+"name": "Bloodseeker Bat",
+"tag": ""
+},
+{
+"id": 11370,
+"name": "Razzashi Broodwidow",
+"tag": ""
+},
+{
+"id": 11371,
+"name": "Razzashi Serpent",
+"tag": ""
+},
+{
+"id": 11372,
+"name": "Razzashi Adder",
+"tag": ""
+},
+{
+"id": 11373,
+"name": "Razzashi Cobra",
+"tag": ""
+},
+{
+"id": 11374,
+"name": "Hooktooth Frenzy",
+"tag": ""
+},
+{
+"id": 11380,
+"name": "Jin'do the Hexxer",
+"tag": ""
+},
+{
+"id": 11382,
+"name": "Bloodlord Mandokir",
+"tag": ""
+},
+{
+"id": 11387,
+"name": "Sandfury Speaker",
+"tag": "Sandfury Troll Ambassador"
+},
+{
+"id": 11388,
+"name": "Witherbark Speaker",
+"tag": "Witherbark Troll Ambassador"
+},
+{
+"id": 11389,
+"name": "Bloodscalp Speaker",
+"tag": "Bloodscalp Troll Ambassador"
+},
+{
+"id": 11390,
+"name": "Skullsplitter Speaker",
+"tag": "Skullsplitter Troll Ambassador"
+},
+{
+"id": 11391,
+"name": "Vilebranch Speaker",
+"tag": "Vilebranch Troll Ambassador"
+},
+{
+"id": 11830,
+"name": "Hakkari Priest",
+"tag": ""
+},
+{
+"id": 11831,
+"name": "Hakkari Witch Doctor",
+"tag": ""
+},
+{
+"id": 11859,
+"name": "Doomguard",
+"tag": ""
+},
+{
+"id": 13321,
+"name": "Frog",
+"tag": ""
+},
+{
+"id": 14122,
+"name": "Massive Geyser",
+"tag": ""
+},
+{
+"id": 14337,
+"name": "Field Repair Bot 74A",
+"tag": ""
+},
+{
+"id": 14507,
+"name": "High Priest Venoxis",
+"tag": ""
+},
+{
+"id": 14509,
+"name": "High Priest Thekal",
+"tag": ""
+},
+{
+"id": 14510,
+"name": "High Priestess Mar'li",
+"tag": ""
+},
+{
+"id": 14515,
+"name": "High Priestess Arlokk",
+"tag": ""
+},
+{
+"id": 14517,
+"name": "High Priestess Jeklik",
+"tag": ""
+},
+{
+"id": 14532,
+"name": "Razzashi Venombrood",
+"tag": ""
+},
+{
+"id": 14750,
+"name": "Gurubashi Bat Rider",
+"tag": ""
+},
+{
+"id": 14821,
+"name": "Razzashi Raptor",
+"tag": ""
+},
+{
+"id": 14825,
+"name": "Withered Mistress",
+"tag": ""
+},
+{
+"id": 14826,
+"name": "Sacrificed Troll",
+"tag": ""
+},
+{
+"id": 14834,
+"name": "Hakkar",
+"tag": ""
+},
+{
+"id": 14880,
+"name": "Razzashi Skitterer",
+"tag": ""
+},
+{
+"id": 14881,
+"name": "Spider",
+"tag": ""
+},
+{
+"id": 14882,
+"name": "Atal'ai Mistress",
+"tag": ""
+},
+{
+"id": 14883,
+"name": "Voodoo Slave",
+"tag": ""
+},
+{
+"id": 14884,
+"name": "Parasitic Serpent",
+"tag": ""
+},
+{
+"id": 14965,
+"name": "Frenzied Bloodseeker Bat",
+"tag": ""
+},
+{
+"id": 14986,
+"name": "Shade of Jin'do",
+"tag": ""
+},
+{
+"id": 14987,
+"name": "Powerful Healing Ward",
+"tag": ""
+},
+{
+"id": 14988,
+"name": "Ohgan",
+"tag": ""
+},
+{
+"id": 15010,
+"name": "Jungle Toad",
+"tag": ""
+},
+{
+"id": 15041,
+"name": "Spawn of Mar'li",
+"tag": ""
+},
+{
+"id": 15042,
+"name": "Zanza the Restless",
+"tag": ""
+},
+{
+"id": 15043,
+"name": "Zulian Crocolisk",
+"tag": ""
+},
+{
+"id": 15067,
+"name": "Zulian Stalker",
+"tag": ""
+},
+{
+"id": 15068,
+"name": "Zulian Guardian",
+"tag": ""
+},
+{
+"id": 15082,
+"name": "Gri'lek",
+"tag": ""
+},
+{
+"id": 15083,
+"name": "Hazza'rah",
+"tag": ""
+},
+{
+"id": 15084,
+"name": "Renataki",
+"tag": ""
+},
+{
+"id": 15085,
+"name": "Wushoolay",
+"tag": ""
+},
+{
+"id": 15101,
+"name": "Zulian Prowler",
+"tag": ""
+},
+{
+"id": 15111,
+"name": "Mad Servant",
+"tag": ""
+},
+{
+"id": 15114,
+"name": "Gahz'ranka",
+"tag": ""
+},
+{
+"id": 15117,
+"name": "Chained Spirit",
+"tag": ""
+},
+{
+"id": 15146,
+"name": "Mad Voidwalker",
+"tag": ""
+},
+{
+"id": 15163,
+"name": "Nightmare Illusion",
+"tag": ""
+},
+{
+"id": 166359,
+"name": "Zulian Tiger",
+"tag": ""
+},
+{
+"id": 213450,
+"name": "Felguard",
+"tag": ""
+},
+{
+"id": 231980,
+"name": "Shadra",
+"tag": "Loa of Spiders"
+},
+{
+"id": 231982,
+"name": "Hethiss",
+"tag": "Loa of Snakes"
+},
+{
+"id": 231990,
+"name": "Bethekk",
+"tag": "Loa of Panthers"
+},
+{
+"id": 231991,
+"name": "Shirvallah",
+"tag": "Loa of Tigers"
+},
+{
+"id": 231992,
+"name": "Hir'eek",
+"tag": "Loa of Bats"
+},
+{
+"id": 232190,
+"name": "Spawn of Shadra",
+"tag": ""
+},
+{
+"id": 232467,
+"name": "Spawn of Mar'li",
+"tag": ""
+},
+{
+"id": 232634,
+"name": "Parasitic Serpent",
+"tag": ""
+}
+]

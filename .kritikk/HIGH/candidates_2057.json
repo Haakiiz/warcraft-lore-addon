@@ -1,0 +1,124 @@
+[
+ {
+  "id": 1853,
+  "name": "Darkmaster Gandling",
+  "tag": "",
+  "wiki_title": "Darkmaster Gandling",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...n peace, attacked him.<ref>[[An End to the Suffering (Scholomance)]]</ref>  [[File:Darkmaster Gandling Andorhal.jpg|thumb|Gandling in [[Andorhal]].]] {{Novel-section}} Following the [[Fourth War]], [[Mathias Shaw]] stated that according to [[Argent Crusade]] reports, Darkmaster Gandling is still active as the head of [[Scholomance]], with [[Jandice Barov]] and [[Rattlegore]], and has many puppets to play with.<ref name=\"Exploring Azeroth\" />  Whether this means he was resurrected as an undead or simply was not killed as previously believed is unknown. The continued presence of Jandice Barov appears to mean that the curse upon the Barovs continues.  ==Adventure Guide== ''Course: Advanced Studies''  ''The recent defeat in Andorhal has put Darkmaster Gandlin...",
+   "  [italic-ref] ... {{Aggro|-1|-1}} | faction = Boss | affiliation = [[Cult of the Damned]] | location = [[Headmaster's Study]], [[Scholomance]] | status = Active (lore)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 77</ref><br/> Killable {{mop-inline}} | instance = Scholomance }}  '''Darkmaster Gandling''' is a [[human]] [[necromancer]] of the [[Cult of the Damned]]. He serves as the final boss of [[Scholomance]].  ==History== Darkmaster Gandling served as the headmaster of [[necromancy]] at the [[Scholomance]] and, along with his teacher [[Ras Frostwhisper]], oversaw the atrocities committed against many [[Eva Sarkhoff|innocent]] [[Lucien Sarkhoff|souls]].<ref>[[Magistrate Marduke#Quotes]]</ref>  {{cata-section}} One of the few [[Scholomance (Classic)|classic]] bosses of the Scholomance to survive..."
+  ]
+ },
+ {
+  "id": 4075,
+  "name": "Rat",
+  "tag": "",
+  "wiki_title": "Rat",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...|icon=Rat}} in [[Kun-Lai Summit]], [[Thundering Pandaren Spirit]]'s battle pet. *{{wc3-inline}} {{NPC||Filson the Rat|icon=Rat}} in the [[The Culling (WC3 Human)|Stratholme]] zoo during the [[Warcraft III: Reign of Chaos|Third War]]. *{{NPC|Neutral|Flora (rat)||Flora|icon=Rat2}} in the [[Vatworks]] in [[Undermine]]. *{{NPC|Neutral|Flumpers|icon=Rat2}} on the top floor of the [[Leaky Roof Motel]] in the Undermine. *{{NPC|Neutral|Gnawface|icon=Rat}} in the [[Garrison]] menagerie. *{{wc3-inline}} {{NPC||Grank the Rat|icon=Rat}} in the [[Wrath of the Betrayer (WC3 Night Elf)|Broken Isles]] during the Third War. *{{NPC|Neutral|Keepers (rat)||Keepers|icon=Rat}} at [[Breaker's Crown]] in [[Gorgrond]], one of {{au|Rexxar}}'s pets. *{{NPC|Alliance|Littl...",
+   "  [italic-ref] ...nivorous rodents thrive almost anywhere. Rats usually run away. They bite only as a last resort. They are stealthy and good at balancing and swimming.<ref>''[[Monster Guide Web Supplement]]'', pg. 16</ref>  '''Dire rats''' are a large species of rat living in the [[Emerald Dream]].<ref>''[[Shadows & Light]]'', pg. 145</ref>  ==Notes== *The intrepid archaeologist [[Harrison Jones]] has a well-documented fear of rats.<ref>[[Rat (critter)|Rat]]</ref> *Rats appear as [[Critter (Warcraft III)|critters]] in {{g|wc3}}. *In the canceled ''[[Warcraft Adventures: Lord of the Clans|Warcraft Adventures]]'', [[Thrall]] encountered a species called \"[[razor-rat]]s\" within the [[Alterac Mountains]].  ==Gallery== <gallery> File:Dig Rat.jpg|Classic rat model. File:Plague (rat).jpg|{{g|legion}} mod..."
+  ]
+ },
+ {
+  "id": 10502,
+  "name": "Lady Illucia Barov",
+  "tag": "",
+  "wiki_title": "Lady Illucia Barov",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...cholomance]] Instructor | location = [[Shadow Vault (Scholomance)|The Shadow Vault]], [[Scholomance (Classic)|Scholomance]] | status = Deceased (lore)<ref>''[[Ultimate Visual Guide]]'', pg. 140</ref> | relatives = [[Lord Alexei Barov|Alexei]] (husband),<br/> [[Alexi Barov|Alexi]] and [[Weldon Barov|Weldon]] (sons), [[Jandice Barov|Jandice]] (daughter) | instance = Scholomance (Classic) }}__NOTOC__ [[File:Lady Illucia Barov.jpg|thumb|In-game.]]  '''Lady Illucia Barov''' is a [[ghost]] [[mini-boss]] found in [[Scholomance (Classic)|Scholomance]]. She was the wife of [[Lord Alexei Barov]] and formerly one of the six mini-bosses who had to be killed in order to summon [[Darkmaster Gandling]].   ==Abilities== She uses only shadow spells, so a [[shadow resistance]] buff or aura w..."
+  ]
+ },
+ {
+  "id": 10503,
+  "name": "Jandice Barov",
+  "tag": "",
+  "wiki_title": "Jandice Barov",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ... more active role in educating the next generation of [[Mage|magi]] in [[Scholomance]] with her vast knowledge of illusions.  ===Exploring Azeroth=== {{Novel-section}} Following the [[Fourth War]], [[Mathias Shaw]] stated that according to [[Argent Crusade]] reports, some of the Barovs were still in Scholomance, including Jandice Barov. As she was a master of illusion in life, she appeared just as strong in death. Mathias also reported that near her dwelling, one of the ritual hoods was found. He advised to leave it locked in the manor, but the [[Barovian Ritual Hood|hood]] and the [[Barovian Family Sword|Barovian family sword]] ended up displayed in [[Mardenholde Keep]] of [[Hearthglen]].<ref name=\"Exploring Azeroth\" />  ==Adventure Guide== ''Course: Adv...",
+   "  [italic-ref] ... faffiliation = [[Kirin Tor]], [[Dalaran (kingdom)|Magocracy of Dalaran]] | location = [[Hall of Illusions]], [[Scholomance]] | status = Active (lore)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 77</ref><br/> Killable (WoW) | instance = Scholomance | relatives = [[Lord Alexei Barov|Alexei]] (father), [[Lady Illucia Barov|Illucia]] (mother), [[Alexi Barov|Alexi]] and [[Weldon Barov|Weldon]] (brothers) }} [[File:Jandice Barov.jpg|In-game.|thumb]]  '''Jandice Barov''' is the second boss in [[Scholomance]].  ==Biography== Jandice Barov was once an [[archmage]] of [[Dalaran]] and a powerful [[illusionist]]. In life, she developed a spell that \"displayed several images of her body that were nearly indistinguishable from her real form. These images duplicated her actions from different..."
+  ]
+ },
+ {
+  "id": 10504,
+  "name": "Lord Alexei Barov",
+  "tag": "",
+  "wiki_title": "Lord Alexei Barov",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...rge]] | faction = Boss | aggro = {{Aggro|-1|-1}} | location = [[Barov Family Vault]], [[Scholomance (Classic)|Scholomance]] | status = Deceased (lore)<ref name=\"UVG\">''[[Ultimate Visual Guide]]'', pg. 140</ref> | relatives = [[Lady Illucia Barov|Illucia]] (wife),<br/> [[Alexi Barov|Alexi]] and [[Weldon Barov|Weldon]] (sons), [[Jandice Barov|Jandice]] (daughter) | instance = Scholomance (Classic) | profession = Pickpocket }}  '''Lord Alexei Barov''' is an [[elite]] [[death knight]] [[boss]] found in [[Scholomance (Classic)|Scholomance]].  ==Background== [[File:Lord Alexei Barov.jpg|thumb|upright|Lord Alexei in ''World of Warcraft''.]] Prior to the [[Scourging of Lordaeron]] in 20 [[ADP]], Alexei Barov was the lord of [[Caer Darrow]], [[Brill]], [[Tarren Mill]], and [[Southshore]].<ref>..."
+  ]
+ },
+ {
+  "id": 10508,
+  "name": "Ras Frostwhisper",
+  "tag": "",
+  "wiki_title": "Ras Frostwhisper",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] .... When he was defeated and cornered by the Silver Hand, Ras promised to return with power and teleported away, heading to [[Stratholme]].<ref>[[Siege (WC3 Human)]]</ref>  He turned himself over to the [[Lich King]] in return for [[immortal]]ity. Upon the ground in Stratholme, within the [[Slaughter House]], Ras Frostwhisper took a dagger to his own neck and cut from one side to the other—all the time with a smile upon his face. His corpse fell onto [[Menethil's Gift]], and it is there that the Lich King raised him as a lich, granting him immortality while [[Leonid Barthalomew]] looked on.<ref name=\"Leonid Barthalomew\">[[Menethil's Gift (quest)]]</ref> Moments after the ritual, Garek and Ilastar attacked him once again and defeated him. However,...",
+   "  [italic-ref] ...he Scourge]]. This contradicts the account of Leonid Barthalomew, since according to him, Ras became a lich after Stratholme was taken by the Scourge.<ref name=\"Leonid Barthalomew\"/> **This original account by Leonid seems to be the canonical one, as Ras is a secondary antagonist in the prologue campaign of ''[[Warcraft III Reforged: Forsaken Kingdom]]'', which depicts him as a human and then later shows his transformation. *His name is also similar to the Lich [[Ras Splinterspine]]. *Ras received an [[Adventure Guide]] icon but was never added to it.  ==Gallery== <gallery> File:Ras FK.png|thumb|upright|Ras Frostwhisper right before becoming a Lich in [[Stratholme]], from ''[[Warcraft III Reforged: Forsaken Kingdom]]'' </gallery>  ==Patch changes== *{{Patch 10.1.5|note=Re-added in the [[Legacy of Scholomance]].}} *{{Patch 5.0.4|note=Removed.}} *{{Patch 4.0.3a|note=Level reduced from 62 to 43.}} *{{Patch 1.4.0|note=Ras Frostwhisper will always..."
+  ]
+ },
+ {
+  "id": 11261,
+  "name": "Doctor Theolen Krastinov",
+  "tag": "The Butcher",
+  "wiki_title": "Doctor Theolen Krastinov",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ught to cleanse him of the lust for power that drove him to commit such terrible deeds. His [[sinstone]] can be found near the [[Halls of Atonement]].<ref name=\"sinstone\"/>  ==Abilities== *{{Abilities|Backhand|id=18103|Backhands an enemy, stunning it for 2 sec.|icon=inv_gauntlets_05}} *{{Abilities|Frenzy|id=8269|Increases the caster's attack speed by 60% for 2 min.|icon=spell_shadow_unholyfrenzy}} *{{Abilities|Rend|id=16509|Inflicts Physical damage to an enemy every 3 sec. for 15 sec.|icon=ability_gouge}}  ==Loot== *[[Krastinov's Bag of Horrors]]  ==Quotes== ;Entering the Butcher's Sanctum :{{text|yell|The doctor is in!}}  ;Engage :{{text|yell|Time for a little open-heart surgery!}}  ;Killing a player :{{text|yell|Another successful operation!}}  ;Death :{{text|yell|Donate...my body...to science...}}  ==In Hearthstone== {{Hearthstone-section}} [[File:Doctor Krastinov HS.jpg|thumb|230px|Doctor Theolen Krastinov  in the [[Scholomance]] Academy in ''Hearthstone''.]] Doctor Krastinov appears as a {{HS|Doctor Krastinov|legendary Rogue/Warrior card}} in the ''[[Hearthstone: Scholomance Academy|Scholomance Academy]]'' expansion for ''[[Hearthstone (game)|Hearthstone]]''. His flavor text reads: \"''He's not a medical doctor.''\"  ==Notes and trivia== *He wrote the book [[Crimes Against Anatomy]]. *It is possible that the inspiration for Krastinov's character may be [[wikipedia:Josef Mengele|Josef Mengele]], head physician of the Auschwitz death camp, who used his position to carry out unspeakable acts of torture on certain inmates in the name of science, earning him the nickname 'The Angel of Death'. *His quote ''\"{{text|yell|The doctor is in!}}\"'' may be a reference to [[wikipedia:Hellbound: Hellraiser II|Hellraiser]]'s [[wikipedia:Dr. Channard (Hellraiser)|Dr Channard Cenobite]]. *Theolen Krastinov is voiced by [[Robin Atkin-Downes]]. *Krastinov has extensive voice over dialogue in the game files for ''[[Mists of Pandaria]]'', suggesting he was originally intended to return as a normal boss for the revamp of Scholomance. Instead, [[Krastinovian Carver]]s appear, who have apparently been surgically altered to look like Theolen Krastinov. They will sometimes randomly say lines of dialogue recorded for Krastinov while in combat. Krastinov himself does [[Doctor Theolen Krastinov|appear]] as a rare spawn in the [[Heroic]] level 90 version of Scholomance.  ==Patch changes== *{{Patch 5.0.4|note=Added.}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|59369}}  {{DEFAULTSORT:Krastinov}} [[Category:Human charac..."
+  ]
+ },
+ {
+  "id": 11622,
+  "name": "Rattlegore",
+  "tag": "",
+  "wiki_title": "Rattlegore",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ... he is recreated from bones within Scholomance's [[Chamber of Summoning]]. He appears after [[Lilian Voss]] leaves to chase [[Darkmaster Gandling]].  {{Novel-section}} Following the [[Fourth War]], [[Mathias Shaw]] stated that according to [[Argent Crusade]] reports, Rattlegore is still present and active in Scholomance, it would appear to have been resurrected again, or rebuilt, and remains just as dangerous and disturbing as ever.<ref name=\"Exploring Azeroth\" />  ==Adventure Guide== ''Course: Reanimation 101''  ''Rattlegore was thought to have been destroyed in [[Andorhal]], but [[Gandling]] immediately began preparations to reanimate the clattering terror so he could guard against intruders. The darkmaster sought to make Rattlegore more ferocious than ...",
+   "  [italic-ref] ...Elite |race=Bone golem |creature=Undead |faction=Boss |aggro={{Aggro|-1|-1}} |location=[[Chamber of Summoning]], [[Scholomance]] |status=Active (lore)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 77</ref><br/> Killable (WoW) |instance=Scholomance }} [[File:Rattlegore MoP.jpg|thumb|In-game.]]  '''Rattlegore''' is a [[bone golem]] [[boss]] in [[Scholomance]]. After being defeated by the [[Alliance]] during the [[Battle for Andorhal]],<ref>[[Brute Strength (Alliance)]]</ref> he is recreated from bones within Scholomance's [[Chamber of Summoning]]. He appears after [[Lilian Voss]] leaves to chase [[Darkmaster Gandling]].  {{Novel-section}} Following the [[Fourth War]], [[Mathias Shaw]] stated that according to [[Argent Crusade]] reports, Rattlegore is still present and active in Scho..."
+  ]
+ }
+]

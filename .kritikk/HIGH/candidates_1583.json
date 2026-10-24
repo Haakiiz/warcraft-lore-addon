@@ -1,0 +1,175 @@
+[
+ {
+  "id": 4076,
+  "name": "Roach",
+  "tag": "",
+  "wiki_title": "Roach",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...e times of [[Arathor]], the [[nathrezim]] [[Kathra'natir]] summoned a swarm of locusts in [[Silverpine Forest]] to destroy trees and ravage croplands.<ref>''[[The First Guardian]]''</ref>  ==References== {{Reflist}}  {{Creaturefooter|Critter}}  [[Category:Roaches| ]] [[Category:Critters]]..."
+  ]
+ },
+ {
+  "id": 10162,
+  "name": "Lord Victor Nefarius",
+  "tag": "Lord of Blackrock",
+  "wiki_title": "Nefarian",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Beyond the Dark Portal | Black dragonflight | *{{RaceIcon|Nefarian}} [[Nefarian]]",
+   "Night of the Dragon |  | *{{RaceIcon|Nefarian}} [[Nefarian]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...d that although Nefarian had been killed, his experiment continues.<ref>[[Sintharia#Meeting with Overlord Mor'ghor]]</ref>  ===Night of the Dragon=== {{novel-section}} During the events in [[Grim Batol]] prior to the [[war against the Lich King]], [[Kalecgos]] and [[Krasus]] confirmed that Nefarian, the eldest and most powerful of Deathwing's children, had been slain by brave fighters. Kalec later suggested to [[Dargonax]] that Nefarian's mother, [[Sintharia]], abandoned him to his enemies after he failed her.<ref>''[[Night of the Dragon]]'', pg. 143, 207</ref>  Sintharia, also the creator of Dargonax and the [[twilight dragonflight]], was mentally unstable and referred to Dargonax as Nefarian on a few different occasions.<ref>''[[Night of the Dragon]]'',...",
+   "  [book-or-game-characters-category] ...ragonflightfooter|Black Dragonflight}}  [[Category:Black dragons]] [[Category:Undead dragons]] [[Category:Twilight's Hammer]] [[Category:Dark Horde]] [[Category:Beyond the Dark Portal characters]] [[Category:Night of the Dragon characters]] [[Category:Deceased characters]] [[Category:Hearthstone legendary cards]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Blackwing Lair NPCs]] [[Category:Blackwing Descent NPCs]] [[Category:Dragons with human visage]] [[Category:Hearthstone heroes]]...",
+   "  [rts-words] ...a]] and Nefarian to secure the [[Blackrock clan|Blackrock]] [[orc]]s of [[Blackrock Spire]] as their new force. His children agreed to do so.<ref>''[[Beyond the Dark Portal]]'', chapter 8</ref>  After Draenor's destruction, Deathwing returned as Daval Prestor to Lordaeron, sowing chaos. As Nefarian delighted in meddling in human affairs,<ref name=\"Df Codex 106\">{{Ref WoWCodex|106}}</ref> Deathwing secretly called on Nefarian to accompany him, also disguised as a human noble. Together, they spread distrust among [[Alliance of Lordaeron|Alliance]]'s nations,<ref>{{Ref WoWCV3|22}}</ref> which they succeeded in. After the [[Battle of Grim Batol]], Nefarian chose to work from shadows and contacted the [[Dark Horde]] in Blackrock Mountain. He struck up an alliance wit...",
+   "  [italic-ref] ...ght, creator of the chromatic dragonflight, Lord of Blackrock (as Lord Victor Nefarius) | location = [[#Locations|Various]] | status = Deceased (lore)<ref>''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 44 - 45</ref><br/> Killable (WoW) | relatives = [[Deathwing]] (father), [[Sintharia]] (mother), [[Onyxia]] (younger<ref name=\"Onyxia the Black Dragon\">[[Onyxia the Black Dragon]]</ref> twin sister),<ref name=\"The Great Masquerade\">[[The Great Masquerade]]</ref> [[Nyxondra]] (sister),<ref>{{tw|https://twitter.com/DaveKosak/status/398238613801938945|2013-11-07|Dave Kosak|It's kinda kooky, but Wrathion's mother Nyxondra was Onyxia's sister... so... Yeah black dragons are freaky.}}</ref> [[Sabellian]] (half-brother),<ref>''[[Ultimate Visual Guide]]'', pg. 173</ref> [[Ebyssian]] (brother or h..."
+  ]
+ },
+ {
+  "id": 10299,
+  "name": "Scarshield Infiltrator",
+  "tag": "Scarshield Legion",
+  "wiki_title": "Vaelastrasz",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...Red dragon]] / [[Wyrm]] | creature = Dragonkin | affiliation = [[Red dragonflight]] | occupation = Nemesis of [[Nefarian]] | status = Deceased (lore),<ref>''[[Ultimate Visual Guide]]'', pg. 172</ref> Killable (WoW)  | location = [[#Locations|Various]]  | relatives = [[Alexstrasza]] (mother),<br> [[Caelestrasz]] (brother),<br> [[Ysera]] (aunt),<br> [[Merithra]] (cousin),<br> [[Dralad]] (uncle),<br> father unknown<ref>''[[World of Warcraft: The Magazine Volume I Issue II]]'', pg. 25</ref><ref>''[[Thrall: Twilight of the Aspects]]'' lineages</ref> | instance = Lower Blackrock Spire }}  '''Vaelastrasz''' ({{IPA|/ˈveɪ.ləˌstrɑːsz/}} {{respell|VAY-lə-strahsz}}),<ref name=\"EXP AZ TEK 44\">{{ref book |author= Golden, Christie |authorlink= Christie Golden |title = [[Exploring Azeroth:..."
+  ]
+ },
+ {
+  "id": 10340,
+  "name": "Vaelastrasz the Red",
+  "tag": "",
+  "wiki_title": "Vaelastrasz",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...Red dragon]] / [[Wyrm]] | creature = Dragonkin | affiliation = [[Red dragonflight]] | occupation = Nemesis of [[Nefarian]] | status = Deceased (lore),<ref>''[[Ultimate Visual Guide]]'', pg. 172</ref> Killable (WoW)  | location = [[#Locations|Various]]  | relatives = [[Alexstrasza]] (mother),<br> [[Caelestrasz]] (brother),<br> [[Ysera]] (aunt),<br> [[Merithra]] (cousin),<br> [[Dralad]] (uncle),<br> father unknown<ref>''[[World of Warcraft: The Magazine Volume I Issue II]]'', pg. 25</ref><ref>''[[Thrall: Twilight of the Aspects]]'' lineages</ref> | instance = Lower Blackrock Spire }}  '''Vaelastrasz''' ({{IPA|/ˈveɪ.ləˌstrɑːsz/}} {{respell|VAY-lə-strahsz}}),<ref name=\"EXP AZ TEK 44\">{{ref book |author= Golden, Christie |authorlink= Christie Golden |title = [[Exploring Azeroth:..."
+  ]
+ },
+ {
+  "id": 10363,
+  "name": "General Drakkisath",
+  "tag": "",
+  "wiki_title": "General Drakkisath",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ith black conflagration. Drakkisath can call upon eldritch powers granted by his master, causing a single foe within thirty feet to burst into flames.<ref>''[[Monster Guide]]'', pg. 158-159</ref>  ==Trivia== *[[Blacklord Hamarahk]] was to use the same model as him. *A ''[[Cataclysm]]'' ID was added but wasn't used. *During the beta, [[Widow's Clutch (item)]] and [[Breastplate of the Chosen]] was also part of his loot table.  ==Gallery== <gallery> File:Statue Drakkisath Pose.png|General Drakkisath in ''[[Warcraft Arclight Rumble]]''. </gallery>  ==Patch changes== *{{Patch 6.0.2|note=Removed.}} *{{Patch 4.0.3a|note=No longer drops [[Dungeon Set 1]] chestpieces. (Level and stats changed?)}} *{{Patch 3.3.0|note=Changed from a level ?? [[boss]] to a level 62 elite.}} *{{..."
+  ]
+ },
+ {
+  "id": 10429,
+  "name": "Warchief Rend Blackhand",
+  "tag": "",
+  "wiki_title": "Dal'rend Blackhand",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ... be a great threat to Thrall's leadership of the [[Horde]]. He was eventually slain by champions of the Horde.  ==Biography== ===Rise of the Horde=== {{Novel-section}} 6 years before the [[First War]], the [[warlock]] [[Gul'dan]] sought to convince [[Blackhand|Chieftain Blackhand]] to take up the mantle of [[Warchief]] of the [[Old Horde|Horde]]. To help convince the chieftain, Gul'dan taught some of the [[Blackrock clan]]'s [[shaman]] in the ways of [[fel]] magic and how to rapidly grow adolescent [[orc]]s to adulthood by imbuing them with fel power. Blackhand was astounded by the results and ordered the shaman to transform his young sons Dal'rend and Maim into \"proper soldiers\".<ref>{{Ref WoWCV2|77}}</ref> After coming of age Dal'rend served as a member...",
+   "  [book-or-game-characters-category] ...acters]] [[Category:Dragon riders]] [[Category:Partially-sighted characters]] [[Category:Blackrock clan]] [[Category:Warcraft Adventures characters]] [[Category:Rise of the Horde characters]] [[Category:Tides of Darkness characters]] [[Category:Beyond the Dark Portal characters]] [[Category:World of Warcraft: The Comic characters]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Jaina Proudmoore: Tides of War characters]] [[Category:Deceased characters]] [[Category:Hearthstone legendary cards]]...",
+   "  [rts-words] ...{{About||historical information on how to defeat Rend in ''[[World of Warcraft]]''|Rend Blackhand (tactics)|the fel orc blademaster|Rend (Warcraft III)}} {{Npcbox | name = Dal'rend Blackhand | image = Rend Blackhand hearthstone.jpg | titles = [[Warchief]] of the [[Dark Horde]],<br> [[Chieftain]] of the [[Blackrock]],<br> [[Chieftain]] of the [[Black Tooth Grin clan|Black Tooth]] | gender = Male | race = Orc | character = [[Warrior]] | affiliation = [[Blackrock]] / [[Black Tooth Grin clan|Black Tooth]], [[Dark Horde]], [[Black dragonflight]] | faffiliation = [[Old Horde]] | faction = Neutral | occupation = [[Warchief]] of the [[Dark Horde]], Chieftain of the [[Blackrock clan]], Chieftain of the [[Black Tooth Grin clan]] | location = [[Blackr...",
+   "  [italic-ref] ...f the [[Blackrock clan]], Chieftain of the [[Black Tooth Grin clan]] | location = [[Blackrock Stadium]], [[Upper Blackrock Spire]] | status = Deceased<ref>''[[Ultimate Visual Guide]]'', pg. 123</ref> | relatives = [[Blackhand]] (father), [[Urukal]] (mother), [[Maim Blackhand|Maim]] (brother), [[Griselda Blackhand|Griselda]] (sister) | companions = [[Gyth]] (mount) }} {{QuoteWiki|We are the true Horde!}}  '''Dal'rend Blackhand''',<ref>''[[Jaina Proudmoore: Tides of War]]''</ref><ref>{{Ref WoWCV2}}</ref> (or '''Dal'Rend''') commonly known as '''Rend''', was the bloodthirsty son of the former [[Warchief]] of the [[Old Horde|Horde]], [[Blackhand]] the Destroyer, as well as the former Warchief of the [[Dark Horde]]. He believed that he was the rightful Warchief of the Horde due ..."
+  ]
+ },
+ {
+  "id": 10430,
+  "name": "The Beast",
+  "tag": "",
+  "wiki_title": "The Beast",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ome time (varying from \"months\" to \"the better part of a month\"), and he can be freed by [[skinning]] the Beast.  Pip was rescued by some adventurers.<ref>''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48 (as Finkle Einhorn)</ref>  ==Adventure Guide== ''Nefarian's dragonkin take obscene delight in the barbaric torture of Ragnaros's captured minions. Despite suffering unimaginable agony, one core hound remained lucid enough to be retrained, and his ferocity makes him an ideal guard in the upper levels of Blackrock Spire.''  ==Abilities== *{{Abilities|Berserker Charge|The Beast charges a random player, inflicting Physical damage and knocking them back.|icon=ability_warrior_charge}} *{{Abilities|Immolate|The Beast burns a random player, inflicting Fire damage instantly and additional Fire..."
+  ]
+ },
+ {
+  "id": 10442,
+  "name": "Chromatic Whelp",
+  "tag": "",
+  "wiki_title": "Chromatic Whelp",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ir enemies, using their claws to attack in between breaths.  Chromatic whelps speak [[Draconic]], and some speak [[Common (language)|Common]] as well.<ref>''[[Dark Factions]]'', pg. 195</ref>  ==Trivia== *A ''[[Cataclysm]]'' ID was added but wasn't used.  ==Patch changes== *{{Patch 6.0.2|note=Removed.}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|10442}}  [[Category:Dragon whelps]] [[Category:Chromatic dragonflight]] [[Category:Upper Blackrock Spire (Classic) mobs]] [[Category:Boss related mobs]] [[Category:Dark Factions]]..."
+  ]
+ },
+ {
+  "id": 10776,
+  "name": "Pip Quickwit",
+  "tag": "",
+  "wiki_title": "Pip Quickwit",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...nife, that his son had stolen, from [[Blackrock Spire]].<ref>[[Family Traditions]]</ref><ref>[[Like Father, Like Son]]</ref>  ===Exploring Azeroth=== {{novel-section}} Following the [[Fourth War]], he is mentioned in a report of [[Mathias Shaw]] as the most eclectic informant for [[SI:7]].<ref name=\"Exploring Azeroth\" />  ===Dragonflight=== {{df-section}} Years later, Pip could be found at the [[Serene Dreams Spa]] in [[Thaldraszus]], where he was getting washed by two [[Masseuse]]s.  ==Locations== {{Npclocations|align=|start=|loc=[[Furnace (Blackrock Spire)|Furnace]], [[Upper Blackrock Spire (Classic)|Upper Blackrock Spire]]|level=60|type=Elite|reaction={{Aggro|1|1}}|notes=In ''Classic''.}} {{Npclocations|loc=[[Circle of Cinders]], [[Mount Hyjal]]|level=...",
+   "  [italic-ref] ...Finkle Einhorn, At Your Service! TCG.jpg | race = Gnome | gender = Male | faction = Neutral | creature = Humanoid | affiliation = [[SI:7]] (informant)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48 (as Finkle Einhorn)</ref> | location = [[#Locations|Various]] | status  =Alive | relatives = Unnamed son | companions = [[Raz Skullcrusher]] (former bodyguard) }}  '''Pip Quickwit''' is a [[gnomish inventor]], explorer, and a [[quest giver]].  ==Background== ===World of Warcraft=== {{Wow-section}}{{Stub/Lore-section}} Testing his lava suit, he was found at the [[Furnace (Blackrock Spire)|Furnace]] in [[Upper Blackrock Spire]] within [[The Beast]]'s stomach and was released by [[adventurer]]s<ref name=\"Exploring Azeroth\" /> when The Beast was killed and [[Skinning|skinned]].<ref>[[Pip ..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 16042,
+  "name": "Lord Valthalak",
+  "tag": "",
+  "wiki_title": "Lord Valthalak",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...as slain by the [[Veiled Blade]] mercenary company for his spellbook, but ended up avenging himself even after his death using his necromantic powers.<ref name=\"User's Manual\"/>  ==Abilities== ===Phase 1=== Valthalak has a caster type weak melee attack in phase 1.  A slow one that does 400-500 damage to a warrior.  ====Shadow Wrath==== A shadow-based, chain life drain, which obviously translates into healing for himself. Hits for 750 Shadow damage on the first target, and will jump to another target if anyone is close enough. Each time it jumps, it doubles in damage in the manner of Holy Wrath from [[High Priest Venoxis]] from [[Zul'Gurub]]. At the 4th jump, the damage will be 6k and lethal for most people. Being a life-drain, all damage dealt will heal Valthalak.  *Keep him away from the raid party and don't let anyone get close enough for a bounce to chain to the rest of the group. A distance of 20 to 30 yards is fine. *Ensure that your party is spread out from each other so if a chain is unavoidable, you at least minimize the bounces.  ====Heal==== The chain life drain (noted above) will replenish his health, so it is important that you have a warrior tank the mob alone (until phase 2). Alternately, if you have more people in melee range, you will need to interrupt when he casts the life drain. It will show as a purple beam that chains between friendly targets.  Have one or two people mana drain him (his regen and total mana are quite low). The spell is also interruptible using standard methods ([[Shield Bash (Classic)]], [[Earth Shock]], [[Counterspell]], etc.). A mod such as EnemyCast or Spell Alert can be helpful. All his spells will sadly not show up on the standard 'EnemyCastBar' you can have displayed below the enemy portrait.  Lord Valthalak apparently has no specific animations when he heals. Warriors with [[Mortal Strike]] would greatly assist, as well as rogues with wound poisons. It is also possible to just DPS through the heals. The rate that Valthalak heals himself appears to be random.  ====Spectral Assassins==== These spawn two at a time throughout phase 1.  They will run towards someone in your raid (can include pets) and eventually cast a mindflay-like Defile ability (a purple vile beam). Defile cannot be dispelled/cleansed and stuns its target for ten seconds. If the spell is allowed to complete, its target dies and is transformed into an additional Spectral Assassin. The assassins have around 1,500&nbsp;hp with little to no armor and resistances.  *Everyone must kill Spectral Assassins as soon as they appear. Be wary if you use a mouse to target because they can be hard to see and click.  You can hit 'v' to bring up the Mob Health panes or use this macro: ''/target Spec'' (recommended). If you use a keyboard for targeting, no adjustments are necessary; just do as usual.  *They '''can''' be damaged by [[Area of Effect]] spells.  *The spectral assassins' Defile '''cannot''' be interrupted by normal methods ([[Kick]], [[Shield Bash (Classic)]], etc). Other abilities like [[Scatter Shot]], [[Concussion Blow]], [[Hammer of Justice]],... do work. Use them if you cannot kill the Assassin in time to save a raid member.  *Ranged DPS plays a key role here as [[Hunters]], [[Mages]], [[Warlocks]], and [[Shaman]] can kill the assassins without having to frantically cross the room.  This can be critical particularly when they spawn at or near Valthalak.  *[[Stun]] spells work best to disrupt Defile.  ===Phase 2: Enrage=== At 40% health he will switch weapons and start hitting very hard. He stops spawning Spectral Assassins but still does Shadow Wrath if he has mana. *[[Disarm]] him whenever available. *By this point your tank should have a great deal of threat accumulated so just burn him down.  ===Phase 3: Shadow Bolt Volley=== At 15% health, he will frequently cast an AoE [[Shadow Bolt]] on the entire raid in addition to the changes in phase 2.  *Maximize your DPS, finish him fast. *Use a [[Greater Shadow Protection Potion]] if necessary to minimize the shadow damage.  ==General advice== *If you plan on doing several attempts, have someone logout a character that can resurrect in The Beast's room.  If you wipe, you can simply log them in and resurrect a healer in your party to continue. *Valthalak can be disarmed so do it whenever it's up (particularly in phase 2).  He doesn't hit that hard to begin with, but this will help your healers conserve mana, which will be much more needed when his damage picks up in phases 2 and 3. *If all rogues and other melee dps stay behind Valthalak at max range opposite the tank shadow wrath will not hop to them. *Have priests cast [[Prayer of Shadow Protection]] on the group before starting.  ==Summary== This strategy results in an easy, but long fight, usually 7–10 minutes.  Your healers need to come prepared for an endurance fight, other than that it makes for an easy run.  ==Solo notes== He is '''still''' a tough fight at level 80 even in [[Tier 10]]-level gear if you intend to solo him. The spectral assassins must be dealt with immediately before they can cast Defile with its 10-second stun; otherwise, Valthalak will get 10 seconds of free DPS '''and''' healing if Life Drain is also up (meaning death to cloth-wearing characters). Life Drain also works on pets/minions, which makes this ability all the more dangerous to either you or your pet, depending on which one is at the end of the chain. This is a major DPS race to try to keep more than a couple of spectral assassins from spawning while keeping Valthalak's damaging abilities to a minimum. Be prepared for several deaths while you get the feel of the fight.  ==Objective of== *[[Mea Culpa, Lord Valthalak]]  ==Loot== {{Itembox| |Draconian Aegis of the Legion |Handguards of Savagery |Ironweave Cowl |Leggings of Torment |Lord Valthalak's Staff of Command |Pendant of Celerity |Rune Band of Wizardry |Shroud of Domination}}  ==Quotes== *{{Text|Yell|Muahahahaha! What is this pathetic spectacle I see before me? Well, what are you waiting for? I hunger, and you look as if you may make for a passable appetizer!}} *{{Text|Say|Your insolence is appalling, fool! I shall feast on your soul!}} *{{Text|Yell|I've gone easy on you thus far, but now you bore me. Witness the magnificence of my power, and despair!}} *{{Text|yell|I will not die again! Not to the likes of you!}}  ==Notes== *Strangely, he was categorized as a [[humanoid]], and not as a [[dragonkin]] like other drakonid prior to ''Wrath of the Lich King''. *During the ''[[World of Warcraft: Shadowlands]]'' beta, a [[Lord Valthalak (sinstone)|sinstone]] for Lord Valthalak could be found in [[Revendreth]]. It was later replaced with a [[Theolen Krastinov (sinstone)|stone]] for [[Doctor Theolen Krastinov]].  ==Patch changes== *{{Patch 6.0.2|note=Removed.}} *{{Patch 5.0.4|note=Health significantly increased.}} *{{Patch 3.0.2|note=Now classified as a Dragonkin (was Humanoid).}} *{{Patch 1.10.0|note=Added.}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|16042}}  {{Succession|Unknown|[[Blackrock Spire|General of Blackrock Spire]]|[[General Drakkisath]]}} {{Dragonflightfooter|Black Drago..."
+  ]
+ }
+]

@@ -1,0 +1,151 @@
+[
+ {
+  "id": 2675,
+  "name": "Explosive Sheep",
+  "tag": "",
+  "wiki_title": "Explosive Sheep",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...posed to work? Your enemies think, ''\"Hey! Cute sheep!\"'' and run over to cuddle it?\"'' *The idea of a sheep exploding is possibly a reference to ''[[Warcraft II]]'', where rapidly clicking on [[Critter (Warcraft II)|a sheep]] multiple times will cause it to explode.  ==Patch changes== *{{Patch 7.0.3|note=Model updated.}}  ==External links== {{Elinks-item/NPC|4384|2675}}  {{Goblins}}  [[Category:Mechanical sheep]] [[Category:Engineering crafted items]] [[Category:Explosives]] [[Category:Guardian pets]] [[Category:Hearthstone cards]] [[Category:Consumable items]]..."
+  ]
+ },
+ {
+  "id": 8929,
+  "name": "Princess Moira Bronzebeard",
+  "tag": "Princess of Ironforge",
+  "wiki_title": "Moira Thaurissan",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Jaina Proudmoore: Tides of War |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "Quest for Pandaria |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "The Jade Hunters |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "The Lilac and the Stone |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "The Vow Eternal |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "War Crimes |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]",
+   "Wolfheart |  | *{{RaceIcon|Moira}} [[Moira Thaurissan]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...ith them to [[Orgrimmar]].<ref>{{Ref WoWCV3|121|122}}</ref> The Dark Irons had lost another enemy thanks to Moira's shrewdness.  ===The Shattering=== {{novel-section}} In the wake of [[Magni Bronzebeard|King Magni Bronzebeard]]'s petrification, Moira returned to [[Ironforge]] with her infant son [[Dagran Thaurissan II]] to claim the throne. Backed by the [[Dark Iron clan]], Moira ruled Ironforge arrogantly and with an iron fist. She had the [[gryphon]]s moved out of the city and the [[Deeprun Tram]] closed, holding all the people of Ironforge hostage, including Prince [[Anduin Wrynn]], who was there as a Stormwind diplomat that would aid the dwarves in such troubling times.  Being royals, Moira and Anduin proceeded to engage in a subtle battle of politica...",
+   "  [book-or-game-characters-category] ...n the Snow]] [[Category:Siege of Orgrimmar NPCs]] [[Category:Removed Dun Morogh NPCs]] [[Category:Dalaran NPCs]] [[Category:Netherlight Temple NPCs]] [[Category:War Crimes characters]] [[Category:Legends characters]] [[Category:World of Warcraft: The Comic characters]] [[Category:The Shattering: Prelude to Cataclysm characters]] [[Category:Leaders of Azeroth characters]] [[Category:Destination: Pandaria characters]] [[Category:Hearthstone cards]] [[Category:City bosses]] [[Category:Unique voices]] [[Category:Unique models]] [[Category:Stormwind City NPCs]] [[Category:Before the Storm characters]] [[Category:Shadowforge City NPCs]] [[Category:The Vow Eternal characters]] [[Category:World of Warcraft: Sylvanas characters]] [[Category:The Lilac and the Stone]] [[Category:Emera...",
+   "  [italic-ref] ...did love his daughter, he had always wanted a son to rule the throne after him and was disappointed that Moira was not the male heir he had hoped for.<ref name=\"The Shattering pg. 115\">''[[The Shattering: Prelude to Cataclysm]]'', pg. 115</ref> Nevertheless, Magni did love and raise Moira. But after her mother Eimear was killed by the [[Frostmane tribe|Frostmane troll]]s, Magni - acting on Eimear's last wish to always be there for Moira - began training Moira in the ways of the warrior to prepare her for anything. This formed a rift between the two of them, as he forced her to be something she was not.<ref>''[[Magni: The Speaker]]''</ref>  The laws of succession for Ironforge state that Moira, having no brothers, would be the rightful heir to the throne.<ref name = \"The Shattering\">''[[The Shattering: Prelude to Catac..."
+  ]
+ },
+ {
+  "id": 9018,
+  "name": "High Interrogator Gerstahn",
+  "tag": "Twilight's Hammer Interrogator",
+  "wiki_title": "High Interrogator Gerstahn",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...ion = [[Twilight's Hammer]] | faction = Boss | class = [[Priest]]ess | location = [[Detention Block]], [[Blackrock Depths]] | status = Deceased (lore)<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 46</ref><br/> Killable {{cata-inline}} | instance = Blackrock Depths }} [[File:Gerstahn.jpg|thumb|upright|'''Gerstahn''' in [[World of Warcraft]].]]  '''High Interrogator Gerstahn''' is an [[elite]] [[human]] member of the [[Twilight's Hammer clan]] found in the center of the [[Detention Block]] in [[Blackrock Depths]]. She is the only person in the prison area that holds a [[Prison Cell Key]] to all of the cells.  ==Background== High Interrogator Gerstahn was originally a noblewoman.<ref name=\"Exploring Azeroth\" />  Gerstahn was [[Reginald Windsor|Marshal Windsor's]] interrogator. She w..."
+  ]
+ },
+ {
+  "id": 9019,
+  "name": "Emperor Dagran Thaurissan",
+  "tag": "",
+  "wiki_title": "Dagran Thaurissan",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "The Jade Hunters |  | *{{RaceIcon|DarkIron|Male}} [[Dagran Thaurissan]]",
+   "The Lilac and the Stone |  | *{{RaceIcon|Thaurissan}} [[Dagran Thaurissan]]"
+  ],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...racters]] [[Category:Mountain kings]] [[Category:Aristocrats]] [[Category:Bosses]] [[Category:Blackrock Depths mobs]] [[Category:Legends characters]] [[Category:Destination: Pandaria characters]] [[Category:Deceased characters]] [[Category:Hearthstone legendary cards]] [[Category:World of Warcraft: The Comic characters]] [[Category:The Lilac and the Stone]]...",
+   "  [italic-ref] ...)}} {{Npcbox | name = Emperor Dagran Thaurissan | image = DagranThaurissan HS.jpg | titles = Emperor of Blackrock,<br> Lord of the Blackrock Mountains<ref>''[[Ultimate Visual Guide]]'', pg. 78</ref> | gender = Male | race = Dark Iron dwarf | creature = Humanoid | level = Blackrock Depths | type = Elite | affiliation = [[Dark Iron clan]], [[Ragnaros|Ragnaros the Firelord]] | occupation = Emperor of Blackrock, Master of the Dark Iron clan | faction = Boss | aggro = {{Aggro|-1|-1}} | status = Deceased (lore)<ref name=\"UVG\">''[[Ultimate Visual Guide]]'', pg. 81</ref><br/> Killable (Wow) | location = [[The Imperial Seat]] | relatives = [[Sorcerer-Thane Thaurissan|Thaurissan]], [[Modgud]] (ancestors), [[Moira Thaurissan|Moira Bronzebeard]] (wife), [[Dagran Thaurissan II]] (son), ..."
+  ]
+ },
+ {
+  "id": 9022,
+  "name": "Dughal Stormwing",
+  "tag": "",
+  "wiki_title": "Dughal Stormwing",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ... {{Dialogue| HELP!!!!  {{Gossip|You're free, Dughal! Get out of here!}} }}  ==External links== {{Elinks-NPC|9022}}  {{DEFAULTSORT:Stormwing, Dughal}} [[Category:Wildhammer dwarf characters]] [[Category:Prisoners]] [[Category:Blackrock Depths NPCs]]..."
+  ]
+ },
+ {
+  "id": 9023,
+  "name": "Marshal Windsor",
+  "tag": "",
+  "wiki_title": "Reginald Windsor",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...nmasking her, though he paid for it with his life.  ==History== ===Early life=== He and [[General Marcus Jonathan]] served together under [[Turalyon]]<ref name=\"Enemy Revealed\">''[[The Enemy Revealed]]''</ref> during the [[Second War]].  In his best years, Reginald Windsor became a legendary [[knight]] and commander of Stormwind. He was a loyal friend of [[Varian Wrynn|King Varian Wrynn]] and studied swordcraft with him, although Windsor came to favor the hammer.<ref>''[[World of Warcraft: The Comic]]'', Issue 11: ''[[Descent]]'', pg. 3</ref>  ===The Great Masquerade=== [[File:Death of Windsor.PNG|thumb|upright|The death of Marshal Windsor.]] With nerves of [[thorium]] and wielding his family's epic hammer [[:Ironfoe]], he became a living legend in [[Stormwind (kingdom)|Stormwind]]. Later, he..."
+  ]
+ },
+ {
+  "id": 9056,
+  "name": "Fineous Darkvire",
+  "tag": "Chief Architect",
+  "wiki_title": "Fineous Darkvire",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "The Jade Hunters |  | *{{RaceIcon|DarkIron|Male}} [[Fineous Darkvire]]"
+  ],
+  "excerpts": [
+   "  [book-or-game-characters-category] ... impaired characters]] [[Category:Dark Iron clan characters]] [[Category:Bosses]] [[Category:Blackrock Depths mobs]] [[Category:Deceased characters]] [[Category:Destination: Pandaria characters]]...",
+   "  [italic-ref] ...ammer known as [[Ironfel]] was handed down to him.  Darkvire died when [[Magni Bronzebeard]] sent a rescue team came to rescue his daughter [[Moira]].<ref name=\"TJH\">''[[The Jade Hunters]]''</ref> The [[adventurer]]s wrestled the hammer from Darkvire's grasp, and returned it to the [[Shrine of Thaurissan]] in Blackrock Depths by demand of Forgewright's ghost himself. They were bestowed with the [[Shadowforge Key]] in exchange for their assistance.<ref>[[Dark Iron Legacy]]</ref><ref>[[Dark Iron Legacy (2)]]</ref>  His daughter, [[Fenella Darkvire]], who does not share his bad reputation, is now one of the premier architects of Queen Moira Thaurissan. Ironically, his poor reputation was not of his own doing, but his daughter's, who presented stolen plans to the Emperor in his name...."
+  ]
+ },
+ {
+  "id": 10116,
+  "name": "Slave",
+  "tag": "",
+  "wiki_title": "Slavery",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...among some orcs, though it is unclear how widespread it is. Despite Thrall's work to ensure that no orc would be cast into slavery ever again<ref>''[[Warcraft III: Reign of Chaos]] [[Warcraft III: Reign of Chaos Game Manual|Manual]]'', pg. 22</ref>, a small number of orcs have been found enslaved by other orcs in the Horde, for example [[Bloodeye Redfist]]. It appears that some orcs are also willing to enslave members of other races, both Horde and Alliance.<ref>''[[World of Warcraft: The Comic]]'', Issue 0: ''[[Prologue]]''</ref> Many of these slaves were, however, once criminals who were brought to justice. It is unclear why the orcs still allow slavery, and to what extent, or why they choose to ignore it.  [[Okrilla]] at [[Dreadmaul Hold]] in the [[...",
+   "  [italic-ref] ...he clan's entry into the Alliance.  ==Human slavery== Humans of the [[Alliance of Lordaeron]] were known to practice slavery on [[orc]]s and [[ogre]]s<ref>''[[Lord of the Clans]]'', chapter 5</ref> after the events of the [[Second War]]. [[Aedelas Blackmoore]] himself enslaved [[Thrall]], the future warchief of the [[Horde]].<ref>''[[Lord of the Clans]]'', chapter 2</ref> The king of Lordaeron was aware of Blackmoore's [[gladiator]]ial games and allowed them personally, as long as the royal coffers would see the proper percentage of his earnings.<ref>''[[Arthas: Rise of the Lich King]]'', chapter 4</ref> The enslavement of orcs has been practiced among the [[internment camp]]s, [[Lorin Remka]] keeping [[Greekik]] as her own personal slave while [[Lord Agrovane]]<ref>''[..."
+  ]
+ },
+ {
+  "id": 12944,
+  "name": "Lokhtos Darkbargainer",
+  "tag": "The Thorium Brotherhood",
+  "wiki_title": "Lokhtos Darkbargainer",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...he quietly conducts business on the guild's behalf. Lokhtos's opinion of a person has a definite effect on how the rest of the guild views the person.<ref>''[[Dark Factions]]'', pg. 161</ref>  ==References== {{Reflist}}  ==External links== {{Elinks-NPC3|12944|loc1=Grim Guzzler|144117|232526|loc3=Anniversary}}  {{DEFAULTSORT:Darkbargainer, Lokhtos}} [[Category:Dark Iron dwarf characters]] [[Category:Faction quartermasters]] [[Category:Thorium Brotherhood]] [[Category:Quest givers]] [[Category:Blackrock Depths NPCs]]..."
+  ]
+ }
+]

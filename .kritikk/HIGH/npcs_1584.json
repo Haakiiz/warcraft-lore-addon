@@ -1,0 +1,617 @@
+[
+{
+"id": 2675,
+"name": "Explosive Sheep",
+"tag": ""
+},
+{
+"id": 7386,
+"name": "White Kitten",
+"tag": ""
+},
+{
+"id": 8889,
+"name": "Anvilrage Overseer",
+"tag": ""
+},
+{
+"id": 8890,
+"name": "Anvilrage Warden",
+"tag": ""
+},
+{
+"id": 8891,
+"name": "Anvilrage Guardsman",
+"tag": ""
+},
+{
+"id": 8892,
+"name": "Anvilrage Footman",
+"tag": ""
+},
+{
+"id": 8893,
+"name": "Anvilrage Soldier",
+"tag": ""
+},
+{
+"id": 8894,
+"name": "Anvilrage Medic",
+"tag": ""
+},
+{
+"id": 8895,
+"name": "Anvilrage Officer",
+"tag": ""
+},
+{
+"id": 8896,
+"name": "Shadowforge Peasant",
+"tag": ""
+},
+{
+"id": 8897,
+"name": "Doomforge Craftsman",
+"tag": ""
+},
+{
+"id": 8898,
+"name": "Anvilrage Marshal",
+"tag": ""
+},
+{
+"id": 8899,
+"name": "Doomforge Dragoon",
+"tag": ""
+},
+{
+"id": 8900,
+"name": "Doomforge Arcanasmith",
+"tag": ""
+},
+{
+"id": 8901,
+"name": "Anvilrage Reservist",
+"tag": ""
+},
+{
+"id": 8902,
+"name": "Shadowforge Citizen",
+"tag": ""
+},
+{
+"id": 8903,
+"name": "Anvilrage Captain",
+"tag": ""
+},
+{
+"id": 8904,
+"name": "Shadowforge Senator",
+"tag": ""
+},
+{
+"id": 8905,
+"name": "Warbringer Construct",
+"tag": ""
+},
+{
+"id": 8906,
+"name": "Ragereaver Golem",
+"tag": ""
+},
+{
+"id": 8907,
+"name": "Wrath Hammer Construct",
+"tag": ""
+},
+{
+"id": 8908,
+"name": "Molten War Golem",
+"tag": ""
+},
+{
+"id": 8909,
+"name": "Fireguard",
+"tag": ""
+},
+{
+"id": 8910,
+"name": "Blazing Fireguard",
+"tag": ""
+},
+{
+"id": 8911,
+"name": "Fireguard Destroyer",
+"tag": ""
+},
+{
+"id": 8912,
+"name": "Twilight's Hammer Torturer",
+"tag": ""
+},
+{
+"id": 8913,
+"name": "Twilight Emissary",
+"tag": ""
+},
+{
+"id": 8914,
+"name": "Twilight Bodyguard",
+"tag": ""
+},
+{
+"id": 8915,
+"name": "Twilight's Hammer Ambassador",
+"tag": ""
+},
+{
+"id": 8916,
+"name": "Arena Spectator",
+"tag": ""
+},
+{
+"id": 8920,
+"name": "Weapon Technician",
+"tag": ""
+},
+{
+"id": 8921,
+"name": "Bloodhound",
+"tag": ""
+},
+{
+"id": 8922,
+"name": "Bloodhound Mastiff",
+"tag": ""
+},
+{
+"id": 8923,
+"name": "Panzor the Invincible",
+"tag": ""
+},
+{
+"id": 8925,
+"name": "Dredge Worm",
+"tag": ""
+},
+{
+"id": 8926,
+"name": "Deep Stinger",
+"tag": ""
+},
+{
+"id": 8927,
+"name": "Dark Screecher",
+"tag": ""
+},
+{
+"id": 8928,
+"name": "Burrowing Thundersnout",
+"tag": ""
+},
+{
+"id": 8929,
+"name": "Princess Moira Bronzebeard",
+"tag": "Princess of Ironforge"
+},
+{
+"id": 8932,
+"name": "Borer Beetle",
+"tag": ""
+},
+{
+"id": 8933,
+"name": "Cave Creeper",
+"tag": ""
+},
+{
+"id": 8983,
+"name": "Golem Lord Argelmach",
+"tag": ""
+},
+{
+"id": 8996,
+"name": "Voidwalker Minion",
+"tag": ""
+},
+{
+"id": 9016,
+"name": "Bael'Gar",
+"tag": ""
+},
+{
+"id": 9017,
+"name": "Lord Incendius",
+"tag": ""
+},
+{
+"id": 9018,
+"name": "High Interrogator Gerstahn",
+"tag": "Twilight's Hammer Interrogator"
+},
+{
+"id": 9019,
+"name": "Emperor Dagran Thaurissan",
+"tag": ""
+},
+{
+"id": 9020,
+"name": "Commander Gor'shak",
+"tag": "Kargath Expeditionary Force"
+},
+{
+"id": 9021,
+"name": "Kharan Mighthammer",
+"tag": ""
+},
+{
+"id": 9022,
+"name": "Dughal Stormwing",
+"tag": ""
+},
+{
+"id": 9023,
+"name": "Marshal Windsor",
+"tag": ""
+},
+{
+"id": 9024,
+"name": "Pyromancer Loregrain",
+"tag": ""
+},
+{
+"id": 9025,
+"name": "Lord Roccor",
+"tag": ""
+},
+{
+"id": 9027,
+"name": "Gorosh the Dervish",
+"tag": ""
+},
+{
+"id": 9028,
+"name": "Grizzle",
+"tag": ""
+},
+{
+"id": 9029,
+"name": "Eviscerator",
+"tag": ""
+},
+{
+"id": 9030,
+"name": "Ok'thor the Breaker",
+"tag": ""
+},
+{
+"id": 9031,
+"name": "Anub'shiah",
+"tag": ""
+},
+{
+"id": 9032,
+"name": "Hedrum the Creeper",
+"tag": ""
+},
+{
+"id": 9033,
+"name": "General Angerforge",
+"tag": ""
+},
+{
+"id": 9034,
+"name": "Hate'rel",
+"tag": ""
+},
+{
+"id": 9035,
+"name": "Anger'rel",
+"tag": ""
+},
+{
+"id": 9036,
+"name": "Vile'rel",
+"tag": ""
+},
+{
+"id": 9037,
+"name": "Gloom'rel",
+"tag": ""
+},
+{
+"id": 9038,
+"name": "Seeth'rel",
+"tag": ""
+},
+{
+"id": 9039,
+"name": "Doom'rel",
+"tag": ""
+},
+{
+"id": 9040,
+"name": "Dope'rel",
+"tag": ""
+},
+{
+"id": 9041,
+"name": "Warder Stilgiss",
+"tag": ""
+},
+{
+"id": 9042,
+"name": "Verek",
+"tag": ""
+},
+{
+"id": 9056,
+"name": "Fineous Darkvire",
+"tag": "Chief Architect"
+},
+{
+"id": 9156,
+"name": "Ambassador Flamelash",
+"tag": ""
+},
+{
+"id": 9178,
+"name": "Burning Spirit",
+"tag": ""
+},
+{
+"id": 9319,
+"name": "Houndmaster Grebmar",
+"tag": ""
+},
+{
+"id": 9398,
+"name": "Twilight's Hammer Executioner",
+"tag": ""
+},
+{
+"id": 9436,
+"name": "Spawn of Bael'Gar",
+"tag": ""
+},
+{
+"id": 9437,
+"name": "Dark Keeper Vorfalk",
+"tag": ""
+},
+{
+"id": 9438,
+"name": "Dark Keeper Bethek",
+"tag": ""
+},
+{
+"id": 9439,
+"name": "Dark Keeper Uggel",
+"tag": ""
+},
+{
+"id": 9441,
+"name": "Dark Keeper Zimrel",
+"tag": ""
+},
+{
+"id": 9442,
+"name": "Dark Keeper Ofgut",
+"tag": ""
+},
+{
+"id": 9443,
+"name": "Dark Keeper Pelver",
+"tag": ""
+},
+{
+"id": 9445,
+"name": "Dark Guard",
+"tag": ""
+},
+{
+"id": 9476,
+"name": "Watchman Doomgrip",
+"tag": ""
+},
+{
+"id": 9499,
+"name": "Plugger Spazzring",
+"tag": ""
+},
+{
+"id": 9500,
+"name": "Mistress Nagmara",
+"tag": ""
+},
+{
+"id": 9502,
+"name": "Phalanx",
+"tag": ""
+},
+{
+"id": 9503,
+"name": "Private Rocknot",
+"tag": ""
+},
+{
+"id": 9537,
+"name": "Hurley Blackbreath",
+"tag": ""
+},
+{
+"id": 9541,
+"name": "Blackbreath Crony",
+"tag": ""
+},
+{
+"id": 9543,
+"name": "Ribbly Screwspigot",
+"tag": ""
+},
+{
+"id": 9545,
+"name": "Grim Patron",
+"tag": ""
+},
+{
+"id": 9547,
+"name": "Guzzling Patron",
+"tag": ""
+},
+{
+"id": 9554,
+"name": "Hammered Patron",
+"tag": ""
+},
+{
+"id": 9677,
+"name": "Ograbisi",
+"tag": ""
+},
+{
+"id": 9678,
+"name": "Shill Dinger",
+"tag": ""
+},
+{
+"id": 9679,
+"name": "Tobias Seecher",
+"tag": ""
+},
+{
+"id": 9680,
+"name": "Crest Killer",
+"tag": ""
+},
+{
+"id": 9681,
+"name": "Jaz",
+"tag": ""
+},
+{
+"id": 9938,
+"name": "Magmus",
+"tag": ""
+},
+{
+"id": 9956,
+"name": "Shadowforge Flame Keeper",
+"tag": ""
+},
+{
+"id": 10043,
+"name": "Ribbly's Crony",
+"tag": ""
+},
+{
+"id": 10096,
+"name": "High Justice Grimstone",
+"tag": ""
+},
+{
+"id": 10116,
+"name": "Slave",
+"tag": ""
+},
+{
+"id": 10117,
+"name": "Tortured Slave",
+"tag": ""
+},
+{
+"id": 12473,
+"name": "Arcanite Dragonling",
+"tag": ""
+},
+{
+"id": 12944,
+"name": "Lokhtos Darkbargainer",
+"tag": "The Thorium Brotherhood"
+},
+{
+"id": 15214,
+"name": "Invisible Stalker",
+"tag": ""
+},
+{
+"id": 15549,
+"name": "Elder Morndeep",
+"tag": ""
+},
+{
+"id": 16049,
+"name": "Lefty",
+"tag": ""
+},
+{
+"id": 16050,
+"name": "Rotfang",
+"tag": ""
+},
+{
+"id": 16051,
+"name": "Snokh Blackspine",
+"tag": ""
+},
+{
+"id": 16052,
+"name": "Malgen Longspear",
+"tag": ""
+},
+{
+"id": 16053,
+"name": "Korv",
+"tag": ""
+},
+{
+"id": 16054,
+"name": "Rezznik",
+"tag": ""
+},
+{
+"id": 16055,
+"name": "Va'jashni",
+"tag": ""
+},
+{
+"id": 16058,
+"name": "Volida",
+"tag": ""
+},
+{
+"id": 16059,
+"name": "Theldren",
+"tag": ""
+},
+{
+"id": 16095,
+"name": "Gnashjaw",
+"tag": "Malgen Longspear's Pet"
+},
+{
+"id": 222525,
+"name": "Anvilrage Patrol",
+"tag": ""
+},
+{
+"id": 222530,
+"name": "Rugged Traveler",
+"tag": ""
+},
+{
+"id": 222531,
+"name": "Ragged Traveler",
+"tag": ""
+},
+{
+"id": 223265,
+"name": "Delirious Ancient",
+"tag": ""
+},
+{
+"id": 224386,
+"name": "Fireguard Destroyer",
+"tag": ""
+}
+]

@@ -1,0 +1,164 @@
+[
+ {
+  "id": 11502,
+  "name": "Ragnaros",
+  "tag": "",
+  "wiki_title": "Ragnaros",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Charge of the Aspects |  | *{{RaceIcon|FireLord}} [[Ragnaros]]",
+   "The Jade Hunters |  | *{{RaceIcon|FireLord}} [[Ragnaros]]",
+   "The Lilac and the Stone |  | *{{RaceIcon|Ragnaros}} [[Ragnaros]]"
+  ],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ategory:Pet Journal characters]] [[Category:Hearthstone legendary cards]] [[Category:Hearthstone heroes]] [[Category:Heroes of the Storm characters]] [[Category:Destination: Pandaria characters]] [[Category:Charge of the Aspects characters]] [[Category:Deceased characters]] [[Category:World of Warcraft: The Comic characters]] [[Category:Black Empire NPCs]] [[Category:The Lilac and the Stone]]...",
+   "  [italic-ref] ...f>[[Doom'rel#Quotes]]</ref><ref>[[The Dark Iron Pact]]</ref><br> Ruler of the [[Firelands]] | gender = Male | races = [[Fire elemental]] ([[Demigod]])<ref>''[[Through the Mirror Darkly]]'', pg. 6: ''\"[The Dark Irons] are treacherous worshipers of the demigod fire elemental Ragnaros.\"''</ref><ref>[[Staff of Sorcerer-Thane Thaurissan]]</ref> | faction = Neutral | affiliation = [[Old Gods' forces]] ([[Black Empire]]), [[Elemental Lords]], [[Firelands]] | occupation = Elemental Lord of fire and master of the [[Firelands]] | location = [[#Locations|Various]] | status = Deceased (lore)<ref>''[[Ultimate Visual Guide]]''</ref><br> Killable {{cata-inline}} }} {{QuoteWiki|Behold Ragnaros - the Firelord! He who was ancient when [[Azeroth|this world]] was young! Bow before him, mortals! Bo..."
+  ]
+ },
+ {
+  "id": 11661,
+  "name": "Flamewaker",
+  "tag": "",
+  "wiki_title": "Flamewaker",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...amewakers, overseers and their guards constantly jockeyed for a higher status in the elemental hierarchy in the hopes of winning the Firelord's favor.<ref name=\"TCG Molten Core\"/>  ==In the RPG== {{RPG-section}} [[File:Flamewaker-RPG.png|thumb|left|upright=0.9|A flamewaker in the ''[[Monster Guide]]''.]] '''Flamewakers''' are ruthless servants of [[Ragnaros]]. Little is known about flamewakers. They are creatures not purely of fire.<ref>''[[Monster Guide]]'', pg. 154</ref> They are fiery elementals, but their bodies are flesh and blood. A flamewaker has a humanoid torso with long muscular arms which rests on a serpentine body; the creature's elongated head has a distinctively demonic quality. Its body is mostly covered with yellow or red scales, though a broad strip of grayish scales runs from its chest down the front of its body. Thick spikes range from 1 to 3 feet long protrude from its ..."
+  ]
+ },
+ {
+  "id": 11668,
+  "name": "Firelord",
+  "tag": "",
+  "wiki_title": "Firelord",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...[[File:Reforged - Firelord concept.jpg|thumb|upright=1.2|''[[Warcraft III: Reforged]]'' concept art of a firelord.]] '''Firelord''' is a name that can refer to different beings.  ==In Warcraft III: The Frozen Throne== {{WC3-section}} {{main|Firelord (Warcraft III)}} A firelord in ''Warcraft III'' is a type of neutral [[hero]] that can be hired from a [[Tavern (Warcraft III)|tavern]]. Upon creation, it will receive one of the randomly generated names: Ragepyre, Hatespark, Blazefury, Heatflayer, Volcanus, Flashfire, Kar the Everburning, Smolderas, Singeslayer.  ==In World of Warcraft== {{wow-section}} * \"Firelord\" is the singular title given to the [[Elemental Lord]]..."
+  ]
+ },
+ {
+  "id": 11671,
+  "name": "Core Hound",
+  "tag": "",
+  "wiki_title": "Core hound",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...Dark Iron Core Hound (NPC)|Dark Iron Core Hound]], a one-headed type of core hound </gallery> |- |}  A '''core hound''' (also spelled '''corehound''')<ref>''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48</ref> is a quadrupedal fire [[elemental]] monster that originates in the [[Firelands]] of the [[Elemental Plane]]. They are the vicious but faithful servants of the [[Firelord]] and his minions.  They have the appearance of a massive [[dog]], with a mouth filled with rows of flaming teeth. Their body is covered with armored hide and the head is studded with bony spikes. A streak of flames runs down their spine from head to stubby tail. They come in two varieties: the larger two-headed variant and the smaller one-headed variant. The latter are used by the [[Dark Iron dwarf|Dark Iron dw..."
+  ]
+ },
+ {
+  "id": 11859,
+  "name": "Doomguard",
+  "tag": "",
+  "wiki_title": "Ered'ruin",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ruin''', often called '''doomguard''' (sometimes pluralized as '''doomguards''' or '''doom guards''')<ref name=\"WCIIIM\"/><ref>[[Daughters of the Moon (WC3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holograph...",
+   "  [italic-ref] ...3 Night Elf)#Escape into Shadow|Daughters of the Moon]]</ref> are a type of [[demon]]ic species that used to work as [[Archimonde]]'s personal escort,<ref name=WCIIIM>\"[[Warcraft III: Reign of Chaos manual#Doom Guard|Doom Guard]]\" ''[[Warcraft III]]'' [[Warcraft III: Reign of Chaos manual|manual]], pg. 137</ref> and serve the [[Burning Legion]] with great fervor. Powerful and deliberate, these winged aberrations are known across the cosmos for their brutality. The doomguard are utterly devoted to their [[annihilan|pit lord]] masters and revel in the destruction of worlds.<ref>[[Exodar Holographic Emitter]]</ref> They serve as commanders of the Legion front-line forces, and are versatile in the use of fire magic and dark curses, as well as melee attacks.<ref>[[Matthew Deyling#Quotes]]</ref>  The '''doomlords''',<ref>{{Ref WoWCV3|66}}</ref> ..."
+  ]
+ },
+ {
+  "id": 11982,
+  "name": "Magmadar",
+  "tag": "",
+  "wiki_title": "Magmadar",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...creature = Beast  |level = ??  |faction = Boss  |aggro = {{Aggro|-1|-1}}  |location = [[Magmadar Cavern]], [[Molten Core]]  |status = Deceased (lore),<ref name=\"Exploring Azeroth\">''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48</ref> <br/> Killable (WoW)   |instance = Molten Core  |pet = Core hound }} [[File:Magmadar.jpg|thumb|In World of Warcraft.]]  A terrifying behemoth composed of igneous rock and roiling magma, '''Magmadar''' serves as the origin of the core hounds that roam the earthen halls of [[Molten Core]]. Favored among [[Ragnaros|Ragnaros's]] pets, Magmadar is protected by the flamewaker [[Lucifron]] and surrounded by vicious packs of ravenous hounds. It is said that while Ragnaros was imprisoned in the [[Elemental Plane]], the Firelord would feed the remains of his captured enemies to the eagerl..."
+  ]
+ },
+ {
+  "id": 12018,
+  "name": "Majordomo Executus",
+  "tag": "",
+  "wiki_title": "Majordomo Executus",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...xian Waterlords]], stormed the Molten Core,<ref>{{Ref WoWCV3|118}}</ref> they had to overcome Majordomo Executus, second only to the Firelord himself.<ref>''[[World of Warcraft: Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48</ref>  After his death, he was replaced by [[Fandral Staghelm]] as Ragnaros' majordomo.<ref name=\"Majordomo Staghelm\"/>  ==Spawning== Executus will only be spawned after the raid has deactivated the [[runes of warding]]. This requires having defeated every other boss (except for Ragnaros, who is summoned after Executus's defeat, and [[Lucifron]], who actually doesn't have to be killed<ref>[[:image:Runeless Lucifron.jpg]]</ref>) in the Molten Core before you can fight him. Pre-[[3.0.8]], players also had to douse the runes using [[Aqual Quintessence]]. Players obtained the Aqual Quinte..."
+  ]
+ },
+ {
+  "id": 12056,
+  "name": "Baron Geddon",
+  "tag": "",
+  "wiki_title": "Baron Geddon",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...igil against intruders. Both Baron Geddon and Garr draw their considerable might from the blazing runes carved deep into the floor of [[Molten Core]].<ref>''[[Monster Guide]]'', pg. 154</ref>  ===Description=== His appearance is a vaguely humanoid upper torso composed of pure flames. He is bound at what might be his wrists by two thick metal bracers. The lower portion of his body is a whirlwind of spinning flames that barely touch the ground. Baron Geddon opens combat using ignite mana on any obvious powerful spellcaster. He continues doing so until forced into melee or until every powerful spellcaster is under the influence of ignite mana. Baron Geddon then uses inferno to drive away nearby attackers, to a (presumably) safe distance. He uses living bomb on anything..."
+  ]
+ },
+ {
+  "id": 12057,
+  "name": "Garr",
+  "tag": "",
+  "wiki_title": "Garr",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...he two powers are strained. Both Garr and Baron Geddon draw their considerable might from the blazing runes carved deep into the floor of Molten Core.<ref>''[[Monster Guide]]'', pg. 159</ref><ref>http://entertainment.upperdeck.com/wow/en/teaser/molten_core</ref>  ===Cataclysm=== {{cata-section}} [[Garr (world boss)|Garr]] is back in [[Mount Hyjal]] at the west of the [[Sulfuron Spire]] as a rare spawn.  ==In the RPG== {{RPG-section}} Two orbs of molten lava are set into the hill of stone that constitutes this creature’s head, the whole resting atop a mountainous torso. Two immense bands of metal bind the creature at what might be its wrists, if those massive stone appendages can be called arms. Garr uses earth glide to rise up among the highest concentration of his ..."
+  ]
+ },
+ {
+  "id": 12265,
+  "name": "Lava Spawn",
+  "tag": "",
+  "wiki_title": "Lava Spawn",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{Distinguish|Lava Spawn (Warcraft III)|Lava Spawn (Firelands)|Lava Spawn (The Deaths of Chromie)}} {{Npcbox  | name = Lava Spawn  | image = Lava Spawn.jpg  | level = Classic-max  | type = Elite  | faction = Combat  | aggro = {{Aggro|-1|-1}}  | race = Fire elemental  | creature = Elemental  | location = [[Molten Core]]  | status = Killable }}  '''Lava Spawns''' are [[fire elemental]]s that appear in [[Molten Core]]. If not killed quickly enough, they will split into two Lava Spawns. If they split enough times, they can easily overwhelm the raid with sheer numbers.  ==Abilities== *{{Abilities|Fireball|id=19391|Inflicts Fire damage ..."
+  ]
+ },
+ {
+  "id": 227939,
+  "name": "The Molten Core",
+  "tag": "",
+  "wiki_title": "Molten Core",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...Core enticed adventurers to enter the instance in search of realm glory.  The sulfuric Molten Core is a gateway from the [[Firelands]] to [[Azeroth]].<ref name=\"Exploring Azeroth\">''[[Exploring Azeroth: The Eastern Kingdoms]]'', pg. 48</ref>  ==History== [[File:MoltenCore.JPG|thumb|The Molten Core in the {{g|tcg}}.]] {{QuoteWiki|The Molten Core lies at the very bottom of [[Blackrock Depths]]. It is the heart of [[Blackrock Mountain]] and the exact spot where, long ago in a desperate bid to turn the tide of the dwarven civil war, [[Dagran Thaurissan|Emperor Thaurissan]] summoned the elemental [[Firelord]], [[Ragnaros]], into the world. Though the firelord is incapable of straying far from the blazing Core, it is believed that his elemental minions command the Dark Iron dwarves, who are in the midst of creating armies..."
+  ]
+ }
+]

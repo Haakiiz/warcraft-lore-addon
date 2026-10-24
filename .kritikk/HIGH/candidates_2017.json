@@ -1,0 +1,214 @@
+[
+ {
+  "id": 416,
+  "name": "Imp",
+  "tag": "",
+  "wiki_title": "Imp",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ... on these tiny terrors at your own risk.''<ref>{{ref tcg|set=Reign of Fire|number=133}}</ref>  '''Imps''' are small, cackling, mischievous [[demon]]s.<ref>''[[Jaina Proudmoore: Tides of War]]'', pg. 569</ref> Creatures of [[fel]]fire and trickery considered lowly among demons, they do not pose a large threat alone and are often underestimated due to their singular lack of toughness. However, when in a group they can quickly replace their fallen and overwhelm their opponents, and their real threat is in how difficult it is to kill every single one of them.<ref name=\"Matthew\"/> Imps emerge from the stomachs of [[imp mother]]s.<ref name=\"Matthew\">[[Matthew Deyling#Quotes]]</ref><ref>[[Imp Mother Dyala]]</ref>  Despite their lack of physical strength, imps possess powers and a clevernes..."
+  ]
+ },
+ {
+  "id": 417,
+  "name": "Felhunter",
+  "tag": "",
+  "wiki_title": "Summon Felhunter",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...abilities - brought out due to its higher intelligence, coupled with the intense training it undergoes to become an elite spellcaster killing machine.<ref>''[[Manual of Monsters]]'', pg. 123</ref>  ==Trivia== [[File:Fel hunter concept.jpg|thumb|Felhunter concept art.]] *Despite being named the 'felhunter', the actual name of the demon is [[felhound]]. It is the only summonable demon that does not use the actual name of its race, instead a moniker. *When in water, the felhunter swims similarly to a shark using its tail. *The felhunter unmistakably resembles a Zergling from Starcraft, Warcraft's sister series. *The felhunter is often called a \"fel puppy\" by some players. *In the quest [[An Unusual Tome]], the warlock can ask the felhunter for information, but it only react..."
+  ]
+ },
+ {
+  "id": 10390,
+  "name": "Skeletal Guardian",
+  "tag": "",
+  "wiki_title": "Skeletal Guardian",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...{{About||the Warcraft III unit|Skeletal Guardian (Warcraft III)|the Maldraxxus skeletons|Skeletal Guardian (Maldraxxus)}} {{Npcbox  | name = Skeletal Guardian  | image = Skeletal Guardian.jpg  | level = 51 - 56  | resource = Mana  | faction = Combat  | aggro = {{Aggro|-1|-1}}  | race = Skeleton  | creature = Undead | affiliation = [[Scourge]]  | location = [[Stratholme Main Gate]] | status = Killable }}  '''Skeletal Guardians''' are [[skeleton]]s located in [[Stratholme Main Gate]].  ==Abilities== *Arcane Bolt *Arcane Explosion *Blizzard *Cone of Cold *Demon Armor *Frostbolt *Shadow Bolt  ==Patch changes== *{{Patch 4...."
+  ]
+ },
+ {
+  "id": 10435,
+  "name": "Magistrate Barthilas",
+  "tag": "",
+  "wiki_title": "Magistrate Barthilas",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ... of Stratholme in the name of the [[Lich King]], until he was finally killed by [[adventurer]]s years later.  ==Background== ===Of Blood and Honor=== {{novel-section}} Barthilas was an ambitious young [[paladin]] who served under [[Tirion Fordring]] at [[Mardenholde Keep]] as his second. He was ordained a paladin of the [[Knights of the Silver Hand|Order of the Silver Hand]] just as the [[Second War]] ended, a war which claimed his parents' lives, and left the young man a deep hatred for all [[orc]]s. Years later, when Tirion was found injured and unconscious, Barthilas spent the entire night healing his mentor, mending his broken bones until he was exhausted. Once rested, he immediately assumed that Tirion had been attacked by an orc and began to scour t...",
+   "  [book-or-game-characters-category] ...daeron (kingdom)]] [[Category:Knights of the Silver Hand]] [[Category:Scourge]] [[Category:Stratholme Service Entrance mobs]] [[Category:Named mobs]] [[Category:Of Blood and Honor characters]] [[Category:Culling of Stratholme NPCs]] [[Category:Deceased characters]]...",
+   "  [italic-ref] ...th the orcs! On my parents' departed souls, I swear that every last orc in Lordaeron will burn for what they've done!|Barthilas to [[Tirion Fordring]]<ref>''[[Of Blood and Honor]]'', chapter 7</ref>}}  '''Magistrate Barthilas''' was once the apprentice of the Lord Paladin [[Tirion Fordring]], and the former ruler of [[Stratholme]]. When his mentor was exiled from the [[Knights of the Silver Hand|Order of the Silver Hand]] for defending the [[orc]] [[Eitrigg]], Barthilas replaced Tirion at the head of [[Hearthglen]] for a time, before becoming the Magistrate of Stratholme until the [[Third War]]. He was killed along with his people by [[Arthas Menethil]] during the [[Culling of Stratholme]].  Barthilas was later brought back from death as a [[wight]], in order to guard th..."
+  ]
+ },
+ {
+  "id": 10439,
+  "name": "Ramstein the Gorger",
+  "tag": "",
+  "wiki_title": "Ramstein the Gorger",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "rts-words"
+  ],
+  "reverse_book_hits": [
+   "Shadows Rising |  | *{{RaceIcon|Abomination}} [[Ramstein the Gorger]]"
+  ],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ternal links== {{Elinks-NPC|10439}}  [[Category:Abominations]] [[Category:Scourge]] [[Category:Stratholme Service Entrance mobs]] [[Category:Bosses]] [[Category:Shadows Rising characters]]...",
+   "  [rts-words] ...tein was present at Stratholme when [[Garek Bandarion]] and [[Ilastar Songbreeze]] entered the city to hunt down [[Baron Rivendare]].<ref>[[Vengeance (WC3 Human)]]</ref>  After Sylvanas freed Nathanos, he hunted Ramstein across the Plaguelands for months. The abomination eventually fled to the safety of Stratholme.<ref>[[Ramstein (quest)]]</ref>  ==Adventure Guide== ''Ramstein is one of the Scourge's most infamous abominations, a horror stitched together from numerous corpses and empowered by a ceaseless hunger. This monster committed unspeakable atrocities on countless innocent souls when Scourge forces overran Stratholme.''  ==Abilities== *{{Abilities|Knockout|Ramstein the Gorger inflicts Physical damage to his current target, knocking them b..."
+  ]
+ },
+ {
+  "id": 10440,
+  "name": "Baron Rivendare",
+  "tag": "",
+  "wiki_title": "Baron Rivendare",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...uide\" /> becoming a high-ranking member. By the time of the [[Third War]], he was known as the Master of Stratholme.<ref name=\"Treachery\">[[Treachery (WC3 Human)]]</ref>  After [[Arthas Menethil]] left for [[Northrend]] to hunt [[Mal'Ganis]], Rivendare sent a shipment of grain to a village of Lordaeron where [[Thomas Thomson]] happened to be stationed. When the villagers turned into mindless zombies, Thomas understood that Rivendare was a traitor and reported it to the rest of the [[Knights of the Silver Hand|Silver Hand]] [[paladin]]s.<ref>''[[A Cleansing Fire]]''</ref> When Arthas returned to [[Capital City]] and murdered his father, [[Terenas Menethil II|King Terenas]], Rivendare was one of the primary architects of the Capital City's downfa...",
+   "  [italic-ref] ...al encounter in [[Stratholme]]|Baron Rivendare (Classic)}} {{Npcbox | name = Baron Titus Rivendare | image = Baron Rivendare TCG.jpg | titles = Baron,<ref name=\"Ultimate Visual Guide\">''[[Ultimate Visual Guide]]'', pg. 169</ref> Member of the Four Horsemen<br/> '''Formerly:'''<br/> Master of Stratholme  | gender = Male | race = Human | faction = Combat | creature = Undead | resource = Mana | character = [[Death knight]] | affiliation = [[Cult of the Damned]], [[Scourge]] | faffiliation = [[Four Horsemen]], [[Kingdom of Lordaeron]] | foccupation = Leader of the [[Four Horsemen]], Master of the [[Scourge]] in [[Stratholme]] | location = Unknown (lore)<br> [[#Locations|Various]] (in-game) | status = Unknown (lore)<br/> Killable | relatives = [[Aurius Rivendare]] (son)<ref>[[Adventurers Wanted: Stratholme ..."
+  ]
+ },
+ {
+  "id": 10516,
+  "name": "The Unforgiven",
+  "tag": "",
+  "wiki_title": "The Unforgiven",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...spiration== *This mini-boss could be a reference to the Metallica song \"The Unforgiven\". *Her background is also similar to those of the [[Deathlord (Warcraft III)|Deathlords]].  ==Patch changes== *{{Patch 4.0.3a|note=Level reduced from 57 to 47.}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|10516}}  {{DEFAULTSORT:Unforgiven}} [[Category:Wraiths]] [[Category:Stratholme Main Gate mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 10812,
+  "name": "Grand Crusader Dathrohan",
+  "tag": "",
+  "wiki_title": "Saidan Dathrohan",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Of Blood and Honor |  | *{{RaceIcon|Saidan}} [[Saidan Dathrohan]]",
+   "The Paladin's Beast |  | *{{RaceIcon|Saidan}} [[Saidan Dathrohan]]",
+   "Tides of Darkness | Alliance | *{{RaceIcon|Saidan}} [[Saidan Dathrohan]]"
+  ],
+  "excerpts": [
+   "  [section-template] ... first time they had all been together after many years.<ref>''[[Arthas: Rise of the Lich King]]'', part 1, chapter 5</ref>  ===Of Blood and Honor=== {{novel-section}} A few years before the [[Third War]], Saidan, then Lord Commander of the order, established himself in [[Stratholme]]. He was the direct superior of his friend [[Tirion Fordring]], who lived in [[Mardenholde Keep]] and ruled over the province of [[Hearthglen]]. Contacted by the paladin [[Barthilas]], who was suspicious of Tirion's intentions towards an [[Eitrigg|orc]] that had been found in the area, Saidan traveled with an escort to Hearthglen to meet his old friend. After a warm reunion, a meeting took place in Mardenholde Keep where Saidan questioned Tirion about the presence of orcs on ...",
+   "  [book-or-game-characters-category] ...s of the Silver Hand]] [[Category:Scarlet Crusade]] [[Category:Crimson Legion]] [[Category:Deceased characters]] [[Category:Removed Stratholme mobs]] [[Category:Of Blood and Honor characters]] [[Category:Tides of Darkness characters]] [[Category:World of Warcraft: Ashbringer characters]] [[Category:Arthas: Rise of the Lich King characters]] [[Category:Legends characters]] [[Category:Dark Factions]] [[Category:Monster Guide]] [[Category:Hearthstone legendary cards]] [[Category:Stratholme NPCs]]...",
+   "  [rts-words] ...n Dathrohan.jpg|thumb|Saidan Dathrohan in Uther's [[Step Into the Light|memory]].]] Originally a knight of [[Lordaeron (kingdom)|Lordaeron]],<ref>''[[Tides of Darkness]]'', chapter 5</ref> Saidan Dathrohan was nearly six and a half feet tall.<ref name=\"OBAH 4\">''[[Of Blood and Honor]]'', chapter 4</ref> He eventually found faith and got closer to the [[Church of the Light]], studying with Archbishop [[Alonsus Faol]].  At the beginning of the [[Second War]], he was chosen by the Archbishop as one of the four candidates from Lordaeron to start the [[Knights of the Silver Hand]], along with [[Uther the Lightbringer|Uther]], [[Tirion Fordring]], [[Turalyon]] and [[Gavinrad the Dire|Gavinrad]].<ref>''[[Tides of Darkness]]'', pg. 86, 87</ref> While traveling with...",
+   "  [italic-ref] ...ng [[Stratholme]], he was captured and killed by the [[dreadlord]] [[Balnazzar]], who possessed his body in order to manipulate the order from within.<ref name=\"DiC\">''[[Death is Contagious]]''</ref> Now a corpse doll serving the interests of the [[Burning Legion]], his identity was used by the demon to form the [[Scarlet Crusade]], a fanatical, corrupt and extremist sect dedicated to the destruction of the undead and anyone who opposes their doctrines.  It was only after years of manipulation that Saidan's body was destroyed, after [[adventurer]]s pushed the nathrezim to his limits in an attempt to eliminate him.  ==Background== ===Second War=== [[File:Step Into the Light - Saidan Dathrohan.jpg|thumb|Saidan Dathrohan in Uther's [[Step Into the Light|memory]].]] Originally a knight ..."
+  ]
+ },
+ {
+  "id": 10813,
+  "name": "Balnazzar",
+  "tag": "",
+  "wiki_title": "Balnazzar",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...zim]] [[Category:Burning Legion]] [[Category:Scarlet Crusade]] [[Category:Deceased characters]] [[Category:World of Warcraft: Ashbringer characters]] [[Category:Arthas: Rise of the Lich King characters]] [[Category:Legends characters]] [[Category:Battle for Broken Shore]] [[Category:The Legend of The Ashbringer]] [[Category:Netherlight Temple mobs]] [[Category:Named mobs]] [[Category:Monster Guide]] [[Category:Lands of Mystery]] [[Category:Horde Player's Guide]] [[Category:World of Warcraft: Sylvanas characters]]...",
+   "  [rts-words] ...{{About||his ''[[Warcraft III: The Frozen Throne|The Frozen Throne]]'' statistics|Balnazzar (Warcraft III)|his ''[[Classic]]'' encounter|Balnazzar (Classic)|his {{g|sod}} encounter|Balnazzar (Season of Discovery)|his strategy on the {{g|cata}} encounter|Balnazzar (tactics)}} {{Npcbox | name = Balnazzar | image = Balnazzar Legion.jpg  | titles = Lord<ref>[[Mortiferous]]</ref> | gender = Male | race = Nathrezim | creature = Demon | affiliation = [[Burning Legion]], [[Risen]] | faffiliation = [[Scarlet Crusade]], [[Crimson Legion]], [[Dreadlord Insurgents]], [[Scourge]] | resource = Mana | faction = Combat | occupation = Age...",
+   "  [italic-ref] ...the body of [[Saidan Dathrohan]], as Grand Crusader of the [[Scarlet Crusade]]. Sylvanas would describe him as the most elegant of the three brothers.<ref>''[[World of Warcraft: Sylvanas]]'', pg. 190</ref>  Following the [[war against the Lich King]], Balnazzar and his undead [[Risen]] were killed by adventurers. Forced back to the [[Twisting Nether]], he returned years later during the [[third invasion of the Burning Legion]]. Deciding to dismantle the newly reformed [[Knights of the Silver Hand]], he serves as the main antagonist of the [[paladin]] [[class order]] campaign. Balnazzar was finally killed in the [[Netherlight Temple]] located in the Twisting Nether, ending the dreadlord permanently.<ref name=\"A Light in the Darkness\" />  {{OTOC|400|240}}  ==Biography== ===The brea..."
+  ]
+ },
+ {
+  "id": 10917,
+  "name": "Aurius",
+  "tag": "",
+  "wiki_title": "Aurius Rivendare",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...Baron Rivendare]]'s sanctum. *Aurius's name is similar to \"Arius the Seeker\" and \"Aurrius the Pure\", both [[Random hero|random names]] for [[Paladin (Warcraft III)|Paladins]] in ''[[Warcraft III: Reign of Chaos]]''.  ==Patch changes== *{{Patch 4.0.3a|note=Removed from Alonsus Chapel. Now the final boss of Stratholme's Service Entrance.}}  ==See also== *[[Aurius (Wrathgate)]], TCG card  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|10917}}  {{DEFAULTSORT:Rivendare, Aurius}} [[Category:Human characters]] [[Category:Paladin characters]] [[Category:Ex-paladins]] [[Category:Death knight characters]] [[Category:Riders]] [[Category:Aristocrats]] [[Category:Knights of the Silver Hand]] [[Category:Scourge]] [[Category:Quest givers]] [[Category:Rem..."
+  ]
+ },
+ {
+  "id": 16387,
+  "name": "Atiesh",
+  "tag": "Hand of Sargeras",
+  "wiki_title": "Atiesh, Greatstaff of the Guardian",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ... the [[Alonsus Chapel]], in between the western (\"[[Scarlet Crusade|Scarlet]]\") and eastern ([[Scourge]]) districts of Stratholme.  ==Notes== *In ''[[Warcraft III: Reign of Chaos|Warcraft III]]'', Medivh was wielding Atiesh. This contradicts Angela's story which states that the staff was retrieved by the Kirin Tor after his death.<ref name=\"angela\"/> :*An [[:File:BTNWandOfCyclone.png|unused icon]] suggests that the staff was intended to have a role in ''Warcraft III''.  *In [[Karazhan (raid)|Karazhan]], the ghost of Medivh's father, [[Shade of Aran|Nielas Aran]], reacts to raid members equipped with Atiesh: {{text|yell|\"Where did you get that?! Did HE send you??\"}}, believing that Medivh gave the staff to the player. **In [[Return to Karazhan]], the [[...",
+   "  [italic-ref] ...apparently successful in their mission. [[Meryl Winterstorm]] later sent [[Garona Halforcen]] on a mission to retrieve the base of the shattered staff<ref>''[[The Gathering]]''</ref> from within the remains of the [[Old God]] [[C'Thun]]. She succeeded and gave the base to [[Med'an]], who restored the whole staff.<ref name=armageddon>''[[Armageddon (comic)|Armageddon]]''</ref>  From the [[war in Draenor]] onward, the staff was wielded by [[Khadgar]], the former apprentice of [[Medivh]]. It was unclear how he obtained it, as it was last seen in Med'an's possession.<ref>''[[Ultimate Visual Guide]]''</ref><ref>''[[World of Warcraft: Ultimate Visual Guide, Updated and Expanded|Ultimate Visual Guide, Updated and Expanded]]''</ref> The most likely answer is that Med'an him..."
+  ]
+ },
+ {
+  "id": 243252,
+  "name": "Leonid Barthalomew",
+  "tag": "",
+  "wiki_title": "Leonid Barthalomew",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ref>  Leonid was first introduced as a minor quest giver in ''[[World of Warcraft]]'', and received an expanded role as a supporting character in ''[[Warcraft III Reforged: Forsaken Kingdom]]''.  ==History== {{Stub/Lore-section|+Season of Discovery questing and lore info.}} ===Third War=== During the [[Scourging of Lordaeron]], Leonid was killed and resurrected by the [[Lich King]] as a mindless [[undead]] of the [[Scourge]]. He was present at [[Stratholme]] when [[Ras Frostwhisper]] pledged himself to the [[Lich King]] and was transformed into a [[lich]].<ref name=\"Menethil's Gift\">[[Menethil's Gift (quest)]]</ref> He was freed by the Banshee Queen [[Sylvanas Windrunner]] but has been loyal to the cause of the [[Argent Dawn]].<ref>[[The Dying, Ras Fro...",
+   "  [italic-ref] ...eep. I wonder what Garek would make of that? }}  ==In the RPG== {{RPG-section}} [[Trevor]] was his friend and [[Andarin Lightblade]] knew him as well.<ref>''[[Horde Player's Guide]]'', pg. 170</ref>  ==Patch changes== *{{Patch 4.0.3a|note=Now a member of the Argent Crusade.}} *{{Patch 3.0.2|note=Appears during the [[The Light of Dawn (quest)]]}} *{{Patch 1.11.0|note=Position moved to the interior of the chapel.}}  ==References== {{Reflist}}  ==External links== {| class=\"darktable\" |- ! Retail !! Classic !! {{G|Forever}} |- |{{Elinks-NPCsearch}} |{{Elinks-NPCsearch|sub=Classic}} |{{Elinks-NPCsearch|sub=Forever}} |}  {{DEFAULTSORT:Barthalomew, Leonid}} [[Category:Undead characters]] [[Category:Warrior characters]] [[Category:Argent Dawn]] [[Category:Argent Crusade characters..."
+  ]
+ },
+ {
+  "id": 243393,
+  "name": "Leonid Barthalomew the Revered",
+  "tag": "The Argent Dawn",
+  "wiki_title": "Leonid Barthalomew",
+  "already_in_Data_lua": false,
+  "signals": [
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [rts-words] ...ref>  Leonid was first introduced as a minor quest giver in ''[[World of Warcraft]]'', and received an expanded role as a supporting character in ''[[Warcraft III Reforged: Forsaken Kingdom]]''.  ==History== {{Stub/Lore-section|+Season of Discovery questing and lore info.}} ===Third War=== During the [[Scourging of Lordaeron]], Leonid was killed and resurrected by the [[Lich King]] as a mindless [[undead]] of the [[Scourge]]. He was present at [[Stratholme]] when [[Ras Frostwhisper]] pledged himself to the [[Lich King]] and was transformed into a [[lich]].<ref name=\"Menethil's Gift\">[[Menethil's Gift (quest)]]</ref> He was freed by the Banshee Queen [[Sylvanas Windrunner]] but has been loyal to the cause of the [[Argent Dawn]].<ref>[[The Dying, Ras Fro...",
+   "  [italic-ref] ...eep. I wonder what Garek would make of that? }}  ==In the RPG== {{RPG-section}} [[Trevor]] was his friend and [[Andarin Lightblade]] knew him as well.<ref>''[[Horde Player's Guide]]'', pg. 170</ref>  ==Patch changes== *{{Patch 4.0.3a|note=Now a member of the Argent Crusade.}} *{{Patch 3.0.2|note=Appears during the [[The Light of Dawn (quest)]]}} *{{Patch 1.11.0|note=Position moved to the interior of the chapel.}}  ==References== {{Reflist}}  ==External links== {| class=\"darktable\" |- ! Retail !! Classic !! {{G|Forever}} |- |{{Elinks-NPCsearch}} |{{Elinks-NPCsearch|sub=Classic}} |{{Elinks-NPCsearch|sub=Forever}} |}  {{DEFAULTSORT:Barthalomew, Leonid}} [[Category:Undead characters]] [[Category:Warrior characters]] [[Category:Argent Dawn]] [[Category:Argent Crusade characters..."
+  ]
+ }
+]
