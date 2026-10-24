@@ -8,11 +8,11 @@ Warcraft Lore flags NPCs who also appear in the real-time strategy games and the
 - Warcraft III Reforged: Forsaken Kingdom
 - Warcraft novels and short stories (labelled "Book", never presented as a game appearance)
 
-**144 confirmed veterans, 12 memorials, 15 History of Warcraft books and 54 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
+**144 confirmed veterans, 12 memorials, 18 History of Warcraft books and 54 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
 
 ## New in v0.9
 
-- **Library:** the 15 in-game *History of Warcraft* books retell the strategy games, from *The Last Guardian* to *Old Hatreds*. Read them on the shelves of Stormwind, Ironforge, Undercity and the inns, find every copy on the world map, and earn **Student of History**.
+- **Library:** the 18 in-game *History of Warcraft* books retell the strategy games, from *The Last Guardian* to *Old Hatreds*. Read them on the shelves of Stormwind, Ironforge, Undercity and the inns, find every copy on the world map, and earn **Student of History**.
 - **Ready for the higher levels:** Kel'Thuzad, Drek'Thar, Rend Blackhand, Onyxia, Nefarian, Baron Rivendare and ten more wait in the dungeons, raids and Alterac Valley.
 - **Every veteran re-checked** against its sources, with dozens of new novel appearances.
 

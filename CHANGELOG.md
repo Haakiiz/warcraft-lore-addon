@@ -2,7 +2,7 @@
 
 ## v0.9.0
 
-- **Library: 15 History of Warcraft books.** The in-game *History of Warcraft* books on shelves in Stormwind,
+- **Library: 18 History of Warcraft books.** The in-game *History of Warcraft* books on shelves in Stormwind,
   Ironforge, Undercity, inns and camps retell the strategy games, from *The Last Guardian* to *Old Hatreds*.
   Read any copy to tick it off. They are in the Memorials list (with a book icon), every copy has a pin on the
   world map, and the new achievement **Student of History** asks you to read them all.
