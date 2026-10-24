@@ -425,16 +425,24 @@ ns.NPCS = {
                 missions = {},
                 role = "Calls a convocation of druids on Teldrassil and insists on healing the tree, and the Nightmare Lord has tricked him with a vision of his dead son Valstann",
             },
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Leads the night elf armies against the qiraji in Silithus, cannot reach his son Valstann before the Qiraji general kills him, and later helps the bronze dragon Anachronos seal the gates of Ahn'Qiraj",
+            },
         },
         story = "After the Third War the night elves lost Nordrassil and their immortality, and Malfurion fell into a deep coma. "
              .. "His absence left the leadership of the druids to Fandral Staghelm, who became the new archdruid. "
              .. "Fandral convinced the other druids to create a new World Tree, and together they planted Teldrassil off the coast of northern Kalimdor. "
              .. "The tree was not blessed by the Dragon Aspects and the night elves did not regain their immortality, while corruption began to spread through Teldrassil. "
-             .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus.",
+             .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus. "
+             .. "In the short story The War of the Shifting Sands, he leads the night elves against the qiraji in Silithus, sees his son Valstann killed by the Qiraji general, and then helps the dragons seal Ahn'Qiraj behind a magical barrier.",
         items = {
             { id = 5390, name = "Fandral's Message", note = "Quest item in \"Grove of the Ancients\", which he starts" },
         },
         sources = {
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
             "https://warcraft.wiki.gg/wiki/Fandral_Staghelm",
             "https://www.wowhead.com/classic/item=5390",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -3756,16 +3764,75 @@ ns.NPCS = {
                 missions = {},
                 role = "Gives the ship Sea King to the new captain Adashe Flintwill (chapter 32)",
             },
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Warns Baron Revilgaz that a goblin is rowing into the harbor shouting his name, which brings Riggle Bassbait to the Baron",
+            },
         },
         story = "Fleet Master Seahorn is a tauren pirate of the Blackwater Raiders, located on the top floor of the Salty Sailor Tavern in Booty Bay. "
              .. "He is Baron Revilgaz's most trusted advisor. "
-             .. "In the book Traveler: The Spiral Path he gives the ship Sea King to the new captain Adashe Flintwill.",
+             .. "In the book Traveler: The Spiral Path he gives the ship Sea King to the new captain Adashe Flintwill. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, he warns Baron Revilgaz that a goblin is rowing into the harbor shouting his name.",
         items = {},
         sources = {
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
             "https://warcraft.wiki.gg/wiki/Fleet_Master_Seahorn",
             "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
             "https://www.wowhead.com/classic/npc=2487",
+        },
+        confidence = "confirmed",
+    },
+    [15077] = {
+        name = "Riggle Bassbait",
+        zone = "Stranglethorn Vale",
+        coords = "27.4, 76.8",
+        related = { 2496, 2487 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Asks Baron Revilgaz for a loan to fund a fishing tournament, wins him over with a plate of tastyfish, and then goes off to seed the coastal waters with fish for the contest",
+            },
+        },
+        story = "Riggle Bassbait is a goblin angler who stands on a dock in Booty Bay, where he runs the Stranglethorn Fishing Extravaganza and takes the speckled tastyfish that anglers turn in to him. "
+             .. "He appears for the weekly Stranglethorn Fishing Extravaganza, which is held on Sunday afternoons. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, he rows into Booty Bay and asks Baron Revilgaz for a loan to fund his plan. "
+             .. "Revilgaz first refuses, but after tasting Riggle's tastyfish he agrees to a fishing tournament, and Riggle goes off to seed the coastal waters with fish.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Riggle_Bassbait",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza",
+            "https://www.wowhead.com/classic/npc=15077/riggle-bassbait",
+        },
+        confidence = "confirmed",
+    },
+
+    [2496] = {
+        name = "Baron Revilgaz",
+        zone = "Stranglethorn Vale",
+        coords = "27.2, 76.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Hears Riggle Bassbait's loan request, is won over by his tastyfish, and agrees to a fishing tournament that brings visitors back to Booty Bay",
+            },
+        },
+        story = "Baron Revilgaz rules the goblin port of Booty Bay, home of the Blackwater Raiders, and he watches over the harbor from his balcony atop the Salty Sailor Tavern with Fleet Master Seahorn at his side. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, the wars in Alterac Valley and Warsong Gulch have drawn visitors away from Stranglethorn and business is struggling. "
+             .. "He first refuses a loan to the angler Riggle Bassbait. "
+             .. "Then he tastes Riggle's tastyfish and agrees to a fishing tournament that brings adventurers and trade back to Booty Bay.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
+            "https://www.wowhead.com/classic/npc=2496/baron-revilgaz",
         },
         confidence = "confirmed",
     },

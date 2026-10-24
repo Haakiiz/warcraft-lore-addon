@@ -1,0 +1,32 @@
+[
+ {
+  "id": 4076,
+  "name": "Roach",
+  "tag": "",
+  "wiki_title": "Roach",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...e times of [[Arathor]], the [[nathrezim]] [[Kathra'natir]] summoned a swarm of locusts in [[Silverpine Forest]] to destroy trees and ravage croplands.<ref>''[[The First Guardian]]''</ref>  ==References== {{Reflist}}  {{Creaturefooter|Critter}}  [[Category:Roaches| ]] [[Category:Critters]]..."
+  ]
+ },
+ {
+  "id": 7358,
+  "name": "Amnennar the Coldbringer",
+  "tag": "",
+  "wiki_title": "Amnennar the Coldbringer",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ge}} {{Dungeon final boss}}  [[Category:Liches]] [[Category:Scourge]] [[Category:Bosses]] [[Category:Razorfen Downs mobs]] [[Category:Unique voices]] [[Category:Traveler characters]]...",
+   "  [italic-ref] ...al encounter|Amnennar the Coldbringer (Classic)}} {{Npcbox | name = Amnennar the Coldbringer | image = Amnennar.jpg | titles = Ruler of Razorfen Downs<ref name=\"UVG169\">''[[Ultimate Visual Guide]]'', pg. 169</ref> | gender = Male | race = Lich | creature = Undead | level = Razorfen Downs | type = Elite  | resource = Mana | aggro = {{Aggro|-1|-1}} | affiliation = [[Scourge]], [[Death's Head tribe]], [[Splinterbone skeletons|Splinterbone]] | occupation = Ruler of [[Razorfen Downs]] | location = [[Razorfen Downs]] | faction = Boss | status = Unknown (lore)<br> Killable {{Wod-inline}} | instance = Razorfen Downs }}  '''Amnennar the Coldbringer''' is an [[elite]] [[lich]] [[boss]] found in [[Razorfen Downs]], sitting atop the [[Spiral of Thorns]], a mountain of massive spiked vines infested w..."
+  ]
+ }
+]
