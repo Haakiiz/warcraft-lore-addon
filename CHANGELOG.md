@@ -9,7 +9,11 @@
 - **16 new veterans in the high-level dungeons, raids and Alterac Valley**, ready for when the level cap rises:
   Kel'Thuzad, Drek'Thar, Rend Blackhand, Nefarian and Lord Victor Nefarius, Onyxia, Princess Moira Bronzebeard,
   Baron Rivendare, Balnazzar and Grand Crusader Dathrohan, Ras Frostwhisper, Magistrate Barthilas, Sapphiron,
-  Sir Zeliek, Renferal and General Rajaxx. 146 veterans in total.
+  Sir Zeliek, Renferal and General Rajaxx.
+- **First veterans in the new Forever zones:** Archmage Ansirem Runeweaver and Muln Earthfury on Zephras Isle,
+  Tiala Whitemane on Mount Hyjal and Mordent Evenshade in Shen'dralas.
+- **World events:** Riggle Bassbait (Stranglethorn Fishing Extravaganza) and Baron Revilgaz join from the short story
+  of the same name. 152 veterans in total.
 - **Every veteran checked again.** All 131 veterans and 12 memorials were re-checked against their sources
   before this release:
   - about 60 entries got corrections: exact mission names, concrete roles, missing novels and short stories

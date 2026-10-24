@@ -8,7 +8,7 @@ Warcraft Lore flags NPCs who also appear in the real-time strategy games and the
 - Warcraft III Reforged: Forsaken Kingdom
 - Warcraft novels and short stories (labelled "Book", never presented as a game appearance)
 
-**146 confirmed veterans, 12 memorials, 18 History of Warcraft books and 54 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
+**152 confirmed veterans, 12 memorials, 18 History of Warcraft books and 54 achievements.** From Thrall and Sylvanas to Tirion Fordring, Falstad Wildhammer and the goblins of Gadgetzan. Every one is checked against a source, and only characters you can actually meet in this version of the game are included.
 
 ## New in v0.9
 
