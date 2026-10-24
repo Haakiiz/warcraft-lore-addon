@@ -88,7 +88,7 @@ def main():
 
     # --- data
     n = ev("#ns.MemorialList()")
-    r.append(check("12 memorials load", n == 12, n))
+    r.append(check("27 memorials load (12 + 15 books)", n == 27, n))
     r.append(check("lookup by name ignores case and surrounding spaces",
                    ev("ns.MemorialByName('  general TURALYON ').key") == "turalyon"
                    and ev("ns.MemorialByName('Nobody') == nil") and ev("ns.MemorialByName(nil) == nil")))
@@ -147,13 +147,13 @@ def main():
     # --- reading a plaque
     ex("printed = {}; itemTextName = \"Trollbane's Tomb\"; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
     r.append(check("ITEM_TEXT_BEGIN with a memorial's name marks it visited", ev("ns.IsVisited('trollbane')") is True and ev("#printed") == 1))
-    ex("itemTextName = 'The Last Guardian'; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
+    ex("itemTextName = 'A Treatise on Military Ranks'; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
     r.append(check("another text marks nothing", ev("ns.IsVisited('uther')") is False))
     ex("itemTextName = nil; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
     r.append(check("no text name: no error", ev("ns.FeatureOff('memorial-text')") is False))
     ex("itemTextName = 'Uther the Lightbringer'; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
     r.append(check("reading Uther's plaque", ev("ns.IsVisited('uther')") is True))
-    r.append(check("visited count", ev("(ns.VisitedCounts())") == 5 and ev("select(2, ns.VisitedCounts())") == 12))
+    r.append(check("visited count", ev("(ns.VisitedCounts())") == 5 and ev("select(2, ns.VisitedCounts())") == 27))
     r.append(check("visit summary names the date", "Visited on 3 Oct 2025" in (ev("ns.VisitSummary('uther')") or "")
                    and ev("ns.VisitSummary('grom')") is None, ev("ns.VisitSummary('uther')")))
 
@@ -185,17 +185,17 @@ def main():
     r.append(check("list starts with veterans only", total > 12 and mem == 0, (total, mem)))
     ex("ns.Browser.SetMemorials(true)")
     total, mem = rows()
-    r.append(check("Memorials switch lists the 12 memorials", total == 12 and mem == 12, (total, mem)))
+    r.append(check("Memorials switch lists the 27 memorials", total == 27 and mem == 27, (total, mem)))
     chip = lambda code: ev("(function() for _, f in ipairs(frames) do if f.code == '%s' and f.scripts.OnClick then return f end end end)()" % code)
-    r.append(check("WC1, WC2 and BtDP chips have content in memorial mode",
-                   all(chip(c).shown for c in ("WC1", "WC2", "BTDP")) and chip("TFT").shown is False))
+    r.append(check("WC1, WC2, BtDP and TFT chips have content in memorial mode (TFT: the books)",
+                   all(chip(c).shown for c in ("WC1", "WC2", "BTDP", "TFT"))))
     chip("WC1").scripts.OnClick()
     total, mem = rows()
-    r.append(check("WC1 chip filters to Llane's memorial", total == 1 and mem == 1, (total, mem)))
+    r.append(check("WC1 chip: Llane's memorial and 3 books", total == 4 and mem == 4, (total, mem)))
     chip("WC1").scripts.OnClick()
     chip("BTDP").scripts.OnClick()
     total, _ = rows()
-    r.append(check("BtDP chip: Daelin, Turalyon, Khadgar, Alleria, Danath, Kurdran, Grom", total == 7, total))
+    r.append(check("BtDP chip: Daelin, Turalyon, Khadgar, Alleria, Danath, Kurdran, Grom + 1 book", total == 8, total))
     chip("BTDP").scripts.OnClick()
     ex("""(function()
         for _, f in ipairs(frames) do
@@ -287,7 +287,7 @@ def main():
         ns.MapPins.Init()
     """)
     pins = ev("""(function() local m, v = 0, 0 for _, p in ipairs(ns.MapPins.Active()) do if p.group.memorial then m = m + 1 else v = v + 1 end end return m end)()""")
-    r.append(check("Stormwind map: 7 memorial pins (Royal Gallery and Valley of Heroes)", pins == 7, pins))
+    r.append(check("Stormwind map: 12 memorial pins (Royal Gallery, Valley of Heroes, 5 books)", pins == 12, pins))
     visited = ev("""(function() local n = 0 for _, p in ipairs(ns.MapPins.Active()) do if p.group.memorial and p.met then n = n + 1 end end return n end)()""")
     r.append(check("visited memorial pins are marked (Turalyon, Llane, Kurdran)", visited == 3, visited))
     ex("""
@@ -299,7 +299,7 @@ def main():
         for _, p in ipairs(ns.MapPins.Active()) do if p.group.key == 'uther' then p.frame.scripts.OnEnter() p.frame.scripts.OnClick(p.frame, 'LeftButton') end end
     """)
     r.append(check("clicking a memorial pin opens its lore window", ev("ns.UI.GetShownMemorial()") == "uther"))
-    ex("mapId = 1411; WorldMapFrame:OnMapChanged()")
+    ex("mapId = 1438; WorldMapFrame:OnMapChanged()")
     r.append(check("a map without memorials has none", ev("""(function() for _, p in ipairs(ns.MapPins.Active()) do if p.group.memorial then return false end end return true end)()""")))
 
     # --- achievements
