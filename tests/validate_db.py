@@ -341,7 +341,11 @@ def check_entries(npcs):
 
         if not isinstance(npc_id, int) or isinstance(npc_id, bool) or npc_id <= 0:
             err("the NPC ID must be a positive integer")
-        forever = isinstance(entry, LuaTable) and not entry.is_list and entry.data.get("zone") in FOREVER_ZONES
+        forever = isinstance(entry, LuaTable) and not entry.is_list and (
+            entry.data.get("zone") in FOREVER_ZONES
+            # a Forever NPC in an old zone: its source must be the wowhead.com/forever page of this very ID
+            or any(isinstance(u, str) and f"wowhead.com/forever/npc={npc_id}" in u
+                   for u in getattr(entry.data.get("sources"), "data", None) or []))
         if isinstance(npc_id, int) and npc_id > MAX_NPC_ID and not forever:
             err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
                 "and cannot be met in WoW Forever. Remove the entry")
