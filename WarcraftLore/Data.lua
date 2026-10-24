@@ -348,6 +348,59 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
+    [246748] = {
+        name = "Archmage Modera",
+        zone = "Alterac Mountains",
+        coords = "14.4, 57.5",
+        related = { 2543, 276235 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Day of the Dragon",
+                missions = {},
+                role = "Council of Six member who travels with Drenden to Lordaeron's capital to meet King Terenas and Lord Daval Prestor, the noble rumored to be Deathwing",
+            },
+            {
+                game = "BOOK",
+                campaign = "Road to Damnation",
+                missions = {},
+                role = "Condemns Kel'Thuzad's necromancy when his experiments are discovered, which leads to his expulsion from the Kirin Tor",
+            },
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Exhausted, she and the mages still awake in the Violet Citadel contain the greatest of their kind from joining the Nightmare's army when Malfurion contacts her",
+            },
+            {
+                game = "BOOK",
+                campaign = "Quest for Pandaria",
+                missions = {},
+                role = "Arrives near Booty Bay with Ansirem Runeweaver to save his daughter Catelyn and her crew from the Bloodsail Buccaneers",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Insists in the Council of Six that Dalaran is neutral and will not join an attack on Orgrimmar",
+            },
+        },
+        story = "Archmage Modera is one of the longest-serving members of the Council of Six, the archmagi who rule Dalaran. "
+             .. "She joined the council during the Second War and survived the destruction of Dalaran in the Third War. "
+             .. "In the short story Road to Damnation she condemned Kel'Thuzad's necromancy, which led to his expulsion from the Kirin Tor. "
+             .. "In World of Warcraft: Forever, Dalaran lowered its shield early, and she can be found there in the Alterac Mountains.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Archmage_Modera",
+            "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
+            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://www.wowhead.com/forever/npc=246748",
+        },
+        confidence = "confirmed",
+    },
 
     -- ===================================================================== Darnassus
     [7999] = {
