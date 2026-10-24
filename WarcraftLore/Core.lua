@@ -740,6 +740,7 @@ local ZONE_MAPS = {
     ["Desolace"] = { 1443, 66 },
     ["Swamp of Sorrows"] = { 1435, 51 },
     ["Blasted Lands"] = { 1419, 17 },
+    ["Wetlands"] = { 1437, 56 },
 }
 ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
 

@@ -88,7 +88,7 @@ def main():
 
     # --- data
     n = ev("#ns.MemorialList()")
-    r.append(check("27 memorials load (12 + 15 books)", n == 27, n))
+    r.append(check("30 memorials load (12 + 18 books)", n == 30, n))
     r.append(check("lookup by name ignores case and surrounding spaces",
                    ev("ns.MemorialByName('  general TURALYON ').key") == "turalyon"
                    and ev("ns.MemorialByName('Nobody') == nil") and ev("ns.MemorialByName(nil) == nil")))
@@ -153,7 +153,7 @@ def main():
     r.append(check("no text name: no error", ev("ns.FeatureOff('memorial-text')") is False))
     ex("itemTextName = 'Uther the Lightbringer'; coreEvents.scripts.OnEvent(coreEvents, 'ITEM_TEXT_BEGIN')")
     r.append(check("reading Uther's plaque", ev("ns.IsVisited('uther')") is True))
-    r.append(check("visited count", ev("(ns.VisitedCounts())") == 5 and ev("select(2, ns.VisitedCounts())") == 27))
+    r.append(check("visited count", ev("(ns.VisitedCounts())") == 5 and ev("select(2, ns.VisitedCounts())") == 30))
     r.append(check("visit summary names the date", "Visited on 3 Oct 2025" in (ev("ns.VisitSummary('uther')") or "")
                    and ev("ns.VisitSummary('grom')") is None, ev("ns.VisitSummary('uther')")))
 
@@ -185,7 +185,7 @@ def main():
     r.append(check("list starts with veterans only", total > 12 and mem == 0, (total, mem)))
     ex("ns.Browser.SetMemorials(true)")
     total, mem = rows()
-    r.append(check("Memorials switch lists the 27 memorials", total == 27 and mem == 27, (total, mem)))
+    r.append(check("Memorials switch lists the 30 memorials", total == 30 and mem == 30, (total, mem)))
     chip = lambda code: ev("(function() for _, f in ipairs(frames) do if f.code == '%s' and f.scripts.OnClick then return f end end end)()" % code)
     r.append(check("WC1, WC2, BtDP and TFT chips have content in memorial mode (TFT: the books)",
                    all(chip(c).shown for c in ("WC1", "WC2", "BTDP", "TFT"))))
@@ -195,7 +195,7 @@ def main():
     chip("WC1").scripts.OnClick()
     chip("BTDP").scripts.OnClick()
     total, _ = rows()
-    r.append(check("BtDP chip: Daelin, Turalyon, Khadgar, Alleria, Danath, Kurdran, Grom + 1 book", total == 8, total))
+    r.append(check("BtDP chip: Daelin, Turalyon, Khadgar, Alleria, Danath, Kurdran, Grom + 2 books", total == 9, total))
     chip("BTDP").scripts.OnClick()
     ex("""(function()
         for _, f in ipairs(frames) do
