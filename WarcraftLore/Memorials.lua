@@ -114,7 +114,7 @@ ns.MEMORIALS = {
         story = "Thoras Trollbane was the king of Stromgarde and one of the leaders of the Alliance. "
             .. "His remains rest in a sanctum behind the chapel of Stromgarde Keep. "
             .. "The tomb is an object in a quest chain that sends adventurers to retrieve Trol'kalar from it. "
-            .. "In Warcraft II the orc campaign includes the mission The Fall of Stromgarde, in which the Horde destroys his kingdom's capital, though he does not appear by name.",
+            .. "In Warcraft II the orc campaign includes the mission The Fall of Stromgarde, in which the Horde destroys his kingdom's capital.",
         sources = {
             "https://www.wowhead.com/classic/object=2703",
             "https://warcraft.wiki.gg/wiki/Trol%27kalar_(Classic)",

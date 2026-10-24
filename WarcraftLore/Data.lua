@@ -61,8 +61,8 @@ ns.NPCS = {
             {
                 game = "WC3",
                 campaign = "Eternity's End (Night Elf)",
-                missions = { "Twilight of the Gods" },
-                role = "Allied hero (Far Seer) who fortifies the Horde base on Mount Hyjal against Archimonde's army",
+                missions = { "The Last Guardian", "Twilight of the Gods" },
+                role = "Allied commander (Far Seer): arrives with Jaina in The Last Guardian to hear the Prophet's warning, then fortifies the Horde base on Mount Hyjal against Archimonde's army in Twilight of the Gods",
             },
             {
                 game = "TFT",
@@ -120,6 +120,7 @@ ns.NPCS = {
         items = {
         },
         sources = {
+            "https://warcraft.wiki.gg/wiki/The_Last_Guardian_(WC3_Night_Elf)",
             "https://warcraft.wiki.gg/wiki/Thrall",
             "https://warcraft.wiki.gg/wiki/The_Invasion_of_Kalimdor",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land",
@@ -174,7 +175,7 @@ ns.NPCS = {
                 game = "TFT",
                 campaign = "The Founding of Durotar (Orc bonus campaign)",
                 missions = { "To Tame a Land", "Old Hatreds" },
-                role = "Quest giver and advisor (Shadow Hunter); the Darkspear chieftain turns Rexxar, Rokhan and Chen into spirit wyverns",
+                role = "Quest giver and advisor (Witch Doctor); the Darkspear chieftain turns Rexxar, Rokhan and Chen into spirit wyverns",
             },
             {
                 game = "BOOK",
@@ -256,7 +257,7 @@ ns.NPCS = {
                 game = "WC3",
                 campaign = "Path of the Damned (Undead)",
                 missions = { "Under the Burning Sky" },
-                role = "One of seven randomly named enemy archmage heroes (six appear per game) who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
+                role = "One of seven randomly named enemy archmage heroes (six on normal difficulty, all seven on hard) who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
             },
             {
                 game = "BOOK",
@@ -752,7 +753,7 @@ ns.NPCS = {
                 game = "WC3",
                 campaign = "The Scourge of Lordaeron (Human)",
                 missions = { "Jaina's Meeting", "Ravages of the Plague", "The Cult of the Damned", "March of the Scourge", "The Prince and the Prophet", "The Culling", "Divergent Courses" },
-                role = "Hero (sorceress) at Arthas's side: introduced in Jaina's Meeting; \"Jaina must survive\" in Ravages of the Plague; follows Arthas after the Prophet's warning in The Prince and the Prophet; leaves Arthas in The Culling, then tells Uther in Divergent Courses that he has sailed for Northrend",
+                role = "Hero (sorceress) at Arthas's side: joins him in Jaina's Meeting, urges him to spare her people in Ravages of the Plague, follows him after the Prophet's warning, leaves him in The Culling and tells Uther in Divergent Courses that he has sailed for Northrend",
             },
             {
                 game = "WC3",
@@ -1952,7 +1953,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Cut Short",
                 missions = {},
-                role = "High Tinker who leads the gnomes' push to retake Gnomeregan, survives Sicco Thermaplugg's trap in his old quarters in Sector 17 and cuts Thermaplugg's battle suit in half",
+                role = "High Tinker who leads the gnomes' push to retake Gnomeregan, survives Sicco Thermaplugg's trap in his old quarters in Sector 17 and turns his trap so that it cuts Thermaplugg in half",
             },
             {
                 game = "BOOK",
@@ -2213,7 +2214,7 @@ ns.NPCS = {
         },
         story = "Daisy was originally the race starter girl at the Mirage Raceway in the Shimmering Flats in Thousand Needles. "
              .. "In the novel Traveler: The Spiral Path, set after the Cataclysm, Aram meets her at the Speedbarge and learns that winning the Annual Fizzle and Pozzik's Speedbarge Boat Race earns permission to salvage the flooded wrecks. "
-             .. "She is a singer and a friend of Rendow, and the book also lists her as a racer and boat pilot at the Speedbarge.",
+             .. "She is a singer and a friend of Rendow, and she also races and pilots boats at the Speedbarge.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Daisy",
@@ -2344,13 +2345,13 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Cut Short",
                 missions = {},
-                role = "Self-styled king of Gnomeregan who traps Gelbin Mekkatorque in his old quarters and attacks him in a battle suit until Gelbin's trap cuts the suit in half",
+                role = "Self-styled king of Gnomeregan who traps Gelbin Mekkatorque in his old quarters and attacks him in a battle suit until Gelbin's trap cuts Thermaplugg in half",
             },
         },
         story = "In his youth, Sicco Thermaplugg was the closest friend of Gelbin Mekkatorque, and Gelbin later employed him at his foundry. "
              .. "Sicco resented Gelbin for being elected High Tinker of Gnomeregan and believed the gnomes should use their inventions to expand their power instead of trading them to allies. "
              .. "Gelbin kept Sicco in a prominent role in the Tinkers' Court despite his flawed work, and Sicco went on to serve as Gelbin's chief advisor for many years. "
-             .. "In the short story Cut Short he sets a trap for Gelbin in his old quarters in Sector 17 and attacks him in a battle suit, but Gelbin cuts the suit in half and leaves him for dead. "
+             .. "In the short story Cut Short he sets a trap for Gelbin in his old quarters in Sector 17 and attacks him in a battle suit, but Gelbin's trap cuts him in half, his battle suit saves his life, and Gelbin leaves him for dead. "
              .. "In World of Warcraft he is a boss in Gnomeregan.",
         items = {},
         sources = {
@@ -3248,7 +3249,7 @@ ns.NPCS = {
         },
         story = "Wharfmaster Dizzywig is a goblin dockmaster in Ratchet in the Barrens. "
              .. "In the novel Night of the Dragon he provided transport for Velinde Starsong, and later for Iridi when she came through Ratchet to purchase a boat. "
-             .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Passage to Booty Bay and The Missing Shipment.",
+             .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Southsea Freebooters and Passage to Booty Bay.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Wharfmaster_Dizzywig",
@@ -4462,7 +4463,7 @@ ns.NPCS = {
              .. "When Arthas and Anub'arak came to take the hoard, he fought them and was killed. "
              .. "Arthas raised him as a frost wyrm to serve the Scourge. "
              .. "In World of Warcraft he guards the Frostwyrm Lair in Naxxramas, the approach to the chamber of Kel'Thuzad. "
-             .. "Even in undeath he keeps his key to the Focusing Iris.",
+             .. "His frost magic, strengthened when Arthas raised him, defends Kel'Thuzad at all costs.",
         items = {
         },
         sources = {
@@ -4799,7 +4800,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Tides of Darkness",
                 missions = {},
-                role = "Lordaeron knight chosen by Archbishop Faol as one of the first four candidates for the Knights of the Silver Hand",
+                role = "Lordaeron knight chosen by Archbishop Faol, with Uther, Tirion, Turalyon and Gavinrad, as one of the first Knights of the Silver Hand",
             },
             {
                 game = "BOOK",
@@ -4831,7 +4832,7 @@ ns.NPCS = {
                 game = "BOOK",
                 campaign = "Of Blood and Honor",
                 missions = { "Chapter 5", "Chapter 7" },
-                role = "Tirion Fordring's second at Mardenholde Keep: alerts Saidan Dathrohan to the orc Eitrigg, oversees Tirion's prosecution and plans Eitrigg's torture and execution",
+                role = "Tirion Fordring's second at Mardenholde Keep: finds and captures the orc Eitrigg together with Saidan Dathrohan, oversees Tirion's prosecution and plans Eitrigg's torture and execution",
             },
         },
         story = "Barthilas was a young paladin who served under Tirion Fordring at Mardenholde Keep, and the Second War had killed his parents and left him hating orcs. "
