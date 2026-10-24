@@ -1,0 +1,6 @@
+startProgress()
+SlashCmdList.WARCRAFTLORE("list")
+MOCK.click(btnWithText("Memorials"))
+typeSearch("guardian")
+hover(rowFor("The Last Guardian"))
+MOCK.dump(SHOTDIR .. "/m_book_tip.json")

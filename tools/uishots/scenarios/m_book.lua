@@ -1,0 +1,6 @@
+startProgress()
+SlashCmdList.WARCRAFTLORE("list")
+MOCK.click(btnWithText("Memorials"))
+typeSearch("scourge")
+MOCK.click(rowFor("The Scourge of Lordaeron"))
+MOCK.dump(SHOTDIR .. "/m_book.json")
