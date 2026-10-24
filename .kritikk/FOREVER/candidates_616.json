@@ -1,0 +1,68 @@
+[
+ {
+  "id": 40833,
+  "name": "Tiala Whitemane",
+  "tag": "",
+  "wiki_title": "Tiala Whitemane",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Shadows Rising |  | *{{RaceIcon|Tauren Female}} [[Tiala Whitemane]]"
+  ],
+  "excerpts": [
+   "  [section-template] ...ne is [[Choluna]].<ref>[[Wings Over Mount Hyjal]]</ref>  {{Bfa-section}} Tiala was present at Nordrassil when [[Azerite elemental]]s appeared there.  {{Novel-section}} After the [[Fourth War]], [[Yukha]] of the [[Earthen Ring]] negotiated with the druids guarding the World Tree a safe passage for [[Thrall]] and his companions to a meeting with [[Tyrande Whisperwind]]. Tiala assured the shaman that the passage would remain open.<ref>''[[Shadows Rising]]'', pg. 132</ref>  ==Abilities== *{{Abilities|Entangling Roots|id=22127|Entangles an enemy in roots, inflicting {{School|Nature}} damage every 3 sec. and immobilizing it for up to 6 sec.|icon=spell_nature_stranglevines}} *{{Abilities|Moonfire|id=23380|Burns the enemy for {{School|Arcane}} damage and inflicts...",
+   "  [book-or-game-characters-category] ... [[Category:Tauren characters]] [[Category:Druid characters]] [[Category:Guardians of Hyjal]] [[Category:Quest givers]] [[Category:Mount Hyjal NPCs]] [[Category:Shadows Rising characters]]...",
+   "  [italic-ref] ...safe passage for [[Thrall]] and his companions to a meeting with [[Tyrande Whisperwind]]. Tiala assured the shaman that the passage would remain open.<ref>''[[Shadows Rising]]'', pg. 132</ref>  ==Abilities== *{{Abilities|Entangling Roots|id=22127|Entangles an enemy in roots, inflicting {{School|Nature}} damage every 3 sec. and immobilizing it for up to 6 sec.|icon=spell_nature_stranglevines}} *{{Abilities|Moonfire|id=23380|Burns the enemy for {{School|Arcane}} damage and inflicts additional damage over 12 sec.|icon=spell_nature_starfall}} *{{Abilities|Wrath|id=9739|Causes Nature damage to the target.|icon=spell_nature_wrathv2}}  ==Quests== *[[Wings Over Mount Hyjal]] {{queststart}}  ==Patch changes== *{{Patch 4.0.3a|note=Added.}}  ==References== {{Reflist}}  ==Extern..."
+  ]
+ },
+ {
+  "id": 254131,
+  "name": "Skylord Omnuron",
+  "tag": "Druid of the Talon",
+  "wiki_title": "Skylord Omnuron",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-cite-template"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-cite-template] ...ur flight.  ===Mail=== Following the completion of [[Hatchling of the Talon]], Omnuron sends the player a mail containing the [[Emerald Winds]] toy.  {{Book|Hatchling's First Flight|content= The great Aviana was quite impressed with your mastery over the winds and currents of the open sky.  Accept this gift with her blessing. }}  ==Notes== *Omnuron has a visual effect of ravens flying around his head. The visual is reused from [[Atiesh, Greatstaff of the Guardian]]'s equip effect. [[Raven priest]]s have the same effect.  ==Patch changes== *{{Patch 10.2.5|note=New appearance with an updated model added.}} *{{Patch 7.0.3|note=Given unique on-click voice-lines.}} *{{Patch 4.0.3a|note=Added.}}  ==References== {{Reflist}}  ==External links== {{Elinks-N..."
+  ]
+ },
+ {
+  "id": 260626,
+  "name": "Bluebell",
+  "tag": "Flight Mistress",
+  "wiki_title": "Bluebell",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "War Crimes |  | *{{RaceIcon|Human|Female}} [[Bluebell]]"
+  ],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...]] rescued the goblin and his zeppelin, the ''[[Lady Lug]]''.<ref>''[[War Crimes]]''</ref>  ==References== {{Reflist}}  [[Category:Human characters]] [[Category:War Crimes characters]] [[Category:Lore characters]]...",
+   "  [italic-ref] ...knamed [[Greenie Girl]] rushed to defend the keep while [[Zaela]] and [[Thalen Songweaver]] rescued the goblin and his zeppelin, the ''[[Lady Lug]]''.<ref>''[[War Crimes]]''</ref>  ==References== {{Reflist}}  [[Category:Human characters]] [[Category:War Crimes characters]] [[Category:Lore characters]]..."
+  ]
+ },
+ {
+  "id": 267097,
+  "name": "Maerion Thaelemaches",
+  "tag": "",
+  "wiki_title": "Maerion Thaelemaches",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...also== *[[Thaelemaches' Talisman]]  ==External links== {{Elinks-NPC|267097}}  {{DEFAULTSORT:Thaelemaches, Maerion}} [[Category:Night elf characters]] [[Category:Demon hunter characters]] [[Category:Mount Hyjal NPCs]]..."
+  ]
+ }
+]

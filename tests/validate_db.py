@@ -30,6 +30,9 @@ ITEM_FIELDS = {"id", "name", "note"}
 
 # Warcraft Lore ships for WoW Forever (classic-era). Higher IDs are Season of Discovery or later content.
 MAX_NPC_ID = 200000
+# Zones that only exist in WoW Forever: their NPCs have new, high IDs (wowhead.com/forever), so the limit does not apply there.
+FOREVER_ZONES = {"Mount Hyjal", "Riverglades", "Zephras Isle", "Ruins of Lordaeron", "Shen'dralas",
+                 "Excavation Site: Wetlands", "The Hall of Thanes", "City of Dalaran", "Gilneas", "Darkspear Islands"}
 # Research notes and dev wording must never reach the player. Checked in name, role, story and campaign.
 BANNED_PHRASES = [
     "game files", "removed from the game", "Classic", "ADP", "wiki", "listed", "pg.",
@@ -338,7 +341,8 @@ def check_entries(npcs):
 
         if not isinstance(npc_id, int) or isinstance(npc_id, bool) or npc_id <= 0:
             err("the NPC ID must be a positive integer")
-        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID:
+        forever = isinstance(entry, LuaTable) and not entry.is_list and entry.data.get("zone") in FOREVER_ZONES
+        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID and not forever:
             err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
                 "and cannot be met in WoW Forever. Remove the entry")
         if not isinstance(entry, LuaTable) or entry.is_list:

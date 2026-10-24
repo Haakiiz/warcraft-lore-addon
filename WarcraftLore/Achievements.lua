@@ -43,6 +43,8 @@ local ZONE_LEVEL = {
     ["Temple of Ahn'Qiraj"] = 60, ["Naxxramas"] = 60, ["Zul'Gurub"] = 60,
     -- battlegrounds
     ["Warsong Gulch"] = 10, ["Arathi Basin"] = 20, ["Alterac Valley"] = 51,
+    -- new in WoW Forever (minimum levels from wowhead.com/forever where known)
+    ["Zephras Isle"] = 1, ["Riverglades"] = 36, ["Mount Hyjal"] = 60, ["Shen'dralas"] = 45,
 }
 Achievements.ZONE_LEVEL = ZONE_LEVEL
 
