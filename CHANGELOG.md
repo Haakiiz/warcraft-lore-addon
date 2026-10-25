@@ -1,5 +1,13 @@
 # Warcraft Lore – changelog
 
+## v0.10.0 (not released yet)
+
+- **Classic Era support.** The addon now also runs in Classic Era, Hardcore and Season of Discovery (1.15.9).
+  It is the same download: install it in your `_classic_era_` folder. Every NPC ID and coordinate
+  already came from the Classic database, so the veterans, pins and alerts are where you expect them.
+  - The level cap is 60 there, so every zone is open and no achievement waits for "later".
+  - `/wcl debug` now names the client the addon is running on.
+
 ## v0.9.0
 
 - **Library: 18 History of Warcraft books.** The in-game *History of Warcraft* books on shelves in Stormwind,

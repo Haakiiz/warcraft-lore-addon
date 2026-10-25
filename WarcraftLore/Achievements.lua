@@ -16,7 +16,9 @@ ns.Achievements = Achievements
 
 -- WoW Forever is capped at this player level for now. Raise it when the cap rises: veterans in
 -- zones with a higher minimum level are "later" until then, and the achievements that need them wait.
-local LEVEL_CAP = 30
+-- Classic Era goes to 60, so every zone is open there.
+local FOREVER_CAP, CLASSIC_CAP = 30, 60
+local LEVEL_CAP = (C and C.ClientFlavor and C.ClientFlavor() == "classic") and CLASSIC_CAP or FOREVER_CAP
 Achievements.LEVEL_CAP = LEVEL_CAP
 
 -- Minimum player level per zone or instance (Classic ranges). A zone that is not listed counts as 1.
@@ -79,6 +81,10 @@ Achievements.IsReachable = reachable
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 local ICON = "Interface\\Icons\\"
+-- The Achievement_ icons came with Wrath of the Lich King; Classic Era may not have them.
+local CLASSIC = LEVEL_CAP == CLASSIC_CAP
+local ICON_MILESTONE = ICON .. (CLASSIC and "INV_Misc_Head_Human_01" or "Achievement_Level_10")
+local ICON_CIRCLE = ICON .. (CLASSIC and "Spell_Holy_PrayerOfHealing02" or "Achievement_Reputation_01")
 local CATEGORY_ORDER = { "milestone", "game", "zone", "circle", "memorial", "special" }
 -- The five plaques of the Valley of Heroes in Stormwind (keys in Memorials.lua).
 local VALLEY_OF_HEROES = { "turalyon", "khadgar", "alleria", "danath", "kurdran" }
@@ -114,7 +120,7 @@ local function build()
     for _, m in ipairs(MILESTONES) do
         if m[1] <= total then
             add(list, {
-                id = "milestone_" .. m[1], title = m[2], category = "milestone", icon = ICON .. "Achievement_Level_10",
+                id = "milestone_" .. m[1], title = m[2], category = "milestone", icon = ICON_MILESTONE,
                 desc = m[1] == 1 and L["Meet your first veteran."] or L["Meet %d veterans."]:format(m[1]),
                 total = m[1], all = true, later = m[1] > open, -- more than can be met at the cap
             })
@@ -203,7 +209,7 @@ local function build()
             -- "Thrall's Circle", but "Fizzle Brassbolts' Circle"
             local title = name:sub(-1) == "s" and L["%s' Circle"]:format(name) or L["%s's Circle"]:format(name)
             add(list, {
-                id = "circle_" .. g.id, title = title, later = later, category = "circle", icon = ICON .. "Achievement_Reputation_01",
+                id = "circle_" .. g.id, title = title, later = later, category = "circle", icon = ICON_CIRCLE,
                 desc = L["Meet %s and everyone tied to them."]:format(name), members = members, total = #members,
             })
         end

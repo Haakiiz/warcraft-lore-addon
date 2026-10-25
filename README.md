@@ -1,4 +1,4 @@
-# Warcraft Lore – an addon for World of Warcraft: Forever (beta)
+# Warcraft Lore – an addon for World of Warcraft: Forever (beta) and Classic Era
 
 Ever run into a random level-15 quest giver and later found out they were in a Warcraft II mission? This addon tells you. It flags NPCs who also appear in the real-time strategy games:
 
@@ -56,6 +56,28 @@ See `CHANGELOG.md` for older versions.
 3. Start the game. New files such as textures need a full restart, not just `/reload`. Make sure "Warcraft Lore" is ticked in the AddOns list on the character screen.
 
 The client is interface 16001 (build 1.60.1). It is built on the modern Mainline/Midnight API, not the Classic API.
+
+### Classic Era, Hardcore and Season of Discovery
+
+The same download works in Classic Era (interface 11509, patch 1.15.9). There is nothing extra to install:
+
+1. Open your Classic Era folder: `World of Warcraft\_classic_era_\Interface\AddOns\`
+   (create `Interface\AddOns` if it does not exist).
+2. Copy the `WarcraftLore` folder there, so that you get
+   `...\_classic_era_\Interface\AddOns\WarcraftLore\WarcraftLore.toc`
+3. Start the game and tick "Warcraft Lore" in the AddOns list on the character screen.
+
+What is different on Classic Era:
+
+- The level cap is 60, so every zone, dungeon and raid is open and no achievement says "later".
+- The NPC IDs and coordinates come from Wowhead Classic, so they should match Classic Era (tell us if one is off).
+- Type `/wcl debug` to see which client the addon thinks it is running on (`Client: classic`).
+
+Your met veterans and achievements are saved per game version: Classic Era and Forever keep separate lists.
+You can move a list with `/wcl export` in one and `/wcl import` in the other.
+
+Why one `.toc` file for both? The `## Interface:` line lists both versions (`16001, 11509`), so each client
+loads the same file and nobody sees "out of date". `WarcraftLore/Compat.lua` takes care of the API differences.
 
 ## Commands
 
@@ -256,7 +278,7 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 ## Files
 
-- `WarcraftLore/Compat.lua`: **every client-version-dependent API call**. Fix this file if a beta patch breaks something.
+- `WarcraftLore/Compat.lua`: **every client-version-dependent API call**, and `ClientFlavor()` (Forever or Classic Era). Fix this file if a patch breaks something.
 - `WarcraftLore/Data.lua`: the database. The format is described at the top of the file.
 - `WarcraftLore/Toast.lua`: the small glowing alert pills.
 - `WarcraftLore/Minimap.lua`: the minimap button.
@@ -273,7 +295,7 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 ## Releasing to CurseForge
 
-Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge.
+Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge, and 11509 to Classic Era. One zip is uploaded and tagged with both.
 
 One-time setup:
 

@@ -1,4 +1,4 @@
-## Interface: 16001
+## Interface: 16001, 11509
 ## Title: Warcraft Lore
 ## Notes: Shows which NPCs have a past in the Warcraft RTS games and novels, with their story.
 ## Author: Håkon

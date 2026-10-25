@@ -45,5 +45,7 @@ jobs:
           python3 tests/test_locale.py
           python3 tests/test_widths.py
           python3 tests/test_memorials.py
+          python3 tests/test_theme.py
+          python3 tests/test_classic.py
 
       - uses: BigWigsMods/packager@v2

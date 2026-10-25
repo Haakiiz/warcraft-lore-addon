@@ -62,4 +62,4 @@ Warcraft Lore flags NPCs who also appear in the real-time strategy games and the
 - `/wcl minimap` – show or hide the minimap button
 - `/wcl test`, `/wcl reset`, `/wcl id`, `/wcl debug`
 
-Built for WoW: Forever. All lore ships inside the addon; nothing is downloaded in game. Found a mistake in the lore, or a veteran we missed? Leave a comment, and it goes into the next update.
+Built for WoW: Forever, and works in Classic Era, Hardcore and Season of Discovery (level cap 60: everything is open). All lore ships inside the addon; nothing is downloaded in game. Found a mistake in the lore, or a veteran we missed? Leave a comment, and it goes into the next update.

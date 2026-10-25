@@ -119,6 +119,15 @@ No other addon links NPCs to the RTS games or novels. Closest are LoreCompanion 
 - [ ] **In-game test: Warcraft II theme (v0.8).** Check every window in both themes and that the switch button swaps them without a reload.
 
 - [x] 2026-10-24 release QA: every veteran and memorial re-checked by Sonnet workers (.kritikk/QA_release/); Mok'Morokk removed (guidebook only). Håkon 2026-10-24: event NPCs (Swiftriver) and cinematics are included; Morbent Fel stays.
+- [ ] **In-game test: Classic Era (v0.10.0).** Install in `_classic_era_\Interface\AddOns\` and check:
+  1. The addon is not "out of date" in the AddOns list, and there is no Lua error at login (`/console scriptErrors 1` first).
+  2. `/wcl debug` says `Client: classic`, and lists the tooltip hook (TooltipDataProcessor or OnTooltipSetUnit).
+  3. Mouse over Thrall in Orgrimmar (or Magni in Ironforge): the "Warcraft Veteran" line shows, and targeting opens the lore window with the 3D model.
+  4. Open the world map on Orgrimmar/Stormwind: the pins sit on the right spots (Classic uiMapIDs 1454/1453).
+  5. Walk near a veteran with `/wcl alert` on: the pill and the chat line show up.
+  6. `/wcl journal`: no achievement says "later"; the milestone and Circle icons show (not a green square or question mark).
+  7. `/wcl options` opens the settings page; the minimap button works; a plaque (Valley of Heroes) and a History of Warcraft book tick off.
+  8. Also check once in Forever that the addon still loads and is not "out of date" with the new two-value Interface line.
 - [ ] In-game test: History of Warcraft books (v0.9). Read one, check the visit counts, the book icon, the pins on every copy, and Student of History.
 
 See ROADMAP.md for the plan towards 1000 downloads.

@@ -45,3 +45,4 @@ jobs:
           python tests/test_widths.py
           python tests/test_memorials.py
           python tests/test_theme.py
+          python tests/test_classic.py

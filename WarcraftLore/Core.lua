@@ -800,6 +800,7 @@ local function cmdDebug()
     chat(L["build %s, interface %s, issecretvalue=%s, TooltipDataProcessor=%s, tooltip hook=%s"]
         :format(tostring(r.build), tostring(r.interface), tostring(r.issecretvalue),
             tostring(r.tooltipDataProcessor), tostring(ns.tooltipHook)))
+    chat(L["Client: %s"]:format(tostring(r.flavor)))
     local missing = {}
     for k in pairs(C.missing) do
         missing[#missing + 1] = k

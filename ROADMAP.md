@@ -51,11 +51,15 @@ Folk som finner siden skal forstå addonen på fem sekunder. Billig, og må gjø
 
 Forever er en liten klient. De store publikumene er Classic Era/Anniversary og Retail.
 
-- [ ] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`). Det meste av databasen er hentet fra Wowhead Classic,
-      så NPC-ID-ene og koordinatene passer allerede. Compat.lua samler de versjonsavhengige kallene.
-      *Gjenstår:* Classic har andre uiMapID-er, mangler `issecretvalue`, har ikke `Settings.RegisterCanvasLayoutCategory`
-      på alle klienter, og Season of Discovery-ID-ene (Uther, Gregory) finnes bare der.
-      Krever at du (eller en tester) kan logge inn på Classic. Dette er det enkeltpunktet som kan gi flest downloads.
+- [~] ★★ **Classic Era-bygg** (kode ferdig 2026-10-25, v0.10.0, venter på test i spillet).
+      Valg: **én .toc** med `## Interface: 16001, 11509` i stedet for `WarcraftLore_Vanilla.toc`, så Forever aldri
+      kan plukke opp en Classic-fil. Packageren laster opp én zip merket for begge.
+      Gjort: `Compat.ClientFlavor()` (forever/classic/other), level cap 60 på Classic Era, vanilla-ikoner i stedet for
+      Wrath-ikonene `Achievement_*`, `Client:` i `/wcl debug`, `tests/test_classic.py` i CI.
+      Allerede i orden fra før: alle 146 NPC-ID-er er vanilla-ID-er (SoD-ID-ene ble fjernet i v0.5), `ZONE_MAPS` har
+      Classic-uiMapID-ene (14xx) først, og Compat har reservevarianter for `issecretvalue`, `TooltipDataProcessor`
+      og Settings.
+      *Gjenstår:* testliste for Classic Era i TODO.md (krever innlogging på Classic), så tag v0.10.0.
 - [ ] ★ **Retail-bygg** (`WarcraftLore_Mainline.toc`). Samme API som Forever, men mange NPC-er har ny ID, nytt sted
       eller er borte etter Cataclysm. Krever en egen gjennomgang av dataene, sone for sone. Gjør Classic Era først.
 - [ ] **Delbare veterankort i chatten** (`|Hwclvet:ID|h[Thrall]|h`, hook på `SetItemRef`). Andre spillere ser lenken

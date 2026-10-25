@@ -1,8 +1,10 @@
 -- Compat.lua
 -- EVERY call that depends on the client version lives here.
 -- The Forever beta (interface 16001, build 1.60.1) is built on the Mainline/Midnight
--- API (12.x), not the Classic API. If Blizzard changes something in the beta, this is
--- the file to fix. The rest of the addon only calls the functions in ns.Compat.
+-- API (12.x), not the Classic API. Classic Era (interface 11509) loads the same files: every
+-- function below falls back when an API is missing there (no secret values, older tooltip hooks).
+-- If Blizzard changes something, this is the file to fix. The rest of the addon only calls the
+-- functions in ns.Compat.
 
 local _, ns = ...
 local C = {}
@@ -346,6 +348,30 @@ function C.Print(msg)
     end
 end
 
+-- Which game client this is:
+--   "forever" = WoW Forever (interface 16xxx, build 1.60.x), the client the addon was made for
+--   "classic" = Classic Era, Hardcore or Season of Discovery (interface 11xxx, WOW_PROJECT_CLASSIC)
+--   "other"   = anything else (Retail, other Classic versions). Treated like Forever.
+-- The same .toc is loaded by Forever and Classic Era (## Interface lists both).
+function C.ClientFlavor()
+    local interface
+    if type(GetBuildInfo) == "function" then
+        local ok, _, _, _, toc = pcall(GetBuildInfo)
+        interface = ok and tonumber(toc) or nil
+    end
+    if not interface then
+        return "forever" -- no build info: assume the client the addon was made for
+    end
+    if interface >= 16000 and interface < 17000 then
+        return "forever"
+    end
+    local classicProject = WOW_PROJECT_CLASSIC or 2
+    if interface < 16000 and (WOW_PROJECT_ID == nil or WOW_PROJECT_ID == classicProject) then
+        return "classic"
+    end
+    return "other"
+end
+
 -- Client facts for /wcl debug.
 function C.Report()
     local build, interface
@@ -356,6 +382,7 @@ function C.Report()
     return {
         build = build,
         interface = interface,
+        flavor = C.ClientFlavor(),
         issecretvalue = issecretvalue ~= nil,
         tooltipDataProcessor = TooltipDataProcessor ~= nil,
     }
