@@ -247,9 +247,10 @@ a { color: var(--teal); text-underline-offset: 3px; }
 .cmp th { text-align: left; font-family: var(--f-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 0 10px 8px 0; border-bottom: 1px solid var(--line-strong); }
 .cmp td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
 .cmp td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.cmp td.n span { display: block; font-size: .76rem; }
 .cmp td.n b { color: var(--teal); font-weight: 500; }
 .cmp td.n.e b { color: var(--parchment); }
-.cmp td.lead { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--good); white-space: nowrap; }
+.cmp td.lead { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--good); }
 .files { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
 .files li { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr) 2.2rem; gap: 2px 12px; align-items: center; font-size: .9rem; }
 .files .fv { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .8rem; color: var(--parchment); }
@@ -295,6 +296,9 @@ a { color: var(--teal); text-underline-offset: 3px; }
   .hud { gap: 4px 11px; }
   .metric { order: 9; }
   .now-btn { order: 10; }
+  .cmp { font-size: .88rem; }
+  .cmp th, .cmp td { padding-right: 6px; }
+  .cmp td.n, .cmp td.lead { font-size: .76rem; }
   /* Mobil: grafen ligger fast øverst over kortene, kortene glir inn under den. */
   .stage { height: calc(var(--hud-h, 96px) + 44svh); grid-template-rows: minmax(0, 1fr); z-index: 3; border-bottom: 1px solid var(--line); }
   .steps { margin-top: 0; }
@@ -744,8 +748,8 @@ a { color: var(--teal); text-underline-offset: 3px; }
       var lead = Math.round((dayMs(pr.date) - dayMs(rr.date)) / 864e5);
       var leadS = lead > 0 ? lead + " dager før" : lead < 0 ? (-lead) + " dager etter" : "samme dag";
       return '<tr><td>' + esc(f.label) + '</td>' +
-        '<td class="n"><b>v' + esc(f.plan) + '</b> · ' + esc(fmtDay(pr.date)) + '</td>' +
-        '<td class="n e"><b>v' + esc(f.real) + '</b> · ' + esc(fmtDay(rr.date)) + '</td>' +
+        '<td class="n"><b>v' + esc(f.plan) + '</b><span>' + esc(fmtDay(pr.date)) + '</span></td>' +
+        '<td class="n e"><b>v' + esc(f.real) + '</b><span>' + esc(fmtDay(rr.date)) + '</span></td>' +
         '<td class="lead">' + esc(leadS) + '</td></tr>';
     }).join("");
     document.querySelector("#real-features tbody").innerHTML = rows;
