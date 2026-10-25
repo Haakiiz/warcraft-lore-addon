@@ -21,6 +21,9 @@ Skriv inn tallet fra CurseForge-siden hver mandag.
 |------------|----------:|---------|------------------------|
 | 2026-10-15 |        59 | v0.8.0  | Utgangspunkt           |
 | 2026-10-20 |        69 | v0.8.1  | Ny beskrivelse og nye skjermbilder; v0.8.1 (minnesmerke-filtre, Ansirem) |
+| 2026-10-25 |        73 | v0.8.1  | Ingen ny fil på CurseForge (v0.9.0 er ikke lastet opp ennå) |
+
+Når du legger inn en ny rad her, legg den også inn i `ACTUAL` øverst i `simulering/story.js`, så får grafen den ekte streken med.
 
 ## Milepæl 1 – Butikkvinduet (59 → 100)
 

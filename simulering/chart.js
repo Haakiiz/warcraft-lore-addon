@@ -192,6 +192,18 @@
     var events = (story.events || []).map(function (e, k) {
       return { label: e.label || "", kind: KIND_TOKEN[e.kind] ? e.kind : "press", ms: dayEnd(e.date), key: k };
     }).filter(function (e) { return !isNaN(e.ms); }).sort(function (a, b) { return a.ms - b.ms; });
+    // STORY.actual: ekte totaltall (egen strek oppå kurven, bare for «total») og ekte versjoner.
+    var act = story.actual || {};
+    var actPts = (act.points || []).map(function (p) {
+      return { ms: dayEnd(p.date), total: +p.total || 0, measured: p.measured !== false };
+    }).filter(function (p) { return !isNaN(p.ms); }).sort(function (a, b) { return a.ms - b.ms; });
+    var hasActual = actPts.length > 1;
+    var actSeries = hasActual ? Linear(actPts.map(function (p) { return dayOf(p.ms); }), actPts.map(function (p) { return p.total; })) : null;
+    var actStart = hasActual ? actPts[0].ms : 0, actEnd = hasActual ? actPts[actPts.length - 1].ms : 0;
+    var actRels = (act.releases || []).filter(function (r) { return !r.beta; }).map(function (r) {
+      return { v: String(r.v), ms: dayEnd(r.date) };
+    }).filter(function (r) { return !isNaN(r.ms); }).sort(function (a, b) { return a.ms - b.ms; });
+    function actualAt(ms) { return hasActual ? actSeries.at(dayOf(clamp(ms, actStart, actEnd))) : 0; }
 
     /* ---------- farger ---------- */
     var C = {};
@@ -233,9 +245,16 @@
       var span = ms - D0;
       return clamp(ms + Math.max(50 * DAY, span * 0.34), Math.min(D1, D0 + 140 * DAY), D1);
     }
+    // Hvor synlig den ekte streken er: 1 for «total», 0 for de andre, myk overgang mellom.
+    function actualWeight() {
+      if (!hasActual) return 0;
+      var e = easeInOut(mix);
+      return (prevMetric === "total" ? 1 - e : 0) + (metric === "total" ? e : 0);
+    }
     function yMaxFor(ms) {
       // Topp = største synlige verdi + luft, så kurven aldri går ut av skala.
-      return Math.max(100, displayMax(ms) * 1.16);
+      var a = hasActual && ms >= actStart ? actSeries.maxUpTo(dayOf(Math.min(ms, actEnd))) * actualWeight() : 0;
+      return Math.max(100, Math.max(displayMax(ms), a) * 1.16);
     }
 
     /* ---------- SVG-oppsett ---------- */
@@ -266,6 +285,9 @@
     var relGuide = el("line", { "stroke-width": 1, "stroke-dasharray": "1 3", opacity: 0 }, svg);
     var lineReal = el("path", { fill: "none", "stroke-width": 2.5, "stroke-linejoin": "round", "stroke-linecap": "round", "clip-path": "url(#" + id + "-real)" }, svg);
     var lineSim = el("path", { fill: "none", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round", "clip-path": "url(#" + id + "-sim)", opacity: 0.92 }, svg);
+    var gActual = el("g", { "pointer-events": "none" }, svg);
+    var lineActual = el("path", { fill: "none", "stroke-width": 2.25, "stroke-linejoin": "round", "stroke-linecap": "round" }, gActual);
+    var gActRel = el("g", null, gActual), gActDots = el("g", null, gActual);
     var gToday = el("g", null, svg);
     var todayLine = el("line", { "stroke-width": 1, "stroke-dasharray": "1 3" }, gToday);
     var todayText = el("text", { "font-size": 10.5, "letter-spacing": "0.06em" }, gToday);
@@ -282,18 +304,29 @@
     var endPulse = el("circle", { r: 13, fill: "none", "stroke-width": 1.5, opacity: 0 }, gEnd);
     var endOuter = el("circle", { r: 12.5, "stroke-width": 3 }, gEnd);
     var endInner = el("circle", { r: 7, fill: "none", "stroke-width": 1.25 }, gEnd);
+    var gActEnd = el("g", { "pointer-events": "none" }, svg);
+    var actDot = el("circle", { r: 4.5, "stroke-width": 2 }, gActEnd);
+    var actNum = el("text", { "font-weight": 500 }, gActEnd);
+    var actSub = el("text", null, gActEnd);
+    var actVer = el("text", null, gActEnd);
     var gValue = el("g", { "pointer-events": "none" }, svg);
     var valNum = el("text", { "font-weight": 500 }, gValue);
     var valLabel = el("text", null, gValue);
     var valDate = el("text", { "letter-spacing": "0.04em" }, gValue);
     var metricTitle = el("text", { "font-size": 10.5, "letter-spacing": "0.14em" }, svg);
+    // forklaring: ekte strek og planens kurve
+    var gLegend = el("g", { "pointer-events": "none" }, svg);
+    var legActLine = el("line", { "stroke-width": 2.25, "stroke-linecap": "round" }, gLegend);
+    var legActText = el("text", { "font-size": 10.5, "letter-spacing": "0.14em" }, gLegend);
+    var legSimLine = el("line", { "stroke-width": 2, "stroke-linecap": "round" }, gLegend);
+    var legSimText = el("text", { "font-size": 10.5, "letter-spacing": "0.14em" }, gLegend);
 
     var HALO_STYLE = "paint-order:stroke;stroke-linejoin:round;";
     function styleText(t, family) {
       t.setAttribute("font-family", family);
       t.setAttribute("style", HALO_STYLE + "font-variant-numeric:tabular-nums;");
     }
-    [todayText, valNum, valDate, metricTitle].forEach(function (t) { styleText(t, MONO); });
+    [todayText, valNum, valDate, metricTitle, actNum, actSub, actVer, legActText, legSimText].forEach(function (t) { styleText(t, MONO); });
     styleText(valLabel, SANS);
 
     function applyColors() {
@@ -312,7 +345,12 @@
       endInner.setAttribute("stroke", C.violet);
       valNum.setAttribute("fill", C.title); valLabel.setAttribute("fill", C.muted); valDate.setAttribute("fill", C.muted);
       metricTitle.setAttribute("fill", C.muted);
-      [todayText, valNum, valLabel, valDate, metricTitle].forEach(function (t) {
+      lineActual.setAttribute("stroke", C.parchment);
+      actDot.setAttribute("fill", C.night); actDot.setAttribute("stroke", C.parchment);
+      actNum.setAttribute("fill", C.parchment); actSub.setAttribute("fill", C.muted); actVer.setAttribute("fill", C.muted);
+      legActLine.setAttribute("stroke", C.parchment); legActText.setAttribute("fill", C.parchment);
+      legSimLine.setAttribute("stroke", C.teal); legSimText.setAttribute("fill", C.muted);
+      [todayText, valNum, valLabel, valDate, metricTitle, actNum, actSub, actVer, legActText, legSimText].forEach(function (t) {
         t.style.stroke = C.night; t.style.strokeWidth = "4px";
       });
     }
@@ -395,7 +433,33 @@
       });
 
       gGrid.textContent = ""; ticks = {};
+
+      // ekte tall: prikker på målepunktene, små streker på ekte versjoner
+      gActDots.textContent = ""; gActRel.textContent = ""; actDotNodes = []; actRelNodes = [];
+      actPts.forEach(function (p) {
+        if (!p.measured) return;
+        actDotNodes.push({ p: p, node: el("circle", { r: mobile ? 2.4 : 2.8, fill: C.parchment, stroke: C.night, "stroke-width": 1.25 }, gActDots) });
+      });
+      actRels.forEach(function (r) {
+        actRelNodes.push({ r: r, node: el("line", { stroke: C.parchment, "stroke-width": 1.25, opacity: 0.75 }, gActRel) });
+      });
+
+      // forklaring øverst til høyre, på samme linje som metrikk-tittelen
+      var fsLg = 10.5, ly = T - 36;
+      function lw(s) { return textWidth(s, fsLg, MONO) + s.length * fsLg * 0.14; }
+      var simS = mobile ? "PLAN" : "PLAN (SIMULERT)", actS = "EKTE";
+      setText(legSimText, simS); setText(legActText, actS);
+      var xr = R, sw = 16;
+      setAttr(legSimText, "x", xr); setAttr(legSimText, "y", ly); setAttr(legSimText, "text-anchor", "end");
+      xr -= lw(simS) + 6;
+      setAttr(legSimLine, "x1", xr - sw); setAttr(legSimLine, "x2", xr); setAttr(legSimLine, "y1", ly - 4); setAttr(legSimLine, "y2", ly - 4);
+      xr -= sw + 16;
+      setAttr(legActText, "x", xr); setAttr(legActText, "y", ly); setAttr(legActText, "text-anchor", "end");
+      xr -= lw(actS) + 6;
+      setAttr(legActLine, "x1", xr - sw); setAttr(legActLine, "x2", xr); setAttr(legActLine, "y1", ly - 4); setAttr(legActLine, "y2", ly - 4);
+      legendLeft = xr - sw;
     }
+    var actDotNodes = [], actRelNodes = [], legendLeft = 0;
 
     /* Alt som avhenger av tidsaksens zoom. */
     function placeX() {
@@ -426,7 +490,8 @@
         var rx = x(n.r.ms);
         n.x = rx;
         setAttr(n.g, "transform", "translate(" + rx.toFixed(1) + "," + B + ")");
-        setAttr(n.g, "opacity", rx <= R + 0.5 ? 1 : 0);
+        // planlagte versjoner etter i dag tones ned når ekte tall finnes
+        setAttr(n.g, "opacity", rx <= R + 0.5 ? (hasActual && n.r.ms > todayMs ? 0.55 : 1) : 0);
       });
       dotNodes.forEach(function (d) { d.x = x(d.e.ms); });
       expNodes.forEach(function (n) { var ex = x(n.e.ms).toFixed(1); setAttr(n.node, "x1", ex); setAttr(n.node, "x2", ex); });
@@ -615,6 +680,73 @@
       else setAttr(todayText, "opacity", 0);
       var endBox = { x: xe - 12, y: yEnd - 12, w: 24, h: 24 };
 
+      // ekte tall: strek fram til datoen (eller siste måling), endepunkt og sammenligning med planen
+      var aw = actualWeight(), actBox = null;
+      var aEnd = Math.min(animMs, actEnd);
+      var showAct = aw > 0.01 && aEnd >= actStart;
+      setAttr(gActual, "opacity", showAct ? aw.toFixed(3) : 0);
+      setAttr(gActEnd, "opacity", showAct ? aw.toFixed(3) : 0);
+      setAttr(gLegend, "opacity", hasActual && L + textWidth(METRIC_LABEL[metric], 10.5, MONO) * 1.3 + 16 < legendLeft ? aw.toFixed(3) : 0);
+      if (showAct) {
+        var ap = [];
+        for (var a = 0; a < actPts.length && actPts[a].ms < aEnd; a++) ap.push(x(actPts[a].ms).toFixed(2) + "," + y(actPts[a].total).toFixed(1));
+        var aV = actualAt(aEnd), ax = x(aEnd), ay = y(aV);
+        ap.push(ax.toFixed(1) + "," + ay.toFixed(1));
+        lineActual.setAttribute("d", "M" + ap.join("L"));
+        var exact = aEnd >= actEnd - DAY / 2;
+        actDotNodes.forEach(function (d) {
+          var on = d.p.ms <= aEnd;
+          if (Math.abs(d.p.ms - aEnd) < DAY / 2) exact = true;
+          setAttr(d.node, "opacity", on ? 1 : 0);
+          if (on) { setAttr(d.node, "cx", x(d.p.ms).toFixed(1)); setAttr(d.node, "cy", y(d.p.total).toFixed(1)); }
+        });
+        var realV = null;
+        actRelNodes.forEach(function (n) {
+          var on = n.r.ms <= aEnd;
+          if (on) realV = n.r.v;
+          setAttr(n.node, "opacity", on ? 0.75 : 0);
+          if (on) {
+            var rx = x(n.r.ms).toFixed(1), ry = y(actualAt(n.r.ms));
+            setAttr(n.node, "x1", rx); setAttr(n.node, "x2", rx);
+            setAttr(n.node, "y1", (ry - 5).toFixed(1)); setAttr(n.node, "y2", (ry + 5).toFixed(1));
+          }
+        });
+        setAttr(actDot, "cx", ax.toFixed(1)); setAttr(actDot, "cy", ay.toFixed(1));
+
+        var plan = valueOf("total", aEnd), planV = null;
+        for (var pr = 0; pr < releases.length; pr++) if (releases[pr].ms <= aEnd) planV = releases[pr].v;
+        var pct = plan >= 1 ? Math.round((aV / plan - 1) * 100) : null;
+        var numS = "EKTE " + (exact ? "" : "≈") + fmtInt(aV);
+        var subS = "plan " + fmtInt(plan) + (pct != null ? " · " + (pct < 0 ? "−" : "+") + Math.abs(pct) + " %" : "");
+        var verS = realV ? "v" + realV + (planV && planV !== realV ? " · plan v" + planV : "") : "";
+        var fsA = mobile ? 12.5 : 14, fsB = mobile ? 10 : 10.5;
+        setText(actNum, numS); setText(actSub, subS); setText(actVer, verS);
+        setAttr(actNum, "font-size", fsA); setAttr(actSub, "font-size", fsB); setAttr(actVer, "font-size", fsB);
+        var aw2 = Math.max(textWidth(numS, fsA, MONO, 500), textWidth(subS, fsB, MONO), verS ? textWidth(verS, fsB, MONO) : 0);
+        var ah = fsA + 6 + fsB + (verS ? 4 + fsB : 0);
+        var aCands = [
+          { x: ax + 12, y: ay + 10 }, { x: ax + 12, y: ay - 10 - ah },
+          { x: ax - 12 - aw2, y: ay - 10 - ah }, { x: ax - 12 - aw2, y: ay + 10 }
+        ];
+        var firstFit = null;
+        for (var ac = 0; ac < aCands.length; ac++) {
+          var bx = { x: aCands[ac].x, y: aCands[ac].y, w: aw2, h: ah };
+          if (bx.x < L - 4 || bx.x + bx.w > R + 4 || bx.y < T - 30 || bx.y + bx.h > B - 4) continue;
+          if (overlaps(bx, valBox, 6) || overlaps(bx, endBox, 6)) continue;
+          if (!firstFit) firstFit = bx;
+          if (hitsCurve(bx) === 0) { actBox = bx; break; }
+        }
+        actBox = actBox || firstFit;
+        var showLab = !!actBox;
+        [actNum, actSub, actVer].forEach(function (t) { setAttr(t, "opacity", showLab ? 1 : 0); });
+        if (showLab) {
+          var tx0 = actBox.x.toFixed(1);
+          setAttr(actNum, "x", tx0); setAttr(actNum, "y", (actBox.y + fsA * 0.85).toFixed(1));
+          setAttr(actSub, "x", tx0); setAttr(actSub, "y", (actBox.y + fsA + 6 + fsB * 0.8).toFixed(1));
+          setAttr(actVer, "x", tx0); setAttr(actVer, "y", (actBox.y + fsA + 10 + fsB * 1.8).toFixed(1));
+        }
+      }
+
       // versjoner
       var activeRel = null;
       for (var r = 0; r < releases.length; r++) if (releases[r].ms <= capMs) activeRel = releases[r];
@@ -677,6 +809,7 @@
 
       // hendelser
       var avoid = [valBox, endBox];
+      if (actBox) avoid.push(actBox);
       var recent = [];
       for (var k = events.length - 1; k >= 0 && recent.length < 1; k--) {
         var ev = events[k];
@@ -711,7 +844,8 @@
         if (n.on !== on) { n.on = on; n.node.setAttribute("opacity", on ? 0.3 : 0); }
       });
 
-      var aria = METRIC_LABEL[metric] + ": " + valStr + ", " + valDate.__t.toLowerCase() + (activeRel ? ", versjon " + activeRel.v : "");
+      var aria = METRIC_LABEL[metric] + ": " + valStr + ", " + valDate.__t.toLowerCase() + (activeRel ? ", versjon " + activeRel.v : "") +
+        (showAct ? ", ekte nedlastinger " + fmtInt(actualAt(aEnd)) : "");
       if (aria !== lastAria) { lastAria = aria; svg.setAttribute("aria-label", aria); title.textContent = aria; }
 
       return { capMs: capMs, activeRel: activeRel };
@@ -731,9 +865,11 @@
         metric: metric,
         value: Math.round(displayValue(ms)),
         simulated: ms > todayMs,
+        // ekte totaltall på datoen (siste måling hvis datoen er etter den), null før første opplasting
+        actual: hasActual && ms >= actStart ? Math.round(actualAt(ms)) : null,
         settled: !raf
       };
-      var sig = payload.date + payload.total + payload.downloads + payload.active + payload.npcs + payload.version + payload.metric + payload.value + payload.settled;
+      var sig = payload.date + payload.total + payload.downloads + payload.active + payload.npcs + payload.version + payload.metric + payload.value + payload.actual + payload.settled;
       if (sig === lastEmit) return;
       lastEmit = sig;
       listeners.tick.slice().forEach(function (fn) { try { fn(payload); } catch (err) { if (root.console) console.error(err); } });

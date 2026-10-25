@@ -34,10 +34,25 @@ Alt etter 2026-10-09 er SIMULERT og skal kunne merkes slik.
       quotes: [ { who: "Thraxx_gaming", src: "CurseForge|Reddit|Discord|GitHub|Twitch|Wowhead", text: "…" } ], // 0–2
       release: "0.1.0" | null,         // versjon som omtales
       tone: "spark|rise|storm|fall|crown" // stemning, styrer aksentfarge i kortet
-  } ],                                  // 14–18 kapitler, kronologisk
-  epilogue: { title: "…", body: "…", facts: [ { label: "…", value: "…" } ] }
+  } ],                                  // 14–19 kapitler, kronologisk
+  epilogue: { title: "…", body: "…", facts: [ { label: "…", value: "…" } ] },
+  actual: {                            // valgfritt: EKTE tall, tegnes som egen strek oppå kurven
+    source: "CurseForge", checked: "2026-10-25",
+    points: [ { date: "2026-10-15", total: 59, measured: true } ],   // totalt antall nedlastinger, sortert
+    releases: [ { v: "0.8.1", date: "2026-10-16", downloads: 11, name: "…", beta: false } ], // filene på CurseForge
+    features: [ { label: "Lore Journal", plan: "1.0.0", real: "0.7.0" } ]  // plan = STORY.releases, real = actual.releases
+  }
 }
 ```
+`today` er siste dato i `actual.points` (story.js leser den fra listen ACTUAL). Nye målinger legges inn som en ny linje i ACTUAL.
+
+## Den ekte streken
+- Vises bare for metrikken «total» (vi har bare ekte totaltall). Rett linje mellom målepunktene, prikk på hver måling
+  (`measured: true`), liten loddrett strek på hver ekte versjon (ikke beta).
+- Tegnes fram til grafens dato, men aldri forbi siste måling. Etiketten viser ekte verdi (≈ mellom målinger),
+  planens verdi på samme dato, avvik i prosent og ekte versjon mot planens versjon.
+- Grafens topp tar hensyn til den ekte streken, så den aldri går ut av skala.
+- `tick` får i tillegg `actual` (ekte total på datoen, siste måling etter den, null før første punkt).
 
 ## Verdi på en vilkårlig dato (felles regel for graf, teller og kort)
 For dato d i måned M (dag = d.getDate(), n = antall dager i M, f = dag / n):

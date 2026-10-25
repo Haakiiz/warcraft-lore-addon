@@ -154,6 +154,13 @@ a { color: var(--teal); text-underline-offset: 3px; }
 .metric button + button { border-left: 1px solid var(--line); }
 .metric button[aria-pressed="true"] { color: var(--night); background: var(--teal); }
 .metric button:hover:not([aria-pressed="true"]) { color: var(--text); }
+.hud .cell.real dd { color: var(--parchment); }
+.now-btn {
+  font: inherit; font-size: .74rem; color: var(--parchment); background: transparent; align-self: center;
+  border: 1px solid rgba(232,220,181,.45); padding: 5px 9px; cursor: pointer; min-height: 30px;
+}
+.now-btn[aria-pressed="true"] { color: var(--night); background: var(--parchment); }
+.now-btn:hover:not([aria-pressed="true"]) { border-color: var(--parchment); }
 
 .steps { position: relative; z-index: 2; margin-top: -100vh; margin-top: -100svh; pointer-events: none; }
 .step {
@@ -233,6 +240,28 @@ a { color: var(--teal); text-underline-offset: 3px; }
 .relrow.major .rn { font-family: var(--f-display); font-style: italic; font-size: 1.2rem; color: var(--parchment); }
 .relrow .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
 
+/* ---------- EKTE UTGIVELSER ---------- */
+.real-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 40px 56px; align-items: start; }
+.real-h { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--parchment); font-weight: 400; margin: 0 0 14px; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.cmp th { text-align: left; font-family: var(--f-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 0 10px 8px 0; border-bottom: 1px solid var(--line-strong); }
+.cmp td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.cmp td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.cmp td.n b { color: var(--teal); font-weight: 500; }
+.cmp td.n.e b { color: var(--parchment); }
+.cmp td.lead { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--good); white-space: nowrap; }
+.files { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.files li { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr) 2.2rem; gap: 2px 12px; align-items: center; font-size: .9rem; }
+.files .fv { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .8rem; color: var(--parchment); }
+.files .beta .fv { color: var(--muted); }
+.files .fb { position: relative; height: 18px; }
+.files .fb i { position: absolute; left: 0; top: 4px; bottom: 4px; background: var(--parchment); opacity: .75; }
+.files .beta .fb i { opacity: .35; }
+.files .fb span { position: absolute; left: 0; top: 100%; font-size: .78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.files .fd { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: .82rem; color: var(--text); text-align: right; }
+.files li { padding-bottom: 14px; }
+.files-note { font-size: .82rem; color: var(--muted); margin: 6px 0 0; }
+
 /* ---------- EPILOG ---------- */
 .epilogue { border-top: 1px solid var(--line); background: linear-gradient(var(--night), var(--night-2)); }
 .epi-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px 64px; align-items: start; }
@@ -265,6 +294,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
   .hud dd { font-size: .8rem; }
   .hud { gap: 4px 11px; }
   .metric { order: 9; }
+  .now-btn { order: 10; }
   /* Mobil: grafen ligger fast øverst over kortene, kortene glir inn under den. */
   .stage { height: calc(var(--hud-h, 96px) + 44svh); grid-template-rows: minmax(0, 1fr); z-index: 3; border-bottom: 1px solid var(--line); }
   .steps { margin-top: 0; }
@@ -272,7 +302,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
   .step:first-child, .step:last-child { min-height: 64svh; }
   .card { max-width: none; padding: 18px 18px 18px 22px; background: rgba(24,18,38,.97); }
   .js .card { opacity: .72; }
-  .section-head, .epi-grid, .footnote { grid-template-columns: minmax(0, 1fr); }
+  .section-head, .epi-grid, .footnote, .real-grid { grid-template-columns: minmax(0, 1fr); }
   .year { grid-template-columns: minmax(0, 1fr); }
   .year > h3 { position: static; margin-bottom: 14px; font-size: 1.8rem; }
   .year ol { margin-left: 6px; }
@@ -294,7 +324,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
 <header class="hero">
   <div class="hero-grid">
     <div>
-      <span class="sim-tag">Simulering · alt etter 9. oktober 2026 er fiksjon</span>
+      <span class="sim-tag">Simulering · den lyse streken i grafen er ekte tall</span>
       <h1 id="hero-title">Sagaen om <em>Warcraft Lore</em></h1>
       <p class="thesis">Én ekstra linje i en tooltip. Tre år senere: hva skjer hvis spillerne faktisk vil vite hvem questgiveren i Orgrimmar var i Warcraft III?</p>
       <p class="subtitle" id="hero-sub">En tenkt tidslinje fra første commit til oktober 2029.</p>
@@ -302,8 +332,9 @@ a { color: var(--teal); text-underline-offset: 3px; }
         <li><span class="d">04.10.2026</span><span class="l">første commit, 36 NPC-er</span></li>
         <li><span class="d">07.10.2026</span><span class="l">v0.1.0 på CurseForge</span></li>
         <li><span class="d">08.10.2026</span><span class="l">v0.2.0</span></li>
+        <li id="anchor-actual" hidden><span class="d"></span><span class="l"></span></li>
       </ul>
-      <p class="anchors-note">Disse tre datoene er ekte. Resten er en modell.</p>
+      <p class="anchors-note">Disse datoene er ekte. Kurven er en modell, og den lyse streken over den er de ekte nedlastingene.</p>
       <figure class="foresight" aria-label="Hele den simulerte kurven i miniatyr">
         <svg id="foresight" viewBox="0 0 560 74" preserveAspectRatio="none" aria-hidden="true"></svg>
         <figcaption class="cap"><span>Nå · 128 veteraner</span><span>Okt. 2029 · <b id="foresight-end">2,1 mill.</b> nedlastinger</span></figcaption>
@@ -360,7 +391,8 @@ a { color: var(--teal); text-underline-offset: 3px; }
     <div class="hud" aria-label="Status på valgt dato">
       <dl>
         <div class="cell date"><dt>Dato<span class="sim-flag" id="hud-sim" hidden>simulert</span></dt><dd id="hud-date">okt. 2026</dd></div>
-        <div class="cell"><dt>Nedlastinger</dt><dd id="hud-total">0</dd></div>
+        <div class="cell"><dt>Plan</dt><dd id="hud-total">0</dd></div>
+        <div class="cell real"><dt>Ekte</dt><dd id="hud-actual">–</dd></div>
         <div class="cell"><dt>Aktive</dt><dd id="hud-active">0</dd></div>
         <div class="cell"><dt>Veteraner</dt><dd id="hud-npcs">0</dd></div>
         <div class="cell ver"><dt>Versjon</dt><dd id="hud-ver">–</dd></div>
@@ -370,6 +402,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
         <button type="button" data-metric="downloads" aria-pressed="false">Per måned</button>
         <button type="button" data-metric="active" aria-pressed="false">Aktive</button>
       </div>
+      <button type="button" class="now-btn" id="now-btn" aria-pressed="false" hidden>Ekte tall nå</button>
     </div>
     <div class="stage">
       <div class="chart-wrap">
@@ -380,6 +413,29 @@ a { color: var(--teal); text-underline-offset: 3px; }
   </section>
 
   <div class="after">
+    <section class="section" aria-labelledby="real-title" id="real" hidden>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Plan mot virkelighet</p>
+          <h2 id="real-title">Ekte utgivelser</h2>
+        </div>
+        <p id="real-intro"></p>
+      </div>
+      <div class="real-grid">
+        <div>
+          <h3 class="real-h">Når funksjonene kom</h3>
+          <table class="cmp" id="real-features">
+            <thead><tr><th scope="col">Funksjon</th><th scope="col">Plan</th><th scope="col">Ekte</th><th scope="col">Forsprang</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="real-h">Nedlastinger per fil på CurseForge</h3>
+          <ol class="files" id="real-files"></ol>
+        </div>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="log-title">
       <div class="section-head">
         <div>
@@ -405,7 +461,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
     <footer class="footnote">
       <h2>Om tallene</h2>
       <div>
-        <p>Dette er en simulering, ikke en prognose. Bare de tre første datoene er ekte: første commit 4. oktober 2026, v0.1.0 7. oktober og v0.2.0 8. oktober 2026. Alt etter 9. oktober 2026 er oppdiktet, også sitatene og brukernavnene.</p>
+        <p>Dette er en simulering, ikke en prognose. Kurven, sitatene og brukernavnene er oppdiktet. Ekte er første commit 4. oktober 2026, v0.1.0 7. oktober og v0.2.0 8. oktober 2026, og den lyse streken i grafen: totalt antall nedlastinger slik CurseForge viser det, skrevet inn for hånd ved hver måling (prikkene). Mellom målingene er streken en rett linje.</p>
         <ul>
           <li>Nedlastingskurven er modellert etter hvordan nisjeaddons med en tydelig idé typisk vokser på CurseForge: rolig start, hopp ved omtale og nye utvidelser, og et fall når spillere tar pause.</li>
           <li>«Aktive» er et anslag på installasjoner i bruk ved månedsslutt, ikke CurseForges egne tall.</li>
@@ -465,6 +521,14 @@ a { color: var(--teal); text-underline-offset: 3px; }
   }
   function byV(v) { for (var i = 0; i < releases.length; i++) if (releases[i] && releases[i].v === v) return releases[i]; return null; }
   function isReal(d) { return typeof d === "string" && d.slice(0, 10) <= TODAY; }
+  var actual = S.actual && arr(S.actual.points).length > 1 ? S.actual : null;
+  var lastActual = actual ? actual.points[actual.points.length - 1] : null;
+  if (lastActual) {
+    var anc = document.getElementById("anchor-actual"), ap = parts(lastActual.date);
+    anc.querySelector(".d").textContent = ap ? (ap.d < 10 ? "0" : "") + ap.d + "." + (ap.m < 10 ? "0" : "") + ap.m + "." + ap.y : lastActual.date;
+    anc.querySelector(".l").textContent = fmtNum(lastActual.total) + " nedlastinger på " + (actual.source || "CurseForge");
+    anc.hidden = false;
+  }
 
   /* ---- hero ---- */
   if (S.subtitle) document.getElementById("hero-sub").textContent = S.subtitle;
@@ -515,14 +579,17 @@ a { color: var(--teal); text-underline-offset: 3px; }
   var hud = {
     date: document.getElementById("hud-date"), total: document.getElementById("hud-total"),
     active: document.getElementById("hud-active"), npcs: document.getElementById("hud-npcs"),
-    ver: document.getElementById("hud-ver"), sim: document.getElementById("hud-sim")
+    ver: document.getElementById("hud-ver"), sim: document.getElementById("hud-sim"),
+    actual: document.getElementById("hud-actual")
   };
   var hudTotalLabel = document.getElementById("hud-total") && document.getElementById("hud-total").previousElementSibling;
+  if (!actual) hud.actual.parentNode.hidden = true;
   function setHud(t) {
     if (!t) return;
     if (t.date) { hud.date.textContent = fmtMonth(t.date); hud.sim.hidden = String(t.date).slice(0, 10) <= TODAY; }
+    if ("actual" in t) hud.actual.textContent = t.actual == null ? "–" : fmtNum(t.actual);
     var perMonth = t.metric === "downloads" && t.downloads != null;
-    if (hudTotalLabel) hudTotalLabel.textContent = perMonth ? "Nedlastinger i mnd." : "Nedlastinger";
+    if (hudTotalLabel) hudTotalLabel.textContent = perMonth ? "Plan i mnd." : "Plan";
     if (perMonth) hud.total.textContent = fmtNum(t.downloads);
     else if (t.total != null) hud.total.textContent = fmtNum(t.total);
     if (t.active != null) hud.active.textContent = fmtNum(t.active);
@@ -555,6 +622,20 @@ a { color: var(--teal); text-underline-offset: 3px; }
     b.addEventListener("click", function () { useMetric(b.getAttribute("data-metric")); });
   });
 
+  /* «Ekte tall nå»: hopper grafen til siste måling, der begge linjene synes. Neste kapittel slår den av. */
+  var nowBtn = document.getElementById("now-btn");
+  function setNow(on) { nowBtn.setAttribute("aria-pressed", on ? "true" : "false"); }
+  if (actual && chart) {
+    nowBtn.hidden = false;
+    nowBtn.addEventListener("click", function () {
+      var on = nowBtn.getAttribute("aria-pressed") !== "true";
+      setNow(on);
+      if (on) useMetric("total");
+      var ch = chapters[active];
+      try { chart.setDate(on ? TODAY : (ch && ch.date) || TODAY); } catch (e) { if (window.console) console.warn(e); }
+    });
+  }
+
   /* ---- scroll: aktivt kapittel = kortet nærmest lesekanten ---- */
   var steps = Array.prototype.slice.call(stepsEl.querySelectorAll(".step"));
   var cards = steps.map(function (s) { return s.querySelector(".card"); });
@@ -565,6 +646,7 @@ a { color: var(--teal); text-underline-offset: 3px; }
     if (active >= 0 && cards[active]) cards[active].classList.remove("is-active");
     active = i;
     cards[i].classList.add("is-active");
+    setNow(false);
     var ch = chapters[i];
     /* Nedturskapitlene vises per måned; en kumulativ kurve kan ikke falle. */
     if (ch) useMetric(ch.tone === "fall" ? "downloads" : "total");
@@ -648,6 +730,40 @@ a { color: var(--teal); text-underline-offset: 3px; }
     var majors = sorted.filter(function (r) { return r.major; }).length;
     document.getElementById("log-intro").textContent = sorted.length + " utgivelser, " + majors + " store. Store versjoner er markert med ringen fra logoen; utgivelser merket «ekte» fantes før simuleringen starter.";
   }
+
+  /* ---- ekte utgivelser: plan mot virkelighet ---- */
+  (function realSection() {
+    if (!actual) return;
+    var files = arr(actual.releases), feats = arr(actual.features);
+    var realBy = {};
+    files.forEach(function (f) { if (f && !f.beta && !realBy[f.v]) realBy[f.v] = f; });
+    function dayMs(d) { var p = parts(d); return p ? Date.UTC(p.y, p.m - 1, p.d || 1) : NaN; }
+    var rows = feats.map(function (f) {
+      var pr = byV(f.plan), rr = realBy[f.real];
+      if (!pr || !rr) return "";
+      var lead = Math.round((dayMs(pr.date) - dayMs(rr.date)) / 864e5);
+      var leadS = lead > 0 ? lead + " dager før" : lead < 0 ? (-lead) + " dager etter" : "samme dag";
+      return '<tr><td>' + esc(f.label) + '</td>' +
+        '<td class="n"><b>v' + esc(f.plan) + '</b> · ' + esc(fmtDay(pr.date)) + '</td>' +
+        '<td class="n e"><b>v' + esc(f.real) + '</b> · ' + esc(fmtDay(rr.date)) + '</td>' +
+        '<td class="lead">' + esc(leadS) + '</td></tr>';
+    }).join("");
+    document.querySelector("#real-features tbody").innerHTML = rows;
+    var max = 1, sum = 0;
+    files.forEach(function (f) { max = Math.max(max, +f.downloads || 0); sum += +f.downloads || 0; });
+    document.getElementById("real-files").innerHTML = files.slice().reverse().map(function (f) {
+      var d = +f.downloads || 0;
+      return '<li' + (f.beta ? ' class="beta"' : '') + '><span class="fv">v' + esc(f.v) + '</span>' +
+        '<span class="fb"><i style="width:' + (d / max * 100).toFixed(1) + '%"></i><span>' + esc(fmtShort(f.date)) + ' · ' + esc(f.name || "") + '</span></span>' +
+        '<span class="fd">' + fmtNum(d) + '</span></li>';
+    }).join("") + '';
+    document.getElementById("real-files").insertAdjacentHTML("afterend",
+      '<p class="files-note">Sum ' + fmtNum(sum) + ' nedlastinger, sjekket ' + esc(fmtDay(actual.checked || lastActual.date)) + '. Hver fil teller for seg, også etter at en nyere versjon er ute.</p>');
+    document.getElementById("real-intro").textContent = "Planen spredte funksjonene utover tre år. I virkeligheten kom " +
+      files.filter(function (f) { return !f.beta; }).length + " versjoner på CurseForge i løpet av " +
+      Math.round((dayMs(files[files.length - 1].date) - dayMs(files[0].date)) / 864e5 + 1) + " dager. Nedlastingene henger etter planen, men koden ligger langt foran.";
+    document.getElementById("real").hidden = false;
+  })();
 
   /* ---- epilog ---- */
   var ep = S.epilogue || {};

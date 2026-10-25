@@ -46,6 +46,37 @@
     ["2029-10", 116400, 716, 4.9]
   ];
 
+  // EKTE tall fra CurseForge (https://www.curseforge.com/wow/addons/rts-veterans), «Total Downloads».
+  // Legg til én linje hver gang du sjekker: ["dato", totalt antall nedlastinger].
+  // Siste linje bestemmer «i dag» i grafen. Første linje er startpunktet før v0.1.0 ble lastet opp.
+  var ACTUAL = [
+    ["2026-10-06",  0],
+    ["2026-10-15", 59],
+    ["2026-10-20", 69],
+    ["2026-10-25", 73]
+  ];
+  // Filene på CurseForge: [versjon, opplastet, nedlastinger per fil (sist sjekket), kort navn].
+  var ACTUAL_FILES = [
+    ["0.1.0",       "2026-10-07",  2, "Første slipp"],
+    ["0.2.0",       "2026-10-08",  2, "Soner til level 30"],
+    ["0.3.0",       "2026-10-09",  6, "Veteranlisten og minikartknapp"],
+    ["0.4.0-beta1", "2026-10-10",  3, "Relaterte veteraner (beta)"],
+    ["0.4.0-beta2", "2026-10-10",  6, "Relaterte veteraner (beta)"],
+    ["0.6.0-beta1", "2026-10-11",  4, "Kartnåler og sone-atlas (beta)"],
+    ["0.6.0",       "2026-10-11",  5, "33 nye veteraner, kartnåler, sone-atlas"],
+    ["0.6.1",       "2026-10-11",  9, "Lore-rettelser"],
+    ["0.7.0-beta1", "2026-10-12",  4, "Lore Journal (beta)"],
+    ["0.7.0-beta2", "2026-10-12",  6, "Lore Journal (beta)"],
+    ["0.7.0",       "2026-10-12",  9, "Lore Journal, achievements, tysk og fransk"],
+    ["0.8.0",       "2026-10-13",  6, "Warcraft II-utseendet"],
+    ["0.8.1",       "2026-10-16", 11, "Filtre for minnesmerker, Ansirem"]
+  ];
+
+  function dayText(d) {
+    var m = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
+    return (+d.slice(8, 10)) + ". " + m[+d.slice(5, 7) - 1] + " " + d.slice(0, 4);
+  }
+
   var total = 0, active = 0;
   var months = RAW.map(function (r) {
     total += r[1];
@@ -56,7 +87,27 @@
   window.STORY = {
     title: "Sagaen om Warcraft Lore",
     subtitle: "En simulert tidslinje over tre år: fra første commit til to millioner nedlastinger, hvis alt går riktig vei for en liten addon om Warcrafts gamle navn.",
-    today: "2026-10-09",
+    today: ACTUAL[ACTUAL.length - 1][0],
+
+    // Ekte tall, tegnet som egen strek oppå den simulerte kurven (se CONTRACT.md, «STORY.actual»).
+    actual: {
+      source: "CurseForge",
+      checked: ACTUAL[ACTUAL.length - 1][0],
+      points: ACTUAL.map(function (r, i) { return { date: r[0], total: r[1], measured: i > 0 }; }),
+      releases: ACTUAL_FILES.map(function (r) {
+        return { v: r[0], date: r[1], downloads: r[2], name: r[3], beta: /-beta/.test(r[0]) };
+      }),
+      // Funksjoner planen hadde langt fram i tid, og når de faktisk kom (versjon i planen → ekte versjon).
+      features: [
+        { label: "Veteranlisten (/wcl list)", plan: "0.3.0", real: "0.3.0" },
+        { label: "Kartnåler for veteraner", plan: "0.4.0", real: "0.6.0" },
+        { label: "Tysk og fransk", plan: "0.5.0", real: "0.7.0" },
+        { label: "Achievements", plan: "0.6.0", real: "0.7.0" },
+        { label: "Lore Journal", plan: "1.0.0", real: "0.7.0" },
+        { label: "Sone-atlas", plan: "1.1.0", real: "0.6.0" },
+        { label: "Eksport og import av møtt-listen", plan: "1.3.0", real: "0.6.0" }
+      ]
+    },
 
     months: months,
     // Ekte målepunkter før første månedsslutt (se CONTRACT.md, «Verdi på en vilkårlig dato»).
@@ -220,6 +271,19 @@
           { who: "Thraxx_gaming", src: "CurseForge", text: "Walked past Gazlowe in Ratchet and the tooltip said WC3. Tiny addon, big grin." }
         ],
         release: "0.2.0", tone: "spark"
+      },
+      {
+        // dato og tall følger siste linje i ACTUAL
+        id: "fasit", date: ACTUAL[ACTUAL.length - 1][0],
+        kicker: dayText(ACTUAL[ACTUAL.length - 1][0]) + " · ekte tall",
+        title: "Virkeligheten så langt",
+        body: "Her slutter fiksjonen et øyeblikk. Den lyse streken i grafen er de ekte tallene fra CurseForge: " +
+          ACTUAL[ACTUAL.length - 1][1] + " nedlastinger fordelt på " + ACTUAL_FILES.length + " filer, mot flere hundre i planen. " +
+          "Nedlastingene går altså mye tregere enn modellen. Utviklingen går derimot mye fortere: Lore Journal, achievements, " +
+          "kartnåler og tysk og fransk lå i planen for 2027, men kom alle før 13. oktober 2026.",
+        stat: { label: "ekte nedlastinger på CurseForge", value: ACTUAL[ACTUAL.length - 1][1] },
+        quotes: [],
+        release: null, tone: "crown"
       },
       {
         id: "kjeder", date: "2026-11-03",
