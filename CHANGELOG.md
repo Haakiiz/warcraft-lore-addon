@@ -2,6 +2,8 @@
 
 ## v0.9.0
 
+- **Ready for the WoW Forever launch:** install steps now point at the live `_forever_` folder, and the nearby
+  alert takes a second look at a nameplate that appears before the game has filled it in.
 - **Library: 18 History of Warcraft books.** The in-game *History of Warcraft* books on shelves in Stormwind,
   Ironforge, Undercity, inns and camps retell the strategy games, from *The Last Guardian* to *Old Hatreds*.
   Read any copy to tick it off. They are in the Memorials list (with a book icon), every copy has a pin on the

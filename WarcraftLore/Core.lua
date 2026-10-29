@@ -682,8 +682,17 @@ local function cmdTest()
     announce(lowest, ns.NPCS[lowest], nil, true)
 end
 
-local function nameplateAdded(unit)
+-- Forever reportedly fires NAME_PLATE_UNIT_ADDED before the unit is filled in, so a plate we
+-- cannot read yet gets one more look a moment later.
+local NAMEPLATE_RETRY = 0.3
+local onNameplateRetry = function() end -- set below, once guard() is used
+
+local function nameplateAdded(unit, isRetry)
     if not (WarcraftLoreDB and WarcraftLoreDB.alert) or type(unit) ~= "string" then
+        return
+    end
+    if not isRetry and not C.UnitGUID(unit) then
+        C.After(function() onNameplateRetry(unit, true) end, NAMEPLATE_RETRY)
         return
     end
     local entry, npcID, _, name = ns.Lookup(unit)
@@ -693,6 +702,7 @@ local function nameplateAdded(unit)
     announce(npcID, entry, name, false, unit)
 end
 local onNameplateAdded = guard("alert", L["the nearby alert"], nameplateAdded)
+onNameplateRetry = onNameplateAdded
 
 -------------------------------------------------------------------- Nearby alert (coordinates)
 -- Compares the player's map position with `coords` in Data.lua (Wowhead map percent).

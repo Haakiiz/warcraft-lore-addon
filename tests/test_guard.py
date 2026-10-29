@@ -211,6 +211,18 @@ def main():
     lua.execute('SlashCmdList.WARCRAFTLORE("help")')
     results.append(check("help lists /wcl why", any("/wcl why" in x for x in lines(lua))))
 
+    # Nameplate added before its unit is filled in: one retry a moment later, then the alert.
+    lua = runtime()
+    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1")')
+    results.append(check("unreadable plate: no alert yet, one retry timer",
+                         len(lines(lua)) == 0 and lua.eval("#timers") == 1 and lua.eval("timers[1].s") == 0.3))
+    lua.execute('guids.nameplate1 = "Creature-900001"; timers[1].fn()')
+    results.append(check("retry announces the veteran", len(lines(lua)) == 1 and "Alpha" in lines(lua)[0], lines(lua)))
+    lua = runtime()
+    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); timers[1].fn()')
+    results.append(check("still unreadable on retry: silent, no second retry",
+                         len(lines(lua)) == 0 and lua.eval("#timers") == 1))
+
     print(f"\n{sum(results)}/{len(results)} passed")
     raise SystemExit(0 if all(results) else 1)
 
