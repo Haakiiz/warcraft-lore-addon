@@ -1,4 +1,4 @@
-# Warcraft Lore – an addon for World of Warcraft: Forever (beta)
+# Warcraft Lore – an addon for World of Warcraft: Forever
 
 Ever run into a random level-15 quest giver and later found out they were in a Warcraft II mission? This addon tells you. It flags NPCs who also appear in the real-time strategy games:
 
@@ -48,14 +48,18 @@ See `CHANGELOG.md` for older versions.
 
 ## Installation
 
-1. Find your WoW Forever beta folder. According to [wowforeverguides.com](https://wowforeverguides.com/addons/developers), beta addons live in
-   `World of Warcraft\_classic_beta_\Interface\AddOns\`
-   Create `Interface\AddOns` if it does not exist.
+The easiest way is the CurseForge app: search for "RTS Veterans" and install it for WoW Forever.
+
+Manual install:
+
+1. Find your WoW Forever folder. The live client installs into its own `_forever_` folder (see the [CurseForge migration guide](https://blog.curseforge.com/wow-forever-migrate-addons-beta-to-live/)), so addons live in
+   `World of Warcraft\_forever_\Interface\AddOns\`
+   Create `Interface\AddOns` if it does not exist. If you are unsure where the game is installed, use the cogwheel next to "Play" in the Battle.net app and pick "Show in Explorer". The old beta folder was `_classic_beta_`; addons there are not seen by the live client.
 2. Copy the whole `WarcraftLore` folder (the one containing `WarcraftLore.toc`) there, so that you get
-   `...\_classic_beta_\Interface\AddOns\WarcraftLore\WarcraftLore.toc`
+   `...\_forever_\Interface\AddOns\WarcraftLore\WarcraftLore.toc`
 3. Start the game. New files such as textures need a full restart, not just `/reload`. Make sure "Warcraft Lore" is ticked in the AddOns list on the character screen.
 
-The client is interface 16001 (build 1.60.1). It is built on the modern Mainline/Midnight API, not the Classic API.
+The TOC declares interface 16001 (game version 1.60.1), the last published Forever value. It is built on the modern Mainline/Midnight API, not the Classic API. If the launch client reports a higher number (`/wcl debug` shows it) and the addon is listed as "out of date", tick "Load out of date AddOns" until a new version is out.
 
 ## Commands
 
@@ -273,7 +277,7 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 ## Releasing to CurseForge
 
-Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge.
+Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge: the packager's `toc_to_type` sends every `16???` interface to "forever" (checked 2026-10-29), so a later 1.6x number needs no workflow change. A number outside `16???` would be read as retail; then pass `-g forever` to the packager (`with: args: -g forever` in the workflow step) or set the game version on CurseForge by hand.
 
 One-time setup:
 

@@ -6,7 +6,7 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 
 ## Done
 
-- [x] Orgrimmar – 4 NPCs (Thrall, Nazgrel, Vol'jin, Grunt Maug); Kiro rejected (namesake of the vulpera leader)
+- [x] Orgrimmar – 3 NPCs (Thrall, Nazgrel, Vol'jin; Grunt Maug was removed in 9023636); Kiro rejected (namesake of the vulpera leader)
 - [x] The Barrens – 8 NPCs (Gazlowe, Apothecary Helbrim*; books: Jorn Skyseer, Wharfmaster Dizzywig, Innkeeper Wiley, Cannoneer Smythe, Cannoneer Whessan, Jazzik)
 - [x] Undercity – 5 NPCs (Sylvanas, Varimathras, Sharlindra, Apothecary Keever, Lexington Mortaim*)
 - [x] Silverpine Forest – 2 NPCs (Dalar Dawnweaver, Snarlmane*)
@@ -21,6 +21,8 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 - [ ] Riverglades (Eastern Kingdoms, east coast)
 - [ ] Zephras Isle (Skyborne starting area)
 - [ ] City of Dalaran (returning/reworked); the setting of several Warcraft II and III missions
+
+2026-10-29 launch health check: all classic NPC IDs were found on wowhead.com/forever with the same names (.kritikk/FOREVER/forever_id_check.md on the session/release-qa branch); the first Forever-zone veterans are also on that branch, not yet on main.
 
 Forever zone NPCs are not on Wowhead Classic. Their NPC IDs must come from the game (`/wcl id`) or from Forever databases once they exist.
 
@@ -74,7 +76,7 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [x] Burning Steppes – 0 NPCs
 - [x] Blasted Lands – 0 NPCs
 - [x] Deadwind Pass – 0 NPCs
-- [x] Western Plaguelands – 4 NPCs (Uther, Gregory ×2, Araj the Summoner*); Uther and Gregory use Season of Discovery IDs
+- [x] Western Plaguelands – 1 NPC (Araj the Summoner*); Uther and Gregory (Season of Discovery IDs) were removed in 9023636 as NPCs Forever players cannot meet
 - [x] Eastern Plaguelands – 8 NPCs (Tirion Fordring, Nathanos Blightcaller, Lord Maxwell Tyrosus, Leonid Barthalomew the Revered, Craftsman Wilhelm, Aurora Skycaller, Mirador, Ranger Lord Hawkspear)
 
 ## Battlegrounds, dungeons and raids (optional)
@@ -100,7 +102,7 @@ Thunder Bluff, Mulgore, The Barrens, Ashenvale, Darkshore, Teldrassil, Stonetalo
 - [x] Book/novel source code `BOOK` added (Data.lua docs, validator, UI). - [x] Re-checked (2026-10-04, added as BOOK entries): earlier "novel only" rejects: Mok'Morokk (Exploring Azeroth), Marcus Redpath (Tides of Darkness), Aliden Perenolde (Beyond the Dark Portal, Day of the Dragon), Pained (Tides of War), and the Cycle of Hatred details for Nazgrel.
 
 - [x] Allow more than one zone per NPC (`alsoIn` field; Rexxar/Misha)
-- [ ] Check in game whether Grunt Maug exists in Forever
+- [x] Check in game whether Grunt Maug exists in Forever (moot: the entry was removed in 9023636)
 - [x] Gazlowe's Charm removed (name-only link)
 - [ ] Confirm in game that the new frame looks right (vines tiled, round portrait)
 - [ ] Test `/wcl list` in game: layout, search box typing/Esc, mouse wheel over rows, zone/campaign popups

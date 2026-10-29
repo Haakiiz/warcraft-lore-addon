@@ -1,7 +1,7 @@
 -- Compat.lua
 -- EVERY call that depends on the client version lives here.
--- The Forever beta (interface 16001, build 1.60.1) is built on the Mainline/Midnight
--- API (12.x), not the Classic API. If Blizzard changes something in the beta, this is
+-- WoW Forever (interface 16001, game version 1.60.1) is built on the Mainline/Midnight
+-- API (12.x), not the Classic API. If Blizzard changes something in a patch, this is
 -- the file to fix. The rest of the addon only calls the functions in ns.Compat.
 
 local _, ns = ...
