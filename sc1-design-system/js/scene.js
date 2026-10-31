@@ -246,8 +246,8 @@
       var isLand = sstep(0.47, 0.53, land);
       var cloud = sstep(0.55, 0.8, N.fbm(lon * 6 + 30, lat * 14, 5));
       var light = Math.max(0, nx * L[0] + ny * L[1] + nz * L[2]);
-      var day = sstep(0.05, 0.6, light) * 0.75;
-      var limb = 0.35 + 0.65 * nz;
+      var day = sstep(0.15, 0.7, light) * 0.5;
+      var limb = 0.25 + 0.75 * nz;
       var rr = mix(3, 14, isLand), gg = mix(6, 9, isLand), bb = mix(18, 8, isLand);
       rr += day * mix(20, 70, isLand) + cloud * day * 90; gg += day * mix(45, 58, isLand) + cloud * day * 95; bb += day * mix(110, 40, isLand) + cloud * day * 120;
       /* bylys på nattsiden */
@@ -278,33 +278,30 @@
     ctx.restore();
   }
 
-  /* --- ormehull: tett, mørk tunnel med sterkt lysende blå kant --- */
+  /* --- ormehull: tett blå spiral med lyst sentrum som faller mot svart --- */
   function drawWormhole(ctx, N) {
-    var cx = 915, cy = 612, rx = 98, ry = 68, rot = -0.15;
-    var x0 = cx - 160, y0 = cy - 120, w = 320, h = 240;
+    var cx = 915, cy = 612, rx = 104, ry = 72, rot = -0.15;
+    var x0 = cx - 150, y0 = cy - 110, w = 300, h = 220;
     var img = ctx.getImageData(x0, y0, w, h), d = img.data;
     var cr = Math.cos(-rot), sr = Math.sin(-rot);
     for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
       var px = x + x0 - cx, py = y + y0 - cy;
       var ex = (px * cr - py * sr) / rx, ey = (px * sr + py * cr) / ry;
       var r = Math.hypot(ex, ey);
-      if (r > 1.6) continue;
+      if (r > 1.3) continue;
       var th = Math.atan2(ey, ex), i = (y * w + x) * 4;
-      var n = N.fbm(ex * 4 + 40, ey * 4 + 40, 4);
-      var rr0 = 0.93 + (n - 0.5) * 0.14;
-      var rim = Math.exp(-Math.pow((r - rr0) / 0.075, 2)) * (0.7 + 0.6 * n);
-      var halo = r > rr0 ? Math.exp(-Math.pow((r - rr0) / 0.3, 2)) * 0.4 * (0.6 + n) : 0;
-      var It = 0;
-      if (r < rr0) {
-        var rings = 0.5 + 0.5 * Math.sin(Math.log(r + 0.015) * 16 + th * 2 + n * 4);
-        var depth = Math.pow(sstep(0.04, 0.92, r), 1.8);
-        It = Math.pow(rings, 2) * depth * 1.25;
-        var dark = 0.12 + 0.5 * depth;
-        d[i] *= dark * 0.3; d[i + 1] *= dark * 0.3; d[i + 2] *= dark * 0.4;
-      }
-      d[i] = clamp(d[i] + 14 * It + 120 * rim * rim + 30 * halo, 0, 255);
-      d[i + 1] = clamp(d[i + 1] + 50 * It + 190 * Math.pow(rim, 1.5) + 70 * halo, 0, 255);
-      d[i + 2] = clamp(d[i + 2] + 190 * It + 255 * rim + 200 * halo, 0, 255);
+      var n = N.fbm(ex * 5 + 40, ey * 5 + 40, 4);
+      /* to tette spiralarmer (vinkel + log r), lyst sentrum, fall mot svart */
+      var arm = 0.5 + 0.5 * Math.cos(2 * th + Math.log(r + 0.02) * 7 + n * 2.5);
+      arm = Math.pow(arm, 1.6);
+      var fall = Math.exp(-r * 1.9);
+      var core = Math.exp(-Math.pow(r / 0.1, 2));
+      var edge = 1 - sstep(0.7, 1.25, r);
+      var I = (arm * 0.9 + 0.1) * fall * edge * (0.85 + 0.6 * n) * 1.3;
+      var dark = 1 - edge * 0.85;
+      d[i] = clamp(d[i] * dark + 40 * I + 230 * core, 0, 255);
+      d[i + 1] = clamp(d[i + 1] * dark + 120 * I + 240 * core, 0, 255);
+      d[i + 2] = clamp(d[i + 2] * dark + 255 * I * 1.2 + 255 * core, 0, 255);
     }
     ctx.putImageData(img, x0, y0);
   }
@@ -663,154 +660,146 @@
     s += '<g clip-path="url(#' + id + ')">';
     if (o.inner) s += o.inner;
     (o.seams || []).forEach(function (x) {
-      s += '<rect x="' + (x - 1) + '" y="-60" width="3" height="800" fill="#0b0907" opacity="0.9"/><rect x="' + (x + 2) + '" y="-60" width="1" height="800" fill="#8a8070" opacity="0.45"/>';
+      s += '<rect x="' + (x - 1) + '" y="-60" width="2" height="800" fill="#0a0908" opacity="0.9"/><rect x="' + (x + 2) + '" y="-60" width="1" height="800" fill="#5a5854" opacity="0.5"/>';
     });
     (o.hseams || []).forEach(function (y) {
-      s += '<rect x="0" y="' + (y - 1) + '" width="2000" height="3" fill="#0b0907" opacity="0.9"/><rect x="0" y="' + (y + 2) + '" width="2000" height="1" fill="#8a8070" opacity="0.4"/>';
+      s += '<rect x="0" y="' + (y - 1) + '" width="2000" height="3" fill="#0b0907" opacity="0.9"/><rect x="0" y="' + (y + 2) + '" width="2000" height="1" fill="#5a5854" opacity="0.45"/>';
     });
     if (o.grime !== false) s += '<rect x="0" y="0" width="2000" height="800" filter="url(#' + (o.grimeId || 'grime') + ')" style="mix-blend-mode:multiply"/>';
     s += '</g>';
     s += '<polygon points="' + P(pts) + '" fill="none" stroke="#000" stroke-width="1"/>';
-    s += bevel(pts, { hi: o.hi || '#a69a82', mid: o.mid || '#7a705e', lo: o.lo || '#120f0c', w: o.w || 2, skipY: o.skipY });
+    s += bevel(pts, { hi: o.hi || '#6a6660', mid: o.mid || '#4a4744', lo: o.lo || '#0c0c0c', w: o.w || 1, skipY: o.skipY });
     return s;
   }
   function recess(x, y, w, h) { /* innfelt brønn: mørk kant oppe/venstre, lys nede/høyre */
-    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: '#100e0b', hi: '#050403', mid: '#050403', lo: '#7d7262', grime: false });
+    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: '#0c0c0b', hi: '#050505', mid: '#050505', lo: '#56534e', grime: false });
   }
   function bolt(x, y) { /* sekskantbolt (ikke perfekt rund) */
     var pts = [], k;
     for (k = 0; k < 6; k++) pts.push([x + 3 * Math.cos(k * Math.PI / 3 + 0.3), y + 3 * Math.sin(k * Math.PI / 3 + 0.3)]);
-    return '<polygon points="' + P(pts.map(function (p) { return [p[0].toFixed(1), p[1].toFixed(1)]; })) + '" fill="#8e8574" stroke="#0a0806" stroke-width="1"/>' +
-      '<path d="M' + (x - 2) + ' ' + (y + 1) + ' L' + (x + 2) + ' ' + (y - 1) + '" stroke="#2a2620" stroke-width="1"/>';
+    return '<polygon points="' + P(pts.map(function (p) { return [p[0].toFixed(1), p[1].toFixed(1)]; })) + '" fill="#5e5a54" stroke="#0a0a0a" stroke-width="1"/>' +
+      '<path d="M' + (x - 2) + ' ' + (y + 1) + ' L' + (x + 2) + ' ' + (y - 1) + '" stroke="#1a1816" stroke-width="1"/>';
   }
+  function rivet(x, y) { /* 3 px nagle med lys topp og mørk skygge */
+    return '<rect x="' + (x - 1) + '" y="' + (y - 1) + '" width="3" height="3" fill="#0c0c0c"/>' +
+      '<rect x="' + (x - 2) + '" y="' + (y - 2) + '" width="3" height="3" fill="#6a6660"/><rect x="' + (x - 2) + '" y="' + (y - 2) + '" width="1" height="1" fill="#8a8680"/>';
+  }
+  function rivets4(x1, y1, x2, y2) { return rivet(x1, y1) + rivet(x2, y1) + rivet(x1, y2) + rivet(x2, y2); }
   function led(x, y, c) {
     return '<rect x="' + (x - 1) + '" y="' + (y - 1) + '" width="7" height="6" fill="#000"/><rect x="' + x + '" y="' + y + '" width="5" height="4" fill="' + c + '" filter="url(#ledGlow)"/>';
   }
   function hazard(x, y, w, h) {
-    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: 'url(#tHaz)', grimeId: 'grimeHeavy', hi: '#0a0806', mid: '#0a0806', lo: '#8a7e68' });
+    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: 'url(#tHaz)', grimeId: 'grimeHeavy', hi: '#050505', mid: '#050505', lo: '#5a5650' });
   }
 
+  /* målt i referansen: metall median ca. #262624–#2a2a28, høylys ca. #424042, nesten umettet,
+     svak brun i skyggene. Støyen er liten (2–6 px) og lavkontrast – ingen store flekker. */
   var DEFS_COMMON =
     '<filter id="grime" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.016 0.04" numOctaves="4" seed="4" result="a"/>' +
-      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.42  0 0 0 0 0.34  -2.6 0 0 0 1.55" result="blot"/>' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="3" seed="21" result="b"/>' +
-      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.36  0 0 0 0 0.26  -4 0 0 0 1.75" result="rust"/>' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="g"/>' +
-      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.26  0 0 0 0 0.22  -1.7 0 0 0 1.1" result="grain"/>' +
-      '<feMerge><feMergeNode in="blot"/><feMergeNode in="rust"/><feMergeNode in="grain"/></feMerge></filter>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.24" numOctaves="2" seed="4" result="a"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.36  0 0 0 0 0.3  0.9 0 0 0 -0.28" result="fine"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.08 0.14" numOctaves="2" seed="21" result="b"/>' +
+      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.24  0 0 0 0 0.16  0.7 0 0 0 -0.26" result="mid"/>' +
+      '<feMerge><feMergeNode in="mid"/><feMergeNode in="fine"/></feMerge></filter>' +
     '<filter id="grimeHeavy" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
-      '<feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="4" seed="13" result="a"/>' +
-      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.2  -2.2 0 0 0 1.45" result="blot"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.12 0.2" numOctaves="3" seed="13" result="a"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.26  0 0 0 0 0.22  1.6 0 0 0 -0.45" result="blot"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="g"/>' +
-      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.22  0 0 0 0 0.2  -2 0 0 0 1.35" result="grain"/>' +
+      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.22  0 0 0 0 0.2  1.2 0 0 0 -0.4" result="grain"/>' +
       '<feMerge><feMergeNode in="blot"/><feMergeNode in="grain"/></feMerge></filter>' +
     '<filter id="ledGlow" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-    '<linearGradient id="tMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#686051"/><stop offset="0.12" stop-color="#5a5248"/><stop offset="0.55" stop-color="#4a4238"/><stop offset="1" stop-color="#28241f"/></linearGradient>' +
-    '<linearGradient id="tMetalDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4339"/><stop offset="1" stop-color="#1e1b17"/></linearGradient>' +
-    '<linearGradient id="tPipe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0907"/><stop offset="0.2" stop-color="#5e5649"/><stop offset="0.38" stop-color="#9a8f7a"/><stop offset="0.6" stop-color="#4a4339"/><stop offset="1" stop-color="#0a0907"/></linearGradient>' +
-    '<linearGradient id="tPipeV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0907"/><stop offset="0.3" stop-color="#8a806c"/><stop offset="0.6" stop-color="#3e382f"/><stop offset="1" stop-color="#0a0907"/></linearGradient>' +
-    '<pattern id="tHaz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="14" fill="#8e7c3c"/><rect x="7" width="7" height="14" fill="#1a1712"/></pattern>';
+    '<linearGradient id="tMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c3a3a"/><stop offset="0.1" stop-color="#2e2d2b"/><stop offset="0.55" stop-color="#282725"/><stop offset="1" stop-color="#1c1712"/></linearGradient>' +
+    '<linearGradient id="tMetalHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#424042"/><stop offset="0.14" stop-color="#32312f"/><stop offset="0.6" stop-color="#2a2a28"/><stop offset="1" stop-color="#1e1912"/></linearGradient>' +
+    '<linearGradient id="tMetalDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2927"/><stop offset="1" stop-color="#121110"/></linearGradient>' +
+    '<linearGradient id="aMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4038"/><stop offset="0.5" stop-color="#36302a"/><stop offset="1" stop-color="#2a2622"/></linearGradient>' +
+    '<linearGradient id="aMetalV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a2622"/><stop offset="0.3" stop-color="#4a4038"/><stop offset="1" stop-color="#241f1b"/></linearGradient>' +
+    '<linearGradient id="tPipe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#080808"/><stop offset="0.22" stop-color="#363533"/><stop offset="0.4" stop-color="#5a5854"/><stop offset="0.65" stop-color="#2a2927"/><stop offset="1" stop-color="#080808"/></linearGradient>' +
+    '<linearGradient id="tPipeV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#080808"/><stop offset="0.3" stop-color="#55524e"/><stop offset="0.6" stop-color="#2a2927"/><stop offset="1" stop-color="#080808"/></linearGradient>' +
+    '<pattern id="tHaz" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="12" fill="#8a7a3e"/><rect x="6" width="6" height="12" fill="#161513"/></pattern>';
+  var T_EDGE = { hi: '#6a6660', mid: '#4a4744', lo: '#0c0c0c', w: 1 };
+  function tplate(pts, o) { o = o || {}; for (var k in T_EDGE) if (o[k] == null) o[k] = T_EDGE[k]; return plate(pts, o); }
 
   /* ---------- TERRAN ---------- */
   function terranConsole() {
     var s = '<defs>' + DEFS_COMMON + '</defs>';
-    /* grunnkropp: lav midtdel */
-    s += plate([[0, 232], [0, 44], [104, 44], [116, 56], [330, 56], [356, 84], [776, 84], [800, 60], [1280, 60], [1280, 232]], { seams: [62, 470, 600, 700], hseams: [150], skipY: 232 });
-    /* ventilasjonsribbe på midtdelen */
-    var ribs = ''; for (var x = 486; x < 690; x += 6) ribs += '<rect x="' + x + '" y="70" width="3" height="14" fill="#0b0907"/>';
-    s += plate([[466, 84], [480, 70], [694, 70], [708, 84]], { fill: 'url(#tMetalDark)', inner: ribs });
+    /* grunnkropp: tydelig senket midtdel */
+    s += tplate([[0, 232], [0, 48], [100, 48], [112, 60], [332, 60], [356, 84], [776, 84], [796, 64], [1280, 64], [1280, 232]], { seams: [62, 470, 600, 700], hseams: [156], skipY: 232 });
+    s += rivets4(8, 56, 92, 224) + rivets4(364, 92, 770, 224);
+    /* horisontalt rør over midtskjermen */
+    s += '<rect x="358" y="72" width="420" height="12" fill="url(#tPipe)" stroke="#000"/>';
+    [380, 470, 566, 662, 752].forEach(function (x) { s += '<rect x="' + x + '" y="69" width="8" height="18" fill="url(#tPipeV)" stroke="#000"/>'; });
     /* rørstabel til venstre */
-    [70, 100, 130].forEach(function (y) {
-      s += '<rect x="0" y="' + y + '" width="112" height="22" fill="url(#tPipe)" stroke="#000"/>';
-      s += '<rect x="0" y="' + y + '" width="112" height="22" filter="url(#grime)" style="mix-blend-mode:multiply"/>';
-      [28, 74].forEach(function (rx) { s += '<rect x="' + rx + '" y="' + (y - 2) + '" width="7" height="26" fill="url(#tPipeV)" stroke="#000"/>'; });
+    [72, 100, 128].forEach(function (y) {
+      s += '<rect x="0" y="' + y + '" width="112" height="20" fill="url(#tPipe)" stroke="#000"/>';
+      [28, 74].forEach(function (rx) { s += '<rect x="' + rx + '" y="' + (y - 2) + '" width="7" height="24" fill="url(#tPipeV)" stroke="#000"/>'; });
     });
-    s += plate([[8, 166], [104, 166], [104, 222], [8, 222]], { fill: 'url(#tMetalDark)', seams: [56] });
+    s += tplate([[8, 162], [104, 162], [104, 222], [8, 222]], { fill: 'url(#tMetalDark)', seams: [56] });
+    s += rivets4(13, 167, 99, 217);
     s += led(18, 200, '#30e030') + led(28, 200, '#ffb020') + led(38, 200, '#ff3a2a');
     /* høyre maskinblokk med vifte */
-    s += plate([[1150, 232], [1150, 40], [1172, 18], [1280, 18], [1280, 232]], { seams: [1222], skipY: 232 });
-    s += '<circle cx="1218" cy="104" r="44" fill="#0b0907" stroke="#000" stroke-width="2"/>';
-    s += '<circle cx="1218" cy="104" r="40" fill="url(#tMetalDark)"/>';
+    s += tplate([[1160, 232], [1160, 36], [1176, 20], [1280, 20], [1280, 232]], { seams: [1240], skipY: 232 });
+    s += rivets4(1168, 30, 1272, 224);
+    s += '<circle cx="1220" cy="104" r="42" fill="#080808" stroke="#000" stroke-width="2"/><circle cx="1220" cy="104" r="38" fill="url(#tMetalDark)"/>';
     for (var k = 0; k < 12; k++) {
       var an = k * Math.PI / 6;
-      s += '<path d="M1218 104 L' + (1218 + 38 * Math.cos(an)).toFixed(1) + ' ' + (104 + 38 * Math.sin(an)).toFixed(1) + ' L' + (1218 + 38 * Math.cos(an + 0.32)).toFixed(1) + ' ' + (104 + 38 * Math.sin(an + 0.32)).toFixed(1) + ' Z" fill="#14110e"/>';
+      s += '<path d="M1220 104 L' + (1220 + 36 * Math.cos(an)).toFixed(1) + ' ' + (104 + 36 * Math.sin(an)).toFixed(1) + ' L' + (1220 + 36 * Math.cos(an + 0.32)).toFixed(1) + ' ' + (104 + 36 * Math.sin(an + 0.32)).toFixed(1) + ' Z" fill="#0e0d0c"/>';
     }
-    s += '<circle cx="1218" cy="104" r="9" fill="#5a5248" stroke="#000"/>';
-    s += '<circle cx="1218" cy="104" r="44" fill="none" stroke="#8a806c" stroke-width="1" stroke-dasharray="40 30" opacity="0.6"/>';
-    s += hazard(1162, 168, 108, 20);
-    s += led(1170, 204, '#30e030') + led(1182, 204, '#ffb020');
-    /* minimap-hus: høy skulder med tykke 45°-kanter */
-    s += plate([[112, 232], [112, 32], [142, 2], [316, 2], [346, 32], [346, 232]], { shadow: [7, 4], skipY: 232, seams: [] });
+    s += '<circle cx="1220" cy="104" r="8" fill="#3a3836" stroke="#000"/><circle cx="1220" cy="104" r="42" fill="none" stroke="#6a6660" stroke-width="1" stroke-dasharray="40 30" opacity="0.5"/>';
+    s += hazard(1170, 168, 102, 18);
+    s += led(1176, 204, '#30e030') + led(1188, 204, '#ffb020');
+    /* minimap-hus: høy skulder, 16 px 45°-faser */
+    s += tplate([[112, 232], [112, 18], [128, 2], [330, 2], [346, 18], [346, 232]], { fill: 'url(#tMetalHi)', shadow: [4, 3], skipY: 232 });
     s += recess(150, 10, 58, 26) + '<polyline points="154,30 164,30 168,16 176,26 182,14 188,28 194,20 204,30" fill="none" stroke="#e8c020" stroke-width="1.5" filter="url(#ledGlow)"/>';
-    s += hazard(216, 12, 96, 22);
+    s += hazard(216, 12, 96, 20);
     s += recess(140, 42, 186, 188);
-    s += bolt(124, 44) + bolt(334, 44) + bolt(124, 220) + bolt(334, 220);
-    /* kommandokort-hus */
-    s += plate([[898, 232], [898, 34], [928, 4], [1134, 4], [1164, 34], [1164, 232]], { shadow: [7, 4], skipY: 232 });
-    s += hazard(990, 10, 82, 14) + led(944, 14, '#ff3a2a') + led(954, 14, '#ff3a2a') + led(1104, 14, '#ffb020') + led(1114, 14, '#ff3a2a');
-    s += recess(926, 26, 212, 206);
-    /* midtskjerm-brønn */
-    s += recess(354, 88, 424, 144);
-    s += bolt(368, 76) + bolt(762, 76);
-    /* portretthus: hevet, tykk fas, skygge */
-    s += plate([[778, 232], [778, 70], [806, 42], [898, 42], [926, 70], [926, 232]], { shadow: [8, 5], skipY: 232, hseams: [216] });
+    s += rivets4(120, 24, 338, 224);
+    /* kommandokort-hus: skrått inn mot midten */
+    s += tplate([[920, 232], [920, 42], [956, 6], [1144, 6], [1160, 22], [1160, 232]], { fill: 'url(#tMetalHi)', shadow: [4, 3], skipY: 232 });
+    s += hazard(1000, 12, 78, 12) + led(966, 14, '#ff3a2a') + led(976, 14, '#ff3a2a') + led(1112, 14, '#ffb020') + led(1124, 14, '#ff3a2a');
+    s += recess(940, 28, 208, 202);
+    s += rivets4(1152, 28, 1152, 224) + rivet(930, 224);
+    /* portretthus: hevet, tykk fas, skygge, fareskiltfelt på hver side av MENU */
+    s += tplate([[780, 232], [780, 58], [796, 42], [908, 42], [924, 58], [924, 232]], { fill: 'url(#tMetalHi)', shadow: [5, 4], skipY: 232, hseams: [216] });
+    s += hazard(790, 50, 22, 24) + hazard(892, 50, 22, 24);
     s += recess(806, 84, 92, 124);
-    s += bolt(790, 78) + bolt(914, 78) + bolt(790, 222) + bolt(914, 222);
+    s += rivets4(788, 66, 916, 224) + rivets4(788, 80, 916, 80);
     return s;
   }
 
-  /* ---------- PROTOSS: organisk bue, marmor, gull, cyan rør ---------- */
+  /* ---------- PROTOSS: organisk bue, blåsvart marmor, gullbånd, cyan rør ---------- */
   var P_TOP = 'M0,46 C40,46 70,42 96,32 C120,22 130,8 162,8 L298,8 C330,8 340,24 352,42 C362,60 374,70 402,70 C470,70 500,50 570,50 C640,50 670,70 738,70 C768,70 778,58 790,42 C800,28 812,24 832,24 L878,24 C898,24 906,30 912,36 C920,22 932,12 954,12 L1280,12';
   function protossConsole() {
     var body = P_TOP + ' L1280,232 L0,232 Z', s = '<defs>' +
       '<filter id="pMarble" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
-        '<feTurbulence type="turbulence" baseFrequency="0.006 0.018" numOctaves="5" seed="12" result="t"/>' +
-        '<feColorMatrix in="t" type="matrix" values="0.55 0 0 0 0.015  0.62 0 0 0 0.03  0.85 0 0 0 0.07  0 0 0 0 1"/>' +
+        '<feTurbulence type="turbulence" baseFrequency="0.007 0.02" numOctaves="5" seed="12" result="t"/>' +
+        '<feComponentTransfer in="t" result="tt"><feFuncR type="gamma" amplitude="1" exponent="0.4" offset="0"/></feComponentTransfer>' +
+        '<feColorMatrix in="tt" type="matrix" values="-0.56 0 0 0 0.4  -0.6 0 0 0 0.48  -0.62 0 0 0 0.64  0 0 0 0 1"/>' +
         '<feComposite in2="SourceGraphic" operator="in"/></filter>' +
-      '<filter id="pGlow" x="-0.1" y="-0.1" width="1.2" height="1.2"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-      '<linearGradient id="pGold" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="76"><stop offset="0" stop-color="#fff2a8"/><stop offset="0.25" stop-color="#e8b830"/><stop offset="0.6" stop-color="#b08418"/><stop offset="1" stop-color="#6a4a08"/></linearGradient>' +
-      '<radialGradient id="pKnob" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#fff6c0"/><stop offset="0.45" stop-color="#d8a028"/><stop offset="1" stop-color="#5a3c06"/></radialGradient>' +
-      '<linearGradient id="pShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ab0" stop-opacity="0.22"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></linearGradient>' +
-      '<clipPath id="pBody"><path d="' + body + '"/></clipPath>' +
+      '<filter id="pGlow" x="-0.05" y="-0.05" width="1.1" height="1.1"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<linearGradient id="pShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2840" stop-opacity="0.15"/><stop offset="1" stop-color="#000" stop-opacity="0.4"/></linearGradient>' +
       '</defs>';
-    s += '<path d="' + body + '" fill="#04070e"/>';
+    s += '<path d="' + body + '" fill="#0a1020"/>';
     s += '<path d="' + body + '" fill="#000" filter="url(#pMarble)"/>';
     s += '<path d="' + body + '" fill="url(#pShade)"/>';
-    var cy = 'stroke="#62dcff" stroke-width="2.5" fill="none" filter="url(#pGlow)"';
-    /* cyan rørlinje som følger toppbuen, og sløyfer i venstre/høyre felt */
-    s += '<g clip-path="url(#pBody)"><path d="' + P_TOP + '" transform="translate(0,18)" ' + cy + ' stroke-linecap="round"/>' +
-      '<path d="M14,232 C14,150 30,96 70,80 C96,70 110,90 112,120 L112,232" ' + cy + '/>' +
-      '<path d="M40,232 C44,170 56,128 80,112" ' + cy + '/>' +
-      '<path d="M1270,232 C1270,160 1250,96 1196,70 C1172,60 1160,80 1160,110 L1160,232" ' + cy + '/>' +
-      '<path d="M1240,232 C1236,170 1222,126 1196,108" ' + cy + '/></g>';
-    /* nedsenkede felt med cyan rørkant */
+    /* modulrammer: 5 px rør #2a8ad8, 1 px #9ef0ff inni, 1 px #003366 utenfor, glød maks 2 px */
     [[136, 40, 194, 192, 18], [350, 84, 432, 150, 24], [800, 80, 104, 132, 16], [922, 24, 218, 208, 20]].forEach(function (w) {
-      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" fill="#000" opacity="0.5"/>';
-      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" ' + cy + '/>';
+      var x = w[0], y = w[1], ww = w[2], h = w[3], r = w[4];
+      s += '<rect x="' + x + '" y="' + y + '" width="' + ww + '" height="' + h + '" rx="' + r + '" fill="#000" opacity="0.45"/>';
+      s += '<rect x="' + x + '" y="' + y + '" width="' + ww + '" height="' + h + '" rx="' + r + '" fill="none" stroke="#003366" stroke-width="7"/>';
+      s += '<rect x="' + x + '" y="' + y + '" width="' + ww + '" height="' + h + '" rx="' + r + '" fill="none" stroke="#2a8ad8" stroke-width="5" filter="url(#pGlow)"/>';
+      s += '<rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (ww - 4) + '" height="' + (h - 4) + '" rx="' + (r - 2) + '" fill="none" stroke="#9ef0ff" stroke-width="1"/>';
     });
-    /* kommandokort: cyan rørsegmenter mellom rutene, ingen boks */
-    var X0 = 935, Y0 = 31, C = 56, G = 10, segs = '';
-    [X0 + C + G / 2, X0 + 2 * C + G * 1.5].forEach(function (x) {
-      for (var r = 0; r < 3; r++) segs += '<path d="M' + x + ' ' + (Y0 + r * (C + G) + 6) + ' V' + (Y0 + r * (C + G) + C - 6) + '" ' + cy + ' stroke-linecap="round"/>';
-    });
-    [Y0 + C + G / 2, Y0 + 2 * C + G * 1.5].forEach(function (y) {
-      for (var c = 0; c < 3; c++) segs += '<path d="M' + (X0 + c * (C + G) + 6) + ' ' + y + ' H' + (X0 + c * (C + G) + C - 6) + '" ' + cy + ' stroke-linecap="round"/>';
-    });
-    [X0 + C + G / 2, X0 + 2 * C + G * 1.5].forEach(function (x) {
-      [Y0 + C + G / 2, Y0 + 2 * C + G * 1.5].forEach(function (y) { segs += '<circle cx="' + x + '" cy="' + y + '" r="3" fill="#bff4ff" filter="url(#pGlow)"/>'; });
-    });
-    s += segs;
-    /* tykk, avrundet gullkant langs toppen */
-    s += '<path d="' + P_TOP + '" fill="none" stroke="#2a1a02" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>';
-    s += '<path d="' + P_TOP + '" fill="none" stroke="url(#pGold)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>';
-    s += '<path d="' + P_TOP + '" transform="translate(0,-2)" fill="none" stroke="#fff4b8" stroke-width="1.5" stroke-linejoin="round" opacity="0.75"/>';
-    /* gullbuer over minimap og portrett, hevet bue over midtskjermen */
-    s += '<path d="M150,40 C150,22 170,18 230,18 C290,18 316,22 316,40" fill="none" stroke="#2a1a02" stroke-width="8"/><path d="M150,40 C150,22 170,18 230,18 C290,18 316,22 316,40" fill="none" stroke="url(#pGold)" stroke-width="5" stroke-linecap="round"/>';
-    s += '<path d="M470,84 C500,70 530,64 566,64 C602,64 636,70 664,84" fill="none" stroke="#2a1a02" stroke-width="8"/><path d="M470,84 C500,70 530,64 566,64 C602,64 636,70 664,84" fill="none" stroke="url(#pGold)" stroke-width="5" stroke-linecap="round"/>';
-    [[162, 8], [298, 8], [402, 70], [570, 50], [738, 70], [832, 24], [878, 24], [954, 12], [1270, 12], [96, 32], [566, 64], [230, 18]].forEach(function (k) {
-      s += '<circle cx="' + k[0] + '" cy="' + k[1] + '" r="5" fill="url(#pKnob)" stroke="#2a1a02" stroke-width="1.2"/>';
-    });
+    /* tykt gullbånd (ca. 10 px) langs hele toppkanten: lys→mørk gull, mørk underkant, plateskjøter */
+    s += '<path d="' + P_TOP + '" transform="translate(0,1.5)" fill="none" stroke="#2a1c06" stroke-width="12" stroke-linejoin="round"/>';
+    s += '<path d="' + P_TOP + '" fill="none" stroke="#c09020" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>';
+    s += '<path d="' + P_TOP + '" transform="translate(0,3)" fill="none" stroke="#6a4a10" stroke-width="4" stroke-linejoin="round"/>';
+    s += '<path d="' + P_TOP + '" transform="translate(0,-2.5)" fill="none" stroke="#f8e080" stroke-width="4" stroke-linejoin="round"/>';
+    s += '<path d="' + P_TOP + '" transform="translate(0,-3.5)" fill="none" stroke="#fff4c0" stroke-width="1" stroke-linejoin="round" opacity="0.8"/>';
+    s += '<path d="' + P_TOP + '" fill="none" stroke="#3a2808" stroke-width="11" stroke-dasharray="2 70" stroke-dashoffset="-30"/>';
+    /* hevet gullbue over midtskjermen */
+    var arch = 'M470,84 C500,70 530,64 566,64 C602,64 636,70 664,84';
+    s += '<path d="' + arch + '" fill="none" stroke="#2a1c06" stroke-width="9"/><path d="' + arch + '" fill="none" stroke="#c09020" stroke-width="7" stroke-linecap="round"/>' +
+      '<path d="' + arch + '" transform="translate(0,-2)" fill="none" stroke="#f8e080" stroke-width="2.5"/>';
     return s;
   }
 
@@ -864,40 +853,42 @@
     return race === 'protoss' ? protossConsole() : race === 'zerg' ? zergConsole() : terranConsole();
   };
 
-  /* ---------- Glue screen: metallarm som klemmer nyhetspanelet ---------- */
+  /* ---------- Glue screen: smal, mørk gråbrun metallarm som klemmer nyhetspanelet ---------- */
   SC.armSVG = function () {
     uid = 100;
+    var A = { fill: 'url(#aMetal)', hi: '#6a6660', mid: '#4a4744', lo: '#0c0c0c', w: 1 };
+    function ap(pts, extra) { var o = {}, k; for (k in A) o[k] = A[k]; for (k in extra || {}) o[k] = extra[k]; return plate(pts, o); }
     var s = '<defs>' + DEFS_COMMON + '</defs>';
     /* kabler bak */
-    s += '<path d="M1190,70 C1236,120 1258,230 1240,470" fill="none" stroke="#0a0807" stroke-width="9"/><path d="M1190,70 C1236,120 1258,230 1240,470" fill="none" stroke="#3a342c" stroke-width="3" stroke-dasharray="4 3"/>';
-    s += '<path d="M1140,384 C1146,420 1180,440 1196,470" fill="none" stroke="#0a0807" stroke-width="7"/><path d="M1140,384 C1146,420 1180,440 1196,470" fill="none" stroke="#5a2a1a" stroke-width="2.5"/>';
-    /* toppbjelke */
-    s += plate([[878, 22], [900, 6], [1280, 6], [1280, 56], [1160, 56], [1146, 70], [930, 70], [916, 84], [878, 84]], { seams: [1010, 1210], hseams: [44] });
-    s += hazard(950, 16, 52, 20);
-    /* rør langs bjelken */
-    s += '<rect x="900" y="58" width="240" height="9" fill="url(#tPipe)" stroke="#000"/>';
-    [930, 1000, 1080].forEach(function (x) { s += '<rect x="' + x + '" y="55" width="6" height="15" fill="url(#tPipeV)" stroke="#000"/>'; });
+    s += '<path d="M1180,64 C1222,110 1240,220 1228,470" fill="none" stroke="#080707" stroke-width="7"/><path d="M1180,64 C1222,110 1240,220 1228,470" fill="none" stroke="#2e2a26" stroke-width="2.5" stroke-dasharray="4 3"/>';
+    s += '<path d="M1134,346 C1140,400 1170,430 1186,470" fill="none" stroke="#080707" stroke-width="5"/><path d="M1134,346 C1140,400 1170,430 1186,470" fill="none" stroke="#4a2418" stroke-width="2"/>';
+    /* toppbjelke (ca. 40 px) */
+    s += ap([[880, 20], [894, 6], [1280, 6], [1280, 44], [1150, 44], [1138, 54], [906, 54], [896, 62], [880, 62]], { seams: [1010, 1210], shadow: [3, 3] });
+    s += hazard(950, 14, 46, 16);
+    s += '<rect x="906" y="46" width="230" height="7" fill="url(#tPipe)" stroke="#000"/>';
+    [930, 1000, 1080].forEach(function (x) { s += '<rect x="' + x + '" y="44" width="5" height="11" fill="url(#tPipeV)" stroke="#000"/>'; });
+    s += rivets4(900, 14, 1270, 36);
     /* klo over panelets øvre venstre hjørne */
-    s += plate([[762, 88], [778, 72], [890, 72], [904, 86], [890, 100], [786, 100], [786, 122], [774, 122], [762, 110]], { shadow: [4, 3] });
-    s += plate([[866, 62], [884, 50], [912, 50], [912, 96], [898, 104], [866, 104]], { fill: 'url(#tMetalDark)' });
-    s += bolt(774, 90) + bolt(774, 112) + bolt(880, 84) + bolt(890, 60);
+    s += ap([[762, 86], [776, 72], [892, 72], [900, 80], [888, 92], [786, 92], [786, 118], [774, 118], [762, 106]], { shadow: [3, 3] });
+    s += ap([[868, 54], [900, 54], [900, 76], [868, 76]], { fill: 'url(#tMetalDark)' });
+    s += bolt(774, 88) + bolt(774, 108) + rivet(880, 82) + rivet(800, 82);
     /* ledd oppe til høyre */
-    s += plate([[1080, 30], [1176, 30], [1190, 44], [1190, 92], [1176, 106], [1080, 106], [1066, 92], [1066, 44]], { fill: 'url(#tMetalDark)', shadow: [5, 4] });
-    s += recess(1092, 46, 46, 22) + led(1100, 54, '#2ad84a') + led(1112, 54, '#1a7a2a') + led(1124, 54, '#e8a020');
-    s += bolt(1078, 98) + bolt(1178, 98);
-    /* vertikal arm langs høyre side av panelet */
-    s += '<rect x="1182" y="100" width="12" height="270" fill="url(#tPipeV)" stroke="#000"/>';
-    [140, 220, 300].forEach(function (y) { s += '<rect x="1179" y="' + y + '" width="18" height="6" fill="url(#tPipe)" stroke="#000"/>'; });
-    s += plate([[1100, 104], [1166, 104], [1180, 118], [1180, 336], [1166, 350], [1112, 350], [1100, 338]], { hseams: [176, 262], shadow: [5, 4] });
-    s += plate([[1112, 350], [1166, 350], [1152, 388], [1126, 388]], { fill: 'url(#tMetalDark)' });
+    s += ap([[1096, 28], [1170, 28], [1182, 40], [1182, 84], [1170, 96], [1096, 96], [1086, 86], [1086, 38]], { fill: 'url(#tMetalDark)', shadow: [3, 3] });
+    s += recess(1104, 44, 44, 20) + led(1110, 52, '#2ad84a') + led(1122, 52, '#1a7a2a') + led(1134, 52, '#e8a020');
+    s += bolt(1096, 88) + bolt(1172, 88);
+    /* vertikal arm (ca. 40 px bred) langs panelets høyre side */
+    s += '<rect x="1158" y="96" width="9" height="244" fill="url(#tPipeV)" stroke="#000"/>';
+    [150, 230, 300].forEach(function (y) { s += '<rect x="1155" y="' + y + '" width="15" height="5" fill="url(#tPipe)" stroke="#000"/>'; });
+    s += ap([[1114, 96], [1146, 96], [1154, 104], [1154, 330], [1146, 338], [1122, 338], [1114, 330]], { fill: 'url(#aMetalV)', hseams: [176, 262], shadow: [3, 3] });
+    s += ap([[1122, 338], [1146, 338], [1142, 348], [1126, 348]], { fill: 'url(#tMetalDark)' });
+    s += rivets4(1120, 110, 1148, 324);
     /* klemmer som griper panelrammen */
-    [[146, 52], [276, 52]].forEach(function (c) {
+    [[146, 44], [270, 44]].forEach(function (c) {
       var y = c[0], h = c[1];
-      s += plate([[1074, y], [1106, y], [1106, y + h], [1074, y + h], [1068, y + h - 6], [1068, y + 6]], { shadow: [4, 3] });
-      s += '<rect x="1070" y="' + (y + 8) + '" width="6" height="' + (h - 16) + '" fill="#0b0907"/>';
-      s += bolt(1090, y + 10) + bolt(1090, y + h - 10);
+      s += ap([[1076, y], [1114, y], [1114, y + h], [1076, y + h], [1070, y + h - 6], [1070, y + 6]], { shadow: [3, 3] });
+      s += '<rect x="1072" y="' + (y + 8) + '" width="5" height="' + (h - 16) + '" fill="#0a0908"/>';
+      s += bolt(1094, y + 10) + bolt(1094, y + h - 10);
     });
-    s += bolt(1112, 116) + bolt(1166, 116) + bolt(1112, 334) + bolt(1166, 334);
     return s;
   };
 })();

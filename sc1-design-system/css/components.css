@@ -155,10 +155,12 @@
 
 /* --- 2b. Spillmeny: halvgjennomsiktig blå med fine skanlinjer --- */
 .sc-dialog--blue {
+  /* målt i referansen: median ca. #2d2a36, terrenget godt synlig; fint 3 px rutenett, ingen diagonaler */
   background:
-    repeating-linear-gradient(0deg, var(--x-gm-line) 0 1px, transparent 1px 3px),
-    var(--x-gm-bg);
-  border: 1px solid var(--x-gm-border);
+    repeating-linear-gradient(0deg, rgba(42, 58, 204, .3) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(42, 58, 204, .3) 0 1px, transparent 1px 3px),
+    rgba(18, 16, 48, .35);
+  border: 1px solid #3040d0;
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .45);
   padding: 8px 22px 14px;
@@ -209,27 +211,28 @@
 
 /* --- 3b. Blå (spillmeny): dobbel kontur, blek gul tekst --- */
 .sc-btn--blue {
+  /* nesten gjennomsiktig, dobbel tynn kontur; dempet olivengul tekst uten glød */
   min-height: 31px; width: 100%; padding: 2px 14px;
-  background: var(--x-gm-btn-fill);
-  border: 1px solid var(--x-gm-btn-border);
+  background: rgba(20, 30, 120, .12);
+  border: 1px solid #3040d0;
   border-radius: 3px;
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .6), inset 0 0 0 3px var(--x-gm-btn-ring);
-  font-family: var(--sc-font-ui); font-weight: 400; font-size: 18px; letter-spacing: .02em;
-  color: var(--x-gm-text); text-shadow: 0 0 1px var(--x-gm-text), 1px 1px 0 #000;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .5), inset 0 0 0 3px #2030a0;
+  font-family: var(--sc-font-ui); font-weight: 400; font-size: 16px; letter-spacing: .5px;
+  color: #e0d880; text-shadow: 1px 1px 0 #000;
 }
-.sc-btn--blue .sc-hk { color: #fff; text-shadow: 0 0 1px #fff, 1px 1px 0 #000; }
-.sc-btn--blue:hover, .sc-btn--blue.is-hover { border-color: var(--x-gm-border-hot); box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .6), inset 0 0 0 3px var(--x-gm-border); }
+.sc-btn--blue .sc-hk { color: #fff; text-shadow: 1px 1px 0 #000; }
+.sc-btn--blue:hover, .sc-btn--blue.is-hover { border-color: #4858ff; color: #f0e890; }
 .sc-btn--blue:active, .sc-btn--blue.is-active {
-  border-color: var(--x-gm-border-hot); background: rgba(32, 48, 192, .30);
+  border-color: #4858ff; background: rgba(20, 30, 120, .25);
   padding-top: 3px; padding-bottom: 1px;
 }
 .sc-btn--blue:focus-visible, .sc-btn--blue.is-focus {
-  border-color: var(--x-gm-border-hot); outline: 1px dotted var(--x-gm-border-hot); outline-offset: 2px;
+  border-color: #4858ff; outline: 1px solid #4858ff; outline-offset: 1px;
 }
 .sc-btn--blue:disabled, .sc-btn--blue.is-disabled {
-  color: color-mix(in srgb, var(--x-gm-text) 40%, #000); border-color: #1a2270;
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .6), inset 0 0 0 3px #141c70;
-  text-shadow: none; background: var(--x-gm-btn-fill);
+  color: #6a6640; border-color: #1a2270;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .5), inset 0 0 0 3px #141c70;
+  text-shadow: 1px 1px 0 #000; background: rgba(20, 30, 120, .12);
 }
 .sc-btn--blue:disabled .sc-hk, .sc-btn--blue.is-disabled .sc-hk { color: inherit; text-shadow: none; }
 

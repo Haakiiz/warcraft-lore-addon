@@ -38,11 +38,15 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 
 .pt-mm__link.sc-menu-link {
   position: absolute;
+  color: #b4dc4c;
+  text-shadow: 0 0 2px rgba(150, 220, 60, 0.5), 1px 1px 0 #000;
   font-size: 21px;
   line-height: 1;
   white-space: nowrap;
   z-index: 5;
 }
+
+.pt-mm__link.sc-menu-link:hover, .pt-mm__link.sc-menu-link:focus-visible { color: var(--sc-text-menu-hot); }
 
 .pt-mm__account {
   position: absolute;
@@ -82,8 +86,9 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   display: flex;
   flex-direction: column;
   background: var(--sc-void);
-  border: 1px solid var(--sc-red);
-  box-shadow: 0 0 0 1px var(--sc-metal-1), 0 0 0 2px var(--sc-metal-4), 0 0 0 3px #000;
+  border: 1px solid #8a1414;
+  padding: 3px;
+  box-shadow: 0 0 0 1px #000;
   color: var(--sc-text-body);
   font-family: var(--sc-font-ui);
 }
@@ -178,6 +183,15 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   border: 1px solid var(--sc-red);
 }
 .pt-news__soc svg { width: 10px; height: 10px; fill: var(--x-news-green); shape-rendering: crispEdges; }
+
+/* indre 1 px #555 med 2 px avstand fra den røde ytterkanten */
+.pt-news::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #555;
+  pointer-events: none;
+}
 
 /* --- oppgraderingsdialog (posisjon/størrelse; utseendet kommer fra .sc-dialog--red) --- */
 .pt-mm__dialog:focus { outline: none; }
@@ -295,28 +309,28 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 
 /* MENU-skilt: mørk metallplate med fas */
 .pt-menu-plate {
-  left: 814px;
+  left: 818px;
   top: 50px;
-  width: 76px;
+  width: 68px;
   height: 24px;
   padding: 0;
   border: 0;
   cursor: pointer;
-  background: var(--x-grime), linear-gradient(180deg, #2e2a24, #14120f);
+  background: var(--x-grime), linear-gradient(180deg, #2a2927, #121110);
   clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
-  box-shadow: inset 0 2px 0 #8a8070, inset 0 -2px 0 #050403, inset 2px 0 0 #6a6152, inset -2px 0 0 #0a0806;
+  box-shadow: inset 0 1px 0 #6a6660, inset 0 -1px 0 #0c0c0c, inset 1px 0 0 #6a6660, inset -1px 0 0 #0c0c0c, inset 0 0 0 3px #1a1918;
   color: var(--sc-text-button);
   font: 400 11px/24px var(--sc-font-ui);
   letter-spacing: 1.5px;
   text-shadow: var(--sc-glow-button);
 }
 .pt-menu-plate:hover, .pt-menu-plate:focus-visible { color: var(--sc-text-menu-hot); outline: none; }
-.pt-menu-plate:active { box-shadow: inset 0 2px 0 #050403, inset 0 -2px 0 #8a8070, inset 2px 0 0 #0a0806, inset -2px 0 0 #6a6152; }
+.pt-menu-plate:active { box-shadow: inset 0 1px 0 #0c0c0c, inset 0 -1px 0 #6a6660, inset 1px 0 0 #0c0c0c, inset -1px 0 0 #6a6660, inset 0 0 0 3px #1a1918; }
 
 .pt-portrait { left: 812px; top: 92px; width: 80px; height: 104px; background: var(--sc-void); }
 .pt-portrait canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
 
-.pt-cmd-frame { left: 935px; top: 31px; width: 192px; height: 192px; }
+.pt-cmd-frame { left: 948px; top: 33px; width: 192px; height: 192px; }
 .pt-cmdcard.sc-cmdcard {
   --sc-cell: 56px;
   position: absolute;
@@ -336,6 +350,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 [data-race="protoss"] .pt-menu-plate {
   left: 812px;
   width: 80px;
+  font-size: 11px;
   clip-path: none;
   border: 2px solid #e8b830;
   border-radius: 4px;
@@ -345,9 +360,23 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   line-height: 20px;
   text-shadow: 0 0 2px rgba(240, 208, 64, 0.55);
 }
-[data-race="protoss"] .pt-cmdcard.sc-cmdcard { padding: 0; gap: 10px; border: 0; border-radius: 0; background: none; box-shadow: none; }
-[data-race="protoss"] .pt-cmdcard .sc-cmd,
-[data-race="protoss"] .pt-cmdcard .sc-cmd--empty { background: rgba(0, 6, 18, 0.35); box-shadow: none; }
+/* 3×3 mørke ruter (#02060c) skilt av 2 px cyan/blå rør */
+[data-race="protoss"] .pt-cmdcard.sc-cmdcard {
+  --sc-cell: 60px;
+  padding: 0;
+  gap: 2px;
+  border: 2px solid #2a8ad8;
+  border-radius: 2px;
+  background: #2a8ad8;
+  box-shadow: 0 0 0 1px #003366, inset 0 0 0 1px #003366;
+}
+[data-race="protoss"] .pt-cmdcard .sc-cmd { background: #02060c; box-shadow: inset 0 0 0 1px #003366; border-radius: 0; }
+[data-race="protoss"] .pt-cmdcard .sc-cmd--empty {
+  background:
+    repeating-linear-gradient(0deg, rgba(42, 138, 216, 0.16) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(42, 138, 216, 0.06) 0 1px, transparent 1px 7px),
+    #02060c;
+}
 [data-race="protoss"] .pt-screen__queue {
   display: block;
   position: absolute;
@@ -384,7 +413,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 .pt-gamemenu:focus { outline: none; }
 .pt-gamemenu .sc-dialog__title { text-align: center; }
 .pt-gamemenu__list { display: flex; flex-direction: column; gap: 10px; padding: 0 22px 18px; }
-.pt-gamemenu__list .sc-btn { width: 100%; height: 40px; font-size: 18px; }
+.pt-gamemenu__list .sc-btn { width: 100%; height: 40px; font-size: 16px; }
 .pt-gamemenu__list .pt-gamemenu__return { margin-top: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
