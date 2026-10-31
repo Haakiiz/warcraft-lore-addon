@@ -1,0 +1,372 @@
+/* =========================================================================
+   Terran-briefing (arbeider D)
+   Bruker tokens.css. Lokale tokens har prefikset --x-.
+   ========================================================================= */
+
+:root {
+  --x-bf-w: 1280px;
+  --x-bf-h: 720px;
+  --x-bf-wall: #4b5049;          /* grågrønn flis (brukes som fallback-farge) */
+  --x-bf-frame-hi: var(--sc-metal-5);
+  --x-bf-frame-mid: var(--sc-metal-3);
+  --x-bf-frame-lo: var(--sc-metal-1);
+  --x-bf-crt-bezel: #15171a;
+  --x-bf-term: var(--sc-text-stat);
+}
+
+.bf-body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--sc-void);
+}
+
+/* 16:9-scene, skaleres av JS til vinduet (letterbox) */
+.bf-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--sc-void);
+}
+.bf-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--x-bf-w);
+  height: var(--x-bf-h);
+  overflow: hidden;
+  background: var(--x-bf-wall);
+  font-family: var(--sc-font-ui);
+  color: var(--sc-text-body);
+}
+
+/* ---------- Bakgrunnsrom ---------- */
+.bf-room {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  display: block;
+}
+.bf-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 72% 78% at 58% 42%, transparent 52%, rgba(0, 0, 0, 0.55) 82%, rgba(0, 0, 0, 0.92) 100%),
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.10) 2px 3px);
+}
+
+/* ---------- CRT-monitorer på maskinen ---------- */
+.bf-monitor {
+  position: absolute;
+  padding: 7px 8px 9px;
+  background:
+    linear-gradient(180deg, #3a3d40 0, #24272a 30%, #121416 100%);
+  border-radius: 16px / 20px;           /* CRT-unntak */
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.16),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.8),
+    0 0 0 1px #050607,
+    2px 3px 0 rgba(0, 0, 0, 0.55);
+}
+.bf-monitor::after {                    /* liten bolt/indikator under skjermen */
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: 3px;
+  width: 3px;
+  height: 3px;
+  background: var(--sc-led-amber);
+  box-shadow: 0 0 2px var(--sc-led-amber);
+}
+.bf-monitor__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #020403;
+  border-radius: var(--sc-radius-crt) / 14px;
+  box-shadow:
+    inset 0 0 0 1px #000,
+    inset 0 0 6px rgba(0, 0, 0, 0.95);
+}
+.bf-monitor__screen::before {           /* skanlinjer */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0 1px, transparent 1px 3px);
+}
+.bf-monitor__screen::after {            /* glasskurve: svakt høylys oppe til venstre */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 90% 70% at 30% 18%, rgba(170, 255, 170, 0.10), transparent 60%),
+    radial-gradient(ellipse 120% 120% at 50% 50%, transparent 62%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.bf-monitor--main  { left: 664px; top: 104px; width: 196px; height: 140px; transform: rotate(-2deg); }
+.bf-monitor--left  { left: 576px; top: 286px; width: 116px; height: 86px;  transform: perspective(400px) rotateY(24deg) rotate(-9deg); }
+.bf-monitor--right { left: 860px; top: 318px; width: 120px; height: 74px;  transform: perspective(400px) rotateY(-26deg) rotate(10deg); }
+
+.bf-term {
+  position: absolute;
+  left: 8px;
+  right: 6px;
+  bottom: 6px;
+  font-family: var(--sc-font-led);
+  font-size: 11px;
+  line-height: 10px;
+  color: var(--x-bf-term);
+  text-shadow: var(--sc-glow-stat);
+  white-space: pre;
+  overflow: hidden;
+}
+.bf-monitor--main .bf-term { font-size: 12px; line-height: 11px; top: 8px; bottom: 8px; display: flex; flex-direction: column; justify-content: flex-end; }
+.bf-monitor--left .bf-term,
+.bf-monitor--right .bf-term { top: 6px; display: flex; flex-direction: column; justify-content: flex-end; }
+.bf-term__dim { color: var(--sc-text-stat-dim); }
+.bf-term__bar { display: block; height: 4px; margin: 2px 0; background: var(--sc-text-stat-dim); box-shadow: var(--sc-glow-stat); }
+
+/* ---------- Tittel ---------- */
+.bf-title {
+  position: absolute;
+  left: 212px;
+  top: 16px;
+  margin: 0;
+}
+.bf-title__kicker {
+  margin: 0 0 4px;
+  font-family: var(--sc-font-ui);
+  font-size: var(--sc-fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sc-text-menu);
+  text-shadow: var(--sc-glow-menu);
+}
+.bf-title__main {
+  margin: 0;
+  font-family: var(--sc-font-menu);
+  font-size: var(--sc-fs-lg);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--sc-text-title);
+  text-shadow: 0 1px 0 #000, 1px 0 0 #000, 0 0 3px rgba(230, 230, 230, 0.35);
+}
+
+/* ---------- Portretter ---------- */
+.bf-portraits {
+  position: absolute;
+  left: 22px;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+.bf-portrait {
+  position: relative;
+  margin: 0;
+  width: 168px;
+  padding: 8px 8px 4px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(135deg, var(--sc-metal-4) 0, var(--sc-metal-3) 18%, var(--sc-metal-2) 55%, var(--sc-metal-1) 100%);
+  clip-path: polygon(var(--sc-bevel) 0, calc(100% - var(--sc-bevel)) 0, 100% var(--sc-bevel), 100% calc(100% - var(--sc-bevel)), calc(100% - var(--sc-bevel)) 100%, var(--sc-bevel) 100%, 0 calc(100% - var(--sc-bevel)), 0 var(--sc-bevel));
+  box-shadow: inset 1px 1px 0 var(--x-bf-frame-hi), inset -1px -1px 0 #000;
+}
+/* nagler i hjørnene */
+.bf-portrait::before,
+.bf-portrait::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 3px;
+  height: 3px;
+  background: var(--sc-rivet);
+  box-shadow: 0 1px 0 #000;
+}
+.bf-portrait::before { left: 10px; }
+.bf-portrait::after  { right: 10px; }
+
+.bf-portrait__screen {
+  position: relative;
+  height: 106px;
+  background: var(--sc-void);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px var(--sc-metal-1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bf-portrait__screen canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  opacity: 0.55;
+  transition: opacity var(--sc-fast) var(--sc-step);
+}
+.bf-portrait__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 2px);
+}
+.bf-portrait__name {
+  margin: 3px 0 0;
+  font-family: var(--sc-font-ui);
+  font-size: var(--sc-fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--sc-text-title);
+  text-shadow: 0 1px 0 #000;
+}
+/* den som snakker: grønn kant, klart bilde */
+.bf-portrait.is-speaking .bf-portrait__screen {
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 3px var(--sc-text-stat), 0 0 0 1px var(--sc-text-stat-dim);
+}
+.bf-portrait.is-speaking .bf-portrait__screen canvas { opacity: 1; }
+.bf-portrait.is-speaking .bf-portrait__name { color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); }
+
+/* ---------- Tekstfelt (svart CRT-aktig) ---------- */
+.bf-textbox {
+  position: absolute;
+  left: 212px;
+  top: 486px;
+  width: 712px;
+  height: 214px;
+  box-sizing: border-box;
+  padding: 6px;
+  background:
+    linear-gradient(135deg, var(--sc-metal-4) 0, var(--sc-metal-3) 10%, var(--sc-metal-2) 50%, var(--sc-metal-1) 100%);
+  clip-path: polygon(var(--sc-bevel) 0, calc(100% - var(--sc-bevel)) 0, 100% var(--sc-bevel), 100% calc(100% - var(--sc-bevel)), calc(100% - var(--sc-bevel)) 100%, var(--sc-bevel) 100%, 0 calc(100% - var(--sc-bevel)), 0 var(--sc-bevel));
+  box-shadow: inset 1px 1px 0 var(--x-bf-frame-hi), inset -1px -1px 0 #000;
+  display: flex;
+  flex-direction: column;
+}
+.bf-textbox__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 6px 5px;
+  font-size: var(--sc-fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sc-text-title);
+  text-shadow: 0 1px 0 #000;
+}
+.bf-textbox__chan { color: var(--sc-led-amber); text-shadow: 0 0 2px rgba(255, 176, 32, 0.5); }
+.bf-textbox__body {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  padding: 12px 18px;
+  background: var(--sc-void);
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 1px #000,
+    inset 1px 1px 0 2px var(--sc-metal-1),
+    inset -1px -1px 0 1px var(--sc-metal-3);
+  font-family: var(--sc-font-ui);
+  font-size: 15px;
+  line-height: 21px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12px);
+  color: var(--sc-text-menu);
+  text-shadow: var(--sc-glow-menu);
+}
+.bf-textbox__body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+}
+.bf-line { margin: 0 0 8px; }
+.bf-line__who {
+  color: var(--sc-text-stat);
+  text-shadow: var(--sc-glow-stat);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--sc-fs-sm);
+}
+.bf-line.is-old { color: var(--sc-text-menu-dim); text-shadow: none; }
+.bf-line.is-old .bf-line__who { color: var(--sc-text-stat-dim); text-shadow: none; }
+.bf-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: var(--sc-text-menu);
+  box-shadow: 0 0 2px rgba(185, 217, 75, 0.6);
+  animation: bf-blink 900ms steps(1, end) infinite;
+}
+@keyframes bf-blink { 50% { opacity: 0; } }
+
+/* ---------- Knapper ---------- */
+.bf-actions {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bf-actions .sc-btn { width: 100%; }
+
+/* Reserve-stil hvis components.css mangler (spesifisitet 0 via :where, så .sc-btn--red fra A vinner) */
+:where(.bf-actions) :where(.sc-btn) {
+  display: block;
+  box-sizing: border-box;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--sc-void);
+  border: 1px solid var(--sc-red);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px var(--sc-red-dark), 0 0 0 1px #000;
+  font-family: var(--sc-font-menu);
+  font-size: var(--sc-fs-md);
+  font-weight: 400;
+  color: var(--sc-text-menu);
+  text-shadow: var(--sc-glow-menu);
+  cursor: pointer;
+}
+:where(.bf-actions) :where(.sc-btn):hover,
+:where(.bf-actions) :where(.sc-btn):focus-visible {
+  color: var(--sc-text-menu-hot);
+  border-color: var(--sc-red-hot);
+  outline: none;
+}
+:where(.bf-actions) :where(.sc-btn):active { transform: translateY(1px); }
+
+/* ---------- Overgang ved Start Mission ---------- */
+.bf-fade {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--sc-void);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms var(--sc-step);
+  font-family: var(--sc-font-menu);
+  font-size: var(--sc-fs-lg);
+  color: var(--sc-text-menu);
+  text-shadow: var(--sc-glow-menu);
+}
+.bf-fade.is-on { opacity: 1; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bf-cursor { animation: none; }
+}

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stellar Command Interface</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<canvas id="ixSky" aria-hidden="true"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ix-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:#ffffff"/>
+      <stop offset=".38" style="stop-color:var(--sc-text-title)"/>
+      <stop offset=".52" style="stop-color:var(--sc-metal-3)"/>
+      <stop offset=".62" style="stop-color:var(--sc-metal-5)"/>
+      <stop offset="1" style="stop-color:var(--sc-metal-2)"/>
+    </linearGradient>
+    <filter id="ix-emboss" x="-5%" y="-20%" width="110%" height="140%">
+      <feDropShadow dx="1.2" dy="1.6" stdDeviation="0" flood-color="#000" flood-opacity=".95"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="ix-wrap">
+  <!-- ===================== Hero: spillets hovedmeny ===================== -->
+  <header class="ix-hero">
+    <button class="ix-sound" type="button" data-sfx-toggle data-label-on="Sound: On" data-label-off="Sound: Off" aria-pressed="true">Sound: On</button>
+
+    <div class="ix-header ix-plate sc-panel--metal">
+      <div class="ix-hazard"></div>
+      <div class="ix-header__center">
+        <svg class="ix-logo" viewBox="0 0 420 46" role="img" aria-label="Stellar Command">
+          <g filter="url(#ix-emboss)" font-family="Michroma, sans-serif" fill="url(#ix-silver)" stroke="#0a0a0a" stroke-width="1" paint-order="stroke">
+            <text x="6" y="34" font-size="28" textLength="196" lengthAdjust="spacingAndGlyphs"><tspan font-size="36">S</tspan>TELLAR</text>
+            <text x="218" y="34" font-size="28" textLength="196" lengthAdjust="spacingAndGlyphs"><tspan font-size="36">C</tspan>OMMAND</text>
+            <rect x="8" y="39" width="404" height="2" fill="url(#ix-silver)" stroke="none"/>
+          </g>
+        </svg>
+        <div class="ix-subtitle">&ndash; Interface System &ndash;</div>
+      </div>
+      <div class="ix-hazard"></div>
+      <div class="ix-header__lamps ix-header__lamps--l"><i class="ix-lamp"></i><i class="ix-lamp ix-lamp--amber"></i><i class="ix-lamp ix-lamp--off"></i></div>
+      <div class="ix-header__lamps"><i class="ix-lamp ix-lamp--off"></i><i class="ix-lamp ix-lamp--amber"></i><i class="ix-lamp"></i></div>
+      <i class="ix-rivet" style="left:10px;top:8px"></i><i class="ix-rivet" style="right:10px;top:8px"></i>
+      <i class="ix-rivet" style="left:10px;bottom:8px"></i><i class="ix-rivet" style="right:10px;bottom:8px"></i>
+    </div>
+
+    <nav class="ix-menu" aria-label="Design system">
+      <a class="sc-menu-link" href="components.html" style="left:330px;top:170px">Components</a>
+      <a class="sc-menu-link" href="patterns/main-menu.html" style="left:236px;top:270px">Main Menu</a>
+      <a class="sc-menu-link" href="patterns/ingame.html" style="left:400px;top:372px">In-Game Console</a>
+      <a class="sc-menu-link" href="patterns/battlenet.html" style="left:560px;top:470px">Network Login</a>
+      <a class="sc-menu-link" href="patterns/briefing.html" style="left:830px;top:560px">Briefing Room</a>
+      <a class="sc-menu-link" href="#colors" style="left:214px;top:500px">Colors</a>
+      <a class="sc-menu-link" href="#type" style="left:186px;top:538px">Typography</a>
+      <a class="sc-menu-link" href="#races" style="left:200px;top:576px">Race Themes</a>
+    </nav>
+
+    <div class="ix-arm" aria-hidden="true"><i class="h"></i><i class="v"></i><i class="j"></i><i class="k"></i></div>
+    <aside class="ix-news sc-dialog sc-dialog--red">
+      <div class="sc-dialog__body">
+        <h2>STELLAR COMMAND</h2>
+        <div class="ix-welcome">Welcome Commander</div>
+        <div class="ix-item">
+          <div class="ix-thumb sc-crt">
+            <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><g fill="none" stroke="var(--sc-icon-yellow)" stroke-width="3"><circle cx="20" cy="15" r="11"/><path d="M14 15h12M21 10l5 5-5 5"/></g></svg>
+          </div>
+          <div><h3>Component Library</h3><p>Buttons, dialogs, metal plates, command card, resource bar and LED readouts.</p></div>
+        </div>
+        <div class="ix-item">
+          <div class="ix-thumb sc-crt">
+            <svg width="44" height="30" viewBox="0 0 44 30" aria-hidden="true"><g fill="none" stroke="var(--sc-icon-green)" stroke-width="1"><path d="M4 26 14 6h16l10 20z"/><path d="M14 6v20M30 6v20M9 16h26"/></g></svg>
+          </div>
+          <div><h3>Screen Patterns</h3><p>Main menu, in-game console, network login and mission briefing.</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="ix-version">Interface System 1.0.0 | nbNO</div>
+  </header>
+
+  <!-- ===================== Farger ===================== -->
+  <section id="colors" class="ix-section sc-dialog sc-dialog--red">
+    <div class="sc-dialog__body">
+      <h2 class="ix-h">Colors <span class="ix-code">SYS.01</span></h2>
+      <div id="ixColors"></div>
+    </div>
+  </section>
+
+  <!-- ===================== Typografi ===================== -->
+  <section id="type" class="ix-section sc-dialog sc-dialog--red">
+    <div class="sc-dialog__body">
+      <h2 class="ix-h">Typography <span class="ix-code">SYS.02</span></h2>
+      <div class="ix-type">
+        <div class="ix-meta"><b>Menu</b>Michroma &middot; wide, thin<br><code>--sc-font-menu</code></div>
+        <div class="ix-s-menu"><span>Single Player</span><span>Multiplayer</span><span>Exit</span></div>
+
+        <div class="ix-meta"><b>Interface</b>Oxanium 400<br><code>--sc-font-ui</code></div>
+        <div class="ix-s-ui">
+          <div class="t">Terran Command Center</div>
+          <div class="s">Supplies Used: <span class="g">20</span> &nbsp; Supplies Max: <span class="g">200</span> &nbsp; <span class="g">1500/1500</span></div>
+          <div class="s y">Save Game &middot; Load Game &middot; Return to Game (Esc)</div>
+        </div>
+
+        <div class="ix-meta"><b>LED / dot matrix</b>VT323 + dot mask<br><code>--sc-font-led</code></div>
+        <div><span class="ix-s-led"><span class="sc-led ix-dots">Welcome to stellar.net</span></span></div>
+
+        <div class="ix-meta"><b>Network form</b>Tinos 700<br><code>--sc-font-form</code></div>
+        <div><div class="ix-s-form"><div class="l">Name:</div><div class="f">Raynor_77</div><div class="l">Password:</div><div class="f"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Rase-temaer ===================== -->
+  <section id="races" class="ix-section sc-dialog sc-dialog--red">
+    <div class="sc-dialog__body">
+      <h2 class="ix-h">Race Themes <span class="ix-code">SYS.03</span></h2>
+      <div class="ix-race-switch" role="group" aria-label="Page theme">
+        <button class="sc-btn sc-btn--red" type="button" data-set-race="terran" aria-pressed="true">Terran</button>
+        <button class="sc-btn sc-btn--red" type="button" data-set-race="protoss" aria-pressed="false">Protoss</button>
+        <button class="sc-btn sc-btn--red" type="button" data-set-race="zerg" aria-pressed="false">Zerg</button>
+        <span class="ix-current" id="ixRaceNow">data-race="terran"</span>
+      </div>
+      <div class="ix-races">
+        <div class="ix-race ix-plate sc-panel--metal" data-race="terran">
+          <div class="sc-crt">
+            <svg class="ix-wire" viewBox="0 0 54 46" aria-hidden="true"><path d="M6 38 16 18h22l10 20z"/><rect x="18" y="8" width="18" height="10"/><path d="M16 18v20M38 18v20M11 28h32M27 8V3"/></svg>
+            <div><div class="n">Terran Barracks</div><div class="hp">886/1000</div></div>
+          </div>
+          <div class="ix-race__foot"><span class="ix-race__tag">Terran</span><div class="ix-hazard"></div><i class="ix-lamp"></i><i class="ix-lamp ix-lamp--amber"></i></div>
+          <i class="ix-rivet" style="left:5px;top:5px"></i><i class="ix-rivet" style="right:5px;top:5px"></i>
+        </div>
+        <div class="ix-race ix-plate sc-panel--metal" data-race="protoss">
+          <div class="sc-crt">
+            <svg class="ix-wire" viewBox="0 0 54 46" aria-hidden="true"><path d="M27 4 46 24 27 42 8 24z"/><path d="M27 12 38 24 27 34 16 24z"/><circle cx="27" cy="24" r="3"/></svg>
+            <div><div class="n">Protoss Nexus</div><div class="hp">750/750 &nbsp;750/750</div></div>
+          </div>
+          <div class="ix-race__foot"><span class="ix-race__tag">Protoss</span><div class="ix-hazard"></div><i class="ix-lamp"></i><i class="ix-lamp ix-lamp--amber"></i></div>
+          <i class="ix-rivet" style="left:5px;top:5px"></i><i class="ix-rivet" style="right:5px;top:5px"></i>
+        </div>
+        <div class="ix-race ix-plate sc-panel--metal" data-race="zerg">
+          <div class="sc-crt">
+            <svg class="ix-wire" viewBox="0 0 54 46" aria-hidden="true"><path d="M8 34c4-16 12-24 19-24s15 8 19 24"/><path d="M14 34c3-9 8-14 13-14s10 5 13 14M6 40h42"/><circle cx="27" cy="27" r="3"/></svg>
+            <div><div class="n">Zerg Hatchery</div><div class="hp">1250/1250</div></div>
+          </div>
+          <div class="ix-race__foot"><span class="ix-race__tag">Zerg</span><div class="ix-hazard"></div><i class="ix-lamp"></i><i class="ix-lamp ix-lamp--amber"></i></div>
+          <i class="ix-rivet" style="left:5px;top:5px"></i><i class="ix-rivet" style="right:5px;top:5px"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ix-footer">Original look recreated with CSS, inline SVG, canvas and Web Audio. No game assets.</footer>
+</div>
+
+<script src="js/sc-audio.js"></script>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  function v(name, el) { return getComputedStyle(el || root).getPropertyValue(name).trim(); }
+
+  /* ---------- verdensrom: stjerner, rød/lilla tåke, planet ---------- */
+  var sky = document.getElementById("ixSky"), g = sky.getContext("2d");
+  function seeded(s) { return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
+  function paintSky() {
+    var w = sky.width = window.innerWidth, h = sky.height = window.innerHeight, rnd = seeded(42);
+    g.fillStyle = "#000"; g.fillRect(0, 0, w, h);
+    function neb(x, y, r, c, a) {
+      var gr = g.createRadialGradient(x, y, 0, x, y, r);
+      gr.addColorStop(0, "rgba(" + c + "," + a + ")"); gr.addColorStop(1, "rgba(" + c + ",0)");
+      g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+    for (var i = 0; i < 26; i++) neb(w * (0.62 + rnd() * 0.4), h * (rnd() * 0.55), 40 + rnd() * 130, "150,14,18", 0.05 + rnd() * 0.08);
+    for (var j = 0; j < 14; j++) neb(w * (rnd() * 0.45), h * (0.2 + rnd() * 0.5), 30 + rnd() * 90, "110,10,30", 0.03 + rnd() * 0.05);
+    for (var k = 0; k < 8; k++) neb(w * (0.55 + rnd() * 0.25), h * (0.75 + rnd() * 0.2), 30 + rnd() * 70, "60,30,120", 0.05 + rnd() * 0.06);
+    for (var n = 0; n < w * h / 900; n++) {
+      var b = rnd(); g.fillStyle = b > 0.97 ? "rgba(200,220,255,0.95)" : "rgba(255,255,255," + (0.15 + b * 0.5).toFixed(2) + ")";
+      g.fillRect(rnd() * w | 0, rnd() * h | 0, b > 0.985 ? 2 : 1, 1);
+    }
+    // planet nederst til venstre
+    var px = w * 0.08, py = h * 1.18, pr = h * 0.62;
+    var pg = g.createRadialGradient(px + pr * 0.35, py - pr * 0.55, pr * 0.1, px, py, pr);
+    pg.addColorStop(0, "#5a6a80"); pg.addColorStop(0.45, "#26303e"); pg.addColorStop(0.85, "#0b0f16"); pg.addColorStop(1, "#05070a");
+    g.fillStyle = pg; g.beginPath(); g.arc(px, py, pr, 0, Math.PI * 2); g.fill();
+    for (var q = 0; q < 900; q++) { // bylys / skyer
+      var a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * pr * 0.95, x = px + Math.cos(a) * rr, y = py + Math.sin(a) * rr;
+      if (y > h) continue;
+      g.fillStyle = rnd() > 0.5 ? "rgba(255,150,60,0.35)" : "rgba(180,200,230,0.12)";
+      g.fillRect(x | 0, y | 0, 1, 1);
+    }
+    g.strokeStyle = "rgba(140,170,255,0.5)"; g.lineWidth = 2;
+    g.beginPath(); g.arc(px, py, pr + 1, Math.PI * 1.2, Math.PI * 1.95); g.stroke();
+    g.strokeStyle = "rgba(140,170,255,0.15)"; g.lineWidth = 6;
+    g.beginPath(); g.arc(px, py, pr + 4, Math.PI * 1.2, Math.PI * 1.95); g.stroke();
+  }
+  paintSky(); window.addEventListener("resize", paintSky);
+
+  /* ---------- fargeprøver fra tokens ---------- */
+  var groups = [
+    ["Surfaces", ["--sc-void", "--sc-ink", "--sc-ink-2"]],
+    ["Text", ["--sc-text-menu", "--sc-text-menu-hot", "--sc-text-menu-dim", "--sc-text-stat", "--sc-text-stat-dim", "--sc-text-button", "--sc-text-title", "--sc-text-body", "--sc-text-muted", "--sc-text-warn", "--sc-text-danger"]],
+    ["Accents", ["--sc-red", "--sc-red-dark", "--sc-red-hot", "--sc-blue", "--sc-blue-dark", "--sc-blue-hot", "--sc-icon-yellow", "--sc-icon-green", "--sc-mineral", "--sc-gas"]],
+    ["Metal (current race)", ["--sc-metal-1", "--sc-metal-2", "--sc-metal-3", "--sc-metal-4", "--sc-metal-5", "--sc-metal-tint", "--sc-rivet", "--sc-hazard-a", "--sc-hazard-b", "--sc-led-red", "--sc-led-amber"]],
+    ["Rust (network)", ["--sc-rust-1", "--sc-rust-2", "--sc-rust-3", "--sc-rust-4", "--sc-led-green"]]
+  ];
+  function renderColors() {
+    var host = document.getElementById("ixColors"); host.innerHTML = "";
+    groups.forEach(function (grp) {
+      var h = document.createElement("div"); h.className = "ix-sub"; h.textContent = grp[0]; host.appendChild(h);
+      var grid = document.createElement("div"); grid.className = "ix-swatches";
+      grp[1].forEach(function (name) {
+        var val = v(name).toUpperCase();
+        var sw = document.createElement("div"); sw.className = "ix-sw";
+        sw.innerHTML = '<div class="ix-sw__chip" style="background:var(' + name + ')"></div><div class="ix-sw__name"></div><div class="ix-sw__hex"></div>';
+        sw.querySelector(".ix-sw__name").textContent = name.replace("--sc-", "");
+        sw.querySelector(".ix-sw__hex").textContent = val;
+        grid.appendChild(sw);
+      });
+      host.appendChild(grid);
+    });
+  }
+  renderColors();
+
+  /* ---------- rase-bytter ---------- */
+  var now = document.getElementById("ixRaceNow");
+  function setRace(r) {
+    if (r === "terran") root.removeAttribute("data-race"); else root.setAttribute("data-race", r);
+    document.querySelectorAll("[data-set-race]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-set-race") === r)); });
+    now.textContent = 'data-race="' + r + '"';
+    renderColors();
+    try { localStorage.setItem("sc-race", r); } catch (e) {}
+  }
+  document.querySelectorAll("[data-set-race]").forEach(function (b) {
+    b.addEventListener("click", function () { setRace(b.getAttribute("data-set-race")); });
+  });
+  try { var saved = localStorage.getItem("sc-race"); if (saved && saved !== "terran") setRace(saved); } catch (e) {}
+})();
+</script>
+</body>
+</html>

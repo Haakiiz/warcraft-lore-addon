@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="no" data-race="terran">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komponentkatalog</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  /* ---- Kun katalogoppsett (ikke en del av komponent-API-et) ---- */
+  body { background: var(--sc-void); }
+  .x-wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px 60px; box-sizing: border-box; }
+  .x-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 0 12px; border-bottom: 1px solid var(--sc-metal-2); margin-bottom: 18px;
+  }
+  .x-logo { font-family: var(--sc-font-menu); font-size: var(--sc-fs-lg); letter-spacing: 3px; color: var(--sc-text-title);
+    text-shadow: 0 0 2px rgba(230,230,230,.35); }
+  .x-logo small { display: block; font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); letter-spacing: 2px; color: var(--sc-text-menu); text-shadow: var(--sc-glow-menu); }
+  .x-race { display: flex; gap: 6px; align-items: center; }
+  .x-race .sc-btn--blue { width: auto; min-height: 26px; font-size: var(--sc-fs-sm); padding: 2px 12px; }
+  .x-race .sc-btn--blue[aria-pressed="true"] { border-color: var(--sc-blue-hot); background: color-mix(in srgb, var(--sc-blue) 45%, transparent); color: #fff; }
+  .x-race-label { font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); color: var(--sc-text-menu-dim); letter-spacing: 2px; margin-right: 4px; }
+
+  .x-sec { margin: 0 0 26px; }
+  .x-h { font-family: var(--sc-font-ui); font-weight: 400; font-size: var(--sc-fs-xs); letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sc-text-menu); text-shadow: var(--sc-glow-menu); margin: 0 0 8px; display: flex; gap: 10px; align-items: center; }
+  .x-h::before { content: ""; width: 6px; height: 6px; background: var(--sc-red); box-shadow: 0 0 0 1px #000; }
+  .x-h::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--sc-metal-3), transparent); }
+  .x-cap { font-family: var(--sc-font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sc-text-stat-dim); text-transform: uppercase; margin-top: 4px; }
+  .x-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start; }
+  .x-cell { display: flex; flex-direction: column; align-items: center; }
+  .x-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* Demobakgrunner */
+  .x-space {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 34% 72%, #cfd8ff, transparent),
+      radial-gradient(1px 1px at 58% 12%, #fff, transparent), radial-gradient(1px 1px at 81% 44%, #ffe8e8, transparent),
+      radial-gradient(1px 1px at 91% 86%, #fff, transparent), radial-gradient(1px 1px at 22% 90%, #aab, transparent),
+      radial-gradient(1px 1px at 70% 66%, #fff, transparent), radial-gradient(1px 1px at 5% 50%, #ccd, transparent),
+      radial-gradient(1px 1px at 46% 40%, #889, transparent), radial-gradient(1px 1px at 64% 92%, #aab, transparent),
+      radial-gradient(ellipse 45% 35% at 85% 10%, rgba(120, 10, 20, .45), transparent 70%),
+      radial-gradient(ellipse 35% 30% at 10% 80%, rgba(70, 10, 60, .35), transparent 70%),
+      var(--sc-void);
+    box-shadow: inset 0 0 0 1px var(--sc-metal-1);
+  }
+  .x-terrain {
+    position: relative; overflow: hidden;
+    background-color: var(--x-terrain-1);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 1px, transparent 1px 3px),
+      linear-gradient(30deg, var(--x-terrain-2) 12%, transparent 12.5%, transparent 87%, var(--x-terrain-2) 87.5%),
+      linear-gradient(150deg, var(--x-terrain-2) 12%, transparent 12.5%, transparent 87%, var(--x-terrain-2) 87.5%),
+      linear-gradient(30deg, var(--x-terrain-2) 12%, transparent 12.5%, transparent 87%, var(--x-terrain-2) 87.5%),
+      linear-gradient(150deg, var(--x-terrain-2) 12%, transparent 12.5%, transparent 87%, var(--x-terrain-2) 87.5%),
+      linear-gradient(60deg, var(--x-terrain-3) 25%, transparent 25.5%, transparent 75%, var(--x-terrain-3) 75%),
+      linear-gradient(60deg, var(--x-terrain-3) 25%, transparent 25.5%, transparent 75%, var(--x-terrain-3) 75%);
+    background-size: auto, 56px 98px, 56px 98px, 56px 98px, 56px 98px, 56px 98px, 56px 98px;
+    background-position: 0 0, 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+    box-shadow: inset 0 0 0 1px var(--sc-metal-1);
+  }
+
+  /* Dialogscene */
+  #dialoger .x-stage { height: 380px; display: grid; place-items: center; }
+  .x-red-dialog { width: 470px; min-height: 270px; }
+  .x-blue-dialog { width: 330px; }
+  .x-menu-scatter { position: absolute; inset: 0; pointer-events: none; }
+  .x-menu-scatter .sc-menu-link { position: absolute; pointer-events: auto; }
+
+  /* Konsollscene */
+  .x-console-scene { height: 330px; }
+  .x-console-scene .sc-resources { position: absolute; top: 6px; right: 16px; }
+  .x-console { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: flex-end; gap: 0; }
+  .x-con-left { width: 230px; height: 176px; display: flex; flex-direction: column; gap: 8px; }
+  .x-con-mid { flex: 1; height: 150px; display: flex; gap: 10px; padding: 16px 18px 14px; }
+  .x-con-right { width: 230px; height: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .x-minimap { flex: 1; border-radius: 3px; background:
+      radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 36% 46%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 72% 30%, var(--sc-text-danger) 0 2px, transparent 3px),
+      linear-gradient(var(--x-terrain-2), var(--x-terrain-2)) 22% 30% / 40% 34% no-repeat,
+      var(--sc-void);
+    box-shadow: inset 0 0 0 1px #000, 0 0 0 2px var(--sc-metal-1), 1px 1px 0 2px color-mix(in srgb, var(--sc-metal-5) 50%, transparent); position: relative; }
+  .x-minimap::after { content: ""; position: absolute; left: 20%; top: 26%; width: 30%; height: 22%; box-shadow: 0 0 0 1px var(--sc-text-title); }
+  .x-con-mid .sc-crt { flex: 1; display: grid; grid-template-columns: 120px 1fr; grid-template-rows: auto 1fr; column-gap: 12px; }
+  .x-con-mid .sc-crt .sc-crt__name { grid-column: 2; }
+  .x-con-mid .sc-crt .sc-wireframe { grid-row: 1 / span 2; align-self: center; }
+  .x-con-mid .sc-crt .sc-crt__stats { grid-column: 2; align-self: end; text-align: right; padding-right: 30px; }
+  .x-cmdwrap { position: relative; }
+  .x-cmdwrap .sc-tooltip { position: absolute; left: 2px; top: -32px; z-index: 2; }
+  .x-menu-plate { position: absolute; top: 3px; right: 40px; z-index: 1; }
+  .x-strip { display: flex; gap: 8px; align-items: center; }
+
+  /* Paneler */
+  .x-panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .x-panels > div > [class*="sc-panel"] { height: 150px; display: flex; flex-direction: column; justify-content: space-between; }
+  .x-panel-txt { font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); color: var(--sc-text-title); letter-spacing: 1px; text-shadow: 1px 1px 0 #000; }
+
+  /* Ikonlegende */
+  .x-icons { display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px; }
+  .x-icons .x-cell { gap: 4px; }
+  .x-icon-name { font-family: var(--sc-font-ui); font-size: 10px; color: var(--sc-text-body); letter-spacing: .5px; }
+  .x-icon-name b { font-weight: 400; color: var(--sc-icon-yellow); }
+
+  /* Battle.net */
+  .x-bnet { width: 560px; padding: 16px 18px; }
+  .x-bnet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+  .x-field { margin-bottom: 8px; }
+  .x-bnet-title { text-align: center; font-family: var(--sc-font-form); font-weight: 700; font-size: 12px; color: var(--sc-text-title); text-shadow: 1px 1px 0 #000; }
+  .x-bnet-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+
+  .x-misc { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .x-misc .sc-crt { min-height: 120px; }
+</style>
+</head>
+<body>
+
+<!-- SVG-ikonark for kommandokortet (egne former) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-move" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12.5"/><path d="M8.5 16h13M16.5 10.5l5.5 5.5-5.5 5.5"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12.5"/><path d="M11 11l10 10M21 11L11 21"/></symbol>
+    <symbol id="i-attack" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8"/><path d="M16 2.5v7M16 22.5v7M2.5 16h7M22.5 16h7"/><circle cx="16" cy="16" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-repair" viewBox="0 0 32 32"><path d="M21.9 5.6A5.5 5.5 0 1 0 26.4 10"/><path d="M17.1 14.9L6.5 25.5"/><path d="M6.5 6.5l9 9" stroke-width="2.5"/><path d="M18.5 18.5l6 6" stroke-width="5"/></symbol>
+    <symbol id="i-patrol" viewBox="0 0 32 32"><circle cx="6.5" cy="7.5" r="2.6" fill="currentColor"/><circle cx="25.5" cy="24.5" r="2.6" fill="currentColor"/><path d="M10 10.5l12 10.5" stroke-dasharray="2.5 3.5"/><path d="M19.3 14.2L14 14.3l.9 5.3"/></symbol>
+    <symbol id="i-hold" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12.5"/><path d="M16 8v11M9.5 19.5h13M12.5 23.5h7"/></symbol>
+    <symbol id="i-build" viewBox="0 0 32 32"><path d="M6.5 26l12-12"/><path d="M14 9.5l4.5-4.5 8.5 8.5-4.5 4.5z" fill="currentColor" fill-opacity=".35"/><path d="M5 27.5l2.5-2.5" stroke-width="4"/></symbol>
+    <symbol id="i-gather" viewBox="0 0 32 32"><path d="M16 3.5l6 7-6 9-6-9z" fill="currentColor" fill-opacity=".3"/><path d="M16 21.5v7M12 25l4 4 4-4"/></symbol>
+    <symbol id="i-lift" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12.5"/><path d="M10 18l6-6 6 6M10 22h12"/></symbol>
+  </defs>
+</svg>
+
+<div class="x-wrap">
+  <header class="x-top">
+    <div class="x-logo">STELLAR COMMAND<small>Komponentkatalog · runde 1</small></div>
+    <div class="x-race" role="group" aria-label="Rase">
+      <span class="x-race-label">RASE</span>
+      <button class="sc-btn sc-btn--blue" data-set-race="terran" aria-pressed="true"><span class="sc-hk">T</span>erran</button>
+      <button class="sc-btn sc-btn--blue" data-set-race="protoss" aria-pressed="false"><span class="sc-hk">P</span>rotoss</button>
+      <button class="sc-btn sc-btn--blue" data-set-race="zerg" aria-pressed="false"><span class="sc-hk">Z</span>erg</button>
+    </div>
+  </header>
+
+  <!-- 01 DIALOGER -->
+  <section class="x-sec" id="dialoger">
+    <h2 class="x-h">01 · Dialoger — hovedmeny (rød) og spillmeny (blå)</h2>
+    <div class="x-grid2">
+      <div>
+        <div class="x-space x-stage">
+          <div class="x-menu-scatter">
+            <a class="sc-menu-link" href="#" style="left:40px;top:18px"><span class="sc-hk">S</span>ingle Player</a>
+            <a class="sc-menu-link" href="#" style="left:430px;top:332px">E<span class="sc-hk">x</span>it</a>
+          </div>
+          <div class="sc-dialog sc-dialog--red x-red-dialog" role="dialog" aria-label="Oppdatering">
+            <div class="sc-dialog__body">A field update to version <span class="sc-num">1.08.4</span> is ready! It is required for network play.</div>
+            <div class="sc-dialog__actions">
+              <button class="sc-btn sc-btn--red"><span class="sc-hk">U</span>pgrade</button>
+              <button class="sc-btn sc-btn--red"><span class="sc-hk">C</span>ancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="x-cap">.sc-dialog.sc-dialog--red · .sc-dialog__body · .sc-dialog__actions · .sc-btn--red</div>
+      </div>
+      <div>
+        <div class="x-terrain x-stage">
+          <div class="sc-dialog sc-dialog--blue x-blue-dialog" role="dialog" aria-labelledby="gm-t">
+            <div class="sc-dialog__title" id="gm-t">Game Menu</div>
+            <div class="sc-dialog__actions">
+              <button class="sc-btn sc-btn--blue"><span class="sc-hk">S</span>ave Game</button>
+              <button class="sc-btn sc-btn--blue"><span class="sc-hk">L</span>oad Game</button>
+              <button class="sc-btn sc-btn--blue is-hover"><span class="sc-hk">O</span>ptions</button>
+              <button class="sc-btn sc-btn--blue"><span class="sc-hk">H</span>elp</button>
+              <button class="sc-btn sc-btn--blue" disabled><span class="sc-hk">E</span>nd Mission</button>
+              <button class="sc-btn sc-btn--blue" style="margin-top:14px"><span class="sc-hk">R</span>eturn to Game (Esc)</button>
+            </div>
+          </div>
+        </div>
+        <div class="x-cap">.sc-dialog.sc-dialog--blue · .sc-dialog__title · .sc-btn--blue (Options = hover, End Mission = disabled)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 KONSOLL -->
+  <section class="x-sec" id="konsoll">
+    <h2 class="x-h">02 · Konsoll — ressurslinje, CRT med trådmodell, kommandokort, tooltip</h2>
+    <div class="x-terrain x-console-scene">
+      <div class="sc-resources" aria-label="Ressurser">
+        <span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">384</span></span>
+        <span class="sc-res sc-res--gas"><span class="sc-res__icon"></span><span class="sc-res__val">272</span></span>
+        <span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">94/94</span></span>
+      </div>
+      <div class="x-console">
+        <div class="sc-panel--metal x-con-left">
+          <div class="x-strip"><span class="sc-hazard" style="flex:1"></span><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--amber sc-lamp--blink"></span></div>
+          <div class="x-minimap" aria-label="Minikart"></div>
+        </div>
+        <div class="sc-panel--metal sc-panel--rivets-6 x-con-mid">
+          <span class="sc-plate-label x-menu-plate">MENU</span>
+          <div class="sc-crt">
+            <div class="sc-wireframe">
+              <svg viewBox="0 0 72 60" aria-hidden="true" shape-rendering="geometricPrecision">
+                <path class="wf-face" d="M36 12 60 24 36 36 12 24z"/>
+                <path class="wf-dark" d="M12 24v16l24 12V36zM60 24v16L36 52V36z"/>
+                <path d="M12 24v16l24 12 24-12V24M36 36v16"/>
+                <path d="M16 30l16 8M16 35l16 8M40 38l16-8M40 43l16-8"/>
+                <path class="wf-face" d="M30 9l8-4 8 4-8 4z"/><path d="M30 9v8l8 4 8-4V9M38 13v8"/>
+                <path class="wf-dmg" d="M52 22l4-2v-6l-4 2zM52 16l4-2"/>
+                <ellipse cx="20" cy="47" rx="5" ry="2.5"/><ellipse cx="52" cy="47" rx="5" ry="2.5"/>
+                <path d="M20 44.5v-3M52 44.5v-3M24 27h0M44 18l4 2"/>
+              </svg>
+              <span class="sc-hp">886/1000</span>
+            </div>
+            <div class="sc-crt__name">Terran Barracks</div>
+            <div class="sc-crt__stats">Training: Marine<br>Queue: 2 / 5</div>
+          </div>
+        </div>
+        <div class="sc-panel--metal x-con-right">
+          <div class="x-strip" style="width:100%"><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--off"></span><span class="sc-ribs" style="flex:1"></span><span class="sc-hazard" style="width:56px"></span></div>
+          <div class="x-cmdwrap">
+            <div class="sc-tooltip"><div class="sc-tooltip__title">Build <span class="sc-hk">R</span>ecruit</div>
+              <div class="sc-tooltip__cost"><span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">50</span></span><span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">1</span></span></div></div>
+            <div class="sc-cmdcard" role="toolbar" aria-label="Kommandokort">
+              <button class="sc-cmd" data-hotkey="M" aria-label="Move (M)"><svg><use href="#i-move"/></svg></button>
+              <button class="sc-cmd sc-cmd--white" data-hotkey="S" aria-label="Stop (S)"><svg><use href="#i-stop"/></svg></button>
+              <button class="sc-cmd is-hover" data-hotkey="A" aria-label="Attack (A)"><svg><use href="#i-attack"/></svg></button>
+              <button class="sc-cmd" data-hotkey="R" aria-label="Repair (R)"><svg><use href="#i-repair"/></svg></button>
+              <button class="sc-cmd" data-hotkey="P" aria-label="Patrol (P)"><svg><use href="#i-patrol"/></svg></button>
+              <span class="sc-cmd sc-cmd--empty" aria-hidden="true"></span>
+              <button class="sc-cmd" data-hotkey="H" aria-label="Hold position (H)"><svg><use href="#i-hold"/></svg></button>
+              <button class="sc-cmd sc-cmd--green" data-hotkey="B" aria-label="Build (B)"><svg><use href="#i-build"/></svg></button>
+              <span class="sc-cmd sc-cmd--empty" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="x-cap">.sc-resources/.sc-res · .sc-panel--metal · .sc-hazard · .sc-lamp · .sc-crt · .sc-wireframe + .sc-hp · .sc-cmdcard/.sc-cmd/.sc-cmd--empty · .sc-tooltip (A = hover)</div>
+  </section>
+
+  <!-- 03 KNAPPER OG TILSTANDER -->
+  <section class="x-sec" id="knapper">
+    <h2 class="x-h">03 · Knapper, menylenker og tilstander</h2>
+    <div class="x-row" style="gap:28px">
+      <div class="x-cell"><button class="sc-btn sc-btn--red" style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">red · normal</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--red is-hover" style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">hover</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--red is-active" style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">active</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--red is-focus" style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">focus-visible</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--red" disabled style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">disabled</span></div>
+    </div>
+    <div class="x-row" style="gap:28px;margin-top:14px;padding:12px;background:var(--sc-blue-glass)">
+      <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">blue · normal</span></div>
+      <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue is-hover"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">hover</span></div>
+      <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue is-active"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">active</span></div>
+      <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue is-focus"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">focus-visible</span></div>
+      <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue" disabled><span class="sc-hk">S</span>ave Game</button><span class="x-cap">disabled</span></div>
+    </div>
+    <div class="x-row" style="gap:28px;margin-top:14px">
+      <div class="x-cell"><a class="sc-menu-link" href="#"><span class="sc-hk">M</span>ultiplayer</a><span class="x-cap">menu-link · normal</span></div>
+      <div class="x-cell"><a class="sc-menu-link is-hover" href="#"><span class="sc-hk">M</span>ultiplayer</a><span class="x-cap">hover</span></div>
+      <div class="x-cell"><a class="sc-menu-link is-active" href="#"><span class="sc-hk">M</span>ultiplayer</a><span class="x-cap">active</span></div>
+      <div class="x-cell"><a class="sc-menu-link is-focus" href="#"><span class="sc-hk">M</span>ultiplayer</a><span class="x-cap">focus-visible</span></div>
+      <div class="x-cell"><button class="sc-menu-link" disabled><span class="sc-hk">M</span>ultiplayer</button><span class="x-cap">disabled</span></div>
+    </div>
+    <div class="x-row" style="gap:20px;margin-top:14px">
+      <div class="x-cell"><button class="sc-btn sc-btn--rust"><span class="sc-hk">N</span>ew Account</button><span class="x-cap">rust · normal</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--rust is-hover"><span class="sc-hk">N</span>ew Account</button><span class="x-cap">hover</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--rust is-active"><span class="sc-hk">N</span>ew Account</button><span class="x-cap">active</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--rust is-focus"><span class="sc-hk">N</span>ew Account</button><span class="x-cap">focus-visible</span></div>
+      <div class="x-cell"><button class="sc-btn sc-btn--rust" disabled><span class="sc-hk">N</span>ew Account</button><span class="x-cap">disabled</span></div>
+      <div class="x-cell" style="margin-left:24px"><div class="x-row" style="gap:6px">
+        <button class="sc-cmd" data-hotkey="M"><svg><use href="#i-move"/></svg></button>
+        <button class="sc-cmd is-hover" data-hotkey="M"><svg><use href="#i-move"/></svg></button>
+        <button class="sc-cmd is-active" data-hotkey="M"><svg><use href="#i-move"/></svg></button>
+        <button class="sc-cmd is-focus" data-hotkey="M"><svg><use href="#i-move"/></svg></button>
+        <button class="sc-cmd" disabled data-hotkey="M"><svg><use href="#i-move"/></svg></button>
+        <span class="sc-cmd sc-cmd--empty"></span>
+      </div><span class="x-cap">cmd · normal / hover / active / focus / disabled / empty</span></div>
+    </div>
+  </section>
+
+  <!-- 04 IKONER -->
+  <section class="x-sec" id="ikoner">
+    <h2 class="x-h">04 · Kommandokort-ikoner (inline-SVG, egne former)</h2>
+    <div class="x-icons">
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="M"><svg><use href="#i-move"/></svg></span><span class="x-icon-name"><b>M</b>ove</span></div>
+      <div class="x-cell"><span class="sc-cmd sc-cmd--white" data-hotkey="S"><svg><use href="#i-stop"/></svg></span><span class="x-icon-name"><b>S</b>top</span></div>
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="A"><svg><use href="#i-attack"/></svg></span><span class="x-icon-name"><b>A</b>ttack</span></div>
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="R"><svg><use href="#i-repair"/></svg></span><span class="x-icon-name"><b>R</b>epair</span></div>
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="P"><svg><use href="#i-patrol"/></svg></span><span class="x-icon-name"><b>P</b>atrol</span></div>
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="H"><svg><use href="#i-hold"/></svg></span><span class="x-icon-name"><b>H</b>old</span></div>
+      <div class="x-cell"><span class="sc-cmd sc-cmd--green" data-hotkey="B"><svg><use href="#i-build"/></svg></span><span class="x-icon-name"><b>B</b>uild</span></div>
+      <div class="x-cell"><span class="sc-cmd sc-cmd--green" data-hotkey="G"><svg><use href="#i-gather"/></svg></span><span class="x-icon-name"><b>G</b>ather</span></div>
+      <div class="x-cell"><span class="sc-cmd" data-hotkey="L"><svg><use href="#i-lift"/></svg></span><span class="x-icon-name"><b>L</b>ift off</span></div>
+    </div>
+  </section>
+
+  <!-- 05 PANELER -->
+  <section class="x-sec" id="paneler">
+    <h2 class="x-h">05 · Paneler — metall (Terran / Protoss / Zerg) og rust</h2>
+    <div class="x-panels">
+      <div><div class="sc-panel--metal sc-panel--rivets-6"><span class="sc-hazard"></span><span class="x-panel-txt">.sc-panel--metal · aktiv rase</span><span class="sc-ribs"></span></div><div class="x-cap">følger &lt;html data-race&gt;</div></div>
+      <div data-race="terran"><div class="sc-panel--metal"><div class="x-strip"><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--amber"></span><span class="sc-lamp sc-lamp--off"></span><span class="sc-pipe" style="flex:1"></span></div><span class="x-panel-txt">TERRAN</span><span class="sc-hazard"></span></div><div class="x-cap">data-race="terran"</div></div>
+      <div data-race="protoss"><div class="sc-panel--metal"><div class="x-strip"><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--amber"></span><span class="sc-pipe" style="flex:1"></span></div><span class="x-panel-txt">PROTOSS</span><span class="sc-hazard"></span></div><div class="x-cap">data-race="protoss"</div></div>
+      <div data-race="zerg"><div class="sc-panel--metal"><div class="x-strip"><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--amber"></span><span class="sc-pipe" style="flex:1"></span></div><span class="x-panel-txt">ZERG</span><span class="sc-hazard"></span></div><div class="x-cap">data-race="zerg"</div></div>
+    </div>
+  </section>
+
+  <!-- 06 BATTLE.NET -->
+  <section class="x-sec" id="bnet">
+    <h2 class="x-h">06 · Rustpanel, LED-tekst og skjema (Battle.net-stil)</h2>
+    <div class="x-row">
+      <div class="sc-panel--rust sc-panel--rivets-6 x-bnet">
+        <div class="sc-led-window"><span class="sc-led">Welcome to stellar.net</span></div>
+        <div class="x-bnet-grid">
+          <div>
+            <div class="x-bnet-title">Network Login</div>
+            <div class="x-field"><label class="sc-label" for="f-name">Name:</label><input class="sc-input" id="f-name" value="d0nBiX"></div>
+            <div class="x-field"><label class="sc-label" for="f-pw">Password:</label><input class="sc-input is-focus" id="f-pw" type="password" value="hunter"></div>
+            <div class="x-field"><label class="sc-label" for="f-dis">Gateway:</label><input class="sc-input" id="f-dis" value="(utilgjengelig)" disabled></div>
+            <button class="sc-btn sc-btn--rust"><span class="sc-hk">N</span>ew Account</button>
+          </div>
+          <div>
+            <div class="x-bnet-title">Profile:</div>
+            <div class="sc-crt" style="border-radius:3px;min-height:110px;text-align:center">
+              <span class="sc-led sc-led--sm">LADDER: UNRATED</span><br>
+              <span class="sc-led sc-led--sm">RECORD 0-0</span><br>
+              <span class="sc-led sc-led--sm" style="overflow:hidden;display:block;white-space:nowrap"><span class="sc-led--marquee" style="display:inline-block">ROUTING THROUGH RELAY 7 ... </span></span>
+            </div>
+          </div>
+        </div>
+        <div class="x-bnet-actions"><button class="sc-btn sc-btn--rust"><span class="sc-hk">O</span>k</button><button class="sc-btn sc-btn--rust"><span class="sc-hk">C</span>ancel</button></div>
+      </div>
+      <div style="flex:1;min-width:300px">
+        <div class="x-misc" style="grid-template-columns:1fr 1fr">
+          <div><div class="sc-crt" style="display:grid;place-items:center">
+            <div class="sc-wireframe">
+              <svg viewBox="0 0 72 60" aria-hidden="true">
+                <path class="wf-face" d="M36 14 56 24 36 34 16 24z"/><path class="wf-dark" d="M16 24v14l20 10V34zM56 24v14L36 48V34z"/>
+                <path d="M16 24v14l20 10 20-10V24M36 34v14M24 20v-8l12-6 12 6v8"/>
+                <path class="wf-dmg" d="M20 32l12 6M40 38l12-6"/><path class="wf-crit" d="M24 12l12 6 12-6"/>
+              </svg>
+              <span class="sc-hp sc-hp--warn">412/1500</span>
+            </div></div><div class="x-cap">.sc-wireframe skadet · .sc-hp--warn</div></div>
+          <div><div class="sc-crt" style="display:grid;place-items:center;gap:6px">
+            <span class="sc-hp">750/750</span><span class="sc-hp sc-hp--warn">340/750</span><span class="sc-hp sc-hp--crit">62/750</span></div><div class="x-cap">.sc-hp · --warn · --crit</div></div>
+          <div style="grid-column: span 2"><div class="x-terrain" style="padding:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="sc-tooltip"><div class="sc-tooltip__title">Build <span class="sc-hk">P</span>robe</div>
+              <div class="sc-tooltip__cost"><span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">50</span></span><span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">1</span></span></div></div>
+            <div class="sc-resources"><span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">124</span></span><span class="sc-res sc-res--gas"><span class="sc-res__icon"></span><span class="sc-res__val">0</span></span><span class="sc-res sc-res--supply is-max"><span class="sc-res__icon"></span><span class="sc-res__val">26/26</span></span></div>
+          </div><div class="x-cap">.sc-tooltip · .sc-resources (forsyning full = .is-max)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setRace(r) {
+    if (['terran', 'protoss', 'zerg'].indexOf(r) < 0) r = 'terran';
+    root.setAttribute('data-race', r);
+    document.querySelectorAll('[data-set-race]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-set-race') === r));
+    });
+    try { localStorage.setItem('sc-race', r); } catch (e) {}
+  }
+  var q = new URLSearchParams(location.search).get('race'), saved = null;
+  try { saved = localStorage.getItem('sc-race'); } catch (e) {}
+  setRace(q || saved || 'terran');
+  document.querySelectorAll('[data-set-race]').forEach(function (b) {
+    b.addEventListener('click', function () { setRace(b.getAttribute('data-set-race')); });
+  });
+  document.querySelectorAll('a[href="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
+})();
+</script>
+</body>
+</html>

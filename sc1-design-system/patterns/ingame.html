@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="nb" data-race="terran">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spillskjerm – konsoll</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/patterns.css">
+</head>
+<body class="pt-page">
+<main class="pt-stage pt-game" id="stage">
+  <canvas class="pt-game__terrain" id="terrain" width="1280" height="720" aria-label="Kart"></canvas>
+
+  <!-- rase-bytter (demo) -->
+  <div class="pt-racebar" role="group" aria-label="Velg rase">
+    <button type="button" class="pt-racebar__btn" data-set-race="terran" aria-pressed="true">Terran</button>
+    <button type="button" class="pt-racebar__btn" data-set-race="protoss" aria-pressed="false">Protoss</button>
+    <button type="button" class="pt-racebar__btn" data-set-race="zerg" aria-pressed="false">Zerg</button>
+  </div>
+
+  <!-- ressurslinje -->
+  <div class="sc-resources pt-game__res" aria-label="Ressurser">
+    <span class="sc-res sc-res--mineral" title="Minerals">
+      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 9 L6 3 L9 6 L12 2 L14 9 L10 14 L5 14 Z" fill="var(--sc-mineral)" stroke="#bfe4ff" stroke-width="1"/><path d="M6 3 L7 13 M12 2 L10 14" stroke="#1a4a8a" stroke-width="1"/></svg>
+      <span class="sc-res__val" data-k="min">384</span>
+    </span>
+    <span class="sc-res sc-res--gas" title="Vespene">
+      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="2" width="8" height="12" fill="var(--sc-gas)" stroke="#b0ffb8"/><path d="M4 5 h8 M4 11 h8" stroke="#0e5a1e"/></svg>
+      <span class="sc-res__val" data-k="gas">272</span>
+    </span>
+    <span class="sc-res sc-res--supply" title="Supply">
+      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" fill="#1a2a8a" stroke="#8aa0ff"/><path d="M8 3 L13 13 L8 10 L3 13 Z" fill="#e8ecff"/></svg>
+      <span class="sc-res__val" data-k="sup">94/94</span>
+    </span>
+  </div>
+
+  <!-- ====================== KONSOLL ====================== -->
+  <section class="pt-console" aria-label="Kommandokonsoll">
+    <div class="pt-console__body" id="consoleBody"></div>
+    <svg class="pt-console__edges" id="consoleEdges" viewBox="0 0 1280 232" aria-hidden="true"></svg>
+
+    <!-- venstre: rør + LED-hette + minimap -->
+    <div class="pt-pipes" aria-hidden="true">
+      <span class="pt-pipe" style="top:52px"></span>
+      <span class="pt-pipe" style="top:86px"></span>
+      <span class="pt-pipe" style="top:120px"></span>
+      <span class="pt-pipe pt-pipe--thin" style="top:160px"></span>
+      <span class="pt-pipes__clamp" style="left:38px"></span>
+      <span class="pt-pipes__clamp" style="left:78px"></span>
+      <span class="pt-leds" style="left:14px;top:190px"><i class="pt-led pt-led--red"></i><i class="pt-led pt-led--amber"></i><i class="pt-led"></i></span>
+    </div>
+    <div class="pt-cap" aria-hidden="true">
+      <div class="pt-cap__scope"><svg viewBox="0 0 60 20"><polyline points="2,16 10,16 14,6 20,14 26,4 32,14 38,8 44,16 58,16" fill="none"/></svg></div>
+      <div class="pt-hazard pt-cap__haz"></div>
+    </div>
+    <div class="pt-frame pt-minimap">
+      <canvas id="minimap" width="128" height="128" aria-label="Minimap"></canvas>
+    </div>
+
+    <!-- midten: ventilasjonsplate + senket skjerm -->
+    <div class="pt-vent" aria-hidden="true"></div>
+    <div class="pt-frame pt-screen-frame">
+      <div class="sc-crt pt-screen">
+        <div class="pt-wire" id="wire"></div>
+        <div class="sc-hp pt-screen__hp" id="hp">886/1000</div>
+        <div class="pt-screen__name" id="unitName">Terran Command Center</div>
+        <dl class="pt-screen__stats" id="stats"></dl>
+        <span class="pt-screen__queue" id="queue" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <!-- portrett -->
+    <button type="button" class="pt-menu-plate" id="menuBtn" aria-haspopup="dialog" aria-controls="gameMenu">MENU</button>
+    <div class="pt-frame pt-portrait">
+      <canvas id="portrait" width="60" height="72" aria-label="Portrett"></canvas>
+    </div>
+
+    <!-- høyre: kommandokort + maskineri -->
+    <div class="pt-cap pt-cap--right" aria-hidden="true">
+      <span class="pt-leds"><i class="pt-led pt-led--red"></i><i class="pt-led pt-led--red"></i></span>
+      <div class="pt-hazard pt-cap__haz pt-cap__haz--short"></div>
+      <span class="pt-leds"><i class="pt-led pt-led--amber"></i><i class="pt-led pt-led--red"></i></span>
+    </div>
+    <div class="pt-frame pt-cmd-frame">
+      <div class="sc-cmdcard pt-cmdcard" id="cmdcard" role="toolbar" aria-label="Kommandoer">
+        <button type="button" class="sc-cmd" data-hotkey="M" data-tip="Move" aria-label="Move (M)">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="var(--sc-icon-yellow)" stroke-width="3"/><path d="M11 20 h14 M20 13 l8 7 -8 7" fill="none" stroke="var(--sc-icon-yellow)" stroke-width="4" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="sc-cmd" data-hotkey="S" data-tip="Stop" aria-label="Stop (S)">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="var(--sc-text-title)" stroke-width="3"/><path d="M14 14 L26 26 M26 14 L14 26" stroke="var(--sc-text-title)" stroke-width="4"/></svg>
+        </button>
+        <button type="button" class="sc-cmd" data-hotkey="A" data-tip="Attack" aria-label="Attack (A)">
+          <svg viewBox="0 0 40 40"><path d="M8 32 L26 14 M22 10 L30 18 M27 7 L33 13" stroke="var(--sc-icon-yellow)" stroke-width="4" fill="none"/><path d="M8 26 L14 32" stroke="var(--sc-icon-yellow)" stroke-width="3"/></svg>
+        </button>
+        <button type="button" class="sc-cmd" data-hotkey="B" data-tip="Build" aria-label="Build (B)">
+          <svg viewBox="0 0 40 40"><path d="M10 30 L30 10 M10 10 L30 30" stroke="var(--sc-icon-yellow)" stroke-width="5"/><path d="M6 6 h8 v4 h-4 v4 h-4 z M26 26 h8 v8 h-4 v-4 h-4 z" fill="var(--sc-icon-yellow)"/></svg>
+        </button>
+        <button type="button" class="sc-cmd" data-hotkey="R" data-tip="Set Rally Point" aria-label="Set Rally Point (R)">
+          <svg viewBox="0 0 40 40"><circle cx="10" cy="10" r="4" fill="var(--sc-icon-yellow)"/><circle cx="17" cy="17" r="2" fill="var(--sc-icon-yellow)"/><circle cx="23" cy="23" r="2" fill="var(--sc-icon-yellow)"/><circle cx="30" cy="30" r="4" fill="var(--sc-icon-yellow)"/></svg>
+        </button>
+        <button type="button" class="sc-cmd sc-cmd--empty" aria-label="Tom" tabindex="-1"></button>
+        <button type="button" class="sc-cmd" data-hotkey="L" data-tip="Lift Off" aria-label="Lift Off (L)">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="var(--sc-icon-yellow)" stroke-width="3"/><path d="M20 28 V12 M13 19 l7 -7 7 7" fill="none" stroke="var(--sc-icon-yellow)" stroke-width="4"/></svg>
+        </button>
+        <button type="button" class="sc-cmd" data-hotkey="P" data-tip="Patrol" aria-label="Patrol (P)">
+          <svg viewBox="0 0 40 40"><path d="M8 26 h20 l-6 -6 M32 14 h-20 l6 6" fill="none" stroke="var(--sc-icon-green)" stroke-width="3.5"/></svg>
+        </button>
+        <button type="button" class="sc-cmd sc-cmd--empty" aria-label="Tom" tabindex="-1"></button>
+      </div>
+      <div class="pt-tip" id="tip" hidden>
+        <div class="pt-tip__title" id="tipTitle">Build Probe</div>
+        <div class="pt-tip__cost" id="tipCost"></div>
+      </div>
+    </div>
+    <div class="pt-machine" aria-hidden="true">
+      <div class="pt-fan"></div>
+      <div class="pt-hazard pt-machine__haz"></div>
+      <span class="pt-leds" style="left:20px;top:150px"><i class="pt-led"></i><i class="pt-led pt-led--amber"></i><i class="pt-led pt-led--red"></i></span>
+    </div>
+
+    <!-- Zerg: bein/horn langs toppkanten -->
+    <svg class="pt-bones" viewBox="0 0 1280 232" aria-hidden="true">
+      <path d="M40 34 L56 2 L62 34 Z M150 8 L170 -24 L176 8 Z M268 8 L292 -20 L292 8 Z M380 62 L392 36 L400 62 Z M560 62 L572 30 L580 62 Z M740 62 L756 36 L760 62 Z M960 18 L976 -18 L984 18 Z M1100 18 L1124 -12 L1124 18 Z M1220 18 L1240 -16 L1246 18 Z"/>
+    </svg>
+  </section>
+
+  <!-- ====================== GAME MENU ====================== -->
+  <div class="pt-modal pt-modal--game" id="gameMenuWrap" hidden>
+    <div class="sc-dialog sc-dialog--blue pt-gamemenu" id="gameMenu" role="dialog" aria-modal="true" aria-labelledby="gmTitle">
+      <div class="sc-dialog__title" id="gmTitle">Game Menu</div>
+      <div class="pt-gamemenu__list">
+        <button type="button" class="sc-btn sc-btn--blue">Save Game</button>
+        <button type="button" class="sc-btn sc-btn--blue">Load Game</button>
+        <button type="button" class="sc-btn sc-btn--blue">Options</button>
+        <button type="button" class="sc-btn sc-btn--blue">Help</button>
+        <button type="button" class="sc-btn sc-btn--blue">Mission Objectives</button>
+        <button type="button" class="sc-btn sc-btn--blue">End Mission</button>
+        <button type="button" class="sc-btn sc-btn--blue pt-gamemenu__return" data-close-menu>Return to Game (Esc)</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../js/scene.js"></script>
+<script>
+(function () {
+  var S = window.SCScene, html = document.documentElement;
+  S.fitStage(document.getElementById('stage'));
+  S.textures();
+
+  /* silhuett: venstre hette, senket midtparti, portretthus, høyt høyrehus */
+  var SHAPE = [
+    [0, 232], [0, 30], [98, 30], [112, 16], [124, 4], [318, 4], [332, 18], [332, 40], [352, 60],
+    [470, 60], [478, 50], [700, 50], [708, 60], [792, 60], [802, 50], [900, 50], [912, 38],
+    [912, 24], [926, 10], [1280, 10], [1280, 232]
+  ];
+  var TOP = SHAPE.slice(1, SHAPE.length - 1);
+  S.consoleShape(document.getElementById('consoleBody'), document.getElementById('consoleEdges'), SHAPE, TOP);
+
+  var DATA = {
+    terran: {
+      name: 'Terran Command Center', hp: '886/1000', res: ['384', '272', '94/94'],
+      stats: [['Supplies Used:', '20'], ['Supplies Provided:', '10'], ['Total Supplies:', '26'], ['Supplies Max:', '200']]
+    },
+    protoss: {
+      name: 'Protoss Nexus', hp: '750/750 750/750', res: ['222', '197', '42/90'],
+      stats: [['Psi Used:', '42'], ['Psi Provided:', '9'], ['Total Psi:', '90'], ['Psi Max:', '200']],
+      tip: ['Build Probe', '50', '1']
+    },
+    zerg: {
+      name: 'Zerg Hatchery', hp: '1250/1250', res: ['310', '148', '18/26'],
+      stats: [['Control Used:', '18'], ['Control Provided:', '2'], ['Total Control:', '26'], ['Control Max:', '200']]
+    }
+  };
+  var portrait = S.portrait(document.getElementById('portrait'));
+  var terrain = document.getElementById('terrain'), mini = document.getElementById('minimap');
+  var tip = document.getElementById('tip');
+
+  function costHTML(min, sup) {
+    return '<svg viewBox="0 0 16 16" class="pt-tip__ico"><path d="M3 9 L6 3 L9 6 L12 2 L14 9 L10 14 L5 14 Z" fill="var(--sc-mineral)"/></svg>' + min +
+      ' <svg viewBox="0 0 16 16" class="pt-tip__ico"><rect x="1" y="1" width="14" height="14" fill="#1a2a8a"/><path d="M8 3 L13 13 L8 10 L3 13 Z" fill="#e8ecff"/></svg>' + sup;
+  }
+  function setRace(race) {
+    var d = DATA[race] || DATA.terran;
+    html.setAttribute('data-race', race);
+    document.querySelectorAll('[data-set-race]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setRace === race)); });
+    S.drawTerrain(terrain, race);
+    S.drawMinimap(mini, race);
+    portrait.setRace(race);
+    document.getElementById('wire').innerHTML = S.wireframe(race);
+    document.getElementById('hp').textContent = d.hp;
+    document.getElementById('unitName').textContent = d.name;
+    document.getElementById('stats').innerHTML = d.stats.map(function (s) { return '<div><dt>' + s[0] + '</dt><dd>' + s[1] + '</dd></div>'; }).join('');
+    var v = document.querySelectorAll('.sc-res__val');
+    v[0].textContent = d.res[0]; v[1].textContent = d.res[1]; v[2].textContent = d.res[2];
+    if (d.tip) {
+      document.getElementById('tipTitle').textContent = d.tip[0];
+      document.getElementById('tipCost').innerHTML = costHTML(d.tip[1], d.tip[2]);
+      tip.hidden = false;
+    } else tip.hidden = true;
+  }
+  document.querySelectorAll('[data-set-race]').forEach(function (b) {
+    b.addEventListener('click', function () { setRace(b.dataset.setRace); });
+  });
+
+  /* verktøytips ved hover/fokus på kommandoer */
+  document.querySelectorAll('.sc-cmd[data-tip]').forEach(function (c) {
+    function show() {
+      document.getElementById('tipTitle').innerHTML = c.dataset.tip.replace(c.dataset.hotkey, '<u>' + c.dataset.hotkey + '</u>');
+      document.getElementById('tipCost').innerHTML = '';
+      tip.hidden = false;
+    }
+    c.addEventListener('mouseenter', show); c.addEventListener('focus', show);
+    c.addEventListener('mouseleave', function () { tip.hidden = !DATA[html.dataset.race].tip; if (!tip.hidden) setRace(html.dataset.race); });
+  });
+
+  /* Game Menu: MENU / F10 åpner, Esc lukker */
+  var wrap = document.getElementById('gameMenuWrap'), menuBtn = document.getElementById('menuBtn');
+  function openMenu() { wrap.hidden = false; wrap.querySelector('.sc-btn').focus(); }
+  function closeMenu() { wrap.hidden = true; menuBtn.focus(); }
+  menuBtn.addEventListener('click', openMenu);
+  wrap.querySelector('[data-close-menu]').addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'F10') { e.preventDefault(); wrap.hidden ? openMenu() : closeMenu(); }
+    else if (e.key === 'Escape' && !wrap.hidden) { e.preventDefault(); closeMenu(); }
+  });
+
+  var q = new URLSearchParams(location.search);
+  setRace(DATA[q.get('race')] ? q.get('race') : 'terran');
+  if (q.get('menu') === '1') openMenu();
+})();
+</script>
+</body>
+</html>

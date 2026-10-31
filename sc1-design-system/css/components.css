@@ -1,0 +1,637 @@
+/* =========================================================================
+   SC1-inspirert design system – KOMPONENTER (arbeider A)
+   Krever css/tokens.css. Alle farger via var(--sc-…); lokale tillegg har
+   prefikset --x-. Tilstander kan vises statisk med .is-hover / .is-active /
+   .is-focus (brukes i katalogen), ellers gjelder de vanlige pseudoklassene.
+   ========================================================================= */
+
+/* ---------- Lokale tokens (mangler i tokens.css) ---------- */
+:root {
+  --x-frame-grey: #8c8c8c;          /* grå ytterramme rundt rød dialog */
+  --x-frame-grey-dark: #3a3a3a;
+  --x-hk-menu: #fbffdc;              /* hurtigtast i gulgrønn tekst (lysere) */
+  --x-bev-lg: 12px;                  /* 45° kutt på store plater */
+  --x-bev-sm: 4px;
+  --x-cmd-frame: #10142a;            /* mørk marineblå ramme rundt kommandokort */
+  --x-cmd-frame-hi: #2c3456;
+  --x-cmd-cell-rim: #05060c;
+  --x-cmd-tick: rgba(170, 178, 200, 0.55);
+  --x-tip-border: #3a5ae0;           /* blå/cyan tooltip-kant */
+  --x-terrain-1: #2a2a2e;            /* bakgrunnsterreng i demoer */
+  --x-terrain-2: #313136;
+  --x-terrain-3: #222226;
+  --x-supply-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='3.2' r='2'/%3E%3Cpath d='M5 6h6l1 4h-2l-.5 5h-3L6 10H4z'/%3E%3C/svg%3E");
+}
+[data-race="protoss"] {
+  --x-cmd-frame: #040a16;
+  --x-cmd-frame-hi: #1a6aa8;
+  --x-cmd-cell-rim: #2a9ad8;
+  --x-cmd-tick: rgba(122, 232, 255, 0.5);
+  --x-tip-border: #3aa8ff;
+  --x-terrain-1: #1c2236;
+  --x-terrain-2: #252c44;
+  --x-terrain-3: #121624;
+  --x-supply-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1l3 5-3 9-3-9z'/%3E%3Cpath d='M2 9l3-2 1 3-2 4zM14 9l-3-2-1 3 2 4z' fill-opacity='.7'/%3E%3C/svg%3E");
+}
+[data-race="zerg"] {
+  --x-cmd-frame: #1a0a08;
+  --x-cmd-frame-hi: #5a2a1c;
+  --x-cmd-cell-rim: #0a0404;
+  --x-cmd-tick: rgba(216, 200, 160, 0.45);
+  --x-tip-border: #8a4a9a;
+  --x-terrain-1: #2a1e18;
+  --x-terrain-2: #34261e;
+  --x-terrain-3: #1a120e;
+  --x-supply-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cellipse cx='8' cy='6' rx='6' ry='4'/%3E%3Cpath d='M4 9l-1 6 2-4zM8 10v5l1-5zM12 9l1 6-2-4z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Hjelpere ---------- */
+.sc-hk { color: var(--x-hk-menu); text-decoration: none; text-shadow: 0 0 3px rgba(251, 255, 220, .55), 1px 1px 0 #000; }
+
+@keyframes sc-flicker {
+  0% { opacity: .55; } 50% { opacity: 1; } 75% { opacity: .8; } 100% { opacity: 1; }
+}
+@keyframes sc-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: .25; } }
+
+/* =========================================================================
+   1. MENYLENKE (glue screen)
+   ========================================================================= */
+.sc-menu-link {
+  appearance: none; background: none; border: 0; padding: 2px 4px; margin: 0;
+  font-family: var(--sc-font-menu); font-weight: 400;
+  font-size: var(--sc-fs-lg); letter-spacing: 0.5px;
+  color: var(--sc-text-menu); text-decoration: none; cursor: pointer;
+  text-shadow: var(--sc-glow-menu), 1px 1px 0 #000;
+  transition: color var(--sc-fast) var(--sc-step), text-shadow var(--sc-fast) var(--sc-step);
+  display: inline-block; line-height: 1.2;
+}
+.sc-menu-link::first-letter { font-size: 1.12em; }
+.sc-menu-link .sc-hk { color: var(--x-hk-menu); }
+.sc-menu-link:hover, .sc-menu-link.is-hover {
+  color: var(--sc-text-menu-hot);
+  text-shadow: 0 0 1px #000, 0 0 3px rgba(228, 255, 122, .7), 1px 1px 0 #000;
+  animation: sc-flicker 160ms steps(3, end) 1;
+}
+.sc-menu-link:hover .sc-hk, .sc-menu-link.is-hover .sc-hk { color: #fff; }
+.sc-menu-link:active, .sc-menu-link.is-active {
+  color: var(--sc-text-menu-dim); transform: translate(1px, 1px);
+}
+.sc-menu-link:focus { outline: none; }
+.sc-menu-link:focus-visible, .sc-menu-link.is-focus {
+  outline: 1px dotted var(--sc-text-menu); outline-offset: 2px;
+}
+.sc-menu-link:disabled, .sc-menu-link[aria-disabled="true"], .sc-menu-link.is-disabled {
+  color: var(--sc-text-menu-dim); text-shadow: 1px 1px 0 #000; cursor: default;
+  animation: none; transform: none;
+}
+.sc-menu-link:disabled .sc-hk, .sc-menu-link.is-disabled .sc-hk { color: inherit; }
+.sc-btn:disabled .sc-hk, .sc-btn.is-disabled .sc-hk, .sc-menu-link:disabled .sc-hk, .sc-menu-link.is-disabled .sc-hk { text-shadow: none; }
+
+/* =========================================================================
+   2. DIALOGER
+   ========================================================================= */
+.sc-dialog { position: relative; box-sizing: border-box; }
+
+/* --- 2a. Hovedmeny: svart flate, grå + rød dobbel ramme --- */
+.sc-dialog--red {
+  background: var(--sc-ink);
+  border: 2px solid var(--x-frame-grey);
+  border-color: var(--x-frame-grey) var(--x-frame-grey-dark) var(--x-frame-grey-dark) var(--x-frame-grey);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 1px #000,
+    inset 0 0 0 3px var(--sc-red),
+    inset 0 0 0 4px var(--sc-red-dark),
+    0 0 0 1px #000;
+  padding: 16px 18px 14px;
+  color: var(--sc-text-title);
+  display: flex; flex-direction: column;
+}
+.sc-dialog__title {
+  font-family: var(--sc-font-ui); font-weight: 400;
+  font-size: var(--sc-fs-lg); color: var(--sc-text-title);
+  text-align: center; margin: 0 0 10px; letter-spacing: .3px;
+  text-shadow: 0 0 2px rgba(230, 230, 230, .35);
+}
+.sc-dialog__body {
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-md); line-height: 1.55;
+  color: var(--sc-text-title); text-align: center; flex: 1;
+  text-shadow: 0 0 2px rgba(230, 230, 230, .25);
+}
+.sc-dialog__body .sc-num { color: var(--sc-text-title); }
+.sc-dialog__actions { display: flex; gap: 20px; margin-top: 14px; }
+.sc-dialog__actions > .sc-btn { flex: 1; }
+.sc-dialog--blue .sc-dialog__actions { flex-direction: column; gap: 10px; }
+
+/* --- 2b. Spillmeny: halvgjennomsiktig blå med rutemønster --- */
+.sc-dialog--blue {
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .18) 0 1px, transparent 1px 2px),
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--sc-blue-hot) 26%, transparent) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--sc-blue-hot) 26%, transparent) 0 1px, transparent 1px 8px),
+    var(--sc-blue-glass);
+  border: 1px solid var(--sc-blue);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--sc-blue-dark), inset 0 0 0 1px var(--sc-blue-dark);
+  padding: 10px 26px 16px;
+}
+.sc-dialog--blue .sc-dialog__title { font-size: var(--sc-fs-lg); margin-bottom: 8px; }
+
+/* =========================================================================
+   3. KNAPPER
+   ========================================================================= */
+.sc-btn {
+  appearance: none; box-sizing: border-box; margin: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 400; text-decoration: none; white-space: nowrap;
+  transition: color var(--sc-fast) var(--sc-step), border-color var(--sc-fast) var(--sc-step),
+              background-color var(--sc-fast) var(--sc-step), box-shadow var(--sc-fast) var(--sc-step);
+}
+.sc-btn:focus { outline: none; }
+.sc-btn:disabled, .sc-btn[aria-disabled="true"], .sc-btn.is-disabled { cursor: default; }
+
+/* --- 3a. Rød (hovedmeny-dialog) --- */
+.sc-btn--red {
+  min-height: 34px; padding: 4px 16px;
+  background: var(--sc-void);
+  border: 1px solid var(--sc-red);
+  border-radius: var(--sc-radius-max);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px color-mix(in srgb, var(--sc-red-dark) 70%, transparent);
+  font-family: var(--sc-font-menu); font-size: var(--sc-fs-md); letter-spacing: .5px;
+  color: var(--sc-text-menu); text-shadow: var(--sc-glow-menu);
+}
+.sc-btn--red .sc-hk { color: var(--x-hk-menu); }
+.sc-btn--red:hover, .sc-btn--red.is-hover {
+  color: var(--sc-text-menu-hot); border-color: var(--sc-red-hot);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px var(--sc-red-dark);
+  text-shadow: 0 0 1px #000, 0 0 3px rgba(228, 255, 122, .7);
+}
+.sc-btn--red:hover .sc-hk, .sc-btn--red.is-hover .sc-hk { color: #fff; }
+.sc-btn--red:active, .sc-btn--red.is-active {
+  background: color-mix(in srgb, var(--sc-red-dark) 55%, #000); color: var(--sc-text-menu-hot);
+  box-shadow: inset 1px 1px 0 #000, inset 0 0 0 2px #000;
+  padding-top: 5px; padding-bottom: 3px;
+}
+.sc-btn--red:focus-visible, .sc-btn--red.is-focus {
+  outline: 1px dotted var(--sc-text-menu); outline-offset: 2px;
+}
+.sc-btn--red:disabled, .sc-btn--red.is-disabled {
+  color: var(--sc-text-menu-dim); border-color: var(--sc-red-dark);
+  text-shadow: none; background: var(--sc-void);
+}
+.sc-btn--red:disabled .sc-hk, .sc-btn--red.is-disabled .sc-hk { color: inherit; }
+
+/* --- 3b. Blå (spillmeny) --- */
+.sc-btn--blue {
+  min-height: 34px; width: 100%; padding: 3px 14px;
+  background: color-mix(in srgb, var(--sc-blue-dark) 45%, transparent);
+  border: 2px solid var(--sc-blue);
+  border-radius: var(--sc-radius-max);
+  box-shadow: inset 0 0 0 1px var(--sc-blue-dark), inset 0 0 0 2px color-mix(in srgb, var(--sc-blue-hot) 45%, transparent), 0 0 0 1px rgba(0, 0, 0, .55);
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-lg); letter-spacing: .6px;
+  color: var(--sc-text-button); text-shadow: var(--sc-glow-button), 1px 1px 0 #000;
+}
+.sc-btn--blue .sc-hk { color: #fff; text-shadow: 0 0 3px rgba(255, 255, 255, .55), 1px 1px 0 #000; }
+.sc-btn--blue:hover, .sc-btn--blue.is-hover {
+  border-color: var(--sc-blue-hot); color: #fff8c8;
+  background: color-mix(in srgb, var(--sc-blue) 35%, transparent);
+}
+.sc-btn--blue:active, .sc-btn--blue.is-active {
+  background: color-mix(in srgb, var(--sc-blue-dark) 85%, transparent);
+  box-shadow: inset 1px 1px 0 #000, inset 0 0 0 2px var(--sc-blue-dark);
+  padding-top: 4px; padding-bottom: 2px;
+}
+.sc-btn--blue:focus-visible, .sc-btn--blue.is-focus {
+  outline: 1px dotted var(--sc-text-button); outline-offset: 2px;
+}
+.sc-btn--blue:disabled, .sc-btn--blue.is-disabled {
+  color: color-mix(in srgb, var(--sc-text-button) 40%, #000); border-color: var(--sc-blue-dark);
+  text-shadow: none; background: color-mix(in srgb, var(--sc-blue-dark) 30%, transparent);
+}
+.sc-btn--blue:disabled .sc-hk, .sc-btn--blue.is-disabled .sc-hk { color: inherit; text-shadow: none; }
+
+/* --- 3c. Rust (Battle.net) --- */
+.sc-btn--rust {
+  min-height: 22px; padding: 2px 14px;
+  font-family: var(--sc-font-form); font-weight: 700; font-size: var(--sc-fs-sm);
+  color: var(--sc-text-button); text-shadow: 1px 1px 0 #000;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .08) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, var(--sc-rust-4) 0, var(--sc-rust-3) 2px, var(--sc-rust-2) 60%, var(--sc-rust-1) 100%);
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 color-mix(in srgb, var(--sc-rust-4) 80%, #fff 20%), inset -1px -1px 0 var(--sc-rust-1);
+  clip-path: polygon(3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
+}
+.sc-btn--rust .sc-hk { text-decoration: underline; text-underline-offset: 2px; }
+.sc-btn--rust:hover, .sc-btn--rust.is-hover {
+  color: #fff4c0;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .08) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, color-mix(in srgb, var(--sc-rust-4) 70%, #fff 30%) 0, var(--sc-rust-4) 2px, var(--sc-rust-3) 60%, var(--sc-rust-2) 100%);
+}
+.sc-btn--rust:active, .sc-btn--rust.is-active {
+  background: linear-gradient(180deg, var(--sc-rust-1), var(--sc-rust-2));
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--sc-rust-3);
+  padding-top: 3px; padding-bottom: 1px;
+}
+.sc-btn--rust:focus-visible, .sc-btn--rust.is-focus { outline: 1px dotted var(--sc-led-green); outline-offset: -4px; }
+.sc-btn--rust:disabled, .sc-btn--rust.is-disabled {
+  color: var(--sc-rust-4); background: linear-gradient(180deg, var(--sc-rust-2), var(--sc-rust-1));
+}
+
+/* =========================================================================
+   4. PANELER – metall og rust
+   Ytterelementet tegner kantglansen (lys oppe/venstre, mørk nede/høyre),
+   ::before tegner selve platen 2 px innenfor, ::after tegner naglene.
+   ========================================================================= */
+.sc-panel--metal, .sc-panel--rust {
+  --x-bev: var(--x-bev-lg);
+  position: relative; isolation: isolate; box-sizing: border-box;
+  padding: 14px 16px;
+  clip-path: polygon(var(--x-bev) 0, calc(100% - var(--x-bev)) 0, 100% var(--x-bev), 100% calc(100% - var(--x-bev)),
+                     calc(100% - var(--x-bev)) 100%, var(--x-bev) 100%, 0 calc(100% - var(--x-bev)), 0 var(--x-bev));
+}
+.sc-panel--metal::before, .sc-panel--rust::before,
+.sc-panel--metal::after, .sc-panel--rust::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+}
+.sc-panel--metal::before, .sc-panel--rust::before {
+  inset: 2px;
+  --x-b2: calc(var(--x-bev) - 1px);
+  clip-path: polygon(var(--x-b2) 0, calc(100% - var(--x-b2)) 0, 100% var(--x-b2), 100% calc(100% - var(--x-b2)),
+                     calc(100% - var(--x-b2)) 100%, var(--x-b2) 100%, 0 calc(100% - var(--x-b2)), 0 var(--x-b2));
+}
+
+/* --- Metall --- */
+.sc-panel--metal {
+  background: linear-gradient(135deg, var(--sc-metal-5) 0, var(--sc-metal-4) 18%, var(--sc-metal-2) 55%, var(--sc-metal-1) 100%);
+}
+.sc-panel--metal::before {
+  background:
+    /* riper */
+    linear-gradient(172deg, transparent 0 38%, rgba(255, 255, 255, .05) 38.2% 38.5%, transparent 38.7%),
+    linear-gradient(8deg, transparent 0 70%, rgba(0, 0, 0, .25) 70.2% 70.6%, transparent 70.8%),
+    /* smuss / slitasje */
+    radial-gradient(ellipse 40% 30% at 85% 90%, rgba(0, 0, 0, .45), transparent 70%),
+    radial-gradient(ellipse 30% 40% at 10% 70%, color-mix(in srgb, var(--sc-metal-tint) 55%, transparent), transparent 70%),
+    /* børstet struktur */
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .10) 0 1px, transparent 1px 4px),
+    /* grunnplate: lys topp-kant, mørkere mot bunn */
+    linear-gradient(180deg, var(--sc-metal-4) 0, var(--sc-metal-3) 3px, var(--sc-metal-2) 45%, var(--sc-metal-1) 100%),
+    var(--sc-metal-2);
+  box-shadow:
+    inset 1px 1px 0 color-mix(in srgb, var(--sc-metal-5) 55%, transparent),
+    inset -1px -1px 0 rgba(0, 0, 0, .8),
+    inset 2px 2px 0 rgba(0, 0, 0, .35);
+}
+/* nagler i fire hjørner + midt på langsidene */
+.sc-panel--metal::after, .sc-panel--rust::after {
+  inset: 6px;
+  --x-rv: radial-gradient(circle at 3px 3px, var(--sc-rivet) 0 1px, var(--sc-metal-3) 1.6px 2.2px, var(--sc-metal-1) 2.6px 3px, rgba(0, 0, 0, .55) 3.2px 3.8px, transparent 4px);
+  background:
+    var(--x-rv) left 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) right 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) left 2px bottom 2px / 8px 8px no-repeat,
+    var(--x-rv) right 2px bottom 2px / 8px 8px no-repeat;
+}
+.sc-panel--rivets-6::after {
+  background:
+    var(--x-rv) left 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) right 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) left 2px bottom 2px / 8px 8px no-repeat,
+    var(--x-rv) right 2px bottom 2px / 8px 8px no-repeat,
+    var(--x-rv) center top 2px / 8px 8px no-repeat,
+    var(--x-rv) center bottom 2px / 8px 8px no-repeat;
+}
+.sc-panel--sm { --x-bev: 6px; padding: 8px 10px; }
+.sc-panel--sm::after { inset: 3px; }
+
+/* Protoss: marmorert blåsvart plate, cyan rørkant, gulltrim øverst */
+[data-race="protoss"] .sc-panel--metal {
+  background:
+    linear-gradient(180deg, var(--sc-trim-gold) 0 2px, var(--sc-trim-gold-dark) 2px 3px, transparent 3px),
+    linear-gradient(135deg, var(--sc-metal-5) 0, var(--sc-metal-4) 30%, var(--sc-metal-3) 70%, var(--sc-metal-2) 100%);
+}
+[data-race="protoss"] .sc-panel--metal::before {
+  inset: 3px 2px 2px;
+  background:
+    radial-gradient(ellipse 30% 20% at 25% 35%, color-mix(in srgb, var(--sc-metal-3) 70%, transparent), transparent 70%),
+    radial-gradient(ellipse 25% 35% at 70% 60%, color-mix(in srgb, var(--sc-metal-tint) 80%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 15% at 50% 85%, rgba(0, 0, 0, .5), transparent 70%),
+    linear-gradient(115deg, transparent 0 30%, color-mix(in srgb, var(--sc-metal-3) 40%, transparent) 30.5% 31%, transparent 32% 60%, color-mix(in srgb, var(--sc-metal-3) 35%, transparent) 60.5% 61%, transparent 62%),
+    linear-gradient(180deg, var(--sc-metal-2), var(--sc-metal-1));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--sc-metal-5) 60%, transparent),
+    inset 0 0 0 2px var(--sc-metal-1),
+    inset 0 0 0 3px color-mix(in srgb, var(--sc-metal-4) 50%, transparent);
+}
+/* Zerg: organisk, kitin-aktig flekket plate */
+[data-race="zerg"] .sc-panel--metal::before {
+  background:
+    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--sc-metal-tint) 70%, transparent) 0 8%, transparent 20%),
+    radial-gradient(circle at 75% 65%, color-mix(in srgb, var(--sc-metal-4) 50%, transparent) 0 6%, transparent 18%),
+    radial-gradient(circle at 55% 20%, rgba(0, 0, 0, .4) 0 5%, transparent 15%),
+    repeating-radial-gradient(circle at 30% 120%, rgba(0, 0, 0, .18) 0 2px, transparent 2px 7px),
+    linear-gradient(180deg, var(--sc-metal-4) 0, var(--sc-metal-3) 3px, var(--sc-metal-2) 50%, var(--sc-metal-1) 100%);
+}
+
+/* --- Rust (Battle.net) --- */
+.sc-panel--rust {
+  background: linear-gradient(135deg, var(--sc-rust-4) 0, var(--sc-rust-3) 25%, var(--sc-rust-2) 60%, var(--sc-rust-1) 100%);
+}
+.sc-panel--rust::before {
+  background:
+    radial-gradient(ellipse 22% 14% at 18% 22%, color-mix(in srgb, var(--sc-rust-4) 55%, transparent), transparent 70%),
+    radial-gradient(ellipse 30% 20% at 80% 30%, rgba(0, 0, 0, .35), transparent 70%),
+    radial-gradient(ellipse 18% 26% at 60% 80%, color-mix(in srgb, var(--sc-rust-4) 40%, transparent), transparent 70%),
+    radial-gradient(ellipse 35% 18% at 30% 90%, rgba(0, 0, 0, .4), transparent 70%),
+    linear-gradient(170deg, transparent 0 55%, rgba(0, 0, 0, .3) 55.2% 55.6%, transparent 55.8%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .12) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 220, 160, .03) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, var(--sc-rust-3) 0, var(--sc-rust-2) 40%, var(--sc-rust-1) 100%);
+  box-shadow:
+    inset 1px 1px 0 color-mix(in srgb, var(--sc-rust-4) 70%, transparent),
+    inset -1px -1px 0 rgba(0, 0, 0, .85),
+    inset 2px 2px 0 rgba(0, 0, 0, .3);
+}
+.sc-panel--rust::after {
+  --x-rv: radial-gradient(circle at 3px 3px, var(--sc-rust-4) 0 1px, var(--sc-rust-2) 1.6px 2.4px, var(--sc-rust-1) 2.8px 3px, rgba(0, 0, 0, .55) 3.2px 3.8px, transparent 4px);
+}
+
+/* --- Panel-detaljer: fareskilt, ribber, rør, lamper, skilt --- */
+.sc-hazard {
+  display: block; height: 12px; min-width: 24px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .45) 0, transparent 35%, transparent 70%, rgba(0, 0, 0, .5) 100%),
+    repeating-linear-gradient(-45deg, var(--sc-hazard-a) 0 5px, var(--sc-hazard-b) 5px 10px);
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .35), 1px 1px 0 color-mix(in srgb, var(--sc-metal-5) 40%, transparent);
+  clip-path: polygon(3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
+}
+.sc-ribs {
+  display: block; height: 10px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .5), transparent 30%, transparent 70%, rgba(0, 0, 0, .6)),
+    repeating-linear-gradient(90deg, var(--sc-metal-5) 0 1px, var(--sc-metal-3) 1px 3px, var(--sc-metal-1) 3px 5px);
+  box-shadow: inset 0 0 0 1px #000;
+}
+.sc-pipe {
+  display: block; height: 8px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(0, 0, 0, .7) 38px 40px, var(--sc-metal-5) 40px 41px, transparent 41px 80px),
+    linear-gradient(180deg, var(--sc-metal-1) 0, var(--sc-metal-5) 25%, var(--sc-metal-3) 55%, var(--sc-metal-1) 100%);
+  border-radius: 1px;
+}
+.sc-lamp {
+  display: inline-block; width: 5px; height: 3px; vertical-align: middle;
+  background: var(--sc-led-red);
+  box-shadow: 0 0 2px var(--sc-led-red), inset 0 -1px 0 rgba(0, 0, 0, .4), 0 0 0 1px #000;
+}
+.sc-lamp--amber { background: var(--sc-led-amber); box-shadow: 0 0 2px var(--sc-led-amber), 0 0 0 1px #000; }
+.sc-lamp--off { background: var(--sc-metal-1); box-shadow: 0 0 0 1px #000; }
+.sc-lamp--blink { animation: sc-blink 1.2s steps(1, end) infinite; }
+.sc-plate-label {
+  display: inline-block; padding: 1px 8px;
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); letter-spacing: 1px;
+  color: var(--sc-text-warn); text-shadow: 0 0 2px rgba(240, 224, 32, .5);
+  background: linear-gradient(180deg, var(--sc-metal-2), var(--sc-metal-1));
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .4), 0 1px 0 color-mix(in srgb, var(--sc-metal-5) 50%, transparent);
+}
+
+/* =========================================================================
+   5. CRT – senket svart skjerm
+   ========================================================================= */
+.sc-crt {
+  position: relative; box-sizing: border-box;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .018) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% 40%, var(--sc-ink-2), var(--sc-void) 75%);
+  border-radius: var(--sc-radius-crt);
+  box-shadow:
+    inset 0 0 0 1px #000,
+    inset 2px 2px 0 1px rgba(0, 0, 0, .9),
+    inset -1px -1px 0 1px color-mix(in srgb, var(--sc-metal-4) 30%, transparent),
+    0 0 0 2px var(--sc-metal-1),
+    1px 1px 0 2px color-mix(in srgb, var(--sc-metal-5) 55%, transparent),
+    -1px -1px 0 2px rgba(0, 0, 0, .9);
+  padding: 10px 12px;
+  color: var(--sc-text-title); overflow: hidden;
+}
+.sc-crt__name {
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-sm); color: var(--sc-text-title);
+  text-align: center; letter-spacing: .4px; text-shadow: 0 0 2px rgba(230, 230, 230, .35);
+}
+.sc-crt__stats {
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); color: var(--sc-text-body);
+  line-height: 1.7; text-align: right;
+}
+
+/* =========================================================================
+   6. WIREFRAME + HP
+   ========================================================================= */
+.sc-wireframe {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+  color: var(--sc-text-stat);
+}
+.sc-wireframe svg {
+  width: 100px; height: 84px; overflow: visible;
+  stroke: currentColor; fill: none; stroke-width: .9; stroke-linejoin: miter;
+  filter: drop-shadow(0 0 1px color-mix(in srgb, var(--sc-text-stat) 70%, transparent));
+}
+.sc-wireframe svg .wf-face { fill: color-mix(in srgb, var(--sc-text-stat) 16%, transparent); }
+.sc-wireframe svg .wf-dark { fill: color-mix(in srgb, var(--sc-text-stat) 6%, transparent); }
+.sc-wireframe svg .wf-dmg { stroke: var(--sc-text-warn); }
+.sc-wireframe svg .wf-crit { stroke: var(--sc-text-danger); }
+.sc-hp {
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); letter-spacing: .5px;
+  color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat);
+  font-variant-numeric: tabular-nums;
+}
+.sc-hp--warn { color: var(--sc-text-warn); text-shadow: 0 0 2px rgba(240, 224, 32, .55); }
+.sc-hp--crit { color: var(--sc-text-danger); text-shadow: 0 0 2px rgba(232, 48, 32, .55); }
+
+/* =========================================================================
+   7. KOMMANDOKORT 3×3
+   ========================================================================= */
+.sc-cmdcard {
+  display: inline-grid; grid-template-columns: repeat(3, var(--sc-cell)); grid-auto-rows: var(--sc-cell);
+  gap: 6px; padding: 6px; position: relative;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, .25) 0 1px, transparent 1px 3px),
+    var(--x-cmd-frame);
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 1px 0 var(--x-cmd-frame-hi), inset -1px -1px 0 #000,
+    0 0 0 1px #000, 1px 1px 0 1px color-mix(in srgb, var(--sc-metal-5) 35%, transparent);
+}
+.sc-cmd {
+  appearance: none; margin: 0; padding: 0; border: 0; cursor: pointer;
+  position: relative; width: var(--sc-cell); height: var(--sc-cell);
+  display: grid; place-items: center;
+  color: var(--sc-icon-yellow);
+  background: radial-gradient(ellipse at 50% 45%, #07080a, var(--sc-void) 70%);
+  border-radius: 1px;
+  box-shadow:
+    0 0 0 1px var(--x-cmd-cell-rim),
+    inset 1px 1px 0 rgba(255, 255, 255, .06),
+    inset -1px -1px 0 #000;
+}
+/* lyst hjørnemerke oppe til høyre (som på originalrutene) */
+.sc-cmd::before {
+  content: ""; position: absolute; top: 2px; right: 2px; width: 5px; height: 5px;
+  background: linear-gradient(45deg, transparent 50%, var(--x-cmd-tick) 50%);
+}
+/* hurtigtast vises nede til høyre ved hover/fokus */
+.sc-cmd::after {
+  content: attr(data-hotkey); position: absolute; right: 2px; bottom: 0;
+  font-family: var(--sc-font-ui); font-size: 9px; line-height: 1; color: var(--sc-icon-yellow);
+  text-shadow: 0 0 2px #000; opacity: 0;
+}
+.sc-cmd svg {
+  width: 30px; height: 30px; overflow: visible;
+  fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 0 1px currentColor);
+  transition: filter var(--sc-fast) var(--sc-step), transform var(--sc-fast) var(--sc-step);
+}
+.sc-cmd--green { color: var(--sc-icon-green); }
+.sc-cmd--white { color: var(--sc-text-title); }
+.sc-cmd:hover svg, .sc-cmd.is-hover svg { filter: brightness(1.35) drop-shadow(0 0 2px currentColor); }
+.sc-cmd:hover::after, .sc-cmd.is-hover::after,
+.sc-cmd:focus-visible::after, .sc-cmd.is-focus::after { opacity: 1; }
+.sc-cmd:active svg, .sc-cmd.is-active svg { transform: translate(1px, 1px); filter: brightness(.75); }
+.sc-cmd:active, .sc-cmd.is-active { box-shadow: 0 0 0 1px var(--x-cmd-cell-rim), inset 2px 2px 0 #000, inset -1px -1px 0 rgba(255, 255, 255, .06); }
+.sc-cmd:focus { outline: none; }
+.sc-cmd:focus-visible, .sc-cmd.is-focus { outline: 1px solid var(--sc-text-stat); outline-offset: -3px; }
+.sc-cmd:disabled, .sc-cmd[aria-disabled="true"], .sc-cmd.is-disabled { cursor: default; color: var(--sc-text-muted); }
+.sc-cmd:disabled svg, .sc-cmd.is-disabled svg { filter: none; opacity: .45; transform: none; }
+.sc-cmd--empty {
+  cursor: default;
+  background:
+    radial-gradient(circle at 70% 62%, var(--sc-led-red) 0 0.6px, transparent 1px),
+    radial-gradient(circle at 28% 30%, color-mix(in srgb, var(--sc-text-stat) 45%, transparent) 0 0.5px, transparent 1px),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--sc-text-stat) 9%, transparent) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--sc-text-stat) 4%, transparent) 0 1px, transparent 1px 7px),
+    var(--sc-void);
+}
+.sc-cmd--empty::before, .sc-cmd--empty::after { display: none; }
+
+/* Protoss: cyan rørkanter rundt hver rute */
+[data-race="protoss"] .sc-cmdcard {
+  background: radial-gradient(ellipse at 30% 20%, var(--sc-metal-2), var(--x-cmd-frame) 70%);
+  box-shadow: inset 0 0 0 1px var(--sc-metal-4), 0 0 0 1px #000, 0 0 0 2px color-mix(in srgb, var(--sc-metal-5) 45%, transparent);
+  border-radius: 4px;
+}
+[data-race="protoss"] .sc-cmd {
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--sc-metal-4), 0 0 0 3px color-mix(in srgb, var(--sc-metal-5) 35%, transparent), inset 0 0 0 1px #000;
+}
+[data-race="protoss"] .sc-cmdcard { gap: 8px; padding: 8px; }
+[data-race="zerg"] .sc-cmdcard { border-radius: 4px; }
+
+/* =========================================================================
+   8. RESSURSLINJE
+   ========================================================================= */
+.sc-resources {
+  display: inline-flex; align-items: center; gap: 22px;
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-sm);
+}
+.sc-res { display: inline-flex; align-items: center; gap: 4px; }
+.sc-res__val {
+  color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat), 1px 1px 0 #000;
+  font-variant-numeric: tabular-nums; letter-spacing: .4px; min-width: 2ch;
+}
+.sc-res__icon {
+  display: inline-block; width: 14px; height: 14px; flex: none; position: relative;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+}
+.sc-res--mineral .sc-res__icon {
+  background: linear-gradient(160deg, #e8f6ff 0, var(--sc-mineral) 45%, var(--sc-blue-dark) 100%);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 14L2 7l3-3 2 10z' fill-opacity='.75'/%3E%3Cpath d='M6 15L5 5l3-4 3 4-1 10z'/%3E%3Cpath d='M8 1l3 4-1 10H8z' fill-opacity='.6'/%3E%3Cpath d='M11 15l1-6 3 1 0 5z' fill-opacity='.8'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 14L2 7l3-3 2 10z' fill-opacity='.75'/%3E%3Cpath d='M6 15L5 5l3-4 3 4-1 10z'/%3E%3Cpath d='M8 1l3 4-1 10H8z' fill-opacity='.6'/%3E%3Cpath d='M11 15l1-6 3 1 0 5z' fill-opacity='.8'/%3E%3C/svg%3E");
+}
+.sc-res--gas .sc-res__icon {
+  background: linear-gradient(90deg, var(--sc-text-stat-dim) 0, var(--sc-gas) 40%, #b0ffb8 55%, var(--sc-gas) 70%, var(--sc-text-stat-dim) 100%);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 1h6v2H5z'/%3E%3Cpath d='M3 4h10v3H3zM3 8h10v3H3zM3 12h10v3H3z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 1h6v2H5z'/%3E%3Cpath d='M3 4h10v3H3zM3 8h10v3H3zM3 12h10v3H3z'/%3E%3C/svg%3E");
+}
+.sc-res--supply .sc-res__icon {
+  background: linear-gradient(180deg, var(--sc-blue), var(--sc-blue-dark));
+  box-shadow: inset 0 0 0 1px var(--sc-blue-hot);
+}
+.sc-res--supply .sc-res__icon::before {
+  content: ""; position: absolute; inset: 1px;
+  background: linear-gradient(180deg, #fff, var(--sc-text-body));
+  -webkit-mask: var(--x-supply-mask) center / 100% 100% no-repeat;
+          mask: var(--x-supply-mask) center / 100% 100% no-repeat;
+}
+.sc-res--supply.is-max .sc-res__val { color: var(--sc-text-warn); text-shadow: 0 0 2px rgba(240, 224, 32, .5); }
+
+/* =========================================================================
+   9. TOOLTIP
+   ========================================================================= */
+.sc-tooltip {
+  display: inline-block; box-sizing: border-box; padding: 2px 5px 3px;
+  background: color-mix(in srgb, var(--sc-void) 88%, transparent);
+  border: 1px solid var(--x-tip-border);
+  box-shadow: 0 0 0 1px #000, inset 0 0 0 1px #000;
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); line-height: 1.3;
+  color: var(--sc-text-title); white-space: nowrap; pointer-events: none;
+}
+.sc-tooltip__title { letter-spacing: 1px; text-shadow: 0 0 2px rgba(230, 230, 230, .3); }
+.sc-tooltip__title .sc-hk { color: var(--sc-icon-yellow); text-shadow: 0 0 2px rgba(242, 226, 28, .55); }
+.sc-tooltip__cost { display: flex; gap: 8px; margin-top: 1px; }
+.sc-tooltip__cost .sc-res__val { color: var(--sc-text-title); text-shadow: none; font-size: var(--sc-fs-xs); }
+.sc-tooltip__cost .sc-res__icon { width: 12px; height: 12px; }
+
+/* =========================================================================
+   10. LED-TEKST (punktmatrise)
+   ========================================================================= */
+.sc-led {
+  display: inline-block;
+  font-family: var(--sc-font-led); font-size: 30px; line-height: 1; letter-spacing: 2px;
+  color: var(--sc-led-green);
+  text-shadow: 0 0 2px var(--sc-led-green), 0 0 1px #fff;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0 0.95px, transparent 1.25px);
+          mask-image: radial-gradient(circle at 50% 50%, #000 0 0.95px, transparent 1.25px);
+  -webkit-mask-size: 3px 3px; mask-size: 3px 3px;
+}
+.sc-led--sm { font-size: 22px; letter-spacing: 1px; -webkit-mask-size: 2px 2px; mask-size: 2px 2px; }
+.sc-led-window {
+  display: block; overflow: hidden; white-space: nowrap; background: var(--sc-void);
+  box-shadow: inset 0 0 0 1px #000, inset 2px 2px 0 rgba(0, 0, 0, .9), 0 1px 0 var(--sc-rust-4);
+  padding: 4px 8px;
+}
+.sc-led--marquee { animation: sc-marquee 9s steps(90, end) infinite; padding-left: 100%; }
+@keyframes sc-marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* =========================================================================
+   11. SKJEMA (Battle.net)
+   ========================================================================= */
+.sc-label {
+  display: block; margin: 0 0 2px;
+  font-family: var(--sc-font-form); font-weight: 700; font-size: 12px;
+  color: var(--sc-text-button); text-shadow: 1px 1px 0 #000;
+}
+.sc-input {
+  appearance: none; box-sizing: border-box; display: block; width: 100%;
+  height: 20px; padding: 1px 5px; margin: 0;
+  font-family: var(--sc-font-ui); font-size: var(--sc-fs-sm); color: var(--sc-text-title);
+  caret-color: var(--sc-led-green);
+  background: var(--sc-void);
+  border: 1px solid #000; border-radius: 0;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 1), inset 2px 2px 0 color-mix(in srgb, var(--sc-rust-1) 80%, #000),
+              1px 1px 0 color-mix(in srgb, var(--sc-rust-4) 80%, transparent), -1px -1px 0 var(--sc-rust-1);
+}
+.sc-input::placeholder { color: var(--sc-text-stat-dim); }
+.sc-input:hover, .sc-input.is-hover { border-color: var(--sc-rust-1); background: var(--sc-ink); }
+.sc-input:focus { outline: none; }
+.sc-input:focus-visible, .sc-input:focus, .sc-input.is-focus {
+  border-color: var(--sc-led-green);
+  box-shadow: inset 1px 1px 0 #000, 0 0 2px color-mix(in srgb, var(--sc-led-green) 50%, transparent);
+}
+.sc-input:disabled, .sc-input.is-disabled { color: var(--sc-text-muted); background: color-mix(in srgb, var(--sc-rust-1) 60%, #000); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-menu-link, .sc-led--marquee, .sc-lamp--blink { animation: none !important; }
+}

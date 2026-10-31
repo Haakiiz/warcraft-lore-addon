@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="nb" data-race="terran">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hovedmeny – glue screen</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/patterns.css">
+</head>
+<body class="pt-page">
+<main class="pt-stage pt-mm" id="stage">
+  <canvas class="pt-mm__space" id="space" width="1280" height="720" aria-hidden="true"></canvas>
+
+  <nav class="pt-mm__nav" aria-label="Hovedmeny">
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:385px;top:166px">Single Player</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:276px;top:286px" data-open-dialog>Multiplayer</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:268px;top:554px">Options</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:266px;top:592px">Hotkeys</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:228px;top:632px">Show Credits</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:253px;top:670px">View Intro</a>
+    <a href="#" class="sc-menu-link pt-mm__link" style="left:898px;top:484px">Exit</a>
+  </nav>
+
+  <a href="#" class="pt-mm__account" data-open-dialog>[Commander#1998]</a>
+
+  <!-- metallarm som holder nyhetspanelet -->
+  <svg class="pt-mm__arm" viewBox="0 0 440 300" aria-hidden="true">
+    <defs>
+      <linearGradient id="armMetal" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" style="stop-color:var(--sc-metal-5)"/>
+        <stop offset="0.25" style="stop-color:var(--sc-metal-4)"/>
+        <stop offset="0.6" style="stop-color:var(--sc-metal-tint)"/>
+        <stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+      </linearGradient>
+      <linearGradient id="armMetalV" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" style="stop-color:var(--sc-metal-1)"/>
+        <stop offset="0.35" style="stop-color:var(--sc-metal-4)"/>
+        <stop offset="0.6" style="stop-color:var(--sc-metal-tint)"/>
+        <stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+      </linearGradient>
+      <pattern id="armHaz" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="5" height="10" style="fill:var(--sc-hazard-a)" opacity="0.75"/>
+        <rect x="5" width="5" height="10" style="fill:var(--sc-hazard-b)"/>
+      </pattern>
+    </defs>
+    <!-- horisontal bjelke langs toppen -->
+    <path class="pt-arm__plate" d="M40 58 L70 34 L232 34 L250 18 L440 18 L440 62 L300 62 L282 78 L96 78 L84 90 L40 90 Z" fill="url(#armMetal)"/>
+    <path d="M110 46 h110 v18 h-110 z" fill="url(#armHaz)" stroke="#000"/>
+    <path d="M70 34 L232 34 L250 18 L440 18" class="pt-arm__hi"/>
+    <!-- klo/ledd -->
+    <path class="pt-arm__plate" d="M250 10 L312 10 L326 24 L326 70 L312 84 L262 84 L250 72 Z" fill="url(#armMetalV)"/>
+    <rect x="268" y="22" width="40" height="20" fill="#050505" stroke="#000"/>
+    <rect x="276" y="27" width="8" height="10" fill="#2ab84a"/><rect x="290" y="27" width="8" height="10" fill="#1a6a2a"/>
+    <!-- vertikal arm ned langs høyre side -->
+    <path class="pt-arm__plate" d="M330 62 L372 62 L386 76 L386 232 L372 246 L346 246 L346 196 L330 182 Z" fill="url(#armMetalV)"/>
+    <path d="M340 92 h34 M340 122 h34 M340 152 h34" stroke="#000" stroke-width="2"/>
+    <path d="M330 62 L372 62 L386 76" class="pt-arm__hi"/>
+    <!-- holder inn mot panelet -->
+    <path class="pt-arm__plate" d="M300 150 L346 150 L346 196 L300 196 L292 188 L292 158 Z" fill="url(#armMetal)"/>
+    <g class="pt-arm__rivets">
+      <circle cx="80" cy="70" r="2.5"/><circle cx="236" cy="70" r="2.5"/><circle cx="420" cy="32" r="2.5"/><circle cx="420" cy="50" r="2.5"/>
+      <circle cx="358" cy="80" r="2.5"/><circle cx="358" cy="226" r="2.5"/><circle cx="304" cy="172" r="2.5"/><circle cx="260" cy="28" r="2.5"/>
+    </g>
+    <!-- slange -->
+    <path d="M396 62 C 420 110, 412 170, 392 230" fill="none" stroke="#14120e" stroke-width="9"/>
+    <path d="M396 62 C 420 110, 412 170, 392 230" fill="none" stroke="var(--sc-metal-3)" stroke-width="5" stroke-dasharray="3 2"/>
+  </svg>
+
+  <!-- nyhetspanel -->
+  <section class="pt-news" aria-label="Nyheter">
+    <header class="pt-news__brand">
+      <div class="pt-logo" aria-label="Stellar Command">
+        <span class="pt-logo__word">STELLAR</span><span class="pt-logo__word">COMMAND</span>
+      </div>
+      <div class="pt-logo__sub">VETERAN EDITION</div>
+      <div class="pt-news__welcome">Welcome Commander</div>
+    </header>
+    <article class="pt-news__item">
+      <div class="pt-thumb pt-thumb--league" aria-hidden="true">
+        <svg viewBox="0 0 120 56"><polygon points="10,6 54,6 62,28 54,50 10,50 2,28" fill="#0a0a12" stroke="#c0c4cc" stroke-width="2"/>
+          <text x="32" y="34" text-anchor="middle" fill="#e8e8f0" font-size="15" font-family="Michroma">SCL</text>
+          <path d="M66 10 v36" stroke="#5a5e66"/><polygon points="92,10 97,24 112,24 100,33 104,47 92,38 80,47 84,33 72,24 87,24" fill="#c02020" stroke="#f0d040" stroke-width="1.5"/></svg>
+      </div>
+      <div>
+        <h3 class="pt-news__head">Sector League…</h3>
+        <p class="pt-news__text">We are thrilled to officially announce the launch of the Outer Rim Sector League!</p>
+      </div>
+    </article>
+    <article class="pt-news__item">
+      <div class="pt-thumb pt-thumb--dev" aria-hidden="true">
+        <span class="pt-thumb__logo">STELLAR COMMAND</span>
+        <span class="pt-thumb__cap">DEVELOPER UPDATE 04</span>
+      </div>
+      <div>
+        <h3 class="pt-news__head">Developer Update 4</h3>
+        <p class="pt-news__text">Lead systems engineer recaps recent developments in the fleet relay network.</p>
+      </div>
+    </article>
+    <footer class="pt-news__foot">
+      <span>Join the Community:</span>
+      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 9 L6 3 L10 9 Z"/></svg></span>
+      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><rect x="3" y="3" width="6" height="6"/></svg></span>
+      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M4 3 L9 6 L4 9 Z"/></svg></span>
+      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3"/></svg></span>
+    </footer>
+  </section>
+
+  <button type="button" class="pt-mm__version" data-open-dialog>Version 1.16.1.1998 | enUS</button>
+
+  <!-- oppgraderingsdialog -->
+  <div class="pt-modal" id="upgrade" hidden>
+    <div class="sc-dialog sc-dialog--red pt-mm__dialog" role="dialog" aria-modal="true" aria-labelledby="upgrade-text">
+      <div class="sc-dialog__body">
+        <p id="upgrade-text">An upgrade to version 1.16.2.2004 is available! It is required for online play.</p>
+      </div>
+      <div class="sc-dialog__actions">
+        <button type="button" class="sc-btn sc-btn--red" data-close-dialog>Upgrade</button>
+        <button type="button" class="sc-btn sc-btn--red" data-close-dialog>Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../js/scene.js"></script>
+<script>
+(function () {
+  var S = window.SCScene, stage = document.getElementById('stage');
+  S.fitStage(stage);
+  S.textures();
+  S.drawSpace(document.getElementById('space'));
+
+  var modal = document.getElementById('upgrade'), lastFocus = null;
+  function open() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.querySelector('.sc-btn').focus();
+  }
+  function close() {
+    modal.hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-open-dialog]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  });
+  document.querySelectorAll('[data-close-dialog]').forEach(function (el) { el.addEventListener('click', close); });
+  document.querySelectorAll('.pt-mm__link:not([data-open-dialog])').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+  if (/[?&]dialog=1/.test(location.search)) open();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-race="terran">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terran Briefing</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <!-- briefing.css lastes FØR components.css slik at komponentenes knappestil vinner over reserve-stilen her -->
+  <link rel="stylesheet" href="../css/briefing.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body class="bf-body">
+  <div class="bf-viewport">
+    <main class="bf-stage" id="bfStage" aria-label="Mission briefing">
+
+      <!-- Bakgrunn: rundt industrirom, tegnet i canvas (640x360, skalert pikselert) -->
+      <canvas class="bf-room" id="bfRoom" width="640" height="360" aria-hidden="true"></canvas>
+
+      <!-- Monitorer på den sentrale maskinen -->
+      <div class="bf-monitor bf-monitor--main" aria-hidden="true">
+        <div class="bf-monitor__screen"><div class="bf-term" data-term="main"></div></div>
+      </div>
+      <div class="bf-monitor bf-monitor--left" aria-hidden="true">
+        <div class="bf-monitor__screen"><div class="bf-term" data-term="left"></div></div>
+      </div>
+      <div class="bf-monitor bf-monitor--right" aria-hidden="true">
+        <div class="bf-monitor__screen"><div class="bf-term bf-term--bars" data-term="right"></div></div>
+      </div>
+
+      <div class="bf-vignette" aria-hidden="true"></div>
+
+      <!-- UI-lag -->
+      <header class="bf-title">
+        <p class="bf-title__kicker">Terran Campaign &middot; Episode II</p>
+        <h1 class="bf-title__main">Mission 3: Embers over Kestrel</h1>
+      </header>
+
+      <aside class="bf-portraits" aria-label="Speakers">
+        <figure class="bf-portrait" data-speaker="relay">
+          <div class="bf-portrait__screen"><canvas width="68" height="52"></canvas></div>
+          <figcaption class="bf-portrait__name">Relay Officer</figcaption>
+        </figure>
+        <figure class="bf-portrait" data-speaker="corso">
+          <div class="bf-portrait__screen"><canvas width="68" height="52"></canvas></div>
+          <figcaption class="bf-portrait__name">Lt. Corso</figcaption>
+        </figure>
+        <figure class="bf-portrait" data-speaker="reyes">
+          <div class="bf-portrait__screen"><canvas width="68" height="52"></canvas></div>
+          <figcaption class="bf-portrait__name">Cmdr. Reyes</figcaption>
+        </figure>
+      </aside>
+
+      <section class="bf-textbox" aria-live="polite">
+        <div class="bf-textbox__head">
+          <span>Transmission // Kestrel Station</span>
+          <span class="bf-textbox__chan">CH 07</span>
+        </div>
+        <div class="bf-textbox__body" id="bfText"></div>
+      </section>
+
+      <nav class="bf-actions" aria-label="Briefing controls">
+        <button class="sc-btn sc-btn--red" id="bfRestart" type="button">Restart</button>
+        <button class="sc-btn sc-btn--red" id="bfSkip" type="button">Skip</button>
+        <button class="sc-btn sc-btn--red bf-start" id="bfStart" type="button" data-sfx="open">Start Mission</button>
+      </nav>
+
+      <div class="bf-fade" id="bfFade" aria-hidden="true"><span>Deploying&hellip;</span></div>
+    </main>
+  </div>
+  <script src="../js/sc-audio.js"></script>
+  <script src="../js/briefing.js"></script>
+</body>
+</html>

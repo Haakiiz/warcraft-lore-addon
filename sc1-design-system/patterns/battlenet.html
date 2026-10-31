@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network Login</title>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/battlenet.css">
+</head>
+<body>
+<!-- Gjenbrukbar sølvlogo (egen fantasilogo, ikke original) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bn-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:#ffffff"/>
+      <stop offset=".38" style="stop-color:var(--sc-text-title)"/>
+      <stop offset=".52" style="stop-color:var(--sc-metal-3)"/>
+      <stop offset=".62" style="stop-color:var(--sc-metal-5)"/>
+      <stop offset="1" style="stop-color:var(--sc-metal-2)"/>
+    </linearGradient>
+    <filter id="bn-emboss" x="-5%" y="-20%" width="110%" height="140%">
+      <feDropShadow dx="1.2" dy="1.6" stdDeviation="0" flood-color="#000" flood-opacity=".95"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="bn-stage">
+  <div class="bn-scale" id="bnScale">
+    <main class="bn-screen" aria-label="Network Login">
+      <svg class="bn-logo" viewBox="0 0 214 44" role="img" aria-label="Stellar Command">
+        <g filter="url(#bn-emboss)" font-family="Michroma, sans-serif" fill="url(#bn-silver)" stroke="#0a0a0a" stroke-width=".9" paint-order="stroke">
+          <text x="2" y="31" font-size="25" textLength="104" lengthAdjust="spacingAndGlyphs"><tspan font-size="31">S</tspan>TELLAR</text>
+          <text x="112" y="31" font-size="25" textLength="98" lengthAdjust="spacingAndGlyphs"><tspan font-size="31">C</tspan>OMMAND</text>
+          <rect x="4" y="36" width="204" height="2" fill="url(#bn-silver)" stroke="none"/>
+        </g>
+      </svg>
+
+      <div class="bn-led" role="img" aria-label="Welcome to stellar.net">
+        <canvas id="bnLed" width="470" height="60"></canvas>
+      </div>
+
+      <section class="bn-dialog" aria-labelledby="bnTitle">
+        <h1 class="bn-dialog__title" id="bnTitle" style="margin:0">Network Login</h1>
+        <div class="bn-dialog__rule"></div>
+        <div class="bn-cols">
+          <form class="bn-left" onsubmit="return false" autocomplete="off">
+            <label class="sc-label" for="bnName">Name:</label>
+            <div class="bn-field">
+              <input class="sc-input" id="bnName" value="Raynor_77" spellcheck="false">
+              <button class="bn-drop" type="button" aria-label="Previous accounts" data-sfx="click"></button>
+            </div>
+            <label class="sc-label" for="bnPass">Password:</label>
+            <div class="bn-field">
+              <input class="sc-input" id="bnPass" type="password" autofocus>
+            </div>
+            <button class="sc-btn sc-btn--rust bn-newacct" type="button" data-sfx="open">New Account</button>
+          </form>
+          <div class="bn-right">
+            <div class="bn-profile-label">Profile:</div>
+            <div class="bn-profile">
+              <canvas id="bnStatic" width="150" height="111"></canvas>
+              <svg class="bn-profile__logo" viewBox="0 0 214 34" role="img" aria-label="Stellar Command">
+                <g filter="url(#bn-emboss)" font-family="Michroma, sans-serif" fill="url(#bn-silver)" stroke="#0a0a0a" stroke-width=".9" paint-order="stroke">
+                  <text x="4" y="26" font-size="21" textLength="100" lengthAdjust="spacingAndGlyphs"><tspan font-size="26">S</tspan>TELLAR</text>
+                  <text x="112" y="26" font-size="21" textLength="98" lengthAdjust="spacingAndGlyphs"><tspan font-size="26">C</tspan>OMMAND</text>
+                </g>
+              </svg>
+              <div class="bn-table">
+                <div class="bn-table__head">LADDER GAMES</div>
+                <div class="bn-table__body">
+                  <div class="c k">Rating</div><div class="c k">Rank</div>
+                  <div class="c big">Unrated</div><div class="c big">Unranked</div>
+                  <div style="margin-top:3px">Record: 0/0</div><div class="c" style="margin-top:3px">Last Game:</div>
+                  <div>Disconnects: 0</div><div class="c">Never Played</div>
+                </div>
+              </div>
+              <div class="bn-table">
+                <div class="bn-table__head">NORMAL GAMES</div>
+                <div class="bn-table__body">
+                  <div>Record: 0/0</div><div class="c">Last Game:</div>
+                  <div>Disconnects: 0</div><div class="c">Never Played</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="bn-actions">
+        <button class="sc-btn sc-btn--rust" type="button">Ok</button>
+        <button class="sc-btn sc-btn--rust" type="button" onclick="location.href='../index.html'">Cancel</button>
+      </div>
+      <div class="bn-version"><a class="bn-back" href="../index.html" data-sfx="click">&lsaquo; Interface System</a></div>
+
+      <!-- nagler -->
+      <i class="bn-rivet" style="left:6px;top:6px"></i>
+      <i class="bn-rivet" style="right:6px;top:30px"></i>
+      <i class="bn-rivet" style="left:80px;top:72px"></i>
+      <i class="bn-rivet" style="left:80px;top:112px"></i>
+      <i class="bn-rivet" style="right:58px;top:72px"></i>
+      <i class="bn-rivet" style="right:58px;top:112px"></i>
+      <i class="bn-rivet" style="left:4px;top:134px"></i>
+      <i class="bn-rivet" style="right:3px;top:134px"></i>
+      <i class="bn-rivet" style="left:4px;bottom:22px"></i>
+    </main>
+  </div>
+</div>
+
+<script src="../js/sc-audio.js"></script>
+<script>
+(function () {
+  "use strict";
+  /* ---- skaler 640×480-skjermen til vinduet (4:3 i 16:9, svart rundt) ---- */
+  var scaleEl = document.getElementById("bnScale");
+  function fit() {
+    var s = Math.min(window.innerWidth / 640, window.innerHeight / 480);
+    scaleEl.style.setProperty("--bn-scale", s.toFixed(4));
+  }
+  fit(); window.addEventListener("resize", fit);
+
+  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  /* ---- LED-punktmatrise: tekst rastreres i et lavoppløst rutenett, hver celle tegnes som en prikk ---- */
+  var led = document.getElementById("bnLed");
+  var lc = led.getContext("2d");
+  var PITCH = 3, COLS = Math.floor(led.width / PITCH), ROWS = Math.floor(led.height / PITCH);
+  var green = cssVar("--sc-led-green") || "#49f249";
+  var off = document.createElement("canvas"); off.width = COLS; off.height = ROWS;
+  var oc = off.getContext("2d");
+  var textMask = null, noiseRows = [], tick = 0;
+
+  function rasterText() {
+    oc.clearRect(0, 0, COLS, ROWS);
+    oc.fillStyle = "#fff"; oc.textBaseline = "alphabetic";
+    oc.font = "8px Michroma, sans-serif";
+    oc.fillText("Welcome", 3, 10);
+    oc.fillText("to", 3 + oc.measureText("Welcome").width + 6, 10);
+    oc.font = "17px VT323, monospace";
+    oc.fillText("stellar.net", COLS - 76, ROWS - 2);
+    var px = oc.getImageData(0, 0, COLS, ROWS).data;
+    textMask = new Uint8Array(COLS * ROWS);
+    for (var i = 0; i < COLS * ROWS; i++) textMask[i] = px[i * 4 + 3] > 110 ? 1 : 0;
+    // «datastrøm»-rader med prikkstreker (som i referansen)
+    noiseRows = [3, 6, 9, 12, 15, 18].map(function (r) {
+      var segs = [], x = 0;
+      while (x < COLS * 2) { var len = 3 + (Math.random() * 18 | 0); segs.push([x, len]); x += len + 2 + (Math.random() * 10 | 0); }
+      return { r: r, segs: segs, speed: r % 2 ? 1 : 2 };
+    });
+  }
+  function isText(c, r) { return textMask && textMask[r * COLS + c]; }
+
+  function drawLed() {
+    lc.fillStyle = cssVar("--x-bn-led-bg") || "#031006";
+    lc.fillRect(0, 0, led.width, led.height);
+    // ulyse prikker
+    lc.fillStyle = "rgba(73,242,73,0.12)";
+    for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) lc.fillRect(c * PITCH, r * PITCH, 2, 2);
+    // datastrøm (svak), ikke oppå teksten
+    lc.fillStyle = "rgba(73,242,73,0.32)";
+    noiseRows.forEach(function (row) {
+      var shift = (tick * row.speed) % (COLS * 2);
+      row.segs.forEach(function (s) {
+        for (var k = 0; k < s[1]; k++) {
+          var c = (s[0] + k - shift + COLS * 4) % (COLS * 2);
+          if (c >= COLS) continue;
+          if (isText(c, row.r) || isText(c, row.r - 1) || isText(c, row.r + 1)) continue;
+          // stripene glir unna tekstblokkene
+          if (row.r < 11 && c < 62) continue;
+          if (row.r > 9 && c > COLS - 80) continue;
+          lc.fillRect(c * PITCH, row.r * PITCH, 2, 1);
+        }
+      });
+    });
+    // tekst: glødende prikker
+    lc.shadowColor = green; lc.shadowBlur = 3;
+    lc.fillStyle = green;
+    for (var r2 = 0; r2 < ROWS; r2++) for (var c2 = 0; c2 < COLS; c2++) {
+      if (isText(c2, r2)) lc.fillRect(c2 * PITCH, r2 * PITCH, 2, 2);
+    }
+    lc.shadowBlur = 0;
+  }
+
+  /* ---- statisk støy bak profilbildet ---- */
+  var st = document.getElementById("bnStatic"), sc = st.getContext("2d");
+  function drawStatic() {
+    var img = sc.createImageData(st.width, st.height), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var x = (i / 4) % st.width, y = (i / 4 / st.width) | 0;
+      var dx = (x - 70) / 40, dy = (y - 70) / 32;
+      var blob = Math.max(0, 1 - (dx * dx + dy * dy));      // mørk «silhuett»-flekk
+      var v = (Math.random() * 60 + blob * 70) | 0;
+      d[i] = v; d[i + 1] = v * 0.95; d[i + 2] = v * 0.9; d[i + 3] = 255;
+    }
+    sc.putImageData(img, 0, 0);
+  }
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function start() {
+    rasterText(); drawLed(); drawStatic();
+    if (reduce) return;
+    setInterval(function () { tick++; drawLed(); }, 140);   // hakkete 90-talls takt
+  }
+  if (document.fonts && document.fonts.load) {
+    Promise.all([document.fonts.load("17px VT323"), document.fonts.load("8px Michroma")]).then(start, start);
+  } else start();
+
+  document.querySelector(".bn-actions .sc-btn").addEventListener("click", function () {
+    var p = document.getElementById("bnPass");
+    if (!p.value) { if (window.SCAudio) SCAudio.error(); p.focus(); }
+  });
+})();
+</script>
+</body>
+</html>
