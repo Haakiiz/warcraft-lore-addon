@@ -179,38 +179,52 @@
     drawSatellite(ctx);
   };
 
-  /* --- små skip oppe til venstre --- */
+  /* --- små skip oppe til venstre (lav kontrast, skyggeside, panellinjer, lyspunkter) --- */
+  function hull(ctx, t) {
+    ctx.beginPath();
+    if (t === 1) { /* kryss-skrog med vinger */
+      ctx.moveTo(30, 0); ctx.lineTo(12, -6); ctx.lineTo(-2, -16); ctx.lineTo(-14, -17); ctx.lineTo(-10, -6);
+      ctx.lineTo(-24, -6); ctx.lineTo(-24, 6); ctx.lineTo(-10, 6); ctx.lineTo(-14, 17); ctx.lineTo(-2, 16); ctx.lineTo(12, 6);
+    } else if (t === 2) { /* langt krysserskrog med tårn */
+      ctx.moveTo(34, -1); ctx.lineTo(22, -7); ctx.lineTo(4, -7); ctx.lineTo(0, -13); ctx.lineTo(-12, -13); ctx.lineTo(-14, -8);
+      ctx.lineTo(-26, -8); ctx.lineTo(-28, -3); ctx.lineTo(-28, 5); ctx.lineTo(-22, 9); ctx.lineTo(22, 7);
+    } else if (t === 3) { /* frakter: buk + motorgondoler */
+      ctx.ellipse(0, 0, 30, 9, 0, 0, Math.PI * 2);
+      ctx.moveTo(-18, 8); ctx.rect(-26, 6, 16, 6);
+    } else { /* fregatt med sidegondoler */
+      ctx.moveTo(18, 0); ctx.lineTo(8, -4); ctx.lineTo(-6, -5); ctx.lineTo(-10, -9); ctx.lineTo(-17, -9); ctx.lineTo(-18, -4);
+      ctx.lineTo(-22, -3); ctx.lineTo(-22, 3); ctx.lineTo(-18, 4); ctx.lineTo(-17, 9); ctx.lineTo(-10, 9); ctx.lineTo(-6, 5); ctx.lineTo(8, 4);
+    }
+    ctx.closePath();
+  }
   function drawShips(ctx, r) {
     var ships = [
-      [262, 52, 0.7, 0.15, 0], [300, 70, 0.5, 0.1, 0], [345, 90, 1.25, 0.05, 1], [420, 46, 1.0, -0.1, 2],
-      [470, 72, 0.6, 0.2, 0], [380, 128, 0.55, 0.0, 0], [560, 118, 1.15, 0.12, 3], [612, 84, 0.45, 0.3, 0],
-      [244, 104, 0.5, -0.2, 0], [508, 150, 0.5, 0.1, 0], [330, 156, 0.45, 0.4, 0], [600, 52, 0.45, 0.0, 0]
+      [262, 52, 0.75, 0.15, 0], [300, 70, 0.55, 0.1, 0], [345, 90, 1.2, 0.05, 1], [420, 46, 1.05, -0.1, 2],
+      [470, 72, 0.65, 0.2, 0], [380, 128, 0.6, 0.0, 0], [560, 118, 1.1, 0.12, 3], [612, 84, 0.5, 0.3, 0],
+      [244, 104, 0.55, -0.2, 0], [508, 150, 0.55, 0.1, 0], [330, 156, 0.5, 0.4, 0], [600, 52, 0.5, 0.0, 0]
     ];
     ships.forEach(function (s) {
-      var x = s[0], y = s[1], k = s[2], a = s[3], t = s[4];
-      ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(k, k);
-      /* motorglød */
-      var eg = ctx.createRadialGradient(-26, 0, 0, -26, 0, 9);
-      eg.addColorStop(0, 'rgba(255,220,140,0.95)'); eg.addColorStop(0.4, 'rgba(255,120,30,0.6)'); eg.addColorStop(1, 'rgba(255,60,0,0)');
-      ctx.fillStyle = eg; ctx.fillRect(-36, -9, 20, 18);
-      var hull = ctx.createLinearGradient(0, -10, 0, 10);
-      if (t === 3) { hull.addColorStop(0, '#d8c070'); hull.addColorStop(0.45, '#8a7030'); hull.addColorStop(1, '#2a2010'); }
-      else { hull.addColorStop(0, '#b0aaa0'); hull.addColorStop(0.45, '#5a5650'); hull.addColorStop(1, '#16140f'); }
-      ctx.fillStyle = hull; ctx.strokeStyle = 'rgba(0,0,0,0.8)'; ctx.lineWidth = 1;
-      ctx.beginPath();
-      if (t === 1) { /* kryss-skrog */
-        ctx.moveTo(30, 0); ctx.lineTo(10, -6); ctx.lineTo(-4, -16); ctx.lineTo(-14, -16); ctx.lineTo(-8, -6);
-        ctx.lineTo(-24, -6); ctx.lineTo(-24, 6); ctx.lineTo(-8, 6); ctx.lineTo(-14, 16); ctx.lineTo(-4, 16); ctx.lineTo(10, 6);
-      } else if (t === 2) { /* langt skrog */
-        ctx.moveTo(34, -2); ctx.lineTo(20, -8); ctx.lineTo(-22, -8); ctx.lineTo(-26, -3); ctx.lineTo(-26, 4); ctx.lineTo(-20, 8); ctx.lineTo(24, 6);
-      } else if (t === 3) { /* oval frakter */
-        ctx.ellipse(0, 0, 32, 9, 0, 0, Math.PI * 2);
-      } else {
-        ctx.moveTo(20, 0); ctx.lineTo(4, -7); ctx.lineTo(-18, -6); ctx.lineTo(-22, 0); ctx.lineTo(-18, 6); ctx.lineTo(4, 7);
-      }
-      ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(-12, -5, 18, 1);
-      ctx.fillStyle = 'rgba(255,160,60,0.9)'; ctx.fillRect(6, -1, 2, 2);
+      var k = s[2], t = s[4];
+      ctx.save(); ctx.translate(s[0], s[1]); ctx.rotate(s[3]); ctx.scale(k, k);
+      var eg = ctx.createRadialGradient(-27, 0, 0, -27, 0, 6);
+      eg.addColorStop(0, 'rgba(255,200,130,0.85)'); eg.addColorStop(0.5, 'rgba(255,110,40,0.3)'); eg.addColorStop(1, 'rgba(255,60,0,0)');
+      ctx.fillStyle = eg; ctx.fillRect(-34, -6, 14, 12);
+      var g = ctx.createLinearGradient(0, -12, 0, 12);
+      if (t === 3) { g.addColorStop(0, '#8a7a4a'); g.addColorStop(0.4, '#5a4c28'); g.addColorStop(1, '#120e06'); }
+      else { g.addColorStop(0, '#7a766e'); g.addColorStop(0.4, '#48453f'); g.addColorStop(1, '#0e0d0b'); }
+      hull(ctx, t); ctx.fillStyle = g; ctx.fill();
+      ctx.save(); hull(ctx, t); ctx.clip();
+      ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fillRect(-40, 1, 80, 20);           /* skyggeside */
+      ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.lineWidth = 1 / k;
+      for (var x = -20; x < 24; x += 7) { ctx.beginPath(); ctx.moveTo(x, -16); ctx.lineTo(x, 16); ctx.stroke(); }
+      ctx.beginPath(); ctx.moveTo(-30, -1); ctx.lineTo(30, -1); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,240,220,0.14)'; ctx.fillRect(-30, -7, 60, 2);       /* svakt toppskinn */
+      ctx.restore();
+      if (t === 2 || t === 1) { ctx.fillStyle = '#2a2824'; ctx.fillRect(-10, -12, 8, 5); }
+      hull(ctx, t); ctx.strokeStyle = 'rgba(0,0,0,0.75)'; ctx.lineWidth = 1 / k; ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,240,0.9)'; ctx.fillRect(t === 2 ? 30 : 14, -1, 1.5 / k, 1.5 / k);
+      ctx.fillStyle = 'rgba(255,60,40,0.9)'; ctx.fillRect(-20, -6, 1.5 / k, 1.5 / k);
+      ctx.fillStyle = 'rgba(120,200,255,0.8)'; ctx.fillRect(-6, 2, 1.2 / k, 1.2 / k);
       ctx.restore();
     });
   }
@@ -264,85 +278,98 @@
     ctx.restore();
   }
 
-  /* --- blått spiralt ormehull --- */
+  /* --- ormehull: tett, mørk tunnel med sterkt lysende blå kant --- */
   function drawWormhole(ctx, N) {
-    var cx = 915, cy = 610, rx = 122, ry = 88, rot = -0.18;
-    var x0 = cx - 170, y0 = cy - 130, w = 340, h = 260;
+    var cx = 915, cy = 612, rx = 98, ry = 68, rot = -0.15;
+    var x0 = cx - 160, y0 = cy - 120, w = 320, h = 240;
     var img = ctx.getImageData(x0, y0, w, h), d = img.data;
     var cr = Math.cos(-rot), sr = Math.sin(-rot);
     for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
       var px = x + x0 - cx, py = y + y0 - cy;
       var ex = (px * cr - py * sr) / rx, ey = (px * sr + py * cr) / ry;
       var r = Math.hypot(ex, ey);
-      if (r > 1.35) continue;
-      var th = Math.atan2(ey, ex);
-      var n = N.fbm(ex * 3 + 40, ey * 3 + 40, 4);
-      var sp = 0.5 + 0.5 * Math.sin(th * 2 - Math.log(r + 0.03) * 6.5 + n * 3);
-      var arm = Math.pow(sp, 2.2);
-      var env = sstep(0.07, 0.28, r) * (1 - sstep(0.55, 1.3, r));
-      var I = arm * env * (0.6 + 0.6 * n);
-      var ring = Math.exp(-Math.pow((r - 0.2) / 0.06, 2)) * 0.9;
-      var i = (y * w + x) * 4;
-      var hole = 1 - sstep(0.06, 0.16, r);
-      d[i] = clamp(d[i] * (1 - hole) + 30 * I + 170 * I * I + 120 * ring, 0, 255);
-      d[i + 1] = clamp(d[i + 1] * (1 - hole) + 70 * I + 200 * I * I + 170 * ring, 0, 255);
-      d[i + 2] = clamp(d[i + 2] * (1 - hole) + 255 * I + 120 * I * I + 255 * ring, 0, 255);
+      if (r > 1.6) continue;
+      var th = Math.atan2(ey, ex), i = (y * w + x) * 4;
+      var n = N.fbm(ex * 4 + 40, ey * 4 + 40, 4);
+      var rim = Math.exp(-Math.pow((r - 0.93) / 0.07, 2)) * (0.75 + 0.5 * n);
+      var halo = r > 0.93 ? Math.exp(-Math.pow((r - 0.93) / 0.28, 2)) * 0.45 : 0;
+      var It = 0;
+      if (r < 0.93) {
+        var rings = 0.5 + 0.5 * Math.sin(Math.log(r + 0.015) * 16 + th * 2 + n * 4);
+        var depth = Math.pow(sstep(0.04, 0.92, r), 1.8);
+        It = Math.pow(rings, 3) * depth * 0.75;
+        var dark = 0.12 + 0.5 * depth;
+        d[i] *= dark * 0.3; d[i + 1] *= dark * 0.3; d[i + 2] *= dark * 0.4;
+      }
+      d[i] = clamp(d[i] + 14 * It + 120 * rim * rim + 30 * halo, 0, 255);
+      d[i + 1] = clamp(d[i + 1] + 50 * It + 190 * Math.pow(rim, 1.5) + 70 * halo, 0, 255);
+      d[i + 2] = clamp(d[i + 2] + 190 * It + 255 * rim + 200 * halo, 0, 255);
     }
     ctx.putImageData(img, x0, y0);
   }
 
-  /* --- egen satellitt/romstasjon --- */
-  function cyl(ctx, x1, y1, x2, y2, wd, stops) {
+  /* --- egen satellitt/romstasjon (dempet stål, skyggeside, panellinjer, lys) --- */
+  function cyl(ctx, x1, y1, x2, y2, wd, stops, panels) {
     var a = Math.atan2(y2 - y1, x2 - x1), len = Math.hypot(x2 - x1, y2 - y1);
     ctx.save(); ctx.translate(x1, y1); ctx.rotate(a);
     var g = ctx.createLinearGradient(0, -wd / 2, 0, wd / 2);
     stops.forEach(function (s, k) { g.addColorStop(k / (stops.length - 1), s); });
-    ctx.fillStyle = g; ctx.strokeStyle = 'rgba(0,0,0,0.85)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.rect(0, -wd / 2, len, wd); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = g; ctx.fillRect(0, -wd / 2, len, wd);
+    if (panels) {
+      ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fillRect(0, wd * 0.12, len, wd * 0.38);
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      for (var p = panels; p < len; p += panels) ctx.fillRect(p, -wd / 2, 1, wd);
+      ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillRect(0, -wd * 0.18, len, 1);
+    }
+    ctx.strokeStyle = 'rgba(0,0,0,0.85)'; ctx.lineWidth = 1; ctx.strokeRect(0, -wd / 2, len, wd);
     ctx.restore();
   }
-  var STEEL = ['#1a1814', '#9a948a', '#e4dccc', '#7a7468', '#2a2620', '#0c0b09'];
-  var STEEL_D = ['#121110', '#5e5a52', '#9a948a', '#4a463e', '#141210'];
+  var STEEL = ['#0a0908', '#4a463e', '#86806f', '#57524a', '#1c1a16', '#070605'];
+  var STEEL_D = ['#0a0908', '#3a3630', '#6a655a', '#2e2b26', '#0a0908'];
   function drawSatellite(ctx) {
-    /* lang antenne nedover */
-    ctx.save();
-    ctx.fillStyle = '#8a8478'; ctx.strokeStyle = '#000';
+    ctx.fillStyle = '#5a554c'; ctx.strokeStyle = '#000';
     ctx.beginPath(); ctx.moveTo(536, 586); ctx.lineTo(552, 580); ctx.lineTo(616, 706); ctx.lineTo(611, 709); ctx.closePath(); ctx.fill(); ctx.stroke();
-    ctx.restore();
-    cyl(ctx, 516, 548, 560, 622, 14, STEEL_D);
-    /* solcellebom (diagonal) */
-    cyl(ctx, 278, 436, 660, 290, 6, ['#14120f', '#8a8478', '#d0c8b8', '#3a3630']);
-    ctx.fillStyle = '#c01818'; ctx.save(); ctx.translate(660, 290); ctx.rotate(Math.atan2(290 - 436, 660 - 278));
-    ctx.fillRect(-18, -3, 18, 6); ctx.restore();
-    ctx.fillStyle = '#7a7468'; ctx.fillRect(272, 433, 8, 7);
-    /* hovedkropp */
-    cyl(ctx, 438, 336, 520, 552, 58, STEEL);
-    /* ringer på kroppen */
+    ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.beginPath(); ctx.moveTo(546, 584); ctx.lineTo(552, 580); ctx.lineTo(616, 706); ctx.lineTo(613, 708); ctx.fill();
+    cyl(ctx, 516, 548, 560, 622, 14, STEEL_D, 10);
+    cyl(ctx, 278, 436, 660, 290, 6, ['#0e0d0b', '#5a554c', '#8a8476', '#2a2722'], 24);
+    /* solcellepaneler på bommen */
+    [[310, 424], [600, 312]].forEach(function (p) {
+      ctx.save(); ctx.translate(p[0], p[1]); ctx.rotate(Math.atan2(290 - 436, 660 - 278));
+      ctx.fillStyle = '#141826'; ctx.fillRect(-22, -9, 44, 18);
+      ctx.strokeStyle = 'rgba(120,130,160,0.35)'; ctx.lineWidth = 1;
+      for (var k = -22; k <= 22; k += 7) { ctx.beginPath(); ctx.moveTo(k, -9); ctx.lineTo(k, 9); ctx.stroke(); }
+      ctx.beginPath(); ctx.moveTo(-22, 0); ctx.lineTo(22, 0); ctx.stroke();
+      ctx.strokeStyle = '#000'; ctx.strokeRect(-22, -9, 44, 18);
+      ctx.restore();
+    });
+    ctx.fillStyle = '#8a1414'; ctx.save(); ctx.translate(660, 290); ctx.rotate(Math.atan2(290 - 436, 660 - 278)); ctx.fillRect(-16, -3, 16, 6); ctx.restore();
+    cyl(ctx, 438, 336, 520, 552, 58, STEEL, 16);
     [0.18, 0.42, 0.7, 0.92].forEach(function (t) {
       var x = mix(438, 520, t), y = mix(336, 552, t);
-      cyl(ctx, x - 2, y - 5, x + 2, y + 5, 62, ['#0a0908', '#6a645a', '#bab2a2', '#3a3630', '#0a0908']);
+      cyl(ctx, x - 2, y - 5, x + 2, y + 5, 62, ['#060505', '#3e3a33', '#6e695e', '#26231f', '#060505']);
     });
-    /* toppkuppel */
     var dg = ctx.createRadialGradient(426, 330, 4, 438, 338, 32);
-    dg.addColorStop(0, '#f0e8d8'); dg.addColorStop(0.5, '#8a8478'); dg.addColorStop(1, '#14120e');
+    dg.addColorStop(0, '#9a9384'); dg.addColorStop(0.5, '#4e4a42'); dg.addColorStop(1, '#0c0b09');
     ctx.fillStyle = dg; ctx.strokeStyle = '#000';
     ctx.beginPath(); ctx.ellipse(438, 338, 30, 22, 1.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    /* sidetank */
-    cyl(ctx, 506, 380, 530, 446, 22, STEEL);
-    /* parabol */
+    cyl(ctx, 506, 380, 530, 446, 22, STEEL, 12);
     ctx.save(); ctx.translate(392, 380); ctx.rotate(-0.5);
     var pg = ctx.createLinearGradient(-44, -30, 40, 30);
-    pg.addColorStop(0, '#e8e0d0'); pg.addColorStop(0.5, '#8a8478'); pg.addColorStop(1, '#1c1a16');
+    pg.addColorStop(0, '#948d7e'); pg.addColorStop(0.45, '#57524a'); pg.addColorStop(1, '#0e0d0b');
     ctx.fillStyle = pg; ctx.strokeStyle = '#000';
     ctx.beginPath(); ctx.ellipse(0, 0, 44, 34, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.beginPath(); ctx.ellipse(6, 5, 36, 26, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)';
     for (var k = 1; k < 4; k++) { ctx.beginPath(); ctx.ellipse(0, 0, 44 * k / 4, 34 * k / 4, 0, 0, Math.PI * 2); ctx.stroke(); }
+    for (k = 0; k < 6; k++) { var an = k * Math.PI / 3; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(an) * 44, Math.sin(an) * 34); ctx.stroke(); }
     ctx.restore();
-    ctx.strokeStyle = '#b0a898'; ctx.lineWidth = 2;
+    ctx.strokeStyle = '#6a655a'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(392, 380); ctx.lineTo(420, 366); ctx.stroke(); ctx.lineWidth = 1;
-    /* lilla lampe */
-    ctx.fillStyle = '#c070ff'; ctx.fillRect(468, 404, 3, 3);
-    ctx.fillStyle = 'rgba(190,110,255,0.35)'; ctx.fillRect(466, 402, 7, 7);
+    /* små lyspunkter */
+    [[468, 404, '#c070ff'], [452, 352, '#ff4030'], [658, 291, '#ffd0c0'], [280, 436, '#a0d0ff'], [534, 440, '#ffb040']].forEach(function (l) {
+      ctx.fillStyle = l[2]; ctx.fillRect(l[0], l[1], 2, 2);
+      ctx.globalAlpha = 0.3; ctx.fillRect(l[0] - 1, l[1] - 1, 4, 4); ctx.globalAlpha = 1;
+    });
   }
 
   /* =====================================================================
@@ -602,14 +629,5 @@
     return open + body + '</g></svg>';
   };
 
-  /* --- konsollsilhuett: samme punkter for clip-path og kantlinje --- */
-  SC.consoleShape = function (body, svg, points, trimPts) {
-    body.style.clipPath = 'polygon(' + points.map(function (p) { return p[0] + 'px ' + p[1] + 'px'; }).join(',') + ')';
-    var pts = points.map(function (p) { return p.join(','); }).join(' ');
-    var top = (trimPts || points).map(function (p) { return p.join(','); }).join(' ');
-    svg.innerHTML =
-      '<polygon class="pt-console__edge-dark" points="' + pts + '"/>' +
-      '<polyline class="pt-console__edge-hi" points="' + top + '"/>' +
-      '<polyline class="pt-console__edge-trim" points="' + top + '"/>';
-  };
+/*@@CONSOLE@@*/
 })();
