@@ -136,7 +136,7 @@
 .bf-monitor--left .bf-term,
 .bf-monitor--right .bf-term { top: 6px; display: flex; flex-direction: column; justify-content: flex-end; }
 .bf-term__dim { color: var(--sc-text-stat-dim); }
-.bf-term__bar { display: block; height: 4px; margin: 2px 0; background: var(--sc-text-stat-dim); box-shadow: var(--sc-glow-stat); }
+.bf-term--bars { display: block !important; top: 5px; left: 7px; font-size: 10px; line-height: 9px; white-space: pre; }
 
 /* ---------- Tittel ---------- */
 .bf-title {
