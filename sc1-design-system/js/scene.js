@@ -291,13 +291,14 @@
       if (r > 1.6) continue;
       var th = Math.atan2(ey, ex), i = (y * w + x) * 4;
       var n = N.fbm(ex * 4 + 40, ey * 4 + 40, 4);
-      var rim = Math.exp(-Math.pow((r - 0.93) / 0.07, 2)) * (0.75 + 0.5 * n);
-      var halo = r > 0.93 ? Math.exp(-Math.pow((r - 0.93) / 0.28, 2)) * 0.45 : 0;
+      var rr0 = 0.93 + (n - 0.5) * 0.14;
+      var rim = Math.exp(-Math.pow((r - rr0) / 0.075, 2)) * (0.7 + 0.6 * n);
+      var halo = r > rr0 ? Math.exp(-Math.pow((r - rr0) / 0.3, 2)) * 0.4 * (0.6 + n) : 0;
       var It = 0;
-      if (r < 0.93) {
+      if (r < rr0) {
         var rings = 0.5 + 0.5 * Math.sin(Math.log(r + 0.015) * 16 + th * 2 + n * 4);
         var depth = Math.pow(sstep(0.04, 0.92, r), 1.8);
-        It = Math.pow(rings, 3) * depth * 0.75;
+        It = Math.pow(rings, 2) * depth * 1.25;
         var dark = 0.12 + 0.5 * depth;
         d[i] *= dark * 0.3; d[i + 1] *= dark * 0.3; d[i + 2] *= dark * 0.4;
       }
@@ -694,7 +695,7 @@
       '<feTurbulence type="fractalNoise" baseFrequency="0.016 0.04" numOctaves="4" seed="4" result="a"/>' +
       '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.42  0 0 0 0 0.34  -2.6 0 0 0 1.55" result="blot"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="3" seed="21" result="b"/>' +
-      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.36  0 0 0 0 0.26  -4 0 0 0 1.95" result="rust"/>' +
+      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.36  0 0 0 0 0.26  -4 0 0 0 1.75" result="rust"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="g"/>' +
       '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.26  0 0 0 0 0.22  -1.7 0 0 0 1.1" result="grain"/>' +
       '<feMerge><feMergeNode in="blot"/><feMergeNode in="rust"/><feMergeNode in="grain"/></feMerge></filter>' +
@@ -877,9 +878,9 @@
     s += '<rect x="900" y="58" width="240" height="9" fill="url(#tPipe)" stroke="#000"/>';
     [930, 1000, 1080].forEach(function (x) { s += '<rect x="' + x + '" y="55" width="6" height="15" fill="url(#tPipeV)" stroke="#000"/>'; });
     /* klo over panelets øvre venstre hjørne */
-    s += plate([[762, 88], [778, 72], [890, 72], [904, 86], [890, 100], [796, 100], [796, 124], [782, 124], [762, 108]], { shadow: [4, 3] });
+    s += plate([[762, 88], [778, 72], [890, 72], [904, 86], [890, 100], [786, 100], [786, 122], [774, 122], [762, 110]], { shadow: [4, 3] });
     s += plate([[866, 62], [884, 50], [912, 50], [912, 96], [898, 104], [866, 104]], { fill: 'url(#tMetalDark)' });
-    s += bolt(776, 92) + bolt(784, 116) + bolt(880, 84) + bolt(890, 60);
+    s += bolt(774, 90) + bolt(774, 112) + bolt(880, 84) + bolt(890, 60);
     /* ledd oppe til høyre */
     s += plate([[1080, 30], [1176, 30], [1190, 44], [1190, 92], [1176, 106], [1080, 106], [1066, 92], [1066, 44]], { fill: 'url(#tMetalDark)', shadow: [5, 4] });
     s += recess(1092, 46, 46, 22) + led(1100, 54, '#2ad84a') + led(1112, 54, '#1a7a2a') + led(1124, 54, '#e8a020');
