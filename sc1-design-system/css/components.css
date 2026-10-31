@@ -236,7 +236,7 @@
 }
 .sc-btn--blue:disabled .sc-hk, .sc-btn--blue.is-disabled .sc-hk { color: inherit; text-shadow: none; }
 
-/* --- 3c. Rust (Battle.net) --- */
+/* --- 3c. Rust (nettverks-innlogging) --- */
 .sc-btn--rust {
   min-height: 22px; padding: 2px 14px;
   font-family: var(--sc-font-form); font-weight: 700; font-size: var(--sc-fs-sm);
@@ -396,7 +396,7 @@
   background: radial-gradient(ellipse 3px 7px at 50% 0, var(--x-bone-hi) 0 55%, var(--x-bone-dark) 80%, transparent 85%) 0 0 / 26px 8px repeat-x;
 }
 
-/* --- Rust (Battle.net) --- */
+/* --- Rust (nettverks-innlogging) --- */
 .sc-panel--rust {
   background: linear-gradient(135deg, var(--sc-rust-4) 0, var(--sc-rust-3) 25%, var(--sc-rust-2) 60%, var(--sc-rust-1) 100%);
 }
@@ -683,7 +683,7 @@
 @keyframes sc-marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
 /* =========================================================================
-   11. SKJEMA (Battle.net)
+   11. SKJEMA (nettverks-innlogging)
    ========================================================================= */
 .sc-label {
   display: block; margin: 0 0 2px;

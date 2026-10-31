@@ -51,7 +51,7 @@
   --sc-led-red: #ff3a2a;
   --sc-led-amber: #ffb020;
 
-  /* --- Rust (Battle.net) --- */
+  /* --- Rust (nettverks-innlogging) --- */
   --sc-rust-1: #2a160c;
   --sc-rust-2: #4a2a16;
   --sc-rust-3: #6e4224;
@@ -62,7 +62,7 @@
   --sc-font-menu: "Michroma", "Oxanium", sans-serif;   /* bred, tynn, geometrisk */
   --sc-font-ui: "Oxanium", "Michroma", sans-serif;     /* knapper/konsoll */
   --sc-font-led: "VT323", monospace;                  /* LED/punktmatrise */
-  --sc-font-form: "Tinos", serif;                     /* små Battle.net-etiketter */
+  --sc-font-form: "Tinos", serif;                     /* små innloggings-etiketter */
   --sc-fs-xs: 11px;
   --sc-fs-sm: 13px;
   --sc-fs-md: 16px;

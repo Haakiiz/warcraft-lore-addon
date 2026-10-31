@@ -1,5 +1,5 @@
 /* =========================================================================
-   Battle.net-lignende innlogging («Network Login») – arbeider C, runde 2
+   Nettverks-innlogging («Network Login») – arbeider C, runde 2
    Designet på en 640×480-base og skalert med transform:scale() slik at hele
    rammen får plass i 100vh − 16 px, sentrert i 16:9 med svart rundt.
    Lokale tokens (mangler i tokens.css) har prefikset --x-.
