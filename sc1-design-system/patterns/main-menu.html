@@ -24,48 +24,8 @@
 
   <a href="#" class="pt-mm__account" data-open-dialog>[Commander#1998]</a>
 
-  <!-- metallarm som holder nyhetspanelet -->
-  <svg class="pt-mm__arm" viewBox="0 0 480 300" aria-hidden="true">
-    <defs>
-      <linearGradient id="armMetal" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" style="stop-color:var(--sc-metal-5)"/>
-        <stop offset="0.25" style="stop-color:var(--sc-metal-4)"/>
-        <stop offset="0.6" style="stop-color:var(--sc-metal-tint)"/>
-        <stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-      </linearGradient>
-      <linearGradient id="armMetalV" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" style="stop-color:var(--sc-metal-1)"/>
-        <stop offset="0.35" style="stop-color:var(--sc-metal-4)"/>
-        <stop offset="0.6" style="stop-color:var(--sc-metal-tint)"/>
-        <stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-      </linearGradient>
-      <pattern id="armHaz" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="5" height="10" style="fill:var(--sc-hazard-a)" opacity="0.75"/>
-        <rect x="5" width="5" height="10" style="fill:var(--sc-hazard-b)"/>
-      </pattern>
-    </defs>
-    <!-- horisontal bjelke langs toppen -->
-    <path class="pt-arm__plate" d="M40 58 L70 34 L232 34 L250 18 L480 18 L480 62 L300 62 L282 78 L96 78 L84 90 L40 90 Z" fill="url(#armMetal)"/>
-    <path d="M110 46 h110 v18 h-110 z" fill="url(#armHaz)" stroke="#000"/>
-    <path d="M70 34 L232 34 L250 18 L480 18" class="pt-arm__hi"/>
-    <!-- klo/ledd -->
-    <path class="pt-arm__plate" d="M250 10 L312 10 L326 24 L326 70 L312 84 L262 84 L250 72 Z" fill="url(#armMetalV)"/>
-    <rect x="268" y="22" width="40" height="20" fill="#050505" stroke="#000"/>
-    <rect x="276" y="27" width="8" height="10" fill="#2ab84a"/><rect x="290" y="27" width="8" height="10" fill="#1a6a2a"/>
-    <!-- vertikal arm ned langs høyre side -->
-    <path class="pt-arm__plate" d="M330 62 L372 62 L386 76 L386 232 L372 246 L346 246 L346 196 L330 182 Z" fill="url(#armMetalV)"/>
-    <path d="M340 92 h34 M340 122 h34 M340 152 h34" stroke="#000" stroke-width="2"/>
-    <path d="M330 62 L372 62 L386 76" class="pt-arm__hi"/>
-    <!-- holder inn mot panelet -->
-    <path class="pt-arm__plate" d="M300 150 L346 150 L346 196 L300 196 L292 188 L292 158 Z" fill="url(#armMetal)"/>
-    <g class="pt-arm__rivets">
-      <circle cx="80" cy="70" r="2.5"/><circle cx="236" cy="70" r="2.5"/><circle cx="420" cy="32" r="2.5"/><circle cx="420" cy="50" r="2.5"/>
-      <circle cx="358" cy="80" r="2.5"/><circle cx="358" cy="226" r="2.5"/><circle cx="304" cy="172" r="2.5"/><circle cx="260" cy="28" r="2.5"/>
-    </g>
-    <!-- slange -->
-    <path d="M396 62 C 420 110, 412 170, 392 230" fill="none" stroke="#14120e" stroke-width="9"/>
-    <path d="M396 62 C 420 110, 412 170, 392 230" fill="none" stroke="var(--sc-metal-3)" stroke-width="5" stroke-dasharray="3 2"/>
-  </svg>
+  <!-- metallarm som klemmer nyhetspanelet (tegnes av SCScene.armSVG) -->
+  <svg class="pt-mm__arm" id="arm" viewBox="760 0 520 480" aria-hidden="true"></svg>
 
   <!-- nyhetspanel -->
   <section class="pt-news" aria-label="Nyheter">
@@ -78,9 +38,11 @@
     </header>
     <article class="pt-news__item">
       <div class="pt-thumb pt-thumb--league" aria-hidden="true">
-        <svg viewBox="0 0 120 56"><polygon points="10,6 54,6 62,28 54,50 10,50 2,28" fill="#0a0a12" stroke="#c0c4cc" stroke-width="2"/>
-          <text x="32" y="34" text-anchor="middle" fill="#e8e8f0" font-size="15" font-family="Michroma">SCL</text>
-          <path d="M66 10 v36" stroke="#5a5e66"/><polygon points="92,10 97,24 112,24 100,33 104,47 92,38 80,47 84,33 72,24 87,24" fill="#c02020" stroke="#f0d040" stroke-width="1.5"/></svg>
+        <svg viewBox="0 0 120 56"><defs><filter id="thGlow" x="-0.3" y="-0.3" width="1.6" height="1.6"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <polygon points="12,8 52,8 60,28 52,48 12,48 4,28" fill="#0c0c16" stroke="#5ab8ff" stroke-width="1.5" filter="url(#thGlow)"/>
+          <text x="32" y="33" text-anchor="middle" fill="#cfe8ff" font-size="13" font-family="Michroma" filter="url(#thGlow)">SCL</text>
+          <path d="M68 10 v36" stroke="#2a2e3a"/>
+          <polygon points="92,10 97,23 111,23 100,32 104,46 92,37 80,46 84,32 73,23 87,23" fill="#3a0808" stroke="#ff5030" stroke-width="1.5" filter="url(#thGlow)"/></svg>
       </div>
       <div>
         <h3 class="pt-news__head">Sector League…</h3>
@@ -99,10 +61,10 @@
     </article>
     <footer class="pt-news__foot">
       <span>Join the Community:</span>
-      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 9 L6 3 L10 9 Z"/></svg></span>
-      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><rect x="3" y="3" width="6" height="6"/></svg></span>
-      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M4 3 L9 6 L4 9 Z"/></svg></span>
-      <span class="pt-news__soc" aria-hidden="true"><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3"/></svg></span>
+      <span class="pt-news__soc" aria-hidden="true"></span>
+      <span class="pt-news__soc" aria-hidden="true"></span>
+      <span class="pt-news__soc" aria-hidden="true"></span>
+      <span class="pt-news__soc" aria-hidden="true"></span>
     </footer>
   </section>
 
@@ -110,7 +72,7 @@
 
   <!-- oppgraderingsdialog -->
   <div class="pt-modal" id="upgrade" hidden>
-    <div class="sc-dialog sc-dialog--red pt-mm__dialog" role="dialog" aria-modal="true" aria-labelledby="upgrade-text">
+    <div class="sc-dialog sc-dialog--red pt-mm__dialog" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="upgrade-text">
       <div class="sc-dialog__body">
         <p id="upgrade-text">An upgrade to version 1.16.2.2004 is available! It is required for online play.</p>
       </div>
@@ -129,12 +91,28 @@
   S.fitStage(stage);
   S.textures();
   S.drawSpace(document.getElementById('space'));
+  document.getElementById('arm').innerHTML = S.armSVG();
+
+  /* egne 7×7 pikselglyfer for community-ikonene */
+  var GLYPHS = [
+    ['0011100', '0111110', '1101011', '1111111', '0111110', '0100010', '1000001'],
+    ['1111111', '1000001', '1011101', '1010101', '1011101', '1000001', '1111111'],
+    ['0001000', '0011100', '0111110', '1111111', '0011100', '0011100', '0011100'],
+    ['0111110', '1000001', '1010101', '1000001', '1011101', '1000001', '0111110']
+  ];
+  document.querySelectorAll('.pt-news__soc').forEach(function (el, i) {
+    var d = '';
+    GLYPHS[i % GLYPHS.length].forEach(function (row, y) {
+      for (var x = 0; x < 7; x++) if (row[x] === '1') d += 'M' + x + ' ' + y + 'h1v1h-1z';
+    });
+    el.innerHTML = '<svg viewBox="0 0 7 7"><path d="' + d + '"/></svg>';
+  });
 
   var modal = document.getElementById('upgrade'), lastFocus = null;
   function open() {
     lastFocus = document.activeElement;
     modal.hidden = false;
-    modal.querySelector('.sc-btn').focus();
+    modal.querySelector('.sc-dialog').focus({ preventScroll: true });
   }
   function close() {
     modal.hidden = true;

@@ -629,5 +629,274 @@
     return open + body + '</g></svg>';
   };
 
-/*@@CONSOLE@@*/
+  /* =====================================================================
+     SVG-PLATER: fasekanter regnes ut per kant (lys mot opp/venstre, mørk
+     mot høyre/ned), skitten tekstur via feTurbulence + multiply.
+     ===================================================================== */
+  function P(pts) { return pts.map(function (p) { return p[0] + ',' + p[1]; }).join(' '); }
+  function bevel(pts, o) {
+    var a = 0, n = pts.length, i, s = '', w = o.w || 2;
+    for (i = 0; i < n; i++) { var p0 = pts[i], q0 = pts[(i + 1) % n]; a += p0[0] * q0[1] - q0[0] * p0[1]; }
+    var sg = a > 0 ? 1 : -1;
+    for (i = 0; i < n; i++) {
+      var p = pts[i], q = pts[(i + 1) % n], dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy);
+      if (!L) continue;
+      if (o.skipY != null && p[1] === o.skipY && q[1] === o.skipY) continue;
+      var nx = sg * dy / L, ny = -sg * dx / L, ix = -nx * w / 2, iy = -ny * w / 2, col;
+      if (ny < -0.6) col = o.hi;
+      else if (ny < -0.2) col = nx < 0 ? o.hi : o.mid;
+      else if (nx < -0.6) col = o.mid;
+      else col = o.lo;
+      s += '<line x1="' + (p[0] + ix).toFixed(1) + '" y1="' + (p[1] + iy).toFixed(1) + '" x2="' + (q[0] + ix).toFixed(1) + '" y2="' + (q[1] + iy).toFixed(1) +
+        '" stroke="' + col + '" stroke-width="' + w + '"/>';
+    }
+    return s;
+  }
+  var uid = 0;
+  function plate(pts, o) {
+    o = o || {};
+    var id = 'pl' + (++uid), s = '';
+    if (o.shadow) s += '<polygon points="' + P(pts.map(function (p) { return [p[0] + o.shadow[0], p[1] + o.shadow[1]]; })) + '" fill="#000" opacity="0.6"/>';
+    s += '<clipPath id="' + id + '"><polygon points="' + P(pts) + '"/></clipPath>';
+    s += '<polygon points="' + P(pts) + '" fill="' + (o.fill || 'url(#tMetal)') + '"/>';
+    s += '<g clip-path="url(#' + id + ')">';
+    if (o.inner) s += o.inner;
+    (o.seams || []).forEach(function (x) {
+      s += '<rect x="' + (x - 1) + '" y="-60" width="3" height="800" fill="#0b0907" opacity="0.9"/><rect x="' + (x + 2) + '" y="-60" width="1" height="800" fill="#8a8070" opacity="0.45"/>';
+    });
+    (o.hseams || []).forEach(function (y) {
+      s += '<rect x="0" y="' + (y - 1) + '" width="2000" height="3" fill="#0b0907" opacity="0.9"/><rect x="0" y="' + (y + 2) + '" width="2000" height="1" fill="#8a8070" opacity="0.4"/>';
+    });
+    if (o.grime !== false) s += '<rect x="0" y="0" width="2000" height="800" filter="url(#' + (o.grimeId || 'grime') + ')" style="mix-blend-mode:multiply"/>';
+    s += '</g>';
+    s += '<polygon points="' + P(pts) + '" fill="none" stroke="#000" stroke-width="1"/>';
+    s += bevel(pts, { hi: o.hi || '#a69a82', mid: o.mid || '#7a705e', lo: o.lo || '#120f0c', w: o.w || 2, skipY: o.skipY });
+    return s;
+  }
+  function recess(x, y, w, h) { /* innfelt brønn: mørk kant oppe/venstre, lys nede/høyre */
+    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: '#100e0b', hi: '#050403', mid: '#050403', lo: '#7d7262', grime: false });
+  }
+  function bolt(x, y) { /* sekskantbolt (ikke perfekt rund) */
+    var pts = [], k;
+    for (k = 0; k < 6; k++) pts.push([x + 3 * Math.cos(k * Math.PI / 3 + 0.3), y + 3 * Math.sin(k * Math.PI / 3 + 0.3)]);
+    return '<polygon points="' + P(pts.map(function (p) { return [p[0].toFixed(1), p[1].toFixed(1)]; })) + '" fill="#8e8574" stroke="#0a0806" stroke-width="1"/>' +
+      '<path d="M' + (x - 2) + ' ' + (y + 1) + ' L' + (x + 2) + ' ' + (y - 1) + '" stroke="#2a2620" stroke-width="1"/>';
+  }
+  function led(x, y, c) {
+    return '<rect x="' + (x - 1) + '" y="' + (y - 1) + '" width="7" height="6" fill="#000"/><rect x="' + x + '" y="' + y + '" width="5" height="4" fill="' + c + '" filter="url(#ledGlow)"/>';
+  }
+  function hazard(x, y, w, h) {
+    return plate([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], { fill: 'url(#tHaz)', grimeId: 'grimeHeavy', hi: '#0a0806', mid: '#0a0806', lo: '#8a7e68' });
+  }
+
+  var DEFS_COMMON =
+    '<filter id="grime" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.016 0.04" numOctaves="4" seed="4" result="a"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.52  0 0 0 0 0.38  0 0 0 0 0.26  -2.6 0 0 0 1.7" result="blot"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="3" seed="21" result="b"/>' +
+      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.62  0 0 0 0 0.34  0 0 0 0 0.16  -4 0 0 0 2.25" result="rust"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="g"/>' +
+      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.26  0 0 0 0 0.22  -1.7 0 0 0 1.1" result="grain"/>' +
+      '<feMerge><feMergeNode in="blot"/><feMergeNode in="rust"/><feMergeNode in="grain"/></feMerge></filter>' +
+    '<filter id="grimeHeavy" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="4" seed="13" result="a"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.2  -2.2 0 0 0 1.75" result="blot"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="g"/>' +
+      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.22  0 0 0 0 0.2  -2 0 0 0 1.35" result="grain"/>' +
+      '<feMerge><feMergeNode in="blot"/><feMergeNode in="grain"/></feMerge></filter>' +
+    '<filter id="ledGlow" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+    '<linearGradient id="tMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#686051"/><stop offset="0.12" stop-color="#5a5248"/><stop offset="0.55" stop-color="#4a4238"/><stop offset="1" stop-color="#28241f"/></linearGradient>' +
+    '<linearGradient id="tMetalDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4339"/><stop offset="1" stop-color="#1e1b17"/></linearGradient>' +
+    '<linearGradient id="tPipe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0907"/><stop offset="0.2" stop-color="#5e5649"/><stop offset="0.38" stop-color="#9a8f7a"/><stop offset="0.6" stop-color="#4a4339"/><stop offset="1" stop-color="#0a0907"/></linearGradient>' +
+    '<linearGradient id="tPipeV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0907"/><stop offset="0.3" stop-color="#8a806c"/><stop offset="0.6" stop-color="#3e382f"/><stop offset="1" stop-color="#0a0907"/></linearGradient>' +
+    '<pattern id="tHaz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="14" fill="#8e7c3c"/><rect x="7" width="7" height="14" fill="#1a1712"/></pattern>';
+
+  /* ---------- TERRAN ---------- */
+  function terranConsole() {
+    var s = '<defs>' + DEFS_COMMON + '</defs>';
+    /* grunnkropp: lav midtdel */
+    s += plate([[0, 232], [0, 44], [104, 44], [116, 56], [330, 56], [356, 84], [776, 84], [800, 60], [1280, 60], [1280, 232]], { seams: [62, 470, 600, 700], hseams: [150], skipY: 232 });
+    /* ventilasjonsribbe på midtdelen */
+    var ribs = ''; for (var x = 486; x < 690; x += 6) ribs += '<rect x="' + x + '" y="70" width="3" height="14" fill="#0b0907"/>';
+    s += plate([[466, 84], [480, 70], [694, 70], [708, 84]], { fill: 'url(#tMetalDark)', inner: ribs });
+    /* rørstabel til venstre */
+    [70, 100, 130].forEach(function (y) {
+      s += '<rect x="0" y="' + y + '" width="112" height="22" fill="url(#tPipe)" stroke="#000"/>';
+      s += '<rect x="0" y="' + y + '" width="112" height="22" filter="url(#grime)" style="mix-blend-mode:multiply"/>';
+      [28, 74].forEach(function (rx) { s += '<rect x="' + rx + '" y="' + (y - 2) + '" width="7" height="26" fill="url(#tPipeV)" stroke="#000"/>'; });
+    });
+    s += plate([[8, 166], [104, 166], [104, 222], [8, 222]], { fill: 'url(#tMetalDark)', seams: [56] });
+    s += led(18, 200, '#30e030') + led(28, 200, '#ffb020') + led(38, 200, '#ff3a2a');
+    /* høyre maskinblokk med vifte */
+    s += plate([[1150, 232], [1150, 40], [1172, 18], [1280, 18], [1280, 232]], { seams: [1222], skipY: 232 });
+    s += '<circle cx="1218" cy="104" r="44" fill="#0b0907" stroke="#000" stroke-width="2"/>';
+    s += '<circle cx="1218" cy="104" r="40" fill="url(#tMetalDark)"/>';
+    for (var k = 0; k < 12; k++) {
+      var an = k * Math.PI / 6;
+      s += '<path d="M1218 104 L' + (1218 + 38 * Math.cos(an)).toFixed(1) + ' ' + (104 + 38 * Math.sin(an)).toFixed(1) + ' L' + (1218 + 38 * Math.cos(an + 0.32)).toFixed(1) + ' ' + (104 + 38 * Math.sin(an + 0.32)).toFixed(1) + ' Z" fill="#14110e"/>';
+    }
+    s += '<circle cx="1218" cy="104" r="9" fill="#5a5248" stroke="#000"/>';
+    s += '<circle cx="1218" cy="104" r="44" fill="none" stroke="#8a806c" stroke-width="1" stroke-dasharray="40 30" opacity="0.6"/>';
+    s += hazard(1162, 168, 108, 20);
+    s += led(1170, 204, '#30e030') + led(1182, 204, '#ffb020');
+    /* minimap-hus: høy skulder med tykke 45°-kanter */
+    s += plate([[112, 232], [112, 32], [142, 2], [316, 2], [346, 32], [346, 232]], { shadow: [7, 4], skipY: 232, seams: [] });
+    s += recess(150, 10, 58, 26) + '<polyline points="154,30 164,30 168,16 176,26 182,14 188,28 194,20 204,30" fill="none" stroke="#e8c020" stroke-width="1.5" filter="url(#ledGlow)"/>';
+    s += hazard(216, 12, 96, 22);
+    s += recess(140, 42, 186, 188);
+    s += bolt(124, 44) + bolt(334, 44) + bolt(124, 220) + bolt(334, 220);
+    /* kommandokort-hus */
+    s += plate([[898, 232], [898, 34], [928, 4], [1134, 4], [1164, 34], [1164, 232]], { shadow: [7, 4], skipY: 232 });
+    s += hazard(990, 10, 82, 14) + led(944, 14, '#ff3a2a') + led(954, 14, '#ff3a2a') + led(1104, 14, '#ffb020') + led(1114, 14, '#ff3a2a');
+    s += recess(926, 26, 212, 206);
+    /* midtskjerm-brønn */
+    s += recess(354, 88, 424, 144);
+    s += bolt(368, 76) + bolt(762, 76);
+    /* portretthus: hevet, tykk fas, skygge */
+    s += plate([[778, 232], [778, 70], [806, 42], [898, 42], [926, 70], [926, 232]], { shadow: [8, 5], skipY: 232, hseams: [216] });
+    s += recess(806, 84, 92, 124);
+    s += bolt(790, 78) + bolt(914, 78) + bolt(790, 222) + bolt(914, 222);
+    return s;
+  }
+
+  /* ---------- PROTOSS: organisk bue, marmor, gull, cyan rør ---------- */
+  var P_TOP = 'M0,46 C40,46 70,42 96,32 C120,22 130,8 162,8 L298,8 C330,8 340,24 352,42 C362,60 374,70 402,70 C470,70 500,50 570,50 C640,50 670,70 738,70 C768,70 778,58 790,42 C800,28 812,24 832,24 L878,24 C898,24 906,30 912,36 C920,22 932,12 954,12 L1280,12';
+  function protossConsole() {
+    var body = P_TOP + ' L1280,232 L0,232 Z', s = '<defs>' +
+      '<filter id="pMarble" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
+        '<feTurbulence type="turbulence" baseFrequency="0.006 0.018" numOctaves="5" seed="12" result="t"/>' +
+        '<feColorMatrix in="t" type="matrix" values="0.55 0 0 0 0.015  0.62 0 0 0 0.03  0.85 0 0 0 0.07  0 0 0 0 1"/>' +
+        '<feComposite in2="SourceGraphic" operator="in"/></filter>' +
+      '<filter id="pGlow" x="-0.1" y="-0.1" width="1.2" height="1.2"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<linearGradient id="pGold" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="76"><stop offset="0" stop-color="#fff2a8"/><stop offset="0.25" stop-color="#e8b830"/><stop offset="0.6" stop-color="#b08418"/><stop offset="1" stop-color="#6a4a08"/></linearGradient>' +
+      '<radialGradient id="pKnob" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#fff6c0"/><stop offset="0.45" stop-color="#d8a028"/><stop offset="1" stop-color="#5a3c06"/></radialGradient>' +
+      '<linearGradient id="pShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a6ab0" stop-opacity="0.22"/><stop offset="1" stop-color="#000" stop-opacity="0.55"/></linearGradient>' +
+      '<clipPath id="pBody"><path d="' + body + '"/></clipPath>' +
+      '</defs>';
+    s += '<path d="' + body + '" fill="#04070e"/>';
+    s += '<path d="' + body + '" fill="#000" filter="url(#pMarble)"/>';
+    s += '<path d="' + body + '" fill="url(#pShade)"/>';
+    var cy = 'stroke="#62dcff" stroke-width="2.5" fill="none" filter="url(#pGlow)"';
+    /* cyan rørlinje som følger toppbuen, og sløyfer i venstre/høyre felt */
+    s += '<g clip-path="url(#pBody)"><path d="' + P_TOP + '" transform="translate(0,18)" ' + cy + ' stroke-linecap="round"/>' +
+      '<path d="M14,232 C14,150 30,96 70,80 C96,70 110,90 112,120 L112,232" ' + cy + '/>' +
+      '<path d="M40,232 C44,170 56,128 80,112" ' + cy + '/>' +
+      '<path d="M1270,232 C1270,160 1250,96 1196,70 C1172,60 1160,80 1160,110 L1160,232" ' + cy + '/>' +
+      '<path d="M1240,232 C1236,170 1222,126 1196,108" ' + cy + '/></g>';
+    /* nedsenkede felt med cyan rørkant */
+    [[136, 40, 194, 192, 18], [350, 84, 432, 150, 24], [800, 80, 104, 132, 16], [922, 24, 218, 208, 20]].forEach(function (w) {
+      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" fill="#000" opacity="0.5"/>';
+      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" ' + cy + '/>';
+    });
+    /* kommandokort: cyan rørsegmenter mellom rutene, ingen boks */
+    var X0 = 935, Y0 = 31, C = 56, G = 10, segs = '';
+    [X0 + C + G / 2, X0 + 2 * C + G * 1.5].forEach(function (x) {
+      for (var r = 0; r < 3; r++) segs += '<path d="M' + x + ' ' + (Y0 + r * (C + G) + 6) + ' V' + (Y0 + r * (C + G) + C - 6) + '" ' + cy + ' stroke-linecap="round"/>';
+    });
+    [Y0 + C + G / 2, Y0 + 2 * C + G * 1.5].forEach(function (y) {
+      for (var c = 0; c < 3; c++) segs += '<path d="M' + (X0 + c * (C + G) + 6) + ' ' + y + ' H' + (X0 + c * (C + G) + C - 6) + '" ' + cy + ' stroke-linecap="round"/>';
+    });
+    [X0 + C + G / 2, X0 + 2 * C + G * 1.5].forEach(function (x) {
+      [Y0 + C + G / 2, Y0 + 2 * C + G * 1.5].forEach(function (y) { segs += '<circle cx="' + x + '" cy="' + y + '" r="3" fill="#bff4ff" filter="url(#pGlow)"/>'; });
+    });
+    s += segs;
+    /* tykk, avrundet gullkant langs toppen */
+    s += '<path d="' + P_TOP + '" fill="none" stroke="#2a1a02" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>';
+    s += '<path d="' + P_TOP + '" fill="none" stroke="url(#pGold)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>';
+    s += '<path d="' + P_TOP + '" transform="translate(0,-2)" fill="none" stroke="#fff4b8" stroke-width="1.5" stroke-linejoin="round" opacity="0.75"/>';
+    /* gullbuer over minimap og portrett, hevet bue over midtskjermen */
+    s += '<path d="M150,40 C150,22 170,18 230,18 C290,18 316,22 316,40" fill="none" stroke="#2a1a02" stroke-width="8"/><path d="M150,40 C150,22 170,18 230,18 C290,18 316,22 316,40" fill="none" stroke="url(#pGold)" stroke-width="5" stroke-linecap="round"/>';
+    s += '<path d="M470,84 C500,70 530,64 566,64 C602,64 636,70 664,84" fill="none" stroke="#2a1a02" stroke-width="8"/><path d="M470,84 C500,70 530,64 566,64 C602,64 636,70 664,84" fill="none" stroke="url(#pGold)" stroke-width="5" stroke-linecap="round"/>';
+    [[162, 8], [298, 8], [402, 70], [570, 50], [738, 70], [832, 24], [878, 24], [954, 12], [1270, 12], [96, 32], [566, 64], [230, 18]].forEach(function (k) {
+      s += '<circle cx="' + k[0] + '" cy="' + k[1] + '" r="5" fill="url(#pKnob)" stroke="#2a1a02" stroke-width="1.2"/>';
+    });
+    return s;
+  }
+
+  /* ---------- ZERG: kjøtt, kitin og bein ---------- */
+  var Z_TOP = 'M0,40 C30,30 60,46 96,30 C120,16 132,0 172,4 C222,8 262,-2 302,6 C336,12 344,34 358,54 C372,72 402,78 442,72 C502,64 522,78 572,72 C632,64 682,80 742,72 C772,68 782,48 798,38 C814,28 842,30 882,34 C902,36 906,22 920,12 C950,-2 1000,8 1050,4 C1110,0 1180,14 1280,8';
+  function zergConsole() {
+    var body = Z_TOP + ' L1280,232 L0,232 Z', s = '<defs>' +
+      '<filter id="zFlesh" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
+        '<feTurbulence type="fractalNoise" baseFrequency="0.018 0.03" numOctaves="5" seed="31" result="t"/>' +
+        '<feColorMatrix in="t" type="matrix" values="0.85 0 0 0 -0.05  0.3 0 0 0 0  0.45 0 0 0 0  0 0 0 0 1"/>' +
+        '<feComposite in2="SourceGraphic" operator="in"/></filter>' +
+      '<linearGradient id="zShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b06a44" stop-opacity="0.25"/><stop offset="1" stop-color="#100004" stop-opacity="0.6"/></linearGradient>' +
+      '<linearGradient id="zBone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe2bc"/><stop offset="1" stop-color="#8a7452"/></linearGradient>' +
+      '<radialGradient id="zEye" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd060"/><stop offset="0.5" stop-color="#e04010"/><stop offset="1" stop-color="#300408"/></radialGradient>' +
+      '<clipPath id="zBody"><path d="' + body + '"/></clipPath>' +
+      '</defs>';
+    s += '<path d="' + body + '" fill="#2a0c10"/>';
+    s += '<path d="' + body + '" fill="#000" filter="url(#zFlesh)"/>';
+    s += '<path d="' + body + '" fill="url(#zShade)"/>';
+    /* årer */
+    s += '<g clip-path="url(#zBody)" fill="none" stroke="#5a1a4a" stroke-width="2" opacity="0.8">' +
+      '<path d="M0,120 C60,110 80,150 130,140"/><path d="M340,200 C380,150 420,170 360,110"/><path d="M780,120 C760,160 790,190 770,232"/>' +
+      '<path d="M1160,232 C1170,170 1200,150 1250,160"/><path d="M500,232 C520,220 560,236 600,226"/><path d="M60,232 C70,200 40,180 50,150"/></g>';
+    /* ribbein i venstre felt */
+    for (var i = 0; i < 4; i++) {
+      var y = 74 + i * 36;
+      s += '<path d="M6,' + y + ' C40,' + (y - 18) + ' 90,' + (y - 14) + ' 118,' + (y + 4) + '" fill="none" stroke="#1a0406" stroke-width="9" stroke-linecap="round"/>';
+      s += '<path d="M6,' + y + ' C40,' + (y - 18) + ' 90,' + (y - 14) + ' 118,' + (y + 4) + '" fill="none" stroke="url(#zBone)" stroke-width="5" stroke-linecap="round"/>';
+    }
+    /* øye i høyre felt */
+    s += '<ellipse cx="1220" cy="110" rx="40" ry="30" fill="#1a0406"/><ellipse cx="1220" cy="110" rx="34" ry="24" fill="url(#zEye)"/><ellipse cx="1220" cy="110" rx="5" ry="20" fill="#120204"/>';
+    s += '<path d="M1176,110 C1190,74 1250,74 1264,110" fill="none" stroke="url(#zBone)" stroke-width="5"/><path d="M1176,110 C1190,146 1250,146 1264,110" fill="none" stroke="#5a2a20" stroke-width="5"/>';
+    /* kitinrammer rundt feltene */
+    [[136, 40, 194, 192, 22], [350, 86, 432, 148, 26], [800, 80, 104, 132, 20], [922, 24, 218, 208, 24]].forEach(function (w) {
+      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" fill="#0c0204" stroke="#120204" stroke-width="10"/>';
+      s += '<rect x="' + w[0] + '" y="' + w[1] + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" fill="none" stroke="#7a4a32" stroke-width="5"/>';
+      s += '<rect x="' + (w[0] - 1) + '" y="' + (w[1] - 1) + '" width="' + w[2] + '" height="' + w[3] + '" rx="' + w[4] + '" fill="none" stroke="#c8a87a" stroke-width="1.5" stroke-dasharray="30 12 8 12" opacity="0.8"/>';
+    });
+    /* toppkant og beinpigger */
+    s += '<path d="' + Z_TOP + '" fill="none" stroke="#120204" stroke-width="7" stroke-linejoin="round"/>';
+    s += '<path d="' + Z_TOP + '" fill="none" stroke="#8a5a40" stroke-width="3" stroke-linejoin="round"/>';
+    [[52, 38, -18], [172, 4, -24], [292, 6, -22], [404, 76, -18], [574, 72, -24], [744, 72, -18], [842, 30, -16], [962, 0, -22], [1110, 2, -20], [1238, 10, -20]].forEach(function (b) {
+      var x = b[0], y = b[1], h = b[2];
+      s += '<path d="M' + (x - 7) + ',' + (y + 4) + ' Q' + (x - 2) + ',' + (y + h / 2) + ' ' + (x + 4) + ',' + (y + h) + ' Q' + (x + 3) + ',' + (y + h / 2) + ' ' + (x + 7) + ',' + (y + 4) + ' Z" fill="url(#zBone)" stroke="#2a1008" stroke-width="1.2"/>';
+    });
+    return s;
+  }
+
+  SC.consoleSVG = function (race) {
+    uid = 0;
+    return race === 'protoss' ? protossConsole() : race === 'zerg' ? zergConsole() : terranConsole();
+  };
+
+  /* ---------- Glue screen: metallarm som klemmer nyhetspanelet ---------- */
+  SC.armSVG = function () {
+    uid = 100;
+    var s = '<defs>' + DEFS_COMMON + '</defs>';
+    /* kabler bak */
+    s += '<path d="M1190,70 C1236,120 1258,230 1240,470" fill="none" stroke="#0a0807" stroke-width="9"/><path d="M1190,70 C1236,120 1258,230 1240,470" fill="none" stroke="#3a342c" stroke-width="3" stroke-dasharray="4 3"/>';
+    s += '<path d="M1140,384 C1146,420 1180,440 1196,470" fill="none" stroke="#0a0807" stroke-width="7"/><path d="M1140,384 C1146,420 1180,440 1196,470" fill="none" stroke="#5a2a1a" stroke-width="2.5"/>';
+    /* toppbjelke */
+    s += plate([[878, 22], [900, 6], [1280, 6], [1280, 56], [1160, 56], [1146, 70], [930, 70], [916, 84], [878, 84]], { seams: [1010, 1210], hseams: [44] });
+    s += hazard(950, 16, 52, 20);
+    /* rør langs bjelken */
+    s += '<rect x="900" y="58" width="240" height="9" fill="url(#tPipe)" stroke="#000"/>';
+    [930, 1000, 1080].forEach(function (x) { s += '<rect x="' + x + '" y="55" width="6" height="15" fill="url(#tPipeV)" stroke="#000"/>'; });
+    /* klo over panelets øvre venstre hjørne */
+    s += plate([[762, 88], [778, 72], [890, 72], [904, 86], [890, 100], [796, 100], [796, 124], [782, 124], [762, 108]], { shadow: [4, 3] });
+    s += plate([[866, 62], [884, 50], [912, 50], [912, 96], [898, 104], [866, 104]], { fill: 'url(#tMetalDark)' });
+    s += bolt(776, 92) + bolt(784, 116) + bolt(880, 84) + bolt(890, 60);
+    /* ledd oppe til høyre */
+    s += plate([[1080, 30], [1176, 30], [1190, 44], [1190, 92], [1176, 106], [1080, 106], [1066, 92], [1066, 44]], { fill: 'url(#tMetalDark)', shadow: [5, 4] });
+    s += recess(1092, 46, 46, 22) + led(1100, 54, '#2ad84a') + led(1112, 54, '#1a7a2a') + led(1124, 54, '#e8a020');
+    s += bolt(1078, 98) + bolt(1178, 98);
+    /* vertikal arm langs høyre side av panelet */
+    s += '<rect x="1182" y="100" width="12" height="270" fill="url(#tPipeV)" stroke="#000"/>';
+    [140, 220, 300].forEach(function (y) { s += '<rect x="1179" y="' + y + '" width="18" height="6" fill="url(#tPipe)" stroke="#000"/>'; });
+    s += plate([[1100, 104], [1166, 104], [1180, 118], [1180, 336], [1166, 350], [1112, 350], [1100, 338]], { hseams: [176, 262], shadow: [5, 4] });
+    s += plate([[1112, 350], [1166, 350], [1152, 388], [1126, 388]], { fill: 'url(#tMetalDark)' });
+    /* klemmer som griper panelrammen */
+    [[146, 52], [276, 52]].forEach(function (c) {
+      var y = c[0], h = c[1];
+      s += plate([[1074, y], [1106, y], [1106, y + h], [1074, y + h], [1068, y + h - 6], [1068, y + 6]], { shadow: [4, 3] });
+      s += '<rect x="1070" y="' + (y + 8) + '" width="6" height="' + (h - 16) + '" fill="#0b0907"/>';
+      s += bolt(1090, y + 10) + bolt(1090, y + h - 10);
+    });
+    s += bolt(1112, 116) + bolt(1166, 116) + bolt(1112, 334) + bolt(1166, 334);
+    return s;
+  };
 })();

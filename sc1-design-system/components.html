@@ -85,12 +85,38 @@
   .x-con-mid { flex: 1; height: 150px; display: flex; gap: 10px; padding: 16px 18px 14px; }
   .x-con-right { width: 230px; min-height: 196px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .x-minimap { flex: 1; border-radius: 3px; background:
-      radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
-      radial-gradient(circle at 36% 46%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
-      radial-gradient(circle at 72% 30%, var(--sc-text-danger) 0 2px, transparent 3px),
-      linear-gradient(var(--x-terrain-2), var(--x-terrain-2)) 22% 30% / 40% 34% no-repeat,
-      var(--sc-void);
-    box-shadow: inset 0 0 0 1px #000, 0 0 0 2px var(--sc-metal-1), 1px 1px 0 2px color-mix(in srgb, var(--sc-metal-5) 50%, transparent); position: relative; }
+      radial-gradient(circle at 18% 30%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 22% 34%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 25% 31%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 30% 40%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 34% 37%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 38% 42%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 27% 46%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 72% 24%, var(--sc-text-danger) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 76% 28%, var(--sc-text-danger) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 80% 22%, var(--sc-text-danger) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 70% 70%, var(--sc-text-warn) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 74% 74%, var(--sc-text-warn) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 78% 68%, var(--sc-text-warn) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 55% 58%, var(--sc-mineral) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 58% 62%, var(--sc-mineral) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 48% 20%, var(--sc-text-danger) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 15% 70%, var(--sc-text-stat) 0 1.3px, transparent 1.8px),
+      radial-gradient(circle at 86% 52%, var(--sc-text-warn) 0 1.3px, transparent 1.8px),
+      radial-gradient(ellipse 30% 22% at 26% 36%, #4a4034 0 60%, transparent 72%),
+      radial-gradient(ellipse 24% 18% at 70% 30%, #3c3830 0 60%, transparent 72%),
+      radial-gradient(ellipse 34% 20% at 60% 66%, #4a463e 0 60%, transparent 72%),
+      radial-gradient(ellipse 18% 14% at 18% 72%, #3a3026 0 60%, transparent 72%),
+      radial-gradient(ellipse 14% 24% at 84% 62%, #2e2a24 0 60%, transparent 72%),
+      radial-gradient(ellipse 20% 10% at 44% 18%, #3a362e 0 60%, transparent 72%),
+      radial-gradient(ellipse 16% 12% at 40% 50%, #2a2622 0 60%, transparent 72%),
+      repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 1px, transparent 1px 4px),
+      #14120f;
+    box-shadow: inset 0 0 0 1px #000, 0 0 0 2px #111, 1px 1px 0 2px #9a968a; position: relative; }
+  .x-rb, .x-rbi { display: none; }
+  [data-race="terran"] .x-rb-terran, [data-race="protoss"] .x-rb-protoss, [data-race="zerg"] .x-rb-zerg { display: contents; }
+  [data-race="terran"] .x-rbi-terran, [data-race="protoss"] .x-rbi-protoss, [data-race="zerg"] .x-rbi-zerg { display: inline; }
+  .x-con-mid .sc-crt .sc-crt__stats { line-height: 1.55; }
   .x-minimap::after { content: ""; position: absolute; left: 20%; top: 26%; width: 30%; height: 22%; box-shadow: 0 0 0 1px var(--sc-text-title); }
   .x-con-mid .sc-crt { flex: 1; display: grid; grid-template-columns: 120px 1fr; grid-template-rows: auto 1fr; column-gap: 12px; }
   .x-con-mid .sc-crt .sc-crt__name { grid-column: 2; }
@@ -197,9 +223,9 @@
     <h2 class="x-h">02 · Konsoll — ressurslinje, CRT med trådmodell, kommandokort, tooltip</h2>
     <div class="x-terrain x-console-scene">
       <div class="sc-resources" aria-label="Ressurser">
-        <span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">384</span></span>
-        <span class="sc-res sc-res--gas"><span class="sc-res__icon"></span><span class="sc-res__val">272</span></span>
-        <span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">94/94</span></span>
+        <span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val"><span class="x-rbi x-rbi-terran">384</span><span class="x-rbi x-rbi-protoss">222</span><span class="x-rbi x-rbi-zerg">150</span></span></span>
+        <span class="sc-res sc-res--gas"><span class="sc-res__icon"></span><span class="sc-res__val"><span class="x-rbi x-rbi-terran">272</span><span class="x-rbi x-rbi-protoss">197</span><span class="x-rbi x-rbi-zerg">88</span></span></span>
+        <span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val"><span class="x-rbi x-rbi-terran">94/94</span><span class="x-rbi x-rbi-protoss">42/90</span><span class="x-rbi x-rbi-zerg">20/21</span></span></span>
       </div>
       <div class="x-console">
         <div class="sc-panel--metal x-con-left">
@@ -209,27 +235,57 @@
         <div class="sc-panel--metal sc-panel--rivets-6 x-con-mid">
           <span class="sc-plate-label x-menu-plate">MENU</span>
           <div class="sc-crt">
-            <div class="sc-wireframe">
-              <svg viewBox="0 0 72 60" aria-hidden="true" shape-rendering="geometricPrecision">
-                <path class="wf-face" d="M36 12 60 24 36 36 12 24z"/>
-                <path class="wf-dark" d="M12 24v16l24 12V36zM60 24v16L36 52V36z"/>
-                <path d="M12 24v16l24 12 24-12V24M36 36v16"/>
-                <path d="M16 30l16 8M16 35l16 8M40 38l16-8M40 43l16-8"/>
-                <path class="wf-face" d="M30 9l8-4 8 4-8 4z"/><path d="M30 9v8l8 4 8-4V9M38 13v8"/>
-                <path class="wf-dmg" d="M52 22l4-2v-6l-4 2zM52 16l4-2"/>
-                <ellipse cx="20" cy="47" rx="5" ry="2.5"/><ellipse cx="52" cy="47" rx="5" ry="2.5"/>
-                <path d="M20 44.5v-3M52 44.5v-3M24 27h0M44 18l4 2"/>
-              </svg>
-              <span class="sc-hp">886/1000</span>
+            <div class="x-rb x-rb-terran">
+              <div class="sc-wireframe">
+                <svg viewBox="0 0 72 60" aria-hidden="true">
+                  <path class="wf-face" d="M36 12 60 24 36 36 12 24z"/>
+                  <path class="wf-dark" d="M12 24v16l24 12V36zM60 24v16L36 52V36z"/>
+                  <path d="M12 24v16l24 12 24-12V24M36 36v16"/>
+                  <path d="M16 30l16 8M16 35l16 8M40 38l16-8M40 43l16-8"/>
+                  <path class="wf-face" d="M30 9l8-4 8 4-8 4z"/><path d="M30 9v8l8 4 8-4V9M38 13v8"/>
+                  <path class="wf-dmg" d="M52 22l4-2v-6l-4 2zM52 16l4-2"/>
+                  <ellipse cx="20" cy="47" rx="5" ry="2.5"/><ellipse cx="52" cy="47" rx="5" ry="2.5"/>
+                  <path d="M20 44.5v-3M52 44.5v-3M44 18l4 2"/>
+                </svg>
+                <span class="sc-hp">886/1000</span>
+              </div>
+              <div class="sc-crt__name">Terran Barracks</div>
+              <div class="sc-crt__stats">Training: Marine<br>Queue: 2 / 5</div>
             </div>
-            <div class="sc-crt__name">Terran Barracks</div>
-            <div class="sc-crt__stats">Training: Marine<br>Queue: 2 / 5</div>
+            <div class="x-rb x-rb-protoss">
+              <div class="sc-wireframe">
+                <svg viewBox="0 0 72 60" aria-hidden="true">
+                  <ellipse class="wf-dark" cx="36" cy="46" rx="20" ry="7"/>
+                  <path class="wf-face" d="M22 30C12 27 6 35 3 45c10-3 18-1 25 3zM50 30c10-3 16 5 19 15-10-3-18-1-25 3z"/>
+                  <path class="wf-face" d="M36 7l14 23-14 11-14-11z"/>
+                  <path d="M36 7v34M22 30h28M29 18.5l7 5 7-5"/>
+                  <path d="M33 11C34 4 35 1 36 0c1 1 2 4 3 11"/>
+                  <path d="M25 39c5 6 17 6 22 0M14 36c3 2 6 3 9 3M58 36c-3 2-6 3-9 3"/>
+                  <path d="M9 41c4-6 9-8 13-9M63 41c-4-6-9-8-13-9"/>
+                </svg>
+                <span><span class="sc-hp sc-hp--shield">750/750</span>&nbsp;<span class="sc-hp">750/750</span></span>
+              </div>
+              <div class="sc-crt__name">Protoss Nexus</div>
+              <div class="sc-crt__stats">Psi Used: 42<br>Psi Provided: 9<br>Total Psi: 90<br>Psi Max: 200</div>
+            </div>
+            <div class="x-rb x-rb-zerg">
+              <div class="sc-wireframe">
+                <svg viewBox="0 0 72 60" aria-hidden="true">
+                  <path class="wf-face" d="M10 44C6 30 18 18 30 20c4-10 16-10 20 0 12-2 20 12 12 24-10 8-42 8-52 0z"/>
+                  <path d="M20 26c4 8 2 14-2 20M36 18c2 10 0 20 0 30M52 24c-2 8 0 16 4 22M24 20l-2-8M46 16l4-8M30 32c4 2 8 2 12 0"/>
+                  <ellipse class="wf-dark" cx="36" cy="49" rx="24" ry="5"/>
+                </svg>
+                <span class="sc-hp">1250/1250</span>
+              </div>
+              <div class="sc-crt__name">Zerg Hatchery</div>
+              <div class="sc-crt__stats">Control Used: 20<br>Control Provided: 1<br>Total Control: 21<br>Control Max: 200</div>
+            </div>
           </div>
         </div>
         <div class="sc-panel--metal x-con-right">
           <div class="x-strip" style="width:100%"><span class="sc-lamp"></span><span class="sc-lamp sc-lamp--off"></span><span class="sc-ribs" style="flex:1"></span><span class="sc-hazard" style="width:56px"></span></div>
           <div class="x-cmdwrap">
-            <div class="sc-tooltip"><div class="sc-tooltip__title">Build <span class="sc-hk">R</span>ecruit</div>
+            <div class="sc-tooltip"><div class="sc-tooltip__title"><span class="x-rbi x-rbi-terran">Build <span class="sc-hk">R</span>ecruit</span><span class="x-rbi x-rbi-protoss">Build <span class="sc-hk">P</span>robe</span><span class="x-rbi x-rbi-zerg">Select <span class="sc-hk">L</span>arva</span></div>
               <div class="sc-tooltip__cost"><span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">50</span></span><span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">1</span></span></div></div>
             <div class="sc-cmdcard" role="toolbar" aria-label="Kommandokort">
               <button class="sc-cmd" data-hotkey="M" aria-label="Move (M)"><svg><use href="#i-move"/></svg></button>
