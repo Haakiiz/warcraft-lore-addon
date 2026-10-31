@@ -345,7 +345,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   line-height: 20px;
   text-shadow: 0 0 2px rgba(240, 208, 64, 0.55);
 }
-[data-race="protoss"] .pt-cmdcard.sc-cmdcard { padding: 0; gap: 10px; background: none; box-shadow: none; }
+[data-race="protoss"] .pt-cmdcard.sc-cmdcard { padding: 0; gap: 10px; border: 0; border-radius: 0; background: none; box-shadow: none; }
 [data-race="protoss"] .pt-cmdcard .sc-cmd,
 [data-race="protoss"] .pt-cmdcard .sc-cmd--empty { background: rgba(0, 6, 18, 0.35); box-shadow: none; }
 [data-race="protoss"] .pt-screen__queue {
@@ -370,7 +370,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   box-shadow: 0 0 0 1px #120204;
   line-height: 20px;
 }
-[data-race="zerg"] .pt-cmdcard.sc-cmdcard { background: none; box-shadow: none; }
+[data-race="zerg"] .pt-cmdcard.sc-cmdcard { padding: 6px; gap: 6px; border: 0; background: none; box-shadow: none; }
 [data-race="zerg"] .pt-cmdcard .sc-cmd { box-shadow: 0 0 0 1px #5a2a20, inset 0 0 0 1px #000; }
 
 /* ---------- GAME MENU (plassering; utseendet kommer fra .sc-dialog--blue) ---------- */

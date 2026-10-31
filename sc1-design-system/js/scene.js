@@ -692,15 +692,15 @@
   var DEFS_COMMON =
     '<filter id="grime" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.016 0.04" numOctaves="4" seed="4" result="a"/>' +
-      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.52  0 0 0 0 0.38  0 0 0 0 0.26  -2.6 0 0 0 1.7" result="blot"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.42  0 0 0 0 0.34  -2.6 0 0 0 1.55" result="blot"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="3" seed="21" result="b"/>' +
-      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.62  0 0 0 0 0.34  0 0 0 0 0.16  -4 0 0 0 2.25" result="rust"/>' +
+      '<feColorMatrix in="b" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.36  0 0 0 0 0.26  -4 0 0 0 1.95" result="rust"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="g"/>' +
       '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.26  0 0 0 0 0.22  -1.7 0 0 0 1.1" result="grain"/>' +
       '<feMerge><feMergeNode in="blot"/><feMergeNode in="rust"/><feMergeNode in="grain"/></feMerge></filter>' +
     '<filter id="grimeHeavy" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.05 0.12" numOctaves="4" seed="13" result="a"/>' +
-      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.2  -2.2 0 0 0 1.75" result="blot"/>' +
+      '<feColorMatrix in="a" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.2  -2.2 0 0 0 1.45" result="blot"/>' +
       '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="g"/>' +
       '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.22  0 0 0 0 0.2  -2 0 0 0 1.35" result="grain"/>' +
       '<feMerge><feMergeNode in="blot"/><feMergeNode in="grain"/></feMerge></filter>' +
