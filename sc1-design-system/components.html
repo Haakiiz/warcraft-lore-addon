@@ -75,7 +75,7 @@
   .x-console { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: flex-end; gap: 0; }
   .x-con-left { width: 230px; height: 176px; display: flex; flex-direction: column; gap: 8px; }
   .x-con-mid { flex: 1; height: 150px; display: flex; gap: 10px; padding: 16px 18px 14px; }
-  .x-con-right { width: 230px; height: 196px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .x-con-right { width: 230px; min-height: 196px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .x-minimap { flex: 1; border-radius: 3px; background:
       radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
       radial-gradient(circle at 36% 46%, color-mix(in srgb, var(--sc-text-stat) 70%, transparent) 0 2px, transparent 3px),
@@ -326,7 +326,7 @@
             <div class="sc-crt" style="border-radius:3px;min-height:110px;text-align:center">
               <span class="sc-led sc-led--sm">LADDER: UNRATED</span><br>
               <span class="sc-led sc-led--sm">RECORD 0-0</span><br>
-              <span class="sc-led sc-led--sm" style="overflow:hidden;display:block;white-space:nowrap"><span class="sc-led--marquee" style="display:inline-block">ROUTING THROUGH RELAY 7 ... </span></span>
+              <span style="overflow:hidden;display:block;white-space:nowrap;text-align:left;margin-top:6px"><span class="sc-led sc-led--sm sc-led--marquee">ROUTING THROUGH RELAY 7 ...</span></span>
             </div>
           </div>
         </div>

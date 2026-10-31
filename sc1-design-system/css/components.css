@@ -525,7 +525,7 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--sc-metal-4), 0 0 0 3px color-mix(in srgb, var(--sc-metal-5) 35%, transparent), inset 0 0 0 1px #000;
 }
-[data-race="protoss"] .sc-cmdcard { gap: 8px; padding: 8px; }
+[data-race="protoss"] .sc-cmdcard { gap: 8px; padding: 7px; }
 [data-race="zerg"] .sc-cmdcard { border-radius: 4px; }
 
 /* =========================================================================
@@ -592,8 +592,8 @@
   font-family: var(--sc-font-led); font-size: 30px; line-height: 1; letter-spacing: 2px;
   color: var(--sc-led-green);
   text-shadow: 0 0 2px var(--sc-led-green), 0 0 1px #fff;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0 0.95px, transparent 1.25px);
-          mask-image: radial-gradient(circle at 50% 50%, #000 0 0.95px, transparent 1.25px);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0 1.1px, transparent 1.45px);
+          mask-image: radial-gradient(circle at 50% 50%, #000 0 1.1px, transparent 1.45px);
   -webkit-mask-size: 3px 3px; mask-size: 3px 3px;
 }
 .sc-led--sm { font-size: 22px; letter-spacing: 1px; -webkit-mask-size: 2px 2px; mask-size: 2px 2px; }
