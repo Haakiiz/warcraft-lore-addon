@@ -22,15 +22,15 @@
   <!-- ressurslinje -->
   <div class="sc-resources pt-game__res" aria-label="Ressurser">
     <span class="sc-res sc-res--mineral" title="Minerals">
-      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 9 L6 3 L9 6 L12 2 L14 9 L10 14 L5 14 Z" fill="var(--sc-mineral)" stroke="#bfe4ff" stroke-width="1"/><path d="M6 3 L7 13 M12 2 L10 14" stroke="#1a4a8a" stroke-width="1"/></svg>
+      <span class="sc-res__icon" aria-hidden="true"></span>
       <span class="sc-res__val" data-k="min">384</span>
     </span>
     <span class="sc-res sc-res--gas" title="Vespene">
-      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="2" width="8" height="12" fill="var(--sc-gas)" stroke="#b0ffb8"/><path d="M4 5 h8 M4 11 h8" stroke="#0e5a1e"/></svg>
+      <span class="sc-res__icon" aria-hidden="true"></span>
       <span class="sc-res__val" data-k="gas">272</span>
     </span>
     <span class="sc-res sc-res--supply" title="Supply">
-      <svg class="sc-res__icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" fill="#1a2a8a" stroke="#8aa0ff"/><path d="M8 3 L13 13 L8 10 L3 13 Z" fill="#e8ecff"/></svg>
+      <span class="sc-res__icon" aria-hidden="true"></span>
       <span class="sc-res__val" data-k="sup">94/94</span>
     </span>
   </div>
@@ -108,9 +108,9 @@
         </button>
         <button type="button" class="sc-cmd sc-cmd--empty" aria-label="Tom" tabindex="-1"></button>
       </div>
-      <div class="pt-tip" id="tip" hidden>
-        <div class="pt-tip__title" id="tipTitle">Build Probe</div>
-        <div class="pt-tip__cost" id="tipCost"></div>
+      <div class="sc-tooltip pt-tip" id="tip" role="tooltip" hidden>
+        <div class="sc-tooltip__title" id="tipTitle">Build Probe</div>
+        <div class="sc-tooltip__cost" id="tipCost"></div>
       </div>
     </div>
     <div class="pt-machine" aria-hidden="true">
@@ -166,7 +166,7 @@
     protoss: {
       name: 'Protoss Nexus', hp: '750/750 750/750', res: ['222', '197', '42/90'],
       stats: [['Psi Used:', '42'], ['Psi Provided:', '9'], ['Total Psi:', '90'], ['Psi Max:', '200']],
-      tip: ['Build Probe', '50', '1']
+      tip: ['<span class="sc-hk">B</span>uild Probe', '50', '1']
     },
     zerg: {
       name: 'Zerg Hatchery', hp: '1250/1250', res: ['310', '148', '18/26'],
@@ -178,8 +178,8 @@
   var tip = document.getElementById('tip');
 
   function costHTML(min, sup) {
-    return '<svg viewBox="0 0 16 16" class="pt-tip__ico"><path d="M3 9 L6 3 L9 6 L12 2 L14 9 L10 14 L5 14 Z" fill="var(--sc-mineral)"/></svg>' + min +
-      ' <svg viewBox="0 0 16 16" class="pt-tip__ico"><rect x="1" y="1" width="14" height="14" fill="#1a2a8a"/><path d="M8 3 L13 13 L8 10 L3 13 Z" fill="#e8ecff"/></svg>' + sup;
+    return '<span class="sc-res sc-res--mineral"><span class="sc-res__icon"></span><span class="sc-res__val">' + min + '</span></span>' +
+      '<span class="sc-res sc-res--supply"><span class="sc-res__icon"></span><span class="sc-res__val">' + sup + '</span></span>';
   }
   function setRace(race) {
     var d = DATA[race] || DATA.terran;
@@ -194,8 +194,12 @@
     document.getElementById('stats').innerHTML = d.stats.map(function (s) { return '<div><dt>' + s[0] + '</dt><dd>' + s[1] + '</dd></div>'; }).join('');
     var v = document.querySelectorAll('.sc-res__val');
     v[0].textContent = d.res[0]; v[1].textContent = d.res[1]; v[2].textContent = d.res[2];
+    raceTip(d);
+  }
+  /* Protoss viser «Build Probe»-tipset som i referansen; ellers bare ved hover */
+  function raceTip(d) {
     if (d.tip) {
-      document.getElementById('tipTitle').textContent = d.tip[0];
+      document.getElementById('tipTitle').innerHTML = d.tip[0];
       document.getElementById('tipCost').innerHTML = costHTML(d.tip[1], d.tip[2]);
       tip.hidden = false;
     } else tip.hidden = true;
@@ -207,12 +211,13 @@
   /* verktøytips ved hover/fokus på kommandoer */
   document.querySelectorAll('.sc-cmd[data-tip]').forEach(function (c) {
     function show() {
-      document.getElementById('tipTitle').innerHTML = c.dataset.tip.replace(c.dataset.hotkey, '<u>' + c.dataset.hotkey + '</u>');
+      document.getElementById('tipTitle').innerHTML = c.dataset.tip.replace(c.dataset.hotkey, '<span class="sc-hk">' + c.dataset.hotkey + '</span>');
       document.getElementById('tipCost').innerHTML = '';
       tip.hidden = false;
     }
     c.addEventListener('mouseenter', show); c.addEventListener('focus', show);
-    c.addEventListener('mouseleave', function () { tip.hidden = !DATA[html.dataset.race].tip; if (!tip.hidden) setRace(html.dataset.race); });
+    function hide() { raceTip(DATA[html.dataset.race]); }
+    c.addEventListener('mouseleave', hide); c.addEventListener('blur', hide);
   });
 
   /* Game Menu: MENU / F10 åpner, Esc lukker */
