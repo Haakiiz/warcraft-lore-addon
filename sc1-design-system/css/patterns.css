@@ -49,6 +49,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   top: 3px;
   left: 1010px;
   font: 400 13px/1 var(--sc-font-ui);
+  z-index: 6;
   color: #cfd8ff;
   text-decoration: none;
   text-shadow: 0 0 2px rgba(150, 170, 255, 0.5);
@@ -80,7 +81,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   left: 772px;
   top: 98px;
   width: 318px;
-  height: 312px;
+  height: 300px;
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -101,9 +102,9 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 .pt-logo {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  font: 400 22px/1 var(--sc-font-menu);
-  letter-spacing: 1px;
+  gap: 8px;
+  font: 400 18px/1 var(--sc-font-menu);
+  letter-spacing: 0.5px;
 }
 .pt-logo__word {
   background: linear-gradient(180deg, #ffffff 0%, #d6dae2 38%, #7c828c 52%, #c4cad4 70%, #f4f6fa 100%);
@@ -128,7 +129,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
   display: grid;
   grid-template-columns: 116px 1fr;
   gap: 8px;
-  padding: 8px 8px 7px;
+  padding: 9px 8px;
   border-bottom: 1px solid var(--sc-metal-2);
 }
 .pt-news__head {
@@ -139,7 +140,7 @@ html, body.pt-page { height: 100%; overflow: hidden; background: var(--sc-void);
 }
 .pt-news__text { margin: 0; font: 400 10.5px/1.2 var(--sc-font-ui); color: var(--sc-text-title); }
 .pt-thumb {
-  height: 56px;
+  height: 62px;
   border: 1px solid #3e7a2a;
   background: var(--sc-ink-2);
   overflow: hidden;

@@ -36,18 +36,19 @@
         </g>
       </svg>
 
-      <div class="bn-led" role="img" aria-label="Welcome to stellar.net">
-        <canvas id="bnLed" width="470" height="60"></canvas>
-      </div>
+      <div class="bn-pipes" aria-hidden="true"></div>
+      <div class="bn-ledframe"><div class="bn-led" role="img" aria-label="Welcome to stellar.net">
+        <canvas id="bnLed" width="472" height="60"></canvas>
+      </div></div>
 
       <section class="bn-dialog" aria-labelledby="bnTitle">
-        <h1 class="bn-dialog__title" id="bnTitle" style="margin:0">Network Login</h1>
+        <h1 class="bn-dialog__title" id="bnTitle">Network Login</h1>
         <div class="bn-dialog__rule"></div>
         <div class="bn-cols">
-          <form class="bn-left" onsubmit="return false" autocomplete="off">
+          <form class="bn-left bn-sec" onsubmit="return false" autocomplete="off">
             <label class="sc-label" for="bnName">Name:</label>
             <div class="bn-field">
-              <input class="sc-input" id="bnName" value="Raynor_77" spellcheck="false">
+              <input class="sc-input" id="bnName" value="Kestrel_77" spellcheck="false">
               <button class="bn-drop" type="button" aria-label="Previous accounts" data-sfx="click"></button>
             </div>
             <label class="sc-label" for="bnPass">Password:</label>
@@ -55,8 +56,12 @@
               <input class="sc-input" id="bnPass" type="password" autofocus>
             </div>
             <button class="sc-btn sc-btn--rust bn-newacct" type="button" data-sfx="open">New Account</button>
+            <div class="bn-gw">
+              <label class="sc-label" for="bnGw">Gateway:</label>
+              <div class="bn-gw__box" id="bnGw"><span class="sc-led sc-led--sm">Kepler Relay</span><span class="sc-led sc-led--sm">ping 42ms &middot; 1,204 online</span></div>
+            </div>
           </form>
-          <div class="bn-right">
+          <div class="bn-right bn-sec">
             <div class="bn-profile-label">Profile:</div>
             <div class="bn-profile">
               <canvas id="bnStatic" width="150" height="111"></canvas>
@@ -91,18 +96,16 @@
         <button class="sc-btn sc-btn--rust" type="button">Ok</button>
         <button class="sc-btn sc-btn--rust" type="button" onclick="location.href='../index.html'">Cancel</button>
       </div>
-      <div class="bn-version"><a class="bn-back" href="../index.html" data-sfx="click">&lsaquo; Interface System</a></div>
 
       <!-- nagler -->
-      <i class="bn-rivet" style="left:6px;top:6px"></i>
-      <i class="bn-rivet" style="right:6px;top:30px"></i>
-      <i class="bn-rivet" style="left:80px;top:72px"></i>
-      <i class="bn-rivet" style="left:80px;top:112px"></i>
-      <i class="bn-rivet" style="right:58px;top:72px"></i>
-      <i class="bn-rivet" style="right:58px;top:112px"></i>
-      <i class="bn-rivet" style="left:4px;top:134px"></i>
-      <i class="bn-rivet" style="right:3px;top:134px"></i>
-      <i class="bn-rivet" style="left:4px;bottom:22px"></i>
+      <i class="bn-rivet" style="left:8px;top:10px"></i>
+      <i class="bn-rivet" style="right:8px;top:36px"></i>
+      <i class="bn-rivet" style="left:74px;top:64px"></i>
+      <i class="bn-rivet" style="left:74px;top:118px"></i>
+      <i class="bn-rivet" style="right:52px;top:64px"></i>
+      <i class="bn-rivet" style="right:52px;top:118px"></i>
+      <i class="bn-rivet" style="left:5px;bottom:20px"></i>
+      <i class="bn-rivet" style="left:240px;bottom:20px"></i>
     </main>
   </div>
 </div>
@@ -114,7 +117,7 @@
   /* ---- skaler 640×480-skjermen til vinduet (4:3 i 16:9, svart rundt) ---- */
   var scaleEl = document.getElementById("bnScale");
   function fit() {
-    var s = Math.min(window.innerWidth / 640, window.innerHeight / 480);
+    var s = Math.min((window.innerWidth - 16) / 640, (window.innerHeight - 16) / 480);
     scaleEl.style.setProperty("--bn-scale", s.toFixed(4));
   }
   fit(); window.addEventListener("resize", fit);

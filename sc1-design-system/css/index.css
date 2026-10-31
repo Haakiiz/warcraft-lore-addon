@@ -10,8 +10,9 @@
 html { scroll-behavior: smooth; }
 body { min-height: 100vh; overflow-x: hidden; }
 
-/* ---------- bakgrunn: stjerner + tåke ---------- */
-#ixSky { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; display: block; }
+/* ---------- bakgrunn: stjerner + tåke + planet (dekker hele dokumentet) ---------- */
+#ixSky { position: absolute; left: 0; top: 0; width: 100%; z-index: 0; display: block; pointer-events: none; }
+body { position: relative; }
 .ix-wrap { position: relative; z-index: 1; }
 
 /* ---------- fallback for felles klasser (A overstyrer) ---------- */
@@ -61,7 +62,8 @@ body { min-height: 100vh; overflow-x: hidden; }
 .ix-lamp--off { background: var(--sc-metal-1); box-shadow: inset 0 0 0 1px #000; }
 
 /* ---------- hero (første skjermbilde 1280×720) ---------- */
-.ix-hero { position: relative; height: 100vh; min-height: 640px; max-height: 820px; }
+:root { --x-ix-version: #c0c0c0; }
+.ix-hero { position: relative; height: 100vh; min-height: 680px; max-height: 820px; }
 .ix-header {
   position: absolute; left: 50%; top: 18px; transform: translateX(-50%);
   width: 720px; height: 92px;
@@ -78,7 +80,7 @@ body { min-height: 100vh; overflow-x: hidden; }
 .ix-header__lamps--l { right: auto; left: 70px; }
 
 .ix-sound {
-  position: absolute; right: 22px; top: 6px;
+  position: absolute; right: 22px; top: 6px; z-index: 3;
   font: 400 var(--sc-fs-sm)/1 var(--sc-font-ui); color: var(--sc-text-menu); text-shadow: var(--sc-glow-menu);
   background: none; border: 0; cursor: pointer; padding: 4px 0;
 }
@@ -86,38 +88,53 @@ body { min-height: 100vh; overflow-x: hidden; }
 .ix-sound:hover { color: var(--sc-text-menu-hot); }
 .ix-sound[aria-pressed="false"] { color: var(--sc-text-menu-dim); }
 
-.ix-menu { position: absolute; inset: 0; pointer-events: none; }
-.ix-menu .sc-menu-link { position: absolute; pointer-events: auto; white-space: nowrap; }
+.ix-menu { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.ix-menu .sc-menu-link { position: absolute; pointer-events: auto; white-space: nowrap; text-shadow: 0 0 3px rgba(196,224,90,.5), 1px 1px 0 #000; }
 
-/* nyhetspanel med metallarm (forenklet) */
-.ix-news { position: absolute; right: 70px; top: 168px; width: 380px; }
-.ix-arm { position: absolute; right: 40px; top: 108px; width: 210px; height: 66px; pointer-events: none; }
-.ix-arm i { position: absolute; display: block;
+/* satellitt + ormehull */
+.ix-sat { position: absolute; left: 470px; top: 352px; width: 230px; height: 270px; z-index: 1; pointer-events: none; }
+.ix-worm { position: absolute; left: 820px; top: 498px; width: 210px; height: 150px; z-index: 1; pointer-events: none; }
+.ix-worm__disc {
+  position: absolute; left: 25px; top: -5px; width: 160px; height: 160px; border-radius: 50%;
+  transform: scaleY(.62) rotate(0deg);
   background:
-    repeating-linear-gradient(90deg, transparent 0 22px, rgba(0,0,0,.7) 22px 24px, var(--sc-metal-5) 24px 25px, transparent 25px 48px),
-    linear-gradient(180deg, var(--sc-metal-1) 0, var(--sc-metal-5) 22%, var(--sc-metal-3) 55%, var(--sc-metal-1) 100%);
-  box-shadow: 0 0 0 1px #000; }
-.ix-arm .h { left: 18px; right: 6px; top: 6px; height: 12px; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
-.ix-arm .v { right: 6px; top: 12px; width: 12px; height: 54px;
-  background: repeating-linear-gradient(0deg, transparent 0 14px, rgba(0,0,0,.7) 14px 16px, var(--sc-metal-5) 16px 17px, transparent 17px 30px),
-    linear-gradient(90deg, var(--sc-metal-1) 0, var(--sc-metal-5) 22%, var(--sc-metal-3) 55%, var(--sc-metal-1) 100%); }
-.ix-arm .j { left: 0; top: 0; width: 26px; height: 24px; background: linear-gradient(180deg, var(--sc-metal-4), var(--sc-metal-2) 50%, var(--sc-metal-1));
-  clip-path: polygon(5px 0, 100% 0, 100% 100%, 5px 100%, 0 calc(100% - 5px), 0 5px); }
-.ix-arm .j::after { content: ""; position: absolute; left: 9px; top: 8px; width: 6px; height: 4px; background: var(--sc-led-red); box-shadow: 0 0 3px var(--sc-led-red); }
-.ix-arm .k { right: 0; top: 0; width: 24px; height: 24px; background: linear-gradient(135deg, var(--sc-metal-5), var(--sc-metal-2) 50%, var(--sc-metal-1));
-  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%); }
-.ix-news .sc-dialog__body { padding: 16px 18px 14px; }
-.ix-news h2 {
-  margin: 0 0 4px; text-align: center; font: 400 17px/1.1 var(--sc-font-menu); letter-spacing: 1px; white-space: nowrap;
-  color: var(--sc-text-title); text-shadow: 0 0 2px rgba(230,230,230,.4), 1px 1px 0 #000;
+    radial-gradient(circle, #000 0 7%, rgba(20,40,140,.9) 10%, transparent 13%),
+    repeating-conic-gradient(from 0deg, rgba(70,130,255,.45) 0deg, rgba(30,60,200,.18) 40deg, rgba(5,10,60,.05) 80deg, rgba(70,130,255,.45) 120deg),
+    radial-gradient(circle, rgba(60,110,255,.7) 0 20%, rgba(30,50,180,.35) 45%, transparent 68%);
+  -webkit-mask-image: radial-gradient(circle, #000 0 40%, rgba(0,0,0,.5) 55%, transparent 70%);
+          mask-image: radial-gradient(circle, #000 0 40%, rgba(0,0,0,.5) 55%, transparent 70%);
 }
-.ix-news .ix-welcome { text-align: center; color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); font: 400 var(--sc-fs-md)/1.2 var(--sc-font-ui); margin-bottom: 12px; }
-.ix-item { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid var(--sc-metal-2); }
+.ix-worm canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* metallarm fra skjermkanten til panelets hjørne */
+.ix-arm { position: absolute; right: 0; top: 34px; width: 280px; height: 160px; z-index: 1; pointer-events: none; overflow: visible; }
+
+/* nyhetspanel */
+.ix-news { position: absolute; right: 56px; top: 168px; width: 410px; z-index: 2; padding: 12px 14px 10px !important; }
+.ix-news .sc-dialog__body { padding: 0; text-align: left; }
+.ix-news__logo { display: block; width: 300px; height: 34px; margin: 2px auto 0; }
+.ix-news .ix-welcome { text-align: center; color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); font: 400 var(--sc-fs-md)/1.2 var(--sc-font-ui); margin: 2px 0 8px; }
+.ix-item { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 9px 2px; border-top: 1px solid var(--sc-metal-2); }
 .ix-item h3 { margin: 0 0 3px; font: 400 var(--sc-fs-md)/1.1 var(--sc-font-ui); color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); }
-.ix-item p { margin: 0; font: 400 var(--sc-fs-xs)/1.35 var(--sc-font-ui); color: var(--sc-text-body); }
-.ix-thumb { height: 46px; border: 1px solid var(--sc-metal-3); box-shadow: inset 0 0 0 1px #000; background: var(--sc-void); display: grid; place-items: center; overflow: hidden; }
-.ix-version { position: absolute; right: 22px; bottom: 10px; font: 400 var(--sc-fs-sm)/1 var(--sc-font-ui); color: var(--sc-text-title); text-shadow: 1px 1px 0 #000; }
-.ix-scrollhint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: var(--sc-fs-sm) !important; }
+.ix-item p { margin: 0; font: 400 11px/1.35 var(--sc-font-ui); color: var(--sc-text-body); }
+.ix-thumb {
+  width: 110px; height: 60px; box-sizing: border-box; border-radius: 0; overflow: hidden; display: block;
+  background: var(--sc-void);
+  border: 1px solid var(--x-ix-frame-grey);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px var(--sc-red-dark);
+}
+.ix-thumb svg { display: block; width: 100%; height: 100%; }
+.ix-join { display: flex; align-items: center; justify-content: center; gap: 6px; padding-top: 8px; border-top: 1px solid var(--sc-metal-2); font: 400 var(--sc-fs-sm)/1 var(--sc-font-ui); color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); }
+.ix-join span { margin-right: 4px; }
+.ix-join a {
+  display: grid; place-items: center; width: 20px; height: 20px; box-sizing: border-box; border-radius: 1px;
+  background: var(--sc-void); border: 1px solid var(--x-ix-frame-grey); box-shadow: inset 0 0 0 1px var(--sc-red-dark);
+}
+.ix-join a:hover { border-color: var(--sc-red-hot); }
+.ix-join svg { width: 12px; height: 12px; }
+.ix-join svg * { fill: none; stroke: var(--sc-icon-green); stroke-width: 1.4; }
+
+.ix-version { position: absolute; right: 22px; bottom: 10px; z-index: 2; font: 400 var(--sc-fs-sm)/1 var(--sc-font-ui); color: var(--x-ix-version); text-shadow: 1px 1px 0 #000; }
 
 /* ---------- seksjoner ---------- */
 .ix-section { width: min(1100px, calc(100vw - 48px)); margin: 0 auto 40px; scroll-margin-top: 20px; }

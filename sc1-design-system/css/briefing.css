@@ -12,6 +12,9 @@
   --x-bf-frame-lo: var(--sc-metal-1);
   --x-bf-crt-bezel: #15171a;
   --x-bf-term: var(--sc-text-stat);
+  --x-bf-edge: #050607;                 /* 2 px mørk skjermkant */
+  --x-bf-bevel-hi: rgba(200, 200, 186, 0.38);  /* lys toppfas */
+  --x-bf-tint-wash: rgba(74, 66, 56, 0.45);    /* gråbrun undertone på metallet */
 }
 
 .bf-body {
@@ -50,13 +53,11 @@
   image-rendering: pixelated;
   display: block;
 }
-.bf-vignette {
+.bf-vignette {                          /* bare skanlinjer; den mørke kanten er dithret i canvas */
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse 72% 78% at 58% 42%, transparent 52%, rgba(0, 0, 0, 0.55) 82%, rgba(0, 0, 0, 0.92) 100%),
-    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.10) 2px 3px);
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.10) 2px 3px);
 }
 
 /* ---------- CRT-monitorer på maskinen ---------- */
@@ -67,10 +68,11 @@
     linear-gradient(180deg, #3a3d40 0, #24272a 30%, #121416 100%);
   border-radius: 16px / 20px;           /* CRT-unntak */
   box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.16),
-    inset -1px -1px 0 rgba(0, 0, 0, 0.8),
-    0 0 0 1px #050607,
-    2px 3px 0 rgba(0, 0, 0, 0.55);
+    inset 0 2px 0 var(--x-bf-bevel-hi),
+    inset 2px 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.85),
+    0 0 0 2px var(--x-bf-edge),
+    2px 4px 0 2px rgba(0, 0, 0, 0.5);
 }
 .bf-monitor::after {                    /* liten bolt/indikator under skjermen */
   content: "";
@@ -170,41 +172,48 @@
   top: 70px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
 }
 .bf-portrait {
   position: relative;
   margin: 0;
   width: 168px;
-  padding: 8px 8px 4px;
+  padding: 7px 7px 5px;
   box-sizing: border-box;
   background:
-    linear-gradient(135deg, var(--sc-metal-4) 0, var(--sc-metal-3) 18%, var(--sc-metal-2) 55%, var(--sc-metal-1) 100%);
+    linear-gradient(var(--x-bf-tint-wash), var(--x-bf-tint-wash)),
+    var(--sc-metal-3);
   clip-path: polygon(var(--sc-bevel) 0, calc(100% - var(--sc-bevel)) 0, 100% var(--sc-bevel), 100% calc(100% - var(--sc-bevel)), calc(100% - var(--sc-bevel)) 100%, var(--sc-bevel) 100%, 0 calc(100% - var(--sc-bevel)), 0 var(--sc-bevel));
-  box-shadow: inset 1px 1px 0 var(--x-bf-frame-hi), inset -1px -1px 0 #000;
+  /* 3 px faset kant: lys topp/venstre, mørk bunn/høyre */
+  box-shadow:
+    inset 1px 1px 0 var(--sc-metal-5),
+    inset 3px 3px 0 var(--sc-metal-4),
+    inset -1px -1px 0 #000,
+    inset -3px -3px 0 var(--sc-metal-1);
 }
-/* nagler i hjørnene */
+/* nagler i alle fire hjørner (2x2 px, lys + mørk skygge) */
 .bf-portrait::before,
 .bf-portrait::after {
   content: "";
   position: absolute;
-  top: 3px;
-  width: 3px;
-  height: 3px;
+  left: 5px;
+  width: 2px;
+  height: 2px;
   background: var(--sc-rivet);
-  box-shadow: 0 1px 0 #000;
+  box-shadow: 1px 1px 0 #000, 154px 0 0 var(--sc-rivet), 155px 1px 0 #000;
 }
-.bf-portrait::before { left: 10px; }
-.bf-portrait::after  { right: 10px; }
+.bf-portrait::before { top: 5px; }
+.bf-portrait::after  { bottom: 6px; }
 
 .bf-portrait__screen {
   position: relative;
-  height: 106px;
+  height: 100px;
+  margin: 0 3px;
   background: var(--sc-void);
-  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px var(--sc-metal-1);
   border-radius: 2px;
   overflow: hidden;
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px var(--sc-metal-1);
 }
 .bf-portrait__screen canvas {
   display: block;
@@ -221,68 +230,80 @@
   pointer-events: none;
   background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 2px);
 }
+/* smalt navneskilt i mørk metall */
 .bf-portrait__name {
-  margin: 3px 0 0;
+  margin: 5px 14px 0;
+  height: 15px;
+  line-height: 15px;
+  background: var(--sc-metal-1);
+  box-shadow: inset 0 1px 0 #000, 0 1px 0 var(--sc-metal-4), 0 -1px 0 var(--sc-metal-2);
+  border-radius: 1px;
   font-family: var(--sc-font-ui);
-  font-size: var(--sc-fs-xs);
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
   color: var(--sc-text-title);
-  text-shadow: 0 1px 0 #000;
+  text-shadow: 0 0 1px currentColor;
 }
 /* den som snakker: grønn kant, klart bilde */
 .bf-portrait.is-speaking .bf-portrait__screen {
   box-shadow: inset 0 0 0 1px #000, inset 0 0 0 3px var(--sc-text-stat), 0 0 0 1px var(--sc-text-stat-dim);
 }
 .bf-portrait.is-speaking .bf-portrait__screen canvas { opacity: 1; }
-.bf-portrait.is-speaking .bf-portrait__name { color: var(--sc-text-stat); text-shadow: var(--sc-glow-stat); }
+.bf-portrait.is-speaking .bf-portrait__name { color: var(--sc-text-stat); }
 
-/* ---------- Tekstfelt (svart CRT-aktig) ---------- */
+/* ---------- Tekstfelt: lavt, svart, i mørk metallramme ---------- */
 .bf-textbox {
   position: absolute;
-  left: 212px;
-  top: 486px;
-  width: 712px;
-  height: 214px;
+  left: 22px;
+  bottom: 20px;
+  width: 600px;
+  height: 138px;
   box-sizing: border-box;
-  padding: 6px;
-  background:
-    linear-gradient(135deg, var(--sc-metal-4) 0, var(--sc-metal-3) 10%, var(--sc-metal-2) 50%, var(--sc-metal-1) 100%);
-  clip-path: polygon(var(--sc-bevel) 0, calc(100% - var(--sc-bevel)) 0, 100% var(--sc-bevel), 100% calc(100% - var(--sc-bevel)), calc(100% - var(--sc-bevel)) 100%, var(--sc-bevel) 100%, 0 calc(100% - var(--sc-bevel)), 0 var(--sc-bevel));
-  box-shadow: inset 1px 1px 0 var(--x-bf-frame-hi), inset -1px -1px 0 #000;
+  padding: 3px;
+  background: var(--sc-metal-2);
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 1px 0 var(--sc-metal-4),
+    inset -1px -1px 0 #000,
+    0 0 0 1px #000;
   display: flex;
   flex-direction: column;
 }
+/* flat, mørk metallstripe med 1 px lys topplinje og 1 px mørk bunnlinje */
 .bf-textbox__head {
   display: flex;
   justify-content: space-between;
-  padding: 0 6px 5px;
-  font-size: var(--sc-fs-xs);
+  align-items: center;
+  height: 18px;
+  padding: 0 8px;
+  background: var(--sc-metal-1);
+  border-top: 1px solid var(--sc-metal-4);
+  border-bottom: 1px solid #000;
+  font-family: var(--sc-font-ui);
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--sc-text-title);
-  text-shadow: 0 1px 0 #000;
+  text-shadow: 0 0 1px currentColor;
 }
-.bf-textbox__chan { color: var(--sc-led-amber); text-shadow: 0 0 2px rgba(255, 176, 32, 0.5); }
+.bf-textbox__chan { color: var(--sc-led-amber); }
 .bf-textbox__body {
   position: relative;
   flex: 1;
   overflow: hidden;
-  padding: 12px 18px;
+  margin-top: 3px;
+  padding: 9px 14px;
   background: var(--sc-void);
-  border-radius: 4px;
-  box-shadow:
-    inset 0 0 0 1px #000,
-    inset 1px 1px 0 2px var(--sc-metal-1),
-    inset -1px -1px 0 1px var(--sc-metal-3);
-  font-family: var(--sc-font-ui);
-  font-size: 15px;
-  line-height: 21px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 12px);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px var(--sc-metal-1);
+  font-family: var(--sc-font-menu);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
   color: var(--sc-text-menu);
-  text-shadow: var(--sc-glow-menu);
+  text-shadow: 0 0 1px currentColor;
 }
 .bf-textbox__body::after {
   content: "";
@@ -291,24 +312,20 @@
   pointer-events: none;
   background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
 }
-.bf-line { margin: 0 0 8px; }
+.bf-line { margin: 0 0 6px; }
 .bf-line__who {
   color: var(--sc-text-stat);
-  text-shadow: var(--sc-glow-stat);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: var(--sc-fs-sm);
 }
-.bf-line.is-old { color: var(--sc-text-menu-dim); text-shadow: none; }
-.bf-line.is-old .bf-line__who { color: var(--sc-text-stat-dim); text-shadow: none; }
+.bf-line.is-old { color: var(--sc-text-menu-dim); }
+.bf-line.is-old .bf-line__who { color: var(--sc-text-stat-dim); }
 .bf-cursor {
   display: inline-block;
-  width: 8px;
-  height: 15px;
+  width: 7px;
+  height: 13px;
   margin-left: 2px;
   vertical-align: -2px;
   background: var(--sc-text-menu);
-  box-shadow: 0 0 2px rgba(185, 217, 75, 0.6);
   animation: bf-blink 900ms steps(1, end) infinite;
 }
 @keyframes bf-blink { 50% { opacity: 0; } }

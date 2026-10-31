@@ -63,9 +63,18 @@
   }
 
   /* Dialogscene */
-  #dialoger .x-stage { height: 380px; display: grid; place-items: center; }
+  #dialoger .x-stage { height: 400px; display: grid; place-items: center; }
   .x-red-dialog { width: 470px; min-height: 270px; }
-  .x-blue-dialog { width: 330px; }
+  .x-blue-dialog { width: 330px; position: relative; }
+  .x-props { position: absolute; inset: 0; background:
+      radial-gradient(ellipse 34px 22px at 46% 30%, #6a8ab8 0 30%, #2a3a5a 60%, transparent 62%),
+      linear-gradient(#3a3f48, #23262c) 40% 22% / 90px 46px no-repeat,
+      radial-gradient(circle at 63% 62%, transparent 0 46px, #2ee82e 46px 47px, transparent 48px),
+      linear-gradient(#4a4f58, #2a2e34) 60% 60% / 70px 60px no-repeat,
+      conic-gradient(from 200deg at 22% 70%, transparent 0 20deg, #7ab0ff 20deg 40deg, transparent 40deg) ,
+      radial-gradient(ellipse 18px 28px at 18% 64%, #9ac8ff 0 35%, #2a5a9a 60%, transparent 62%),
+      radial-gradient(ellipse 14px 22px at 24% 72%, #8ab8f0 0 35%, #24508a 60%, transparent 62%),
+      radial-gradient(ellipse 12px 18px at 80% 26%, #9ac8ff 0 35%, #2a5a9a 60%, transparent 62%); }
   .x-menu-scatter { position: absolute; inset: 0; pointer-events: none; }
   .x-menu-scatter .sc-menu-link { position: absolute; pointer-events: auto; }
 
@@ -165,6 +174,7 @@
       </div>
       <div>
         <div class="x-terrain x-stage">
+          <div class="x-props" aria-hidden="true"></div>
           <div class="sc-dialog sc-dialog--blue x-blue-dialog" role="dialog" aria-labelledby="gm-t">
             <div class="sc-dialog__title" id="gm-t">Game Menu</div>
             <div class="sc-dialog__actions">
@@ -172,6 +182,7 @@
               <button class="sc-btn sc-btn--blue"><span class="sc-hk">L</span>oad Game</button>
               <button class="sc-btn sc-btn--blue is-hover"><span class="sc-hk">O</span>ptions</button>
               <button class="sc-btn sc-btn--blue"><span class="sc-hk">H</span>elp</button>
+              <button class="sc-btn sc-btn--blue"><span class="sc-hk">M</span>ission Objectives</button>
               <button class="sc-btn sc-btn--blue" disabled><span class="sc-hk">E</span>nd Mission</button>
               <button class="sc-btn sc-btn--blue" style="margin-top:14px"><span class="sc-hk">R</span>eturn to Game (Esc)</button>
             </div>
@@ -249,7 +260,7 @@
       <div class="x-cell"><button class="sc-btn sc-btn--red is-focus" style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">focus-visible</span></div>
       <div class="x-cell"><button class="sc-btn sc-btn--red" disabled style="width:150px"><span class="sc-hk">U</span>pgrade</button><span class="x-cap">disabled</span></div>
     </div>
-    <div class="x-row" style="gap:28px;margin-top:14px;padding:12px;background:var(--sc-blue-glass)">
+    <div class="x-row x-terrain" style="gap:28px;margin-top:14px;padding:12px">
       <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">blue · normal</span></div>
       <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue is-hover"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">hover</span></div>
       <div class="x-cell" style="width:190px"><button class="sc-btn sc-btn--blue is-active"><span class="sc-hk">S</span>ave Game</button><span class="x-cap">active</span></div>

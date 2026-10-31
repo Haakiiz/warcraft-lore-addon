@@ -41,26 +41,28 @@
   /* =======================================================================
      ROMMET
      Sylinderprojeksjon: et punkt på veggen (vinkel th, høyde v) havner på
-     x = CX + F*tan(th), y = HOR + F*v/cos(th). Da buer fugelinjene seg
-     som i et rundt rom sett innenfra.
+     x = CX + F*sin(th), y = HOR + G*v*(1 + K*(1-cos th)). Flisene smalner
+     av mot sidene, og ringlinjene krummer innover som i et rundt rom.
      ======================================================================= */
-  var W = 640, H = 360, CX = 380, F = 250, VS = 1.28, HOR = 168;
-  var V_TOP = -0.455, V_FLOOR = 0.44;
+  var W = 640, H = 360, CX = 380, F = 372, G = 300, K = 0.95, HOR = 168;
+  var V_TOP = -0.40, V_FLOOR = 0.44;
+  var BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+  function bayer(x, y) { return (BAYER[(y & 3) * 4 + (x & 3)] + 0.5) / 16; }
   var LAMPS = [
     { th: -0.62, v: -0.30 }, { th: -0.30, v: -0.30 },
     { th: 0.27, v: -0.30 }, { th: 0.58, v: -0.30 }
   ];
-  function P(th, v) { return [CX + F * Math.tan(th), HOR + F * VS * v / Math.cos(th)]; }
+  function P(th, v) { return [CX + F * Math.sin(th), HOR + G * v * (1 + K * (1 - Math.cos(th)))]; }
 
   function drawRoom(cv) {
     var c = cv.getContext("2d");
     var R = rng(7331);
     c.imageSmoothingEnabled = false;
 
-    var TH0 = -1.02, TH1 = 0.82, DT = 0.054, DV = 0.042;
+    var TH0 = -1.56, TH1 = 0.80, DT = 0.036, DV = 0.042;
 
     /* --- 1. fliser --- */
-    c.fillStyle = "rgb(60,64,58)";
+    c.fillStyle = "rgb(8,9,8)";
     c.fillRect(0, 0, W, H);
     for (var th = TH0; th < TH1; th += DT) {
       for (var v = V_TOP; v < V_FLOOR; v += DV) {
@@ -104,28 +106,37 @@
     c.drawImage(nz, 0, 0, W, H);
     c.imageSmoothingEnabled = false;
 
-    /* --- 4. rustrenner --- */
-    function streak(th0, v0, len, strength) {
-      var cols = 2 + Math.floor(R() * 5);
+    /* --- 4. rustrenner: brunoransje, lav opasitet, starter under rør/lamper, 3–5 per veggfelt --- */
+    function streak(th0, v0, len) {
+      var cr = 90 + R() * 32, cg = 42 + R() * 16, cb = 18 + R() * 6;      // #5a2a12–#7a3a18
+      var cols = 2 + Math.floor(R() * 3), al = 0.30 + R() * 0.22;
+      var x0 = Math.round(P(th0, v0)[0]);
       for (var i = 0; i < cols; i++) {
-        var t = th0 + (R() - 0.5) * 0.012;
-        var p0 = P(t, v0), L = len * (0.4 + R() * 0.6);
-        var p1 = P(t, v0 + L);
+        var p0 = P(th0, v0 + R() * 0.01), L = len * (0.35 + R() * 0.65);
+        var p1 = P(th0, v0 + L);
         var g = c.createLinearGradient(0, p0[1], 0, p1[1]);
-        var al = strength * (0.35 + R() * 0.55);
-        g.addColorStop(0, "rgba(70,34,16," + al + ")");
-        g.addColorStop(0.5, "rgba(58,30,16," + (al * 0.6) + ")");
-        g.addColorStop(1, "rgba(40,24,14,0)");
+        g.addColorStop(0, rgb(cr, cg, cb, al));
+        g.addColorStop(0.15 + R() * 0.4, rgb(cr * 0.9, cg * 0.9, cb, al * 0.55));
+        g.addColorStop(1, rgb(cr * 0.7, cg * 0.7, cb, 0));
         c.fillStyle = g;
-        c.fillRect(Math.round(p0[0]), p0[1], 1 + (R() < 0.3 ? 1 : 0), p1[1] - p0[1]);
+        c.fillRect(x0 + i, Math.round(p0[1]), 1, Math.round(p1[1] - p0[1]));
       }
     }
-    for (var s = 0; s < 46; s++) {
-      var st = TH0 + R() * (TH1 - TH0);
-      var sv = [V_TOP + 0.01, -0.37, -0.27, 0.30][Math.floor(R() * 4)];
-      streak(st, sv, 0.08 + R() * 0.38, 0.55);
+    var PANELS = [TH0, -0.80, -0.40, 0.20, 0.66, TH1];
+    for (var pi = 0; pi < PANELS.length - 1; pi++) {
+      var lo = PANELS[pi] + 0.02, hi = PANELS[pi + 1] - 0.02;
+      var lampsHere = LAMPS.filter(function (l) { return l.th > lo && l.th < hi; });
+      var count = 3 + Math.floor(R() * 3);
+      for (var si = 0; si < count; si++) {
+        var src = R(), st, sv;
+        if (lampsHere.length && src < 0.4) {
+          var lp = lampsHere[Math.floor(R() * lampsHere.length)];
+          st = lp.th + (R() - 0.5) * 0.04; sv = lp.v + 0.05;
+        } else if (src < 0.8) { st = lo + R() * (hi - lo); sv = -0.36; }
+        else { st = lo + R() * (hi - lo); sv = 0.305; }
+        streak(st, sv, sv > 0 ? 0.05 + R() * 0.1 : 0.08 + R() * 0.32);
+      }
     }
-    LAMPS.forEach(function (l) { streak(l.th - 0.01, l.v + 0.06, 0.45, 1); streak(l.th + 0.012, l.v + 0.06, 0.3, 0.8); });
 
     /* --- 5. tak og ringhylle øverst --- */
     function band(v0, v1, fill) {
@@ -140,32 +151,6 @@
       for (var t = TH0; t <= TH1 + 0.01; t += 0.01) { var q = P(t, v); if (t === TH0) c.moveTo(q[0], q[1] + (dy || 0)); else c.lineTo(q[0], q[1] + (dy || 0)); }
       c.stroke();
     }
-    band(-1.2, V_TOP - 0.03, "rgb(16,17,15)");
-    // tak-ribber over hyllen
-    for (var rt = TH0; rt < TH1; rt += 0.085) {
-      var r0 = P(rt, -1.2), r1 = P(rt, V_TOP - 0.03);
-      c.strokeStyle = "rgba(48,50,44,0.9)"; c.beginPath(); c.moveTo(r0[0] + 0.5, r0[1]); c.lineTo(r1[0] + 0.5, r1[1]); c.stroke();
-    }
-    band(V_TOP - 0.03, V_TOP + 0.012, "rgb(44,45,40)");
-    ringLine(V_TOP - 0.03, "rgba(120,118,104,0.7)", 0.5);
-    ringLine(V_TOP + 0.012, "rgba(8,8,8,0.9)", 0.5);
-    for (rt = TH0; rt < TH1; rt += 0.05) {   // nagler i hyllen
-      var rv = P(rt, V_TOP - 0.009);
-      c.fillStyle = "rgb(120,118,106)"; c.fillRect(Math.round(rv[0]), Math.round(rv[1]), 1, 1);
-      c.fillStyle = "rgb(10,10,10)"; c.fillRect(Math.round(rv[0]) + 1, Math.round(rv[1]) + 1, 1, 1);
-    }
-    // buede «horn»-braketter fra hyllen
-    [-0.86, -0.58, -0.26, 0.42, 0.68].forEach(function (bt) {
-      var p1 = P(bt - 0.022, V_TOP + 0.01), p2 = P(bt + 0.03, V_TOP + 0.01);
-      var p3 = P(bt + 0.004, V_TOP + 0.16), p4 = P(bt - 0.012, V_TOP + 0.08);
-      c.fillStyle = "rgb(30,31,28)";
-      c.beginPath(); c.moveTo(p1[0], p1[1]); c.lineTo(p2[0], p2[1]);
-      c.quadraticCurveTo(p2[0] - 1, p3[1] - 12, p3[0], p3[1]);
-      c.quadraticCurveTo(p4[0], p4[1], p1[0], p1[1]); c.fill();
-      c.strokeStyle = "rgba(130,126,108,0.6)";
-      c.beginPath(); c.moveTo(p1[0], p1[1]); c.quadraticCurveTo(p4[0], p4[1], p3[0], p3[1]); c.stroke();
-    });
-
     /* --- 6. rør --- */
     function hPipe(v, t0, t1, w) {
       var layers = [[w + 2, "rgb(14,15,13)", 0], [w, "rgb(58,60,54)", 0], [Math.max(1, w * 0.4), "rgb(104,104,92)", -w * 0.22]];
@@ -184,6 +169,7 @@
     function vPipe(th, v0, v1, w) {
       var a = P(th, v0), b = P(th, v1);
       var x = Math.round(a[0]);
+      w = Math.max(2, Math.round(w * Math.cos(th)));
       c.fillStyle = "rgb(14,15,13)"; c.fillRect(x - 1, a[1], w + 2, b[1] - a[1]);
       c.fillStyle = "rgb(58,60,54)"; c.fillRect(x, a[1], w, b[1] - a[1]);
       c.fillStyle = "rgb(108,108,96)"; c.fillRect(x + 1, a[1], 1, b[1] - a[1]);
@@ -246,46 +232,98 @@
 
     /* --- 8. stige til høyre --- */
     (function ladder() {
-      var t0 = 0.47, t1 = 0.525, v0 = -0.37, v1 = V_FLOOR;
+      var t0 = 0.40, t1 = 0.45, v0 = -0.37, v1 = V_FLOOR;
       var a0 = P(t0, v0), b0 = P(t1, v0), a1 = P(t0, v1);
       var xa = Math.round(a0[0]), xb = Math.round(b0[0]);
       for (var v = v0 + 0.02; v < v1; v += 0.045) {
         var p = P(t0, v), q = P(t1, v);
         c.strokeStyle = "rgba(0,0,0,0.5)"; c.beginPath(); c.moveTo(p[0], p[1] + 2.5); c.lineTo(q[0] + 2, q[1] + 2.5); c.stroke();
         c.strokeStyle = "rgb(30,30,27)"; c.lineWidth = 2; c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(q[0], q[1]); c.stroke();
-        c.strokeStyle = "rgb(116,112,98)"; c.lineWidth = 1; c.beginPath(); c.moveTo(p[0], p[1] - 0.5); c.lineTo(q[0], q[1] - 0.5); c.stroke();
+        c.strokeStyle = "rgb(150,146,128)"; c.lineWidth = 1; c.beginPath(); c.moveTo(p[0], p[1] - 0.5); c.lineTo(q[0], q[1] - 0.5); c.stroke();
       }
       [xa, xb].forEach(function (x) {
         c.fillStyle = "rgba(0,0,0,0.45)"; c.fillRect(x + 3, a0[1], 2, a1[1] - a0[1]);
         c.fillStyle = "rgb(24,24,22)"; c.fillRect(x - 1, a0[1] - 4, 3, a1[1] - a0[1] + 4);
-        c.fillStyle = "rgb(106,104,92)"; c.fillRect(x - 1, a0[1] - 4, 1, a1[1] - a0[1] + 4);
+        c.fillStyle = "rgb(140,136,118)"; c.fillRect(x - 1, a0[1] - 4, 1, a1[1] - a0[1] + 4);
       });
     })();
 
-    /* --- 9. lysberegning per piksel (lamper, mørke kanter, kornstøy) --- */
+    /* --- 9. lysberegning per piksel: lamper, hardt avgrensede lysfelt, mørke sider (dithret) --- */
     var img = c.getImageData(0, 0, W, H), px = img.data;
+    var LC = [216, 184, 96];                                   // #d8b860
     for (y = 0; y < H; y++) {
       for (x = 0; x < W; x++) {
-        var t = Math.atan((x - CX) / F), cs = Math.cos(t), vv = (y - HOR) * cs / (F * VS);
-        var warm = 0;
+        var sx = clamp((x - CX) / F, -0.9995, 0.9995);
+        var t = Math.asin(sx), fac = 1 + K * (1 - Math.cos(t)), vv = (y - HOR) / (G * fac);
+        var bz = bayer(x, y);
+        var warm = 0, field = 0;
         for (var li = 0; li < LAMPS.length; li++) {
           var dt = t - LAMPS[li].th, dv = vv - LAMPS[li].v;
-          var below = dv > 0 ? 0.075 : 0.022;
-          warm += Math.exp(-(dt * dt) / 0.012 - (dv - (dv > 0 ? 0.06 : 0) ) * (dv - (dv > 0 ? 0.06 : 0)) / below);
+          warm += Math.exp(-(dt * dt) / 0.010 - dv * dv / (dv > 0 ? 0.05 : 0.015));
+          if (dv > -0.03 && dv < 0.30) {                        // lyskjegle under lampen
+            var halfw = 0.05 + Math.max(0, dv) * 0.2;
+            var m = Math.min(1 - Math.abs(dt) / halfw, 1 - (dv + 0.03) / 0.33);
+            if (m > 0) {
+              var tier = dv < 0.14 ? 1 : 0.6;                   // to harde trinn
+              if (m > 0.14 || m / 0.14 > bz) field = Math.max(field, tier);
+            }
+          }
         }
-        warm = Math.min(warm, 1.3);
-        var amb = 0.50 - Math.max(0, -vv - 0.2) * 0.9 - Math.max(0, vv - 0.15) * 0.55;
-        amb -= Math.abs(t - 0.05) * 0.10;
-        var green = 0.18 * Math.exp(-(t * t) / 0.03 - (vv + 0.17) * (vv + 0.17) / 0.04);   // grønt skjær fra monitorene
-        var L = Math.max(0.12, amb) + warm * 0.85;
-        var n = (R() - 0.5) * 22;
+        warm = Math.min(warm, 1.2);
+        var amb = 0.46 - Math.max(0, -vv - 0.22) * 1.2 - Math.max(0, vv - 0.15) * 0.6;
+        var green = 0.16 * Math.exp(-(t * t) / 0.03 - (vv + 0.17) * (vv + 0.17) / 0.04);   // grønt skjær fra monitorene
+        var L = Math.max(0.10, amb) + warm * 0.22;
+        // mørke sider: kvantisert i trinn med Bayer-dithering (ingen blur)
+        var side = t < 0 ? clamp((-t - 0.70) / 0.62, 0, 1) : clamp((t - 0.50) / 0.30, 0, 1);
+        var lvl = Math.min(4, Math.floor(side * 4 + bz)) / 4;
+        L *= 1 - lvl * 0.82;
+        var n = (R() - 0.5) * 20;
         var i4 = (y * W + x) * 4;
-        px[i4]     = clamp(px[i4] * L * (1 + warm * 0.30) + n, 0, 255);
-        px[i4 + 1] = clamp(px[i4 + 1] * (L + green) * (1 + warm * 0.18) + n, 0, 255);
-        px[i4 + 2] = clamp(px[i4 + 2] * L * (1 - warm * 0.12) + n * 0.8, 0, 255);
+        var r0 = px[i4], g0 = px[i4 + 1], b0 = px[i4 + 2];
+        var r = r0 * L * (1 + warm * 0.25), g = g0 * (L + green) * (1 + warm * 0.15), b = b0 * L * (1 - warm * 0.1);
+        if (field) {
+          var lum = (r0 + g0 + b0) / 3 / 255, k = 0.45 * field * (1 - lvl);
+          r += (LC[0] * (0.25 + lum) - r) * k; g += (LC[1] * (0.25 + lum) - g) * k; b += (LC[2] * (0.25 + lum) - b) * k;
+        }
+        px[i4] = clamp(r + n, 0, 255);
+        px[i4 + 1] = clamp(g + n, 0, 255);
+        px[i4 + 2] = clamp(b + n * 0.8, 0, 255);
       }
     }
     c.putImageData(img, 0, 0);
+
+    /* --- 9b. mørkt tak med ribber (tegnes etter lyset, med egen dempet palett) --- */
+    band(-3, V_TOP - 0.03, "rgb(13,14,13)");
+    // mørkt tak: metallribber som buer innover mot midten
+    for (var rt = TH0 + 0.06; rt < TH1; rt += 0.17) {
+      var r0 = P(rt, V_TOP - 0.03);
+      var ex = CX + (r0[0] - CX) * 0.38, ey = -40;
+      var qx = r0[0] + (CX - r0[0]) * 0.04, qy = r0[1] - 70;
+      c.lineWidth = 4; c.strokeStyle = "rgb(6,6,6)";
+      c.beginPath(); c.moveTo(r0[0], r0[1]); c.quadraticCurveTo(qx, qy, ex, ey); c.stroke();
+      c.lineWidth = 2; c.strokeStyle = "rgb(40,41,37)";
+      c.beginPath(); c.moveTo(r0[0], r0[1]); c.quadraticCurveTo(qx, qy, ex, ey); c.stroke();
+      c.lineWidth = 1; c.strokeStyle = "rgb(96,94,82)";
+      c.beginPath(); c.moveTo(r0[0] - 1, r0[1]); c.quadraticCurveTo(qx - 1, qy, ex - 1, ey); c.stroke();
+    }
+    // tverrbånd i taket
+    [-0.50].forEach(function (cv) {
+      c.lineWidth = 2; c.strokeStyle = "rgb(30,31,28)"; c.beginPath();
+      for (var t = TH0; t <= TH1 + 0.01; t += 0.01) {
+        var q = P(t, cv), qy2 = q[1] + (q[1] < HOR ? 0 : 0);
+        var cx2 = CX + (q[0] - CX) * (1 - Math.min(0.5, (V_TOP - cv) * 0.9));
+        if (t === TH0) c.moveTo(cx2, qy2); else c.lineTo(cx2, qy2);
+      }
+      c.stroke(); c.lineWidth = 1;
+    });
+    band(V_TOP - 0.03, V_TOP + 0.012, "rgb(44,45,40)");
+    ringLine(V_TOP - 0.03, "rgba(120,118,104,0.8)", 0.5);
+    ringLine(V_TOP + 0.012, "rgba(8,8,8,0.95)", 0.5);
+    for (rt = TH0; rt < TH1; rt += 0.04) {   // nagler i hyllen
+      var rv = P(rt, V_TOP - 0.009);
+      c.fillStyle = "rgb(120,118,106)"; c.fillRect(Math.round(rv[0]), Math.round(rv[1]), 1, 1);
+      c.fillStyle = "rgb(10,10,10)"; c.fillRect(Math.round(rv[0]) + 1, Math.round(rv[1]) + 1, 1, 1);
+    }
 
     /* --- 10. gulv --- */
     c.fillStyle = "rgb(12,12,11)";
@@ -304,11 +342,11 @@
     c.globalCompositeOperation = "lighter";
     LAMPS.forEach(function (l) {
       var q = P(l.th, l.v);
-      var g = c.createRadialGradient(q[0], q[1] + 2, 0, q[0], q[1] + 2, 42);
+      var g = c.createRadialGradient(q[0], q[1] + 2, 0, q[0], q[1] + 2, 16);
       g.addColorStop(0, "rgba(255,210,120,0.55)");
       g.addColorStop(0.25, "rgba(200,140,60,0.22)");
       g.addColorStop(1, "rgba(120,70,20,0)");
-      c.fillStyle = g; c.fillRect(q[0] - 44, q[1] - 42, 88, 88);
+      c.fillStyle = g; c.fillRect(q[0] - 18, q[1] - 16, 36, 36);
     });
     c.globalCompositeOperation = "source-over";
     LAMPS.forEach(function (l) {
@@ -350,41 +388,67 @@
       c.lineCap = "butt"; c.lineWidth = 1;
     }
     // skygge på gulvet
-    c.fillStyle = "rgba(0,0,0,0.6)"; c.beginPath(); c.ellipse(382, 356, 96, 12, 0, 0, Math.PI * 2); c.fill();
+    c.fillStyle = "rgba(0,0,0,0.65)"; c.beginPath(); c.ellipse(382, 352, 118, 13, 0, 0, Math.PI * 2); c.fill();
 
-    // store slanger som bukter seg ut fra sokkelen (som i referansen)
-    tube([352, 346, 300, 350, 248, 330, 258, 290, 266, 262, 300, 250, 318, 196], 9, [52, 52, 46]);
-    tube([410, 344, 470, 350, 500, 318, 486, 286, 476, 262, 450, 240, 456, 206], 8, [52, 52, 46]);
+    // slanger bak/rundt foten (ulik tykkelse)
+    tube([330, 348, 268, 352, 234, 320, 248, 282, 260, 256, 296, 246, 312, 190], 11, [50, 50, 44]);
+    tube([436, 346, 502, 352, 522, 316, 502, 284, 486, 262, 452, 240, 458, 198], 9, [50, 50, 44]);
+    tube([344, 336, 298, 334, 282, 300, 298, 272, 312, 254, 342, 252, 368, 236], 6, [58, 56, 48]);
+    tube([420, 336, 458, 332, 474, 300, 456, 280, 444, 268, 414, 262, 396, 250], 4, [62, 60, 52]);
     tube([366, 300, 330, 296, 312, 270, 318, 190], 5);
     tube([398, 300, 424, 290, 440, 250, 462, 200], 5);
     tube([372, 240, 340, 230, 330, 160, 352, 124], 3, [44, 44, 40]);
     tube([392, 240, 420, 226, 430, 160, 414, 124], 3, [44, 44, 40]);
 
-    // sokkel
-    var g = c.createLinearGradient(330, 0, 434, 0);
-    g.addColorStop(0, "rgb(18,18,16)"); g.addColorStop(0.3, "rgb(72,72,64)"); g.addColorStop(0.55, "rgb(46,46,42)"); g.addColorStop(1, "rgb(14,14,12)");
-    c.fillStyle = g;
-    c.beginPath(); c.moveTo(344, 300); c.lineTo(420, 300); c.lineTo(440, 352); c.lineTo(324, 352); c.closePath(); c.fill();
-    c.fillStyle = "rgb(10,10,10)"; c.fillRect(324, 352, 116, 4);
-    for (var ry = 308; ry < 350; ry += 10) { c.fillStyle = "rgba(0,0,0,0.5)"; c.fillRect(338 - (ry - 300) * 0.3, ry, 88 + (ry - 300) * 0.6, 1); }
-    c.fillStyle = "rgb(150,140,110)"; [336, 352, 412, 428].forEach(function (x) { c.fillRect(x, 344, 1, 1); });
-    // gul/svart fareskilt-stripe på sokkelen
-    for (var hx = 0; hx < 9; hx++) {
-      c.fillStyle = hx % 2 ? "rgb(20,18,10)" : "rgb(150,120,24)";
-      c.beginPath(); c.moveTo(346 + hx * 8, 322); c.lineTo(352 + hx * 8, 322); c.lineTo(348 + hx * 8, 328); c.lineTo(342 + hx * 8, 328); c.closePath(); c.fill();
+    // faset metallboks: lys topp/venstre, mørk bunn/høyre
+    function box(x, y, w, h, col) {
+      c.fillStyle = "rgb(6,6,6)"; c.fillRect(x - 1, y - 1, w + 2, h + 2);
+      c.fillStyle = rgb(col[0], col[1], col[2]); c.fillRect(x, y, w, h);
+      c.fillStyle = rgb(col[0] * 1.9, col[1] * 1.85, col[2] * 1.7); c.fillRect(x, y, w, 1); c.fillRect(x, y, 1, h);
+      c.fillStyle = rgb(col[0] * 0.45, col[1] * 0.45, col[2] * 0.45); c.fillRect(x, y + h - 1, w, 1); c.fillRect(x + w - 1, y, 1, h);
     }
+    function rivets(x0, x1, y, step) {
+      for (var x = x0; x <= x1; x += step) {
+        c.fillStyle = "rgb(150,142,116)"; c.fillRect(Math.round(x), y, 1, 1);
+        c.fillStyle = "rgb(8,8,8)"; c.fillRect(Math.round(x) + 1, y + 1, 1, 1);
+      }
+    }
+    function tier(xt0, xt1, xb0, xb1, y0, y1, hi) {
+      var g = c.createLinearGradient(xb0, 0, xb1, 0);
+      g.addColorStop(0, "rgb(16,16,14)"); g.addColorStop(0.28, rgb(hi, hi, hi * 0.88)); g.addColorStop(0.55, rgb(hi * 0.62, hi * 0.62, hi * 0.55)); g.addColorStop(1, "rgb(12,12,10)");
+      c.fillStyle = g;
+      c.beginPath(); c.moveTo(xt0, y0); c.lineTo(xt1, y0); c.lineTo(xb1, y1); c.lineTo(xb0, y1); c.closePath(); c.fill();
+      c.fillStyle = "rgb(150,144,124)"; c.fillRect(xt0 + 2, y0, xt1 - xt0 - 4, 1);     // lys toppfas
+      c.fillStyle = "rgb(6,6,6)"; c.fillRect(xb0, y1 - 1, xb1 - xb0, 1);
+    }
+    // bred, naglet sokkel i tre trinn
+    tier(310, 454, 298, 466, 336, 352, 66);
+    rivets(304, 460, 344, 7);
+    tier(326, 438, 320, 444, 312, 336, 74);
+    rivets(326, 438, 316, 8);
+    for (var hx = 0; hx < 13; hx++) {                          // fareskilt-stripe
+      c.fillStyle = hx % 2 ? "rgb(20,18,10)" : "rgb(150,120,24)";
+      c.beginPath(); c.moveTo(332 + hx * 8, 322); c.lineTo(338 + hx * 8, 322); c.lineTo(334 + hx * 8, 329); c.lineTo(328 + hx * 8, 329); c.closePath(); c.fill();
+    }
+    c.fillStyle = "rgb(8,8,8)"; c.fillRect(326, 330, 112, 1);
+    tier(348, 416, 344, 420, 296, 312, 82);
+    rivets(350, 414, 300, 6);
+    box(306, 340, 14, 9, [46, 46, 40]); box(444, 340, 14, 9, [46, 46, 40]);
 
     // søyle
-    g = c.createLinearGradient(368, 0, 396, 0);
+    var g = c.createLinearGradient(368, 0, 396, 0);
     g.addColorStop(0, "rgb(16,16,14)"); g.addColorStop(0.35, "rgb(86,86,76)"); g.addColorStop(0.6, "rgb(50,50,44)"); g.addColorStop(1, "rgb(12,12,10)");
-    c.fillStyle = g; c.fillRect(370, 118, 24, 184);
-    for (var cy = 130; cy < 300; cy += 14) { c.fillStyle = "rgba(0,0,0,0.55)"; c.fillRect(370, cy, 24, 2); c.fillStyle = "rgba(160,150,120,0.35)"; c.fillRect(370, cy + 2, 24, 1); }
-    // krage
-    c.fillStyle = "rgb(30,30,27)"; c.fillRect(362, 228, 40, 12);
-    c.fillStyle = "rgb(110,104,88)"; c.fillRect(362, 228, 40, 1);
+    c.fillStyle = g; c.fillRect(370, 118, 24, 180);
+    for (var cy = 130; cy < 296; cy += 14) { c.fillStyle = "rgba(0,0,0,0.55)"; c.fillRect(370, cy, 24, 2); c.fillStyle = "rgba(160,150,120,0.35)"; c.fillRect(370, cy + 2, 24, 1); }
+    // krage med lys
+    box(362, 228, 40, 12, [34, 34, 30]);
     c.fillStyle = "rgb(255,58,42)"; c.fillRect(366, 233, 2, 2);
     c.fillStyle = "rgb(255,176,32)"; c.fillRect(372, 233, 2, 2);
     c.fillStyle = "rgb(60,240,60)"; c.fillRect(378, 233, 2, 2);
+    // små fasede koblingsbokser og klammer
+    box(394, 176, 12, 16, [48, 47, 42]); c.fillStyle = "rgb(255,176,32)"; c.fillRect(399, 180, 2, 2);
+    box(358, 196, 12, 12, [44, 44, 40]);
+    box(360, 270, 44, 7, [40, 40, 36]);
 
     // arm og høyttalertrakt til høyre for hovedskjermen
     tube([394, 150, 420, 150, 432, 142, 446, 126], 4);

@@ -45,6 +45,35 @@
   --x-supply-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cellipse cx='8' cy='6' rx='6' ry='4'/%3E%3Cpath d='M4 9l-1 6 2-4zM8 10v5l1-5zM12 9l1 6-2-4z'/%3E%3C/svg%3E");
 }
 
+
+/* ---------- Runde 2: varmt, skittent Terran-metall + rasevarianter ---------- */
+:root, [data-race="terran"] {
+  --x-plate-1: #121110; --x-plate-2: #2a2c30; --x-plate-3: #3a3630; --x-plate-4: #5c564c; --x-plate-5: #9a9282;
+  --x-plate-tint: #4a3a22;
+  --x-noise-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.5 0 0 0 -.58'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  --x-noise-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .8 0 1.3 0 0 -.72'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  --x-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='3' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .04 0 0 0 0 .02 1.6 0 0 0 -.78'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E");
+  --x-dlg-red: #a01818;
+  --x-gm-bg: rgba(8, 12, 60, .6);
+  --x-gm-line: rgba(40, 60, 200, .18);
+  --x-gm-border: #3040d0;
+  --x-gm-border-hot: #4858ff;
+  --x-gm-btn-bg: rgba(10, 16, 80, .25);
+  --x-gold-hi: #f0d478; --x-gold: #c8a040; --x-gold-dark: #806020;
+  --x-cyan-pipe: #40c0ff;
+  --x-toss-1: #050a14; --x-toss-2: #0a1428; --x-toss-3: #142040; --x-toss-cmd: #1a3060;
+  --x-zerg-1: #12060a; --x-zerg-2: #2e1214; --x-zerg-3: #4e2420; --x-zerg-flesh: #6a2a34; --x-zerg-purple: #4a1c44;
+  --x-bone-hi: #e0d2aa; --x-bone: #b8a67e; --x-bone-dark: #6a5a40;
+}
+[data-race="protoss"] {
+  --x-plate-1: var(--sc-metal-1); --x-plate-2: var(--sc-metal-2); --x-plate-3: var(--sc-metal-3);
+  --x-plate-4: var(--sc-metal-4); --x-plate-5: var(--sc-metal-5); --x-plate-tint: var(--sc-metal-tint);
+}
+[data-race="zerg"] {
+  --x-plate-1: var(--sc-metal-1); --x-plate-2: var(--sc-metal-2); --x-plate-3: var(--sc-metal-3);
+  --x-plate-4: var(--sc-metal-4); --x-plate-5: var(--sc-metal-5); --x-plate-tint: var(--sc-metal-tint);
+}
+
 /* ---------- Hjelpere ---------- */
 .sc-hk { color: var(--x-hk-menu); text-decoration: none; text-shadow: 0 0 3px rgba(251, 255, 220, .55), 1px 1px 0 #000; }
 
@@ -92,17 +121,13 @@
    ========================================================================= */
 .sc-dialog { position: relative; box-sizing: border-box; }
 
-/* --- 2a. Hovedmeny: svart flate, grå + rød dobbel ramme --- */
+/* --- 2a. Hovedmeny: svart flate, faset grå ytterramme + tynn rød ramme --- */
 .sc-dialog--red {
   background: var(--sc-ink);
   border: 2px solid var(--x-frame-grey);
   border-color: var(--x-frame-grey) var(--x-frame-grey-dark) var(--x-frame-grey-dark) var(--x-frame-grey);
-  border-radius: 2px;
-  box-shadow:
-    inset 0 0 0 1px #000,
-    inset 0 0 0 3px var(--sc-red),
-    inset 0 0 0 4px var(--sc-red-dark),
-    0 0 0 1px #000;
+  clip-path: polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 3px var(--x-dlg-red);
   padding: 16px 18px 14px;
   color: var(--sc-text-title);
   display: flex; flex-direction: column;
@@ -114,28 +139,26 @@
   text-shadow: 0 0 2px rgba(230, 230, 230, .35);
 }
 .sc-dialog__body {
-  font-family: var(--sc-font-ui); font-size: var(--sc-fs-md); line-height: 1.55;
+  font-family: var(--sc-font-ui); font-size: calc(var(--sc-fs-md) * .9); line-height: 1.55;
   color: var(--sc-text-title); text-align: center; flex: 1;
   text-shadow: 0 0 2px rgba(230, 230, 230, .25);
 }
 .sc-dialog__body .sc-num { color: var(--sc-text-title); }
 .sc-dialog__actions { display: flex; gap: 20px; margin-top: 14px; }
 .sc-dialog__actions > .sc-btn { flex: 1; }
-.sc-dialog--blue .sc-dialog__actions { flex-direction: column; gap: 10px; }
+.sc-dialog--blue .sc-dialog__actions { flex-direction: column; gap: 8px; }
 
-/* --- 2b. Spillmeny: halvgjennomsiktig blå med rutemønster --- */
+/* --- 2b. Spillmeny: halvgjennomsiktig blå med fine skanlinjer --- */
 .sc-dialog--blue {
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, .18) 0 1px, transparent 1px 2px),
-    repeating-linear-gradient(45deg, color-mix(in srgb, var(--sc-blue-hot) 26%, transparent) 0 1px, transparent 1px 8px),
-    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--sc-blue-hot) 26%, transparent) 0 1px, transparent 1px 8px),
-    var(--sc-blue-glass);
-  border: 1px solid var(--sc-blue);
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px var(--sc-blue-dark), inset 0 0 0 1px var(--sc-blue-dark);
-  padding: 10px 26px 16px;
+    repeating-linear-gradient(0deg, var(--x-gm-line) 0 1px, transparent 1px 3px),
+    var(--x-gm-bg);
+  border: 1px solid var(--x-gm-border);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .45);
+  padding: 8px 22px 14px;
 }
-.sc-dialog--blue .sc-dialog__title { font-size: var(--sc-fs-lg); margin-bottom: 8px; }
+.sc-dialog--blue .sc-dialog__title { font-weight: 300; font-size: 17px; letter-spacing: .02em; margin-bottom: 6px; }
 
 /* =========================================================================
    3. KNAPPER
@@ -152,24 +175,23 @@
 
 /* --- 3a. Rød (hovedmeny-dialog) --- */
 .sc-btn--red {
-  min-height: 34px; padding: 4px 16px;
+  min-height: 32px; padding: 4px 16px;
   background: var(--sc-void);
-  border: 1px solid var(--sc-red);
+  border: 1px solid var(--x-dlg-red);
   border-radius: var(--sc-radius-max);
-  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px color-mix(in srgb, var(--sc-red-dark) 70%, transparent);
-  font-family: var(--sc-font-menu); font-size: var(--sc-fs-md); letter-spacing: .5px;
+  box-shadow: none;
+  font-family: var(--sc-font-menu); font-size: 15px; letter-spacing: .5px;
   color: var(--sc-text-menu); text-shadow: var(--sc-glow-menu);
 }
-.sc-btn--red .sc-hk { color: var(--x-hk-menu); }
+/* hurtigtast: samme gulgrønne farge, bare større forbokstav */
+.sc-btn--red .sc-hk { color: inherit; text-shadow: inherit; font-size: 1.2em; line-height: 1; }
 .sc-btn--red:hover, .sc-btn--red.is-hover {
   color: var(--sc-text-menu-hot); border-color: var(--sc-red-hot);
-  box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px var(--sc-red-dark);
   text-shadow: 0 0 1px #000, 0 0 3px rgba(228, 255, 122, .7);
 }
-.sc-btn--red:hover .sc-hk, .sc-btn--red.is-hover .sc-hk { color: #fff; }
 .sc-btn--red:active, .sc-btn--red.is-active {
   background: color-mix(in srgb, var(--sc-red-dark) 55%, #000); color: var(--sc-text-menu-hot);
-  box-shadow: inset 1px 1px 0 #000, inset 0 0 0 2px #000;
+  box-shadow: inset 1px 1px 0 #000;
   padding-top: 5px; padding-bottom: 3px;
 }
 .sc-btn--red:focus-visible, .sc-btn--red.is-focus {
@@ -179,34 +201,29 @@
   color: var(--sc-text-menu-dim); border-color: var(--sc-red-dark);
   text-shadow: none; background: var(--sc-void);
 }
-.sc-btn--red:disabled .sc-hk, .sc-btn--red.is-disabled .sc-hk { color: inherit; }
 
-/* --- 3b. Blå (spillmeny) --- */
+/* --- 3b. Blå (spillmeny): tynn konturknapp, aldri fylt --- */
 .sc-btn--blue {
-  min-height: 34px; width: 100%; padding: 3px 14px;
-  background: color-mix(in srgb, var(--sc-blue-dark) 45%, transparent);
-  border: 2px solid var(--sc-blue);
-  border-radius: var(--sc-radius-max);
-  box-shadow: inset 0 0 0 1px var(--sc-blue-dark), inset 0 0 0 2px color-mix(in srgb, var(--sc-blue-hot) 45%, transparent), 0 0 0 1px rgba(0, 0, 0, .55);
-  font-family: var(--sc-font-ui); font-size: var(--sc-fs-lg); letter-spacing: .6px;
-  color: var(--sc-text-button); text-shadow: var(--sc-glow-button), 1px 1px 0 #000;
+  min-height: 30px; width: 100%; padding: 3px 14px;
+  background: var(--x-gm-btn-bg);
+  border: 1px solid var(--x-gm-border);
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: var(--sc-font-ui); font-weight: 300; font-size: 16px; letter-spacing: .02em;
+  color: var(--sc-text-button); text-shadow: 0 0 2px rgba(242, 231, 162, .45), 1px 1px 0 #000;
 }
-.sc-btn--blue .sc-hk { color: #fff; text-shadow: 0 0 3px rgba(255, 255, 255, .55), 1px 1px 0 #000; }
-.sc-btn--blue:hover, .sc-btn--blue.is-hover {
-  border-color: var(--sc-blue-hot); color: #fff8c8;
-  background: color-mix(in srgb, var(--sc-blue) 35%, transparent);
-}
+.sc-btn--blue .sc-hk { color: #fff; text-shadow: 0 0 2px rgba(255, 255, 255, .5), 1px 1px 0 #000; }
+.sc-btn--blue:hover, .sc-btn--blue.is-hover { border-color: var(--x-gm-border-hot); color: #fff4c4; }
 .sc-btn--blue:active, .sc-btn--blue.is-active {
-  background: color-mix(in srgb, var(--sc-blue-dark) 85%, transparent);
-  box-shadow: inset 1px 1px 0 #000, inset 0 0 0 2px var(--sc-blue-dark);
+  border-color: var(--x-gm-border-hot); color: #fff4c4;
   padding-top: 4px; padding-bottom: 2px;
 }
 .sc-btn--blue:focus-visible, .sc-btn--blue.is-focus {
-  outline: 1px dotted var(--sc-text-button); outline-offset: 2px;
+  border-color: var(--x-gm-border-hot); outline: 1px dotted var(--x-gm-border-hot); outline-offset: 2px;
 }
 .sc-btn--blue:disabled, .sc-btn--blue.is-disabled {
-  color: color-mix(in srgb, var(--sc-text-button) 40%, #000); border-color: var(--sc-blue-dark);
-  text-shadow: none; background: color-mix(in srgb, var(--sc-blue-dark) 30%, transparent);
+  color: color-mix(in srgb, var(--sc-text-button) 40%, #000); border-color: #1a2270;
+  text-shadow: none; background: var(--x-gm-btn-bg);
 }
 .sc-btn--blue:disabled .sc-hk, .sc-btn--blue.is-disabled .sc-hk { color: inherit; text-shadow: none; }
 
@@ -245,95 +262,138 @@
    ::before tegner selve platen 2 px innenfor, ::after tegner naglene.
    ========================================================================= */
 .sc-panel--metal, .sc-panel--rust {
-  --x-bev: var(--x-bev-lg);
+  --x-bev-t: 16px;   /* 45° skuldre øverst */
+  --x-bev-b: 8px;
   position: relative; isolation: isolate; box-sizing: border-box;
   padding: 14px 16px;
-  clip-path: polygon(var(--x-bev) 0, calc(100% - var(--x-bev)) 0, 100% var(--x-bev), 100% calc(100% - var(--x-bev)),
-                     calc(100% - var(--x-bev)) 100%, var(--x-bev) 100%, 0 calc(100% - var(--x-bev)), 0 var(--x-bev));
+  clip-path: polygon(var(--x-bev-t) 0, calc(100% - var(--x-bev-t)) 0, 100% var(--x-bev-t), 100% calc(100% - var(--x-bev-b)),
+                     calc(100% - var(--x-bev-b)) 100%, var(--x-bev-b) 100%, 0 calc(100% - var(--x-bev-b)), 0 var(--x-bev-t));
 }
+.sc-panel--rust { --x-bev-t: 12px; --x-bev-b: 12px; }
 .sc-panel--metal::before, .sc-panel--rust::before,
 .sc-panel--metal::after, .sc-panel--rust::after {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
 }
 .sc-panel--metal::before, .sc-panel--rust::before {
-  inset: 2px;
-  --x-b2: calc(var(--x-bev) - 1px);
-  clip-path: polygon(var(--x-b2) 0, calc(100% - var(--x-b2)) 0, 100% var(--x-b2), 100% calc(100% - var(--x-b2)),
-                     calc(100% - var(--x-b2)) 100%, var(--x-b2) 100%, 0 calc(100% - var(--x-b2)), 0 var(--x-b2));
+  inset: 3px 2px 2px;
+  --x-t2: calc(var(--x-bev-t) - 1px); --x-b2: calc(var(--x-bev-b) - 1px);
+  clip-path: polygon(var(--x-t2) 0, calc(100% - var(--x-t2)) 0, 100% var(--x-t2), 100% calc(100% - var(--x-b2)),
+                     calc(100% - var(--x-b2)) 100%, var(--x-b2) 100%, 0 calc(100% - var(--x-b2)), 0 var(--x-t2));
 }
 
-/* --- Metall --- */
+/* --- Metall (Terran): varmt, skittent, støy, rør- og ribbebånd --- */
 .sc-panel--metal {
-  background: linear-gradient(135deg, var(--sc-metal-5) 0, var(--sc-metal-4) 18%, var(--sc-metal-2) 55%, var(--sc-metal-1) 100%);
+  background:
+    var(--x-noise-dark),
+    linear-gradient(135deg, var(--x-plate-5) 0, var(--x-plate-4) 14%, var(--x-plate-2) 55%, var(--x-plate-1) 100%);
 }
 .sc-panel--metal::before {
   background:
-    /* riper */
-    linear-gradient(172deg, transparent 0 38%, rgba(255, 255, 255, .05) 38.2% 38.5%, transparent 38.7%),
-    linear-gradient(8deg, transparent 0 70%, rgba(0, 0, 0, .25) 70.2% 70.6%, transparent 70.8%),
-    /* smuss / slitasje */
+    var(--x-noise-light),
+    var(--x-noise-dark),
+    var(--x-grime) 0 0 / 320px 320px,
+    /* rørbånd øverst (2–3 px striper) */
+    linear-gradient(180deg, rgba(0, 0, 0, .55), transparent 1px, transparent calc(100% - 1px), rgba(0, 0, 0, .7)) left 0 top 5px / 100% 9px no-repeat,
+    repeating-linear-gradient(180deg, color-mix(in srgb, var(--x-plate-5) 55%, transparent) 0 1px, var(--x-plate-3) 1px 2px, var(--x-plate-1) 2px 3px) left 0 top 5px / 100% 9px no-repeat,
+    /* ribbebånd nederst (vertikale 3 px ribber) */
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--x-plate-5) 45%, transparent) 0 1px, var(--x-plate-2) 1px 2px, var(--x-plate-1) 2px 3px) left 0 bottom 4px / 100% 6px no-repeat,
+    /* riper og slitasje */
+    linear-gradient(172deg, transparent 0 38%, rgba(255, 240, 210, .06) 38.2% 38.5%, transparent 38.7%),
+    linear-gradient(8deg, transparent 0 70%, rgba(0, 0, 0, .3) 70.2% 70.6%, transparent 70.8%),
     radial-gradient(ellipse 40% 30% at 85% 90%, rgba(0, 0, 0, .45), transparent 70%),
-    radial-gradient(ellipse 30% 40% at 10% 70%, color-mix(in srgb, var(--sc-metal-tint) 55%, transparent), transparent 70%),
-    /* børstet struktur */
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, .10) 0 1px, transparent 1px 4px),
-    /* grunnplate: lys topp-kant, mørkere mot bunn */
-    linear-gradient(180deg, var(--sc-metal-4) 0, var(--sc-metal-3) 3px, var(--sc-metal-2) 45%, var(--sc-metal-1) 100%),
-    var(--sc-metal-2);
+    radial-gradient(ellipse 30% 40% at 10% 70%, color-mix(in srgb, var(--x-plate-tint) 55%, transparent), transparent 70%),
+    /* grunnplate */
+    linear-gradient(180deg, var(--x-plate-4) 0, var(--x-plate-3) 3px, var(--x-plate-3) 35%, var(--x-plate-2) 75%, var(--x-plate-1) 100%);
   box-shadow:
-    inset 1px 1px 0 color-mix(in srgb, var(--sc-metal-5) 55%, transparent),
-    inset -1px -1px 0 rgba(0, 0, 0, .8),
+    inset 1px 1px 0 color-mix(in srgb, var(--x-plate-5) 55%, transparent),
+    inset -1px -1px 0 rgba(0, 0, 0, .85),
     inset 2px 2px 0 rgba(0, 0, 0, .35);
 }
-/* nagler i fire hjørner + midt på langsidene */
+/* nagler i fire hjørner (+ midt på langsidene med --rivets-6) */
 .sc-panel--metal::after, .sc-panel--rust::after {
   inset: 6px;
-  --x-rv: radial-gradient(circle at 3px 3px, var(--sc-rivet) 0 1px, var(--sc-metal-3) 1.6px 2.2px, var(--sc-metal-1) 2.6px 3px, rgba(0, 0, 0, .55) 3.2px 3.8px, transparent 4px);
+  --x-rv: radial-gradient(circle at 3px 3px, var(--sc-rivet) 0 1px, var(--x-plate-3) 1.6px 2.2px, var(--x-plate-1) 2.6px 3px, rgba(0, 0, 0, .55) 3.2px 3.8px, transparent 4px);
   background:
-    var(--x-rv) left 2px top 2px / 8px 8px no-repeat,
-    var(--x-rv) right 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) left 8px top 2px / 8px 8px no-repeat,
+    var(--x-rv) right 8px top 2px / 8px 8px no-repeat,
     var(--x-rv) left 2px bottom 2px / 8px 8px no-repeat,
     var(--x-rv) right 2px bottom 2px / 8px 8px no-repeat;
 }
 .sc-panel--rivets-6::after {
   background:
-    var(--x-rv) left 2px top 2px / 8px 8px no-repeat,
-    var(--x-rv) right 2px top 2px / 8px 8px no-repeat,
+    var(--x-rv) left 8px top 2px / 8px 8px no-repeat,
+    var(--x-rv) right 8px top 2px / 8px 8px no-repeat,
     var(--x-rv) left 2px bottom 2px / 8px 8px no-repeat,
     var(--x-rv) right 2px bottom 2px / 8px 8px no-repeat,
     var(--x-rv) center top 2px / 8px 8px no-repeat,
     var(--x-rv) center bottom 2px / 8px 8px no-repeat;
 }
-.sc-panel--sm { --x-bev: 6px; padding: 8px 10px; }
+.sc-panel--sm { --x-bev-t: 8px; --x-bev-b: 5px; padding: 8px 10px; }
 .sc-panel--sm::after { inset: 3px; }
 
-/* Protoss: marmorert blåsvart plate, cyan rørkant, gulltrim øverst */
+/* --- Protoss: organisk buet plate, marmorert blåsvart, tykk gullkant, cyan rør --- */
+[data-race="protoss"] .sc-pipe { background: linear-gradient(180deg, #000 0 1px, var(--x-cyan-pipe) 1px 3px, #000 3px); height: 4px; box-shadow: 0 0 3px rgba(64, 192, 255, .5); border-radius: 2px; }
+[data-race="protoss"] .sc-hazard, [data-race="protoss"] .sc-lamp,
+[data-race="zerg"] .sc-hazard, [data-race="zerg"] .sc-lamp { display: none; }
 [data-race="protoss"] .sc-panel--metal {
+  clip-path: none;
+  border-radius: 48px 48px 6px 6px / 20px 20px 6px 6px;
+  padding-top: 18px;
   background:
-    linear-gradient(180deg, var(--sc-trim-gold) 0 2px, var(--sc-trim-gold-dark) 2px 3px, transparent 3px),
-    linear-gradient(135deg, var(--sc-metal-5) 0, var(--sc-metal-4) 30%, var(--sc-metal-3) 70%, var(--sc-metal-2) 100%);
+    var(--x-noise-light),
+    var(--x-noise-dark),
+    radial-gradient(ellipse 26% 20% at 22% 42%, var(--x-toss-3), transparent 70%),
+    radial-gradient(ellipse 18% 30% at 68% 62%, var(--x-toss-3), transparent 70%),
+    radial-gradient(ellipse 30% 14% at 45% 82%, var(--x-toss-1), transparent 70%),
+    radial-gradient(ellipse 12% 10% at 86% 32%, var(--x-toss-3), transparent 70%),
+    radial-gradient(ellipse 20% 12% at 8% 80%, var(--x-toss-1), transparent 70%),
+    linear-gradient(118deg, transparent 0 34%, rgba(70, 120, 200, .16) 34.5% 35%, transparent 36% 63%, rgba(70, 120, 200, .12) 63.3% 63.7%, transparent 64.5%),
+    var(--x-toss-2);
+  box-shadow: 0 0 0 1px #000, inset 0 -2px 0 rgba(0, 0, 0, .7);
 }
-[data-race="protoss"] .sc-panel--metal::before {
-  inset: 3px 2px 2px;
-  background:
-    radial-gradient(ellipse 30% 20% at 25% 35%, color-mix(in srgb, var(--sc-metal-3) 70%, transparent), transparent 70%),
-    radial-gradient(ellipse 25% 35% at 70% 60%, color-mix(in srgb, var(--sc-metal-tint) 80%, transparent), transparent 70%),
-    radial-gradient(ellipse 45% 15% at 50% 85%, rgba(0, 0, 0, .5), transparent 70%),
-    linear-gradient(115deg, transparent 0 30%, color-mix(in srgb, var(--sc-metal-3) 40%, transparent) 30.5% 31%, transparent 32% 60%, color-mix(in srgb, var(--sc-metal-3) 35%, transparent) 60.5% 61%, transparent 62%),
-    linear-gradient(180deg, var(--sc-metal-2), var(--sc-metal-1));
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--sc-metal-5) 60%, transparent),
-    inset 0 0 0 2px var(--sc-metal-1),
-    inset 0 0 0 3px color-mix(in srgb, var(--sc-metal-4) 50%, transparent);
+[data-race="protoss"] .sc-panel--metal::before {      /* gullkant langs toppen */
+  clip-path: none; inset: 0 0 auto 0; height: 30px; box-sizing: border-box;
+  border: 5px solid var(--x-gold); border-bottom: 0;
+  border-color: var(--x-gold) color-mix(in srgb, var(--x-gold) 60%, var(--x-gold-dark)) transparent;
+  border-radius: 48px 48px 0 0 / 20px 20px 0 0;
+  background: none;
+  box-shadow: inset 0 1px 0 var(--x-gold-dark), 0 -1px 0 var(--x-gold-hi), inset 0 2px 0 rgba(0, 0, 0, .55);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+          mask-image: linear-gradient(180deg, #000 55%, transparent);
 }
-/* Zerg: organisk, kitin-aktig flekket plate */
-[data-race="zerg"] .sc-panel--metal::before {
+[data-race="protoss"] .sc-panel--metal::after {       /* cyan rørlinje innenfor gullet */
+  inset: 8px 6px 5px; background: none;
+  border: 2px solid var(--x-cyan-pipe);
+  border-radius: 42px 42px 4px 4px / 15px 15px 4px 4px;
+  box-shadow: 0 0 3px rgba(64, 192, 255, .55), inset 0 0 3px rgba(64, 192, 255, .35), inset 0 0 0 1px rgba(0, 0, 0, .6);
+}
+
+/* --- Zerg: kjøttbrun/lilla organisk plate, beinkant, ingen skruer/fareskilt --- */
+[data-race="zerg"] .sc-panel--metal {
+  clip-path: none;
+  border-radius: 22px 30px 14px 18px / 16px 22px 12px 14px;
+  padding-top: 16px;
   background:
-    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--sc-metal-tint) 70%, transparent) 0 8%, transparent 20%),
-    radial-gradient(circle at 75% 65%, color-mix(in srgb, var(--sc-metal-4) 50%, transparent) 0 6%, transparent 18%),
-    radial-gradient(circle at 55% 20%, rgba(0, 0, 0, .4) 0 5%, transparent 15%),
-    repeating-radial-gradient(circle at 30% 120%, rgba(0, 0, 0, .18) 0 2px, transparent 2px 7px),
-    linear-gradient(180deg, var(--sc-metal-4) 0, var(--sc-metal-3) 3px, var(--sc-metal-2) 50%, var(--sc-metal-1) 100%);
+    var(--x-noise-dark),
+    radial-gradient(ellipse 22% 30% at 20% 35%, var(--x-zerg-flesh), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 70% 65%, var(--x-zerg-purple), transparent 70%),
+    radial-gradient(ellipse 14% 12% at 55% 25%, color-mix(in srgb, var(--x-zerg-flesh) 70%, #c05030), transparent 70%),
+    radial-gradient(ellipse 35% 20% at 40% 92%, var(--x-zerg-1), transparent 70%),
+    linear-gradient(100deg, transparent 0 30%, rgba(150, 40, 70, .35) 30.5% 31%, transparent 31.5% 72%, rgba(150, 40, 70, .3) 72.3% 72.7%, transparent 73.2%),
+    repeating-radial-gradient(ellipse at 30% 120%, rgba(0, 0, 0, .2) 0 2px, transparent 2px 8px),
+    linear-gradient(180deg, var(--x-zerg-3), var(--x-zerg-2) 60%, var(--x-zerg-1));
+  box-shadow: 0 0 0 1px #000;
+}
+[data-race="zerg"] .sc-panel--metal::before {         /* beinaktig kant */
+  clip-path: none; inset: 0; background: none;
+  border: 3px solid var(--x-bone);
+  border-color: var(--x-bone-hi) var(--x-bone) var(--x-bone-dark) var(--x-bone);
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .7), inset 1px 2px 0 1px rgba(0, 0, 0, .35);
+}
+[data-race="zerg"] .sc-panel--metal::after {          /* beintagger langs toppen */
+  inset: 2px 16% auto 16%; height: 8px;
+  background: radial-gradient(ellipse 3px 7px at 50% 0, var(--x-bone-hi) 0 55%, var(--x-bone-dark) 80%, transparent 85%) 0 0 / 26px 8px repeat-x;
 }
 
 /* --- Rust (Battle.net) --- */
@@ -365,21 +425,21 @@
   background:
     linear-gradient(180deg, rgba(0, 0, 0, .45) 0, transparent 35%, transparent 70%, rgba(0, 0, 0, .5) 100%),
     repeating-linear-gradient(-45deg, var(--sc-hazard-a) 0 5px, var(--sc-hazard-b) 5px 10px);
-  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .35), 1px 1px 0 color-mix(in srgb, var(--sc-metal-5) 40%, transparent);
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .35), 1px 1px 0 color-mix(in srgb, var(--x-plate-5) 40%, transparent);
   clip-path: polygon(3px 0, calc(100% - 3px) 0, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
 }
 .sc-ribs {
   display: block; height: 10px;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, .5), transparent 30%, transparent 70%, rgba(0, 0, 0, .6)),
-    repeating-linear-gradient(90deg, var(--sc-metal-5) 0 1px, var(--sc-metal-3) 1px 3px, var(--sc-metal-1) 3px 5px);
+    repeating-linear-gradient(90deg, var(--x-plate-5) 0 1px, var(--x-plate-3) 1px 2px, var(--x-plate-1) 2px 3px);
   box-shadow: inset 0 0 0 1px #000;
 }
 .sc-pipe {
   display: block; height: 8px;
   background:
-    repeating-linear-gradient(90deg, transparent 0 38px, rgba(0, 0, 0, .7) 38px 40px, var(--sc-metal-5) 40px 41px, transparent 41px 80px),
-    linear-gradient(180deg, var(--sc-metal-1) 0, var(--sc-metal-5) 25%, var(--sc-metal-3) 55%, var(--sc-metal-1) 100%);
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(0, 0, 0, .7) 38px 40px, var(--x-plate-5) 40px 41px, transparent 41px 80px),
+    repeating-linear-gradient(180deg, var(--x-plate-5) 0 1px, var(--x-plate-3) 1px 2px, var(--x-plate-1) 2px 3px);
   border-radius: 1px;
 }
 .sc-lamp {
@@ -388,14 +448,14 @@
   box-shadow: 0 0 2px var(--sc-led-red), inset 0 -1px 0 rgba(0, 0, 0, .4), 0 0 0 1px #000;
 }
 .sc-lamp--amber { background: var(--sc-led-amber); box-shadow: 0 0 2px var(--sc-led-amber), 0 0 0 1px #000; }
-.sc-lamp--off { background: var(--sc-metal-1); box-shadow: 0 0 0 1px #000; }
+.sc-lamp--off { background: var(--x-plate-1); box-shadow: 0 0 0 1px #000; }
 .sc-lamp--blink { animation: sc-blink 1.2s steps(1, end) infinite; }
 .sc-plate-label {
   display: inline-block; padding: 1px 8px;
   font-family: var(--sc-font-ui); font-size: var(--sc-fs-xs); letter-spacing: 1px;
   color: var(--sc-text-warn); text-shadow: 0 0 2px rgba(240, 224, 32, .5);
-  background: linear-gradient(180deg, var(--sc-metal-2), var(--sc-metal-1));
-  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .4), 0 1px 0 color-mix(in srgb, var(--sc-metal-5) 50%, transparent);
+  background: linear-gradient(180deg, var(--x-plate-2), var(--x-plate-1));
+  box-shadow: inset 0 0 0 1px #000, inset 1px 1px 0 2px rgba(0, 0, 0, .4), 0 1px 0 color-mix(in srgb, var(--x-plate-5) 50%, transparent);
 }
 
 /* =========================================================================
@@ -410,9 +470,9 @@
   box-shadow:
     inset 0 0 0 1px #000,
     inset 2px 2px 0 1px rgba(0, 0, 0, .9),
-    inset -1px -1px 0 1px color-mix(in srgb, var(--sc-metal-4) 30%, transparent),
-    0 0 0 2px var(--sc-metal-1),
-    1px 1px 0 2px color-mix(in srgb, var(--sc-metal-5) 55%, transparent),
+    inset -1px -1px 0 1px color-mix(in srgb, var(--x-plate-4) 30%, transparent),
+    0 0 0 2px var(--x-plate-1),
+    1px 1px 0 2px color-mix(in srgb, var(--x-plate-5) 55%, transparent),
     -1px -1px 0 2px rgba(0, 0, 0, .9);
   padding: 10px 12px;
   color: var(--sc-text-title); overflow: hidden;
@@ -455,14 +515,13 @@
    ========================================================================= */
 .sc-cmdcard {
   display: inline-grid; grid-template-columns: repeat(3, var(--sc-cell)); grid-auto-rows: var(--sc-cell);
-  gap: 6px; padding: 6px; position: relative;
+  gap: 5px; padding: 5px; position: relative;
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, .25) 0 1px, transparent 1px 3px),
-    var(--x-cmd-frame);
-  border-radius: 2px;
-  box-shadow:
-    inset 1px 1px 0 var(--x-cmd-frame-hi), inset -1px -1px 0 #000,
-    0 0 0 1px #000, 1px 1px 0 1px color-mix(in srgb, var(--sc-metal-5) 35%, transparent);
+    var(--x-noise-dark),
+    linear-gradient(180deg, var(--x-plate-3), var(--x-plate-2) 60%, var(--x-plate-1));
+  border: 2px solid #1a1a1a;
+  border-radius: 1px;
+  box-shadow: inset 1px 1px 0 #555, inset -1px -1px 0 #000;
 }
 .sc-cmd {
   appearance: none; margin: 0; padding: 0; border: 0; cursor: pointer;
@@ -471,10 +530,12 @@
   color: var(--sc-icon-yellow);
   background: radial-gradient(ellipse at 50% 45%, #07080a, var(--sc-void) 70%);
   border-radius: 1px;
+  /* skrå innfelling: skygge oppe/venstre, svakt lys nede/høyre */
   box-shadow:
-    0 0 0 1px var(--x-cmd-cell-rim),
-    inset 1px 1px 0 rgba(255, 255, 255, .06),
-    inset -1px -1px 0 #000;
+    inset 2px 2px 0 #000,
+    inset 3px 3px 0 rgba(0, 0, 0, .45),
+    -1px -1px 0 rgba(0, 0, 0, .8),
+    1px 1px 0 rgba(150, 140, 120, .35);
 }
 /* lyst hjørnemerke oppe til høyre (som på originalrutene) */
 .sc-cmd::before {
@@ -499,7 +560,7 @@
 .sc-cmd:hover::after, .sc-cmd.is-hover::after,
 .sc-cmd:focus-visible::after, .sc-cmd.is-focus::after { opacity: 1; }
 .sc-cmd:active svg, .sc-cmd.is-active svg { transform: translate(1px, 1px); filter: brightness(.75); }
-.sc-cmd:active, .sc-cmd.is-active { box-shadow: 0 0 0 1px var(--x-cmd-cell-rim), inset 2px 2px 0 #000, inset -1px -1px 0 rgba(255, 255, 255, .06); }
+.sc-cmd:active, .sc-cmd.is-active { box-shadow: inset 3px 3px 0 #000, -1px -1px 0 rgba(0, 0, 0, .8), 1px 1px 0 rgba(150, 140, 120, .35); }
 .sc-cmd:focus { outline: none; }
 .sc-cmd:focus-visible, .sc-cmd.is-focus { outline: 1px solid var(--sc-text-stat); outline-offset: -3px; }
 .sc-cmd:disabled, .sc-cmd[aria-disabled="true"], .sc-cmd.is-disabled { cursor: default; color: var(--sc-text-muted); }
@@ -515,18 +576,28 @@
 }
 .sc-cmd--empty::before, .sc-cmd--empty::after { display: none; }
 
-/* Protoss: cyan rørkanter rundt hver rute */
+/* Protoss: mørke innfelte ruter tett på blå bunn */
 [data-race="protoss"] .sc-cmdcard {
-  background: radial-gradient(ellipse at 30% 20%, var(--sc-metal-2), var(--x-cmd-frame) 70%);
-  box-shadow: inset 0 0 0 1px var(--sc-metal-4), 0 0 0 1px #000, 0 0 0 2px color-mix(in srgb, var(--sc-metal-5) 45%, transparent);
-  border-radius: 4px;
+  gap: 2px; padding: 3px; border-radius: 3px;
+  background: var(--x-noise-dark), var(--x-toss-cmd);
+  border: 2px solid var(--x-toss-1);
+  box-shadow: inset 1px 1px 0 #3a5a90, inset -1px -1px 0 #000;
 }
 [data-race="protoss"] .sc-cmd {
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--sc-metal-4), 0 0 0 3px color-mix(in srgb, var(--sc-metal-5) 35%, transparent), inset 0 0 0 1px #000;
+  border-radius: 0; background: radial-gradient(ellipse at 50% 45%, #060c18, #02040a 70%);
+  box-shadow: inset 2px 2px 0 #000, inset 3px 3px 0 rgba(0, 0, 0, .4), inset -1px -1px 0 rgba(64, 160, 255, .25);
 }
-[data-race="protoss"] .sc-cmdcard { gap: 8px; padding: 7px; }
-[data-race="zerg"] .sc-cmdcard { border-radius: 4px; }
+/* Zerg: kjøttfarget bunn, organisk avrundede ruter */
+[data-race="zerg"] .sc-cmdcard {
+  gap: 2px; padding: 3px; border-radius: 6px 8px 5px 7px;
+  background: var(--x-noise-dark), linear-gradient(180deg, var(--x-zerg-3), var(--x-zerg-2));
+  border: 2px solid var(--x-bone-dark);
+  box-shadow: inset 1px 1px 0 var(--x-bone), inset -1px -1px 0 #000;
+}
+[data-race="zerg"] .sc-cmd {
+  border-radius: 3px;
+  box-shadow: inset 2px 2px 0 #000, inset 3px 3px 0 rgba(0, 0, 0, .4), inset -1px -1px 0 rgba(200, 120, 100, .25);
+}
 
 /* =========================================================================
    8. RESSURSLINJE

@@ -123,7 +123,7 @@
   SC.drawSpace = function (canvas) {
     var W = 1280, H = 720;
     canvas.width = W; canvas.height = H;
-    var ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d', { willReadFrequently: true });
     var r = rng(1998), N = makeNoise(42);
 
     ctx.fillStyle = '#020106';
@@ -145,10 +145,10 @@
       var n = N.fbm(x / 70, y / 70, 6);
       var n2 = N.fbm(x / 34 + 50, y / 34 + 20, 5);
       var dr = Math.hypot((u - 0.97) * 1.4, v - 0.2);
-      var mRed = Math.pow(clamp(1 - dr / 0.62, 0, 1), 1.2);
-      var red = mRed * sstep(0.32, 0.72, n) * (0.55 + 0.6 * n2);
+      var mRed = Math.pow(clamp(1 - dr / 0.7, 0, 1), 0.9);
+      var red = mRed * sstep(0.28, 0.66, n) * (0.7 + 0.8 * n2) * 1.25;
       var core = mRed * sstep(0.55, 0.85, n * 0.6 + n2 * 0.5);
-      var mHaze = clamp(1 - Math.hypot(u - 0.3, (v - 0.5) * 1.3) / 0.45, 0, 1) * 0.42
+      var mHaze = clamp(1 - Math.hypot(u - 0.3, (v - 0.5) * 1.3) / 0.5, 0, 1) * 0.6
                 + clamp(1 - Math.hypot(u - 0.66, (v - 0.8) * 1.2) / 0.32, 0, 1) * 0.3
                 + clamp(1 - Math.hypot(u - 0.12, (v - 0.08) * 1.5) / 0.3, 0, 1) * 0.2;
       var haze = mHaze * sstep(0.38, 0.78, n2) * (0.5 + n);
@@ -220,7 +220,7 @@
     var cx = 150, cy = 985, R = 610;
     var x0 = 0, y0 = 360, w = 780, h = 360;
     var img = ctx.getImageData(x0, y0, w, h), d = img.data;
-    var L = [-0.62, -0.55, 0.56], ll = Math.hypot(L[0], L[1], L[2]);
+    var L = [-0.78, -0.5, -0.05], ll = Math.hypot(L[0], L[1], L[2]);
     L = [L[0] / ll, L[1] / ll, L[2] / ll];
     for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
       var dx = x + x0 - cx, dy = y + y0 - cy, dd = Math.hypot(dx, dy);
@@ -232,18 +232,18 @@
       var isLand = sstep(0.47, 0.53, land);
       var cloud = sstep(0.55, 0.8, N.fbm(lon * 6 + 30, lat * 14, 5));
       var light = Math.max(0, nx * L[0] + ny * L[1] + nz * L[2]);
-      var day = sstep(0.0, 0.55, light);
+      var day = sstep(0.05, 0.6, light) * 0.75;
       var limb = 0.35 + 0.65 * nz;
-      var rr = mix(4, 18, isLand), gg = mix(8, 12, isLand), bb = mix(22, 10, isLand);
+      var rr = mix(3, 14, isLand), gg = mix(6, 9, isLand), bb = mix(18, 8, isLand);
       rr += day * mix(20, 70, isLand) + cloud * day * 90; gg += day * mix(45, 58, isLand) + cloud * day * 95; bb += day * mix(110, 40, isLand) + cloud * day * 120;
       /* bylys på nattsiden */
       var night = 1 - day;
       if (isLand > 0.5 && night > 0.2) {
-        var dens = sstep(0.5, 0.75, N.fbm(lon * 9 + 2, lat * 18 + 8, 3));
-        var sp = N.noise(lon * 260, lat * 520);
-        var city = sstep(0.62, 0.9, sp) * dens * night * (1 - cloud * 0.7);
-        var glow = dens * night * 0.35;
-        rr += city * 255 + glow * 60; gg += city * 130 + glow * 18; bb += city * 30;
+        var dens = sstep(0.42, 0.7, N.fbm(lon * 9 + 2, lat * 18 + 8, 3));
+        var sp = N.noise(lon * 300, lat * 560) * 0.7 + N.noise(lon * 90, lat * 170) * 0.3;
+        var city = sstep(0.55, 0.85, sp) * dens * night * (1 - cloud * 0.6);
+        var glow = dens * night * 0.5;
+        rr += city * 255 + glow * 70; gg += city * 120 + glow * 22; bb += city * 24 + glow * 4;
       }
       d[i] = clamp(rr * limb + d[i] * 0, 0, 255);
       d[i + 1] = clamp(gg * limb, 0, 255);
@@ -351,12 +351,12 @@
   var THEMES = {
     terran: { g1: [34, 25, 15], g2: [66, 50, 30], peb: [104, 96, 84], tile: [46, 46, 50], hi: [86, 86, 92], lo: [16, 16, 18], mark: '#c8a020', seed: 21 },
     protoss: { g1: [38, 40, 56], g2: [72, 76, 98], peb: [120, 124, 146], tile: [22, 38, 40], hi: [52, 84, 86], lo: [8, 16, 18], mark: '#30a0b8', seed: 33 },
-    zerg: { g1: [34, 24, 18], g2: [64, 46, 30], peb: [98, 84, 70], tile: [56, 20, 48], hi: [104, 44, 86], lo: [22, 6, 18], mark: '#b04080', seed: 55 }
+    zerg: { g1: [34, 24, 18], g2: [64, 46, 30], peb: [98, 84, 70], tile: [52, 34, 30], hi: [96, 70, 56], lo: [20, 10, 8], mark: '#a07040', seed: 55 }
   };
   /* plattform-striper i iso-rutenett (i0,i1,j0,j1) */
   var ROADS = [
-    [4, 20, 12, 14], [18, 20, 4, 14], [10, 12, 14, 24], [10, 30, 22, 24],
-    [24, 26, 6, 22], [24, 40, 6, 8], [30, 32, 22, 34], [2, 10, 26, 28], [36, 38, 8, 20]
+    [12, 30, 20, 22], [30, 32, 10, 22], [30, 48, 10, 12], [30, 32, 22, 36], [19, 26, 31, 38],
+    [8, 22, 34, 36], [38, 40, 22, 46], [39, 54, 30, 32], [44, 46, 0, 10], [8, 10, 14, 34]
   ];
   function isPlat(i, j) {
     for (var k = 0; k < ROADS.length; k++) { var q = ROADS[k]; if (i >= q[0] && i <= q[1] && j >= q[2] && j <= q[3]) return true; }
@@ -378,7 +378,7 @@
       if (race === 'zerg') { /* kryp (creep) */
         var cr = sstep(0.5, 0.56, N.fbm(x / 160 + 9, y / 80 + 4, 4) + (1 - Math.hypot(x - 620, (y - 330) * 1.8) / 700) * 0.35);
         var vein = Math.pow(1 - Math.abs(N.noise(x / 26, y / 13) - 0.5) * 2, 14);
-        c0 = mix(c0, 58 + vein * 70 + pb * 20, cr); c1 = mix(c1, 22 + vein * 20, cr); c2 = mix(c2, 52 + vein * 50 + pb * 18, cr);
+        c0 = mix(c0, 44 + vein * 42 + pb * 16, cr); c1 = mix(c1, 18 + vein * 12, cr); c2 = mix(c2, 40 + vein * 34 + pb * 14, cr);
       }
       d[i] = c0; d[i + 1] = c1; d[i + 2] = c2; d[i + 3] = 255;
     }
@@ -397,9 +397,9 @@
     }
 
     /* plattform-fliser (bak→fram) */
-    var TW = 64, TH = 32, ox = 560, oy = -380;
+    var TW = 48, TH = 24, ox = 640, oy = -360;
     var tiles = [];
-    for (var a = 0; a < 44; a++) for (var b = 0; b < 40; b++) if (isPlat(a, b)) tiles.push([a, b]);
+    for (var a = 0; a < 70; a++) for (var b = 0; b < 60; b++) if (isPlat(a, b)) tiles.push([a, b]);
     tiles.sort(function (m, n2) { return (m[0] + m[1]) - (n2[0] + n2[1]); });
     var rgb = function (c, f) { return 'rgb(' + (c[0] * f | 0) + ',' + (c[1] * f | 0) + ',' + (c[2] * f | 0) + ')'; };
     tiles.forEach(function (t) {
@@ -407,7 +407,7 @@
       var sx = (ti - tj) * TW / 2 + ox, sy = (ti + tj) * TH / 2 + oy;
       if (sx < -80 || sx > W + 80 || sy < -60 || sy > H + 40) return;
       var top = [sx, sy], rgt = [sx + TW / 2, sy + TH / 2], bot = [sx, sy + TH], lft = [sx - TW / 2, sy + TH / 2];
-      var E = 7;
+      var E = 6;
       /* sideflater der naboen ikke er plattform */
       if (!isPlat(ti, tj + 1)) {
         ctx.fillStyle = rgb(T.lo, 1.2);
@@ -427,13 +427,13 @@
       ctx.beginPath(); ctx.moveTo(lft[0] + 1, lft[1]); ctx.lineTo(bot[0], bot[1] - 1); ctx.lineTo(rgt[0] - 1, rgt[1]); ctx.stroke();
       /* platefuge (indre diamant) */
       ctx.strokeStyle = 'rgba(0,0,0,0.45)';
-      ctx.beginPath(); ctx.moveTo(sx, sy + 8); ctx.lineTo(sx + 16, sy + 16); ctx.lineTo(sx, sy + 24); ctx.lineTo(sx - 16, sy + 16); ctx.closePath(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(sx, sy + 6); ctx.lineTo(sx + 12, sy + 12); ctx.lineTo(sx, sy + 18); ctx.lineTo(sx - 12, sy + 12); ctx.closePath(); ctx.stroke();
       /* gule markeringer langs kanter */
       if (!isPlat(ti, tj + 1) && r() > 0.45) {
-        ctx.strokeStyle = T.mark; ctx.beginPath(); ctx.moveTo(lft[0] + 8, lft[1] + 4); ctx.lineTo(lft[0] + 16, lft[1] + 8); ctx.stroke();
+        ctx.strokeStyle = T.mark; ctx.beginPath(); ctx.moveTo(lft[0] + 6, lft[1] + 3); ctx.lineTo(lft[0] + 12, lft[1] + 6); ctx.stroke();
       }
       if (!isPlat(ti + 1, tj) && r() > 0.45) {
-        ctx.strokeStyle = T.mark; ctx.beginPath(); ctx.moveTo(rgt[0] - 8, rgt[1] + 4); ctx.lineTo(rgt[0] - 16, rgt[1] + 8); ctx.stroke();
+        ctx.strokeStyle = T.mark; ctx.beginPath(); ctx.moveTo(rgt[0] - 6, rgt[1] + 3); ctx.lineTo(rgt[0] - 12, rgt[1] + 6); ctx.stroke();
       }
     });
 
@@ -554,7 +554,7 @@
   }
   SC.portrait = function (canvas) {
     var w = 60, h = 72; canvas.width = w; canvas.height = h;
-    var ctx = canvas.getContext('2d'), r = rng(9), race = 'terran', fig = figure(race), t = 0;
+    var ctx = canvas.getContext('2d', { willReadFrequently: true }), r = rng(9), race = 'terran', fig = figure(race), t = 0;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function frame() {
       t++;

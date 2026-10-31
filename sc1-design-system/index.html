@@ -28,7 +28,7 @@
 
 <div class="ix-wrap">
   <!-- ===================== Hero: spillets hovedmeny ===================== -->
-  <header class="ix-hero">
+  <header class="ix-hero" id="top">
     <button class="ix-sound" type="button" data-sfx-toggle data-label-on="Sound: On" data-label-off="Sound: Off" aria-pressed="true">Sound: On</button>
 
     <div class="ix-header ix-plate sc-panel--metal">
@@ -50,33 +50,132 @@
       <i class="ix-rivet" style="left:10px;bottom:8px"></i><i class="ix-rivet" style="right:10px;bottom:8px"></i>
     </div>
 
+    <!-- satellitt (egen enkel silhuett) -->
+    <svg class="ix-sat" viewBox="0 0 230 270" aria-hidden="true">
+      <defs>
+        <linearGradient id="ix-satbody" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" style="stop-color:var(--sc-metal-1)"/><stop offset=".35" style="stop-color:var(--sc-metal-5)"/>
+          <stop offset=".6" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+        </linearGradient>
+        <pattern id="ix-cells" width="8" height="6" patternUnits="userSpaceOnUse"><rect width="8" height="6" fill="#141a2a"/><path d="M0 0H8M0 0V6" stroke="#3a4660" stroke-width="1"/></pattern>
+      </defs>
+      <g transform="translate(115 135) rotate(32)">
+        <line x1="0" y1="-120" x2="0" y2="125" stroke="var(--sc-metal-3)" stroke-width="3"/>
+        <g stroke="#000" stroke-width="1">
+          <rect x="-108" y="-24" width="84" height="18" fill="url(#ix-cells)"/>
+          <rect x="24" y="-24" width="84" height="18" fill="url(#ix-cells)"/>
+          <rect x="-24" y="-17" width="48" height="4" fill="var(--sc-metal-3)"/>
+          <rect x="-15" y="-70" width="30" height="110" fill="url(#ix-satbody)"/>
+          <rect x="-11" y="40" width="22" height="26" fill="url(#ix-satbody)"/>
+          <path d="M-15 -40H15M-15 0H15M-15 20H15" stroke="#000"/>
+          <ellipse cx="0" cy="-78" rx="30" ry="9" fill="var(--sc-metal-4)"/>
+          <ellipse cx="0" cy="-80" rx="24" ry="6" fill="var(--sc-metal-2)"/>
+          <rect x="-6" y="66" width="12" height="40" fill="url(#ix-satbody)"/>
+        </g>
+        <rect x="-2" y="120" width="4" height="4" fill="var(--sc-led-red)"/>
+        <rect x="104" y="-17" width="3" height="3" fill="var(--sc-led-red)"/>
+      </g>
+    </svg>
+
+    <!-- ormehull -->
+    <div class="ix-worm" aria-hidden="true"><div class="ix-worm__disc"></div><canvas id="ixWorm" width="210" height="150"></canvas></div>
+
     <nav class="ix-menu" aria-label="Design system">
-      <a class="sc-menu-link" href="components.html" style="left:330px;top:170px">Components</a>
-      <a class="sc-menu-link" href="patterns/main-menu.html" style="left:236px;top:270px">Main Menu</a>
-      <a class="sc-menu-link" href="patterns/ingame.html" style="left:400px;top:372px">In-Game Console</a>
-      <a class="sc-menu-link" href="patterns/battlenet.html" style="left:560px;top:470px">Network Login</a>
-      <a class="sc-menu-link" href="patterns/briefing.html" style="left:830px;top:560px">Briefing Room</a>
-      <a class="sc-menu-link" href="#colors" style="left:214px;top:500px">Colors</a>
-      <a class="sc-menu-link" href="#type" style="left:186px;top:538px">Typography</a>
-      <a class="sc-menu-link" href="#races" style="left:200px;top:576px">Race Themes</a>
+      <a class="sc-menu-link" href="components.html" style="left:360px;top:160px">Components</a>
+      <a class="sc-menu-link" href="patterns/main-menu.html" style="left:250px;top:268px">Main Menu</a>
+      <a class="sc-menu-link" href="patterns/ingame.html" style="left:540px;top:310px">In-Game Console</a>
+      <a class="sc-menu-link" href="patterns/battlenet.html" style="left:214px;top:470px">Network Login</a>
+      <a class="sc-menu-link" href="patterns/briefing.html" style="left:186px;top:508px">Briefing Room</a>
+      <a class="sc-menu-link" href="#colors" style="left:226px;top:546px">Colors</a>
+      <a class="sc-menu-link" href="#type" style="left:196px;top:584px">Typography</a>
+      <a class="sc-menu-link" href="#races" style="left:212px;top:622px">Race Themes</a>
+      <button class="sc-menu-link" type="button" data-sfx="error" style="left:890px;top:452px" title="Nothing to exit from here">Exit</button>
     </nav>
 
-    <div class="ix-arm" aria-hidden="true"><i class="h"></i><i class="v"></i><i class="j"></i><i class="k"></i></div>
+    <!-- kraftig metallarm: fra skjermkanten til panelets hjørne -->
+    <svg class="ix-arm" viewBox="0 0 280 160" aria-hidden="true">
+      <defs>
+        <linearGradient id="ix-armg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".25" style="stop-color:var(--sc-metal-4)"/>
+          <stop offset=".6" style="stop-color:var(--sc-metal-2)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+        </linearGradient>
+        <linearGradient id="ix-armh" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".3" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+        </linearGradient>
+        <linearGradient id="ix-armv" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".3" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
+        </linearGradient>
+      </defs>
+      <!-- festeplate i skjermkanten -->
+      <polygon points="250,4 280,4 280,84 250,84 242,76 242,12" fill="url(#ix-armg)" stroke="#000"/>
+      <!-- hydraulisk stag -->
+      <line x1="246" y1="74" x2="214" y2="112" stroke="#000" stroke-width="7"/>
+      <line x1="246" y1="74" x2="214" y2="112" stroke="var(--sc-metal-4)" stroke-width="4"/>
+      <line x1="236" y1="86" x2="222" y2="103" stroke="var(--sc-metal-5)" stroke-width="2"/>
+      <!-- vinklet arm med 45°-fasede segmenter -->
+      <polygon points="244,16 210,16 176,50 176,122 206,122 206,62 220,48 244,48" fill="url(#ix-armg)" stroke="#000" stroke-width="1.5"/>
+      <polygon points="244,16 210,16 176,50 182,50 213,20 244,20" fill="var(--sc-metal-5)" opacity=".55"/>
+      <polygon points="220,24 238,24 238,42 222,42 216,36 216,30" fill="url(#ix-armh)" stroke="#000"/>
+      <polygon points="182,64 200,64 200,98 182,98" fill="url(#ix-armv)" stroke="#000"/>
+      <path d="M200 48 L188 60 M176 104 H206" stroke="#000" stroke-width="1.5"/>
+      <rect x="226" y="31" width="7" height="3" fill="var(--sc-led-red)"/>
+      <!-- klemme over panelhjørnet -->
+      <polygon points="166,118 206,118 214,126 214,146 166,146 160,140 160,124" fill="url(#ix-armg)" stroke="#000" stroke-width="1.5"/>
+      <rect x="168" y="138" width="38" height="4" fill="url(#ix-armh)" stroke="#000" stroke-width=".8"/>
+      <g fill="var(--sc-rivet)" stroke="#000" stroke-width=".8">
+        <circle cx="258" cy="14" r="2.2"/><circle cx="272" cy="14" r="2.2"/><circle cx="258" cy="74" r="2.2"/><circle cx="272" cy="74" r="2.2"/>
+        <circle cx="184" cy="56" r="2"/><circle cx="198" cy="110" r="2"/><circle cx="184" cy="110" r="2"/>
+        <circle cx="168" cy="126" r="2"/><circle cx="206" cy="126" r="2"/><circle cx="250" cy="22" r="1.8"/><circle cx="250" cy="42" r="1.8"/>
+      </g>
+    </svg>
+
     <aside class="ix-news sc-dialog sc-dialog--red">
       <div class="sc-dialog__body">
-        <h2>STELLAR COMMAND</h2>
+        <svg class="ix-news__logo" viewBox="0 0 300 34" role="img" aria-label="Stellar Command">
+          <g filter="url(#ix-emboss)" font-family="Michroma, sans-serif" fill="url(#ix-silver)" stroke="#0a0a0a" stroke-width=".9" paint-order="stroke">
+            <text x="4" y="25" font-size="20" textLength="138" lengthAdjust="spacingAndGlyphs"><tspan font-size="26">S</tspan>TELLAR</text>
+            <text x="156" y="25" font-size="20" textLength="140" lengthAdjust="spacingAndGlyphs"><tspan font-size="26">C</tspan>OMMAND</text>
+          </g>
+        </svg>
         <div class="ix-welcome">Welcome Commander</div>
         <div class="ix-item">
-          <div class="ix-thumb sc-crt">
-            <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><g fill="none" stroke="var(--sc-icon-yellow)" stroke-width="3"><circle cx="20" cy="15" r="11"/><path d="M14 15h12M21 10l5 5-5 5"/></g></svg>
-          </div>
+          <a class="ix-thumb" href="components.html" data-sfx="click" aria-label="Component Library">
+            <svg viewBox="0 0 110 60" aria-hidden="true">
+              <rect width="110" height="60" fill="#000"/>
+              <g fill="none" stroke-width="2.5">
+                <circle cx="20" cy="18" r="9" stroke="var(--sc-icon-yellow)"/><path d="M15 18h9M20 13l5 5-5 5" stroke="var(--sc-icon-yellow)"/>
+                <circle cx="44" cy="18" r="9" stroke="var(--sc-icon-yellow)"/><path d="M40 14l8 8M48 14l-8 8" stroke="var(--sc-icon-yellow)"/>
+                <circle cx="20" cy="42" r="9" stroke="var(--sc-icon-yellow)"/><path d="M17 37v10l8-5z" stroke="var(--sc-icon-yellow)"/>
+              </g>
+              <g stroke="var(--sc-text-stat-dim)" stroke-width="1" fill="none"><rect x="34" y="33" width="20" height="18"/><path d="M34 39h20M34 45h20M41 33v18M47 33v18"/></g>
+              <rect x="62" y="8" width="42" height="8" fill="none" stroke="var(--sc-red)"/>
+              <text x="83" y="15" font-family="Oxanium" font-size="6" fill="var(--sc-text-menu)" text-anchor="middle">Upgrade</text>
+              <text x="64" y="32" font-family="VT323" font-size="11" fill="var(--sc-text-stat)">886/1000</text>
+              <text x="64" y="46" font-family="VT323" font-size="11" fill="var(--sc-mineral)">&#9670;<tspan fill="var(--sc-text-stat)"> 384</tspan></text>
+            </svg>
+          </a>
           <div><h3>Component Library</h3><p>Buttons, dialogs, metal plates, command card, resource bar and LED readouts.</p></div>
         </div>
         <div class="ix-item">
-          <div class="ix-thumb sc-crt">
-            <svg width="44" height="30" viewBox="0 0 44 30" aria-hidden="true"><g fill="none" stroke="var(--sc-icon-green)" stroke-width="1"><path d="M4 26 14 6h16l10 20z"/><path d="M14 6v20M30 6v20M9 16h26"/></g></svg>
-          </div>
-          <div><h3>Screen Patterns</h3><p>Main menu, in-game console, network login and mission briefing.</p></div>
+          <a class="ix-thumb" href="patterns/main-menu.html" data-sfx="click" aria-label="Screen patterns">
+            <svg viewBox="0 0 110 60" aria-hidden="true">
+              <defs><radialGradient id="ix-tn" cx=".8" cy=".2" r=".7"><stop offset="0" style="stop-color:var(--sc-red-dark)" stop-opacity=".95"/><stop offset="1" style="stop-color:var(--sc-void)" stop-opacity="0"/></radialGradient>
+              <radialGradient id="ix-tp" cx=".7" cy=".25" r=".8"><stop offset="0" style="stop-color:var(--sc-metal-4)"/><stop offset=".6" style="stop-color:var(--sc-metal-1)"/><stop offset="1" style="stop-color:var(--sc-void)"/></radialGradient></defs>
+              <rect width="110" height="60" fill="#000"/><rect width="110" height="60" fill="url(#ix-tn)"/>
+              <circle cx="8" cy="78" r="48" fill="url(#ix-tp)"/><path d="M-30 50 A48 48 0 0 1 46 40" stroke="#6a9aff" stroke-width=".8" fill="none" opacity=".8"/>
+              <g font-family="Michroma" font-size="5.5" fill="var(--sc-text-menu)"><text x="30" y="14">Single Player</text><text x="22" y="26">Multiplayer</text><text x="74" y="44">Exit</text></g>
+              <rect x="70" y="6" width="34" height="22" fill="#000" stroke="var(--sc-red)" stroke-width=".8"/>
+              <path d="M74 12h22M74 16h18M74 20h24" stroke="var(--sc-text-stat)" stroke-width="1"/>
+              <g fill="#fff" opacity=".8"><rect x="10" y="6" width="1" height="1"/><rect x="58" y="34" width="1" height="1"/><rect x="96" y="52" width="1" height="1"/><rect x="50" y="8" width="1" height="1"/></g>
+            </svg>
+          </a>
+          <div><h3>Screen Patterns</h3><p>Main menu, in-game console, network login and mission briefing &ndash; full 1280&times;720 scenes.</p></div>
+        </div>
+        <div class="ix-join"><span>Join the Command:</span>
+          <a href="#colors" data-sfx="click" aria-label="Signals"><svg viewBox="0 0 12 12"><path d="M2 10a8 8 0 0 1 8-8M2 10a4 4 0 0 1 4-4"/><circle cx="2.5" cy="9.5" r=".8"/></svg></a>
+          <a href="#type" data-sfx="click" aria-label="Messages"><svg viewBox="0 0 12 12"><rect x="1.5" y="3" width="9" height="6.5"/><path d="M1.5 3 6 7l4.5-4"/></svg></a>
+          <a href="#races" data-sfx="click" aria-label="Fleet"><svg viewBox="0 0 12 12"><path d="M6 1 11 6 6 11 1 6z"/><path d="M6 4v4M4 6h4"/></svg></a>
+          <a href="patterns/briefing.html" data-sfx="click" aria-label="Briefing"><svg viewBox="0 0 12 12"><path d="M1.5 2h9v6h-5l-3 2.5V8h-1z"/></svg></a>
         </div>
       </div>
     </aside>
@@ -111,7 +210,7 @@
         <div><span class="ix-s-led"><span class="sc-led ix-dots">Welcome to stellar.net</span></span></div>
 
         <div class="ix-meta"><b>Network form</b>Tinos 700<br><code>--sc-font-form</code></div>
-        <div><div class="ix-s-form"><div class="l">Name:</div><div class="f">Raynor_77</div><div class="l">Password:</div><div class="f"></div></div></div>
+        <div><div class="ix-s-form"><div class="l">Name:</div><div class="f">Kestrel_77</div><div class="l">Password:</div><div class="f"></div></div></div>
       </div>
     </div>
   </section>
@@ -165,41 +264,150 @@
   var root = document.documentElement;
   function v(name, el) { return getComputedStyle(el || root).getPropertyValue(name).trim(); }
 
-  /* ---------- verdensrom: stjerner, rød/lilla tåke, planet ---------- */
-  var sky = document.getElementById("ixSky"), g = sky.getContext("2d");
-  function seeded(s) { return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
-  function paintSky() {
-    var w = sky.width = window.innerWidth, h = sky.height = window.innerHeight, rnd = seeded(42);
-    g.fillStyle = "#000"; g.fillRect(0, 0, w, h);
-    function neb(x, y, r, c, a) {
-      var gr = g.createRadialGradient(x, y, 0, x, y, r);
-      gr.addColorStop(0, "rgba(" + c + "," + a + ")"); gr.addColorStop(1, "rgba(" + c + ",0)");
-      g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2);
-    }
-    for (var i = 0; i < 26; i++) neb(w * (0.62 + rnd() * 0.4), h * (rnd() * 0.55), 40 + rnd() * 130, "150,14,18", 0.05 + rnd() * 0.08);
-    for (var j = 0; j < 14; j++) neb(w * (rnd() * 0.45), h * (0.2 + rnd() * 0.5), 30 + rnd() * 90, "110,10,30", 0.03 + rnd() * 0.05);
-    for (var k = 0; k < 8; k++) neb(w * (0.55 + rnd() * 0.25), h * (0.75 + rnd() * 0.2), 30 + rnd() * 70, "60,30,120", 0.05 + rnd() * 0.06);
-    for (var n = 0; n < w * h / 900; n++) {
-      var b = rnd(); g.fillStyle = b > 0.97 ? "rgba(200,220,255,0.95)" : "rgba(255,255,255," + (0.15 + b * 0.5).toFixed(2) + ")";
-      g.fillRect(rnd() * w | 0, rnd() * h | 0, b > 0.985 ? 2 : 1, 1);
-    }
-    // planet nederst til venstre
-    var px = w * 0.08, py = h * 1.18, pr = h * 0.62;
-    var pg = g.createRadialGradient(px + pr * 0.35, py - pr * 0.55, pr * 0.1, px, py, pr);
-    pg.addColorStop(0, "#5a6a80"); pg.addColorStop(0.45, "#26303e"); pg.addColorStop(0.85, "#0b0f16"); pg.addColorStop(1, "#05070a");
-    g.fillStyle = pg; g.beginPath(); g.arc(px, py, pr, 0, Math.PI * 2); g.fill();
-    for (var q = 0; q < 900; q++) { // bylys / skyer
-      var a = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * pr * 0.95, x = px + Math.cos(a) * rr, y = py + Math.sin(a) * rr;
-      if (y > h) continue;
-      g.fillStyle = rnd() > 0.5 ? "rgba(255,150,60,0.35)" : "rgba(180,200,230,0.12)";
-      g.fillRect(x | 0, y | 0, 1, 1);
-    }
-    g.strokeStyle = "rgba(140,170,255,0.5)"; g.lineWidth = 2;
-    g.beginPath(); g.arc(px, py, pr + 1, Math.PI * 1.2, Math.PI * 1.95); g.stroke();
-    g.strokeStyle = "rgba(140,170,255,0.15)"; g.lineWidth = 6;
-    g.beginPath(); g.arc(px, py, pr + 4, Math.PI * 1.2, Math.PI * 1.95); g.stroke();
+  /* ---------- verdensrom: tåke, stjerner, planet – dekker hele dokumentet ---------- */
+  var sky = document.getElementById("ixSky"), g = sky.getContext("2d", { willReadFrequently: true });
+  function hash3(i, j, k) {
+    var n = Math.imul(i, 374761393) ^ Math.imul(j, 668265263) ^ Math.imul(k, 1274126177);
+    n = Math.imul(n ^ (n >>> 13), 1274126177); n ^= n >>> 16;
+    return (n >>> 0) / 4294967295;
   }
-  paintSky(); window.addEventListener("resize", paintSky);
+  function sm(t) { return t * t * (3 - 2 * t); }
+  function vnoise(x, y, z) {
+    var xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    var xf = sm(x - xi), yf = sm(y - yi), zf = sm(z - zi);
+    function L(a, b, t) { return a + (b - a) * t; }
+    return L(
+      L(L(hash3(xi, yi, zi), hash3(xi + 1, yi, zi), xf), L(hash3(xi, yi + 1, zi), hash3(xi + 1, yi + 1, zi), xf), yf),
+      L(L(hash3(xi, yi, zi + 1), hash3(xi + 1, yi, zi + 1), xf), L(hash3(xi, yi + 1, zi + 1), hash3(xi + 1, yi + 1, zi + 1), xf), yf), zf);
+  }
+  function fbm(x, y, z, oct) {
+    var s = 0, a = 0.5, f = 1, n = 0;
+    for (var o = 0; o < oct; o++) { s += a * vnoise(x * f, y * f, z * f); n += a; a *= 0.5; f *= 2.03; }
+    return s / n;
+  }
+  function seeded(s) { return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function sstep(a, b, v) { return sm(clamp01((v - a) / (b - a))); }
+
+  function paintNebula(w, H, HH) {
+    var S = 4, lw = Math.ceil(w / S), lh = Math.ceil(H / S);
+    var off = document.createElement("canvas"); off.width = lw; off.height = lh;
+    var oc = off.getContext("2d"), img = oc.createImageData(lw, lh), d = img.data;
+    // diagonal linje fra øverst til høyre ned mot midten/venstre
+    var ax = w * 1.0, ay = -HH * 0.05, bx = w * 0.2, by = HH * 0.95, dx = bx - ax, dy = by - ay, dl = Math.hypot(dx, dy);
+    for (var j = 0; j < lh; j++) for (var i = 0; i < lw; i++) {
+      var x = i * S, y = j * S;
+      var n = fbm(x / 260, y / 260, 0.5, 5), n2 = fbm(x / 90 + 13, y / 90, 3.1, 4);
+      var m1 = Math.exp(-(Math.pow((x - w * 0.86) / (w * 0.26), 2) + Math.pow((y - HH * 0.2) / (HH * 0.42), 2)));
+      var dist = Math.abs((x - ax) * dy - (y - ay) * dx) / dl;
+      var m2 = Math.exp(-Math.pow(dist / 170, 2)) * (y < HH * 1.05 ? 1 : 0) * 0.85;
+      var m3 = y > HH ? 0.45 * (0.5 + 0.5 * Math.sin(y / 380 + x / 260)) : 0;
+      var red = clamp01(Math.max(m1 * 1.15, m2, m3)) * sstep(0.32, 0.78, n * 0.75 + n2 * 0.35);
+      var mp = Math.exp(-(Math.pow((x - w * 0.74) / (w * 0.2), 2) + Math.pow((y - HH * 0.86) / (HH * 0.22), 2)));
+      if (y > HH) mp = Math.max(mp, 0.35 * (0.5 + 0.5 * Math.cos(y / 300 - x / 340)));
+      var pur = mp * sstep(0.35, 0.8, fbm(x / 200 + 40, y / 200, 7, 4));
+      var hot = sstep(0.62, 0.9, n2) * red;
+      var k = (j * lw + i) * 4;
+      d[k]     = Math.min(255, 205 * red + 90 * hot + 70 * pur);
+      d[k + 1] = Math.min(255, 22 * red + 40 * hot + 30 * pur);
+      d[k + 2] = Math.min(255, 26 * red + 20 * hot + 150 * pur);
+      d[k + 3] = 255;
+    }
+    oc.putImageData(img, 0, 0);
+    g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "high";
+    g.drawImage(off, 0, 0, w, H);
+  }
+
+  function paintStars(w, H, rnd) {
+    var count = Math.round(w * H / 240);
+    for (var n = 0; n < count; n++) {
+      var b = rnd(), x = rnd() * w | 0, y = rnd() * H | 0;
+      if (b > 0.985) { g.fillStyle = "rgba(220,230,255,0.95)"; g.fillRect(x, y, 2, 2); }
+      else if (b > 0.94) { g.fillStyle = "rgba(255,255,255,0.85)"; g.fillRect(x, y, 1, 1); g.fillStyle = "rgba(255,255,255,0.25)"; g.fillRect(x - 1, y, 3, 1); g.fillRect(x, y - 1, 1, 3); }
+      else { g.fillStyle = "rgba(255,255,255," + (0.12 + b * 0.55).toFixed(2) + ")"; g.fillRect(x, y, 1, 1); }
+    }
+  }
+
+  function paintPlanet(w, HH) {
+    var pr = HH * 0.64, px = w * 0.07, py = HH * 1.2, rim = 7;
+    var x0 = Math.max(0, Math.floor(px - pr - rim)), x1 = Math.min(w, Math.ceil(px + pr + rim));
+    var y0 = Math.max(0, Math.floor(py - pr - rim)), y1 = Math.min(HH, Math.ceil(py + pr + rim));
+    if (x1 <= x0 || y1 <= y0) return;
+    var img = g.getImageData(x0, y0, x1 - x0, y1 - y0), d = img.data, W = x1 - x0;
+    var Lx = 0.72, Ly = -0.62, Lz = 0.05, ll = Math.hypot(Lx, Ly, Lz); Lx /= ll; Ly /= ll; Lz /= ll;
+    var rnd = seeded(99);
+    for (var y = y0; y < y1; y++) for (var x = x0; x < x1; x++) {
+      var nx = (x - px) / pr, ny = (y - py) / pr, rr = nx * nx + ny * ny, k = ((y - y0) * W + (x - x0)) * 4;
+      var dist = Math.sqrt(rr);
+      if (dist > 1) { // tynn atmosfærekant med smal glød
+        var t = (dist - 1) * pr / rim; if (t >= 1) continue;
+        var lit = clamp01((nx * Lx + ny * Ly) / dist + 0.35);
+        var a = Math.pow(1 - t, 2.2) * (0.25 + 0.75 * lit);
+        d[k] += (90 - d[k]) * a; d[k + 1] += (150 - d[k + 1]) * a; d[k + 2] += (255 - d[k + 2]) * a;
+        continue;
+      }
+      var nz = Math.sqrt(1 - rr), dl = nx * Lx + ny * Ly + nz * Lz;
+      var light = sstep(-0.06, 0.28, dl);                // tydelig terminator
+      var sx = nx * 2.4 + 5, sy = ny * 2.4 + 2, sz = nz * 2.4 + 9;
+      var h = fbm(sx, sy, sz, 5);
+      var land = sstep(0.5, 0.54, h);
+      var veg = fbm(sx * 2 + 3, sy * 2, sz * 2, 3);
+      var cl = sstep(0.56, 0.74, fbm(sx * 1.6 + 20, sy * 3.2, sz * 1.6, 4));
+      // dag-farger: hav blått, land mørk brun/grønn, skyer lyse
+      var r = 18 + 30 * h, gg = 40 + 40 * h, b = 78 + 60 * h;
+      var lr = 70 + 40 * veg, lg = 66 + 34 * (1 - veg), lb = 38 + 10 * veg;
+      r += (lr - r) * land; gg += (lg - gg) * land; b += (lb - b) * land;
+      r += (170 - r) * cl * 0.6; gg += (180 - gg) * cl * 0.6; b += (200 - b) * cl * 0.6;
+      var limb = 0.45 + 0.55 * Math.sqrt(nz);
+      var nr = 6, ng = 9, nb = 20;
+      var R = (nr + (r - nr) * light) * limb, G = (ng + (gg - ng) * light) * limb, B = (nb + (b - nb) * light) * limb;
+      // bylys som oransje prikker på nattsiden
+      if (light < 0.55 && land > 0.5 && cl < 0.5) {
+        var c = fbm(sx * 7, sy * 7, sz * 7, 2);
+        if (c > 0.5 && rnd() < (c - 0.5) * 3.2) { var f = (1 - light / 0.55) * (0.6 + rnd() * 0.4); R += 255 * f; G += 140 * f; B += 50 * f; }
+      }
+      // indre atmosfære på dagsiden
+      var at = Math.pow(1 - nz, 3) * (0.2 + light);
+      R += 50 * at; G += 100 * at; B += 210 * at;
+      d[k] = R; d[k + 1] = G; d[k + 2] = B; d[k + 3] = 255;
+    }
+    g.putImageData(img, x0, y0);
+  }
+
+  var lastH = 0;
+  function paintSky() {
+    var w = document.documentElement.clientWidth;
+    var H = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+    var hero = document.querySelector(".ix-hero"), HH = hero ? hero.offsetHeight : window.innerHeight;
+    sky.width = w; sky.height = H; sky.style.height = H + "px"; lastH = H;
+    g.fillStyle = "#000"; g.fillRect(0, 0, w, H);
+    paintNebula(w, H, HH);
+    paintStars(w, H, seeded(42));
+    paintPlanet(w, HH);
+  }
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(paintSky, 120); });
+
+  /* ---------- ormehull: spiralarmer av prikker ---------- */
+  var wc = document.getElementById("ixWorm"), wg = wc.getContext("2d"), wrot = 0;
+  var wseed = seeded(7), wpts = [];
+  for (var arm = 0; arm < 3; arm++) for (var q = 0; q < 420; q++) {
+    var t = q / 420; wpts.push([arm * 2.094 + t * 7.5 + (wseed() - 0.5) * 0.35, 5 + t * 78 + (wseed() - 0.5) * 6, t]);
+  }
+  function drawWorm() {
+    wg.clearRect(0, 0, wc.width, wc.height);
+    var cx = 105, cy = 72;
+    for (var i = 0; i < wpts.length; i++) {
+      var p = wpts[i], a = p[0] + wrot, x = cx + Math.cos(a) * p[1], y = cy + Math.sin(a) * p[1] * 0.55;
+      var al = (1 - p[2]) * 0.9;
+      wg.fillStyle = p[2] < 0.2 ? "rgba(200,225,255," + al + ")" : "rgba(80,140,255," + al + ")";
+      wg.fillRect(x | 0, y | 0, p[2] < 0.6 ? 2 : 1, p[2] < 0.3 ? 2 : 1);
+    }
+    wg.fillStyle = "#000"; wg.beginPath(); wg.ellipse(cx, cy, 7, 4, 0, 0, Math.PI * 2); wg.fill();
+  }
+  drawWorm();
+  if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    setInterval(function () { wrot -= 0.06; drawWorm(); }, 120);
+  }
 
   /* ---------- fargeprøver fra tokens ---------- */
   var groups = [
@@ -240,6 +448,8 @@
     b.addEventListener("click", function () { setRace(b.getAttribute("data-set-race")); });
   });
   try { var saved = localStorage.getItem("sc-race"); if (saved && saved !== "terran") setRace(saved); } catch (e) {}
+  paintSky();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (document.documentElement.scrollHeight !== lastH) paintSky(); });
 })();
 </script>
 </body>
