@@ -50,8 +50,8 @@
 :root, [data-race="terran"] {
   --x-plate-1: #121110; --x-plate-2: #2a2c30; --x-plate-3: #3a3630; --x-plate-4: #5c564c; --x-plate-5: #9a9282;
   --x-plate-tint: #4a3a22;
-  --x-noise-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.5 0 0 0 -.58'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-  --x-noise-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .8 0 1.3 0 0 -.72'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  --x-noise-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.3 0 0 0 -.56'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  --x-noise-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .8 0 1.3 0 0 -.86'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
   --x-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='3' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .04 0 0 0 0 .02 1.6 0 0 0 -.78'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E");
   --x-dlg-red: #a01818;
   --x-gm-bg: rgba(8, 12, 60, .6);
@@ -583,7 +583,8 @@
   border: 2px solid var(--x-toss-1);
   box-shadow: inset 1px 1px 0 #3a5a90, inset -1px -1px 0 #000;
 }
-[data-race="protoss"] .sc-cmd {
+[data-race="protoss"] .sc-cmd { border-radius: 0; box-shadow: inset 2px 2px 0 #000, inset 3px 3px 0 rgba(0, 0, 0, .4), inset -1px -1px 0 rgba(64, 160, 255, .25); }
+[data-race="protoss"] .sc-cmd:not(.sc-cmd--empty) {
   border-radius: 0; background: radial-gradient(ellipse at 50% 45%, #060c18, #02040a 70%);
   box-shadow: inset 2px 2px 0 #000, inset 3px 3px 0 rgba(0, 0, 0, .4), inset -1px -1px 0 rgba(64, 160, 255, .25);
 }
