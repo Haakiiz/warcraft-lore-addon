@@ -1,0 +1,123 @@
+/* =========================================================================
+   SC1-inspirert design system – TOKENS (felles kontrakt, eies av orkestratoren)
+   Alle andre CSS-filer skal bruke disse variablene, ikke hardkodede farger.
+   Rase-tema settes med data-race="terran|protoss|zerg" på <html> eller en container.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@300;400&family=VT323&family=Tinos:wght@400;700&display=swap");
+
+:root {
+  /* --- Flater --- */
+  --sc-void: #000000;          /* verdensrom / CRT-skjerm */
+  --sc-ink: #050607;           /* dialoginnside */
+  --sc-ink-2: #0b0d10;
+
+  /* --- Tekst --- */
+  --sc-text-menu: #b9d94b;     /* gulgrønn menytekst (glue screen) */
+  --sc-text-menu-hot: #e4ff7a; /* hover */
+  --sc-text-menu-dim: #6f8a2a;
+  --sc-text-stat: #2ee82e;     /* grønne tall, HP, ressurser */
+  --sc-text-stat-dim: #168a16;
+  --sc-text-button: #f2e7a2;   /* blek gul knappetekst i spillmenyen */
+  --sc-text-title: #e6e6e6;    /* titler / enhetsnavn */
+  --sc-text-body: #d2d2d2;
+  --sc-text-muted: #8a8f96;
+  --sc-text-warn: #f0e020;     /* gul */
+  --sc-text-danger: #e83020;
+
+  /* --- Aksenter --- */
+  --sc-red: #b01818;           /* hovedmeny-dialog / knappekant */
+  --sc-red-dark: #5a0808;
+  --sc-red-hot: #e03030;
+  --sc-blue: #2a3ad8;          /* spillmeny */
+  --sc-blue-dark: #121a6a;
+  --sc-blue-glass: rgba(10, 18, 90, 0.62);
+  --sc-blue-hot: #5a6cff;
+  --sc-icon-yellow: #f2e21c;   /* kommandokort-ikoner */
+  --sc-icon-green: #3cf03c;
+  --sc-mineral: #4aa8ff;
+  --sc-gas: #3cd060;
+
+  /* --- Metall (Terran-standard, overstyres per rase) --- */
+  --sc-metal-1: #1c1f24;       /* dypeste skygge */
+  --sc-metal-2: #2c3038;
+  --sc-metal-3: #3f444d;
+  --sc-metal-4: #5a606a;       /* høylys */
+  --sc-metal-5: #8a909a;       /* kantglans */
+  --sc-metal-tint: #4a4238;    /* gråbrun undertone */
+  --sc-rivet: #9aa0a8;
+  --sc-hazard-a: #e8c020;
+  --sc-hazard-b: #141414;
+  --sc-led-red: #ff3a2a;
+  --sc-led-amber: #ffb020;
+
+  /* --- Rust (Battle.net) --- */
+  --sc-rust-1: #2a160c;
+  --sc-rust-2: #4a2a16;
+  --sc-rust-3: #6e4224;
+  --sc-rust-4: #9a6a3c;
+  --sc-led-green: #49f249;
+
+  /* --- Typografi --- */
+  --sc-font-menu: "Michroma", "Oxanium", sans-serif;   /* bred, tynn, geometrisk */
+  --sc-font-ui: "Oxanium", "Michroma", sans-serif;     /* knapper/konsoll */
+  --sc-font-led: "VT323", monospace;                  /* LED/punktmatrise */
+  --sc-font-form: "Tinos", serif;                     /* små Battle.net-etiketter */
+  --sc-fs-xs: 11px;
+  --sc-fs-sm: 13px;
+  --sc-fs-md: 16px;
+  --sc-fs-lg: 20px;
+  --sc-fs-xl: 26px;
+
+  /* --- Glød (smal, aldri stor blur) --- */
+  --sc-glow-menu: 0 0 1px #000, 0 0 3px rgba(185, 217, 75, 0.45);
+  --sc-glow-stat: 0 0 2px rgba(46, 232, 46, 0.6);
+  --sc-glow-button: 0 0 2px rgba(242, 231, 162, 0.5);
+
+  /* --- Geometri --- */
+  --sc-px: 1px;                /* pikselenhet */
+  --sc-bevel: 6px;             /* 45° kantkutt */
+  --sc-radius-max: 4px;        /* aldri mer enn dette (unntak CRT/sirkelikon) */
+  --sc-radius-crt: 10px;
+  --sc-cell: 44px;             /* kommandokort-rute */
+
+  /* --- Bevegelse --- */
+  --sc-step: steps(4, end);    /* hakkete, 90-talls animasjon */
+  --sc-fast: 80ms;
+}
+
+/* ----- Rase-temaer: overstyr kun metall/aksent ----- */
+[data-race="protoss"] {
+  /* Protoss: mørk marmorert blåsvart plate, lysende cyan rør/kantlinjer, gulltrim øverst */
+  --sc-metal-1: #04070e;
+  --sc-metal-2: #0c1424;
+  --sc-metal-3: #18284a;
+  --sc-metal-4: #2a9ad8;       /* cyan rørlinje */
+  --sc-metal-5: #7ae8ff;       /* lysende cyan kant */
+  --sc-metal-tint: #1a2a4a;
+  --sc-trim-gold: #e8b830;     /* gulltrim langs toppkanten */
+  --sc-trim-gold-dark: #8a6410;
+  --sc-rivet: #6ad8ff;
+  --sc-hazard-a: #3ab0e0;
+  --sc-hazard-b: #10202a;
+  --sc-led-red: #50d0ff;
+  --sc-led-amber: #ffd040;
+}
+[data-race="zerg"] {
+  --sc-metal-1: #140808;
+  --sc-metal-2: #2e1210;
+  --sc-metal-3: #4e2018;
+  --sc-metal-4: #7a3a26;
+  --sc-metal-5: #b06a44;
+  --sc-metal-tint: #3a1838;
+  --sc-rivet: #d8c8a0;         /* bein/tenner */
+  --sc-hazard-a: #8a2a5a;
+  --sc-hazard-b: #200810;
+  --sc-led-red: #ff4a20;
+  --sc-led-amber: #e08a20;
+}
+
+/* ----- Grunnlag ----- */
+html, body { background: var(--sc-void); color: var(--sc-text-body); margin: 0; }
+body { font-family: var(--sc-font-ui); font-size: var(--sc-fs-sm); -webkit-font-smoothing: antialiased; }
+.sc-pixelated { image-rendering: pixelated; }
