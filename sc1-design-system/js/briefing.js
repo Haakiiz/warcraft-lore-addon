@@ -345,13 +345,13 @@
     });
     MOUNTS.forEach(function (m) {
       var n = 8 + Math.floor(R() * 5);
-      for (var i = 0; i < n; i++) rustTrail(Math.round(m.x + (R() - 0.5) * 12), m.y + Math.floor(R() * 4));
+      for (var i = 0; i < n; i++) rustTrail(Math.round(m.x + (R() - 0.5) * 28), m.y - 2 + Math.floor(R() * 8));
     });
 
     /* --- 10. gulv --- */
     c.fillStyle = "rgb(12,12,11)";
     c.beginPath();
-    for (th = TH0; th <= TH1 + 0.01; th += 0.01) { p = P(th, V_FLOOR); if (th === TH0) c.moveTo(p[0], p[1]); else c.lineTo(p[0], p[1]); }
+    for (th = TH0; th <= TH1 + 0.01; th += 0.01) { var p = P(th, V_FLOOR); if (th === TH0) c.moveTo(p[0], p[1]); else c.lineTo(p[0], p[1]); }
     c.lineTo(W, H); c.lineTo(0, H); c.closePath(); c.fill();
     c.strokeStyle = "rgba(70,70,62,0.5)"; c.lineWidth = 1;
     for (var ring = 0; ring < 4; ring++) {

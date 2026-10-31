@@ -29,6 +29,8 @@
 <div class="ix-wrap">
   <!-- ===================== Hero: spillets hovedmeny ===================== -->
   <header class="ix-hero" id="top">
+    <!-- bakgrunn: arbeider B sin glue screen-scene (SCScene.drawSpace i js/scene.js) -->
+    <canvas class="ix-hero__space" id="ixHero" width="1280" height="720" aria-hidden="true"></canvas>
     <button class="ix-sound" type="button" data-sfx-toggle data-label-on="Sound: On" data-label-off="Sound: Off" aria-pressed="true">Sound: On</button>
 
     <div class="ix-header ix-plate sc-panel--metal">
@@ -50,84 +52,17 @@
       <i class="ix-rivet" style="left:10px;bottom:8px"></i><i class="ix-rivet" style="right:10px;bottom:8px"></i>
     </div>
 
-    <!-- satellitt (egen enkel silhuett) -->
-    <svg class="ix-sat" viewBox="0 0 230 270" aria-hidden="true">
-      <defs>
-        <linearGradient id="ix-satbody" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" style="stop-color:var(--sc-metal-1)"/><stop offset=".35" style="stop-color:var(--sc-metal-5)"/>
-          <stop offset=".6" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-        </linearGradient>
-        <pattern id="ix-cells" width="8" height="6" patternUnits="userSpaceOnUse"><rect width="8" height="6" fill="#141a2a"/><path d="M0 0H8M0 0V6" stroke="#3a4660" stroke-width="1"/></pattern>
-      </defs>
-      <g transform="translate(115 135) rotate(32)">
-        <line x1="0" y1="-120" x2="0" y2="125" stroke="var(--sc-metal-3)" stroke-width="3"/>
-        <g stroke="#000" stroke-width="1">
-          <rect x="-108" y="-24" width="84" height="18" fill="url(#ix-cells)"/>
-          <rect x="24" y="-24" width="84" height="18" fill="url(#ix-cells)"/>
-          <rect x="-24" y="-17" width="48" height="4" fill="var(--sc-metal-3)"/>
-          <rect x="-15" y="-70" width="30" height="110" fill="url(#ix-satbody)"/>
-          <rect x="-11" y="40" width="22" height="26" fill="url(#ix-satbody)"/>
-          <path d="M-15 -40H15M-15 0H15M-15 20H15" stroke="#000"/>
-          <ellipse cx="0" cy="-78" rx="30" ry="9" fill="var(--sc-metal-4)"/>
-          <ellipse cx="0" cy="-80" rx="24" ry="6" fill="var(--sc-metal-2)"/>
-          <rect x="-6" y="66" width="12" height="40" fill="url(#ix-satbody)"/>
-        </g>
-        <rect x="-2" y="120" width="4" height="4" fill="var(--sc-led-red)"/>
-        <rect x="104" y="-17" width="3" height="3" fill="var(--sc-led-red)"/>
-      </g>
-    </svg>
-
-    <!-- ormehull -->
-    <div class="ix-worm" aria-hidden="true"><div class="ix-worm__disc"></div><canvas id="ixWorm" width="210" height="150"></canvas></div>
-
     <nav class="ix-menu" aria-label="Design system">
-      <a class="sc-menu-link" href="components.html" style="left:360px;top:160px">Components</a>
-      <a class="sc-menu-link" href="patterns/main-menu.html" style="left:250px;top:268px">Main Menu</a>
-      <a class="sc-menu-link" href="patterns/ingame.html" style="left:540px;top:310px">In-Game Console</a>
-      <a class="sc-menu-link" href="patterns/battlenet.html" style="left:214px;top:470px">Network Login</a>
-      <a class="sc-menu-link" href="patterns/briefing.html" style="left:186px;top:508px">Briefing Room</a>
-      <a class="sc-menu-link" href="#colors" style="left:226px;top:546px">Colors</a>
-      <a class="sc-menu-link" href="#type" style="left:196px;top:584px">Typography</a>
-      <a class="sc-menu-link" href="#races" style="left:212px;top:622px">Race Themes</a>
-      <button class="sc-menu-link" type="button" data-sfx="error" style="left:890px;top:452px" title="Nothing to exit from here">Exit</button>
+      <a class="sc-menu-link" href="components.html" style="left:385px;top:166px">Components</a>
+      <a class="sc-menu-link" href="patterns/main-menu.html" style="left:276px;top:286px">Main Menu</a>
+      <a class="sc-menu-link" href="patterns/ingame.html" style="left:236px;top:478px">In-Game Console</a>
+      <a class="sc-menu-link" href="patterns/battlenet.html" style="left:252px;top:516px">Network Login</a>
+      <a class="sc-menu-link" href="patterns/briefing.html" style="left:244px;top:554px">Briefing Room</a>
+      <a class="sc-menu-link" href="#colors" style="left:290px;top:592px">Colors</a>
+      <a class="sc-menu-link" href="#type" style="left:262px;top:632px">Typography</a>
+      <a class="sc-menu-link" href="#races" style="left:254px;top:670px">Race Themes</a>
+      <button class="sc-menu-link" type="button" data-sfx="error" style="left:898px;top:484px" title="Nothing to exit from here">Exit</button>
     </nav>
-
-    <!-- kraftig metallarm: fra skjermkanten til panelets hjørne -->
-    <svg class="ix-arm" viewBox="0 0 280 160" aria-hidden="true">
-      <defs>
-        <linearGradient id="ix-armg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".25" style="stop-color:var(--sc-metal-4)"/>
-          <stop offset=".6" style="stop-color:var(--sc-metal-2)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-        </linearGradient>
-        <linearGradient id="ix-armh" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".3" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-        </linearGradient>
-        <linearGradient id="ix-armv" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" style="stop-color:var(--sc-metal-5)"/><stop offset=".3" style="stop-color:var(--sc-metal-3)"/><stop offset="1" style="stop-color:var(--sc-metal-1)"/>
-        </linearGradient>
-      </defs>
-      <!-- festeplate i skjermkanten -->
-      <polygon points="250,4 280,4 280,84 250,84 242,76 242,12" fill="url(#ix-armg)" stroke="#000"/>
-      <!-- hydraulisk stag -->
-      <line x1="246" y1="74" x2="214" y2="112" stroke="#000" stroke-width="7"/>
-      <line x1="246" y1="74" x2="214" y2="112" stroke="var(--sc-metal-4)" stroke-width="4"/>
-      <line x1="236" y1="86" x2="222" y2="103" stroke="var(--sc-metal-5)" stroke-width="2"/>
-      <!-- vinklet arm med 45°-fasede segmenter -->
-      <polygon points="244,16 210,16 176,50 176,122 206,122 206,62 220,48 244,48" fill="url(#ix-armg)" stroke="#000" stroke-width="1.5"/>
-      <polygon points="244,16 210,16 176,50 182,50 213,20 244,20" fill="var(--sc-metal-5)" opacity=".55"/>
-      <polygon points="220,24 238,24 238,42 222,42 216,36 216,30" fill="url(#ix-armh)" stroke="#000"/>
-      <polygon points="182,64 200,64 200,98 182,98" fill="url(#ix-armv)" stroke="#000"/>
-      <path d="M200 48 L188 60 M176 104 H206" stroke="#000" stroke-width="1.5"/>
-      <rect x="226" y="31" width="7" height="3" fill="var(--sc-led-red)"/>
-      <!-- klemme over panelhjørnet -->
-      <polygon points="166,118 206,118 214,126 214,146 166,146 160,140 160,124" fill="url(#ix-armg)" stroke="#000" stroke-width="1.5"/>
-      <rect x="168" y="138" width="38" height="4" fill="url(#ix-armh)" stroke="#000" stroke-width=".8"/>
-      <g fill="var(--sc-rivet)" stroke="#000" stroke-width=".8">
-        <circle cx="258" cy="14" r="2.2"/><circle cx="272" cy="14" r="2.2"/><circle cx="258" cy="74" r="2.2"/><circle cx="272" cy="74" r="2.2"/>
-        <circle cx="184" cy="56" r="2"/><circle cx="198" cy="110" r="2"/><circle cx="184" cy="110" r="2"/>
-        <circle cx="168" cy="126" r="2"/><circle cx="206" cy="126" r="2"/><circle cx="250" cy="22" r="1.8"/><circle cx="250" cy="42" r="1.8"/>
-      </g>
-    </svg>
 
     <aside class="ix-news sc-dialog sc-dialog--red">
       <div class="sc-dialog__body">
@@ -258,6 +193,7 @@
 </div>
 
 <script src="js/sc-audio.js"></script>
+<script src="js/scene.js"></script>
 <script>
 (function () {
   "use strict";
@@ -302,9 +238,8 @@
       var dist = Math.abs((x - ax) * dy - (y - ay) * dx) / dl;
       var m2 = Math.exp(-Math.pow(dist / 170, 2)) * (y < HH * 1.05 ? 1 : 0) * 0.85;
       var m3 = y > HH ? 0.45 * (0.5 + 0.5 * Math.sin(y / 380 + x / 260)) : 0;
-      var red = clamp01(Math.max(m1 * 1.15, m2, m3)) * sstep(0.32, 0.78, n * 0.75 + n2 * 0.35);
-      var mp = Math.exp(-(Math.pow((x - w * 0.74) / (w * 0.2), 2) + Math.pow((y - HH * 0.86) / (HH * 0.22), 2)));
-      if (y > HH) mp = Math.max(mp, 0.35 * (0.5 + 0.5 * Math.cos(y / 300 - x / 340)));
+      var red = clamp01(m3) * 0.6 * sstep(0.32, 0.78, n * 0.75 + n2 * 0.35); // under hero: svak tåke
+      var mp = y > HH ? 0.3 * (0.5 + 0.5 * Math.cos(y / 300 - x / 340)) : 0;
       var pur = mp * sstep(0.35, 0.8, fbm(x / 200 + 40, y / 200, 7, 4));
       var hot = sstep(0.62, 0.9, n2) * red;
       var k = (j * lw + i) * 4;
@@ -328,52 +263,6 @@
     }
   }
 
-  function paintPlanet(w, HH) {
-    var pr = HH * 0.64, px = w * 0.07, py = HH * 1.2, rim = 7;
-    var x0 = Math.max(0, Math.floor(px - pr - rim)), x1 = Math.min(w, Math.ceil(px + pr + rim));
-    var y0 = Math.max(0, Math.floor(py - pr - rim)), y1 = Math.min(HH, Math.ceil(py + pr + rim));
-    if (x1 <= x0 || y1 <= y0) return;
-    var img = g.getImageData(x0, y0, x1 - x0, y1 - y0), d = img.data, W = x1 - x0;
-    var Lx = 0.15, Ly = -0.75, Lz = -0.65, ll = Math.hypot(Lx, Ly, Lz); Lx /= ll; Ly /= ll; Lz /= ll;
-    var rnd = seeded(99);
-    for (var y = y0; y < y1; y++) for (var x = x0; x < x1; x++) {
-      var nx = (x - px) / pr, ny = (y - py) / pr, rr = nx * nx + ny * ny, k = ((y - y0) * W + (x - x0)) * 4;
-      var dist = Math.sqrt(rr);
-      if (dist > 1) { // tynn atmosfærekant med smal glød
-        var t = (dist - 1) * pr / rim; if (t >= 1) continue;
-        var lit = clamp01((nx * Lx + ny * Ly) / dist + 0.35);
-        var a = Math.pow(1 - t, 2.2) * (0.25 + 0.75 * lit);
-        d[k] += (90 - d[k]) * a; d[k + 1] += (150 - d[k + 1]) * a; d[k + 2] += (255 - d[k + 2]) * a;
-        continue;
-      }
-      var nz = Math.sqrt(1 - rr), dl = nx * Lx + ny * Ly + nz * Lz;
-      var light = sstep(-0.06, 0.28, dl);                // tydelig terminator
-      var sx = nx * 2.4 + 5, sy = ny * 2.4 + 2, sz = nz * 2.4 + 9;
-      var h = fbm(sx, sy, sz, 5);
-      var land = sstep(0.5, 0.54, h);
-      var veg = fbm(sx * 2 + 3, sy * 2, sz * 2, 3);
-      var cl = sstep(0.56, 0.74, fbm(sx * 1.6 + 20, sy * 3.2, sz * 1.6, 4));
-      // dag-farger: hav blått, land mørk brun/grønn, skyer lyse
-      var r = 18 + 30 * h, gg = 40 + 40 * h, b = 78 + 60 * h;
-      var lr = 70 + 40 * veg, lg = 66 + 34 * (1 - veg), lb = 38 + 10 * veg;
-      r += (lr - r) * land; gg += (lg - gg) * land; b += (lb - b) * land;
-      r += (170 - r) * cl * 0.6; gg += (180 - gg) * cl * 0.6; b += (200 - b) * cl * 0.6;
-      var limb = 0.45 + 0.55 * Math.sqrt(nz);
-      var nr = 6, ng = 9, nb = 20;
-      var R = (nr + (r - nr) * light) * limb, G = (ng + (gg - ng) * light) * limb, B = (nb + (b - nb) * light) * limb;
-      // bylys som oransje prikker på nattsiden
-      if (light < 0.55 && land > 0.3 && cl < 0.6) {
-        var c = fbm(sx * 7, sy * 7, sz * 7, 2);
-        if (c > 0.44 && rnd() < (c - 0.44) * 1.1) { var f = (1 - light / 0.55) * (0.6 + rnd() * 0.4); R += 255 * f; G += 140 * f; B += 50 * f; }
-      }
-      // indre atmosfære på dagsiden
-      var at = Math.pow(1 - nz, 3) * (0.2 + light);
-      R += 50 * at; G += 100 * at; B += 210 * at;
-      d[k] = R; d[k + 1] = G; d[k + 2] = B; d[k + 3] = 255;
-    }
-    g.putImageData(img, x0, y0);
-  }
-
   var lastH = 0;
   function paintSky() {
     var w = document.documentElement.clientWidth;
@@ -383,31 +272,11 @@
     g.fillStyle = "#000"; g.fillRect(0, 0, w, H);
     paintNebula(w, H, HH);
     paintStars(w, H, seeded(42));
-    paintPlanet(w, HH);
   }
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(paintSky, 120); });
 
-  /* ---------- ormehull: spiralarmer av prikker ---------- */
-  var wc = document.getElementById("ixWorm"), wg = wc.getContext("2d"), wrot = 0;
-  var wseed = seeded(7), wpts = [];
-  for (var arm = 0; arm < 3; arm++) for (var q = 0; q < 420; q++) {
-    var t = q / 420; wpts.push([arm * 2.094 + t * 7.5 + (wseed() - 0.5) * 0.35, 5 + t * 78 + (wseed() - 0.5) * 6, t]);
-  }
-  function drawWorm() {
-    wg.clearRect(0, 0, wc.width, wc.height);
-    var cx = 105, cy = 72;
-    for (var i = 0; i < wpts.length; i++) {
-      var p = wpts[i], a = p[0] + wrot, x = cx + Math.cos(a) * p[1], y = cy + Math.sin(a) * p[1] * 0.55;
-      var al = (1 - p[2]) * 0.9;
-      wg.fillStyle = p[2] < 0.2 ? "rgba(200,225,255," + al + ")" : "rgba(80,140,255," + al + ")";
-      wg.fillRect(x | 0, y | 0, p[2] < 0.6 ? 2 : 1, p[2] < 0.3 ? 2 : 1);
-    }
-    wg.fillStyle = "#000"; wg.beginPath(); wg.ellipse(cx, cy, 7, 4, 0, 0, Math.PI * 2); wg.fill();
-  }
-  drawWorm();
-  if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
-    setInterval(function () { wrot -= 0.06; drawWorm(); }, 120);
-  }
+  /* ---------- hero: gjenbruk B sin scene ---------- */
+  if (window.SCScene && SCScene.drawSpace) { try { SCScene.drawSpace(document.getElementById("ixHero")); } catch (e) {} }
 
   /* ---------- fargeprøver fra tokens ---------- */
   var groups = [
