@@ -361,6 +361,20 @@ function C.Report()
     }
 end
 
+-- True on WoW Forever (interface 16xxx), false on Classic Era (11xxx) and anything else.
+-- Unknown counts as Forever, the client the addon was first built for.
+function C.IsForever()
+    if type(GetBuildInfo) ~= "function" then
+        noteMissing("GetBuildInfo")
+        return true
+    end
+    local ok, _, _, _, interface = pcall(GetBuildInfo)
+    if not ok or type(interface) ~= "number" then
+        return true
+    end
+    return interface >= 16000 and interface < 20000
+end
+
 -- Name of the zone the player is in (from the map), or nil when unknown.
 function C.GetZoneName()
     if type(C_Map) ~= "table" or type(C_Map.GetBestMapForUnit) ~= "function"

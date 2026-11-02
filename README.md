@@ -48,7 +48,7 @@ See `CHANGELOG.md` for older versions.
 
 ## Installation
 
-The easiest way is the CurseForge app: search for "RTS Veterans" and install it for WoW Forever.
+The easiest way is the CurseForge app: search for "RTS Veterans" and install it for WoW Forever or WoW Classic Era (including Hardcore realms).
 
 Manual install:
 
@@ -59,7 +59,11 @@ Manual install:
    `...\_forever_\Interface\AddOns\WarcraftLore\WarcraftLore.toc`
 3. Start the game. New files such as textures need a full restart, not just `/reload`. Make sure "Warcraft Lore" is ticked in the AddOns list on the character screen.
 
-The TOC declares interface 16001 (game version 1.60.1), the last published Forever value. It is built on the modern Mainline/Midnight API, not the Classic API. If the launch client reports a higher number (`/wcl debug` shows it) and the addon is listed as "out of date", tick "Load out of date AddOns" until a new version is out.
+For Classic Era, copy the same folder to `World of Warcraft\_classic_era_\Interface\AddOns\`. The Classic client reads `WarcraftLore_Vanilla.toc` (interface 11509, patch 1.15.9) and ignores the Forever TOC.
+
+On Classic Era the level cap is 60, so every veteran and achievement counts from day one. Entries marked `forever = true` in `Data.lua` or `Memorials.lua` (NPCs in zones only Forever has, such as Mount Hyjal) are left out there.
+
+The Forever TOC declares interface 16001 (game version 1.60.1), the last published Forever value. It is built on the modern Mainline/Midnight API, not the Classic API. If the launch client reports a higher number (`/wcl debug` shows it) and the addon is listed as "out of date", tick "Load out of date AddOns" until a new version is out.
 
 ## Commands
 
@@ -277,7 +281,7 @@ python tests/validate_db.py tests/fixtures/bad_data.lua
 
 ## Releasing to CurseForge
 
-Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge: the packager's `toc_to_type` sends every `16???` interface to "forever" (checked 2026-10-29), so a later 1.6x number needs no workflow change. A number outside `16???` would be read as retail; then pass `-g forever` to the packager (`with: args: -g forever` in the workflow step) or set the game version on CurseForge by hand.
+Releases are built by [BigWigs Packager](https://github.com/BigWigsMods/packager) in GitHub Actions (`.github/workflows/release.yml`). Interface 16001 maps to the "Forever" game type on CurseForge: the packager's `toc_to_type` sends every `16???` interface to "forever" (checked 2026-10-29), so a later 1.6x number needs no workflow change. `WarcraftLore_Vanilla.toc` is picked up the same way and adds the Classic Era game version to the same file. A number outside `16???` would be read as retail; then pass `-g forever` to the packager (`with: args: -g forever` in the workflow step) or set the game version on CurseForge by hand.
 
 One-time setup:
 
