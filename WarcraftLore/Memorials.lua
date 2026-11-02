@@ -17,6 +17,7 @@
 --   locations   (optional, books) Every place the object stands: { { zone = "...", coords = "x, y" }, ... }.
 --               zone/coords above are the first of them. Each location gets a map pin.
 --   order       (optional, books) Reading order in the series.
+--   forever     (optional) true for an object only WoW Forever has; the Classic Era build drops it.
 --
 -- Rule: never invent mission names or IDs. Run tests/validate_db.py after changes.
 

@@ -19,11 +19,11 @@ MEMORIALS = DATA.parent / "Memorials.lua"
 
 GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
-ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related"}
+ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related", "forever"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
-MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources", "locations", "order"}
-MEMORIAL_OPTIONAL = {"locations", "order"}
+MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources", "locations", "order", "forever"}
+MEMORIAL_OPTIONAL = {"locations", "order", "forever"}
 MEMORIAL_KINDS = {"plaque", "tomb", "monument", "book"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
 ITEM_FIELDS = {"id", "name", "note"}
@@ -364,6 +364,8 @@ def check_entries(npcs):
         for f in ("name", "zone"):
             if f in e and not (isinstance(e[f], str) and e[f].strip()):
                 err(f"'{f}' must be a non-empty string")
+        if "forever" in e and e["forever"] is not True:
+            err("'forever' must be true (leave it out for NPCs every client has)")
         for f in ("coords", "story", "searched", "portrait"):
             if f in e and not isinstance(e[f], str):
                 err(f"'{f}' must be a string (use \"\" if unknown)")

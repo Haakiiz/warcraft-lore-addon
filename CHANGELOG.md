@@ -1,5 +1,11 @@
 # Warcraft Lore – changelog
 
+## Unreleased
+
+- **Classic Era support:** the addon now also loads in WoW Classic Era (interface 11509) from the same download.
+  There the level cap is 60, so every veteran and achievement counts at once, and anything that only exists in
+  WoW Forever's new zones is left out.
+
 ## v0.9.0
 
 - **Ready for the WoW Forever launch:** install steps now point at the live `_forever_` folder, and the nearby

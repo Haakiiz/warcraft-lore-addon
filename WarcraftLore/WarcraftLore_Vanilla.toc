@@ -1,0 +1,27 @@
+## Interface: 11509
+## Title: Warcraft Lore
+## Notes: Shows which NPCs have a past in the Warcraft RTS games and novels, with their story.
+## Author: Håkon
+## Version: @project-version@
+## SavedVariables: WarcraftLoreDB
+## SavedVariablesPerCharacter: WarcraftLoreCharDB
+## X-Curse-Project-ID: 1732546
+
+Compat.lua
+Locale.lua
+Locales\deDE.lua
+Locales\frFR.lua
+Data.lua
+Memorials.lua
+SavedData.lua
+Core.lua
+Achievements.lua
+Style.lua
+UI.lua
+Browser.lua
+Journal.lua
+Toast.lua
+Minimap.lua
+MapPins.lua
+Options.lua
+Share.lua

@@ -51,7 +51,8 @@ Folk som finner siden skal forstå addonen på fem sekunder. Billig, og må gjø
 
 Forever er en liten klient. De store publikumene er Classic Era/Anniversary og Retail.
 
-- [ ] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`). Det meste av databasen er hentet fra Wowhead Classic,
+- [ ] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`). *Påbegynt 2026-11-02 på `session/classic-era`: egen TOC
+      (11509), nivåtak 60, oppføringer med `forever = true` filtreres bort. Gjenstår: test i Classic-klienten.* Det meste av databasen er hentet fra Wowhead Classic,
       så NPC-ID-ene og koordinatene passer allerede. Compat.lua samler de versjonsavhengige kallene.
       *Gjenstår:* Classic har andre uiMapID-er, mangler `issecretvalue`, har ikke `Settings.RegisterCanvasLayoutCategory`
       på alle klienter, og Season of Discovery-ID-ene (Uther, Gregory) finnes bare der.

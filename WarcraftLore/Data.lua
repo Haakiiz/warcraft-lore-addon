@@ -10,6 +10,8 @@
 --   alsoIn      (optional) Other zones the NPC also walks through, e.g. { "Desolace", "Feralas" }.
 --   related     (optional) NPC IDs of other entries tied to this one (family, allies, rivals), e.g. { 3230, 10540 }.
 --               One side is enough: the lore window shows the link on both entries.
+--   forever     (optional) true for an NPC that only WoW Forever has (its new zones: Mount Hyjal, Dalaran,
+--               Riverglades ...). The Classic Era build drops these entries when it loads.
 --   appearances (required) List of appearances in the RTS games. Each has:
 --       game      "WC1"  = Warcraft: Orcs & Humans
 --                 "WC2"  = Warcraft II: Tides of Darkness

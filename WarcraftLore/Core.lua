@@ -7,6 +7,18 @@ local L = ns.L
 
 local PREFIX = "|cff8b6cd6Warcraft Lore:|r "
 
+-- Entries marked forever = true stand in zones only WoW Forever has (Mount Hyjal, Dalaran ...).
+-- Other clients (Classic Era) drop them here, before any list, count or achievement is built.
+if C.IsForever() == false then
+    for _, db in ipairs({ ns.NPCS or {}, ns.MEMORIALS or {} }) do
+        for id, entry in pairs(db) do
+            if type(entry) == "table" and entry.forever then
+                db[id] = nil
+            end
+        end
+    end
+end
+
 ns.GAME_ORDER = { "WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK" }
 ns.GAME_SHORT = { WC1 = "WC1", WC2 = "WC2", BTDP = "BtDP", WC3 = "WC3", TFT = "TFT", FK = "FK", BOOK = "Book" }
 ns.GAME_LONG = {
