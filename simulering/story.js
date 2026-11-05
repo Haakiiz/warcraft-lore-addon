@@ -53,7 +53,8 @@
     ["2026-10-06",  0],
     ["2026-10-15", 59],
     ["2026-10-20", 69],
-    ["2026-10-25", 73]
+    ["2026-10-25", 73],
+    ["2026-11-05", 119]
   ];
   // Filene på CurseForge: [versjon, opplastet, nedlastinger per fil (sist sjekket), kort navn].
   var ACTUAL_FILES = [
@@ -69,7 +70,12 @@
     ["0.7.0-beta2", "2026-10-12",  6, "Lore Journal (beta)"],
     ["0.7.0",       "2026-10-12",  9, "Lore Journal, achievements, tysk og fransk"],
     ["0.8.0",       "2026-10-13",  6, "Warcraft II-utseendet"],
-    ["0.8.1",       "2026-10-16", 11, "Filtre for minnesmerker, Ansirem"]
+    ["0.8.1",       "2026-10-16", 14, "Filtre for minnesmerker, Ansirem"],
+    ["0.9.0",       "2026-10-29",  9, "History of Warcraft-bøker, 16 nye veteraner"],
+    ["0.10.0-beta1", "2026-11-02", 3, "Classic Era (beta)"],
+    ["0.10.0",      "2026-11-02", 20, "Classic Era-støtte"],
+    ["0.10.1",      "2026-11-05",  4, "Rettelse for Forever-lanseringen"],
+    ["1.0.0",       "2026-11-05",  7, "Versjon 1.0"]
   ];
 
   function dayText(d) {
@@ -105,7 +111,9 @@
         { label: "Achievements", plan: "0.6.0", real: "0.7.0" },
         { label: "Lore Journal", plan: "1.0.0", real: "0.7.0" },
         { label: "Sone-atlas", plan: "1.1.0", real: "0.6.0" },
-        { label: "Eksport og import av møtt-listen", plan: "1.3.0", real: "0.6.0" }
+        { label: "Eksport og import av møtt-listen", plan: "1.3.0", real: "0.6.0" },
+        { label: "Flere klienter (Classic Era)", plan: "1.2.0", real: "0.10.0" },
+        { label: "Versjon 1.0", plan: "1.0.0", real: "1.0.0" }
       ]
     },
 
@@ -273,19 +281,6 @@
         release: "0.2.0", tone: "spark"
       },
       {
-        // dato og tall følger siste linje i ACTUAL
-        id: "fasit", date: ACTUAL[ACTUAL.length - 1][0],
-        kicker: dayText(ACTUAL[ACTUAL.length - 1][0]) + " · ekte tall",
-        title: "Virkeligheten så langt",
-        body: "Her slutter fiksjonen et øyeblikk. Den lyse streken i grafen er de ekte tallene fra CurseForge: " +
-          ACTUAL[ACTUAL.length - 1][1] + " nedlastinger fordelt på " + ACTUAL_FILES.length + " filer, mot flere hundre i planen. " +
-          "Nedlastingene går altså mye tregere enn modellen. Utviklingen går derimot mye fortere: Lore Journal, achievements, " +
-          "kartnåler og tysk og fransk lå i planen for 2027, men kom alle før 13. oktober 2026.",
-        stat: { label: "ekte nedlastinger på CurseForge", value: ACTUAL[ACTUAL.length - 1][1] },
-        quotes: [],
-        release: null, tone: "crown"
-      },
-      {
         id: "kjeder", date: "2026-11-03",
         kicker: "November 2026 · v0.3.0",
         title: "Veteranlisten åpner",
@@ -296,6 +291,20 @@
           { who: "Bluebell_Hunts", src: "CurseForge", text: "Window pops up every time I target something. Annoying until I found /wcl auto. Maybe say that on the page?" }
         ],
         release: "0.3.0", tone: "rise"
+      },
+      {
+        // dato og tall følger siste linje i ACTUAL
+        id: "fasit", date: ACTUAL[ACTUAL.length - 1][0],
+        kicker: dayText(ACTUAL[ACTUAL.length - 1][0]) + " · ekte tall · v1.0.0",
+        title: "Versjon 1.0, sju måneder før planen",
+        body: "Her slutter fiksjonen et øyeblikk. Dagen etter at WoW Forever åpnet, 5. november 2026, ble v1.0.0 lastet opp til CurseForge. " +
+          "Planen hadde 1.0 først 15. juni 2027. Den lyse streken i grafen er de ekte tallene: " +
+          ACTUAL[ACTUAL.length - 1][1] + " nedlastinger fordelt på " + ACTUAL_FILES.length + " filer, mot flere hundre i planen. " +
+          "Nedlastingene går mye tregere enn modellen, men koden ligger langt foran: Lore Journal, achievements, kartnåler, " +
+          "tysk og fransk og Classic Era-støtte lå i planen for 2027, og alt kom før lanseringen.",
+        stat: { label: "ekte nedlastinger på CurseForge", value: ACTUAL[ACTUAL.length - 1][1] },
+        quotes: [],
+        release: null, tone: "crown"
       },
       {
         id: "kart", date: "2026-12-06",
