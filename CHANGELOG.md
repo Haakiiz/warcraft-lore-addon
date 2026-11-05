@@ -1,5 +1,10 @@
 # Warcraft Lore – changelog
 
+## v1.0.0
+
+- **1.0 for the WoW Forever launch.** The same addon as v0.10.1, now marked as the first full release.
+  It works on the live Forever client (interface 16001) and on WoW Classic Era.
+
 ## v0.10.1
 
 - **WoW Forever launch fix:** closing the world map now always returns a raised lore window to its normal
