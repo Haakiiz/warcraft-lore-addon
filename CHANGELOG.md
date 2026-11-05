@@ -1,5 +1,10 @@
 # Warcraft Lore – changelog
 
+## v0.10.1
+
+- **WoW Forever launch fix:** closing the world map now always returns a raised lore window to its normal
+  level. Forever can hide a frame's level from addons, which could leave the window stuck above other windows.
+
 ## v0.10.0
 
 - **Classic Era support:** the addon now also loads in WoW Classic Era (interface 11509) from the same download.
