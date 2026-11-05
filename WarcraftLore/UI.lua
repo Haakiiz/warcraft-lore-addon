@@ -609,8 +609,10 @@ function UI.RefreshOpen()
 end
 
 -- The world map closed: a window raised above it goes back to the normal level.
+-- DIALOG is the window's normal level, so it is set without reading the current one first
+-- (Forever 1.60.1 can return GetFrameStrata as a secret value, which cannot be compared).
 function UI.LowerWindow()
-    if frame and frame:GetFrameStrata() == "FULLSCREEN_DIALOG" then
+    if frame then
         frame:SetFrameStrata("DIALOG")
     end
 end

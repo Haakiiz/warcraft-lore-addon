@@ -63,7 +63,7 @@ For Classic Era, copy the same folder to `World of Warcraft\_classic_era_\Interf
 
 On Classic Era the level cap is 60, so every veteran and achievement counts from day one. Entries marked `forever = true` in `Data.lua` or `Memorials.lua` (NPCs in zones only Forever has, such as Mount Hyjal) are left out there.
 
-The Forever TOC declares interface 16001 (game version 1.60.1), the last published Forever value. It is built on the modern Mainline/Midnight API, not the Classic API. If the launch client reports a higher number (`/wcl debug` shows it) and the addon is listed as "out of date", tick "Load out of date AddOns" until a new version is out.
+The Forever TOC declares interface 16001 (game version 1.60.1), which install guides still list for the live client after the 4 November 2026 launch (checked 2026-11-05; `/wcl debug` shows the real value). It is built on the modern Mainline/Midnight API, not the Classic API. If the launch client reports a higher number (`/wcl debug` shows it) and the addon is listed as "out of date", tick "Load out of date AddOns" until a new version is out.
 
 ## Commands
 
