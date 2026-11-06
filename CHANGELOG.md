@@ -1,5 +1,12 @@
 # Warcraft Lore – changelog
 
+## Unreleased
+
+- **3 new veterans from WoW Forever's new content:** The Baron in the Ruins of Lordaeron (the abomination that was
+  once Grand Marshal Garithos from *The Frozen Throne*), the goblin trader Glix Xizzix in the Undercity
+  (*Forsaken Kingdom*), and the Image of Archmage Modera outside Dalaran in Silverpine Forest (novels).
+  They only exist in WoW Forever, so the Classic Era build leaves them out.
+
 ## v1.0.0
 
 - **1.0 for the WoW Forever launch.** The same addon as v0.10.1, now marked as the first full release.

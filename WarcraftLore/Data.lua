@@ -4897,4 +4897,111 @@ ns.NPCS = {
         },
         confidence = "confirmed",
     },
+
+    -- ===================================================================== WoW Forever (new NPCs)
+    [250660] = {
+        name = "The Baron",
+        zone = "Ruins of Lordaeron",
+        coords = "",
+        forever = true,
+        related = { 5734 },
+        appearances = {
+            {
+                game = "TFT",
+                campaign = "Curse of the Blood Elves (Alliance)",
+                missions = { "Misconceptions", "The Dungeons of Dalaran" },
+                role = "As Grand Marshal Garithos, commands the Alliance remnants at Dalaran, then condemns Kael'thas and his blood elves to death for allying with the naga",
+            },
+            {
+                game = "TFT",
+                campaign = "Legacy of the Damned (Undead)",
+                missions = { "Dreadlord's Fall", "A New Power in Lordaeron" },
+                role = "Enemy commander under Detheroc's mind control, then Sylvanas' uneasy ally against Balnazzar; she has him killed once Lordaeron's capital falls",
+            },
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "City of the Dead" },
+                role = "His remains are gathered by Garek Bandarion and Dark Ranger Anya and stitched into a new abomination by Apothecary Keever",
+            },
+        },
+        story = "The Baron is the abomination that was once Othmar Garithos, the bigoted Grand Marshal who led the last human forces of Lordaeron after the Third War. "
+             .. "After Sylvanas had him killed, the Forsaken stitched his body into an abomination, and he was cut down and sewn back together several times. "
+             .. "By the time of WoW Forever he has gone rogue and roams King's Alley in the Ruins of Lordaeron. "
+             .. "Captain Truman, one of his captains in life, still serves him without knowing that both of them are now undead. "
+             .. "When adventurers bring the Baron's head to Master Apothecary Faranell, he reveals who the creature really is.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Othmar_Garithos",
+            "https://warcraft.wiki.gg/wiki/The_Baron",
+            "https://warcraft.wiki.gg/wiki/Unending_Torment",
+            "https://warcraft.wiki.gg/wiki/Misconceptions_(WC3_Blood_Elf)",
+            "https://warcraft.wiki.gg/wiki/A_New_Power_in_Lordaeron_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
+    [272526] = {
+        name = "Glix Xizzix",
+        zone = "Undercity",
+        coords = "69.8, 47.0",
+        forever = true,
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "City of the Dead" },
+                role = "Goblin merchant whose caravan is robbed by gnolls in Tirisfal Glades; Garek Bandarion and Dark Ranger Anya recover his wares in the optional quest \"Highway Robbery\"",
+            },
+        },
+        story = "Glix Xizzix is a goblin trader who led the Xizzix Caravan through Tirisfal Glades while the Forsaken were founding their kingdom. "
+             .. "When Rot Hide gnolls stole his wares, he struck a deal with Garek Bandarion and Dark Ranger Anya to get them back. "
+             .. "He now does business in the Trade Quarter of the Undercity. "
+             .. "He likes to tell anyone who listens that he fed the Undercity and single-handedly armed the resistance during the war with the Scourge.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Glix_Xizzix",
+            "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
+    [269127] = {
+        name = "Image of Archmage Modera",
+        zone = "Silverpine Forest",
+        coords = "68.6, 45.1",
+        forever = true,
+        related = { 2543, 15990 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Road to Damnation",
+                missions = {},
+                role = "Sits on the Kirin Tor council that confronts Kel'Thuzad and warns him that his necromancy would see them condemned as heretics",
+            },
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Leads the exhausted mages in the Violet Citadel who hold back the Emerald Nightmare when Malfurion contacts her",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Insists at the Council of Six that Dalaran stays neutral when Jaina asks for help against Orgrimmar",
+            },
+        },
+        story = "Archmage Modera is one of the longest-serving members of the Council of Six, the archmages who rule the Kirin Tor of Dalaran. "
+             .. "Before the Third War she spoke out against Kel'Thuzad's necromancy, and she stayed in Dalaran after the Scourge destroyed it. "
+             .. "In WoW Forever, Dalaran has lowered its shield early while the city is still being rebuilt, and Modera herself works in the Violet Citadel. "
+             .. "Outside the city walls, by the sewer exit pipe in Silverpine Forest, a magical image of her gives adventurers tasks for the Kirin Tor.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Image_of_Archmage_Modera_(Forever)",
+            "https://warcraft.wiki.gg/wiki/Archmage_Modera",
+            "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
+        },
+        confidence = "confirmed",
+    },
 }

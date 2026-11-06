@@ -338,13 +338,14 @@ def check_entries(npcs):
 
         if not isinstance(npc_id, int) or isinstance(npc_id, bool) or npc_id <= 0:
             err("the NPC ID must be a positive integer")
-        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID:
-            err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
-                "and cannot be met in WoW Forever. Remove the entry")
         if not isinstance(entry, LuaTable) or entry.is_list:
             err("the entry must be a table with named fields")
             continue
         e = entry.data
+        # Forever's own new NPCs (forever = true) have new, higher IDs; the cap only guards shared NPCs.
+        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID and e.get("forever") is not True:
+            err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
+                "and cannot be met in WoW Forever. Mark it forever = true only if it is a Forever-only NPC")
 
         texts = [("name", e.get("name")), ("story", e.get("story"))]
         for n, a in enumerate(getattr(e.get("appearances"), "data", None) or [], 1):
