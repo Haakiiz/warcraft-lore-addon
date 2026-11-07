@@ -19,6 +19,20 @@ if C.IsForever() == false then
     end
 end
 
+-- WoW Forever gave some veterans a new NPC ID (Leonid Barthalomew is 11036 everywhere else, 267008 in
+-- Forever). An entry lists those in foreverIDs = { ... }; ns.Lookup turns them into the entry's own ID,
+-- so meetings, alerts and the met counter all treat them as the same veteran.
+ns.FOREVER_ALIAS = {}
+for id, entry in pairs(ns.NPCS or {}) do
+    if type(entry) == "table" and type(entry.foreverIDs) == "table" then
+        for _, fid in ipairs(entry.foreverIDs) do
+            if ns.NPCS[fid] == nil then
+                ns.FOREVER_ALIAS[fid] = id
+            end
+        end
+    end
+end
+
 ns.GAME_ORDER = { "WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK" }
 ns.GAME_SHORT = { WC1 = "WC1", WC2 = "WC2", BTDP = "BtDP", WC3 = "WC3", TFT = "TFT", FK = "FK", BOOK = "Book" }
 ns.GAME_LONG = {
@@ -77,6 +91,7 @@ ns.FeatureOff = function(key) return disabled[key] == true end
 function ns.Lookup(unit, guid)
     guid = guid or (unit and C.UnitGUID(unit))
     local npcID, guidType = C.NPCIDFromGUID(guid)
+    npcID = npcID and ns.FOREVER_ALIAS[npcID] or npcID
     local name = unit and C.UnitName(unit)
     local entry = npcID and ns.NPCS[npcID]
     return entry, npcID, guidType, name

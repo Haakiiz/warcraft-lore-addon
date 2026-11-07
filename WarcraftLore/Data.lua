@@ -254,6 +254,8 @@ ns.NPCS = {
         name = "Archmage Ansirem Runeweaver",
         zone = "Alterac Mountains",
         coords = "18.8, 78.5",
+        alsoIn = { "Dalaran" },
+        foreverIDs = { 253958, 256621 },
         appearances = {
             {
                 game = "WC3",
@@ -3549,6 +3551,8 @@ ns.NPCS = {
         name = "Leonid Barthalomew the Revered",
         zone = "Eastern Plaguelands",
         coords = "81.6, 57.8",
+        alsoIn = { "Tirisfal Glades" },
+        foreverIDs = { 267008 },
         appearances = {
             {
                 game = "FK",
@@ -4999,6 +5003,114 @@ ns.NPCS = {
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Image_of_Archmage_Modera_(Forever)",
+            "https://warcraft.wiki.gg/wiki/Archmage_Modera",
+            "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
+        },
+        confidence = "confirmed",
+    },
+
+    [253471] = {
+        name = "Mordent Evenshade",
+        zone = "Shen'dralas",
+        coords = "",
+        forever = true,
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Leads the Highborne mages of Darnassus, who are murdered one by one, until Maiev's trap catches him and his followers and Malfurion and Jarod Shadowsong free them",
+            },
+        },
+        story = "Archmage Mordent Evenshade is the leader of the Shen'dralar Highborne, the night elf mages who once served Prince Tortheldrin in Eldre'Thalas, the city adventurers know as Dire Maul. "
+             .. "In WoW Forever you find him at Evenshade's Overlook in Shen'dralas, north of Dire Maul, where he stares toward a mass grave of his kin and mourns the destruction that ended his city. "
+             .. "He is proud of his people's history and dislikes that outsiders reduce the city to a name like Dire Maul. "
+             .. "In the novel Wolfheart, he tries to make amends and aid the kaldorei, but his Highborne mages are murdered in Darnassus. "
+             .. "Maiev, who is behind the murders, lures him and his followers into a trap and kills his student Var'dyn Skyseeker, and Malfurion Stormrage and Jarod Shadowsong free the rest.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Mordent_Evenshade",
+            "https://warcraft.wiki.gg/wiki/Wolfheart",
+        },
+        confidence = "confirmed",
+    },
+
+    [253957] = {
+        name = "Muln Earthfury",
+        zone = "Mulgore",
+        coords = "33.4, 22.6",
+        forever = true,
+        foreverIDs = { 256620, 259118 },
+        alsoIn = { "Zephras Isle" },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Thrall: Twilight of the Aspects",
+                missions = {},
+                role = "Worries about Thrall at the Maelstrom while the former Warchief cannot focus on his shamanic duty, and is glad to see him calmer when he returns",
+            },
+            {
+                game = "BOOK",
+                campaign = "Charge of the Aspects",
+                missions = {},
+                role = "Joins Nobundo and Aggra in rescuing Thrall while Deathwing torments him",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Steps down as leader of the Earthen Ring in favor of Thrall, and urges the shaman to go help the enslaved water elementals",
+            },
+        },
+        story = "Muln Earthfury is a tauren shaman and a leader of the Earthen Ring, the shaman who work to keep the elements in balance. "
+             .. "In WoW Forever he is at Camp Gev'rek on Skywatcher Plateau in northwestern Mulgore, where the Earthen Ring and the skyborne Windshapers have joined forces. "
+             .. "The Windshapers' leader Ayessa Dawnsinger contacted him because their home island in Skywall, the plane of air, was collapsing, and he led Earthen Ring forces there to help against Rohash. "
+             .. "Skyborne players meet him again in the finale of their starting experience on Zephras Isle. "
+             .. "In the novel Thrall: Twilight of the Aspects, he is worried about Thrall at the Maelstrom, and in Jaina Proudmoore: Tides of War he has handed the Earthen Ring to Thrall after Deathwing's fall.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Muln_Earthfury",
+            "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
+            "https://warcraft.wiki.gg/wiki/Charge_of_the_Aspects",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+        },
+        confidence = "confirmed",
+    },
+
+    [246748] = {
+        name = "Archmage Modera",
+        zone = "Dalaran",
+        coords = "",
+        forever = true,
+        foreverIDs = { 276235 },
+        related = { 269127, 2543 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Road to Damnation",
+                missions = {},
+                role = "Sits on the Kirin Tor council that confronts Kel'Thuzad and warns him that his necromancy would see them condemned as heretics",
+            },
+            {
+                game = "BOOK",
+                campaign = "Stormrage",
+                missions = {},
+                role = "Leads the exhausted mages in the Violet Citadel who hold back the Emerald Nightmare when Malfurion contacts her",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Insists at the Council of Six that Dalaran stays neutral when Jaina asks for help against Orgrimmar",
+            },
+        },
+        story = "Archmage Modera is one of the longest-serving members of the Council of Six, the archmages who rule the Kirin Tor of Dalaran. "
+             .. "In WoW Forever, Dalaran has lowered its shield early while the city is still being rebuilt, and you find Modera herself in the Violet Citadel. "
+             .. "She welcomes adventurers who have helped the Kirin Tor and tells them that Dalaran owes them at least that much. "
+             .. "In the novel Road to Damnation, she sits on the council that warns Kel'Thuzad his necromancy would see them condemned as heretics. "
+             .. "In Stormrage, she leads the weary mages of the Violet Citadel against the Emerald Nightmare, and in Jaina Proudmoore: Tides of War she insists that Dalaran stay neutral.",
+        items = {},
+        sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Modera",
             "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
         },
