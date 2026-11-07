@@ -7,7 +7,12 @@ Source: warcraft.wiki.gg only (Wowhead blocks scripted access; do not try to get
 ## Steps
 1. **Collect (no AI):** `python3 -I tools/research/forever_scan.py <workdir>` (workdir in the scratchpad).
    It skips every name in `tools/research/forever_seen.json` and always re-checks `tools/research/forever_watch.json`.
-   If it reports 0 candidates not in Data.lua: skip to step 5.
+   If it reports 0 candidates not in Data.lua: still do step 1b, then skip to step 5.
+1b. **Reverse check (no AI):** `python3 -I tools/research/forever_mentions.py <workdir>` (after step 1, it reuses
+   `_books.json`). It lists RTS/book characters NAMED in Forever quests, Forever NPC pages and Forever sections who are
+   not in the addon yet. Most are only mentions; give the list to one Haiku agent with the question "MEETABLE in
+   Forever, or only MENTIONED?" (a hidden identity, like The Baron = Garithos, counts as meetable). Afterwards run it
+   again with `--mark-seen`.
 2. **Screen (Claude Haiku):** split `candidates_NEW.json` (only items with `already_in_Data_lua` false) into groups of
    about 30 (`cand_H01.json` ...). One Haiku agent per group with `.kritikk/BRIEF_forever_screener.md`.
    Run them in parallel, in the background.
@@ -19,7 +24,7 @@ Source: warcraft.wiki.gg only (Wowhead blocks scripted access; do not try to get
    banned words, no invented IDs). A book namesake with a Forever ID but no stated location or identity goes on
    `forever_watch.json`, not into Data.lua. Owner decisions: the audio short story *Unbowed* does NOT count;
    projections/images of a book character (Image of Archmage Modera) DO count.
-5. **Mark seen:** `python3 -I tools/research/forever_scan.py <workdir> --mark-seen` (watch-list names stay unseen).
+5. **Mark seen** (both scripts): `python3 -I tools/research/forever_scan.py <workdir> --mark-seen` (watch-list names stay unseen).
 6. **Test:** `pip install lupa` if needed, then `python3 tests/validate_db.py` and every `tests/test_*.py`.
 7. **Ship:** commit on a new branch `forever-scan/<YYYY-MM-DD>`, push, and open a PR to `main` titled
    "Forever scan <date>: N new veterans" (or "Forever scan <date>: no new veterans, seen list updated").

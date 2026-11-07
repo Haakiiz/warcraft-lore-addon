@@ -773,6 +773,30 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Dustwallow Marsh
+    [12939] = {
+        name = "Doctor Gustaf VanHowzen",
+        zone = "Dustwallow Marsh",
+        coords = "67.6, 48.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Stays in Theramore when the Horde attacks and tends the injured soldiers once the Horde has escaped the city",
+            },
+        },
+        story = "Doctor Gustaf VanHowzen is a human trauma surgeon and the chief physician of Alliance Trauma, a first aid trainer in Foothold Citadel on Theramore Isle. "
+             .. "In WoW Forever he gives the Triage quest to adventurers who have come far in their first aid training. "
+             .. "He also oversees the training of Theramore's healers. "
+             .. "In the novel Jaina Proudmoore: Tides of War, he remains in Theramore when the Horde attacks and, after the Horde has escaped the city, begins healing the injured soldiers.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Doctor_Gustaf_VanHowzen",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+        },
+        confidence = "confirmed",
+    },
+
     [4968] = {
         name = "Lady Jaina Proudmoore",
         zone = "Dustwallow Marsh",

@@ -10,6 +10,7 @@
   in Mulgore (Thrall and Jaina novels) and Archmage Modera herself in Dalaran's Violet Citadel.
 - **Two veterans every client has:** Lariia, the priestess in Darnassus' Temple of the Moon (*Elegy*), and Dalar
   Dawnweaver in Silverpine Forest (one of the archmages who face Arthas outside Dalaran in *Warcraft III: Reforged*).
+- **Doctor Gustaf VanHowzen** on Theramore Isle, who tends the wounded in *Jaina Proudmoore: Tides of War*.
 - **Forever's new NPC IDs:** WoW Forever gave some veterans a new NPC ID (Leonid Barthalomew, Ansirem Runeweaver).
   The addon now knows those too, and they count as the same veteran you may already have met.
 

@@ -37,6 +37,14 @@ Re-run with `tools/research/forever_scan.py` (only new wiki names + the watch li
 Watch list (`tools/research/forever_watch.json`): book namesakes in the datamine with no Forever location yet:
 Windle Sparkshine, Perith Stormhoof, Randal, Bluebell, Tiala Whitemane, Goldrinn.
 
+2026-11-07 reverse check and memorials: every RTS/book character NAMED in Forever quests, Forever NPC pages and
+Forever sections (247 characters; `tools/research/forever_mentions.py`) and 34 Forever object pages. Added Doctor
+Gustaf VanHowzen (Tides of War). Almost all names are only mentioned (Arthas, Illidan, Sargeras ...).
+- [ ] Agatha and Aradne (val'kyr in Deathknell, novel *Sylvanas*): meetable, but no NPC ID on the wiki yet
+- [ ] Memorial lead: library book "Archmage Antonidas: The Unabridged Autobiography" in Ironforge (object 386691),
+      tagged Season of Discovery only; check whether Forever has it
+- Not counted: *World of Warcraft: Shaman* is a manga (Krelna, Shotoa)
+
 - Not included (Håkon, 2026-11-06): characters who only appear in the Forever audio short story *Unbowed* (Cormack, Danitha Morr, Arec Mistmantle)
 
 2026-10-29 launch health check: all classic NPC IDs were found on wowhead.com/forever with the same names (.kritikk/FOREVER/forever_id_check.md on the session/release-qa branch); the first Forever-zone veterans are also on that branch, not yet on main.
