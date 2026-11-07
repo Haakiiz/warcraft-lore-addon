@@ -294,6 +294,31 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Darnassus
+    [4092] = {
+        name = "Lariia",
+        zone = "Darnassus",
+        coords = "",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Elegy",
+                missions = {},
+                role = "Priestess of the Moon who scouts the burning city for Astarii Starseeker and reports the roads blocked, then stays in the Temple of the Moon with the last priestesses",
+            },
+        },
+        story = "Lariia is a night elf priestess of the Sisterhood of Elune and the priest trainer in the Temple of the Moon in Darnassus. "
+             .. "In the novella Elegy, she is in the temple during the Burning of Teldrassil. "
+             .. "Astarii Starseeker sends her to see how far the fire has spread, so she dips herself in the temple's pool and goes outside. "
+             .. "She returns to report that everything is burning and that the roads into the city are blocked by fire. "
+             .. "The last three priestesses decide to stay in the temple as the city burns, and Lariia dies there.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Lariia",
+            "https://warcraft.wiki.gg/wiki/Elegy",
+        },
+        confidence = "confirmed",
+    },
+
     [7999] = {
         name = "Tyrande Whisperwind",
         zone = "Darnassus",
@@ -5113,6 +5138,31 @@ ns.NPCS = {
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Modera",
             "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Silverpine Forest
+    [1938] = {
+        name = "Dalar Dawnweaver",
+        zone = "Silverpine Forest",
+        coords = "44.2, 39.8",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "Path of the Damned (Undead)",
+                missions = { "Under the Burning Sky" },
+                role = "One of seven randomly named enemy archmage heroes (six on normal difficulty, all seven on hard) who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Dalar Dawnweaver is a Forsaken quest giver at the Sepulcher in Silverpine Forest. "
+             .. "He was an archmage of the Kirin Tor who was killed in the Scourge attack on Dalaran, raised as one of the Scourge, and then freed by Sylvanas. "
+             .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde. "
+             .. "In the game he sends adventurers after Archmage Arugal.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Dalar_Dawnweaver",
+            "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
         },
         confidence = "confirmed",
     },

@@ -6,6 +6,12 @@
   once Grand Marshal Garithos from *The Frozen Throne*), the goblin trader Glix Xizzix in the Undercity
   (*Forsaken Kingdom*), and the Image of Archmage Modera outside Dalaran in Silverpine Forest (novels).
   They only exist in WoW Forever, so the Classic Era build leaves them out.
+- **More veterans from WoW Forever:** Mordent Evenshade in Shen'dralas (*Wolfheart*), Muln Earthfury at Camp Gev'rek
+  in Mulgore (Thrall and Jaina novels) and Archmage Modera herself in Dalaran's Violet Citadel.
+- **Two veterans every client has:** Lariia, the priestess in Darnassus' Temple of the Moon (*Elegy*), and Dalar
+  Dawnweaver in Silverpine Forest (one of the archmages who face Arthas outside Dalaran in *Warcraft III: Reforged*).
+- **Forever's new NPC IDs:** WoW Forever gave some veterans a new NPC ID (Leonid Barthalomew, Ansirem Runeweaver).
+  The addon now knows those too, and they count as the same veteran you may already have met.
 
 ## v1.0.0
 

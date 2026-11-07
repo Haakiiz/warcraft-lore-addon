@@ -21,14 +21,22 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 A rough pass, not NPC-by-NPC: the wiki was still filling in. Added: The Baron (= Othmar Garithos), Glix Xizzix, Image of Archmage Modera.
 
 - [~] Mount Hyjal (Renewed): 0 hits (65 NPCs + 17 named bosses, all Forever-only)
-- [~] Shen'dralas: Mordent Evenshade (*Wolfheart*) at Evenshade's Overlook. **Needs the Forever NPC ID (`/wcl id`)**
+- [x] Shen'dralas: Mordent Evenshade (*Wolfheart*) added (253471)
 - [~] Riverglades: 0 hits (Cho'gall and Gul'dan are only mentioned, not NPCs)
 - [~] Zephras Isle: 0 hits in 134 NPCs
-- [~] City of Dalaran / Dalaran: Image of Archmage Modera added (Silverpine, outside the walls). The real Modera stands in the Violet Citadel: add her too once her Forever NPC ID is known
+- [~] City of Dalaran / Dalaran: Image of Archmage Modera added (Silverpine, outside the walls). Archmage Modera herself added (246748 + 276235)
 - [~] Ruins of Lordaeron: The Baron added (no coords: instance)
-- [ ] Muln Earthfury (books) at Camp Gev'rek, Mulgore (Forever). **Needs the Forever NPC ID**
-- [ ] Leonid Barthalomew (already in the database as 11036) also stands at Bandarion Keep, Tirisfal (22.0, 44.7) in Forever, as a quest giver. Check his Forever NPC ID and add `alsoIn`
-- [ ] Archmage Ansirem Runeweaver: Forever also puts him in the Violet Citadel and on Zephras Isle
+- [x] Muln Earthfury added (253957 + 256620, 259118)
+- [x] Leonid Barthalomew: Forever ID 267008 added as foreverIDs, alsoIn Tirisfal Glades
+- [x] Archmage Ansirem Runeweaver: Forever IDs 253958, 256621, alsoIn Dalaran
+
+2026-11-07 full pass: every NPC in the Forever 1.60.1 datamine (User:Mordecay/Forever/NPCs, 2 318 names with IDs),
+the Forever categories and every page using the Forever templates: 4 880 names, 407 candidates, 12 Haiku screeners,
+4 Sonnet verifiers. Added Mordent, Muln, Modera, Lariia, Dalar Dawnweaver; foreverIDs for Leonid and Ansirem.
+Re-run with `tools/research/forever_scan.py` (only new wiki names + the watch list are checked).
+Watch list (`tools/research/forever_watch.json`): book namesakes in the datamine with no Forever location yet:
+Windle Sparkshine, Perith Stormhoof, Randal, Bluebell, Tiala Whitemane, Goldrinn.
+
 - Not included (Håkon, 2026-11-06): characters who only appear in the Forever audio short story *Unbowed* (Cormack, Danitha Morr, Arec Mistmantle)
 
 2026-10-29 launch health check: all classic NPC IDs were found on wowhead.com/forever with the same names (.kritikk/FOREVER/forever_id_check.md on the session/release-qa branch); the first Forever-zone veterans are also on that branch, not yet on main.
