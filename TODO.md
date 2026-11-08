@@ -45,6 +45,14 @@ Gustaf VanHowzen (Tides of War). Almost all names are only mentioned (Arthas, Il
       tagged Season of Discovery only; check whether Forever has it
 - Not counted: *World of Warcraft: Shaman* is a manga (Krelna, Shotoa)
 
+2026-11-08 Warcraft III: Reforged pass: all 10 Forsaken Kingdom missions read in full (12 Haiku readers, 3 Sonnet
+verifiers), plus every "Reforged" note in the 93 Reign of Chaos / Frozen Throne missions. Added 10 veterans (see
+CHANGELOG). Rejected: Uther (only a Shadowlands NPC ID; the tomb memorial stays), Sedrick Calston (Cataclysm ID),
+Melisara (no NPC ID on the wiki), Horace Alder (added in 2.4.2), Garek Bandarion and Dark Ranger Anya (no NPC in
+the classic era or Forever), the Homecoming villagers (names from WC3 map makers, not the WoW NPCs).
+Sylvanas and Varimathras in War of the Damned: the mission page lists them without saying what they do, so no new
+appearance was added.
+
 - Not included (Håkon, 2026-11-06): characters who only appear in the Forever audio short story *Unbowed* (Cormack, Danitha Morr, Arec Mistmantle)
 
 2026-10-29 launch health check: all classic NPC IDs were found on wowhead.com/forever with the same names (.kritikk/FOREVER/forever_id_check.md on the session/release-qa branch); the first Forever-zone veterans are also on that branch, not yet on main.

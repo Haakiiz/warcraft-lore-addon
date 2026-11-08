@@ -47,6 +47,29 @@ local _, ns = ...
 ns.NPCS = {
 
     -- ===================================================================== Orgrimmar
+    [15460] = {
+        name = "Grunt Maug",
+        zone = "Orgrimmar",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Invasion of Kalimdor (Orc)",
+                missions = { "To Tame a Land" },
+                role = "One of the grunts guarding the front gate of Orgrimmar, named Maug (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Grunt Maug is an orc quest giver in the Valley of Spirits in Orgrimmar. "
+             .. "During the Ahn'Qiraj war effort he collects tin bars for the Horde, asking for 22,000 so that weapons and armor can be made for the coming war. "
+             .. "In Warcraft III: Reforged he is one of the grunts guarding the front gate of Orgrimmar in To Tame a Land.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Grunt_Maug",
+            "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
+        },
+        confidence = "confirmed",
+    },
+
     [4949] = {
         name = "Thrall",
         zone = "Orgrimmar",
@@ -773,6 +796,93 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Dustwallow Marsh
+    [4889] = {
+        name = "Torq Ironblast",
+        zone = "Dustwallow Marsh",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Invasion of Kalimdor (Orc)",
+                missions = { "Cry of the Warsong", "Where Wyverns Dare" },
+                role = "The randomly named enemy mountain king who commands the Gilneas Brigade, first defending a base against the Warsong clan and later the entrance to Stonetalon Peak (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Torq Ironblast is a dwarf gunsmith who sells guns in Foothold Citadel on Theramore Isle in Dustwallow Marsh. "
+             .. "In Warcraft III: Reforged his name is the random enemy mountain king of the Gilneas Brigade, whose base in the Stonetalon Mountains Grom Hellscream's Warsong clan attacks. "
+             .. "In Where Wyverns Dare he is the hero of the Human Expedition guarding the entrance to Stonetalon Peak.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Torq_Ironblast",
+            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Where_Wyverns_Dare_(WC3_Orc)",
+        },
+        confidence = "confirmed",
+    },
+
+    [8140] = {
+        name = "Brother Karman",
+        zone = "Dustwallow Marsh",
+        coords = "67.4, 47.4",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Invasion of Kalimdor (Orc)",
+                missions = { "Cry of the Warsong" },
+                role = "One of the randomly named enemy paladin heroes, a member of the Lordaeron Corps defending a human base in the Stonetalon Mountains against Grom Hellscream's Warsong clan (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Brother Karman is a human paladin trainer on Theramore Isle in Dustwallow Marsh, just outside Foothold Citadel near the training dummies. "
+             .. "He is a member of the Theramore Guard and the Knights of the Silver Hand. "
+             .. "In Warcraft III: Reforged his name is the random enemy paladin hero of the Lordaeron Corps, whose base in the Stonetalon Mountains Grom Hellscream's Warsong clan attacks.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Brother_Karman",
+            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
+        },
+        confidence = "confirmed",
+    },
+
+    [4967] = {
+        name = "Archmage Tervosh",
+        zone = "Dustwallow Marsh",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Invasion of Kalimdor (Orc)",
+                missions = { "Cry of the Warsong", "Where Wyverns Dare" },
+                role = "One of the randomly named enemy archmage heroes defending the human bases in the Stonetalon Mountains against Grom Hellscream's Warsong clan (Warcraft III: Reforged only)",
+            },
+            {
+                game = "BOOK",
+                campaign = "Jaina Proudmoore: Tides of War",
+                missions = {},
+                role = "Advises his friend Jaina in Theramore, helps search for the stolen Focusing Iris, and dies in the mana bomb attack on the city",
+            },
+            {
+                game = "BOOK",
+                campaign = "Wolfheart",
+                missions = {},
+                role = "Travels to Darnassus for Jaina and votes to readmit Gilneas to the Alliance",
+            },
+        },
+        story = "Archmage Tervosh is a human quest giver in the Theramore Isle tower in Dustwallow Marsh and a close friend and advisor to Jaina Proudmoore. "
+             .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes in the human bases that Grom Hellscream's Warsong clan attacks in the Stonetalon Mountains. "
+             .. "In the game he sends adventurers after Private Hendel in The Missing Diplomat and gives out Shadowshard Fragments. "
+             .. "In the novel Jaina Proudmoore: Tides of War he stays out of the Kirin Tor, helps Jaina and Kalecgos look for the stolen Focusing Iris, and is killed when the Horde destroys Theramore with a mana bomb. "
+             .. "In the novel Wolfheart he goes to Darnassus on Jaina's behalf and votes to let Gilneas back into the Alliance.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Archmage_Tervosh",
+            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Where_Wyverns_Dare_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
+            "https://warcraft.wiki.gg/wiki/Wolfheart",
+        },
+        confidence = "confirmed",
+    },
+
     [12939] = {
         name = "Doctor Gustaf VanHowzen",
         zone = "Dustwallow Marsh",
@@ -1135,6 +1245,29 @@ ns.NPCS = {
     },
 
     -- ===================================================================== Undercity
+    [2492] = {
+        name = "Lexington Mortaim",
+        zone = "Undercity",
+        coords = "84.2, 15.6",
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "City of the Dead" },
+                role = "Optional quest giver (Relic Raiders): believes a powerful artifact remains in the Arcane Sanctuary and asks the player to retrieve it for study",
+            },
+        },
+        story = "Lexington Mortaim is a Forsaken mage and portal trainer in the Magic Quarter of the Undercity. "
+             .. "He teaches level 40 mages the Portal to Undercity, and tells non-mages they lack the mental acuity to grasp portal magic. "
+             .. "In Warcraft III: Reforged, Forsaken Kingdom, he wants the Forsaken to benefit from studying a relic left in the abandoned Arcane Sanctuary of the Capital City ruins.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Lexington_Mortaim",
+            "https://warcraft.wiki.gg/wiki/City_of_the_Dead_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
     [10181] = {
         name = "Lady Sylvanas Windrunner",
         zone = "Undercity",
@@ -4804,6 +4937,12 @@ ns.NPCS = {
         coords = "",
         appearances = {
             {
+                game = "WC3",
+                campaign = "The Scourge of Lordaeron (Human)",
+                missions = { "March of the Scourge" },
+                role = "Enemy lich hero among the Scourge commanders in the assault on Hearthglen (Warcraft III: Reforged only)",
+            },
+            {
                 game = "FK",
                 campaign = "The Last Days of Lordaeron (Human)",
                 missions = { "Siege" },
@@ -4830,6 +4969,31 @@ ns.NPCS = {
         confidence = "confirmed",
     },
     -- ===================================================================== Stratholme
+    [10439] = {
+        name = "Ramstein the Gorger",
+        zone = "Stratholme",
+        coords = "",
+        related = { 10440 },
+        appearances = {
+            {
+                game = "FK",
+                campaign = "The Last Days of Lordaeron (Human)",
+                missions = { "Vengeance" },
+                role = "Scourge abomination who stands among the undead forces in Stratholme as Garek Bandarion and Ilastar Songbreeze hunt Baron Rivendare",
+            },
+        },
+        story = "Ramstein the Gorger is an elite abomination boss in Slaughter Square, in the burning city of Stratholme, where he serves the Scourge. "
+             .. "He is stitched together from many corpses and is responsible for the death of thousands, including the ranger lord Nathanos Marris. "
+             .. "Nathanos, now the undead Nathanos Blightcaller, hunted him across the Plaguelands for months until Ramstein fled to the safety of Stratholme. "
+             .. "In Warcraft III: Reforged, Forsaken Kingdom, he is already in Stratholme when Garek Bandarion and Ilastar Songbreeze enter the city to hunt down Baron Rivendare.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Ramstein_the_Gorger",
+            "https://warcraft.wiki.gg/wiki/Vengeance_(WC3_Human)",
+        },
+        confidence = "confirmed",
+    },
+
     [10440] = {
         name = "Baron Rivendare",
         zone = "Stratholme",
@@ -5187,6 +5351,105 @@ ns.NPCS = {
         sources = {
             "https://warcraft.wiki.gg/wiki/Dalar_Dawnweaver",
             "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Tirisfal Glades
+    [1499] = {
+        name = "Magistrate Sevren",
+        zone = "Tirisfal Glades",
+        coords = "60, 50",
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "A Scarlet Flame" },
+                role = "Asks the player to deal with the goblins near Brill during the Assess the Damage quest, then takes the report",
+            },
+        },
+        story = "Magistrate Sevren is a Forsaken quest giver in the Town Hall of Brill in Tirisfal Glades. "
+             .. "He hands out the early duties of the newly freed Forsaken around Brill. "
+             .. "In Warcraft III: Reforged, Forsaken Kingdom, Bernd sends the player to survey the damaged villages, and Brill and Sevren are the first stop.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Magistrate_Sevren",
+            "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
+    [1570] = {
+        name = "Executor Arren",
+        zone = "Tirisfal Glades",
+        coords = "32, 66",
+        appearances = {
+            {
+                game = "FK",
+                campaign = "Forsaken Kingdom (Undead)",
+                missions = { "A Scarlet Flame" },
+                role = "Sends the player to defeat the Essence of Fear for Deathknell during the Assess the Damage quest, then takes the report",
+            },
+        },
+        story = "Executor Arren is a Forsaken who commands Deathknell in Tirisfal Glades. "
+             .. "He is the first leader that newly risen Forsaken meet, and he sends them on their first tasks. "
+             .. "He greets newcomers with the words \"All of the Forsaken must do what they can for the good of their brothers and sisters.\" "
+             .. "In Warcraft III: Reforged, Forsaken Kingdom, Bernd asks the player to survey the villages damaged by the Scarlet Crusade, and Arren is the Deathknell stop on that tour.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Executor_Arren",
+            "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Azshara
+    [8379] = {
+        name = "Archmage Xylem",
+        zone = "Azshara",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Invasion of Kalimdor (Orc)",
+                missions = { "Cry of the Warsong", "Where Wyverns Dare" },
+                role = "One of the randomly named enemy archmage heroes defending the human bases in the Stonetalon Mountains against Grom Hellscream's Warsong clan (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Archmage Xylem is a human quest giver who lives in his tower in the mountains of northern Azshara. "
+             .. "Long ago the green drake Morphaz devoured one of his apprentices and the arcane shard the apprentice carried, and Xylem has sworn to hunt the drake down and recover it. "
+             .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes in the human bases that Grom Hellscream's Warsong clan attacks in the Stonetalon Mountains. "
+             .. "In Where Wyverns Dare he can also be the archmage of the Lordaeron Brigade.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Archmage_Xylem",
+            "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
+            "https://warcraft.wiki.gg/wiki/Where_Wyverns_Dare_(WC3_Orc)",
+        },
+        confidence = "confirmed",
+    },
+
+    -- ===================================================================== Western Plaguelands
+    [1852] = {
+        name = "Araj the Summoner",
+        zone = "Western Plaguelands",
+        coords = "",
+        appearances = {
+            {
+                game = "WC3",
+                campaign = "The Scourge of Lordaeron (Human)",
+                missions = { "March of the Scourge" },
+                role = "Scourge lich who commands the Undead Ravagers in their attack on Hearthglen, replacing the randomly named lich hero of the original (Warcraft III: Reforged only)",
+            },
+        },
+        story = "Araj the Summoner is a lich and the ruler of the ruins of Andorhal in the Western Plaguelands. "
+             .. "He is the former leader of Scholomance, and from Andorhal he spreads the Plague of Undeath through the plague cauldrons while holding off the Forsaken at the Bulwark and the Alliance at Chillwind Camp. "
+             .. "In Warcraft III: Reforged he is the regional commander of the Scourge who leads the Undead Ravagers against Hearthglen in March of the Scourge. "
+             .. "In the game adventurers kill him on the orders of Commander Ashlam Valorfist and High Executor Derrington, and his scarab is used to make the key to Scholomance.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Araj_the_Summoner",
+            "https://warcraft.wiki.gg/wiki/March_of_the_Scourge_(WC3_Human)",
         },
         confidence = "confirmed",
     },
