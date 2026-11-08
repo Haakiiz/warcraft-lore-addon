@@ -1,5 +1,24 @@
 # Warcraft Lore – changelog
 
+## Unreleased
+
+- **3 new veterans from WoW Forever's new content:** The Baron in the Ruins of Lordaeron (the abomination that was
+  once Grand Marshal Garithos from *The Frozen Throne*), the goblin trader Glix Xizzix in the Undercity
+  (*Forsaken Kingdom*), and the Image of Archmage Modera outside Dalaran in Silverpine Forest (novels).
+  They only exist in WoW Forever, so the Classic Era build leaves them out.
+- **More veterans from WoW Forever:** Mordent Evenshade in Shen'dralas (*Wolfheart*), Muln Earthfury at Camp Gev'rek
+  in Mulgore (Thrall and Jaina novels) and Archmage Modera herself in Dalaran's Violet Citadel.
+- **Two veterans every client has:** Lariia, the priestess in Darnassus' Temple of the Moon (*Elegy*), and Dalar
+  Dawnweaver in Silverpine Forest (one of the archmages who face Arthas outside Dalaran in *Warcraft III: Reforged*).
+- **Doctor Gustaf VanHowzen** on Theramore Isle, who tends the wounded in *Jaina Proudmoore: Tides of War*.
+- **Warcraft III: Reforged, all characters checked:** every mission of *Forsaken Kingdom* (the prologue *The Last Days
+  of Lordaeron* and the undead campaign) and everything Reforged added to the old campaigns. 10 new veterans:
+  Ramstein the Gorger (Stratholme), Executor Arren and Magistrate Sevren (Tirisfal Glades), Lexington Mortaim
+  (Undercity), Araj the Summoner (Western Plaguelands), Grunt Maug (Orgrimmar), Archmage Xylem (Azshara), and
+  Archmage Tervosh, Brother Karman and Torq Ironblast (Theramore). Ras Frostwhisper gains *March of the Scourge*.
+- **Forever's new NPC IDs:** WoW Forever gave some veterans a new NPC ID (Leonid Barthalomew, Ansirem Runeweaver).
+  The addon now knows those too, and they count as the same veteran you may already have met.
+
 ## v1.0.0
 
 - **1.0 for the WoW Forever launch.** The same addon as v0.10.1, now marked as the first full release.

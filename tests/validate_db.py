@@ -19,7 +19,7 @@ MEMORIALS = DATA.parent / "Memorials.lua"
 
 GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
-ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related", "forever"}
+ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related", "forever", "foreverIDs"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
 MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources", "locations", "order", "forever"}
@@ -338,13 +338,14 @@ def check_entries(npcs):
 
         if not isinstance(npc_id, int) or isinstance(npc_id, bool) or npc_id <= 0:
             err("the NPC ID must be a positive integer")
-        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID:
-            err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
-                "and cannot be met in WoW Forever. Remove the entry")
         if not isinstance(entry, LuaTable) or entry.is_list:
             err("the entry must be a table with named fields")
             continue
         e = entry.data
+        # Forever's own new NPCs (forever = true) have new, higher IDs; the cap only guards shared NPCs.
+        if isinstance(npc_id, int) and npc_id > MAX_NPC_ID and e.get("forever") is not True:
+            err(f"NPC ID {npc_id} is above {MAX_NPC_ID}: that is Season of Discovery or later content "
+                "and cannot be met in WoW Forever. Mark it forever = true only if it is a Forever-only NPC")
 
         texts = [("name", e.get("name")), ("story", e.get("story"))]
         for n, a in enumerate(getattr(e.get("appearances"), "data", None) or [], 1):
@@ -364,6 +365,12 @@ def check_entries(npcs):
         for f in ("name", "zone"):
             if f in e and not (isinstance(e[f], str) and e[f].strip()):
                 err(f"'{f}' must be a non-empty string")
+        if "foreverIDs" in e:
+            fids = getattr(e["foreverIDs"], "data", None)
+            if not (isinstance(fids, list) and fids and all(isinstance(x, int) and not isinstance(x, bool) and x > MAX_NPC_ID for x in fids)):
+                err(f"'foreverIDs' must be a non-empty list of WoW Forever NPC IDs above {MAX_NPC_ID}")
+            elif any(x in npcs.data for x in fids):
+                err("'foreverIDs' must not repeat an NPC ID that has its own entry")
         if "forever" in e and e["forever"] is not True:
             err("'forever' must be true (leave it out for NPCs every client has)")
         for f in ("coords", "story", "searched", "portrait"):

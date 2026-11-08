@@ -16,11 +16,44 @@ Every zone in World of Warcraft: Forever. A ticked zone has been checked NPC by 
 
 ## New in Forever
 
-- [ ] Mount Hyjal (Renewed): set after Archimonde's defeat, so it is a likely hotspot for Warcraft III characters
-- [ ] Shen'dralas (Kalimdor, between Mulgore and Desolace)
-- [ ] Riverglades (Eastern Kingdoms, east coast)
-- [ ] Zephras Isle (Skyborne starting area)
-- [ ] City of Dalaran (returning/reworked); the setting of several Warcraft II and III missions
+2026-11-06 rough pass after launch (10 Haiku workers, source: warcraft.wiki.gg "Forever NPCs"/"Forever mobs" categories,
+550 pages, plus every character page that links to a Forever zone, instance or subzone; Wowhead blocks scripted access).
+A rough pass, not NPC-by-NPC: the wiki was still filling in. Added: The Baron (= Othmar Garithos), Glix Xizzix, Image of Archmage Modera.
+
+- [~] Mount Hyjal (Renewed): 0 hits (65 NPCs + 17 named bosses, all Forever-only)
+- [x] Shen'dralas: Mordent Evenshade (*Wolfheart*) added (253471)
+- [~] Riverglades: 0 hits (Cho'gall and Gul'dan are only mentioned, not NPCs)
+- [~] Zephras Isle: 0 hits in 134 NPCs
+- [~] City of Dalaran / Dalaran: Image of Archmage Modera added (Silverpine, outside the walls). Archmage Modera herself added (246748 + 276235)
+- [~] Ruins of Lordaeron: The Baron added (no coords: instance)
+- [x] Muln Earthfury added (253957 + 256620, 259118)
+- [x] Leonid Barthalomew: Forever ID 267008 added as foreverIDs, alsoIn Tirisfal Glades
+- [x] Archmage Ansirem Runeweaver: Forever IDs 253958, 256621, alsoIn Dalaran
+
+2026-11-07 full pass: every NPC in the Forever 1.60.1 datamine (User:Mordecay/Forever/NPCs, 2 318 names with IDs),
+the Forever categories and every page using the Forever templates: 4 880 names, 407 candidates, 12 Haiku screeners,
+4 Sonnet verifiers. Added Mordent, Muln, Modera, Lariia, Dalar Dawnweaver; foreverIDs for Leonid and Ansirem.
+Re-run with `tools/research/forever_scan.py` (only new wiki names + the watch list are checked).
+Watch list (`tools/research/forever_watch.json`): book namesakes in the datamine with no Forever location yet:
+Windle Sparkshine, Perith Stormhoof, Randal, Bluebell, Tiala Whitemane, Goldrinn.
+
+2026-11-07 reverse check and memorials: every RTS/book character NAMED in Forever quests, Forever NPC pages and
+Forever sections (247 characters; `tools/research/forever_mentions.py`) and 34 Forever object pages. Added Doctor
+Gustaf VanHowzen (Tides of War). Almost all names are only mentioned (Arthas, Illidan, Sargeras ...).
+- [ ] Agatha and Aradne (val'kyr in Deathknell, novel *Sylvanas*): meetable, but no NPC ID on the wiki yet
+- [ ] Memorial lead: library book "Archmage Antonidas: The Unabridged Autobiography" in Ironforge (object 386691),
+      tagged Season of Discovery only; check whether Forever has it
+- Not counted: *World of Warcraft: Shaman* is a manga (Krelna, Shotoa)
+
+2026-11-08 Warcraft III: Reforged pass: all 10 Forsaken Kingdom missions read in full (12 Haiku readers, 3 Sonnet
+verifiers), plus every "Reforged" note in the 93 Reign of Chaos / Frozen Throne missions. Added 10 veterans (see
+CHANGELOG). Rejected: Uther (only a Shadowlands NPC ID; the tomb memorial stays), Sedrick Calston (Cataclysm ID),
+Melisara (no NPC ID on the wiki), Horace Alder (added in 2.4.2), Garek Bandarion and Dark Ranger Anya (no NPC in
+the classic era or Forever), the Homecoming villagers (names from WC3 map makers, not the WoW NPCs).
+Sylvanas and Varimathras in War of the Damned: the mission page lists them without saying what they do, so no new
+appearance was added.
+
+- Not included (Håkon, 2026-11-06): characters who only appear in the Forever audio short story *Unbowed* (Cormack, Danitha Morr, Arec Mistmantle)
 
 2026-10-29 launch health check: all classic NPC IDs were found on wowhead.com/forever with the same names (.kritikk/FOREVER/forever_id_check.md on the session/release-qa branch); the first Forever-zone veterans are also on that branch, not yet on main.
 
