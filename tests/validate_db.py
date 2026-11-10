@@ -337,10 +337,14 @@ def load_zone_maps(path=CORE):
 
 def check_zone_maps(npcs, mems, zone_maps):
     """Every entry with coords (and every memorial location) must be in a zone ZONE_MAPS knows,
-    or its map pin and position hint can never work. Instance zones have empty coords and are fine."""
+    or its map pin and position hint can never work. Instance zones have empty coords and are fine.
+    Forever-only entries (forever = true) are exempt: their zones get map IDs once those are read in game
+    with /wcl debug, and the coords are kept in the data until then."""
     errors = []
     for npc_id, entry in npcs.data.items():
         e = entry.data
+        if e.get("forever") is True:
+            continue
         if isinstance(e.get("coords"), str) and e["coords"].strip() and e.get("zone") not in zone_maps:
             errors.append(f"[{npc_id}] (line {npcs.key_lines[npc_id]}): has coords, but zone {e.get('zone')!r} "
                           "is not in ZONE_MAPS in Core.lua")

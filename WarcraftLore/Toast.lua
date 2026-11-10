@@ -184,7 +184,7 @@ local function build()
     t.chevron:SetPoint("RIGHT", -10, 0)
     t.chevron:SetVertexColor(COL.muted[1], COL.muted[2], COL.muted[3])
 
-    t:SetScript("OnClick", ns.Guard("alert", L["the nearby alert"], function(self, button)
+    t:SetScript("OnClick", ns.Guard("pill", L["the alert pill"], function(self, button)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return -- the mouse-up that ends a drag is not a click
         end
@@ -205,7 +205,7 @@ local function build()
     t.moreText = S.text(t.moreBtn, C.FONT_BODY, 10, COL.muted)
     t.moreText:SetAllPoints()
     t.moreText:SetJustifyH("RIGHT")
-    t.moreBtn:SetScript("OnClick", ns.Guard("alert", L["the nearby alert"], function(self)
+    t.moreBtn:SetScript("OnClick", ns.Guard("pill", L["the alert pill"], function(self)
         if moving or C.Now() - lastDragEnd < CLICK_GRACE then
             return
         end
@@ -235,7 +235,7 @@ local function build()
         anchor:StopMovingOrSizing()
         savePosition()
     end)
-    t:SetScript("OnUpdate", ns.Guard("alert", L["the nearby alert"], onUpdate))
+    t:SetScript("OnUpdate", ns.Guard("pill", L["the alert pill"], onUpdate))
     return t
 end
 
