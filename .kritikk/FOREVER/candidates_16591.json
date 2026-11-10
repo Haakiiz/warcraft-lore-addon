@@ -1,0 +1,30 @@
+[
+ {
+  "id": 256655,
+  "name": "Gorg",
+  "tag": "Cook",
+  "wiki_title": "Gorg",
+  "already_in_Data_lua": false,
+  "signals": [
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [italic-ref] ...) |affiliation=[[Crushridge]] clan }} {{RPG|doc=}} '''Gorg''' is a [[mage]] male [[ogre magus]], and one of the commanders of the [[Crushridge]] clan.<ref>''[[Lands of Conflict]]'', pg. 87</ref>  ==Notes== He was a [[sorcerer]] in the ''[[Warcraft RPG]]'' and was changed to a [[mage]] in the ''[[World of Warcraft RPG]]''.   ==References== {{Reflist}}  [[Category:Ogre magi]] [[Category:Mage characters]] [[Category:RPG characters]] [[Category:Lands of Conflict]] [[Category:World of Warcraft: The Roleplaying Game]]..."
+  ]
+ },
+ {
+  "id": 257591,
+  "name": "Ashe Amberhall",
+  "tag": "",
+  "wiki_title": "Ashe Amberhall",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-cite-template"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-cite-template] ...>. This is a war for our birthright. }}  On Alden Amberhall's memorial:<ref>[[Alden Amberhall#Memorial|Alden Amberhall's memorial inscription]]</ref> {{Book|content= You were the best father and teacher a young woman could ask for.<br /> <br /> -Ashe Amberhall }}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC|257591}}  {{DEFAULTSORT:Amberhall, Ashe}} [[Category:Human characters]] [[Category:Mage characters]] [[Category:Brotherhood of the Horse]] [[Category:Riverglades NPCs]]..."
+  ]
+ }
+]
