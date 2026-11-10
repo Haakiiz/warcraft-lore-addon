@@ -7,3 +7,4 @@ tools/research/npcs_*.json
 .kritikk/HIGH/_pages.json
 .kritikk/HIGH/_books.json
 .kritikk/HIGH/*_tmp/
+.env
