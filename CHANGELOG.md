@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **3 new veterans from the short story and novels:** Riggle Bassbait and Baron Revilgaz in Booty Bay (*Stranglethorn
+  Fishing Extravaganza*), and Tiala Whitemane on Mount Hyjal (*Shadows Rising*; WoW Forever only).
+- **More lore for existing veterans:** Fandral Staghelm (*The War of the Shifting Sands*), Fleet Master Seahorn
+  (*Stranglethorn Fishing Extravaganza*), Archmage Modera (*Day of the Dragon*, *Quest for Pandaria*) and Archmage
+  Ansirem Runeweaver (also on Zephras Isle).
+- **More cinematics:** Thrall's Vision (Thrall), A Kingdom Divided (Varimathras), and Divergent Courses and
+  Lightbringer (Uther the Lightbringer's tomb).
+- **Zone levels for the new Forever zones:** Zephras Isle, Riverglades, Mount Hyjal and Shen'dralas.
+
 - **3 new veterans from WoW Forever's new content:** The Baron in the Ruins of Lordaeron (the abomination that was
   once Grand Marshal Garithos from *The Frozen Throne*), the goblin trader Glix Xizzix in the Undercity
   (*Forsaken Kingdom*), and the Image of Archmage Modera outside Dalaran in Silverpine Forest (novels).
