@@ -85,6 +85,11 @@ SETUP = """
             HideTooltip = function() tooltips.hidden = (tooltips.hidden or 0) + 1 end,
         },
         ZONE_MAPS = { Durotar = { 1411, 1 }, Mulgore = { 1412, 7 } },
+        -- ns.Coords lives in Core.lua (loaded before MapPins.lua in the game); same parsing here.
+        Coords = function(e)
+            local x, y = tostring(e.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+            return tonumber(x), tonumber(y)
+        end,
         Veterans = function() return G end,
         GroupMet = function(g) return metIDs[g.id] == true end,
         MetSummary = function(id) return metIDs[id] and "Met once" or nil end,

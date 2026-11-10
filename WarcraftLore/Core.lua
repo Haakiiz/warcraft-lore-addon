@@ -52,6 +52,93 @@ function ns.GameRGB(code)
     return tonumber(hex:sub(1, 2), 16) / 255, tonumber(hex:sub(3, 4), 16) / 255, tonumber(hex:sub(5, 6), 16) / 255
 end
 
+-------------------------------------------------------------------- Zones and coordinates
+-- Zone name -> uiMapIDs. Classic-era IDs first, Mainline IDs after; the client only
+-- knows one set, so listing both is harmless. Only zones with coords in Data.lua or Memorials.lua.
+local ZONE_MAPS = {
+    ["Orgrimmar"] = { 1454, 85 },
+    ["Durotar"] = { 1411, 1 },
+    ["The Barrens"] = { 1413, 10 },
+    ["Undercity"] = { 1458, 90 },
+    ["Silverpine Forest"] = { 1421, 21 },
+    ["Stonetalon Mountains"] = { 1442, 65 },
+    ["Mulgore"] = { 1412, 7 },
+    ["Thunder Bluff"] = { 1456, 88 },
+    ["Feralas"] = { 1444, 69 },
+    ["Dustwallow Marsh"] = { 1445, 70 },
+    ["Darkshore"] = { 1439, 62 },
+    ["Hillsbrad Foothills"] = { 1424, 25 },
+    ["Alterac Mountains"] = { 1416 }, -- Mainline 27 is Dun Morogh, so only the Classic ID
+    ["Tirisfal Glades"] = { 1420, 18 },
+    ["Western Plaguelands"] = { 1422, 22 },
+    ["Darnassus"] = { 1457, 89 },
+    ["Elwynn Forest"] = { 1429, 37 },
+    ["Stormwind City"] = { 1453, 84 },
+    ["Ironforge"] = { 1455, 87 },
+    ["Redridge Mountains"] = { 1433, 49 },
+    ["Duskwood"] = { 1431, 47 },
+    ["Loch Modan"] = { 1432, 48 },
+    ["Thousand Needles"] = { 1441, 64 },
+    ["Ashenvale"] = { 1440, 63 },
+    ["Tanaris"] = { 1446, 71 },
+    ["Winterspring"] = { 1452, 83 },
+    ["Moonglade"] = { 1450, 80 },
+    ["Felwood"] = { 1448, 77 },
+    ["Eastern Plaguelands"] = { 1423, 23 },
+    ["The Hinterlands"] = { 1425, 26 },
+    ["Arathi Highlands"] = { 1417, 14 },
+    ["Stranglethorn Vale"] = { 1434 }, -- Mainline splits the zone in two, so only the Classic ID
+    -- zones that only have memorials or History of Warcraft books
+    ["Westfall"] = { 1436, 52 },
+    ["Dun Morogh"] = { 1426, 27 },
+    ["Desolace"] = { 1443, 66 },
+    ["Swamp of Sorrows"] = { 1435, 51 },
+    ["Blasted Lands"] = { 1419, 17 },
+    ["Wetlands"] = { 1437, 56 },
+}
+ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
+
+-- How close (distance in map percent, 0-100) the player must come to an NPC's coords for the
+-- "usually found near here" hint. Capital cities are small and crowded on their map, so they get
+-- a tighter circle; every other zone uses HINT_RADIUS.
+local HINT_RADIUS = 3
+local ZONE_RADIUS = {
+    ["Orgrimmar"] = 1.5,
+    ["Undercity"] = 1.5,
+    ["Thunder Bluff"] = 1.5,
+    ["Darnassus"] = 1.5,
+    ["Stormwind City"] = 1.5,
+    ["Ironforge"] = 1.5,
+}
+
+-- The zone name a uiMapID belongs to (from ZONE_MAPS), or nil for a map we do not list.
+local zoneOfMap -- uiMapID -> zone name, built on first use
+function ns.ZoneOfMap(mapID)
+    if not zoneOfMap then
+        zoneOfMap = {}
+        for zone, maps in pairs(ZONE_MAPS) do
+            for _, id in ipairs(maps) do
+                zoneOfMap[id] = zone
+            end
+        end
+    end
+    return zoneOfMap[mapID]
+end
+
+-- The entry's `coords` ("32.0, 37.8") as two numbers in map percent, or nil when there are none.
+-- Works for anything with a coords field: NPC entries, memorials and their `locations`.
+function ns.Coords(entry)
+    if type(entry) ~= "table" then
+        return nil
+    end
+    local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
+    x, y = tonumber(x), tonumber(y)
+    if x and y then
+        return x, y
+    end
+    return nil
+end
+
 local function chat(msg)
     C.Print(PREFIX .. msg)
 end
@@ -371,9 +458,10 @@ end
 
 -------------------------------------------------------------------- Memorials
 -- Graves, plaques and monuments for characters of the strategy games (Memorials.lua). They are
--- found by the object's name: reading its text (ITEM_TEXT_BEGIN) or hovering it counts as a visit.
+-- found by the object's ID (hover, when the client tells it) or name: reading its text
+-- (ITEM_TEXT_BEGIN) or hovering it counts as a visit, but only in the memorial's own zone.
 -- Stored account-wide: WarcraftLoreDB.visited[key] = { first = time(), by = "Name-Realm" }.
-local memList, memByName    -- sorted list of { key, entry, codes, memorial = true }; lower-case name -> that item
+local memList, memByName, memByObject -- sorted list of { key, entry, codes, memorial = true }; lower-case name -> item; object ID -> item
 
 local function normalizeName(s)
     if type(s) ~= "string" then
@@ -386,13 +474,16 @@ end
 -- All memorials, sorted by name. Each item is { key, entry, codes (games in release order), memorial = true }.
 function ns.MemorialList()
     if not memList then
-        memList, memByName = {}, {}
+        memList, memByName, memByObject = {}, {}, {}
         for key, entry in pairs(ns.MEMORIALS or {}) do
             local item = { key = key, entry = entry, codes = ns.GamesInOrder(entry), memorial = true }
             memList[#memList + 1] = item
             local low = normalizeName(entry.name)
             if low then
                 memByName[low] = item
+            end
+            for _, objectID in ipairs(type(entry.objectIDs) == "table" and entry.objectIDs or {}) do
+                memByObject[objectID] = item
             end
         end
         table.sort(memList, function(a, b) return (a.entry.name or "") < (b.entry.name or "") end)
@@ -415,6 +506,13 @@ function ns.MemorialByName(name)
     ns.MemorialList()
     local low = normalizeName(name)
     return low and memByName[low] or nil
+end
+
+-- The memorial with this game object ID (from objectIDs in Memorials.lua), or nil. Works in every
+-- client language, unlike the name.
+function ns.MemorialByObjectID(objectID)
+    ns.MemorialList()
+    return type(objectID) == "number" and memByObject[objectID] or nil
 end
 
 -- "Uther the Lightbringer" / "Danath Trollbane, Kurdran Wildhammer": who the memorial honors.
@@ -508,42 +606,53 @@ function ns.MarkVisited(key)
     return true
 end
 
+-- True unless we can tell that the player is in another zone than the memorial (or any of its
+-- `locations`). Only a map ID we know from ZONE_MAPS can rule a memorial out: an unreadable map,
+-- a map we do not list (a city's inner map, another client's IDs) or a memorial zone without
+-- ZONE_MAPS entry all keep the old behaviour (the name decides).
+local function inMemorialZone(entry)
+    local mapID = C.GetPlayerMapPos()
+    if not mapID and C.GetZoneMapID then
+        mapID = C.GetZoneMapID()
+    end
+    local here = mapID and ns.ZoneOfMap(mapID)
+    if not here then
+        return true
+    end
+    local zones = { entry.zone }
+    for _, spot in ipairs(type(entry.locations) == "table" and entry.locations or {}) do
+        zones[#zones + 1] = spot.zone
+    end
+    for _, zone in ipairs(zones) do
+        if zone == here or not ns.ZONE_MAPS[zone] then
+            return true
+        end
+    end
+    return false
+end
+
 -- Reading a plaque or tomb: the title of the opened text is the object's name.
 local onItemText = guard("memorial-text", L["the memorial reading"], function()
     local item = ns.MemorialByName(C.ItemTextName())
-    if item then
+    if item and inMemorialZone(item.entry) then
         ns.MarkVisited(item.key)
     end
 end)
 
 -- Hovering a world object: add the memorial line and count the visit. Never on a unit tooltip.
-local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"], function(tooltip, firstLine, hasUnit)
+-- The object ID (when the client gives it) is matched first, the object's name after that.
+local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"], function(tooltip, firstLine, hasUnit, objectID)
     if hasUnit then
         return
     end
-    local item = ns.MemorialByName(firstLine)
-    if not item then
+    local item = ns.MemorialByObjectID(objectID) or ns.MemorialByName(firstLine)
+    if not item or not inMemorialZone(item.entry) then
         return
     end
     ns.MarkVisited(item.key)
     C.AddTooltipLine(tooltip, L["Warcraft Memorial: %s (%s)"]:format(
         ns.MemorialHonors(item.entry), ns.CodesLabel(item.codes)), 0.83, 0.78, 0.97)
 end)
-
--------------------------------------------------------------------- Tooltip
-local function tooltipLine(tooltip, unit, guid)
-    local entry, npcID = ns.Lookup(unit, guid)
-    if not entry then
-        return -- not in the database: no line
-    end
-    -- Any GameTooltip unit tooltip counts as meeting: mouseover in the world, on a nameplate
-    -- or on a unit frame. You can only mouse over what is on screen and in view range (the
-    -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
-    -- GUIDs give no entry above, so nothing is marked then.
-    ns.MarkMet(npcID)
-    C.AddTooltipLine(tooltip, L["Warcraft Veteran: %s"]:format(ns.GamesLabel(entry)), 0.83, 0.78, 0.97)
-end
-local onUnitTooltip = guard("tooltip", L["the tooltip line"], tooltipLine)
 
 -------------------------------------------------------------------- Slash commands
 -- The lore window failed to build: say so once instead of erroring in every feature.
@@ -555,12 +664,22 @@ local function windowOff()
     return false
 end
 
+-- True (after saying so with `say`) when there is no target to look at. A target the game will
+-- not tell us about right now (a secret answer) gets its own message instead of "no target".
+local function noTarget(say, noTargetText)
+    local exists, unreadable = C.UnitExists("target")
+    if exists then
+        return false
+    end
+    say(unreadable and L["Your target cannot be read right now (often in combat). Try again in a moment."] or noTargetText)
+    return true
+end
+
 local function cmdShow()
     if windowOff() then
         return
     end
-    if not C.UnitExists("target") then
-        ns.UI.ShowMessage(L["You have no target. Target an NPC and type /wcl again."])
+    if noTarget(ns.UI.ShowMessage, L["You have no target. Target an NPC and type /wcl again."]) then
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
@@ -576,8 +695,7 @@ local function cmdShow()
 end
 
 local function cmdID()
-    if not C.UnitExists("target") then
-        chat(L["You have no target."])
+    if noTarget(chat, L["You have no target."]) then
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
@@ -630,7 +748,8 @@ local function cmdAlert()
 end
 
 -------------------------------------------------------------------- Nearby alert
--- When a nameplate appears for an NPC in the database, say so once per session.
+-- A veteran seen up close (its nameplate appears, or the player mouses over it) is announced once
+-- per session: chat line, sound and the pill.
 local alerted = {}
 
 -- The first veteran is announced at once (chat line, sound, pill). Others appearing within
@@ -640,13 +759,37 @@ local BATCH_WINDOW = 1.5
 local MAX_NAMED = 3
 local batch -- nil, or { npcID = first veteran, list = { { entry, name }, ... } }
 
-local function show(npcID, entry, name, unit)
-    local who = name or entry.name
-    chat(L["Veteran nearby: |cffd4c6f7%s|r (%s)."]:format(who, ns.GamesLabel(entry)))
-    C.PlayAlertSound()
-    if ns.Toast then
-        ns.Toast.Show(npcID, entry, who, unit)
+-- The pill has its own guard key: if it breaks, the chat lines and the sound keep working.
+local showPill = guard("pill", L["the alert pill"], function(npcID, entry, who, unit, more)
+    if ns.Toast and ns.Toast.Show then
+        ns.Toast.Show(npcID, entry, who, unit, more)
     end
+end)
+local setPillMore = guard("pill", L["the alert pill"], function(npcID, n)
+    if ns.Toast and ns.Toast.SetMore then
+        ns.Toast.SetMore(npcID, n)
+    end
+end)
+
+-- "Alpha (WC3), Beta (WC2) +2 more": up to MAX_NAMED names in color, the rest counted.
+local function namesLine(list)
+    local parts = {}
+    for i = 1, math.min(#list, MAX_NAMED) do
+        local v = list[i]
+        parts[i] = ("|cffd4c6f7%s|r (%s)"):format(v.name or v.entry.name or "?", ns.GamesLabel(v.entry))
+    end
+    local more = #list > MAX_NAMED and (" " .. L["|cffa79d8a+%d more|r"]:format(#list - MAX_NAMED)) or ""
+    return table.concat(parts, ", ") .. more
+end
+
+-- quiet = no chat line (the "New veteran met" line already names it).
+local function show(npcID, entry, name, unit, quiet)
+    local who = name or entry.name
+    if not quiet then
+        chat(L["Veteran nearby: |cffd4c6f7%s|r (%s)."]:format(who, ns.GamesLabel(entry)))
+    end
+    C.PlayAlertSound()
+    showPill(npcID, entry, who, unit)
 end
 
 local function flushBatch(b)
@@ -654,16 +797,8 @@ local function flushBatch(b)
     if n == 0 then
         return
     end
-    local parts = {}
-    for i = 1, math.min(n, MAX_NAMED) do
-        local v = b.list[i]
-        parts[i] = ("|cffd4c6f7%s|r (%s)"):format(v.name or v.entry.name or "?", ns.GamesLabel(v.entry))
-    end
-    local more = n > MAX_NAMED and (" " .. L["|cffa79d8a+%d more|r"]:format(n - MAX_NAMED)) or ""
-    chat(L["Also nearby: %s"]:format(table.concat(parts, ", ") .. more))
-    if ns.Toast and ns.Toast.SetMore then
-        ns.Toast.SetMore(b.npcID, n)
-    end
+    chat(L["Also nearby: %s"]:format(namesLine(b.list)))
+    setPillMore(b.npcID, n)
 end
 local flushGuarded = function() end -- set below, once guard() is used
 
@@ -675,23 +810,27 @@ local function onBatchTimer()
     end
 end
 
--- Shared by the nameplate path and the coordinate path, so nobody is announced twice.
--- unit = the nameplate unit token when there is one (used for the pill's portrait).
-local function announce(npcID, entry, name, isTest, unit)
+-- Shared by the nameplate path and the mouseover path, so nobody is announced twice.
+-- unit = the unit token when there is one (used for the pill's portrait).
+-- quiet = a first-ever meeting from a mouseover: ns.MarkMet prints its own chat line, so this one
+-- gives only the sound and the pill (and nothing at all while a batch is open).
+local function announce(npcID, entry, name, isTest, unit, quiet)
     if isTest then
         show(npcID, entry, name, unit)
         return
     end
     alerted[npcID] = true
     if batch then
-        batch.list[#batch.list + 1] = { entry = entry, name = name }
+        if not quiet then
+            batch.list[#batch.list + 1] = { entry = entry, name = name }
+        end
         return
     end
     batch = { npcID = npcID, list = {} }
     C.After(onBatchTimer, BATCH_WINDOW)
-    show(npcID, entry, name, unit)
+    show(npcID, entry, name, unit, quiet)
 end
--- One guard key for the whole nearby-alert path (nameplates and the follow-up line).
+-- One guard key for the nearby-alert path (nameplates, mouseover and the follow-up line).
 flushGuarded = guard("alert", L["the nearby alert"], flushBatch)
 
 -- /wcl test: shows the alert for the database NPC with the lowest ID.
@@ -710,16 +849,22 @@ local function cmdTest()
 end
 
 -- Forever reportedly fires NAME_PLATE_UNIT_ADDED before the unit is filled in, so a plate we
--- cannot read yet gets one more look a moment later.
-local NAMEPLATE_RETRY = 0.3
+-- cannot read yet gets up to three more looks: 0.3 s later, 1 s after that and 2 s after that.
+-- The retries stop as soon as the plate can be read.
+local NAMEPLATE_RETRIES = { 0.3, 1, 2 }
 local onNameplateRetry = function() end -- set below, once guard() is used
 
-local function nameplateAdded(unit, isRetry)
+-- attempt = how many retries this call is (nil for the event itself).
+local function nameplateAdded(unit, attempt)
     if not (WarcraftLoreDB and WarcraftLoreDB.alert) or type(unit) ~= "string" then
         return
     end
-    if not isRetry and not C.UnitGUID(unit) then
-        C.After(function() onNameplateRetry(unit, true) end, NAMEPLATE_RETRY)
+    attempt = attempt or 0
+    if not C.UnitGUID(unit) then
+        local delay = NAMEPLATE_RETRIES[attempt + 1]
+        if delay then
+            C.After(function() onNameplateRetry(unit, attempt + 1) end, delay)
+        end
         return
     end
     local entry, npcID, _, name = ns.Lookup(unit)
@@ -731,81 +876,94 @@ end
 local onNameplateAdded = guard("alert", L["the nearby alert"], nameplateAdded)
 onNameplateRetry = onNameplateAdded
 
--------------------------------------------------------------------- Nearby alert (coordinates)
--- Compares the player's map position with `coords` in Data.lua (Wowhead map percent).
-local CHECK_INTERVAL = 2      -- seconds between checks
-local ALERT_RADIUS = 3        -- distance in map percent (0-100) that counts as "nearby"
+-------------------------------------------------------------------- Tooltip
+-- The alert for a veteran found by mouseover runs a frame later, outside the tooltip post-call,
+-- under the nearby alert's guard key.
+local onMouseoverAlert = guard("alert", L["the nearby alert"], function(npcID, entry, name, unit, quiet)
+    if WarcraftLoreDB and WarcraftLoreDB.alert then
+        announce(npcID, entry, name, false, unit, quiet)
+    end
+end)
 
--- Zone name -> uiMapIDs. Classic-era IDs first, Mainline IDs after; the client only
--- knows one set, so listing both is harmless. Only zones with coords in Data.lua or Memorials.lua.
-local ZONE_MAPS = {
-    ["Orgrimmar"] = { 1454, 85 },
-    ["Durotar"] = { 1411, 1 },
-    ["The Barrens"] = { 1413, 10 },
-    ["Undercity"] = { 1458, 90 },
-    ["Silverpine Forest"] = { 1421, 21 },
-    ["Stonetalon Mountains"] = { 1442, 65 },
-    ["Mulgore"] = { 1412, 7 },
-    ["Thunder Bluff"] = { 1456, 88 },
-    ["Feralas"] = { 1444, 69 },
-    ["Dustwallow Marsh"] = { 1445, 70 },
-    ["Darkshore"] = { 1439, 62 },
-    ["Hillsbrad Foothills"] = { 1424, 25 },
-    ["Alterac Mountains"] = { 1416 }, -- Mainline 27 is Dun Morogh, so only the Classic ID
-    ["Tirisfal Glades"] = { 1420, 18 },
-    ["Western Plaguelands"] = { 1422, 22 },
-    ["Darnassus"] = { 1457, 89 },
-    ["Elwynn Forest"] = { 1429, 37 },
-    ["Stormwind City"] = { 1453, 84 },
-    ["Ironforge"] = { 1455, 87 },
-    ["Redridge Mountains"] = { 1433, 49 },
-    ["Duskwood"] = { 1431, 47 },
-    ["Loch Modan"] = { 1432, 48 },
-    ["Thousand Needles"] = { 1441, 64 },
-    ["Ashenvale"] = { 1440, 63 },
-    ["Tanaris"] = { 1446, 71 },
-    ["Winterspring"] = { 1452, 83 },
-    ["Moonglade"] = { 1450, 80 },
-    ["Felwood"] = { 1448, 77 },
-    ["Eastern Plaguelands"] = { 1423, 23 },
-    ["The Hinterlands"] = { 1425, 26 },
-    ["Arathi Highlands"] = { 1417, 14 },
-    ["Stranglethorn Vale"] = { 1434 }, -- Mainline splits the zone in two, so only the Classic ID
-    -- zones that only have memorials or History of Warcraft books
-    ["Westfall"] = { 1436, 52 },
-    ["Dun Morogh"] = { 1426, 27 },
-    ["Desolace"] = { 1443, 66 },
-    ["Swamp of Sorrows"] = { 1435, 51 },
-    ["Blasted Lands"] = { 1419, 17 },
-    ["Wetlands"] = { 1437, 56 },
-}
-ns.ZONE_MAPS = ZONE_MAPS -- read by MapPins.lua
+-- True when the tooltip shows the player's current target.
+local function isTarget(unit, guid)
+    if unit == "target" then
+        return true
+    end
+    local targetGUID = C.UnitGUID("target")
+    guid = guid or (unit and C.UnitGUID(unit))
+    return targetGUID ~= nil and guid == targetGUID
+end
+
+local function tooltipLine(tooltip, unit, guid)
+    local entry, npcID, _, name = ns.Lookup(unit, guid)
+    if not entry then
+        return -- not in the database: no line
+    end
+    -- Any GameTooltip unit tooltip counts as meeting: mouseover in the world, on a nameplate
+    -- or on a unit frame. You can only mouse over what is on screen and in view range (the
+    -- same range at which nameplates show), so "seen up close" is the bar. Unreadable (secret)
+    -- GUIDs give no entry above, so nothing is marked then.
+    local group = ns.VeteranOf(npcID)
+    local groupMetBefore = group and ns.GroupMet(group)
+    local firstMeet = ns.MarkMet(npcID)
+    C.AddTooltipLine(tooltip, L["Warcraft Veteran: %s"]:format(ns.GamesLabel(entry)), 0.83, 0.78, 0.97)
+    -- Friendly nameplates are off by default, so hovering is often the only way a veteran is seen:
+    -- it gives the nearby alert too, once per session. Not for the target when /wcl auto already
+    -- shows its pill (onTargetChanged).
+    local db = WarcraftLoreDB
+    if db and db.alert and not alerted[npcID] and not (db.auto and isTarget(unit, guid)) then
+        alerted[npcID] = true -- right away: the tooltip is refreshed many times while hovered
+        local quiet = firstMeet and not groupMetBefore -- MarkMet prints "New veteran met" then
+        C.After(function() onMouseoverAlert(npcID, entry, name, unit, quiet) end)
+    end
+end
+local onUnitTooltip = guard("tooltip", L["the tooltip line"], tooltipLine)
+
+-------------------------------------------------------------------- Nearby hint (coordinates)
+-- Compares the player's map position with `coords` in Data.lua (Wowhead map percent). Being near
+-- the spot is only a hint (the NPC may be elsewhere), so it has its own softer chat line without
+-- sound, is remembered in `hinted` (not `alerted`), and a later real sighting still gives the
+-- full alert. Entries with roams = true never give a hint.
+local CHECK_INTERVAL = 2      -- seconds between checks
+local hinted = {}
 
 -- True when the entry has stored coordinates in a zone we can match to a map.
 local function hasCoords(entry)
-    local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
-    return tonumber(x) ~= nil and tonumber(y) ~= nil and ZONE_MAPS[entry.zone] ~= nil
+    return ns.Coords(entry) ~= nil and ZONE_MAPS[entry.zone] ~= nil
 end
 
--- uiMapID -> list of { npcID, x, y } (x, y in percent), built once on first use.
+-- uiMapID -> list of { npcID, x, y, radius } (in map percent), built once on first use.
 local byMap
 local function buildIndex()
     byMap = {}
     for npcID, entry in pairs(ns.NPCS) do
-        local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
-        x, y = tonumber(x), tonumber(y)
+        local x, y = ns.Coords(entry)
         local maps = ZONE_MAPS[entry.zone]
-        if x and y and maps then
+        if x and y and maps and not entry.roams then
+            local radius = ZONE_RADIUS[entry.zone] or HINT_RADIUS
             for _, mapID in ipairs(maps) do
                 byMap[mapID] = byMap[mapID] or {}
-                table.insert(byMap[mapID], { npcID, x, y })
+                table.insert(byMap[mapID], { npcID, x, y, radius })
             end
         end
     end
 end
 
+-- All hints of one check become one chat line (and one pill with "+N more"), no sound.
+local function showHints(found)
+    local first = found[1]
+    if #found == 1 then
+        chat(L["A veteran is usually found near here: |cffd4c6f7%s|r (%s)."]:format(
+            first.entry.name or "?", ns.GamesLabel(first.entry)))
+    else
+        chat(L["Veterans usually found near here: %s"]:format(namesLine(found)))
+    end
+    showPill(first.npcID, first.entry, first.entry.name, nil, #found > 1 and #found - 1 or nil)
+end
+
 local function positionCheck()
-    if not (WarcraftLoreDB and WarcraftLoreDB.alert) or C.InInstance() then
+    if not (WarcraftLoreDB and WarcraftLoreDB.alert) or C.InInstance() or C.OnTaxi() then
         return
     end
     local mapID, px, py = C.GetPlayerMapPos()
@@ -820,14 +978,20 @@ local function positionCheck()
         return
     end
     px, py = px * 100, py * 100
-    for _, npc in ipairs(list) do
-        local npcID = npc[1]
-        if not alerted[npcID] then
-            local dx, dy = px - npc[2], py - npc[3]
-            if dx * dx + dy * dy <= ALERT_RADIUS * ALERT_RADIUS then
-                announce(npcID, ns.NPCS[npcID])
+    local found = {}
+    for _, spot in ipairs(list) do
+        local npcID, radius = spot[1], spot[4]
+        if not alerted[npcID] and not hinted[npcID] then
+            local dx, dy = px - spot[2], py - spot[3]
+            if dx * dx + dy * dy <= radius * radius then
+                hinted[npcID] = true
+                found[#found + 1] = { npcID = npcID, entry = ns.NPCS[npcID] }
             end
         end
+    end
+    if #found > 0 then
+        table.sort(found, function(a, b) return a.npcID < b.npcID end)
+        showHints(found)
     end
 end
 local checkPosition = guard("position", L["the nearby alert by map position"], positionCheck)
@@ -848,6 +1012,14 @@ local function cmdDebug()
         n = n + 1
     end
     chat(L["NPCs in the database: %d"]:format(n))
+    -- Where the client says the player is: lets the owner check ZONE_MAPS in game.
+    local mapID, px, py = C.GetPlayerMapPos()
+    if mapID then
+        chat(L["Map ID %d (%s), position %.1f, %.1f"]:format(mapID,
+            ns.ZoneOfMap(mapID) or L["not in the zone list"], px * 100, py * 100))
+    else
+        chat(L["Map ID and position: not readable here."])
+    end
     if #failureOrder == 0 then
         chat(L["Errors: none"])
     end
@@ -859,8 +1031,7 @@ end
 
 -- /wcl why: explains in one or two lines why the target is or is not recognised.
 local function cmdWhy()
-    if not C.UnitExists("target") then
-        chat(L["You have no target. Target an NPC and type /wcl why."])
+    if noTarget(chat, L["You have no target. Target an NPC and type /wcl why."]) then
         return
     end
     local entry, npcID, guidType, name = ns.Lookup("target")
@@ -891,8 +1062,10 @@ local function cmdWhy()
             notes[#notes + 1] = L["the map position alert is off after an error"]
         elseif C.InInstance() then
             notes[#notes + 1] = L["you are in an instance, so map position alerts are off"]
+        elseif entry.roams then
+            notes[#notes + 1] = L["it moves around, so walking near its usual spot gives no hint; its nameplate or tooltip gives the alert"]
         elseif not hasCoords(entry) then
-            notes[#notes + 1] = L["no map position is stored for this NPC, so only its nameplate can trigger an alert"]
+            notes[#notes + 1] = L["no map position is stored for this NPC, so only its nameplate or tooltip can trigger an alert"]
         end
         if alerted[npcID] then
             notes[#notes + 1] = L["you were already alerted about it this session"]
@@ -911,7 +1084,7 @@ local function cmdHelp()
     chat(L["/wcl id – print your target's NPC ID and name in chat"])
     chat(L["/wcl list (or /wcl browse) – open or close the veterans list: search, filter, see who you have met"])
     chat(L["/wcl auto – show a small alert when you target a veteran (now: %s)"]:format(WarcraftLoreDB.auto and on or off))
-    chat(L["/wcl alert – toggle the nearby alert (now: %s); by nameplate and map position"]:format(WarcraftLoreDB.alert and on or off))
+    chat(L["/wcl alert – toggle the nearby alert (now: %s); by nameplate, mouseover and map position"]:format(WarcraftLoreDB.alert and on or off))
     chat(L["/wcl minimap – show or hide the minimap button (now: %s)"]:format(
         (WarcraftLoreDB.minimap and WarcraftLoreDB.minimap.hide) and L["hidden"] or L["shown"]))
     chat(L["/wcl why – explain why your target is or is not recognised"])

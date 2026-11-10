@@ -46,8 +46,27 @@ function C.UnitName(unit)
     return safeCall("UnitName", UnitName, unit)
 end
 
+-- Returns exists, unreadable. A secret answer counts as "does not exist" for callers that only
+-- need a yes, but the second value lets /wcl tell "no target" apart from "cannot read it now".
 function C.UnitExists(unit)
-    return safeCall("UnitExists", UnitExists, unit) == true
+    if type(UnitExists) ~= "function" then
+        noteMissing("UnitExists")
+        return false, false
+    end
+    local ok, result = pcall(UnitExists, unit)
+    if not ok then
+        return false, false
+    end
+    if C.IsSecret(result) then
+        return false, true
+    end
+    return result == true, false
+end
+
+-- True while the player rides a flight path. Missing API or a secret answer counts as false.
+function C.OnTaxi()
+    local value = safeCall("UnitOnTaxi", UnitOnTaxi, "player")
+    return value == true or value == 1
 end
 
 -- GUID format in modern clients: "Creature-0-<server>-<instance>-<zone>-<NPC ID>-<spawn>".
@@ -152,8 +171,19 @@ local function tooltipHasUnit(tooltip, data)
     return false
 end
 
--- Hooks callback(tooltip, firstLineText, hasUnit) into tooltips of world objects (plaques, tombs,
--- herbs ...). Returns the name of the method used, or nil if none was found.
+-- The game object ID from the tooltip data's GUID ("GameObject-0-<server>-<instance>-<zone>-<ID>-<spawn>"),
+-- or nil when there is no GUID, it is secret or it is not a game object.
+local function tooltipObjectID(data)
+    local guid = type(data) == "table" and data.guid
+    if type(guid) ~= "string" or C.IsSecret(guid) then
+        return nil
+    end
+    return tonumber(guid:match("^GameObject%-[^%-]*%-[^%-]*%-[^%-]*%-[^%-]*%-(%d+)"))
+end
+
+-- Hooks callback(tooltip, firstLineText, hasUnit, objectID) into tooltips of world objects (plaques,
+-- tombs, herbs ...). objectID is nil when the client does not tell it (older clients, secret GUIDs).
+-- Returns the name of the method used, or nil if none was found.
 function C.HookObjectTooltip(callback)
     if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
         and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Object then
@@ -162,7 +192,7 @@ function C.HookObjectTooltip(callback)
                 if tooltip ~= GameTooltip then
                     return
                 end
-                callback(tooltip, tooltipFirstLine(tooltip, data), tooltipHasUnit(tooltip, data))
+                callback(tooltip, tooltipFirstLine(tooltip, data), tooltipHasUnit(tooltip, data), tooltipObjectID(data))
             end)
         end)
         return "TooltipDataProcessor.Object"

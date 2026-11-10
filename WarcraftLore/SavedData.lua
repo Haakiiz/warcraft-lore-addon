@@ -150,7 +150,14 @@ function ns.SavedData.Load()
             pcall(mergeCharacterMet, WarcraftLoreDB, WarcraftLoreCharDB)
         end
     end
-    -- The rest of the addon relies on these types even if a migration was skipped.
+    -- The rest of the addon relies on these settings even if a migration was skipped (data from a
+    -- newer version may lack them): a missing setting gets its default, a present one is kept.
+    if WarcraftLoreDB.auto == nil then
+        WarcraftLoreDB.auto = true
+    end
+    if WarcraftLoreDB.alert == nil then
+        WarcraftLoreDB.alert = true
+    end
     if type(WarcraftLoreDB.minimap) ~= "table" then
         WarcraftLoreDB.minimap = {}
     end
