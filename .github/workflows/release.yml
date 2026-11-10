@@ -34,9 +34,12 @@ jobs:
           python3 tests/test_timeline.py
           python3 tests/test_options.py
           python3 tests/test_guard.py
+          python3 tests/test_alerts2.py
+          python3 tests/test_detect.py
           python3 tests/test_met.py
           python3 tests/test_portrait.py
           python3 tests/test_toast.py
+          python3 tests/test_toast2.py
           python3 tests/test_atlas.py
           python3 tests/test_share.py
           python3 tests/test_mappins.py

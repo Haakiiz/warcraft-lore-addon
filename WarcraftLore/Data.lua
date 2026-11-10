@@ -10,6 +10,9 @@
 --   alsoIn      (optional) Other zones the NPC also walks through, e.g. { "Desolace", "Feralas" }.
 --   related     (optional) NPC IDs of other entries tied to this one (family, allies, rivals), e.g. { 3230, 10540 }.
 --               One side is enough: the lore window shows the link on both entries.
+--   roams       (optional) true for an NPC that is often not at its coords: it patrols, moves between
+--               spawn points or only appears during an event. Its map pin stays, but walking past the
+--               coords gives no "usually found near here" hint in chat.
 --   forever     (optional) true for an NPC that only WoW Forever has (its new zones: Mount Hyjal, Dalaran,
 --               Riverglades ...). The Classic Era build drops these entries when it loads.
 --   appearances (required) List of appearances in the RTS games. Each has:
@@ -76,6 +79,12 @@ ns.NPCS = {
         coords = "32.0, 37.8",
         related = { 3230, 10540, 3057, 4968, 10182, 3391 },
         appearances = {
+            {
+                game = "WC3",
+                campaign = "Exodus of the Horde (Prologue)",
+                missions = { "Thrall's Vision" },
+                role = "Cinematic: wakes from a dream in which the Prophet tells him to lead the Horde west",
+            },
             {
                 game = "WC3",
                 campaign = "The Invasion of Kalimdor (Orc)",
@@ -146,6 +155,7 @@ ns.NPCS = {
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/The_Last_Guardian_(WC3_Night_Elf)",
+            "https://warcraft.wiki.gg/wiki/Thrall%27s_Vision_(WC3_demo)",
             "https://warcraft.wiki.gg/wiki/Thrall",
             "https://warcraft.wiki.gg/wiki/The_Invasion_of_Kalimdor",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land",
@@ -277,7 +287,7 @@ ns.NPCS = {
         name = "Archmage Ansirem Runeweaver",
         zone = "Alterac Mountains",
         coords = "18.8, 78.5",
-        alsoIn = { "Dalaran" },
+        alsoIn = { "Dalaran", "Zephras Isle" },
         foreverIDs = { 253958, 256621 },
         appearances = {
             {
@@ -470,16 +480,24 @@ ns.NPCS = {
                 missions = {},
                 role = "Calls a convocation of druids on Teldrassil and insists on healing the tree, and the Nightmare Lord has tricked him with a vision of his dead son Valstann",
             },
+            {
+                game = "BOOK",
+                campaign = "The War of the Shifting Sands",
+                missions = {},
+                role = "Leads the night elf armies against the qiraji in Silithus, cannot reach his son Valstann before the Qiraji general kills him, and later helps the bronze dragon Anachronos seal the gates of Ahn'Qiraj",
+            },
         },
         story = "After the Third War the night elves lost Nordrassil and their immortality, and Malfurion fell into a deep coma. "
              .. "His absence left the leadership of the druids to Fandral Staghelm, who became the new archdruid. "
              .. "Fandral convinced the other druids to create a new World Tree, and together they planted Teldrassil off the coast of northern Kalimdor. "
              .. "The tree was not blessed by the Dragon Aspects and the night elves did not regain their immortality, while corruption began to spread through Teldrassil. "
-             .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus.",
+             .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus. "
+             .. "In the short story The War of the Shifting Sands, he leads the night elves against the qiraji in Silithus, sees his son Valstann killed by the Qiraji general, and then helps the dragons seal Ahn'Qiraj behind a magical barrier.",
         items = {
             { id = 5390, name = "Fandral's Message", note = "Quest item in \"Grove of the Ancients\", which he starts" },
         },
         sources = {
+            "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
             "https://warcraft.wiki.gg/wiki/Fandral_Staghelm",
             "https://www.wowhead.com/classic/item=5390",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -728,6 +746,7 @@ ns.NPCS = {
         name = "Rexxar",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        roams = true,
         alsoIn = { "Desolace", "Feralas" },
         related = { 10204, 4968 },
         appearances = {
@@ -768,6 +787,7 @@ ns.NPCS = {
         name = "Misha",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        roams = true,
         alsoIn = { "Desolace", "Feralas" },
         appearances = {
             {
@@ -1375,8 +1395,8 @@ ns.NPCS = {
             {
                 game = "TFT",
                 campaign = "Legacy of the Damned (Undead)",
-                missions = { "The Dark Lady" },
-                role = "Enemy hero (Dreadlord): offers Sylvanas a place in the dreadlords' new order, then begs for his life and defects to her",
+                missions = { "A Kingdom Divided", "The Dark Lady" },
+                role = "Enemy hero (Dreadlord): in the A Kingdom Divided interlude he and his brothers tell Sylvanas the Lich King is losing his power; offers her a place in the dreadlords' new order, then begs for his life and defects to her",
             },
             {
                 game = "TFT",
@@ -3058,6 +3078,7 @@ ns.NPCS = {
         name = "Emeriss",
         zone = "Ashenvale",
         coords = "90.3, 40.1",
+        roams = true,
         alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
         appearances = {
             {
@@ -3085,6 +3106,7 @@ ns.NPCS = {
         name = "Lethon",
         zone = "Ashenvale",
         coords = "90.3, 40.1",
+        roams = true,
         alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
         related = { 14889 },
         appearances = {
@@ -3386,6 +3408,7 @@ ns.NPCS = {
         name = "Huntress Swiftriver",
         zone = "Ironforge",
         coords = "71.2, 69.7",
+        roams = true,
         appearances = {
             {
                 game = "BOOK",
@@ -3937,16 +3960,76 @@ ns.NPCS = {
                 missions = {},
                 role = "Gives the ship Sea King to the new captain Adashe Flintwill (chapter 32)",
             },
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Warns Baron Revilgaz that a goblin is rowing into the harbor shouting his name, which brings Riggle Bassbait to the Baron",
+            },
         },
         story = "Fleet Master Seahorn is a tauren pirate of the Blackwater Raiders, located on the top floor of the Salty Sailor Tavern in Booty Bay. "
              .. "He is Baron Revilgaz's most trusted advisor. "
-             .. "In the book Traveler: The Spiral Path he gives the ship Sea King to the new captain Adashe Flintwill.",
+             .. "In the book Traveler: The Spiral Path he gives the ship Sea King to the new captain Adashe Flintwill. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, he warns Baron Revilgaz that a goblin is rowing into the harbor shouting his name.",
         items = {},
         sources = {
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
             "https://warcraft.wiki.gg/wiki/Fleet_Master_Seahorn",
             "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
             "https://www.wowhead.com/classic/npc=2487",
+        },
+        confidence = "confirmed",
+    },
+
+    [15077] = {
+        name = "Riggle Bassbait",
+        zone = "Stranglethorn Vale",
+        coords = "27.4, 76.8",
+        related = { 2496, 2487 },
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Asks Baron Revilgaz for a loan to fund a fishing tournament, wins him over with a plate of tastyfish, and then goes off to seed the coastal waters with fish for the contest",
+            },
+        },
+        story = "Riggle Bassbait is a goblin angler who stands on a dock in Booty Bay, where he runs the Stranglethorn Fishing Extravaganza and takes the speckled tastyfish that anglers turn in to him. "
+             .. "He appears for the weekly Stranglethorn Fishing Extravaganza, which is held on Sunday afternoons. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, he rows into Booty Bay and asks Baron Revilgaz for a loan to fund his plan. "
+             .. "Revilgaz first refuses, but after tasting Riggle's tastyfish he agrees to a fishing tournament, and Riggle goes off to seed the coastal waters with fish.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Riggle_Bassbait",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza",
+            "https://www.wowhead.com/classic/npc=15077/riggle-bassbait",
+        },
+        confidence = "confirmed",
+    },
+
+    [2496] = {
+        name = "Baron Revilgaz",
+        zone = "Stranglethorn Vale",
+        coords = "27.2, 76.8",
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Stranglethorn Fishing Extravaganza",
+                missions = {},
+                role = "Hears Riggle Bassbait's loan request, is won over by his tastyfish, and agrees to a fishing tournament that brings visitors back to Booty Bay",
+            },
+        },
+        story = "Baron Revilgaz rules the goblin port of Booty Bay, home of the Blackwater Raiders, and he watches over the harbor from his balcony atop the Salty Sailor Tavern with Fleet Master Seahorn at his side. "
+             .. "In the short story Stranglethorn Fishing Extravaganza, the wars in Alterac Valley and Warsong Gulch have drawn visitors away from Stranglethorn and business is struggling. "
+             .. "He first refuses a loan to the angler Riggle Bassbait. "
+             .. "Then he tastes Riggle's tastyfish and agrees to a fishing tournament that brings adventurers and trade back to Booty Bay.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
+            "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
+            "https://www.wowhead.com/classic/npc=2496/baron-revilgaz",
         },
         confidence = "confirmed",
     },
@@ -5222,6 +5305,33 @@ ns.NPCS = {
         confidence = "confirmed",
     },
 
+    [40833] = {
+        name = "Tiala Whitemane",
+        zone = "Mount Hyjal",
+        coords = "68.8, 50.4",
+        forever = true,
+        appearances = {
+            {
+                game = "BOOK",
+                campaign = "Shadows Rising",
+                missions = {},
+                role = "Assures Yukha of the Earthen Ring that the druids guarding the World Tree will keep a safe passage open for Thrall to meet Tyrande",
+            },
+        },
+        story = "Tiala Whitemane is a tauren druid of the Guardians of Hyjal. "
+             .. "In the novel Shadows Rising, after the Fourth War, she is still guarding the World Tree with the other druids. "
+             .. "The Earthen Ring shaman Yukha negotiates a safe passage for Thrall and his companions to a meeting with Tyrande. "
+             .. "Tiala assures her that the passage will stay open. "
+             .. "In World of Warcraft: Forever she stands in Mount Hyjal.",
+        items = {},
+        sources = {
+            "https://warcraft.wiki.gg/wiki/Tiala_Whitemane",
+            "https://warcraft.wiki.gg/wiki/Shadows_Rising",
+            "https://www.wowhead.com/forever/npc=40833",
+        },
+        confidence = "confirmed",
+    },
+
     [253471] = {
         name = "Mordent Evenshade",
         zone = "Shen'dralas",
@@ -5300,6 +5410,12 @@ ns.NPCS = {
         appearances = {
             {
                 game = "BOOK",
+                campaign = "Day of the Dragon",
+                missions = {},
+                role = "Council of Six member who travels with Drenden to Lordaeron's capital to meet King Terenas and Lord Daval Prestor, the noble rumored to be Deathwing",
+            },
+            {
+                game = "BOOK",
                 campaign = "Road to Damnation",
                 missions = {},
                 role = "Sits on the Kirin Tor council that confronts Kel'Thuzad and warns him that his necromancy would see them condemned as heretics",
@@ -5312,6 +5428,12 @@ ns.NPCS = {
             },
             {
                 game = "BOOK",
+                campaign = "Quest for Pandaria",
+                missions = {},
+                role = "Arrives near Booty Bay with Ansirem Runeweaver to save his daughter Catelyn and her crew from the Bloodsail Buccaneers",
+            },
+            {
+                game = "BOOK",
                 campaign = "Jaina Proudmoore: Tides of War",
                 missions = {},
                 role = "Insists at the Council of Six that Dalaran stays neutral when Jaina asks for help against Orgrimmar",
@@ -5321,11 +5443,16 @@ ns.NPCS = {
              .. "In WoW Forever, Dalaran has lowered its shield early while the city is still being rebuilt, and you find Modera herself in the Violet Citadel. "
              .. "She welcomes adventurers who have helped the Kirin Tor and tells them that Dalaran owes them at least that much. "
              .. "In the novel Road to Damnation, she sits on the council that warns Kel'Thuzad his necromancy would see them condemned as heretics. "
-             .. "In Stormrage, she leads the weary mages of the Violet Citadel against the Emerald Nightmare, and in Jaina Proudmoore: Tides of War she insists that Dalaran stay neutral.",
+             .. "In Stormrage, she leads the weary mages of the Violet Citadel against the Emerald Nightmare, and in Jaina Proudmoore: Tides of War she insists that Dalaran stay neutral. "
+             .. "In Day of the Dragon she travels with Drenden to meet King Terenas, and in the novella Quest for Pandaria she arrives near Booty Bay with Ansirem Runeweaver to save his daughter Catelyn.",
         items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Modera",
+            "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
             "https://warcraft.wiki.gg/wiki/Road_to_Damnation",
+            "https://warcraft.wiki.gg/wiki/Stormrage",
+            "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
+            "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
         },
         confidence = "confirmed",
     },

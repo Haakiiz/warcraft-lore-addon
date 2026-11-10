@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+- **Fewer false alerts.** Being near a veteran's usual spot is now only a quiet hint ("A veteran is usually found near
+  here"), with no sound, and never while you are on a flight path. Veterans that wander or only show up now and then
+  (Rexxar, Misha, Emeriss, Lethon, Huntress Swiftriver) give no such hint. The hint area is smaller in the capital cities.
+- **Fewer missed veterans.** Hovering over a veteran now gives the alert too (friendly nameplates are off by default),
+  a real sighting always alerts even after a hint, and a nameplate that cannot be read yet gets three more tries.
+- **Memorials** only count in their own zone, and are recognised by object ID where the client allows it, so they can
+  work in German and French clients.
+- **Alert pill:** no more wrong portrait on a queued pill, a role icon instead of the question mark, and "+N more" opens
+  the right zone in German and French clients.
+- `/wcl debug` shows your map ID and position.
+- **Level cap is 60 in WoW Forever now.** The addon still assumed the launch cap of 30, so achievements that need
+  veterans in higher zones were wrongly shown as "later". Nothing waits any more.
+- **3 new veterans from the short story and novels:** Riggle Bassbait and Baron Revilgaz in Booty Bay (*Stranglethorn
+  Fishing Extravaganza*), and Tiala Whitemane on Mount Hyjal (*Shadows Rising*; WoW Forever only).
+- **More lore for existing veterans:** Fandral Staghelm (*The War of the Shifting Sands*), Fleet Master Seahorn
+  (*Stranglethorn Fishing Extravaganza*), Archmage Modera (*Day of the Dragon*, *Quest for Pandaria*) and Archmage
+  Ansirem Runeweaver (also on Zephras Isle).
+- **More cinematics:** Thrall's Vision (Thrall), A Kingdom Divided (Varimathras), and Divergent Courses and
+  Lightbringer (Uther the Lightbringer's tomb).
+- **Zone levels for the new Forever zones:** Zephras Isle, Riverglades, Mount Hyjal and Shen'dralas.
+
 - **3 new veterans from WoW Forever's new content:** The Baron in the Ruins of Lordaeron (the abomination that was
   once Grand Marshal Garithos from *The Frozen Throne*), the goblin trader Glix Xizzix in the Undercity
   (*Forsaken Kingdom*), and the Image of Archmage Modera outside Dalaran in Silverpine Forest (novels).

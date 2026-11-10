@@ -1,0 +1,367 @@
+[
+ {
+  "id": 249363,
+  "name": "Yala Windwatcher",
+  "tag": "",
+  "wiki_title": "Yala Windwatcher",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...neither kind, nor gentle. }}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|249363}}  {{DEFAULTSORT:Windwatcher, Yala}} [[Category:Skyborne characters]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]] [[Category:Oddly classified characters]]..."
+  ]
+ },
+ {
+  "id": 251361,
+  "name": "Rorian the Dayseeker",
+  "tag": "",
+  "wiki_title": "Rorian the Dayseeker",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...tes== {{Dialogue| What do you need of me, child of Zephras? }}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|251361}}  [[Category:Skyborne characters]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 251366,
+  "name": "Aetheen of the Gales",
+  "tag": "Elder of Zephras Isle",
+  "wiki_title": "Aetheen of the Gales",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...]] {{queststart}} *[[The Next Step (Skyborne)]] {{queststart}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|251366}}  [[Category:Skyborne characters]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 251371,
+  "name": "Falorne Fallwind",
+  "tag": "High Order",
+  "wiki_title": "Falorne Fallwind",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...r, is truly arrogant? }}}}}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|251371}}  {{DEFAULTSORT:Fallwind, Falorne}} [[Category:Skyborne characters]] [[Category:High Order]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 251966,
+  "name": "Commander Cyclas",
+  "tag": "",
+  "wiki_title": "Commander Cyclas",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...t is to come! Death to non-believers!}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|251966}}  {{DEFAULTSORT:Cyclas}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 251968,
+  "name": "Ayessa Dawnsinger",
+  "tag": "Grand Skyseer of The Windshapers",
+  "wiki_title": "Ayessa Dawnsinger",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...s== *{{Patch 1.60.1|added=}}  ==References== {{Reflist}}  ==External links== {{Elinks-NPC3|251968|253813|253849}}  {{DEFAULTSORT:Dawnsinger, Ayessa}} [[Category:Skyborne characters]] [[Category:Windshapers]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 252077,
+  "name": "Skypriest Aanders",
+  "tag": "",
+  "wiki_title": "Skypriest Aanders",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...  ==External links== {{Elinks-NPC2|252077|256966|loc1=Falaath Village|loc2=West Pylon Watchtower}}  {{DEFAULTSORT:Aanders}} [[Category:Forever NPCs]] [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Zephras Isle NPCs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 252475,
+  "name": "Elaadrin Evengale",
+  "tag": "Supreme Magister of The High Order",
+  "wiki_title": "Elaadrin Evengale",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ted to [[Othesia Evengale]].  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPCsearch}}  {{DEFAULTSORT:Evengale, Elaadrin}} [[Category:Skyborne characters]] [[Category:High Order]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 252666,
+  "name": "Commander Belguilos",
+  "tag": "The Breaker",
+  "wiki_title": "Commander Belguilos",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...repare to be BROKEN, non-believer!}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|252666}}  {{DEFAULTSORT:Belguilos}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 253204,
+  "name": "Dondallion Whisperwind",
+  "tag": "",
+  "wiki_title": "Dondallion Whisperwind",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ther [[Whisperwind]]s.  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|253204}}  {{DEFAULTSORT:Whisperwind, Dondallion}} [[Category:Skyborne characters]] [[Category:High Order]] [[Category:Quest givers]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 253622,
+  "name": "Commander Haalien",
+  "tag": "",
+  "wiki_title": "Commander Haalien",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...ate. The ritual is complete!}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC2|253622|264713}}  {{DEFAULTSORT:Haalien}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 254149,
+  "name": "Sirocca \"Swimmers\" Starfeather",
+  "tag": "",
+  "wiki_title": "Sirocca \"Swimmers\" Starfeather",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...s a cursed place! *hic*}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|254149}}  {{DEFAULTSORT:Starfeather, Sirocca}} [[Category:Skyborne characters]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 255534,
+  "name": "\"Badwind\" Bennic",
+  "tag": "Bandit Leader",
+  "wiki_title": "\"Badwind\" Bennic",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...indstone]] for [[Pilfered Windstones]].  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|255534}}  {{DEFAULTSORT:Bennic}} [[Category:Skyborne characters]] [[Category:Bandits]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 256028,
+  "name": "The Lost One",
+  "tag": "",
+  "wiki_title": "The Lost One",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category",
+   "book-cite-template"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...Patch 11.0.2|added=}}  ==External links== {{Elinks-object|454267}}  {{DEFAULTSORT:Lost One}} [[Category:Nerubian sages]] [[Category:Mage characters]] [[Category:Lore characters]] [[Category:Scholars]] [[Category:Statues]] [[Category:Readable objects]] [[Category:City of Threads objects]]...",
+   "  [book-cite-template] ...the statue looks like a trueborn nerubian, the plaque's mention of memory strands makes it clear that the subject was a sageform.  ==Plaque== ;Normal {{Book|content=Only the title is decipherable.  The \"writing\" on this placard is a series of burns, slashes, punctures and strange scents that you lack the sensory organs to fully comprehend the meaning of.}}  ;While under the effects of [[Potion of Polymorphic Translation: Nerubian]] {{Book|content=Ahn'yz  The Great Mage and Scholar who saw beyond.<br> They vanished before their strands could pass on.<br> We are forever less because of this.}}  ==Patch changes== *{{Patch 11.0.2|added=}}  ==External links== {{Elinks-object|454267}}  {{DEFAULTSORT:Lost One}} [[Category:Nerubian sages]] [[Category:Mage..."
+  ]
+ },
+ {
+  "id": 256247,
+  "name": "Belathaan Brightwish",
+  "tag": "High Order Magister",
+  "wiki_title": "Belathaan Brightwish",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...om opposing factions.-->  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|256247}}  {{DEFAULTSORT:Brightwish, Belathaan}} [[Category:Skyborne characters]] [[Category:High Order]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 256620,
+  "name": "Muln Earthfury",
+  "tag": "Earthen Ring",
+  "wiki_title": "Muln Earthfury",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [
+   "Charge of the Aspects |  | *{{RaceIcon|Muln}} [[Muln Earthfury]]",
+   "Jaina Proudmoore: Tides of War |  | *{{RaceIcon|Muln}} [[Muln Earthfury]]"
+  ],
+  "excerpts": [
+   "  [section-template] ... Later, Muln, Nobundo and Aggra were rescuing Thrall, when he was tormented by Deathwing.<ref>''[[Charge of the Aspects]]''</ref>  ===Tides of War=== {{novel-section}} After the death of Deathwing, he has stepped down as the leader of the [[Earthen Ring]], being replaced with [[Thrall]].<ref>''[[Jaina Proudmoore: Tides of War]]'', chapter 3</ref> He learned about the fate of [[Theramore]]. He was worried what [[Garrosh]] would do to [[Nordrassil]]. He was present when Thrall received a vision about the enslaving of water elements and thought that the shaman should go to help them. However, only Thrall went.  ===Legion=== {{Legion-section}} [[File:Muln in Deepholm.jpg|thumb|Muln in Deepholm.]] During the [[third invasion of the Burning Legion]], Muln came ...",
+   "  [book-or-game-characters-category] ...] [[Category:Maelstrom NPCs]] [[Category:Mount Hyjal NPCs]] [[Category:Heart of Azeroth NPCs]] [[Category:Deepholm NPCs]] [[Category:Firelands NPCs]] [[Category:Charge of the Aspects characters]] [[Category:Jaina Proudmoore: Tides of War characters]] [[Category:World of Warcraft: Shaman characters]] [[Category:Thrall: Twilight of the Aspects characters]] [[Category:Dark Factions]] [[Category:RPG characters]] [[Category:Forever NPCs]] [[Category:Mulgore NPCs]] [[Category:Zephras Isle NPCs]]...",
+   "  [italic-ref] ...n shaman. Muln tells the other members of the Earthen Ring that they're going to use the old ways to continue guiding the elements even in dark times.<ref name=\"Shaman\">''[[Shaman (manga)|Shaman]]''</ref>  ===Cataclysm=== {{cata-section}} [[File:CataclysmMuln.jpg|thumb|Muln in the Maelstrom]] Muln Earthfury made his in-game debut at the [[Maelstrom]], helping [[Thrall]], [[Aggra]] and [[Nobundo]] maintain the rift.<ref>[[The Maelstrom (quest)]]</ref>  He appeared and died in a nightmare caused by [[Iso'rath]], but this was just imagined by the adventurers.  Muln was worried about Thrall at Maelstrom when the former Warchief could not focus on the shamanistic duty. When Thrall returned from his journey, Muln was happy to see Thrall more calmer now.<ref>''[[Thrall: Twilight of the Aspects]..."
+  ]
+ },
+ {
+  "id": 256621,
+  "name": "Archmage Ansirem Runeweaver",
+  "tag": "Kirin Tor",
+  "wiki_title": "Archmage Ansirem Runeweaver",
+  "already_in_Data_lua": false,
+  "signals": [
+   "section-template",
+   "book-or-game-characters-category",
+   "rts-words",
+   "italic-ref"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [section-template] ...isited [[Stranglethorn]] and found a troll relic, a [[Catelyn's Blade|blade]], and later gave it to Catelyn who ran with it off.  ===Cataclysm era=== {{novel-section}} Ansirem Runeweaver remained at the site of the crater left behind by Dalaran's literally earth-shaking exit until the [[Cataclysm (event)|Cataclysm]] of the world. Despite his disappearance, he still served the Kirin Tor and was, in fact, a member of [[The Six]].<ref name=\"ToW\">[[Jaina Proudmoore: Tides of War]]</ref>  Ansirem, [[Modera]], and a few other magi arrived near [[Booty Bay]] to save his daughter Catelyn when she and her crew were under attack from the [[Bloodsail Buccaneers]]. He gave her his cheating gem (having to admit where it came from, as the other magi knew about it) to p...",
+   "  [book-or-game-characters-category] ...Quest givers]] [[Category:Alterac Mountains NPCs]] [[Category:Dalaran (Deadwind Pass) NPCs]] [[Category:Dalaran NPCs]] [[Category:Lands of Conflict]] [[Category:Jaina Proudmoore: Tides of War characters]] [[Category:Destination: Pandaria characters]] [[Category:Warcraft III campaign human heroes]]...",
+   "  [rts-words] ...ng the mages who fought outside [[Dalaran]] against [[Arthas Menethil]] and the [[Scourge]] when [[Kel'Thuzad]] was summoning [[Archimonde]].<ref>''[[Warcraft III: Reforged]]'': [[Under the Burning Sky (WC3 Undead)]]</ref>  [[Grand Magister Rommath]] still holds Ansirem (and [[Archmage Modera|Modera]]) in contempt for doing nothing when Grand Marshal [[Othmar Garithos|Garithos]] locked Prince [[Kael'thas Sunstrider|Kael'thas]] and his followers away in the [[Dungeons of Dalaran]].<ref>[[In the Shadow of the Sun]]</ref>  ===World of Warcraft=== {{wow-section}} Archmage Ansirem Runeweaver was a [[human]] [[quest giver]] located at [[Dalaran Crater]] in the [[Alterac Mountains]]. At some point, he at least worked with [[Baron Revilgaz]].<ref>[[Magical Ana...",
+   "  [italic-ref] ...e it to help him cheat during his exams, but he failed them anyway. After learning that cheaters never prosper, he learned his magecraft the hard way.<ref name=\"QfP\">''[[Quest for Pandaria]]'', part 2</ref>  Ansirem has a daughter named [[Catelyn the Blade|Catelyn]]. Rejecting the \"boring life\" of a mage, she decided to become a pirate and joined the [[Blackwater Raiders]]. Ansirem still cares for his daughter and has a few \"friends\" he keeps plied with gold in Booty Bay who keep him updated when things happen there.<ref name=\"QfP\"/>  By the time of the [[Third War]], Ansirem was a member of the [[Council of Six]]. Moments after the death of [[Antonidas]], Ansirem was among the mages who fought outside [[Dalaran]] against [[Arthas Menethil]] and the [[Scourge]] when [[Kel'Thuzad]] ..."
+  ]
+ },
+ {
+  "id": 256935,
+  "name": "Malduko Cloudcrush",
+  "tag": "",
+  "wiki_title": "Malduko Cloudcrush",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...e of== *[[Al'Aketh Thugs]]  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|256935}}  {{DEFAULTSORT:Cloudcrush, Malduko}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 257196,
+  "name": "Zaal Stormshield",
+  "tag": "",
+  "wiki_title": "Zaal Stormshield",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...The storm guides my blows!}}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|257196}}  {{DEFAULTSORT:Stormshield, Zaal}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 259385,
+  "name": "Tel'daeor the Stormspeaker",
+  "tag": "",
+  "wiki_title": "Tel'daeor the Stormspeaker",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...eggings]] *[[Skyseer's Pants]] *[[Thendal Watcher's Leggings]]  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|259385}}  [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Rare mobs]]..."
+  ]
+ },
+ {
+  "id": 259398,
+  "name": "Galemender Delanea",
+  "tag": "",
+  "wiki_title": "Galemender Delanea",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...Gloves]] *[[Thendal Watcher's Gloves]]  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|259398}}  {{DEFAULTSORT:Delanea}} [[Category:Skyborne characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Rare mobs]]..."
+  ]
+ },
+ {
+  "id": 268602,
+  "name": "Skypriest Faladiel",
+  "tag": "",
+  "wiki_title": "Skypriest Faladiel",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...or [[Call of Fire (Zephras Isle 2)]].  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|268602}}  {{DEFAULTSORT:Faladiel}} [[Category:Skyborne characters]] [[Category:Shaman characters]] [[Category:Al'Aketh]] [[Category:Zephras Isle mobs]] [[Category:Named mobs]]..."
+  ]
+ },
+ {
+  "id": 272045,
+  "name": "Brother Zendraas",
+  "tag": "",
+  "wiki_title": "Brother Zendraas",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...at you have available for trade.}} }}  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|272045}}  {{DEFAULTSORT:Zendraas}} [[Category:Skyborne characters]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 274844,
+  "name": "Culli Springwind",
+  "tag": "",
+  "wiki_title": "Culli Springwind",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...anaar]] on [[Zephras Isle]].  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|274844}}  {{DEFAULTSORT:Springwind, Culli}} [[Category:Skyborne characters]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ },
+ {
+  "id": 274907,
+  "name": "Belarysa Moonveil",
+  "tag": "",
+  "wiki_title": "Belarysa Moonveil",
+  "already_in_Data_lua": false,
+  "signals": [
+   "book-or-game-characters-category"
+  ],
+  "reverse_book_hits": [],
+  "excerpts": [
+   "  [book-or-game-characters-category] ...naar]] on [[Zephras Isle]].  ==Patch changes== *{{Patch 1.60.1|added=}}  ==External links== {{Elinks-NPC|274907}}  {{DEFAULTSORT:Moonveil, Belarysa}} [[Category:Skyborne characters]] [[Category:Zephras Isle NPCs]]..."
+  ]
+ }
+]

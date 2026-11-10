@@ -35,8 +35,7 @@ local function buildIndex()
     local zoneMaps = ns.ZONE_MAPS or {}
     for _, g in ipairs(ns.Veterans()) do
         local entry = g.entry
-        local x, y = tostring(entry.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
-        x, y = tonumber(x), tonumber(y)
+        local x, y = ns.Coords(entry)
         local maps = zoneMaps[entry.zone]
         if x and y and maps then
             for _, mapID in ipairs(maps) do
@@ -52,8 +51,7 @@ local function buildIndex()
         local spots = type(entry.locations) == "table" and #entry.locations > 0 and entry.locations
             or { { zone = entry.zone, coords = entry.coords } }
         for _, spot in ipairs(spots) do
-            local x, y = tostring(spot.coords or ""):match("^%s*([%d%.]+)%s*,%s*([%d%.]+)")
-            x, y = tonumber(x), tonumber(y)
+            local x, y = ns.Coords(spot)
             local maps = zoneMaps[spot.zone]
             if x and y and maps then
                 for _, mapID in ipairs(maps) do

@@ -1,0 +1,254 @@
+# Forever zone NPCs from wowhead.com/forever/zone=<id> (g_listviews.npcs), fetched 2026-10-24 in the browser.
+# Generic creatures removed. Format: zoneId|npcId|name|tag
+# Zones: 616 Mount Hyjal, 16591 Riverglades, 16593 Zephras Isle, 16611 Ruins of Lordaeron, 16651 Shen'dralas,
+#        16732 Excavation Site: Wetlands, 16919 The Hall of Thanes. (Darkspear Islands 16606: only generic creatures.)
+# No NPC list yet on: City of Dalaran (16544, 16560), Gilneas (17065), Ruins of Gilneas (16756), Battle for Gilneas (16653),
+#        Hyjal Crater (17852), Manor Mistmantle (17191), Half-Pint Tavern (16632), Whelgar's Excavation Site (16876).
+616|40833|Tiala Whitemane|
+616|41861|Fayran Elthas|Flight Master
+616|43408|Aili Greenwillow|Stable Master
+616|43411|Lenedil Moonwing|General Goods
+616|243815|Sebelia|Innkeeper
+616|243855|Toron Rockhoof|Blacksmithing Supplies
+616|244511|Zet'gan|
+616|244512|Ortak Lomgok|Innkeeper
+616|244517|Sefira Everbright|
+616|248366|Fraxinus|
+616|248367|Hyacinth|
+616|248419|Mirt|
+616|249052|Witherbeard|
+616|249234|Johun "Punchy" Dillas|
+616|249235|Kaylaena Springwhisper|Cenarion Circle
+616|249518|Morqhan Arkanev|
+616|249549|Fenwick Togglespring|Aspiring Rocketglider
+616|249968|Hnaz Blunderflame|
+616|250384|Goma Barkskin|
+616|251890|Tyrus Blackhorn|
+616|254131|Skylord Omnuron|Druid of the Talon
+616|254915|Thisalee Crow|Druid of the Talon
+616|255151|Rhylin Stonethorn|
+616|255183|Jezerelle the Swaying|
+616|255683|Shalla'kal|Wild Demigod
+616|255693|Kala'th|Wild Demigod
+616|256222|Ketharas|
+616|256626|Fennar Mossmane|
+616|256627|Elder Mistpaw|The Wise
+616|256628|Thalruk Thickfur|Hoard Guard
+616|256629|Dala Fairmaw|Quartermaster
+616|256646|Osi Mistpaw|
+616|256660|Thobon Sapclaw|
+616|256978|Brerufa|
+616|258380|Caitir Flinthew|Innkeeper
+616|258908|Noruu|Cenarion Druid
+616|259695|Renalard|Wild God
+616|259944|Jereman|Wild God
+616|260626|Bluebell|Flight Mistress
+616|260661|Suma Mossmane|
+616|260818|Frezzlie Popwhiz|Newly Promoted Overseer of Slime Experiments
+616|260823|Overseer Myoleth|Cult of the Ashen Reign
+616|260825|Phoebe Highfeather|
+616|263406|Elaena Moonwhisper|
+616|263757|Felflick|
+616|264089|Eluneth|
+616|264333|Grimroot|
+616|264521|Daythor Brellan|
+616|264795|Marn Euhorn|Cenarion Circle
+616|264797|Aisarra Nightmeadow|Keeper of Knowledge
+616|265586|Thylaen|
+616|265788|Kal'tinzan|
+616|265862|Enho Runehoof|
+616|265866|Trigg Ironhand|Repairs
+616|265883|Chagrak Hammerstrike|Repairs
+616|265893|Dendarro|
+616|265895|Maruke|
+616|266802|Thark Gorax|
+616|266803|Quintus Wainworth|
+616|267097|Maerion Thaelemaches|
+616|267109|Galvinquam Leafsyre|Cenarion Circle
+616|267113|Marrosis|Wild God
+616|267121|Yashiro|
+616|267182|Ve'han Talongrasp|Disciple of the Wild King
+616|268044|Loren Ravenlock|
+616|268168|Lisbael Highfeather|
+16591|255829|Clugfist|
+16591|255891|Grungle|Miner
+16591|255894|Innkeeper Zizplink|Innkeeper
+16591|255895|Grizzek|General Goods
+16591|255897|Friz Frazzlespark|Specialty Goods
+16591|255993|Grakna|Wind Rider Master
+16591|256410|Reginald Holmsby|Stablemaster
+16591|256418|Krom'rosh|
+16591|256438|Halligan Turner|Foreman
+16591|256655|Gorg|Cook
+16591|256657|Kreza Darkthorn|Weaponsmith & Armorcrafter
+16591|256658|Gur'dok|Journeyman Blacksmith
+16591|256673|Grik|Stable Master
+16591|256675|Innkeeper Toka|Innkeeper
+16591|256710|Tran'gul|
+16591|256728|Na'zok|
+16591|256831|Apprentice Claire|
+16591|256840|Lieutenant Prenish|
+16591|257055|Clobrok|
+16591|257057|Glop|
+16591|257058|Gobam|
+16591|257059|Chub'chob|Bloodmaster of Bolder'ok
+16591|257062|Jezap Jinglesprocket|Fight Promoter
+16591|257079|Cavalry Scout Alturin|
+16591|257087|Gretchen Mayberry|Gryphon Master
+16591|257292|Brakkit|Banker
+16591|257294|Lizi Pinchwhistle|Banker
+16591|257558|Demar Brant|Knight Commander
+16591|257591|Ashe Amberhall|
+16591|257595|Barracks Master Harlan|Innkeeper
+16591|258023|Sergeant Riftan|
+16591|258031|Neza Bloodsnout|
+16591|258317|Benjy Wheeler|
+16591|258570|Da'grosh|
+16591|258697|Farmer Elbrim|
+16591|259049|Robbie Holmsby|
+16591|259050|Eleanor Holmsby|
+16591|259051|Watcher Fredericks|
+16591|259056|Komuk|
+16591|259057|Dunston Willis|
+16591|259250|Alphonse Dumas|Journeyman Blacksmith
+16591|259287|Melanie Sable|Expert Enchanter
+16591|259352|Watcher Cornelius|
+16591|259353|Cedric Dalton|Watch Captain
+16591|259766|Mika Darby|Blacksmithing Supplies
+16591|259860|Martha Wellsworth|General Goods
+16591|259861|Paige Armstrong|Weaponsmith & Armorcrafter
+16591|259863|Cassandra Wheeler|Food & Drink
+16591|259961|Wharfmaster Whizzbuzz|
+16591|259962|Fimbo Greasemitz|
+16591|259988|Gorgegut|
+16591|260026|Scout Bolain|
+16591|260061|Lieutenant Maclan|
+16591|260062|Lieutenant Shelby|
+16591|260070|Bertrand Ironbrow|Foreman
+16591|260080|Ember Bladewhisper|Weapons Trainer
+16591|260211|Scoutmaster Vargas|
+16591|260231|Argo Brinewhistle|
+16591|260487|Gritta Chumwater|Fisherman
+16591|260525|Tallow Sparksocket|Stable Master
+16591|260540|Jasper Geartoggle|
+16591|260562|Melbin Powderfuse|Master Goblin Engineer
+16591|260563|Mia Tanglewrench|
+16591|260564|Rex Hardwire|
+16591|260565|Kor'gar|Engineering Supplies
+16591|260566|Fizzix Boomshot|Gunsmith
+16591|260568|Jazzle Cheapshot|
+16591|260570|Stitch Pinwizzle|Tailoring Supplies
+16591|260931|Clubtoe|
+16591|260993|Crag'rog|
+16591|262031|Sister Rowland|
+16591|262399|Gelinda Coppergleam|
+16591|263071|Blademaster Kaijo|
+16591|263089|Tessa Dawnbright|
+16591|263120|Gray Dawnbright|
+16591|263190|Tan'jani|
+16591|263326|Madam Swyndle|Agent of the Black Market
+16591|263367|Sleebo Fizzlespout|
+16591|263384|Mister Graphed|Agent of the Black Market
+16591|263440|Hamur|
+16591|263455|Bal'mog|
+16591|263613|Brother Lowley|
+16591|263615|Krek the Noxious|
+16591|263749|Gronok the Butcher|
+16591|269695|Cady Lloydriel|
+16591|269698|Aedamas|
+16591|269699|Thaddeus Brillyard|Master-at-Arms
+16591|270545|Kenneth "Kirby" Millstead|
+16591|270570|Justine Kai|Quartermaster
+16591|270571|Donald Armstrong|Knight-Paladin
+16591|271005|Burt Lazlo|Bartender
+16591|271006|Christina Von Stavern|Waitress
+16591|271007|Interrogator Ravenwing|
+16591|271742|Abbot Schuncke|
+16591|271746|Corporal Twohig|
+16591|272420|Gal'nok|
+16591|272435|Goren Grayfellow|Armorer
+16591|272437|Marla Bell|Reagent Vendor
+16591|272641|Samantha Wheeler|
+16591|272646|Miranda Turner|Cooking Supplier
+16593|249363|Yala Windwatcher|
+16593|250936|Den'dralass|The Great Mother
+16593|251115|Urs'anah|The Den Mother
+16593|251361|Rorian the Dayseeker|
+16593|251366|Aetheen of the Gales|Elder of Zephras Isle
+16593|251371|Falorne Fallwind|High Order
+16593|251902|Illaya Amberwind|Elder Windshaper
+16593|251903|Rathiril Sunlance|Elder of the High Order
+16593|251904|Sania Silverstream|Al'Aketh Missionary
+16593|251966|Commander Cyclas|
+16593|251968|Ayessa Dawnsinger|Grand Skyseer of The Windshapers
+16593|252076|High Priestess Lorthuna|
+16593|252077|Skypriest Aanders|
+16593|252172|Danarii Bellowveil|Advisor
+16593|252383|Valennia Stormfist|Peacekeeper Captain
+16593|252475|Elaadrin Evengale|Supreme Magister of The High Order
+16593|252476|Talaanis Shadowsong|High Elder of Zephras Isle
+16593|252666|Commander Belguilos|The Breaker
+16593|252863|Ferauu the Bludgeon|Bandit Chief
+16593|253002|Fillion Flamebreeze|
+16593|253204|Dondallion Whisperwind|
+16593|253306|Index Esoteria|
+16593|253622|Commander Haalien|
+16593|254149|Sirocca "Swimmers" Starfeather|
+16593|254151|Vayn Moongaze|
+16593|254344|Endaria Mistgaze|
+16593|254589|Vulgara the Insatiable|
+16593|255534|"Badwind" Bennic|Bandit Leader
+16593|255833|Rohash|Lord of the East Wind
+16593|255853|Urs'endris|The Great Windborne Bear Spirit
+16593|255887|Slydris|
+16593|256028|The Lost One|
+16593|256247|Belathaan Brightwish|High Order Magister
+16593|256617|Duke Anvillaxx|
+16593|256620|Muln Earthfury|Earthen Ring
+16593|256621|Archmage Ansirem Runeweaver|Kirin Tor
+16593|256935|Malduko Cloudcrush|
+16593|257065|Missionary Jasaan|
+16593|257196|Zaal Stormshield|
+16593|258443|Ur'endra|Mate of Urs'endris
+16593|259385|Tel'daeor the Stormspeaker|
+16593|259398|Galemender Delanea|
+16593|263664|Raan Wildwind|Adventurer
+16593|265756|Genn Fairweather|Stablemaster and Riding Trainer
+16593|268602|Skypriest Faladiel|
+16593|268605|Kuramaa|Spirit of Mischief
+16593|272045|Brother Zendraas|
+16593|272049|Saeyleenan|Great Windborne Cat Spirit
+16593|273264|Talisara Valewind|
+16593|274844|Culli Springwind|
+16593|274868|Gabbel Shattergale|
+16593|274907|Belarysa Moonveil|
+16593|274930|Lyvia Stormsinger|
+16593|274934|Amandriel|
+16593|277067|Vela El'wyth|
+16593|277402|Xephos Lehparsi|
+16593|277723|Jaekal Galeshot|
+16611|250483|Witherfang|
+16611|250631|The Abandoned|
+16611|250657|Rath'mael|
+16611|250660|The Baron|
+16611|256035|Viktor the Vile|
+16611|256097|Bjork|
+16611|265701|Captain Truman|
+16651|252691|Adarien|Innkeeper
+16651|253136|Orgrul|
+16651|253177|Nerlokh|
+16651|253471|Mordent Evenshade|
+16651|253851|Hagiak|
+16651|254578|Mithera|
+16651|254656|Magister Kirandis|
+16651|255385|Liranne|
+16651|255486|Historian Biraxas|
+16651|255704|Arondel|Drink Vendor
+16651|255705|Kerelle|Spirit Spirits
+16651|255721|Jarael|Leatherworking
+16651|255724|Melanori|Tailoring
+16732|260325|Shadetooth|
+16919|261306|Faldrim Anvilmar|
+16919|261311|Plunder|
+16919|261316|Magmatus|
+16919|261319|Durgen Dirgehammer|

@@ -16,10 +16,11 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "WarcraftLore" / "Data.lua"
 MEMORIALS = DATA.parent / "Memorials.lua"
+CORE = DATA.parent / "Core.lua"
 
 GAMES = {"WC1", "WC2", "BTDP", "WC3", "TFT", "FK", "BOOK"}
 CONFIDENCE = {"confirmed", "uncertain"}
-ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related", "forever", "foreverIDs"}
+ENTRY_FIELDS = {"name", "zone", "coords", "appearances", "story", "items", "sources", "confidence", "searched", "portrait", "alsoIn", "related", "forever", "foreverIDs", "roams"}
 PORTRAITS = DATA.parent / "Portraits"
 REQUIRED = {"name", "zone", "appearances", "sources", "confidence"}
 MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "appearances", "story", "sources", "locations", "order", "forever"}
@@ -325,6 +326,41 @@ def check_memorials(mems):
     return errors
 
 
+def load_zone_maps(path=CORE):
+    """Zone names in `local ZONE_MAPS = { ... }` in Core.lua (the zones the addon can match to a map)."""
+    src = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+    m = re.search(r"^local ZONE_MAPS = \{\n(.*?)^\}", src, re.MULTILINE | re.DOTALL)
+    if not m:
+        raise LuaError(f"could not find 'local ZONE_MAPS = {{' in {path.name}")
+    return set(re.findall(r'^\s*\["([^"]+)"\]\s*=', m.group(1), re.MULTILINE))
+
+
+def check_zone_maps(npcs, mems, zone_maps):
+    """Every entry with coords (and every memorial location) must be in a zone ZONE_MAPS knows,
+    or its map pin and position hint can never work. Instance zones have empty coords and are fine.
+    Forever-only entries (forever = true) are exempt: their zones get map IDs once those are read in game
+    with /wcl debug, and the coords are kept in the data until then."""
+    errors = []
+    for npc_id, entry in npcs.data.items():
+        e = entry.data
+        if e.get("forever") is True:
+            continue
+        if isinstance(e.get("coords"), str) and e["coords"].strip() and e.get("zone") not in zone_maps:
+            errors.append(f"[{npc_id}] (line {npcs.key_lines[npc_id]}): has coords, but zone {e.get('zone')!r} "
+                          "is not in ZONE_MAPS in Core.lua")
+    for key, entry in (mems.data.items() if mems is not None else []):
+        e = entry.data
+        spots = [(e.get("zone"), e.get("coords"))]
+        locs = e.get("locations")
+        for loc in (locs.data if isinstance(locs, LuaTable) and locs.is_list else []):
+            if isinstance(loc, LuaTable) and not loc.is_list:
+                spots.append((loc.data.get("zone"), loc.data.get("coords")))
+        for zone, coords in spots:
+            if isinstance(coords, str) and coords.strip() and zone not in zone_maps:
+                errors.append(f"memorial {key!r}: has coords, but zone {zone!r} is not in ZONE_MAPS in Core.lua")
+    return errors
+
+
 def check_entries(npcs):
     errors, warnings = [], []
     if npcs.is_list and npcs.data:
@@ -373,6 +409,8 @@ def check_entries(npcs):
                 err("'foreverIDs' must not repeat an NPC ID that has its own entry")
         if "forever" in e and e["forever"] is not True:
             err("'forever' must be true (leave it out for NPCs every client has)")
+        if "roams" in e and e["roams"] is not True:
+            err("'roams' must be true (leave it out for NPCs that stay at their coords)")
         for f in ("coords", "story", "searched", "portrait"):
             if f in e and not isinstance(e[f], str):
                 err(f"'{f}' must be a string (use \"\" if unknown)")
@@ -484,6 +522,20 @@ def main():
             print(f"\n{len(mem_errors)} error(s) in {len(mems.data)} memorials.")
             return 1
         print(f"OK: {len(mems.data)} memorials, all fields valid.")
+    if len(sys.argv) <= 1 and CORE.exists():
+        try:
+            zone_maps = load_zone_maps()
+        except LuaError as ex:
+            print(f"ERROR in {CORE.name}: {ex}")
+            return 1
+        mems = load_table(MEMORIALS, "MEMORIALS") if MEMORIALS.exists() else None
+        zone_errors = check_zone_maps(npcs, mems, zone_maps)
+        for e in zone_errors:
+            print("ERROR:", e)
+        if zone_errors:
+            print(f"\n{len(zone_errors)} entry(ies) with coords in a zone that ZONE_MAPS does not know.")
+            return 1
+        print(f"OK: every entry with coords is in one of the {len(zone_maps)} zones of ZONE_MAPS.")
     return 0
 
 
