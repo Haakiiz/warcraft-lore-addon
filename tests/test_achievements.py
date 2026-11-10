@@ -39,12 +39,15 @@ function hasCode(g, code) for _, c in ipairs(g.codes) do if c == code then retur
 FRESH = "{ schema = 3, met = {}, achievements = {} }"
 
 
-def runtime(db=FRESH, files=("Data.lua", "SavedData.lua", "Core.lua", "Achievements.lua")):
+# cap=30: the "later" mechanism is tested at the old launch cap; the shipped cap is checked separately.
+def runtime(db=FRESH, files=("Data.lua", "SavedData.lua", "Core.lua", "Achievements.lua"), cap=30):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(STUBS)
     run = lua.eval("function(src, name) assert(loadstring(src, name))('WarcraftLore', ns) end")
     for name in files:
         run((ADDON / name).read_text(encoding="utf-8"), name)
+    if cap and "Achievements.lua" in files:
+        lua.execute(f"ns.Achievements.LEVEL_CAP = {cap}")
     if db:
         lua.execute("WarcraftLoreDB = " + db)
     lua.execute(HELPERS)
@@ -211,7 +214,11 @@ def main():
     lua.execute("list = ns.Achievements.List(); by = byId(list)")
     n_later = ev("(function() local n = 0 for _, a in ipairs(list) do if a.later then n = n + 1 end end return n end)()")
     print(f"level cap {cap}: {reach} of {total} veterans reachable, {n_later} of {ev('#list')} achievements later")
-    r.append(check("LEVEL_CAP is 30", cap == 30))
+    shipped = runtime(cap=None)
+    r.append(check("shipped LEVEL_CAP is 60", shipped.eval("ns.Achievements.LEVEL_CAP") == 60))
+    r.append(check("at the shipped cap no achievement is later", shipped.eval("""(function()
+        for _, a in ipairs(ns.Achievements.List()) do if a.later then return a.id end end
+        return true end)()""") is True))
     r.append(check("some veterans are unreachable, most are reachable", 0 < reach < total and reach > total // 2))
     r.append(check("Tanaris is later, Stormwind is not",
                    ev("by['zone_Tanaris'].later") is True and ev("by['zone_Stormwind City'].later") is False))

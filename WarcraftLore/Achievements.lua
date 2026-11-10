@@ -14,11 +14,10 @@ local L = ns.L
 local Achievements = {}
 ns.Achievements = Achievements
 
--- WoW Forever is capped at this player level for now. Raise it when the cap rises: veterans in
--- zones with a higher minimum level are "later" until then, and the achievements that need them wait.
--- Classic Era is at its final cap of 60, so nothing waits there.
-local LEVEL_CAP = C.IsForever() == false and 60 or 30
-Achievements.LEVEL_CAP = LEVEL_CAP
+-- The player level cap. WoW Forever launched capped at 30; the full game and Classic Era are both at 60.
+-- Veterans in zones with a higher minimum level than the cap are "later", and the achievements that
+-- need them wait. With the cap at 60 nothing waits; the mechanism stays for a future lower-capped client.
+Achievements.LEVEL_CAP = 60
 
 -- Minimum player level per zone or instance (Classic ranges). A zone that is not listed counts as 1.
 local ZONE_LEVEL = {
@@ -50,7 +49,7 @@ local ZONE_LEVEL = {
 Achievements.ZONE_LEVEL = ZONE_LEVEL
 
 local function zoneReachable(z)
-    return (ZONE_LEVEL[z] or 1) <= LEVEL_CAP
+    return (ZONE_LEVEL[z] or 1) <= Achievements.LEVEL_CAP
 end
 
 -- A veteran can be met at the cap when any zone it is found in is open; no known zone = open.

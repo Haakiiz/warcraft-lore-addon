@@ -143,7 +143,7 @@ local function showRowTooltip(row)
     local total = tonumber(a.total)
     if row.later then
         lines[#lines + 1] = { L["Needs zones above level %d – coming with the next level cap."]:format(
-            ns.Achievements and tonumber(ns.Achievements.LEVEL_CAP) or 30), m[1], m[2], m[3], true }
+            ns.Achievements and tonumber(ns.Achievements.LEVEL_CAP) or 60), m[1], m[2], m[3], true }
     end
     if a.done and not row.later then
         local when = formatDate(a.earned)

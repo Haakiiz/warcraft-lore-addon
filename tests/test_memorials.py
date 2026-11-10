@@ -56,7 +56,8 @@ TooltipDataProcessor = { AddTooltipPostCall = function(kind, fn) postCalls[kind]
 ACCOUNT_V3 = "{ schema = 3, auto = true, alert = true, minimap = {}, met = { [4949] = { first = 5, count = 2 } }, achievements = { milestone_1 = 1 }, achievementsSeeded = true }"
 
 
-def runtime(client=NEW_CLIENT, account=ACCOUNT_V3, files=FILES, load_db=True):
+# cap=30: the "later" mechanism is tested at the old launch cap (the shipped cap is 60).
+def runtime(client=NEW_CLIENT, account=ACCOUNT_V3, files=FILES, load_db=True, cap=30):
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(STUBS)
     lua.execute(EXTRA)
@@ -69,6 +70,8 @@ def runtime(client=NEW_CLIENT, account=ACCOUNT_V3, files=FILES, load_db=True):
             lua.execute("ns.Compat.SetIconTexture = function(t, path) t:SetTexture(path) return true end")
         if name == "Core.lua":
             lua.execute("coreEvents = frames[#frames]")
+        if name == "Achievements.lua" and cap:
+            lua.execute(f"ns.Achievements.LEVEL_CAP = {cap}")
     lua.execute("ns.Minimap = { Init = function() end }")
     if load_db:
         lua.execute("WarcraftLoreDB = " + account + "; WarcraftLoreCharDB = { schema = 2 }")

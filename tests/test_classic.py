@@ -76,7 +76,7 @@ def main():
                        (ev("ns.MEMORIALS.testHyjal") is not None) is forever))
         r.append(check(f"{label}: other NPCs stay (Thrall)", ev("ns.NPCS[4949]") is not None))
         cap = ev("ns.Achievements.LEVEL_CAP")
-        r.append(check(f"{label}: level cap {30 if forever else 60}", cap == (30 if forever else 60), cap))
+        r.append(check(f"{label}: level cap 60", cap == 60, cap))
 
     print(f"\n{sum(r)}/{len(r)} checks passed")
     raise SystemExit(0 if all(r) else 1)

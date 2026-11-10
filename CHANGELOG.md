@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Level cap is 60 in WoW Forever now.** The addon still assumed the launch cap of 30, so achievements that need
+  veterans in higher zones were wrongly shown as "later". Nothing waits any more.
 - **3 new veterans from the short story and novels:** Riggle Bassbait and Baron Revilgaz in Booty Bay (*Stranglethorn
   Fishing Extravaganza*), and Tiala Whitemane on Mount Hyjal (*Shadows Rising*; WoW Forever only).
 - **More lore for existing veterans:** Fandral Staghelm (*The War of the Shifting Sands*), Fleet Master Seahorn
