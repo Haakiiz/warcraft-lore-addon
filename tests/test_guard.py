@@ -169,12 +169,23 @@ def main():
     out = lines(lua)
     results.append(check("lone veteran: one line, no follow-up", len(out) == 1 and "nearby" in out[0], out))
 
-    # The whole alert path shares ONE guard key: a failing follow-up switches "alert" off and /wcl why says so.
+    # The pill has its own guard key: a failing "+N more" turns off only the pill; the follow-up line still shows.
     lua = runtime()
     lua.execute('ns.Toast.SetMore = function() error("pill broke") end; '
                 'guids.nameplate1 = "Creature-900001"; guids.nameplate2 = "Creature-900002"; '
                 'fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); fire("NAME_PLATE_UNIT_ADDED", "nameplate2"); '
                 'timers[1].fn()')
+    results.append(check("pill error turns off 'pill', not 'alert'", lua.eval('ns.FeatureOff("pill")') is True
+                         and lua.eval('ns.FeatureOff("alert")') is False))
+    results.append(check("pill error: the follow-up chat line was still printed",
+                         any("Also nearby:" in x for x in lines(lua)), lines(lua)))
+
+    # The rest of the alert path shares ONE guard key: a failing follow-up switches "alert" off and /wcl why says so.
+    lua = runtime()
+    lua.execute('guids.nameplate1 = "Creature-900001"; guids.nameplate2 = "Creature-900002"; '
+                'fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); fire("NAME_PLATE_UNIT_ADDED", "nameplate2"); '
+                'local label = ns.GamesLabel; ns.GamesLabel = function() error("label broke") end; '
+                'timers[1].fn(); ns.GamesLabel = label')
     results.append(check("flush error turns off the same 'alert' key", lua.eval('ns.FeatureOff("alert")') is True
                          and lua.eval('ns.FeatureOff("alert-batch")') is False))
     lua.execute('guids.target = "Creature-900002"; SlashCmdList.WARCRAFTLORE("why")')
@@ -212,17 +223,19 @@ def main():
     lua.execute('SlashCmdList.WARCRAFTLORE("help")')
     results.append(check("help lists /wcl why", any("/wcl why" in x for x in lines(lua))))
 
-    # Nameplate added before its unit is filled in: one retry a moment later, then the alert.
+    # Nameplate added before its unit is filled in: a retry a moment later, then the alert.
     lua = runtime()
     lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1")')
     results.append(check("unreadable plate: no alert yet, one retry timer",
                          len(lines(lua)) == 0 and lua.eval("#timers") == 1 and lua.eval("timers[1].s") == 0.3))
     lua.execute('guids.nameplate1 = "Creature-900001"; timers[1].fn()')
     results.append(check("retry announces the veteran", len(lines(lua)) == 1 and "Alpha" in lines(lua)[0], lines(lua)))
+    # Still unreadable: up to three retries (0.3 s, 1 s, 2 s), then silence.
     lua = runtime()
-    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); timers[1].fn()')
-    results.append(check("still unreadable on retry: silent, no second retry",
-                         len(lines(lua)) == 0 and lua.eval("#timers") == 1))
+    lua.execute('fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); timers[1].fn(); timers[2].fn(); timers[3].fn()')
+    results.append(check("still unreadable: three retries at 0.3, 1 and 2 s, then no more, silent",
+                         len(lines(lua)) == 0 and lua.eval("#timers") == 3
+                         and [lua.eval(f"timers[{i}].s") for i in (1, 2, 3)] == [0.3, 1, 2]))
 
     print(f"\n{sum(results)}/{len(results)} passed")
     raise SystemExit(0 if all(results) else 1)

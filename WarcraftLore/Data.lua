@@ -10,6 +10,9 @@
 --   alsoIn      (optional) Other zones the NPC also walks through, e.g. { "Desolace", "Feralas" }.
 --   related     (optional) NPC IDs of other entries tied to this one (family, allies, rivals), e.g. { 3230, 10540 }.
 --               One side is enough: the lore window shows the link on both entries.
+--   roams       (optional) true for an NPC that is often not at its coords: it patrols, moves between
+--               spawn points or only appears during an event. Its map pin stays, but walking past the
+--               coords gives no "usually found near here" hint in chat.
 --   forever     (optional) true for an NPC that only WoW Forever has (its new zones: Mount Hyjal, Dalaran,
 --               Riverglades ...). The Classic Era build drops these entries when it loads.
 --   appearances (required) List of appearances in the RTS games. Each has:
@@ -743,6 +746,7 @@ ns.NPCS = {
         name = "Rexxar",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        roams = true,
         alsoIn = { "Desolace", "Feralas" },
         related = { 10204, 4968 },
         appearances = {
@@ -783,6 +787,7 @@ ns.NPCS = {
         name = "Misha",
         zone = "Stonetalon Mountains",
         coords = "30.2, 76.0",
+        roams = true,
         alsoIn = { "Desolace", "Feralas" },
         appearances = {
             {
@@ -3073,6 +3078,7 @@ ns.NPCS = {
         name = "Emeriss",
         zone = "Ashenvale",
         coords = "90.3, 40.1",
+        roams = true,
         alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
         appearances = {
             {
@@ -3100,6 +3106,7 @@ ns.NPCS = {
         name = "Lethon",
         zone = "Ashenvale",
         coords = "90.3, 40.1",
+        roams = true,
         alsoIn = { "Duskwood", "Feralas", "The Hinterlands" },
         related = { 14889 },
         appearances = {
@@ -3401,6 +3408,7 @@ ns.NPCS = {
         name = "Huntress Swiftriver",
         zone = "Ironforge",
         coords = "71.2, 69.7",
+        roams = true,
         appearances = {
             {
                 game = "BOOK",

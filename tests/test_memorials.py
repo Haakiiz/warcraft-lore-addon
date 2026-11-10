@@ -111,9 +111,11 @@ def main():
     # --- hover (tooltip post-call for world objects)
     r.append(check("hook: TooltipDataProcessor for objects", ev("ns.memorialHook") == "TooltipDataProcessor.Object"))
     ex("""
+        -- The default GUID carries an object ID no memorial uses, so these hovers match by name.
+        -- (Matching by object ID is tested in test_alerts2.py.)
         function hover(name, guid, unit)
             tooltipLines, tooltipUnit, tooltipText = {}, unit, name
-            postCalls[Enum.TooltipDataType.Object](GameTooltip, { guid = guid or "GameObject-0-1-2-3-25330-4", lines = { { leftText = name } } })
+            postCalls[Enum.TooltipDataType.Object](GameTooltip, { guid = guid or "GameObject-0-1-2-3-999999-4", lines = { { leftText = name } } })
         end
         printed = {}
     """)
