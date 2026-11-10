@@ -35,6 +35,7 @@ jobs:
           python3 tests/test_options.py
           python3 tests/test_guard.py
           python3 tests/test_alerts2.py
+          python3 tests/test_detect.py
           python3 tests/test_met.py
           python3 tests/test_portrait.py
           python3 tests/test_toast.py
