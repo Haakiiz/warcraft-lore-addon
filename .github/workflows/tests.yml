@@ -36,6 +36,7 @@ jobs:
           python tests/test_met.py
           python tests/test_portrait.py
           python tests/test_toast.py
+          python tests/test_toast2.py
           python tests/test_atlas.py
           python tests/test_share.py
           python tests/test_mappins.py

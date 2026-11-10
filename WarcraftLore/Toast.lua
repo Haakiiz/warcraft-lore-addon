@@ -210,7 +210,9 @@ local function build()
             return
         end
         if ns.Browser and ns.Browser.ShowZone then
-            ns.Browser.ShowZone(C.GetZoneName())
+            -- The data's English zone name (by map ID); the client's own name is translated.
+            local zone = ns.Browser.HereZone and ns.Browser.HereZone()
+            ns.Browser.ShowZone(zone or C.GetZoneName())
         end
     end))
     t.moreBtn:SetScript("OnEnter", function() setHover(t, true); t.moreText:SetTextColor(COL.title[1], COL.title[2], COL.title[3]) end)
@@ -250,6 +252,35 @@ local function setGames(t)
     end
 end
 
+-- A queued pill keeps the unit token it was created with ("nameplate3"), which may point at another
+-- unit by the time it is shown: only use the token when it still resolves to this NPC.
+local function unitIs(unit, npcID)
+    if not unit then
+        return false
+    end
+    local ok, id = pcall(function()
+        return (C.NPCIDFromGUID(C.UnitGUID(unit)))
+    end)
+    if not ok or not id then
+        return false
+    end
+    id = ns.FOREVER_ALIAS and ns.FOREVER_ALIAS[id] or id
+    return id == npcID
+end
+
+-- No unit to take a portrait from: the icon the lore window uses for the entry's first appearance
+-- (role / game), the question mark as the last resort.
+local function fallbackIcon(entry)
+    local ok, icon = pcall(function()
+        local first = ns.UI and ns.UI.Timeline and ns.UI.Timeline(entry)[1]
+        return first and ns.UI.RoleIcon and ns.UI.RoleIcon(first)
+    end)
+    if ok and type(icon) == "string" and icon ~= "" then
+        return "Interface\\Icons\\" .. icon
+    end
+    return QUESTION_MARK
+end
+
 local function display(npcID, entry, name, unit, more)
     ensureAnchor()
     local t
@@ -282,10 +313,10 @@ local function display(npcID, entry, name, unit, more)
     t.portrait:SetTexCoord(0, 1, 0, 1)
     if entry.portrait and entry.portrait ~= "" then
         t.portrait:SetTexture(PORTRAITS .. entry.portrait)
-    elseif unit and C.SetUnitPortrait(t.portrait, unit) then
+    elseif unitIs(unit, npcID) and C.SetUnitPortrait(t.portrait, unit) then
         -- WoW's own portrait of the NPC
     else
-        t.portrait:SetTexture(QUESTION_MARK)
+        t.portrait:SetTexture(fallbackIcon(entry))
         t.portrait:SetTexCoord(0.08, 0.92, 0.08, 0.92)
     end
 

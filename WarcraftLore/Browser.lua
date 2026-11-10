@@ -1615,6 +1615,8 @@ local function hereZone()
     return nil
 end
 
+Browser.HereZone = hereZone -- the alert pill's "+N more" opens the list for this zone
+
 -- Dims the "This zone" button when there is nothing to show for the current zone, or when
 -- the list is already filtered to it.
 function Browser.UpdateHere()
