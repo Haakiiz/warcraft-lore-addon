@@ -206,12 +206,12 @@ def main():
     out = lines(lua)
     r.append(check("5. first meeting: one chat line (New veteran met), plus sound and pill",
                    len(out) == 1 and "New veteran met" in out[0] and lua.eval("sounds") == 1 and lua.eval("#toasts") == 1, out))
-    # Already met before (not the first meeting): the normal alert line.
+    # Already met before (not the first meeting): no alert, no sound.
     lua = runtime()
     lua.execute('WarcraftLoreDB.met = { [900002] = { first = 1, count = 1 } }; guids.mouseover = "Creature-900002"; '
                 'hoverUnit("mouseover"); runTimers()')
     out = lines(lua)
-    r.append(check("5. met before: the nearby alert line", len(out) == 1 and "Veteran nearby" in out[0], out))
+    r.append(check("5. met before: no alert and no sound", len(out) == 0 and lua.eval("sounds") == 0, out))
     # Already alerted by its nameplate: no second alert.
     lua = runtime()
     lua.execute('guids.nameplate1 = "Creature-900002"; fire("NAME_PLATE_UNIT_ADDED", "nameplate1"); runTimers(); '

@@ -357,19 +357,22 @@ def sec_hint_then_sighting():
 
 def sec_mouseover():
     lua = runtime()
-    lua.execute("WarcraftLoreDB.met = { [4949] = { first = 1, count = 1 } }")  # met before: the normal alert line
+    lua.execute("WarcraftLoreDB.met = { [4949] = { first = 1, count = 1 } }")  # met before: no alert at all
     for _ in range(4):
-        lua.execute(f'hover("mouseover", "{THRALL}")')
-    check("5. Thrall hovered 4 times: his tooltip line each time, the alert scheduled once",
-          lua.eval("#tooltipLines") == 1 and lua.eval("#timers") == 1, (lua.eval("#tooltipLines"), lua.eval("#timers")))
-    lua.execute("runTimers()")
-    out = lines(lua)
-    check("5. the mouseover alert: one chat line, one sound, one pill",
-          len(out) == 1 and "Veteran nearby" in out[0] and "Thrall" in out[0] and lua.eval("sounds") == 1
-          and lua.eval("#toasts") == 1, out)
-    for _ in range(3):
         lua.execute(f'hover("mouseover", "{THRALL}"); runTimers()')
-    check("5. refreshing the tooltip several more times: nothing repeats",
+    check("5. Thrall met before, hovered 4 times: his tooltip line, but no chat line, sound or pill",
+          lua.eval("#tooltipLines") >= 1 and len(lines(lua)) == 0 and lua.eval("sounds") == 0
+          and lua.eval("#toasts") == 0, (lua.eval("#tooltipLines"), lines(lua)))
+    lua = runtime()
+    lua.execute("WarcraftLoreDB.met = { [4949] = { first = 1, count = 1 } }")
+    lua.execute(f'plate("nameplate1", "{THRALL}"); runTimers(); at(1454, {THRALL_X}, {THRALL_Y}); ticker()')
+    check("5. Thrall met before: his nameplate and his coords stay silent",
+          len(lines(lua)) == 0 and lua.eval("sounds") == 0 and lua.eval("#toasts") == 0, lines(lua))
+    # Never met: hovering many times gives one alert only.
+    lua = runtime()
+    for _ in range(4):
+        lua.execute(f'hover("mouseover", "{THRALL}"); runTimers()')
+    check("5. never met, hovered 4 times: one chat line, one sound, one pill",
           len(lines(lua)) == 1 and lua.eval("sounds") == 1 and lua.eval("#toasts") == 1, lines(lua))
     lua = runtime()
     lua.execute('hover("mouseover", "Pet-0-1-2-3-4949-0000A1"); runTimers()')
