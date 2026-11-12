@@ -1,7 +1,9 @@
 # Warcraft Lore – changelog
 
-## Unreleased
+## v1.1.0
 
+- **No more pings for old friends.** The nearby alert (sound, chat line and pill) now only comes for veterans you
+  have never met. Walking up to one you already know is silent; the tooltip line still shows.
 - **Fewer false alerts.** Being near a veteran's usual spot is now only a quiet hint ("A veteran is usually found near
   here"), with no sound, and never while you are on a flight path. Veterans that wander or only show up now and then
   (Rexxar, Misha, Emeriss, Lethon, Huntress Swiftriver) give no such hint. The hint area is smaller in the capital cities.

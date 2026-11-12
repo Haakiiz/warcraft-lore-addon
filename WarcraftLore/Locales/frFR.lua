@@ -101,6 +101,7 @@ L["you are in an instance, so map position alerts are off"] = "vous êtes dans u
 L["it moves around, so walking near its usual spot gives no hint; its nameplate or tooltip gives the alert"] = "il se déplace beaucoup : passer près de son emplacement habituel ne donne aucun indice ; sa barre de nom ou son infobulle déclenche l'alerte"
 L["no map position is stored for this NPC, so only its nameplate or tooltip can trigger an alert"] = "aucune position sur la carte n'est enregistrée pour ce PNJ : seules sa barre de nom ou son infobulle peuvent déclencher une alerte"
 L["you were already alerted about it this session"] = "vous avez déjà été alerté à son sujet pendant cette session"
+L["you have met it before, so it gives no nearby alert"] = "vous l'avez déjà rencontré, il ne déclenche donc pas d'alerte de proximité"
 L["the tooltip line is off after an error"] = "la ligne d'infobulle est désactivée après une erreur"
 L["Note: %s."] = "Remarque : %s."
 L["Its tooltip line, alerts and story are all active."] = "Sa ligne d'infobulle, ses alertes et son histoire sont toutes actives."

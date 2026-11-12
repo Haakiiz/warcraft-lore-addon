@@ -749,8 +749,18 @@ end
 
 -------------------------------------------------------------------- Nearby alert
 -- A veteran seen up close (its nameplate appears, or the player mouses over it) is announced once
--- per session: chat line, sound and the pill.
+-- per session: chat line, sound and the pill. Only veterans the player has never met (on any
+-- character, any NPC ID of the merged veteran) are announced: walking past an old friend is silent.
 local alerted = {}
+
+-- True when this NPC's veteran (any of its merged NPC IDs) has been met before.
+local function metBefore(npcID)
+    local group = ns.VeteranOf(npcID)
+    if group then
+        return ns.GroupMet(group)
+    end
+    return ns.IsMet(npcID)
+end
 
 -- The first veteran is announced at once (chat line, sound, pill). Others appearing within
 -- BATCH_WINDOW seconds (entering a city) are collected into ONE follow-up chat line naming up to
@@ -868,7 +878,7 @@ local function nameplateAdded(unit, attempt)
         return
     end
     local entry, npcID, _, name = ns.Lookup(unit)
-    if not entry or alerted[npcID] then
+    if not entry or alerted[npcID] or metBefore(npcID) then
         return
     end
     announce(npcID, entry, name, false, unit)
@@ -909,10 +919,10 @@ local function tooltipLine(tooltip, unit, guid)
     local firstMeet = ns.MarkMet(npcID)
     C.AddTooltipLine(tooltip, L["Warcraft Veteran: %s"]:format(ns.GamesLabel(entry)), 0.83, 0.78, 0.97)
     -- Friendly nameplates are off by default, so hovering is often the only way a veteran is seen:
-    -- it gives the nearby alert too, once per session. Not for the target when /wcl auto already
-    -- shows its pill (onTargetChanged).
+    -- it gives the nearby alert too, but only the first time the veteran is ever met. Not for the
+    -- target when /wcl auto already shows its pill (onTargetChanged).
     local db = WarcraftLoreDB
-    if db and db.alert and not alerted[npcID] and not (db.auto and isTarget(unit, guid)) then
+    if db and db.alert and not groupMetBefore and not alerted[npcID] and not (db.auto and isTarget(unit, guid)) then
         alerted[npcID] = true -- right away: the tooltip is refreshed many times while hovered
         local quiet = firstMeet and not groupMetBefore -- MarkMet prints "New veteran met" then
         C.After(function() onMouseoverAlert(npcID, entry, name, unit, quiet) end)
@@ -981,7 +991,7 @@ local function positionCheck()
     local found = {}
     for _, spot in ipairs(list) do
         local npcID, radius = spot[1], spot[4]
-        if not alerted[npcID] and not hinted[npcID] then
+        if not alerted[npcID] and not hinted[npcID] and not metBefore(npcID) then
             local dx, dy = px - spot[2], py - spot[3]
             if dx * dx + dy * dy <= radius * radius then
                 hinted[npcID] = true
@@ -1067,7 +1077,9 @@ local function cmdWhy()
         elseif not hasCoords(entry) then
             notes[#notes + 1] = L["no map position is stored for this NPC, so only its nameplate or tooltip can trigger an alert"]
         end
-        if alerted[npcID] then
+        if metBefore(npcID) then
+            notes[#notes + 1] = L["you have met it before, so it gives no nearby alert"]
+        elseif alerted[npcID] then
             notes[#notes + 1] = L["you were already alerted about it this session"]
         end
     end
