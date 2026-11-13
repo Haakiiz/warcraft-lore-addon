@@ -1,13 +1,14 @@
 # ROADMAP – Warcraft Lore
 
-**Mål: 1000 downloads på CurseForge.**
-Nå: **69** (2026-10-20, v0.8.1). Siden: https://www.curseforge.com/wow/addons/rts-veterans
+**Mål: 2000 downloads på CurseForge** (første delmål 1000).
+Nå: **ca. 170** (2026-11-13, v1.1.0). Siden: https://www.curseforge.com/wow/addons/rts-veterans
 
 Status: [x] ferdig · [~] delvis · [ ] gjenstår · ★ = størst effekt på downloads.
 
-> Addonen har allerede mer innhold enn de fleste lore-addons (130 veteraner, journal, 41 achievements,
-> kartnåler, minnesmerker, to temaer, tre språk). Det som stopper veksten nå er **synlighet og publikum**,
-> ikke funksjoner. Derfor kommer markedsføring og flere spillklienter før nye funksjoner i denne planen.
+> **Strategi (Håkon, 2026-11-13): ingen aktiv markedsføring.** Ingen Reddit- eller Discord-innlegg.
+> Veksten skal komme av seg selv: en side folk forstår på fem sekunder, en addon som ikke gir feil,
+> flere språk, spillere som deler veteraner i chatten, og jevne, ekte oppdateringer.
+> Uten markedsføring og uten Retail er 1000–2000 et realistisk mål. 10 000 krever Retail (se «Senere»).
 >
 > Merk: CurseForge teller hver nedlasting av en fil, også når appen oppdaterer addonen for en eksisterende
 > bruker. Jevne, ekte oppdateringer (f.eks. annenhver uke) gir derfor både flere tellinger og plass på
@@ -21,59 +22,55 @@ Skriv inn tallet fra CurseForge-siden hver mandag.
 |------------|----------:|---------|------------------------|
 | 2026-10-15 |        59 | v0.8.0  | Utgangspunkt           |
 | 2026-10-20 |        69 | v0.8.1  | Ny beskrivelse og nye skjermbilder; v0.8.1 (minnesmerke-filtre, Ansirem) |
+| 2026-11-13 |  ca. 170  | v1.1.0  | v0.9–v1.1: bibliotek, Classic Era-bygg, Forever-lansering, færre falske varsler |
 
-## Milepæl 1 – Butikkvinduet (59 → 100)
+## Milepæl 1 – Butikkvinduet
 
-Folk som finner siden skal forstå addonen på fem sekunder. Billig, og må gjøres først.
+Folk som finner siden skal forstå addonen på fem sekunder.
 
-- [x] ★ **Oppdater CurseForge-beskrivelsen** (`media/curseforge-description.md`): skrevet om 2026-10-15 med
-      v0.7 og v0.8 (Journal, achievements, minnesmerker, tysk/fransk, WC2-temaet). Limt inn på CurseForge.
-- [~] ★ **Nye skjermbilder i WC2-temaet** (lagt inn 2026-10-20) + én kort GIF (gjenstår) (target Thrall → tooltip → lore-vindu → achievement-banner).
-      Hovedbildet er det første folk ser i søket. De seks bildene i galleriet viser det gamle utseendet.
-- [ ] **Kategorier og tagger på CurseForge**: legg til «Achievements», «Map & Minimap», «Roleplay» og «Quests & Leveling»
-      i tillegg til dagens, så addonen dukker opp i flere lister.
-- [x] **Forklar `/wcl auto`** og hvordan man slår av alerts på siden (avsnittet «Too chatty?» i beskrivelsen).
-- [ ] **Spilltest-gjelden** (se TODO.md og TASKS.md): alert-pill, minimapknapp, toast-teksturer, `/wcl list`, WC2-temaet.
-      Én Lua-feil i første økt gir avinstallasjon og en dårlig kommentar.
+- [x] ★ **CurseForge-beskrivelsen** (`media/curseforge-description.md`) holdes lik siste versjon. Må limes inn på
+      CurseForge av Håkon etter hver større utgivelse.
+- [~] ★ **Skjermbilder i WC2-temaet** lages med `tools/uishots`. En kort GIF gjenstår (krever opptak i spillet).
+- [ ] **Kategorier og tagger på CurseForge**: legg til «Achievements», «Map & Minimap», «Roleplay» og
+      «Quests & Leveling», så addonen dukker opp i flere lister. (Gjøres av Håkon på CurseForge-siden.)
+- [ ] **Lenk til GitHub fra CurseForge** (Source og Issues). Repoet er offentlig.
+- [ ] **Spilltest-gjelden** (se TODO.md og TASKS.md): én Lua-feil i første økt gir avinstallasjon.
 
-## Milepæl 2 – Bli funnet (100 → 250)
+## Milepæl 2 – Addonen sprer seg selv
 
-- [ ] ★ **Lore-innlegg der Forever-spillerne er**: Forever-subreddit og Discord.
-      Ikke «sjekk ut addonen min», men «Visste du at denne NPC-en i Barrens var med i et Warcraft III-oppdrag?»
-      med et skjermbilde, og lenken nederst. Én historie per innlegg; 130 veteraner = mange innlegg.
-- [ ] **Last opp til Wago Addons og WoWInterface** i tillegg til CurseForge.
-      Packageren støtter begge (`WAGO_API_TOKEN`, `WOWI_API_TOKEN` + `X-Wago-ID`/`X-WoWI-ID` i .toc).
-      Teller ikke mot CurseForge-målet, men gir nye brukere og ryktespredning.
-- [ ] **Gjør GitHub-repoet offentlig** og lenk til det fra CurseForge (Source/Issues). Gir tillit og bidragsytere.
-- [ ] **Svar på hver kommentar** på CurseForge innen et døgn, og nevn rettelsen i changelogen.
+- [ ] ★ **Delbare veteraner i chatten**: Share-knapp og `/wcl share`. Spillere uten addonen ser en lesbar tekst,
+      spillere med addonen får en klikkbar lenke.
+- [ ] ★ **Flere språk**: spansk, russisk og brasiliansk portugisisk (store CurseForge-publikum).
+      Senere koKR og zhCN, som trenger `STANDARD_TEXT_FONT`.
+- [ ] **Velkomst ved første innlogging**: én chatlinje som forteller hva addonen gjør og hvor nærmeste veteran er,
+      så nye brukere ser noe med en gang.
+- [ ] **Bidragsformat**: GitHub issue-maler for rettelser og nye NPC-er. Testene kjører allerede på hver PR.
+- [ ] **Svar på hver kommentar** på CurseForge, og nevn rettelsen i changelogen.
 
-## Milepæl 3 – Større publikum (250 → 1000)
+## Milepæl 3 – Folk kommer tilbake
 
-Forever er en liten klient. De store publikumene er Classic Era/Anniversary og Retail.
-
-- [ ] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`). *Påbegynt 2026-11-02 på `session/classic-era`: egen TOC
-      (11509), nivåtak 60, oppføringer med `forever = true` filtreres bort. Gjenstår: test i Classic-klienten.* Det meste av databasen er hentet fra Wowhead Classic,
-      så NPC-ID-ene og koordinatene passer allerede. Compat.lua samler de versjonsavhengige kallene.
-      *Gjenstår:* Classic har andre uiMapID-er, mangler `issecretvalue`, har ikke `Settings.RegisterCanvasLayoutCategory`
-      på alle klienter, og Season of Discovery-ID-ene (Uther, Gregory) finnes bare der.
-      Krever at du (eller en tester) kan logge inn på Classic. Dette er det enkeltpunktet som kan gi flest downloads.
-- [ ] ★ **Retail-bygg** (`WarcraftLore_Mainline.toc`). Samme API som Forever, men mange NPC-er har ny ID, nytt sted
-      eller er borte etter Cataclysm. Krever en egen gjennomgang av dataene, sone for sone. Gjør Classic Era først.
-- [ ] **Delbare veterankort i chatten** (`|Hwclvet:ID|h[Thrall]|h`, hook på `SetItemRef`). Andre spillere ser lenken
-      og spør hva det er – gratis reklame inne i spillet.
-- [ ] **Flere språk**: esES og ruRU (store CurseForge-publikum), senere ptBR, koKR, zhCN.
-      `L`-tabellen fra v0.7 finnes; koreansk og kinesisk trenger `STANDARD_TEXT_FONT`.
-
-## Milepæl 4 – Folk kommer tilbake (holder tallet oppe)
-
-- [ ] **Nye soner når level cap stiger** i Forever: Mount Hyjal (Renewed), Dalaran, Shen'dralas, Riverglades,
-      Zephras Isle (se TODO.md). Hver sone = en oppdatering med en nyhet å poste om.
-- [ ] **Spor en veteran med pil** via TomTom (`TomTom:AddWaypoint`) ved høyreklikk på en kartnål.
-- [ ] **Lore-stier**: guidede tråder som «Thrall til Orgrimmar», en kort tekst per stopp, TomTom mellom stegene.
-- [ ] **Lore Week**: dobbel møtt-teller én uke (`C_DateAndTime.GetCurrentCalendarTime()`) – en grunn til å poste.
+- [~] ★★ **Classic Era-bygg** (`WarcraftLore_Vanilla.toc`) er utgitt. Gjenstår: test i Classic-klienten.
+- [ ] **Nye soner og NPC-er i Forever** etter hver patch: kjør `tools/research/forever_scan.py` (se TODO.md).
+      Hver runde er en ekte oppdatering.
+- [ ] **Lore-stier**: guidede tråder som «Thrall til Orgrimmar», en kort tekst per stopp.
+- [ ] **Lore Week**: dobbel møtt-teller én uke (`C_DateAndTime.GetCurrentCalendarTime()`).
 - [ ] **Fulltekstsøk** i lore-tekstene (ordindeks bygget første gang søket brukes).
 - [ ] **Raskere lister** med 350+ oppføringer: bygg ved åpning, gjenbruk rader, cache på NPC-ID.
-- [ ] **Bidragsformat** for nye NPC-er og rettelser: GitHub issue-mal + `tests/validate_db.py` i Actions på hver PR.
+
+## Senere (forslag, ikke besluttet)
+
+- [ ] ★★ **Retail-bygg** (`WarcraftLore_Mainline.toc`). Det klart største publikummet på CurseForge, og det som
+      skal til for å nå 10 000. Samme API som Forever, men mange NPC-er har ny ID, nytt sted eller er borte etter
+      Cataclysm. Krever en egen gjennomgang av dataene, sone for sone, og testing i en Retail-klient.
+      Første steg: en rapport over hvilke veteraner som finnes i Retail med samme ID.
+- [ ] **Wago Addons og WoWInterface** i tillegg til CurseForge. Packageren støtter begge
+      (`WAGO_API_TOKEN`, `WOWI_API_TOKEN` + `X-Wago-ID`/`X-WoWI-ID` i .toc). Teller ikke mot CurseForge-målet,
+      men gir nye brukere. Utsatt av Håkon 2026-11-13.
+
+## Valgt bort
+
+- **Markedsføring** (Reddit, Discord, lore-innlegg): Håkon vil ikke markedsføre (2026-11-13).
+- **TomTom-pil** til veteraner: ikke ønsket (2026-11-13).
 
 ## Ferdig (v0.1–v0.8)
 
@@ -89,13 +86,6 @@ Forever er en liten klient. De store publikumene er Classic Era/Anniversary og R
 - [x] Warcraft II-tema som standard, med bryter til klassisk utseende (v0.8)
 - [x] Automatisk utgivelse til CurseForge ved tag (`.github/workflows/release.yml`)
 - [x] Bibliotek: 18 History of Warcraft-bøker, 16 veteraner i høynivå-dungeons/raids/AV, full kvalitetssjekk (v0.9)
-
-## Anbefalt rekkefølge
-
-1. Milepæl 1 i sin helhet (en kveld eller to): beskrivelse, bilder, GIF, tagger, spilltest.
-2. Første lore-innlegg på Reddit/Discord samme uke som de nye bildene er oppe.
-3. Classic Era-bygget. Størst effekt, men mest arbeid og krever testing på en Classic-klient.
-4. Deretter én synlig nyhet per oppdatering (chatlenker, språk, nye soner), hver med et eget innlegg.
 
 Bakgrunn: den simulerte tidslinjen «Sagaen om Warcraft Lore» (`simulering/story.js`,
 https://claude.ai/artifact/2hq7XRetf3PKrCvDYLs2WC) var kilden til mange av funksjonsønskene over.
