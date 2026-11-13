@@ -1,0 +1,35 @@
+name: Suggest a veteran
+description: An NPC you can meet in the game who also appears in a Warcraft strategy game or novel, and is missing from the addon.
+labels: [new veteran]
+body:
+  - type: input
+    id: npc
+    attributes:
+      label: NPC name and NPC ID
+      description: Target the NPC and type /wcl id to get the ID.
+      placeholder: Gazlowe (3391)
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where does the NPC stand?
+      description: Zone and coordinates if you have them.
+      placeholder: Ratchet, The Barrens (62.6, 36.2)
+  - type: dropdown
+    id: client
+    attributes:
+      label: Which game did you see the NPC in?
+      options:
+        - WoW Forever
+        - WoW Classic Era / Hardcore
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: appearance
+    attributes:
+      label: Which game or book do they appear in?
+      description: The mission or the book, and what they do there. A link to warcraft.wiki.gg helps a lot. Comics, the tabletop RPG and guide books do not count.
+    validations:
+      required: true

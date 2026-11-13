@@ -1,0 +1,40 @@
+name: Bug or Lua error
+description: Something is broken, or the game showed an error from Warcraft Lore.
+labels: [bug]
+body:
+  - type: dropdown
+    id: client
+    attributes:
+      label: Which game are you playing?
+      options:
+        - WoW Forever
+        - WoW Classic Era / Hardcore
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Addon version
+      description: Shown in the AddOns list on the character screen, or in the CurseForge app.
+      placeholder: v1.1.0
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Game language
+      placeholder: English, Deutsch, Français ...
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      description: Tell us what you were doing (which zone, which NPC, which window).
+    validations:
+      required: true
+  - type: textarea
+    id: debug
+    attributes:
+      label: Output of /wcl debug
+      description: Type /wcl debug in the game chat and copy the lines here. If the game showed an error text, paste that too.
+      render: text

@@ -1,0 +1,25 @@
+name: Lore correction
+description: A story, a game appearance or a location in the addon is wrong.
+labels: [lore]
+body:
+  - type: input
+    id: npc
+    attributes:
+      label: Which NPC or memorial?
+      description: The name, and the NPC ID if you have it (target the NPC and type /wcl id).
+      placeholder: Thrall (4949)
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong, and what should it say?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A link to warcraft.wiki.gg, the mission, or the book and chapter. Every entry in the addon is checked against a source.
+    validations:
+      required: true
