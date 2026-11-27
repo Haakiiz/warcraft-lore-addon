@@ -47,6 +47,7 @@ ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat =
     Report = function() return {} end,
     HookUnitTooltip = function(cb) unitTooltip = cb return "stub" end,
     HookObjectTooltip = function(cb) objectTooltip = cb return "stub" end,
+    HookItemTooltip = function() return "stub" end,
     ItemTextName = function() return itemTextName end,
     AddTooltipLine = function(_, text) tooltipLines[#tooltipLines + 1] = text end,
     GetRealmName = function() return "Realm" end,

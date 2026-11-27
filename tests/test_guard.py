@@ -37,6 +37,7 @@ ns = { L = setmetatable({}, { __index = function(_, k) return k end }), Compat =
     Report = function() return {} end,
     HookUnitTooltip = function() return "stub" end,
     HookObjectTooltip = function() return "stub" end,
+    HookItemTooltip = function() return "stub" end,
     ItemTextName = function() return nil end,
     AddTooltipLine = noop,
 } }

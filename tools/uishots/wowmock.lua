@@ -25,8 +25,12 @@ SOUNDKIT = { MAP_PING = 1 }
 function PlaySound() end
 UISpecialFrames = {}
 SlashCmdList = {}
-Enum = { TooltipDataType = { Unit = 2 } }
-TooltipDataProcessor = { AddTooltipPostCall = function(_, fn) MOCK.tooltipCB = fn end }
+Enum = { TooltipDataType = { Item = 0, Unit = 2 } }
+TooltipDataProcessor = { AddTooltipPostCall = function(kind, fn)
+    MOCK.tooltipCBs = MOCK.tooltipCBs or {}
+    MOCK.tooltipCBs[kind] = fn
+    if kind == Enum.TooltipDataType.Unit then MOCK.tooltipCB = fn end
+end }
 C_Timer = { NewTicker = function(_, fn) MOCK.ticker = fn return {} end, After = function(_, fn) fn() end }
 C_Map = { GetBestMapForUnit = function() return nil end, GetPlayerMapPosition = function() return nil end }
 function IsInInstance() return false end

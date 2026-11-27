@@ -215,6 +215,70 @@ function C.HookObjectTooltip(callback)
     return nil
 end
 
+-- Item tooltips we add to: the main tooltip and the one a clicked chat link opens. Never the
+-- comparison tooltips (ShoppingTooltip1/2) or any other addon's tooltip.
+local function isItemTooltip(tooltip)
+    return tooltip ~= nil and (tooltip == GameTooltip or tooltip == rawget(_G, "ItemRefTooltip"))
+end
+
+-- The item ID in an item link ("|Hitem:280438:..."), or nil.
+local function itemIDFromLink(link)
+    if type(link) ~= "string" or C.IsSecret(link) then
+        return nil
+    end
+    return tonumber(link:match("item:(%d+)"))
+end
+
+-- Hooks callback(tooltip, itemID) into item tooltips (bags, loot, quest rewards, chat links ...).
+-- Returns the name of the method used, or nil if none was found.
+function C.HookItemTooltip(callback)
+    if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
+        and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Item then
+        TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, function(tooltip, data)
+            pcall(function()
+                if not isItemTooltip(tooltip) then
+                    return
+                end
+                local id = type(data) == "table" and data.id
+                if type(id) ~= "number" or C.IsSecret(id) then
+                    id = nil
+                    if tooltip.GetItem then
+                        local ok, _, link = pcall(tooltip.GetItem, tooltip)
+                        id = ok and itemIDFromLink(link) or nil
+                    end
+                end
+                if id then
+                    callback(tooltip, id)
+                end
+            end)
+        end)
+        return "TooltipDataProcessor.Item"
+    end
+    noteMissing("TooltipDataProcessor.Item")
+
+    -- Older API (Classic Era / before 10.0.2).
+    local hooked = false
+    for _, tooltip in ipairs({ GameTooltip, rawget(_G, "ItemRefTooltip") }) do
+        if tooltip and tooltip.HasScript and tooltip:HasScript("OnTooltipSetItem") then
+            tooltip:HookScript("OnTooltipSetItem", function(t)
+                pcall(function()
+                    local _, link = t:GetItem()
+                    local id = itemIDFromLink(link)
+                    if id then
+                        callback(t, id)
+                    end
+                end)
+            end)
+            hooked = true
+        end
+    end
+    if hooked then
+        return "OnTooltipSetItem"
+    end
+    noteMissing("OnTooltipSetItem")
+    return nil
+end
+
 -- The title of the text the player just opened (a plaque, book, letter), or nil.
 -- Meant for the ITEM_TEXT_BEGIN event.
 function C.ItemTextName()

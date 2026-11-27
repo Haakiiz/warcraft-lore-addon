@@ -1,0 +1,13 @@
+-- Hovering a quest item that belongs to a veteran (The Baron's Abominable Head, Horde drop).
+startAddon()
+GameTooltip:SetOwner(UIParent, "ANCHOR_NONE")
+GameTooltip:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+GameTooltip:ClearLines()
+GameTooltip:AddLine("Abominable Head", 1, 1, 1)
+GameTooltip:AddLine("Binds when picked up", 1, 1, 1)
+GameTooltip:AddLine("Unique", 1, 1, 1)
+GameTooltip:AddLine("This Item Begins a Quest", 1, 1, 1)
+GameTooltip:AddLine("Requires Level 15", 1, 1, 1)
+MOCK.tooltipCBs[Enum.TooltipDataType.Item](GameTooltip, { id = 280438 })
+GameTooltip:Show()
+MOCK.dump(SHOTDIR .. "/item_tip.json")
