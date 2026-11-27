@@ -654,6 +654,53 @@ local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"]
         ns.MemorialHonors(item.entry), ns.CodesLabel(item.codes)), 0.83, 0.78, 0.97)
 end)
 
+-------------------------------------------------------------------- Item tooltips
+-- Items listed under a veteran's `items` in Data.lua get one short line in their tooltip:
+-- "Warcraft Lore: The Baron (TFT · FK)". One line only, so gear you hover all the time stays quiet.
+local itemOwners -- itemID -> sorted list of npcIDs, built on first use (after Classic drops Forever entries)
+function ns.ItemOwners(itemID)
+    if not itemOwners then
+        itemOwners = {}
+        for npcID, entry in pairs(ns.NPCS) do
+            for _, item in ipairs(entry.items or {}) do
+                if type(item.id) == "number" then
+                    local list = itemOwners[item.id] or {}
+                    list[#list + 1] = npcID
+                    itemOwners[item.id] = list
+                end
+            end
+        end
+        for _, list in pairs(itemOwners) do
+            table.sort(list)
+        end
+    end
+    return itemOwners[itemID]
+end
+
+-- "The Baron (TFT · FK)"; several owners are joined with commas, each name once.
+local function itemOwnersText(owners)
+    local parts, seen = {}, {}
+    for _, npcID in ipairs(owners) do
+        local entry = ns.NPCS[npcID]
+        if entry and not seen[entry.name] then
+            seen[entry.name] = true
+            parts[#parts + 1] = ("%s (%s)"):format(entry.name, ns.GamesLabel(entry))
+        end
+    end
+    return table.concat(parts, ", ")
+end
+
+local onItemTooltip = guard("item-tooltip", L["the item tooltip line"], function(tooltip, itemID)
+    local owners = ns.ItemOwners(itemID)
+    if not owners then
+        return
+    end
+    local text = itemOwnersText(owners)
+    if text ~= "" then
+        C.AddTooltipLine(tooltip, L["Warcraft Lore: %s"]:format(text), 0.83, 0.78, 0.97)
+    end
+end)
+
 -------------------------------------------------------------------- Slash commands
 -- The lore window failed to build: say so once instead of erroring in every feature.
 local function windowOff()
@@ -1211,6 +1258,9 @@ local onAddonLoaded = guard("init", L["the addon setup"], function()
     end)()
     guard("memorial-hook", L["the memorial tooltip line"], function()
         ns.memorialHook = C.HookObjectTooltip(onObjectTooltip)
+    end)()
+    guard("item-hook", L["the item tooltip line"], function()
+        ns.itemHook = C.HookItemTooltip(onItemTooltip)
     end)()
 end)
 

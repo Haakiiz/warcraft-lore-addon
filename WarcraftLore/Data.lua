@@ -5230,9 +5230,14 @@ ns.NPCS = {
              .. "By the time of WoW Forever he has gone rogue and roams King's Alley in the Ruins of Lordaeron. "
              .. "Captain Truman, one of his captains in life, still serves him without knowing that both of them are now undead. "
              .. "When adventurers bring the Baron's head to Master Apothecary Faranell, he reveals who the creature really is.",
-        items = {},
+        items = {
+            { id = 280438, name = "Abominable Head", note = "Horde drop from him; starts \"Unending Torment\", handed to Master Apothecary Faranell" },
+            { id = 268518, name = "Head of the Baron", note = "Alliance drop from him; Captain Truman wants it for \"Abominable Creatures\"" },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Othmar_Garithos",
+            "https://warcraft.wiki.gg/wiki/Abominable_Head",
+            "https://warcraft.wiki.gg/wiki/Head_of_the_Baron",
             "https://warcraft.wiki.gg/wiki/The_Baron",
             "https://warcraft.wiki.gg/wiki/Unending_Torment",
             "https://warcraft.wiki.gg/wiki/Misconceptions_(WC3_Blood_Elf)",
