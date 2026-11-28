@@ -1,0 +1,11 @@
+-- Hovering gear that belongs to a veteran (Baron Rivendare's Runeblade): one line, Shift for the text.
+startAddon()
+GameTooltip:SetOwner(UIParent, "ANCHOR_NONE")
+GameTooltip:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+GameTooltip:ClearLines()
+GameTooltip:AddLine("Runeblade of Baron Rivendare", 0.64, 0.21, 0.93)
+GameTooltip:AddLine("Binds when picked up", 1, 1, 1)
+GameTooltip:AddLine("Two-Hand    Sword", 1, 1, 1)
+MOCK.tooltipCBs[Enum.TooltipDataType.Item](GameTooltip, { id = 13505 })
+GameTooltip:Show()
+MOCK.dump(SHOTDIR .. "/item_tip_gear.json")

@@ -655,33 +655,53 @@ local onObjectTooltip = guard("memorial-tooltip", L["the memorial tooltip line"]
 end)
 
 -------------------------------------------------------------------- Item tooltips
--- Items listed under a veteran's `items` in Data.lua get one short line in their tooltip:
--- "Warcraft Lore: The Baron (TFT · FK)". One line only, so gear you hover all the time stays quiet.
-local itemOwners -- itemID -> sorted list of npcIDs, built on first use (after Classic drops Forever entries)
-function ns.ItemOwners(itemID)
-    if not itemOwners then
-        itemOwners = {}
-        for npcID, entry in pairs(ns.NPCS) do
-            for _, item in ipairs(entry.items or {}) do
-                if type(item.id) == "number" then
-                    local list = itemOwners[item.id] or {}
-                    list[#list + 1] = npcID
-                    itemOwners[item.id] = list
-                end
+-- Items listed under a veteran's `items` in Data.lua get a line in their tooltip:
+-- "Warcraft Lore: The Baron (TFT · FK)" and, under it, the item's short `blurb`.
+-- So it never gets in the way:
+--   * gear (`gear = true`) shows only the name line; Shift shows the text,
+--   * other items show the text the first FULL_VIEWS times per character, then only the name line,
+--   * the settings can make every item short, or turn the line off.
+local FULL_VIEWS = 3
+local BLURB_RGB = { 0.85, 0.80, 0.62 }
+
+local itemOwners -- itemID -> sorted list of { npcID, item }, built on first use (after Classic drops Forever entries)
+local function buildItemOwners()
+    itemOwners = {}
+    for npcID, entry in pairs(ns.NPCS) do
+        for _, item in ipairs(entry.items or {}) do
+            if type(item.id) == "number" then
+                local list = itemOwners[item.id] or {}
+                list[#list + 1] = { npcID, item }
+                itemOwners[item.id] = list
             end
         end
-        for _, list in pairs(itemOwners) do
-            table.sort(list)
-        end
     end
-    return itemOwners[itemID]
+    for _, list in pairs(itemOwners) do
+        table.sort(list, function(x, y) return x[1] < y[1] end)
+    end
+end
+
+-- Sorted NPC IDs of the veterans an item belongs to, or nil.
+function ns.ItemOwners(itemID)
+    if not itemOwners then
+        buildItemOwners()
+    end
+    local list = itemOwners[itemID]
+    if not list then
+        return nil
+    end
+    local ids = {}
+    for i, o in ipairs(list) do
+        ids[i] = o[1]
+    end
+    return ids, list
 end
 
 -- "The Baron (TFT · FK)"; several owners are joined with commas, each name once.
-local function itemOwnersText(owners)
+local function itemOwnersText(list)
     local parts, seen = {}, {}
-    for _, npcID in ipairs(owners) do
-        local entry = ns.NPCS[npcID]
+    for _, o in ipairs(list) do
+        local entry = ns.NPCS[o[1]]
         if entry and not seen[entry.name] then
             seen[entry.name] = true
             parts[#parts + 1] = ("%s (%s)"):format(entry.name, ns.GamesLabel(entry))
@@ -690,15 +710,71 @@ local function itemOwnersText(owners)
     return table.concat(parts, ", ")
 end
 
+-- How often this character has seen the item's tooltip; `count` adds one first.
+local function itemViews(itemID, count)
+    local c = WarcraftLoreCharDB
+    if type(c) ~= "table" then
+        return 0
+    end
+    if type(c.itemSeen) ~= "table" then
+        c.itemSeen = {}
+    end
+    local n = tonumber(c.itemSeen[itemID]) or 0
+    if count then
+        n = n + 1
+        c.itemSeen[itemID] = n
+    end
+    return n
+end
+
+-- The tooltip is filled again many times while it is shown (bags refresh, Shift is pressed):
+-- only the first fill after it opened counts as a view.
+local counted = setmetatable({}, { __mode = "k" }) -- tooltip -> itemID already counted
+function ns.ItemTooltipHidden(tooltip)
+    counted[tooltip] = nil
+end
+
 local onItemTooltip = guard("item-tooltip", L["the item tooltip line"], function(tooltip, itemID)
-    local owners = ns.ItemOwners(itemID)
-    if not owners then
+    local db = WarcraftLoreDB
+    if type(db) == "table" and db.itemLore == false then
         return
     end
-    local text = itemOwnersText(owners)
-    if text ~= "" then
-        C.AddTooltipLine(tooltip, L["Warcraft Lore: %s"]:format(text), 0.83, 0.78, 0.97)
+    local _, list = ns.ItemOwners(itemID)
+    if not list then
+        return
     end
+    local text = itemOwnersText(list)
+    if text == "" then
+        return
+    end
+    local gear, blurb = false, nil
+    for _, o in ipairs(list) do
+        gear = gear or o[2].gear == true
+        if not blurb and type(o[2].blurb) == "string" and o[2].blurb ~= "" then
+            blurb = o[2].blurb
+        end
+    end
+    local views
+    if counted[tooltip] ~= itemID then
+        counted[tooltip] = itemID
+        views = itemViews(itemID, true)
+    else
+        views = itemViews(itemID, false)
+    end
+    local short = gear or (type(db) == "table" and db.itemShort == true) or views > FULL_VIEWS
+    local expanded = blurb ~= nil and (not short or C.IsShiftDown())
+    if blurb and not expanded then
+        text = text .. "  |cff8c8c99" .. L["Shift"] .. "|r"
+    end
+    C.AddTooltipLine(tooltip, L["Warcraft Lore: %s"]:format(text), 0.83, 0.78, 0.97)
+    if expanded then
+        C.AddTooltipLine(tooltip, blurb, BLURB_RGB[1], BLURB_RGB[2], BLURB_RGB[3], true)
+    end
+end)
+
+-- Shift pressed or let go over an item: fill the tooltip again so the text appears or goes.
+local onShiftChanged = guard("item-shift", L["the item tooltip line"], function()
+    C.RefreshItemTooltip()
 end)
 
 -------------------------------------------------------------------- Slash commands
@@ -1242,6 +1318,7 @@ events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
 C.RegisterEventSafe(events, C.EVENT_NAMEPLATE_ADDED)
 C.RegisterEventSafe(events, "ITEM_TEXT_BEGIN")
+C.RegisterEventSafe(events, "MODIFIER_STATE_CHANGED")
 local onAddonLoaded = guard("init", L["the addon setup"], function()
     -- SavedVariables are only available from here on (defaults and migrations: SavedData.lua).
     ns.SavedData.Load()
@@ -1260,7 +1337,7 @@ local onAddonLoaded = guard("init", L["the addon setup"], function()
         ns.memorialHook = C.HookObjectTooltip(onObjectTooltip)
     end)()
     guard("item-hook", L["the item tooltip line"], function()
-        ns.itemHook = C.HookItemTooltip(onItemTooltip)
+        ns.itemHook = C.HookItemTooltip(onItemTooltip, ns.ItemTooltipHidden)
     end)()
 end)
 
@@ -1291,5 +1368,7 @@ events:SetScript("OnEvent", function(_, event, arg1)
         onTargetChanged()
     elseif event == "ITEM_TEXT_BEGIN" then
         onItemText()
+    elseif event == "MODIFIER_STATE_CHANGED" and type(arg1) == "string" and arg1:find("SHIFT") then
+        onShiftChanged()
     end
 end)

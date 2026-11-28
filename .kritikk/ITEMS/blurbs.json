@@ -1,0 +1,517 @@
+{
+ "11036": {
+  "name": "Leonid Barthalomew the Revered",
+  "blurb": "Undead Argent Dawn member who helps Garek and Anya retake Dawn's Watch and destroy Naxxramas' central crystal.",
+  "items": {}
+ },
+ "7564": {
+  "name": "Marin Noggenfogger",
+  "blurb": "In Traveler: The Spiral Path he tips off Malus under blackmail; in The Goblin Way he aligns his cartel with Gazlowe's.",
+  "items": {}
+ },
+ "11832": {
+  "name": "Keeper Remulos",
+  "blurb": "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.",
+  "items": {}
+ },
+ "7800": {
+  "name": "Mekgineer Thermaplugg",
+  "blurb": "In the short story Cut Short he makes himself king of Gnomeregan, until Gelbin Mekkatorque's trap cuts him in half.",
+  "items": {}
+ },
+ "1855": {
+  "name": "Tirion Fordring",
+  "blurb": "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.",
+  "items": {}
+ },
+ "10508": {
+  "name": "Ras Frostwhisper",
+  "blurb": "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.",
+  "items": {
+   "13626": "His head: the Cult of the Damned mage who led cultists out of Andorhal before teleporting away to Stratholme."
+  }
+ },
+ "15990": {
+  "name": "Kel'Thuzad",
+  "blurb": "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.",
+  "items": {
+   "22520": "His phylactery: the necromancer behind the plague and Archimonde's summoning returns as long as it lasts."
+  }
+ },
+ "4454": {
+  "name": "Fizzle Brassbolts",
+  "blurb": "In the novel Traveler: The Spiral Path he led a protest with Razzeric after the Annual Speedbarge Boat Race.",
+  "items": {}
+ },
+ "10429": {
+  "name": "Warchief Rend Blackhand",
+  "blurb": "In the novel Beyond the Dark Portal he refuses to rejoin Ner'zhul's Horde, then falls under Nefarian's command.",
+  "items": {
+   "12630": "His head: the Blackhand brother who declared himself Warchief, then fell under Nefarian's command.",
+   "18987": "His command: the Blackhand brother who refused Ner'zhul's Horde and later fell under Nefarian's command."
+  }
+ },
+ "466": {
+  "name": "General Marcus Jonathan",
+  "blurb": "Stormwind's High Commander: searches for the missing Varian in Blood of Our Fathers; defends Theramore in Tides of War.",
+  "items": {}
+ },
+ "4706": {
+  "name": "Razzeric",
+  "blurb": "In the novel Traveler: The Spiral Path he pilots the speedboat Guzzler to second place, then protests the result.",
+  "items": {}
+ },
+ "12939": {
+  "name": "Doctor Gustaf VanHowzen",
+  "blurb": "In Jaina Proudmoore: Tides of War he stays in Theramore and tends the injured soldiers after the Horde attacks.",
+  "items": {}
+ },
+ "5087": {
+  "name": "Do'gol",
+  "blurb": "Stonemaul ogre in the ogre village of Dustwallow Marsh, where Rexxar seeks the ogres' help in Old Hatreds.",
+  "items": {}
+ },
+ "3391": {
+  "name": "Gazlowe",
+  "blurb": "Engineer who sent Rexxar to seal the kobold dens under Orgrimmar; in The Goblin Way he strong-arms Noggenfogger.",
+  "items": {}
+ },
+ "16376": {
+  "name": "Craftsman Wilhelm",
+  "blurb": "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.",
+  "items": {}
+ },
+ "928": {
+  "name": "Lord Grayson Shadowbreaker",
+  "blurb": "In the novel Blood Ties he is the Silver Hand lord who takes on Winthrop as his new squire.",
+  "items": {}
+ },
+ "4047": {
+  "name": "Zor Lonetree",
+  "blurb": "In the novel Stormrage Malfurion contacts him for help against the Nightmare Lord when the Emerald Nightmare strikes.",
+  "items": {}
+ },
+ "10184": {
+  "name": "Onyxia",
+  "blurb": "In the novel Beyond the Dark Portal Deathwing sends her and Nefarian to secure the Blackrock orcs as his new force.",
+  "items": {
+   "18422": "Her head: Deathwing's daughter, sent with Nefarian to secure the Blackrock orcs in Beyond the Dark Portal.",
+   "18423": "Her head: Deathwing's daughter, sent with Nefarian to secure the Blackrock orcs in Beyond the Dark Portal."
+  }
+ },
+ "11583": {
+  "name": "Nefarian",
+  "blurb": "In the novel Beyond the Dark Portal Deathwing sends him to Blackrock Spire, where he commands the Blackhand brothers.",
+  "items": {
+   "19002": "His head: Deathwing's eldest son, who took command of Rend and Maim Blackhand in Beyond the Dark Portal.",
+   "19003": "His head: Deathwing's eldest son, who took command of Rend and Maim Blackhand in Beyond the Dark Portal."
+  }
+ },
+ "10162": {
+  "name": "Lord Victor Nefarius",
+  "blurb": "The human guise of Nefarian, whom Deathwing sent to Blackrock Spire in Beyond the Dark Portal to command the Blackhands.",
+  "items": {
+   "21142": "A letter in the human guise of Nefarian, who took command of the Blackhand brothers in Beyond the Dark Portal."
+  }
+ },
+ "3976": {
+  "name": "Scarlet Commander Mograine",
+  "blurb": "The Scarlet Crusade commander who led the assault on the Forsaken together with High Inquisitor Whitemane.",
+  "items": {}
+ },
+ "269127": {
+  "name": "Image of Archmage Modera",
+  "blurb": "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.",
+  "items": {}
+ },
+ "3139": {
+  "name": "Gar'Thok",
+  "blurb": "Nazgrel's lieutenant who sent Rexxar to survey the border in The Founding of Durotar; the humans later raze his outpost.",
+  "items": {}
+ },
+ "3205": {
+  "name": "Zalazane",
+  "blurb": "In the short story The Judgment he is Vol'jin's childhood best friend, tested by the loa and made a witch doctor.",
+  "items": {
+   "4866": "His head: Vol'jin's boyhood best friend, who in the short story The Judgment became a witch doctor."
+  }
+ },
+ "1284": {
+  "name": "Archbishop Benedictus",
+  "blurb": "In the novel The Shattering he leads the Cathedral of Light's memorial service for those who fell against the Lich King.",
+  "items": {}
+ },
+ "11833": {
+  "name": "Rahauro",
+  "blurb": "In the novel The Shattering he is Magatha Grimtotem's servant, helping her secure Thunder Bluff for the Grimtotem.",
+  "items": {}
+ },
+ "576": {
+  "name": "Watcher Ladimore",
+  "blurb": "In Terror by Torchlight she commands the Night Watch and is found mortally wounded after facing the Necromancer.",
+  "items": {}
+ },
+ "2542": {
+  "name": "Catelyn the Blade",
+  "blurb": "In Quest for Pandaria she steals the Pearl of Pandaria from Li Li Stormstout to pay a debt, then gives it back.",
+  "items": {
+   "4027": "The troll relic blade her father Ansirem gave her. In Quest for Pandaria she steals a pearl to pay her debt."
+  }
+ },
+ "11406": {
+  "name": "High Priest Rohan",
+  "blurb": "In the novel The Shattering he heals Anduin Wrynn and witnesses King Magni's petrification, then backs Moira Thaurissan.",
+  "items": {}
+ },
+ "1852": {
+  "name": "Araj the Summoner",
+  "blurb": "Scourge lich who commanded the Undead Ravagers in their attack on Hearthglen.",
+  "items": {}
+ },
+ "10435": {
+  "name": "Magistrate Barthilas",
+  "blurb": "In Of Blood and Honor he is Tirion Fordring's second, who oversees his prosecution and plans Eitrigg's execution.",
+  "items": {}
+ },
+ "7999": {
+  "name": "Tyrande Whisperwind",
+  "blurb": "Night elf Priestess of the Moon and playable hero; in Stormrage she sends Broll to search the Dream for Malfurion.",
+  "items": {}
+ },
+ "15378": {
+  "name": "Merithra of the Dream",
+  "blurb": "Ysera's child who, in The War of the Shifting Sands, charges into Ahn'Qiraj with Caelestrasz and Arygos.",
+  "items": {}
+ },
+ "8379": {
+  "name": "Archmage Xylem",
+  "blurb": "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.",
+  "items": {}
+ },
+ "5769": {
+  "name": "Hamuul Runetotem",
+  "blurb": "In the novel Stormrage the tauren archdruid becomes a close friend of Broll Bearmantle and is summoned to Teldrassil.",
+  "items": {}
+ },
+ "1748": {
+  "name": "Highlord Bolvar Fordragon",
+  "blurb": "In the short story We Ride Forth the Four Horsemen confront him as the Lich King over his increasingly militant actions.",
+  "items": {}
+ },
+ "15989": {
+  "name": "Sapphiron",
+  "blurb": "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.",
+  "items": {}
+ },
+ "10812": {
+  "name": "Grand Crusader Dathrohan",
+  "blurb": "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.",
+  "items": {}
+ },
+ "11034": {
+  "name": "Lord Maxwell Tyrosus",
+  "blurb": "Argent Dawn leader at Dawn's Watch, which Garek, Anya and Leonid liberate from the Crushridge clan.",
+  "items": {}
+ },
+ "3387": {
+  "name": "Jorn Skyseer",
+  "blurb": "In the novel The Shattering he shelters Baine Bloodhoof and his loyal forces after Magatha seizes Thunder Bluff.",
+  "items": {}
+ },
+ "1499": {
+  "name": "Magistrate Sevren",
+  "blurb": "Brill's Forsaken magistrate; in Forsaken Kingdom his village is the first stop on Bernd's survey of the damage.",
+  "items": {}
+ },
+ "4421": {
+  "name": "Charlga Razorflank",
+  "blurb": "In the novel Traveler: The Spiral Path she is said to have shaped most of the thorn dome of Razorfen Downs.",
+  "items": {}
+ },
+ "5387": {
+  "name": "High Explorer Magellas",
+  "blurb": "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.",
+  "items": {}
+ },
+ "2263": {
+  "name": "Marshal Redpath",
+  "blurb": "In the novel Tides of Darkness he is Southshore's headman, who greets Anduin Lothar, Khadgar and the Stormwind refugees.",
+  "items": {}
+ },
+ "3230": {
+  "name": "Nazgrel",
+  "blurb": "Thrall's trusted advisor who asks Rexxar to stop the harpies raiding the supply caravans in The Founding of Durotar.",
+  "items": {}
+ },
+ "3916": {
+  "name": "Shael'dryn",
+  "blurb": "In the novel Stormrage the dryad warns the other guardians about the shadow attackers, then falls asleep herself.",
+  "items": {}
+ },
+ "2285": {
+  "name": "Count Remington Ridgewell",
+  "blurb": "In the novel Before the Storm he greets Fredrik Farley in Stormwind Keep and serves drinks at King Anduin's meeting.",
+  "items": {}
+ },
+ "2708": {
+  "name": "Archmage Malin",
+  "blurb": "In the novella Elegy he holds portals open at the Wizard's Sanctum for night elf refugees from Teldrassil.",
+  "items": {}
+ },
+ "1573": {
+  "name": "Gryth Thurden",
+  "blurb": "In the novel The Shattering he tells Anduin Wrynn how Moira Thaurissan had Ironforge's gryphons quarantined.",
+  "items": {}
+ },
+ "10439": {
+  "name": "Ramstein the Gorger",
+  "blurb": "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.",
+  "items": {
+   "15880": "His head: the abomination who stood among the Scourge forces in Stratholme as Garek hunted Baron Rivendare."
+  }
+ },
+ "15379": {
+  "name": "Caelestrasz",
+  "blurb": "Red dragon progeny who, in The War of the Shifting Sands, charges into Ahn'Qiraj beside Merithra and Arygos.",
+  "items": {}
+ },
+ "250660": {
+  "name": "The Baron",
+  "blurb": "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.",
+  "items": {}
+ },
+ "2496": {
+  "name": "Baron Revilgaz",
+  "blurb": "In Stranglethorn Fishing Extravaganza he is won over by Riggle's tastyfish and agrees to a fishing tournament.",
+  "items": {}
+ },
+ "2784": {
+  "name": "King Magni Bronzebeard",
+  "blurb": "In the novel Tides of Darkness he defends Ironforge in the Second War; in The Shattering he is turned to diamond.",
+  "items": {
+   "2188": "Signed by the dwarf king who defended Ironforge in the Second War and joined the Alliance of Lordaeron."
+  }
+ },
+ "332": {
+  "name": "Master Mathias Shaw",
+  "blurb": "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.",
+  "items": {}
+ },
+ "11878": {
+  "name": "Nathanos Blightcaller",
+  "blurb": "In the novel Before the Storm he is Sylvanas's champion and bodyguard; in Shadows Rising he fails to kill Bwonsamdi.",
+  "items": {}
+ },
+ "15192": {
+  "name": "Anachronos",
+  "blurb": "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.",
+  "items": {}
+ },
+ "344": {
+  "name": "Magistrate Solomon",
+  "blurb": "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.",
+  "items": {}
+ },
+ "7583": {
+  "name": "Sprinkle",
+  "blurb": "In the novel Traveler: The Spiral Path she smuggles Aramar Thorne's companions into Gadgetzan hidden in her caravan.",
+  "items": {}
+ },
+ "1938": {
+  "name": "Dalar Dawnweaver",
+  "blurb": "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.",
+  "items": {}
+ },
+ "240": {
+  "name": "Marshal Dughan",
+  "blurb": "In the novel Stormrage the Emerald Nightmare gives him a dream of a failed kobold mission in Jasperlode Mine.",
+  "items": {}
+ },
+ "4501": {
+  "name": "Draz'Zilb",
+  "blurb": "Stonemaul ogre present in the ogre village when Rexxar arrives to ask the ogres for their aid.",
+  "items": {}
+ },
+ "4630": {
+  "name": "Pozzik",
+  "blurb": "In the novel Traveler: The Spiral Path he officiates the Annual Boat Race that he co-founded with Fizzle Brassbolts.",
+  "items": {}
+ },
+ "3453": {
+  "name": "Wharfmaster Dizzywig",
+  "blurb": "In the novel Night of the Dragon he provides boat transport to Velinde Starsong and later to the draenei Iridi.",
+  "items": {}
+ },
+ "3057": {
+  "name": "Cairne Bloodhoof",
+  "blurb": "Tauren chieftain who tells Thrall of the Oracle and fights at his side; Rexxar must win his aid in Old Hatreds.",
+  "items": {}
+ },
+ "15380": {
+  "name": "Arygos",
+  "blurb": "Blue dragon who, in The War of the Shifting Sands, flies into Ahn'Qiraj with Merithra and Caelestrasz.",
+  "items": {}
+ },
+ "253957": {
+  "name": "Muln Earthfury",
+  "blurb": "In Thrall: Twilight of the Aspects the Earthen Ring shaman worries about Thrall, then helps rescue him.",
+  "items": {}
+ },
+ "9598": {
+  "name": "Arei",
+  "blurb": "In the novel Stormrage the Ancient of War fights the Emerald Nightmare from within the Dream and leads Broll to Zaetar.",
+  "items": {}
+ },
+ "10824": {
+  "name": "Ranger Lord Hawkspear",
+  "blurb": "In the novel World of Warcraft: Sylvanas he leads Quel'Lithien Lodge's hunters and probes Lireesa Windrunner's slaying.",
+  "items": {}
+ },
+ "15341": {
+  "name": "General Rajaxx",
+  "blurb": "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.",
+  "items": {}
+ },
+ "4968": {
+  "name": "Lady Jaina Proudmoore",
+  "blurb": "Sorceress hero at Arthas's side, later leader of the human survivors who allies with Thrall against Archimonde.",
+  "items": {
+   "6757": "Her own ring: the sorceress who stood with Arthas, then led the human survivors and allied with Thrall.",
+   "18642": "Her signature: the sorceress who stood with Arthas, then led the human survivors and allied with Thrall."
+  }
+ },
+ "2055": {
+  "name": "Master Apothecary Faranell",
+  "blurb": "In the novel Arthas: Rise of the Lich King he shows Sylvanas the New Plague by making two prisoners drink it.",
+  "items": {}
+ },
+ "10182": {
+  "name": "Rexxar",
+  "blurb": "Beastmaster hero of the Horde, the Mok'nathal who, with his bear Misha, helps Thrall secure Durotar.",
+  "items": {}
+ },
+ "10813": {
+  "name": "Balnazzar",
+  "blurb": "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.",
+  "items": {
+   "13250": "His head: the dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas."
+  }
+ },
+ "1156": {
+  "name": "Vyrin Swiftwind",
+  "blurb": "In the novella Quest for Pandaria she tells the dwarf Baenan of her longing for her estranged husband Talithar.",
+  "items": {}
+ },
+ "3977": {
+  "name": "High Inquisitor Whitemane",
+  "blurb": "Scarlet Crusade commander and enemy of the Forsaken; in the short story We Ride Forth she rides with the Four Horsemen.",
+  "items": {}
+ },
+ "2543": {
+  "name": "Archmage Ansirem Runeweaver",
+  "blurb": "Council of Six archmage; one of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran.",
+  "items": {}
+ },
+ "3520": {
+  "name": "Ol' Emma",
+  "blurb": "In the novel Before the Storm she searches among the Forsaken for her sons, and Anduin flies her to safety.",
+  "items": {}
+ },
+ "2707": {
+  "name": "Shadra",
+  "blurb": "In the novel Traveler: The Spiral Path the spider loa refuses to claim the captives the Sandfury trolls would sacrifice.",
+  "items": {}
+ },
+ "2918": {
+  "name": "Advisor Belgrum",
+  "blurb": "In the novel The Shattering he helps decipher the Ulduar tablet, then steps up in Ironforge after Magni is petrified.",
+  "items": {}
+ },
+ "482": {
+  "name": "Elling Trias",
+  "blurb": "In the audio short story The Tipping Point he meets Mathias Shaw in his cellar to plan protecting SI:7's informants.",
+  "items": {}
+ },
+ "4488": {
+  "name": "Parqual Fintallas",
+  "blurb": "In the novel Before the Storm he is a Forsaken historian and Desolate Council member, reunited with his daughter Philia.",
+  "items": {}
+ },
+ "7267": {
+  "name": "Chief Ukorz Sandscalp",
+  "blurb": "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.",
+  "items": {}
+ },
+ "5709": {
+  "name": "Shade of Eranikus",
+  "blurb": "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.",
+  "items": {}
+ },
+ "2993": {
+  "name": "Baine Bloodhoof",
+  "blurb": "Cairne's son, kidnapped by centaur and rescued by Rexxar; in Stormrage he leads the tauren against the Nightmare.",
+  "items": {}
+ },
+ "10540": {
+  "name": "Vol'jin",
+  "blurb": "Darkspear witch doctor who made Rexxar and friends spirit wyverns; in The Judgment he is tested at First Home.",
+  "items": {}
+ },
+ "4949": {
+  "name": "Thrall",
+  "blurb": "The orc Far Seer who led the Horde to Kalimdor, allied with Jaina against Archimonde and founded Durotar.",
+  "items": {}
+ },
+ "3144": {
+  "name": "Eitrigg",
+  "blurb": "In the novel Of Blood and Honor this Blackrock orc is saved from execution in Stratholme and joins Thrall's New Horde.",
+  "items": {}
+ },
+ "8929": {
+  "name": "Princess Moira Bronzebeard",
+  "blurb": "In the novel The Shattering she returns to Ironforge with her infant son to claim the throne; Varian spares her.",
+  "items": {}
+ },
+ "3660": {
+  "name": "Athrikus Narassin",
+  "blurb": "His Ring of Power's item text says he coveted the Well of Eternity and was left imbued with demonic powers.",
+  "items": {}
+ },
+ "3188": {
+  "name": "Master Gadrin",
+  "blurb": "In the short story The Judgment he mentors Vol'jin and Zalazane, then confirms the death of Sen'jin after First Home.",
+  "items": {}
+ },
+ "15077": {
+  "name": "Riggle Bassbait",
+  "blurb": "In Stranglethorn Fishing Extravaganza he wins over Baron Revilgaz with tastyfish and gets his tournament.",
+  "items": {}
+ },
+ "5144": {
+  "name": "Bink",
+  "blurb": "In the novel The Shattering the gnome mage and Dink's sister is caught by Dark Iron guards at Moira's arrival.",
+  "items": {}
+ },
+ "7937": {
+  "name": "High Tinker Mekkatorque",
+  "blurb": "In the short story Cut Short he leads the gnomes to retake Gnomeregan and cuts Thermaplugg in half with his own trap.",
+  "items": {}
+ },
+ "4046": {
+  "name": "Magatha Grimtotem",
+  "blurb": "In the novel The Shattering she poisons Gorehowl so Garrosh can kill Cairne, then has her tribe attack Thunder Bluff.",
+  "items": {}
+ },
+ "10440": {
+  "name": "Baron Rivendare",
+  "blurb": "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.",
+  "items": {
+   "13251": "His head: the cult champion killed by Garek Bandarion in his Stratholme slaughterhouse."
+  }
+ },
+ "2425": {
+  "name": "Varimathras",
+  "blurb": "Dreadlord hero, one of three brothers ruling Lordaeron, who secretly made a deal with Sylvanas to overthrow Arthas.",
+  "items": {}
+ }
+}

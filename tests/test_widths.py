@@ -50,7 +50,8 @@ def runtime(code):
 def main():
     data = (ADDON / "Data.lua").read_text(encoding="utf-8")
     zones = set(re.findall(r'\bzone\s*=\s*"([^"]+)"', data))
-    names = set(re.findall(r'\bname\s*=\s*"([^"]+)"', data))
+    # NPC names only: an entry's name sits on its own line (item names are inside { id = ..., name = ... }).
+    names = set(re.findall(r'^\s*name\s*=\s*"([^"]+)"', data, re.M))
     longest_zone, longest_name = max(zones, key=len), max(names, key=len)
     toast = (ADDON / "Toast.lua").read_text(encoding="utf-8")
     more_w = lua_const(toast, "MORE_W") or 56
