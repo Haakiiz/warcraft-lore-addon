@@ -1,0 +1,3098 @@
+{
+ "11036": [
+  {
+   "id": 13761,
+   "name": "Frozen Eggs",
+   "note": "Objective of Leonid Barthalomew (quest), delivered to him",
+   "blurb": "The undead Argent Dawn member, a Scourge thrall freed by Sylvanas, who helps adventurers deal with Ras Frostwhisper.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 13585,
+   "name": "Keepsake of Remembrance",
+   "note": "Objective of The Dying, Ras Frostwhisper, shown to Leonid",
+   "blurb": "The undead Argent Dawn member, a Scourge thrall freed by Sylvanas, who helps adventurers deal with Ras Frostwhisper.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 13624,
+   "name": "Soulbound Keepsake",
+   "note": "Taken to Leonid at the end of Menethil's Gift (2)",
+   "blurb": "The undead Argent Dawn member, a Scourge thrall freed by Sylvanas, who helps adventurers deal with Ras Frostwhisper.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "7564": [
+  {
+   "id": 8529,
+   "name": "Noggenfogger Elixir",
+   "note": "Elixir Marin makes; the quest Noggenfogger Elixir starts with him",
+   "blurb": "The Gadgetzan elixir maker who sent adventurers into the desert to gather Laden Dew Glands for his elixir.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 8528,
+   "name": "Violet Powder",
+   "note": "Delivered to Marin in Delivery for Marin",
+   "blurb": "The Gadgetzan elixir maker who sent adventurers into the desert to gather Laden Dew Glands for his elixir.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 8428,
+   "name": "Laden Dew Gland",
+   "note": "Brought to Marin in The Thirsty Goblin",
+   "blurb": "The Gadgetzan elixir maker who sent adventurers into the desert to gather Laden Dew Glands for his elixir.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "11832": [
+  {
+   "id": 21139,
+   "name": "Green Scepter Shard",
+   "note": "Handed out by Remulos to start The Champion Returns",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 21147,
+   "name": "Fragment of the Nightmare's Corruption (Ashenvale)",
+   "note": "Collected for Remulos in The Nightmare's Corruption",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 21149,
+   "name": "Fragment of the Nightmare's Corruption (Duskwood)",
+   "note": "Collected for Remulos in The Nightmare's Corruption",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 21148,
+   "name": "Fragment of the Nightmare's Corruption (Feralas)",
+   "note": "Collected for Remulos in The Nightmare's Corruption",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 21146,
+   "name": "Fragment of the Nightmare's Corruption (Hinterlands)",
+   "note": "Collected for Remulos in The Nightmare's Corruption",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 20644,
+   "name": "Nightmare Engulfed Object",
+   "note": "Turned in to Remulos to end Shrouded in Nightmare",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 17760,
+   "name": "Seed of Life",
+   "note": "Given to Remulos to end the Seeds of Life quest",
+   "blurb": "The keeper of Moonglade, turned on Malfurion by Xavius and cleansed of his corruption.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "7800": [
+  {
+   "id": 9492,
+   "name": "Electromagnetic Gigaflux Reactivator",
+   "note": "Drops from Thermaplugg in Gnomeregan",
+   "blurb": "The self-styled king of Gnomeregan, who trapped his old friend Gelbin Mekkatorque in his old quarters.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 9299,
+   "name": "Thermaplugg's Safe Combination",
+   "note": "Quest objective of Rig Wars, taken from Gnomeregan to Nogg",
+   "blurb": "The self-styled king of Gnomeregan, who trapped his old friend Gelbin Mekkatorque in his old quarters.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "1855": [
+  {
+   "id": 16058,
+   "name": "Fordring's Seal",
+   "note": "Reward for In Dreams, which ends with Tirion",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 15411,
+   "name": "Mark of Fordring",
+   "note": "Reward for In Dreams, which ends with Tirion",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14679,
+   "name": "Of Love and Family",
+   "note": "Painting from Stratholme, turned in to Tirion in Of Love and Family (2)",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 14625,
+   "name": "Symbol of Lost Honor",
+   "note": "Handed out by Tirion to start Of Lost Honor",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 14613,
+   "name": "Taelan's Hammer",
+   "note": "Handed out by Tirion to start Of Forgotten Memories",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 14872,
+   "name": "Tirion's Gift",
+   "note": "Handed out by Tirion, shown to Myranda in Find Myranda",
+   "blurb": "Former governor of Hearthglen and Second War hero, stripped of his titles, who lives in exile in the Plaguelands.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "10508": [
+  {
+   "id": 13626,
+   "name": "Human Head of Ras Frostwhisper",
+   "note": "Drops from Ras Frostwhisper (Classic)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 13624,
+   "name": "Soulbound Keepsake",
+   "note": "Used on Ras in The Lich, Ras Frostwhisper (Classic)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 13585,
+   "name": "Keepsake of Remembrance",
+   "note": "Objective of Menethil's Gift and The Dying, Ras Frostwhisper",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 13314,
+   "name": "Alanna's Embrace",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14487,
+   "name": "Bonechill Hammer",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14525,
+   "name": "Boneclenched Gauntlets",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14503,
+   "name": "Death's Clutch",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14340,
+   "name": "Freezing Lich Robes",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14502,
+   "name": "Frostbite Girdle",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 13952,
+   "name": "Iceblade Hacker",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 18696,
+   "name": "Intricately Runed Shield",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 14522,
+   "name": "Maelstrom Leggings",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 16689,
+   "name": "Magister's Mantle",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 18694,
+   "name": "Shadowy Mail Greaves",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 18693,
+   "name": "Shivery Handwraps",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 18695,
+   "name": "Spellbound Tome",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 13521,
+   "name": "Recipe: Flask of Supreme Power",
+   "note": "Drops from Ras Frostwhisper (loot table)",
+   "blurb": "The hedge mage who joined the Cult of the Damned, cut his own throat in Stratholme and rose as a lich.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "15990": [
+  {
+   "id": 22520,
+   "name": "The Phylactery of Kel'Thuzad",
+   "note": "Drops from Kel'Thuzad in Naxxramas; starts The Fall of Kel'Thuzad",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 22733,
+   "name": "Staff Head of Atiesh",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 22821,
+   "name": "Doomfinger",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23054,
+   "name": "Gressil, Dawn of Ruin",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23056,
+   "name": "Hammer of the Twisting Nether",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23057,
+   "name": "Gem of Trapped Innocents",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 22802,
+   "name": "Kingsfall",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 22798,
+   "name": "Might of Menethil",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 22812,
+   "name": "Nerubian Slavemaker",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 22819,
+   "name": "Shield of Condemnation",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 22799,
+   "name": "Soulseeker",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23053,
+   "name": "Stormrage's Talisman of Seething",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23577,
+   "name": "The Hungering Cold",
+   "note": "Drops from Kel'Thuzad in Naxxramas (40-man loot)",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23060,
+   "name": "Bonescythe Ring",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23062,
+   "name": "Frostfire Ring",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23061,
+   "name": "Ring of Faith",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23066,
+   "name": "Ring of Redemption",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23067,
+   "name": "Ring of the Cryptstalker",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23059,
+   "name": "Ring of the Dreadnaught",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23064,
+   "name": "Ring of the Dreamwalker",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 23065,
+   "name": "Ring of the Earthshatterer",
+   "note": "Tier ring dropped by Kel'Thuzad in Naxxramas",
+   "blurb": "The Kirin Tor mage who founded the Cult of the Damned and later ruled the Plaguelands from Naxxramas.",
+   "gear": true,
+   "group": "A"
+  }
+ ],
+ "4454": [
+  {
+   "id": 5827,
+   "name": "Fizzle Brassbolts' Letter",
+   "note": "Handed out by Fizzle to start Martek the Exiled's quest, to deliver to Martek",
+   "blurb": "The gnome of MEGA who built the Mirage Raceway with Pozzik and led a protest with Razzeric.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 6729,
+   "name": "Fizzle's Zippy Lighter",
+   "note": "Reward for News for Fizzle, which ends with him",
+   "blurb": "The gnome of MEGA who built the Mirage Raceway with Pozzik and led a protest with Razzeric.",
+   "gear": true,
+   "group": "A"
+  }
+ ],
+ "10429": [
+  {
+   "id": 12630,
+   "name": "Head of Rend Blackhand",
+   "note": "Drops from Rend Blackhand in Upper Blackrock Spire",
+   "blurb": "Warchief Rend Blackhand, who refused to rejoin Ner'zhul's Horde and then fell under Nefarian's command.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 12583,
+   "name": "Blackhand Doomsaw",
+   "note": "Drops from Rend Blackhand in Upper Blackrock Spire",
+   "blurb": "Warchief Rend Blackhand, who refused to rejoin Ner'zhul's Horde and then fell under Nefarian's command.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 12940,
+   "name": "Dal'Rend's Sacred Charge",
+   "note": "Drops from Rend Blackhand in Upper Blackrock Spire",
+   "blurb": "Warchief Rend Blackhand, who refused to rejoin Ner'zhul's Horde and then fell under Nefarian's command.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 12939,
+   "name": "Dal'Rend's Tribal Guardian",
+   "note": "Drops from Rend Blackhand in Upper Blackrock Spire",
+   "blurb": "Warchief Rend Blackhand, who refused to rejoin Ner'zhul's Horde and then fell under Nefarian's command.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 18987,
+   "name": "Blackhand's Command",
+   "note": "Letter from Rend Blackhand, carried by the Scarshield Quartermaster at Blackrock Spire",
+   "blurb": "Warchief Rend Blackhand, who refused to rejoin Ner'zhul's Horde and then fell under Nefarian's command.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "466": [
+  {
+   "id": 1293,
+   "name": "The State of Lakeshire",
+   "note": "Delivered to Marcus in Messenger to Stormwind",
+   "blurb": "Stormwind's High Commander, who organized the defense of Theramore Isle and died when the mana bomb exploded.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 1294,
+   "name": "The General's Response",
+   "note": "Handed out by Marcus in Messenger to Stormwind (2)",
+   "blurb": "Stormwind's High Commander, who organized the defense of Theramore Isle and died when the mana bomb exploded.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "4706": [
+  {
+   "id": 5862,
+   "name": "Seaforium Booster",
+   "note": "Retrieved for Razzeric in Razzeric's Tweaking",
+   "blurb": "The independent goblin pilot of the Guzzler at the Mirage Raceway, second in the Speedbarge Boat Race.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 5865,
+   "name": "Modified Seaforium Booster",
+   "note": "Returned to Razzeric in Safety First (2)",
+   "blurb": "The independent goblin pilot of the Guzzler at the Mirage Raceway, second in the Speedbarge Boat Race.",
+   "gear": false,
+   "group": "A"
+  },
+  {
+   "id": 6726,
+   "name": "Razzeric's Customized Seatbelt",
+   "note": "Reward for Safety First (2), which ends with Razzeric",
+   "blurb": "The independent goblin pilot of the Guzzler at the Mirage Raceway, second in the Speedbarge Boat Race.",
+   "gear": true,
+   "group": "A"
+  },
+  {
+   "id": 6727,
+   "name": "Razzeric's Racing Grips",
+   "note": "Reward for Safety First (2), which ends with Razzeric",
+   "blurb": "The independent goblin pilot of the Guzzler at the Mirage Raceway, second in the Speedbarge Boat Race.",
+   "gear": true,
+   "group": "A"
+  }
+ ],
+ "12939": [
+  {
+   "id": 16991,
+   "name": "Triage Bandage",
+   "note": "Quest item Gustaf hands out in Triage (Alliance)",
+   "blurb": "Theramore's chief physician, who stayed in the city tending the wounded after the Horde attacked.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "5087": [
+  {
+   "id": 5919,
+   "name": "Blackened Iron Shield",
+   "note": "Shown to Do'gol in The Black Shield (Horde 2)",
+   "blurb": "The Stonemaul ogre of Brackenwall Village, who takes part in the Black Shield quest chain.",
+   "gear": false,
+   "group": "A"
+  }
+ ],
+ "3391": [
+  {
+   "id": 5084,
+   "name": "Baron Longshore's Head",
+   "note": "Turn-in: brought to Gazlowe for the quest WANTED: Baron Longshore",
+   "blurb": "The engineer who dug Orgrimmar's water tunnels and founded Ratchet, the trading port in the Barrens.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 5076,
+   "name": "Shipment of Boots",
+   "note": "Turn-in: objective of Stolen Booty, retrieved for Gazlowe (quest starts with him)",
+   "blurb": "The engineer who dug Orgrimmar's water tunnels and founded Ratchet, the trading port in the Barrens.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 5077,
+   "name": "Telescopic Lens",
+   "note": "Turn-in: objective of Stolen Booty, retrieved for Gazlowe (quest starts with him)",
+   "blurb": "The engineer who dug Orgrimmar's water tunnels and founded Ratchet, the trading port in the Barrens.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "16376": [
+  {
+   "id": 22719,
+   "name": "Omarion's Handbook",
+   "note": "Turn-in: taken to Craftsman Wilhelm, who then crafts Omarion's frost gear",
+   "blurb": "The dwarf blacksmith at Light's Hope Chapel who repairs the weapons and armor of the Silver Hand paladins.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 22700,
+   "name": "Glacial Leggings",
+   "note": "Reward of The Only Song I Know..., Wilhelm's recipe quest",
+   "blurb": "The dwarf blacksmith at Light's Hope Chapel who repairs the weapons and armor of the Silver Hand paladins.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 22699,
+   "name": "Icebane Leggings",
+   "note": "Reward of The Only Song I Know..., Wilhelm's recipe quest",
+   "blurb": "The dwarf blacksmith at Light's Hope Chapel who repairs the weapons and armor of the Silver Hand paladins.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 22702,
+   "name": "Icy Scale Leggings",
+   "note": "Reward of The Only Song I Know..., Wilhelm's recipe quest",
+   "blurb": "The dwarf blacksmith at Light's Hope Chapel who repairs the weapons and armor of the Silver Hand paladins.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 22701,
+   "name": "Polar Leggings",
+   "note": "Reward of The Only Song I Know..., Wilhelm's recipe quest",
+   "blurb": "The dwarf blacksmith at Light's Hope Chapel who repairs the weapons and armor of the Silver Hand paladins.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "928": [
+  {
+   "id": 18792,
+   "name": "Blessed Arcanite Barding",
+   "note": "Turn-in: returned to Lord Grayson at the end of Blessed Arcanite Barding",
+   "blurb": "One of Stormwind's foremost paladins, who trains young paladins for the Order of the Silver Hand.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "4047": [
+  {
+   "id": 5942,
+   "name": "Jeweled Pendant",
+   "note": "Turn-in: objective of Marg Speaks, then brought to Zor for Report to Zor (ends at Zor)",
+   "blurb": "Well schooled in Alliance politics, he stands in Grommash Hold and sends adventurers to help the spirits of Stonetalon.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "10184": [
+  {
+   "id": 18423,
+   "name": "Head of Onyxia",
+   "note": "Drops from Onyxia in Onyxia's Lair (Alliance version)",
+   "blurb": "Deathwing's daughter and broodmother of the black dragonflight, who posed as Lady Katrana Prestor.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 18422,
+   "name": "Head of Onyxia",
+   "note": "Drops from Onyxia in Onyxia's Lair (Horde version)",
+   "blurb": "Deathwing's daughter and broodmother of the black dragonflight, who posed as Lady Katrana Prestor.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 17966,
+   "name": "Onyxia Hide Backpack",
+   "note": "Drops from Onyxia in Onyxia's Lair",
+   "blurb": "Deathwing's daughter and broodmother of the black dragonflight, who posed as Lady Katrana Prestor.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 18705,
+   "name": "Mature Black Dragon Sinew",
+   "note": "Drops from Onyxia in Onyxia's Lair (Classic)",
+   "blurb": "Deathwing's daughter and broodmother of the black dragonflight, who posed as Lady Katrana Prestor.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 21108,
+   "name": "Draconic for Dummies",
+   "note": "Drops from Onyxia in Onyxia's Lair",
+   "blurb": "Deathwing's daughter and broodmother of the black dragonflight, who posed as Lady Katrana Prestor.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "11583": [
+  {
+   "id": 19002,
+   "name": "Head of Nefarian",
+   "note": "Drops from Nefarian in Blackwing Lair (Horde version)",
+   "blurb": "The eldest son of Deathwing, sent with his sister Onyxia to take command of the Blackhand brothers.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 19003,
+   "name": "Head of Nefarian",
+   "note": "Drops from Nefarian in Blackwing Lair (Alliance version)",
+   "blurb": "The eldest son of Deathwing, sent with his sister Onyxia to take command of the Blackhand brothers.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 21138,
+   "name": "Red Scepter Shard",
+   "note": "Drops from Nefarian in Blackwing Lair if he dies within five hours of the raid start",
+   "blurb": "The eldest son of Deathwing, sent with his sister Onyxia to take command of the Blackhand brothers.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 21142,
+   "name": "From the Desk of Lord Victor Nefarius",
+   "note": "Drops from Nefarian in Blackwing Lair if he dies more than five hours in",
+   "blurb": "The eldest son of Deathwing, sent with his sister Onyxia to take command of the Blackhand brothers.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "10162": [
+  {
+   "id": 21142,
+   "name": "From the Desk of Lord Victor Nefarius",
+   "note": "Letter he wrote, dropped by Nefarian if he dies more than five hours into the Scepter quest",
+   "blurb": "The human guise of the black dragon Nefarian, who takes command of Rend and Maim Blackhand at Blackrock Spire.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "3976": [
+  {
+   "id": 7723,
+   "name": "Mograine's Might",
+   "note": "Drops from Scarlet Commander Mograine in the Scarlet Monastery",
+   "blurb": "Renault Mograine killed his father with the Ashbringer and became the Scarlet Commander of the Scarlet Monastery.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 7726,
+   "name": "Aegis of the Scarlet Commander",
+   "note": "Drops from Scarlet Commander Mograine in the Scarlet Monastery",
+   "blurb": "Renault Mograine killed his father with the Ashbringer and became the Scarlet Commander of the Scarlet Monastery.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "269127": [
+  {
+   "id": 279837,
+   "name": "Fallen Guard's Pendant",
+   "note": "Reward of Starving Arcane, a quest for her image",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 279838,
+   "name": "Arcane Infused Rod",
+   "note": "Reward of Starving Arcane, a quest for her image",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 279839,
+   "name": "Spellguard Pauldrons",
+   "note": "Reward of Heart of Disruption (Alliance), a quest for her image",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 279840,
+   "name": "Renewing Footpads",
+   "note": "Reward of Heart of Disruption (Alliance), a quest for her image",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 279841,
+   "name": "Defender of Dalaran",
+   "note": "Reward of Heart of Disruption (Alliance), a quest for her image",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": true,
+   "group": "B"
+  },
+  {
+   "id": 277507,
+   "name": "Dalaran Sewer Key",
+   "note": "Provided by her image for Heart of Disruption (permanent key, not a quest item)",
+   "blurb": "One of the longest-serving on Dalaran's Council of Six, who opposed Kel'Thuzad's necromancy before the Third War.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "3139": [
+  {
+   "id": 4883,
+   "name": "Admiral Proudmoore's Orders",
+   "note": "Turn-in: objective of The Admiral's Orders, which Gar'Thok ends",
+   "blurb": "Nazgrel's lieutenant at an outpost in Durotar, who later taught young Horde members at Razor Hill.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "3205": [
+  {
+   "id": 4866,
+   "name": "Zalazane's Head",
+   "note": "Drops from Zalazane on the Echo Isles in Durotar",
+   "blurb": "Vol'jin's childhood friend, who became a witch doctor and later the Hexmaster and Traitor of the Darkspears.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "1284": [
+  {
+   "id": 2944,
+   "name": "Cursed Eye of Paleth",
+   "note": "Turn-in: objective of Cleansing the Eye, which Benedictus ends",
+   "blurb": "Leader of the Church of the Holy Light, who led the memorial service for the fallen of the war against the Lich King.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "11833": [
+  {
+   "id": 14381,
+   "name": "Grimtotem Satchel",
+   "note": "Turn-in: objective of Returning the Lost Satchel, which Rahauro ends",
+   "blurb": "Magatha Grimtotem's servant, who helped her secure Thunder Bluff for the Grimtotem tribe.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "576": [
+  {
+   "id": 2000,
+   "name": "Archeus",
+   "note": "Reward of A Daughter's Love, which Watcher Ladimore starts",
+   "blurb": "The only survivor of the Ladimore family, she became a Watcher of the Night Watch and later its Commander.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "2542": [
+  {
+   "id": 4027,
+   "name": "Catelyn's Blade",
+   "note": "Troll relic that Ansirem Runeweaver gave to his daughter Catelyn the Blade",
+   "blurb": "Known as Catelyn the Blade, she is Booty Bay's best knife fighter and daughter of Archmage Ansirem Runeweaver.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "11406": [
+  {
+   "id": 18752,
+   "name": "Exorcism Censer",
+   "note": "Originally owned by High Priest Rohan; objective of Exorcising Terrordale",
+   "blurb": "High priest of Ironforge, who heals Anduin Wrynn in the Hall of Mysteries and witnesses Magni's petrification.",
+   "gear": false,
+   "group": "B"
+  },
+  {
+   "id": 18819,
+   "name": "Rohan's Exorcism Censer",
+   "note": "Originally owned by High Priest Rohan; turned in on To Show Due Judgment",
+   "blurb": "High priest of Ironforge, who heals Anduin Wrynn in the Hall of Mysteries and witnesses Magni's petrification.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "1852": [
+  {
+   "id": 14610,
+   "name": "Araj's Scarab",
+   "note": "Contained in Araj's Phylactery, which Araj guards in Andorhal",
+   "blurb": "A lich who rules the ruins of Andorhal, the former leader of Scholomance, who spreads the Plague of Undeath.",
+   "gear": false,
+   "group": "B"
+  }
+ ],
+ "10435": [
+  {
+   "id": 23198,
+   "name": "Idol of Brutality",
+   "note": "Drops from Magistrate Barthilas in Stratholme",
+   "blurb": "Tirion Fordring's second at Mardenholde Keep, who hated orcs after the Second War and planned Eitrigg's execution.",
+   "gear": true,
+   "group": "B"
+  }
+ ],
+ "7999": [
+  {
+   "id": 9368,
+   "name": "Jer'kai's Signet Ring",
+   "note": "Delivered to Tyrande in Doling Justice (2).",
+   "blurb": "In World of Warcraft she is High Priestess of Elune in Darnassus, where this signet was brought to her.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 5188,
+   "name": "Filled Vessel",
+   "note": "Brought to Tyrande in Home of the Kaldorei.",
+   "blurb": "In World of Warcraft she is High Priestess of Elune in Darnassus, where the Filled Vessel was brought to her.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "15378": [
+  {
+   "id": 21237,
+   "name": "Imperial Qiraji Regalia",
+   "note": "Brought to Merithra for the Regalia quest she starts.",
+   "blurb": "Daughter of Ysera who waits in the Temple of Ahn'Qiraj for adventurers to bring her the Regalia.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "8379": [
+  {
+   "id": 20022,
+   "name": "Azure Key",
+   "note": "Given by Xylem to start The Azure Key.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 20023,
+   "name": "Encoded Fragment",
+   "note": "Turned in to Xylem in Encoded Fragments.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 20085,
+   "name": "Arcane Shard",
+   "note": "Brought to Xylem in Destroy Morphaz.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 19775,
+   "name": "Sealed Azure Bag",
+   "note": "Brought to Xylem in Sealed Azure Bag.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 10541,
+   "name": "Tablet of Sael'hai",
+   "note": "Delivered to Xylem in Delivery to Archmage Xylem.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 10681,
+   "name": "Xylem's Note",
+   "note": "Given by Xylem for Xylem's Payment to Jediga.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 20036,
+   "name": "Fire Ruby",
+   "note": "Reward of Destroy Morphaz, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 20035,
+   "name": "Glacial Spike (dagger)",
+   "note": "Reward of Destroy Morphaz, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 20037,
+   "name": "Arcane Crystal Pendant",
+   "note": "Reward of Destroy Morphaz, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 19984,
+   "name": "Ebon Mask",
+   "note": "Reward of The Azure Key, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 20255,
+   "name": "Whisperwalk Boots",
+   "note": "Reward of The Azure Key, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 19982,
+   "name": "Duskbat Drape",
+   "note": "Reward of The Azure Key, which Xylem starts.",
+   "blurb": "Lost an apprentice and their arcane shard to the green drake Morphaz, and swore to hunt it down.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "5769": [
+  {
+   "id": 10649,
+   "name": "Nightmare Shard",
+   "note": "Turned in to Hamuul in In Nightmares (Horde).",
+   "blurb": "Archdruid of the tauren and leader of the Horde druids, a close friend of Broll.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "1748": [
+  {
+   "id": 11368,
+   "name": "Bolvar's Decree",
+   "note": "Given by Bolvar in The True Masters (4).",
+   "blurb": "Highlord and Regent of Stormwind while King Varian Wrynn was missing, and later the Lich King.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 11367,
+   "name": "Solomon's Plea to King Wrynn",
+   "note": "Brought to Bolvar in The True Masters (2).",
+   "blurb": "Highlord and Regent of Stormwind while King Varian Wrynn was missing, and later the Lich King.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 2625,
+   "name": "Menethil Statuette",
+   "note": "Brought to Bolvar in A Friend of the Family.",
+   "blurb": "Highlord and Regent of Stormwind while King Varian Wrynn was missing, and later the Lich King.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 16662,
+   "name": "Fragment of the Dragon's Eye",
+   "note": "Quest The Dragon's Eye starts with Bolvar.",
+   "blurb": "Highlord and Regent of Stormwind while King Varian Wrynn was missing, and later the Lich King.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "15989": [
+  {
+   "id": 23242,
+   "name": "Claw of the Frost Wyrm",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23050,
+   "name": "Cloak of the Necropolis",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23047,
+   "name": "Eye of the Dead",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23040,
+   "name": "Glyph of Deflection",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23049,
+   "name": "Sapphiron's Left Eye",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23048,
+   "name": "Sapphiron's Right Eye",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23045,
+   "name": "Shroud of Dominion",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23041,
+   "name": "Slayer's Crest",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23043,
+   "name": "The Face of Death (shield)",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23046,
+   "name": "The Restrained Essence of Sapphiron",
+   "note": "Drops from Sapphiron in Naxxramas.",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 23549,
+   "name": "Fortitude of the Scourge",
+   "note": "Shoulder enchant drop from Sapphiron (Tank).",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 23548,
+   "name": "Might of the Scourge",
+   "note": "Shoulder enchant drop from Sapphiron (Physical dps).",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 23545,
+   "name": "Power of the Scourge",
+   "note": "Shoulder enchant drop from Sapphiron (Caster).",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 23547,
+   "name": "Resilience of the Scourge",
+   "note": "Shoulder enchant drop from Sapphiron (Healer).",
+   "blurb": "Arthas raised this blue dragon as a frost wyrm; in Naxxramas he guards the approach to Kel'Thuzad's chamber.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "10812": [
+  {
+   "id": 18718,
+   "name": "Grand Crusader's Helm",
+   "note": "Drops from Balnazzar, who wore Dathrohan's form in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 18717,
+   "name": "Hammer of the Grand Crusader",
+   "note": "Drops from Balnazzar in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13353,
+   "name": "Book of the Dead",
+   "note": "Drops from Balnazzar in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13359,
+   "name": "Crown of Tyranny",
+   "note": "Drops from Balnazzar in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13348,
+   "name": "Demonshear",
+   "note": "Drops from Balnazzar in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 18720,
+   "name": "Shroud of the Nathrezim",
+   "note": "Drops from Balnazzar in the Scarlet Bastion.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13250,
+   "name": "Head of Balnazzar",
+   "note": "Balnazzar's head, delivered to Duke Zverenhoff in The Truth Comes Crashing Down.",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 13360,
+   "name": "Gift of the Elven Magi",
+   "note": "Drops from Balnazzar in Stratholme (Classic encounter loot table).",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13358,
+   "name": "Wyrmtongue Shoulders",
+   "note": "Drops from Balnazzar in Stratholme (Classic encounter loot table).",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 16725,
+   "name": "Lightforge Boots",
+   "note": "Drops from Balnazzar in Stratholme (Classic encounter loot table).",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13369,
+   "name": "Fire Striders",
+   "note": "Drops from Balnazzar in Stratholme (Classic encounter loot table).",
+   "blurb": "The dreadlord Balnazzar possessed Saidan Dathrohan's body and used it to lead the Scarlet Crusade.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "11034": [
+  {
+   "id": 21533,
+   "name": "Colossus of Zora's Husk",
+   "note": "Brought to Tyrosus in Secrets of the Colossus - Zora.",
+   "blurb": "Leads the Argent Dawn from Light's Hope Chapel and plans an offensive on Stratholme against Baron Rivendare.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "3387": [
+  {
+   "id": 5138,
+   "name": "Harvester's Head",
+   "note": "Brought to Jorn in The Harvester.",
+   "blurb": "Tauren hunter at Camp Taurajo who guides Horde adventurers, and sheltered Baine Bloodhoof's loyal forces.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 5099,
+   "name": "Hoof of Lakota'mani",
+   "note": "Brought to Jorn in Lakota'mani.",
+   "blurb": "Tauren hunter at Camp Taurajo who guides Horde adventurers, and sheltered Baine Bloodhoof's loyal forces.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 5102,
+   "name": "Owatanka's Tailspike",
+   "note": "Brought to Jorn in Owatanka.",
+   "blurb": "Tauren hunter at Camp Taurajo who guides Horde adventurers, and sheltered Baine Bloodhoof's loyal forces.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 5103,
+   "name": "Washte Pawne's Feather",
+   "note": "Brought to Jorn in Washte Pawne.",
+   "blurb": "Tauren hunter at Camp Taurajo who guides Horde adventurers, and sheltered Baine Bloodhoof's loyal forces.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "1499": [
+  {
+   "id": 3017,
+   "name": "Sevren's Orders",
+   "note": "Given by Sevren in The Prodigal Lich.",
+   "blurb": "Forsaken magistrate in Brill who hands out the early duties of the newly freed Forsaken.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 3234,
+   "name": "Deliah's Ring",
+   "note": "Brought to Sevren in The Engraved Ring.",
+   "blurb": "Forsaken magistrate in Brill who hands out the early duties of the newly freed Forsaken.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "4421": [
+  {
+   "id": 5793,
+   "name": "Razorflank's Heart",
+   "note": "Listed in Charlga's own loot table.",
+   "blurb": "Quilboar shaman who leads the Razorfen tribe from Razorfen Kraul, the figurehead of the Death's Head tribe.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 6692,
+   "name": "Pronged Reaver",
+   "note": "Drops from Charlga Razorflank in Razorfen Kraul.",
+   "blurb": "Quilboar shaman who leads the Razorfen tribe from Razorfen Kraul, the figurehead of the Death's Head tribe.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 6693,
+   "name": "Agamaggan's Clutch",
+   "note": "Drops from Charlga Razorflank in Razorfen Kraul.",
+   "blurb": "Quilboar shaman who leads the Razorfen tribe from Razorfen Kraul, the figurehead of the Death's Head tribe.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 6694,
+   "name": "Heart of Agamaggan",
+   "note": "Listed in Charlga's own loot table.",
+   "blurb": "Quilboar shaman who leads the Razorfen tribe from Razorfen Kraul, the figurehead of the Death's Head tribe.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "5387": [
+  {
+   "id": 6064,
+   "name": "Miniature Platinum Discs",
+   "note": "Brought to Magellas in The Platinum Discs (Alliance).",
+   "blurb": "Head of the Explorers' League, who maps the world and catalogues its relics for the dwarves.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 8070,
+   "name": "Reward Voucher",
+   "note": "Given by Magellas in The Platinum Discs (Alliance 2).",
+   "blurb": "Head of the Explorers' League, who maps the world and catalogues its relics for the dwarves.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 271716,
+   "name": "Explorer's League Dustcover",
+   "note": "Reward of Prehistoric Prism, which Magellas ends.",
+   "blurb": "Head of the Explorers' League, who maps the world and catalogues its relics for the dwarves.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 271767,
+   "name": "Healer's Staff",
+   "note": "Reward of Prehistoric Prism, which Magellas ends.",
+   "blurb": "Head of the Explorers' League, who maps the world and catalogues its relics for the dwarves.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 271766,
+   "name": "Heavehammer",
+   "note": "Reward of Prehistoric Prism, which Magellas ends.",
+   "blurb": "Head of the Explorers' League, who maps the world and catalogues its relics for the dwarves.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "2263": [
+  {
+   "id": 270072,
+   "name": "Alterac Assassin's Gloves",
+   "note": "Reward of Crushridge Warmongers, which Redpath starts.",
+   "blurb": "Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 5249,
+   "name": "Burning Sliver",
+   "note": "Reward of Crushridge Warmongers, which Redpath starts.",
+   "blurb": "Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 3763,
+   "name": "Lunar Buckler",
+   "note": "Reward of Crushridge Warmongers, which Redpath starts.",
+   "blurb": "Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 3717,
+   "name": "Sack of Murloc Heads",
+   "note": "Brought to Redpath in Farren's Proof (2).",
+   "blurb": "Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "3916": [
+  {
+   "id": 5463,
+   "name": "Glowing Gem",
+   "note": "Brought to Shael'dryn in Dryad Delivery.",
+   "blurb": "A dryad quest giver who calls herself a comedian, and warned the other guardians of shadow attackers.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "2285": [
+  {
+   "id": 15860,
+   "name": "Blinkstrike Armguards",
+   "note": "Reward of Delivery to Ridgewell, which Ridgewell ends.",
+   "blurb": "Member of the House of Nobles, whose family runs a museum of valuable objects and artworks.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 15861,
+   "name": "Swiftfoot Treads",
+   "note": "Reward of Delivery to Ridgewell, which Ridgewell ends.",
+   "blurb": "Member of the House of Nobles, whose family runs a museum of valuable objects and artworks.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 12437,
+   "name": "Ridgewell's Crate",
+   "note": "Brought to Ridgewell in Delivery to Ridgewell.",
+   "blurb": "Member of the House of Nobles, whose family runs a museum of valuable objects and artworks.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "2708": [
+  {
+   "id": 4533,
+   "name": "Sealed Letter to Archmage Malin",
+   "note": "Brought to Malin in Malin's Request (2).",
+   "blurb": "Archmage who held portals open for night elf refugees fleeing to Stormwind.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 4975,
+   "name": "Vigilant Buckler",
+   "note": "Reward of Malin's Request (2), which Malin ends.",
+   "blurb": "Archmage who held portals open for night elf refugees fleeing to Stormwind.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 15104,
+   "name": "Wingborne Boots",
+   "note": "Reward of Malin's Request (2), which Malin ends.",
+   "blurb": "Archmage who held portals open for night elf refugees fleeing to Stormwind.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "1573": [
+  {
+   "id": 16311,
+   "name": "Honorary Picks",
+   "note": "Brought to Gryth Thurden in Gryth Thurden (Classic).",
+   "blurb": "Ironforge gryphon master who explained to Prince Anduin Wrynn how Moira Thaurissan was isolating Ironforge.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "10439": [
+  {
+   "id": 15880,
+   "name": "Head of Ramstein the Gorger",
+   "note": "Ramstein's own head, linked to the Ramstein (quest).",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": false,
+   "group": "C"
+  },
+  {
+   "id": 13515,
+   "name": "Ramstein's Lightning Bolts",
+   "note": "Drops from Ramstein, listed in his loot table.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13372,
+   "name": "Slavedriver's Cane",
+   "note": "Drops from Ramstein the Gorger in Stratholme.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13375,
+   "name": "Crest of Retribution",
+   "note": "Drops from Ramstein the Gorger in Stratholme.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 18723,
+   "name": "Animated Chain Necklace",
+   "note": "Drops from Ramstein the Gorger in Stratholme.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13374,
+   "name": "Soulstealer Mantle",
+   "note": "Drops from Ramstein the Gorger in Stratholme.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 13373,
+   "name": "Band of Flesh",
+   "note": "Drops from Ramstein the Gorger in Stratholme.",
+   "blurb": "Elite abomination in Slaughter Square, responsible for thousands of deaths, including Nathanos Marris.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "15379": [
+  {
+   "id": 21221,
+   "name": "Eye of C'Thun",
+   "note": "Brought to Caelestrasz in C'Thun's Legacy.",
+   "blurb": "Red dragon progeny who waits in the Temple of Ahn'Qiraj and flew in to hold the qiraji back.",
+   "gear": false,
+   "group": "C"
+  }
+ ],
+ "250660": [
+  {
+   "id": 271204,
+   "name": "Meathook Slicer",
+   "note": "Drops from The Baron in Ruins of Lordaeron.",
+   "blurb": "The bigoted Grand Marshal Othmar Garithos, stitched back together by the Forsaken, now roams King's Alley.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 271205,
+   "name": "Abomination Bones",
+   "note": "Drops from The Baron in Ruins of Lordaeron.",
+   "blurb": "The bigoted Grand Marshal Othmar Garithos, stitched back together by the Forsaken, now roams King's Alley.",
+   "gear": true,
+   "group": "C"
+  },
+  {
+   "id": 271206,
+   "name": "Leftover Abomination Skin",
+   "note": "Drops from The Baron in Ruins of Lordaeron.",
+   "blurb": "The bigoted Grand Marshal Othmar Garithos, stitched back together by the Forsaken, now roams King's Alley.",
+   "gear": true,
+   "group": "C"
+  }
+ ],
+ "2496": [
+  {
+   "id": 5852,
+   "name": "Fuel Regulator Blueprints",
+   "note": "Turn-in: brought to Baron Revilgaz in Goblin Sponsorship (4)",
+   "blurb": "Ruler of goblin Booty Bay, home of the Blackwater Raiders, who agreed to a fishing tournament for visitors.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 4034,
+   "name": "Stone of the Tides",
+   "note": "Turn-in: brought back to Revilgaz in The Curse of the Tides; drops from Gazban",
+   "blurb": "Ruler of goblin Booty Bay, home of the Blackwater Raiders, who agreed to a fishing tournament for visitors.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 4027,
+   "name": "Catelyn's Blade",
+   "note": "Turn-in: brought back to Revilgaz in The Curse of the Tides",
+   "blurb": "Ruler of goblin Booty Bay, home of the Blackwater Raiders, who agreed to a fishing tournament for visitors.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 3960,
+   "name": "Bag of Water Elemental Bracers",
+   "note": "Quest item from Revilgaz for Magical Analysis; to be brought to Ansirem Runeweaver",
+   "blurb": "Ruler of goblin Booty Bay, home of the Blackwater Raiders, who agreed to a fishing tournament for visitors.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "2784": [
+  {
+   "id": 4514,
+   "name": "Sara Balloo's Plea",
+   "note": "Turn-in: note taken to King Magni, who ends Sara Balloo's Plea (quest)",
+   "blurb": "Dwarf king of Ironforge who joined the Alliance of Lordaeron and was turned to diamond after a ritual in Old Ironforge.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 2188,
+   "name": "A Letter to Grelin Whitebeard",
+   "note": "Letter signed by King Magni, given for Coldridge Valley Mail Delivery (2)",
+   "blurb": "Dwarf king of Ironforge who joined the Alliance of Lordaeron and was turned to diamond after a ritual in Old Ironforge.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "332": [
+  {
+   "id": 12630,
+   "name": "Head of Rend Blackhand",
+   "note": "Turn-in: taken to Mathias Shaw in End of the Dark Horde; drops from Rend Blackhand",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 7674,
+   "name": "Delivery to Mathias",
+   "note": "Turn-in: Keryn Sylvius's package delivered to Shaw in Seek out SI: 7",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 8046,
+   "name": "Kearnen's Journal",
+   "note": "Turn-in: information from Klaven's Tower brought back to Shaw",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 7908,
+   "name": "Klaven Mortwake's Journal",
+   "note": "Turn-in: information from Klaven's Tower brought back to Shaw",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 8687,
+   "name": "Sealed Description of Thredd's Visitor",
+   "note": "Turn-in: brought to Shaw in Shadow of the Past",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 7675,
+   "name": "Shipping Schedule",
+   "note": "Recovered for Shaw in Snatch and Grab (Classic)",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1353,
+   "name": "Shaw's Report",
+   "note": "Report written by Shaw for Gryan Stoutmantle; provided for The Defias Brotherhood (4)",
+   "blurb": "Master of spies who leads SI:7, Stormwind's intelligence service, and reports on Azerite to Anduin's advisers.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "11878": [
+  {
+   "id": 15880,
+   "name": "Head of Ramstein the Gorger",
+   "note": "Taken to Nathanos as a souvenir in the Ramstein quest; drops from Ramstein",
+   "blurb": "The first human ranger lord trained by Quel'Thalas's high elves, who joined Sylvanas's Forsaken and became her champion.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 15850,
+   "name": "Patch of Duskwing's Fur",
+   "note": "Turn-in: recovered from Duskwing and returned to Nathanos",
+   "blurb": "The first human ranger lord trained by Quel'Thalas's high elves, who joined Sylvanas's Forsaken and became her champion.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 15876,
+   "name": "Nathanos' Chest",
+   "note": "His chest, provided as an objective for Nathanos' Ruse",
+   "blurb": "The first human ranger lord trained by Quel'Thalas's high elves, who joined Sylvanas's Forsaken and became her champion.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 15868,
+   "name": "The Grand Crusader's Command",
+   "note": "Turn-in: recovered from the Crimson Courier and returned to Nathanos",
+   "blurb": "The first human ranger lord trained by Quel'Thalas's high elves, who joined Sylvanas's Forsaken and became her champion.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "15192": [
+  {
+   "id": 21139,
+   "name": "Green Scepter Shard",
+   "note": "Turn-in: taken to Anachronos in The Champion Returns",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 21137,
+   "name": "Blue Scepter Shard",
+   "note": "Turn-in: objective of The Wrath of Neptulon, which ends with Anachronos",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 21138,
+   "name": "Red Scepter Shard",
+   "note": "Turn-in: dropped by Nefarian, taken to Anachronos in The Champion Returns",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 21175,
+   "name": "The Scepter of the Shifting Sands",
+   "note": "Created by Anachronos; end of the Anachronos quest chain (Classic 1.9.0 to 4.0.3a)",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 20415,
+   "name": "The War of the Shifting Sands",
+   "note": "Book provided for the Anachronos quest, which ends with him",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 22733,
+   "name": "Staff Head of Atiesh",
+   "note": "Turn-in: Anachronos wants it for Atiesh, the Befouled Greatstaff",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 22734,
+   "name": "Base of Atiesh",
+   "note": "Turn-in: Anachronos wants it for Atiesh, the Befouled Greatstaff; drops from C'Thun",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 21201,
+   "name": "Signet Ring of the Bronze Dragonflight (Conqueror)",
+   "note": "Turn-in: presented to Anachronos when changing path (The Changing of Paths)",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21206,
+   "name": "Signet Ring of the Bronze Dragonflight (Invoker)",
+   "note": "Turn-in: presented to Anachronos when changing path (The Changing of Paths)",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21196,
+   "name": "Signet Ring of the Bronze Dragonflight (Protector)",
+   "note": "Turn-in: presented to Anachronos when changing path (The Changing of Paths)",
+   "blurb": "Heir of Nozdormu and guardian of the Caverns of Time, who calls the other dragonflights to fight the qiraji.",
+   "gear": true,
+   "group": "D"
+  }
+ ],
+ "344": [
+  {
+   "id": 11367,
+   "name": "Solomon's Plea to King Wrynn",
+   "note": "Letter from Solomon, handed to you for The True Masters (2)",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1409,
+   "name": "Solomon's Plea to Darkshire",
+   "note": "Letter from Solomon, carried to Lord Ebonlocke in Messenger to Darkshire",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1407,
+   "name": "Solomon's Plea to Westfall",
+   "note": "Letter from Solomon, carried to Gryan Stoutmantle in Messenger to Westfall",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1410,
+   "name": "Ebonlocke's Response to Solomon",
+   "note": "Turn-in: Ebonlocke's reply brought back to Solomon in Messenger to Darkshire (2)",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1408,
+   "name": "Stoutmantle's Response to Solomon",
+   "note": "Turn-in: Stoutmantle's reply brought back to Solomon in Messenger to Westfall (2)",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1294,
+   "name": "The General's Response",
+   "note": "Turn-in: General Marcus Jonathan's reply brought back to Solomon in Messenger to Stormwind (2)",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 1293,
+   "name": "The State of Lakeshire",
+   "note": "Report Solomon gives you for General Marcus Jonathan in Messenger to Stormwind",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 11366,
+   "name": "Helendis Riverhorn's Letter",
+   "note": "Turn-in: delivered to Solomon in The True Masters",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 11368,
+   "name": "Bolvar's Decree",
+   "note": "Turn-in: taken to Solomon in The True Masters (4)",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3633,
+   "name": "Head of Gath'Ilzogg",
+   "note": "Turn-in: head brought to Solomon in Wanted: Gath'Ilzogg",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3632,
+   "name": "Fangore's Paw",
+   "note": "Turn-in: paw returned to Solomon in Wanted: Lieutenant Fangore",
+   "blurb": "Judge of Lakeshire, who declared Greydon Thorne dead so Ceya Northbrooke could marry Robb Glade.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "7583": [
+  {
+   "id": 8526,
+   "name": "Violet Tragan",
+   "note": "Turn-in: returned to Sprinkle in Sprinkle's Secret Ingredient",
+   "blurb": "Gadgetzan chef whose secret ingredient is the Violet Tragan mushroom from the Hinterlands.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 8603,
+   "name": "Thistleshrub Dew",
+   "note": "Turn-in: brought to Sprinkle to finish In Good Taste",
+   "blurb": "Gadgetzan chef whose secret ingredient is the Violet Tragan mushroom from the Hinterlands.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "1938": [
+  {
+   "id": 5442,
+   "name": "Head of Arugal",
+   "note": "Turn-in: Arugal's head brought to Dalar in Arugal Must Die; drops from Arugal",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3634,
+   "name": "Head of Grimson",
+   "note": "Turn-in: Grimson's head brought to Dalar in Arugal's Folly (3)",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3157,
+   "name": "Darksoul Shackle",
+   "note": "Turn-in: brought to Dalar in Arugal's Folly (2)",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3156,
+   "name": "Glutton Shackle",
+   "note": "Turn-in: brought to Dalar in Arugal's Folly (2)",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3218,
+   "name": "Pyrewood Shackle",
+   "note": "Turn-in: brought to Dalar in Arugal's Folly (4)",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3353,
+   "name": "Rune-inscribed Pendant",
+   "note": "Turn-in: taken to Dalar in Dalar's Analysis",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 3155,
+   "name": "Remedy of Arugal",
+   "note": "Retrieved for Dalar in Arugal's Folly",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 280375,
+   "name": "Worgen Bits",
+   "note": "Turn-in: brought to Dalar in Arugal's Folly (5); Forever only",
+   "blurb": "Former Kirin Tor archmage, raised by the Scourge and freed by Sylvanas, who sends adventurers after Arugal.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "240": [
+  {
+   "id": 745,
+   "name": "Marshal McBride's Documents",
+   "note": "Turn-in: taken to Marshal Dughan in Report to Goldshire",
+   "blurb": "Marshal of Goldshire in Elwynn Forest, part of the Stormwind Army and in charge of the town's security.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 2239,
+   "name": "The Collector's Ring",
+   "note": "Turn-in: returned to Dughan in Manhunt (Classic); drops from Morgan the Collector",
+   "blurb": "Marshal of Goldshire in Elwynn Forest, part of the Stormwind Army and in charge of the town's security.",
+   "gear": true,
+   "group": "D"
+  }
+ ],
+ "4501": [
+  {
+   "id": 5841,
+   "name": "Searing Heart",
+   "note": "Turn-in: 7 brought to Draz'Zilb in Identifying the Brood",
+   "blurb": "Intelligent ogre of Brackenwall Village who helped oust the corrupt Mok'Morokk from the Stonemaul clan.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 5840,
+   "name": "Searing Tongue",
+   "note": "Turn-in: 7 brought to Draz'Zilb in Identifying the Brood",
+   "blurb": "Intelligent ogre of Brackenwall Village who helped oust the corrupt Mok'Morokk from the Stonemaul clan.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "4630": [
+  {
+   "id": 5852,
+   "name": "Fuel Regulator Blueprints",
+   "note": "Turn-in: delivered to Pozzik in Goblin Sponsorship (5)",
+   "blurb": "Goblin tinker at the Mirage Raceway in Thousand Needles, which he built with his long-time rival Fizzle Brassbolts.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 5848,
+   "name": "Hollow Vulture Bone",
+   "note": "Turn-in: 10 gathered for Pozzik in Load Lightening",
+   "blurb": "Goblin tinker at the Mirage Raceway in Thousand Needles, which he built with his long-time rival Fizzle Brassbolts.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 5866,
+   "name": "Sample of Indurium Ore",
+   "note": "Turn-in: taken to Pozzik in Rizzle's Schematics",
+   "blurb": "Goblin tinker at the Mirage Raceway in Thousand Needles, which he built with his long-time rival Fizzle Brassbolts.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "3453": [
+  {
+   "id": 5799,
+   "name": "Kravel's Parts Order",
+   "note": "Turn-in: brought to Dizzywig in Wharfmaster Dizzywig (quest)",
+   "blurb": "Goblin dockmaster of Ratchet in the Barrens, who runs the docks and provided transport for Velinde Starsong.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 6462,
+   "name": "Secure Crate",
+   "note": "Turn-in: brought to Dizzywig in Wharfmaster Dizzywig (Barrens)",
+   "blurb": "Goblin dockmaster of Ratchet in the Barrens, who runs the docks and provided transport for Velinde Starsong.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "3057": [
+  {
+   "id": 4841,
+   "name": "Horn of Arra'chea",
+   "note": "Turn-in: brought to Cairne in Rites of the Earthmother (3); drops from Arra'chea",
+   "blurb": "Chieftain of the Bloodhoof tauren, who pledged his people to the Horde and secured Mulgore as a home for the tauren.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "15380": [
+  {
+   "id": 21232,
+   "name": "Imperial Qiraji Armaments",
+   "note": "Turn-in: brought to Arygos, who forges Elementium Infused Armaments from them",
+   "blurb": "A blue dragon in gnome form who offers Imperial Qiraji Armaments in the Temple of Ahn'Qiraj.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "253957": [
+  {
+   "id": 270866,
+   "name": "Titan Relic",
+   "note": "Turn-in: brought to Muln in Earthen Echo (Horde); drops from the Relic Guardian; Forever only",
+   "blurb": "Tauren shaman and leader of the Earthen Ring, who worries about Thrall at the Maelstrom in Twilight of the Aspects.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "9598": [
+  {
+   "id": 11874,
+   "name": "Clouddrift Mantle",
+   "note": "Reward from Ancient Spirit, the escort quest that starts with Arei (Classic)",
+   "blurb": "Ancient of War in Irontree Woods, whose spirit you escort through the corrupted woods after the Flute of the Ancients.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 11873,
+   "name": "Ethereal Mist Cape",
+   "note": "Reward from Ancient Spirit, the escort quest that starts with Arei (Classic)",
+   "blurb": "Ancient of War in Irontree Woods, whose spirit you escort through the corrupted woods after the Flute of the Ancients.",
+   "gear": true,
+   "group": "D"
+  }
+ ],
+ "10824": [
+  {
+   "id": 284157,
+   "name": "Ranger Lord's Longsword",
+   "note": "Dropped by Hawkspear in Eastern Plaguelands; Forever only",
+   "blurb": "Renthar Hawkspear, a high elf ranger lord who led the hunters of Quel'Lithien Lodge in the Eastern Plaguelands.",
+   "gear": true,
+   "group": "D"
+  }
+ ],
+ "15341": [
+  {
+   "id": 21492,
+   "name": "Manslayer of the Qiraji",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21493,
+   "name": "Boots of the Vanguard",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21497,
+   "name": "Boots of the Qiraji General",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21495,
+   "name": "Legplates of the Qiraji Command",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21496,
+   "name": "Bracers of Qiraji Command",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 21494,
+   "name": "Southwind's Grasp",
+   "note": "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": true,
+   "group": "D"
+  },
+  {
+   "id": 20888,
+   "name": "Qiraji Ceremonial Ring",
+   "note": "Cenarion Circle token in Rajaxx's loot table; also drops from all AQ bosses",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 20884,
+   "name": "Qiraji Magisterial Ring",
+   "note": "Cenarion Circle token in Rajaxx's loot table; also drops from all AQ bosses",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 20885,
+   "name": "Qiraji Martial Drape",
+   "note": "Cenarion Circle token in Rajaxx's loot table; drops from Kurinnaxx, Rajaxx, Buru and Ayamiss",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": false,
+   "group": "D"
+  },
+  {
+   "id": 20889,
+   "name": "Qiraji Regal Drape",
+   "note": "Cenarion Circle token in Rajaxx's loot table; drops from Kurinnaxx, Rajaxx, Buru and Ayamiss",
+   "blurb": "Primary militant commander of the qiraji, second boss of the Ruins of Ahn'Qiraj behind seven waves of officers.",
+   "gear": false,
+   "group": "D"
+  }
+ ],
+ "4968": [
+  {
+   "id": 18642,
+   "name": "Jaina's Autograph",
+   "note": "Given by Jaina for the Children's Week quest Jaina's Autograph",
+   "blurb": "Theramore's ruler, who ordered her own troops to stand down when the Horde assaulted the city.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 6757,
+   "name": "Jaina's Signet Ring",
+   "note": "Lady Jaina's own ring, quest reward from The Missing Diplomat (17)",
+   "blurb": "Jaina's own ring. Her choice to stand down her troops at Theramore left the people of Kul Tiras bitterly hostile to her.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 6075,
+   "name": "Vimes' Report",
+   "note": "Turn-in: delivered to Jaina to finish Vimes's Report",
+   "blurb": "Theramore's ruler, who helped the Horde gain ships from the goblins before she ordered her troops to stand down.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "2055": [
+  {
+   "id": 9436,
+   "name": "Faranell's Parcel",
+   "note": "Provided by Apothecary Lydon, delivered to Faranell for Venom to the Undercity",
+   "blurb": "A Forsaken alchemist of great renown and one of the foremost experts on the undead plague, master of the Apothecarium.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "10182": [
+  {
+   "id": 16785,
+   "name": "Rokaro's Letter",
+   "note": "Quest item from Rexxar's quest The Testament of Rexxar (now Mistress of Deception); delivered to Myranda the Hag",
+   "blurb": "The Champion of the Horde, who wanders the wilds of Kalimdor with his bear Misha.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "10813": [
+  {
+   "id": 13348,
+   "name": "Demonshear",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 13359,
+   "name": "Crown of Tyranny",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 13353,
+   "name": "Book of the Dead",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 13360,
+   "name": "Gift of the Elven Magi",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 18718,
+   "name": "Grand Crusader's Helm",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 18717,
+   "name": "Hammer of the Grand Crusader",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 18720,
+   "name": "Shroud of the Nathrezim",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 12103,
+   "name": "Star of Mystaria",
+   "note": "Classic drop from Balnazzar in Stratholme",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 13358,
+   "name": "Wyrmtongue Shoulders",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 13369,
+   "name": "Fire Striders",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 16725,
+   "name": "Lightforge Boots",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 14512,
+   "name": "Pattern: Truefaith Vestments",
+   "note": "Drops from Balnazzar in Stratholme (Classic)",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 13520,
+   "name": "Recipe: Flask of Distilled Wisdom",
+   "note": "Non-soulbound copy drops from Balnazzar in Stratholme",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 13250,
+   "name": "Head of Balnazzar",
+   "note": "Drops from Balnazzar in Stratholme (Classic); starts the quest The Truth Comes Crashing Down",
+   "blurb": "A dreadlord who took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade in Stratholme.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "1156": [
+  {
+   "id": 2713,
+   "name": "Ol' Sooty's Head",
+   "note": "Dropped by Ol' Sooty; provided for Vyrin's Revenge (2), which ends with Vyrin",
+   "blurb": "A high elf who chose her integrity over her estranged husband Talithar and went to live at the Farstrider Lodge.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "3977": [
+  {
+   "id": 7720,
+   "name": "Whitemane's Chapeau",
+   "note": "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral",
+   "blurb": "A human priestess of the Light who became High Inquisitor of the Scarlet Crusade, and a boss in the Scarlet Monastery.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 7721,
+   "name": "Hand of Righteousness",
+   "note": "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral",
+   "blurb": "A human priestess of the Light who became High Inquisitor of the Scarlet Crusade, and a boss in the Scarlet Monastery.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 7722,
+   "name": "Triune Amulet",
+   "note": "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral",
+   "blurb": "A human priestess of the Light who became High Inquisitor of the Scarlet Crusade, and a boss in the Scarlet Monastery.",
+   "gear": true,
+   "group": "E"
+  }
+ ],
+ "2543": [
+  {
+   "id": 3960,
+   "name": "Bag of Water Elemental Bracers",
+   "note": "Provided for Magical Analysis, which ends with Ansirem",
+   "blurb": "A member of the Council of Six of the Kirin Tor, who stayed at Dalaran Crater until the Cataclysm.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "3520": [
+  {
+   "id": 12724,
+   "name": "Janice's Parcel",
+   "note": "Parcel from Janice Felstone for Ol' Emma, provided in Good Natured Emma",
+   "blurb": "Emma Felstone, widow of Jem who died in the First War, later returned to the Arathi Highlands to bury her sons.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "2707": [
+  {
+   "id": 9324,
+   "name": "Shadra's Venom",
+   "note": "Drops from Shadra; used in Summoning Shadra (Classic)",
+   "blurb": "The spider loa worshipped by the Witherbark and Vilebranch tribes; killed at an altar, her venom goes to the Undercity.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "2918": [
+  {
+   "id": 4622,
+   "name": "Sealed Note to Advisor Belgrum",
+   "note": "Provided for Passing Word of a Threat, which ends with Belgrum",
+   "blurb": "An Explorers' League dwarf and advisor to Magni Bronzebeard, who sends adventurers back for the Tablet of Will.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 4621,
+   "name": "Ambassador Infernus' Bracer",
+   "note": "Proof of Infernus's death, delivered to Belgrum for An Ambassador of Evil",
+   "blurb": "An Explorers' League dwarf and advisor to Magni Bronzebeard, who sends adventurers back for the Tablet of Will.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 5824,
+   "name": "Tablet of Will",
+   "note": "Quest item returned to Belgrum in The Lost Tablets of Will",
+   "blurb": "An Explorers' League dwarf and advisor to Magni Bronzebeard, who sends adventurers back for the Tablet of Will.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "482": [
+  {
+   "id": 5946,
+   "name": "Sealed Note to Elling",
+   "note": "Provided for The Missing Diplomat (3), which ends with Elling Trias",
+   "blurb": "Runs Trias' Cheese in Stormwind's Trade District and has SI:7 contacts; a contact in The Missing Diplomat chain.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 5947,
+   "name": "Defias Docket",
+   "note": "Provided for The Missing Diplomat (6), which ends with Elling Trias",
+   "blurb": "Runs Trias' Cheese in Stormwind's Trade District and has SI:7 contacts; a contact in The Missing Diplomat chain.",
+   "gear": false,
+   "group": "E"
+  },
+  {
+   "id": 5960,
+   "name": "Sealed Note to Watcher Backus",
+   "note": "Handed out by Elling Trias in The Missing Diplomat (4)",
+   "blurb": "Runs Trias' Cheese in Stormwind's Trade District and has SI:7 contacts; a contact in The Missing Diplomat chain.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "4488": [
+  {
+   "id": 5861,
+   "name": "Beginnings of the Undead Threat",
+   "note": "Book returned to Parqual in Test of Lore (5)",
+   "blurb": "A human historian of Capital City who became Forsaken and smuggled his books into the Undercity.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "7267": [
+  {
+   "id": 9477,
+   "name": "The Chief's Enforcer",
+   "note": "Drops from Chief Ukorz Sandscalp in Zul'Farrak",
+   "blurb": "The Sandfury chief and ruler of Zul'Farrak, obsessed with restoring his tribe to its former glory.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 11086,
+   "name": "Jang'thraze the Protector",
+   "note": "Drops from Chief Ukorz Sandscalp in Zul'Farrak",
+   "blurb": "The Sandfury chief and ruler of Zul'Farrak, obsessed with restoring his tribe to its former glory.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 9478,
+   "name": "Ripsaw",
+   "note": "Drops from Chief Ukorz Sandscalp in Zul'Farrak",
+   "blurb": "The Sandfury chief and ruler of Zul'Farrak, obsessed with restoring his tribe to its former glory.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 9479,
+   "name": "Embrace of the Lycan",
+   "note": "Drops from Chief Ukorz Sandscalp in Zul'Farrak",
+   "blurb": "The Sandfury chief and ruler of Zul'Farrak, obsessed with restoring his tribe to its former glory.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 9476,
+   "name": "Big Bad Pauldrons",
+   "note": "Drops from Chief Ukorz Sandscalp in Zul'Farrak",
+   "blurb": "The Sandfury chief and ruler of Zul'Farrak, obsessed with restoring his tribe to its former glory.",
+   "gear": true,
+   "group": "E"
+  }
+ ],
+ "5709": [
+  {
+   "id": 10828,
+   "name": "Dire Nail",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10847,
+   "name": "Dragon's Call",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10837,
+   "name": "Tooth of Eranikus",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10836,
+   "name": "Rod of Corrosion",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10835,
+   "name": "Crest of Supremacy",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10833,
+   "name": "Horns of Eranikus",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  },
+  {
+   "id": 10829,
+   "name": "The Dragon's Eye",
+   "note": "Drops from the Shade of Eranikus in Temple of Atal'Hakkar",
+   "blurb": "Eranikus, former consort of Ysera, became a shade in Atal'Hakkar's temple, pulled between the Dream and the world.",
+   "gear": true,
+   "group": "E"
+  }
+ ],
+ "2993": [
+  {
+   "id": 4783,
+   "name": "Totem of Hawkwind",
+   "note": "Provided by Chief Hawkwind for Rites of the Earthmother (2), delivered to Baine in Bloodhoof Village",
+   "blurb": "The son of Cairne Bloodhoof, kidnapped by centaur and rescued by Rexxar. He leads the tauren at Bloodhoof Village.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "10540": [
+  {
+   "id": 4883,
+   "name": "Admiral Proudmoore's Orders",
+   "note": "Provided by Gar'Thok for The Admiral's Orders (2), delivered to Vol'jin in Orgrimmar",
+   "blurb": "The Darkspear leader who founded Sen'jin Village and advises Thrall from his fortress in Orgrimmar.",
+   "gear": false,
+   "group": "E"
+  }
+ ],
+ "4949": [
+  {
+   "id": 18422,
+   "name": "Head of Onyxia",
+   "note": "Turned in to Thrall for the quest Victory for the Horde",
+   "blurb": "Warchief Thrall leads the Horde from his hall in Orgrimmar, and founded Durotar, named after his father.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 12630,
+   "name": "Head of Rend Blackhand",
+   "note": "Turned in to Thrall for the quest For The Horde! (the quest text says to present the head to the Warchief)",
+   "blurb": "Warchief Thrall leads the Horde from his hall in Orgrimmar, and founded Durotar, named after his father.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "3144": [
+  {
+   "id": 19002,
+   "name": "Head of Nefarian",
+   "note": "Turned in to Eitrigg for the quest The Lord of Blackrock (Horde)",
+   "blurb": "A Blackrock orc who returned to his shamanistic roots after meeting Thrall, and now advises the Warchief in Orgrimmar.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "8929": [
+  {
+   "id": 12545,
+   "name": "Eye of Orgrimmar",
+   "note": "Quest reward from The Princess Saved?, given by Moira (ends at Thrall)",
+   "blurb": "Moira Bronzebeard stayed with Dagran Thaurissan, then returned to Ironforge with her infant son to claim the throne.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 12548,
+   "name": "Magni's Will",
+   "note": "Quest reward from The Princess's Surprise, given by Moira (ends at King Magni)",
+   "blurb": "Moira Bronzebeard stayed with Dagran Thaurissan, then returned to Ironforge with her infant son to claim the throne.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 12543,
+   "name": "Songstone of Ironforge",
+   "note": "Quest reward from The Princess's Surprise, given by Moira (ends at King Magni)",
+   "blurb": "Moira Bronzebeard stayed with Dagran Thaurissan, then returned to Ironforge with her infant son to claim the throne.",
+   "gear": true,
+   "group": "F"
+  }
+ ],
+ "3660": [
+  {
+   "id": 5839,
+   "name": "Journal Page",
+   "note": "Dropped by Athrikus Narassin in Darkshore",
+   "blurb": "Leader of the Cult of the Dark Strand, who chained the souls of lesser highborne to himself for immortality.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 282406,
+   "name": "Azsharan Key",
+   "note": "Found on Athrikus Narassin's corpse atop the Tower of Althalaxx (WoW Forever only)",
+   "blurb": "Leader of the Cult of the Dark Strand, who chained the souls of lesser highborne to himself for immortality.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "3188": [
+  {
+   "id": 4864,
+   "name": "Minshina's Skull",
+   "note": "Objective of the quest Minshina's Skull, started and ended by Master Gadrin",
+   "blurb": "Elderly jungle troll witch doctor who mentored Vol'jin and Zalazane, and sent adventurers for Minshina's skull.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 4945,
+   "name": "Faintly Glowing Skull",
+   "note": "Quest reward from Minshina's Skull, which Master Gadrin gives",
+   "blurb": "Elderly jungle troll witch doctor who mentored Vol'jin and Zalazane, and sent adventurers for Minshina's skull.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 9323,
+   "name": "Gadrin's Parchment",
+   "note": "Provided by Master Gadrin for the quest Summoning Shadra",
+   "blurb": "Elderly jungle troll witch doctor who mentored Vol'jin and Zalazane, and sent adventurers for Minshina's skull.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "15077": [
+  {
+   "id": 19807,
+   "name": "Speckled Tastyfish",
+   "note": "Turned in to Riggle in the Grand Prize contest of the Stranglethorn Fishing Extravaganza",
+   "blurb": "Goblin angler on the Booty Bay dock who runs the Stranglethorn Fishing Extravaganza and takes the tastyfish.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 19970,
+   "name": "Arcanite Fishing Pole",
+   "note": "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza",
+   "blurb": "Goblin angler on the Booty Bay dock who runs the Stranglethorn Fishing Extravaganza and takes the tastyfish.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 19971,
+   "name": "High Test Eternium Fishing Line",
+   "note": "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza",
+   "blurb": "Goblin angler on the Booty Bay dock who runs the Stranglethorn Fishing Extravaganza and takes the tastyfish.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 19979,
+   "name": "Hook of the Master Angler",
+   "note": "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza",
+   "blurb": "Goblin angler on the Booty Bay dock who runs the Stranglethorn Fishing Extravaganza and takes the tastyfish.",
+   "gear": true,
+   "group": "F"
+  }
+ ],
+ "5144": [
+  {
+   "id": 7226,
+   "name": "Mage-Tastic Gizmonitor",
+   "note": "Brought to Bink for the quest Mage-tastic Gizmonitor, which she starts",
+   "blurb": "Gnome mage trainer in Ironforge's Hall of Mysteries, sister of Dink, caught by Dark Iron guards when Moira arrived.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "7937": [
+  {
+   "id": 9623,
+   "name": "Civinad Robes",
+   "note": "Reward from The Grand Betrayal, which Mekkatorque starts",
+   "blurb": "High Tinker of Gnomeregan who led the gnomes' push to retake the city from his former advisor Sicco Thermaplugg.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 9625,
+   "name": "Dual Reinforced Leggings",
+   "note": "Reward from The Grand Betrayal, which Mekkatorque starts",
+   "blurb": "High Tinker of Gnomeregan who led the gnomes' push to retake the city from his former advisor Sicco Thermaplugg.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 9624,
+   "name": "Triprunner Dungarees",
+   "note": "Reward from The Grand Betrayal, which Mekkatorque starts",
+   "blurb": "High Tinker of Gnomeregan who led the gnomes' push to retake the city from his former advisor Sicco Thermaplugg.",
+   "gear": true,
+   "group": "F"
+  }
+ ],
+ "4046": [
+  {
+   "id": 10678,
+   "name": "Magatha's Note",
+   "note": "Given by Magatha Grimtotem for the quest Magatha's Payment to Jediga",
+   "blurb": "Matriarch of the Grimtotem tribe who poisoned Gorehowl's blade so that Garrosh Hellscream could kill Cairne Bloodhoof.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 12785,
+   "name": "Incendia Powder",
+   "note": "Provided by Magatha Grimtotem for the quest Arikara",
+   "blurb": "Matriarch of the Grimtotem tribe who poisoned Gorehowl's blade so that Garrosh Hellscream could kill Cairne Bloodhoof.",
+   "gear": false,
+   "group": "F"
+  }
+ ],
+ "10440": [
+  {
+   "id": 13335,
+   "name": "Deathcharger's Reins",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 13505,
+   "name": "Runeblade of Baron Rivendare",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13251,
+   "name": "Head of Baron Rivendare",
+   "note": "Drops from Baron Rivendare; objective of the quest Above and Beyond",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 13368,
+   "name": "Bonescraper",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13340,
+   "name": "Cape of the Black Baron",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13344,
+   "name": "Dracorian Gauntlets",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 22411,
+   "name": "Helm of the Executioner",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 22410,
+   "name": "Gauntlets of Deftness",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 22408,
+   "name": "Ritssyn's Wand of Bad Mojo",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13346,
+   "name": "Robes of the Exalted",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13349,
+   "name": "Scepter of the Unholy",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13345,
+   "name": "Seal of Rivendare",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 13361,
+   "name": "Skullforge Reaver",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 22412,
+   "name": "Thuzadin Mantle",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 22409,
+   "name": "Tunic of the Crescent Moon",
+   "note": "Drops from Baron Rivendare in Stratholme (Classic)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16678,
+   "name": "Beaststalker's Pants",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16694,
+   "name": "Devout Skirt",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16699,
+   "name": "Dreadmist Leggings",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16668,
+   "name": "Kilt of Elements",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16732,
+   "name": "Legplates of Valor",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16728,
+   "name": "Lightforge Legplates",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16687,
+   "name": "Magister's Leggings",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16709,
+   "name": "Shadowcraft Pants",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  },
+  {
+   "id": 16719,
+   "name": "Wildheart Kilt",
+   "note": "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)",
+   "blurb": "The death knight who ruled the burning remains of Stratholme after joining the Cult of the Damned.",
+   "gear": true,
+   "group": "F"
+  }
+ ],
+ "2425": [
+  {
+   "id": 17008,
+   "name": "Small Scroll",
+   "note": "Turn-in to Varimathras for the quest An Unholy Alliance (Classic): take the scroll to him",
+   "blurb": "Dreadlord who secretly made a deal with Sylvanas to overthrow Arthas, and stands at her side in the Royal Quarter.",
+   "gear": false,
+   "group": "F"
+  },
+  {
+   "id": 17009,
+   "name": "Ambassador Malcin's Head",
+   "note": "Turn-in to Varimathras for the quest An Unholy Alliance (Classic 2): bring the head to him",
+   "blurb": "Dreadlord who secretly made a deal with Sylvanas to overthrow Arthas, and stands at her side in the Royal Quarter.",
+   "gear": false,
+   "group": "F"
+  }
+ ]
+}

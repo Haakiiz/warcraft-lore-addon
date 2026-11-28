@@ -37,7 +37,7 @@ Det går i den tooltipen som allerede vises.
   setning av `note`.
 - Ved innlasting bygges en omvendt indeks `ns.ITEM_INDEX[itemID] = npcID` (ett item kan i teorien høre til to
   NPC-er; da vises begge navnene på én linje).
-- **Innholdsrunde for items:** i dag har bare 37 av ~170 veteraner items. Kjør en runde over «Drops»- og
+- **Innholdsrunde for items:** i dag har bare 6 av 168 veteraner items (7 items totalt). Kjør en runde over «Drops»- og
   «Quest»-seksjonene på warcraft.wiki.gg for alle veteraner, særlig Forever-NPC-er (de har nye drops).
   Samme oppsett som tidligere soner: Haiku-lesere + Haiku-kritiker + Opus-sjekk. Regelen gjelder fortsatt:
   ingen oppdiktede item-ID-er.
@@ -62,6 +62,6 @@ Det går i den tooltipen som allerede vises.
 
 1. [x] Compat-hook + indeks + én linje (Kort) – raskt å teste i spillet. (`tests/test_item_tooltip.py`,
    skjermbilde `item_tip`)
-2. Full tekst, gear-regel, teller, Shift, innstilling.
-3. Tester og skjermbilder.
-4. Item-innholdsrunden (kan gå parallelt med 1–3).
+2. [x] Full tekst, gear-regel, teller, Shift, innstilling (2026-11-28; innstillingen er to avkrysningsbokser).
+3. [x] Tester og skjermbilder.
+4. [x] Item-innholdsrunden (2026-11-28): 363 nye items for 97 veteraner, se `.kritikk/ITEMS/REVIEW.md`.

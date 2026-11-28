@@ -8,3 +8,5 @@ tools/research/npcs_*.json
 .kritikk/HIGH/_books.json
 .kritikk/HIGH/*_tmp/
 .env
+.kritikk/*/_cache_*.json
+.kritikk/*/_*.log

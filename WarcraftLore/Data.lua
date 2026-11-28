@@ -152,6 +152,8 @@ ns.NPCS = {
              .. "In The Founding of Durotar, Rexxar helped him secure the young nation. "
              .. "In World of Warcraft he leads the Horde as Warchief from his hall in the Valley of Wisdom in Orgrimmar.",
         items = {
+            { id = 18422, name = "Head of Onyxia", note = "Turned in to Thrall for the quest Victory for the Horde", blurb = "The orc Far Seer who led the Horde to Kalimdor, allied with Jaina against Archimonde and founded Durotar.", gear = false },
+            { id = 12630, name = "Head of Rend Blackhand", note = "Turned in to Thrall for the quest For The Horde! (the quest text says to present the head to the Warchief)", blurb = "The orc Far Seer who led the Horde to Kalimdor, allied with Jaina against Archimonde and founded Durotar.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/The_Last_Guardian_(WC3_Night_Elf)",
@@ -242,7 +244,9 @@ ns.NPCS = {
              .. "After the war he led the tribe back to the Echo Isles, but the witch doctor Zalazane enslaved many of them with dark magic. "
              .. "Vol'jin withdrew to the mainland and founded Sen'jin Village on the southern coast of Durotar. "
              .. "In World of Warcraft he lives in Thrall's fortress in Orgrimmar and advises the Warchief.",
-        items = {},
+        items = {
+            { id = 4883, name = "Admiral Proudmoore's Orders", note = "Provided by Gar'Thok for The Admiral's Orders (2), delivered to Vol'jin in Orgrimmar", blurb = "Darkspear witch doctor who made Rexxar and friends spirit wyverns; in The Judgment he is tested at First Home.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Vol'jin",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
@@ -272,7 +276,7 @@ ns.NPCS = {
              .. "Instead of handing it over he put it on, which freed him from the banshee's possession. "
              .. "He then settled in the ruins of Alterac as the warlord of the Crushridge ogres, and Horde adventurers were sent to take the crown back.",
         items = {
-            { id = 3553, name = "Mug'thol's Head", note = "Quest item looted from him for \"The Crown of Will\"" },
+            { id = 3553, name = "Mug'thol's Head", note = "Quest item looted from him for \"The Crown of Will\"", blurb = "Ogre warlord of the Stonemaul, whose ogres Sylvanas' banshees possessed to fight Varimathras.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Mug%27thol",
@@ -315,7 +319,9 @@ ns.NPCS = {
              .. "In the game he offers the quest Ansirem's Key and completes Magical Analysis. "
              .. "The novel Jaina Proudmoore: Tides of War tells that he stayed at the crater until the Cataclysm and kept serving the Kirin Tor. "
              .. "In the novella Quest for Pandaria he arrives near Booty Bay with other magi to save his daughter Catelyn from the Bloodsail Buccaneers.",
-        items = {},
+        items = {
+            { id = 3960, name = "Bag of Water Elemental Bracers", note = "Provided for Magical Analysis, which ends with Ansirem", blurb = "Council of Six archmage; one of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Ansirem_Runeweaver",
             "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
@@ -437,7 +443,10 @@ ns.NPCS = {
              .. "Afterwards Malfurion's spirit was lost in the Emerald Dream, and Fandral Staghelm became Arch-Druid and planted Teldrassil. "
              .. "With Malfurion gone, Tyrande became the sole leader of the night elves, priestesses and Sentinels, and she often quarrelled with Fandral. "
              .. "In World of Warcraft she is High Priestess of Elune in Darnassus.",
-        items = {},
+        items = {
+            { id = 9368, name = "Jer'kai's Signet Ring", note = "Delivered to Tyrande in Doling Justice (2).", blurb = "Night elf Priestess of the Moon and playable hero; in Stormrage she sends Broll to search the Dream for Malfurion.", gear = false },
+            { id = 5188, name = "Filled Vessel", note = "Brought to Tyrande in Home of the Kaldorei.", blurb = "Night elf Priestess of the Moon and playable hero; in Stormrage she sends Broll to search the Dream for Malfurion.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Tyrande_Whisperwind",
             "https://warcraft.wiki.gg/wiki/Eternity%27s_End_(WC3_campaign)",
@@ -494,7 +503,7 @@ ns.NPCS = {
              .. "In World of Warcraft he leads the Cenarion Circle from the Cenarion Enclave in Darnassus. "
              .. "In the short story The War of the Shifting Sands, he leads the night elves against the qiraji in Silithus, sees his son Valstann killed by the Qiraji general, and then helps the dragons seal Ahn'Qiraj behind a magical barrier.",
         items = {
-            { id = 5390, name = "Fandral's Message", note = "Quest item in \"Grove of the Ancients\", which he starts" },
+            { id = 5390, name = "Fandral's Message", note = "Quest item in \"Grove of the Ancients\", which he starts", blurb = "In the novel Stormrage the Nightmare Lord tricks him with a vision of his dead son Valstann.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/The_War_of_the_Shifting_Sands_(short_story)",
@@ -524,7 +533,9 @@ ns.NPCS = {
              .. "He survived, found himself imbued with demonic powers, and used them to chain the souls of lesser highborne to himself, granting him immortality. "
              .. "In World of Warcraft he leads the Cult of the Dark Strand from the Tower of Althalaxx in Darkshore, and Balthule Shadowstrike sends Alliance adventurers to kill him and bring back his head.",
         items = {
-            { id = 5383, name = "Athrikus Narassin's Head", note = "Quest item dropped by him for the quest \"The Tower of Althalaxx\"" },
+            { id = 5383, name = "Athrikus Narassin's Head", note = "Quest item dropped by him for the quest \"The Tower of Althalaxx\"", blurb = "His Ring of Power's item text says he coveted the Well of Eternity and was left imbued with demonic powers.", gear = false },
+            { id = 5839, name = "Journal Page", note = "Dropped by Athrikus Narassin in Darkshore", blurb = "His Ring of Power's item text says he coveted the Well of Eternity and was left imbued with demonic powers.", gear = false },
+            { id = 282406, name = "Azsharan Key", note = "Found on Athrikus Narassin's corpse atop the Tower of Althalaxx (WoW Forever only)", blurb = "His Ring of Power's item text says he coveted the Well of Eternity and was left imbued with demonic powers.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Athrikus_Narassin",
@@ -554,7 +565,9 @@ ns.NPCS = {
              .. "He told Rexxar about the quilboar problem, but the outpost was later attacked by sailors from Kul Tiras, who killed his men. "
              .. "He survived the attack and stayed in Razor Hill to instruct young members of the Horde in dealing with Durotar's problems. "
              .. "In World of Warcraft he is a quest giver in Razor Hill.",
-        items = {},
+        items = {
+            { id = 4883, name = "Admiral Proudmoore's Orders", note = "Turn-in: objective of The Admiral's Orders, which Gar'Thok ends", blurb = "Nazgrel's lieutenant who sent Rexxar to survey the border in The Founding of Durotar; the humans later raze his outpost.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Gar%27Thok",
             "https://warcraft.wiki.gg/wiki/Gar%27thok_(Warcraft_III)",
@@ -603,7 +616,8 @@ ns.NPCS = {
              .. "Cairne led his people to Mulgore and secured it as a home for all the tauren tribes, and constructed their first city high atop Thunder Bluff. "
              .. "In World of Warcraft he is the High Chieftain of the united tauren tribes and leads Thunder Bluff.",
         items = {
-            { id = 18643, name = "Cairne's Hoofprint", note = "Quest item acquired from Cairne in the Children's Week quest \"Cairne's Hoofprint\"" },
+            { id = 18643, name = "Cairne's Hoofprint", note = "Quest item acquired from Cairne in the Children's Week quest \"Cairne's Hoofprint\"", blurb = "Tauren chieftain who tells Thrall of the Oracle and fights at his side; Rexxar must win his aid in Old Hatreds.", gear = false },
+            { id = 4841, name = "Horn of Arra'chea", note = "Turn-in: brought to Cairne in Rites of the Earthmother (3); drops from Arra'chea", blurb = "Tauren chieftain who tells Thrall of the Oracle and fights at his side; Rexxar must win his aid in Old Hatreds.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Cairne_Bloodhoof",
@@ -681,7 +695,9 @@ ns.NPCS = {
              .. "Rexxar found the centaur camp with the help of Bovan Windtotem, killed Khiragg and brought Baine back to his father. "
              .. "Afterward Baine served his father as an adviser. "
              .. "In World of Warcraft he leads the tauren at Bloodhoof Village, investigating the Venture Company and campaigning against the Palemane gnolls.",
-        items = {},
+        items = {
+            { id = 4783, name = "Totem of Hawkwind", note = "Provided by Chief Hawkwind for Rites of the Earthmother (2), delivered to Baine in Bloodhoof Village", blurb = "Cairne's son, kidnapped by centaur and rescued by Rexxar; in Stormrage he leads the tauren against the Nightmare.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Baine_Bloodhoof",
             "https://warcraft.wiki.gg/wiki/Baine_Bloodhoof_(Warcraft_III)",
@@ -728,7 +744,10 @@ ns.NPCS = {
              .. "He then founded the port town of Ratchet at the mouth of the Southfury River in the Barrens. "
              .. "In World of Warcraft he runs Ratchet, a neutral trading port in the Barrens.",
         items = {
-            { id = 5080, name = "Gazlowe's Ledger", note = "Quest item in \"The Missing Shipment\"" },
+            { id = 5080, name = "Gazlowe's Ledger", note = "Quest item in \"The Missing Shipment\"", blurb = "Engineer who sent Rexxar to seal the kobold dens under Orgrimmar; in The Goblin Way he strong-arms Noggenfogger.", gear = false },
+            { id = 5084, name = "Baron Longshore's Head", note = "Turn-in: brought to Gazlowe for the quest WANTED: Baron Longshore", blurb = "Engineer who sent Rexxar to seal the kobold dens under Orgrimmar; in The Goblin Way he strong-arms Noggenfogger.", gear = false },
+            { id = 5076, name = "Shipment of Boots", note = "Turn-in: objective of Stolen Booty, retrieved for Gazlowe (quest starts with him)", blurb = "Engineer who sent Rexxar to seal the kobold dens under Orgrimmar; in The Goblin Way he strong-arms Noggenfogger.", gear = false },
+            { id = 5077, name = "Telescopic Lens", note = "Turn-in: objective of Stolen Booty, retrieved for Gazlowe (quest starts with him)", blurb = "Engineer who sent Rexxar to seal the kobold dens under Orgrimmar; in The Goblin Way he strong-arms Noggenfogger.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Monte_Gazlowe",
@@ -773,7 +792,9 @@ ns.NPCS = {
              .. "Rexxar named the ogre Mok'Morokk the new leader of the Stonemaul clan, a decision he would later regret. "
              .. "Thrall invited him to Durotar, but Rexxar said his place was still in the wild, though he would always be part of the Horde. "
              .. "In World of Warcraft he wanders the wilds of Kalimdor with his bear Misha, on a path from the Stonetalon Mountains through Desolace to Feralas.",
-        items = {},
+        items = {
+            { id = 16785, name = "Rokaro's Letter", note = "Quest item from Rexxar's quest The Testament of Rexxar (now Mistress of Deception); delivered to Myranda the Hag", blurb = "Beastmaster hero of the Horde, the Mok'nathal who, with his bear Misha, helps Thrall secure Durotar.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Rexxar",
             "https://warcraft.wiki.gg/wiki/Rexxar_(Warcraft_III)",
@@ -919,7 +940,9 @@ ns.NPCS = {
              .. "In WoW Forever he gives the Triage quest to adventurers who have come far in their first aid training. "
              .. "He also oversees the training of Theramore's healers. "
              .. "In the novel Jaina Proudmoore: Tides of War, he remains in Theramore when the Horde attacks and, after the Horde has escaped the city, begins healing the injured soldiers.",
-        items = {},
+        items = {
+            { id = 16991, name = "Triage Bandage", note = "Quest item Gustaf hands out in Triage (Alliance)", blurb = "In Jaina Proudmoore: Tides of War he stays in Theramore and tends the injured soldiers after the Horde attacks.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Doctor_Gustaf_VanHowzen",
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore:_Tides_of_War",
@@ -962,7 +985,11 @@ ns.NPCS = {
              .. "When her father Daelin Proudmoore threatened the Horde, she helped the Horde gain ships from the goblins and ordered her own troops to stand down when they assaulted Theramore. "
              .. "Daelin died in the fight, and the people of Kul Tiras nursed a bitter hatred towards Jaina for betraying her family. "
              .. "In World of Warcraft she rules Theramore from her tower.",
-        items = {},
+        items = {
+            { id = 18642, name = "Jaina's Autograph", note = "Given by Jaina for the Children's Week quest Jaina's Autograph", blurb = "Her signature: the sorceress who stood with Arthas, then led the human survivors and allied with Thrall.", gear = false },
+            { id = 6757, name = "Jaina's Signet Ring", note = "Lady Jaina's own ring, quest reward from The Missing Diplomat (17)", blurb = "Her own ring: the sorceress who stood with Arthas, then led the human survivors and allied with Thrall.", gear = true },
+            { id = 6075, name = "Vimes' Report", note = "Turn-in: delivered to Jaina to finish Vimes's Report", blurb = "Sorceress hero at Arthas's side, later leader of the human survivors who allies with Thrall against Archimonde.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Jaina_Proudmoore",
             "https://warcraft.wiki.gg/wiki/Theramore_Isle",
@@ -1001,7 +1028,10 @@ ns.NPCS = {
              .. "Rexxar challenged the chieftain Kor'gall, who refused to aid the Horde, and Kor'gall died in the duel. "
              .. "In World of Warcraft he is an intelligent ogre mage in Brackenwall Village. "
              .. "He orchestrated the ousting of the corrupt Mok'Morokk from the Stonemaul clan with the aid of Horde adventurers.",
-        items = {},
+        items = {
+            { id = 5841, name = "Searing Heart", note = "Turn-in: 7 brought to Draz'Zilb in Identifying the Brood", blurb = "Stonemaul ogre present in the ogre village when Rexxar arrives to ask the ogres for their aid.", gear = false },
+            { id = 5840, name = "Searing Tongue", note = "Turn-in: 7 brought to Draz'Zilb in Identifying the Brood", blurb = "Stonemaul ogre present in the ogre village when Rexxar arrives to ask the ogres for their aid.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Draz%27Zilb",
             "https://warcraft.wiki.gg/wiki/Old_Hatreds_(WC3_Orc)",
@@ -1051,7 +1081,9 @@ ns.NPCS = {
              .. "In Warcraft III: Reforged he appears in the ogre village in Dustwallow Marsh during Old Hatreds, the mission in which Rexxar seeks the ogres' help. "
              .. "In World of Warcraft he is a quest giver in Brackenwall Village, Dustwallow Marsh. "
              .. "There he takes part in parts two to four of the Black Shield quest chain.",
-        items = {},
+        items = {
+            { id = 5919, name = "Blackened Iron Shield", note = "Shown to Do'gol in The Black Shield (Horde 2)", blurb = "Stonemaul ogre in the ogre village of Dustwallow Marsh, where Rexxar seeks the ogres' help in Old Hatreds.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Do%27gol",
             "https://warcraft.wiki.gg/wiki/Old_Hatreds_(WC3_Orc)",
@@ -1226,7 +1258,12 @@ ns.NPCS = {
              .. "He sends his fastest rider, Willem, to King Terenas Menethil II to announce their arrival. "
              .. "After the Third War he is Southshore's marshal, eager to rid the region of murlocs, Crushridge ogres and naga. "
              .. "In World of Warcraft he stands in Southshore as Marshal Redpath.",
-        items = {},
+        items = {
+            { id = 270072, name = "Alterac Assassin's Gloves", note = "Reward of Crushridge Warmongers, which Redpath starts.", blurb = "In the novel Tides of Darkness he is Southshore's headman, who greets Anduin Lothar, Khadgar and the Stormwind refugees.", gear = true },
+            { id = 5249, name = "Burning Sliver", note = "Reward of Crushridge Warmongers, which Redpath starts.", blurb = "In the novel Tides of Darkness he is Southshore's headman, who greets Anduin Lothar, Khadgar and the Stormwind refugees.", gear = true },
+            { id = 3763, name = "Lunar Buckler", note = "Reward of Crushridge Warmongers, which Redpath starts.", blurb = "In the novel Tides of Darkness he is Southshore's headman, who greets Anduin Lothar, Khadgar and the Stormwind refugees.", gear = true },
+            { id = 3717, name = "Sack of Murloc Heads", note = "Brought to Redpath in Farren's Proof (2).", blurb = "In the novel Tides of Darkness he is Southshore's headman, who greets Anduin Lothar, Khadgar and the Stormwind refugees.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Marcus_Redpath",
             "https://warcraft.wiki.gg/wiki/Tides_of_Darkness",
@@ -1372,8 +1409,7 @@ ns.NPCS = {
              .. "Beneath the ruins of the capital, the Forsaken built the Undercity. "
              .. "With tauren leaders as mediators, the Forsaken joined the Horde. "
              .. "In World of Warcraft she holds court as the Banshee Queen in the Royal Quarter.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Sylvanas_Windrunner",
             "https://warcraft.wiki.gg/wiki/Path_of_the_Damned",
@@ -1434,7 +1470,10 @@ ns.NPCS = {
              .. "On Sylvanas' order he killed Lord Garithos, securing his place among the Forsaken. "
              .. "After the Undercity was founded, he tasked Garek Bandarion and Dark Ranger Anya with putting together a city guard that later became the basis of the Deathguard. "
              .. "In World of Warcraft he stands at Sylvanas' side in the Royal Quarter.",
-        items = {},
+        items = {
+            { id = 17008, name = "Small Scroll", note = "Turn-in to Varimathras for the quest An Unholy Alliance (Classic): take the scroll to him", blurb = "Dreadlord hero, one of three brothers ruling Lordaeron, who secretly made a deal with Sylvanas to overthrow Arthas.", gear = false },
+            { id = 17009, name = "Ambassador Malcin's Head", note = "Turn-in to Varimathras for the quest An Unholy Alliance (Classic 2): bring the head to him", blurb = "Dreadlord hero, one of three brothers ruling Lordaeron, who secretly made a deal with Sylvanas to overthrow Arthas.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Varimathras",
             "https://warcraft.wiki.gg/wiki/Legacy_of_the_Damned",
@@ -1638,7 +1677,15 @@ ns.NPCS = {
              .. "In the audio short story The Tipping Point he fights the goblin enforcer Renzik in Undermine and gives him a coin to show the master of cheese in Stormwind. "
              .. "In Terror by Torchlight he and Flynn Fairwind recover the Torch of Holy Flame from a necromancer in Duskwood. "
              .. "In World of Warcraft he heads SI:7 from its barracks in Old Town.",
-        items = {},
+        items = {
+            { id = 12630, name = "Head of Rend Blackhand", note = "Turn-in: taken to Mathias Shaw in End of the Dark Horde; drops from Rend Blackhand", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 7674, name = "Delivery to Mathias", note = "Turn-in: Keryn Sylvius's package delivered to Shaw in Seek out SI: 7", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 8046, name = "Kearnen's Journal", note = "Turn-in: information from Klaven's Tower brought back to Shaw", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 7908, name = "Klaven Mortwake's Journal", note = "Turn-in: information from Klaven's Tower brought back to Shaw", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 8687, name = "Sealed Description of Thredd's Visitor", note = "Turn-in: brought to Shaw in Shadow of the Past", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 7675, name = "Shipping Schedule", note = "Recovered for Shaw in Snatch and Grab (Classic)", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+            { id = 1353, name = "Shaw's Report", note = "Report written by Shaw for Gryan Stoutmantle; provided for The Defias Brotherhood (4)", blurb = "SI:7's spymaster, who in the short story Blood of Our Fathers helps search for the missing King Varian.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Mathias_Shaw",
             "https://warcraft.wiki.gg/wiki/The_Tipping_Point_(short_story)",
@@ -1664,7 +1711,9 @@ ns.NPCS = {
              .. "She was married to Jem, who died in the First War, and had three sons: Jem, Jack and Jake. "
              .. "In Before the Storm she attends the Gathering in the Arathi Highlands, and afterwards returns there to bury her sons. "
              .. "In World of Warcraft she lives in the Canal District and carries water in Stormwind City.",
-        items = {},
+        items = {
+            { id = 12724, name = "Janice's Parcel", note = "Parcel from Janice Felstone for Ol' Emma, provided in Good Natured Emma", blurb = "In the novel Before the Storm she searches among the Forsaken for her sons, and Anduin flies her to safety.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Ol%27_Emma",
             "https://www.wowhead.com/classic/npc=3520/ol-emma",
@@ -1723,7 +1772,10 @@ ns.NPCS = {
              .. "During the War Against the Nightmare in Stormrage he sent Major Mattingly for reinforcements. "
              .. "In the short story Blood of Our Fathers he organized the search for King Varian when the king went missing before his Remembrance Day speech. "
              .. "In Jaina Proudmoore: Tides of War he organized the defense of Theramore Isle and was killed when the Horde detonated a mana bomb to destroy the city.",
-        items = {},
+        items = {
+            { id = 1293, name = "The State of Lakeshire", note = "Delivered to Marcus in Messenger to Stormwind", blurb = "Stormwind's High Commander: searches for the missing Varian in Blood of Our Fathers; defends Theramore in Tides of War.", gear = false },
+            { id = 1294, name = "The General's Response", note = "Handed out by Marcus in Messenger to Stormwind (2)", blurb = "Stormwind's High Commander: searches for the missing Varian in Blood of Our Fathers; defends Theramore in Tides of War.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/General_Marcus_Jonathan",
             "https://warcraft.wiki.gg/wiki/Blood_of_Our_Fathers",
@@ -1754,7 +1806,9 @@ ns.NPCS = {
              .. "After the war against the Lich King he took part in the ceremony for the fallen Alliance members in The Shattering. "
              .. "In Blood Ties he took on a new squire, Winthrop. "
              .. "He once lost his right eye in battle.",
-        items = {},
+        items = {
+            { id = 18792, name = "Blessed Arcanite Barding", note = "Turn-in: returned to Lord Grayson at the end of Blessed Arcanite Barding", blurb = "In the novel Blood Ties he is the Silver Hand lord who takes on Winthrop as his new squire.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Lord_Grayson_Shadowbreaker",
             "https://www.wowhead.com/classic/npc=928/lord-grayson-shadowbreaker",
@@ -1791,7 +1845,9 @@ ns.NPCS = {
              .. "In The Shattering he led the memorial service at the Cathedral of Light for the fallen of the war against the Lich King. "
              .. "In the short story Blood of Our Fathers he counsels King Varian and gives him the key to Queen Tiffin's locket, shortly before Twilight's Hammer assassins attack. "
              .. "In the novel Thrall: Twilight of the Aspects he is the Twilight Father, the leader of the Twilight's Hammer.",
-        items = {},
+        items = {
+            { id = 2944, name = "Cursed Eye of Paleth", note = "Turn-in: objective of Cleansing the Eye, which Benedictus ends", blurb = "In the novel The Shattering he leads the Cathedral of Light's memorial service for those who fell against the Lich King.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Archbishop_Benedictus",
             "https://warcraft.wiki.gg/wiki/Blood_of_Our_Fathers",
@@ -1815,7 +1871,11 @@ ns.NPCS = {
         story = "Count Remington Ridgewell is a member of the House of Nobles, located in the Petitioner's Chamber in Stormwind Keep. "
              .. "His family's house runs a museum that exhibits valuable objects and artworks. "
              .. "In Before the Storm he greets Fredrik Farley when King Anduin Wrynn summons him to Stormwind Keep after the Argus Campaign, and he serves them drinks during the meeting.",
-        items = {},
+        items = {
+            { id = 15860, name = "Blinkstrike Armguards", note = "Reward of Delivery to Ridgewell, which Ridgewell ends.", blurb = "In the novel Before the Storm he greets Fredrik Farley in Stormwind Keep and serves drinks at King Anduin's meeting.", gear = true },
+            { id = 15861, name = "Swiftfoot Treads", note = "Reward of Delivery to Ridgewell, which Ridgewell ends.", blurb = "In the novel Before the Storm he greets Fredrik Farley in Stormwind Keep and serves drinks at King Anduin's meeting.", gear = true },
+            { id = 12437, name = "Ridgewell's Crate", note = "Brought to Ridgewell in Delivery to Ridgewell.", blurb = "In the novel Before the Storm he greets Fredrik Farley in Stormwind Keep and serves drinks at King Anduin's meeting.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Count_Remington_Ridgewell",
             "https://www.wowhead.com/classic/npc=2285/count-remington-ridgewell",
@@ -1908,7 +1968,10 @@ ns.NPCS = {
         story = "Marshal Dughan is a human located in Goldshire and part of the Stormwind Army, in charge of security in Goldshire and the surrounding area. "
              .. "He is very concerned about the kobolds to the north and the gnolls and thieves to the west. "
              .. "In Stormrage the Emerald Nightmare traps the minds of Goldshire, and Dughan dreams of a mission against kobolds in Jasperlode Mine with Zaldimar Wefhellt, where he fails his men and himself.",
-        items = {},
+        items = {
+            { id = 745, name = "Marshal McBride's Documents", note = "Turn-in: taken to Marshal Dughan in Report to Goldshire", blurb = "In the novel Stormrage the Emerald Nightmare gives him a dream of a failed kobold mission in Jasperlode Mine.", gear = false },
+            { id = 2239, name = "The Collector's Ring", note = "Turn-in: returned to Dughan in Manhunt (Classic); drops from Morgan the Collector", blurb = "In the novel Stormrage the Emerald Nightmare gives him a dream of a failed kobold mission in Jasperlode Mine.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Marshal_Dughan",
             "https://www.wowhead.com/classic/npc=240/marshal-dughan",
@@ -1980,7 +2043,12 @@ ns.NPCS = {
         story = "Bolvar Fordragon served as Highlord and Regent of Stormwind while King Varian Wrynn was missing. "
              .. "In World of Warcraft he rules Stormwind Keep as regent for the young Anduin Wrynn. "
              .. "In the later short story We Ride Forth, the Four Horsemen confront him in his role as the Lich King.",
-        items = {},
+        items = {
+            { id = 11368, name = "Bolvar's Decree", note = "Given by Bolvar in The True Masters (4).", blurb = "In the short story We Ride Forth the Four Horsemen confront him as the Lich King over his increasingly militant actions.", gear = false },
+            { id = 11367, name = "Solomon's Plea to King Wrynn", note = "Brought to Bolvar in The True Masters (2).", blurb = "In the short story We Ride Forth the Four Horsemen confront him as the Lich King over his increasingly militant actions.", gear = false },
+            { id = 2625, name = "Menethil Statuette", note = "Brought to Bolvar in A Friend of the Family.", blurb = "In the short story We Ride Forth the Four Horsemen confront him as the Lich King over his increasingly militant actions.", gear = false },
+            { id = 16662, name = "Fragment of the Dragon's Eye", note = "Quest The Dragon's Eye starts with Bolvar.", blurb = "In the short story We Ride Forth the Four Horsemen confront him as the Lich King over his increasingly militant actions.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Bolvar_Fordragon",
             "https://warcraft.wiki.gg/wiki/We_Ride_Forth",
@@ -2055,7 +2123,10 @@ ns.NPCS = {
         story = "During the Second War Magni defended Ironforge from the orcs and joined the Alliance of Lordaeron. "
              .. "He was a founding member of the Explorers' League, led by his brother Brann. "
              .. "In The Shattering: Prelude to Cataclysm, Magni performed a ritual in Old Ironforge to commune with the earth and was turned into diamond.",
-        items = {},
+        items = {
+            { id = 4514, name = "Sara Balloo's Plea", note = "Turn-in: note taken to King Magni, who ends Sara Balloo's Plea (quest)", blurb = "In the novel Tides of Darkness he defends Ironforge in the Second War; in The Shattering he is turned to diamond.", gear = false },
+            { id = 2188, name = "A Letter to Grelin Whitebeard", note = "Letter signed by King Magni, given for Coldridge Valley Mail Delivery (2)", blurb = "Signed by the dwarf king who defended Ironforge in the Second War and joined the Alliance of Lordaeron.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Magni_Bronzebeard",
             "https://warcraft.wiki.gg/wiki/Tides_of_Darkness",
@@ -2108,7 +2179,9 @@ ns.NPCS = {
         story = "Bink is a gnome mage trainer in the Hall of Mysteries in Ironforge, and the sister of the mage trainer Dink. "
              .. "In The Shattering: Prelude to Cataclysm, Dark Iron guards catch Bink and Dink when Moira Thaurissan arrives in Ironforge. "
              .. "They are released when Ironforge dwarves attack the guards.",
-        items = {},
+        items = {
+            { id = 7226, name = "Mage-Tastic Gizmonitor", note = "Brought to Bink for the quest Mage-tastic Gizmonitor, which she starts", blurb = "In the novel The Shattering the gnome mage and Dink's sister is caught by Dark Iron guards at Moira's arrival.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Bink",
             "https://warcraft.wiki.gg/wiki/Dink",
@@ -2191,7 +2264,11 @@ ns.NPCS = {
              .. "The gnomish electorate later chose him as High Tinker, and his friend Sicco Thermaplugg became his chief advisor, though Thermaplugg coveted the role of High Tinker. "
              .. "In the short story Cut Short he leads the gnomes' push to retake Gnomeregan and survives Thermaplugg's trap in his old quarters. "
              .. "In the novels he takes part in Alliance politics, including the vote on Gilneas and the planning after the Attack on Theramore Isle.",
-        items = {},
+        items = {
+            { id = 9623, name = "Civinad Robes", note = "Reward from The Grand Betrayal, which Mekkatorque starts", blurb = "In the short story Cut Short he leads the gnomes to retake Gnomeregan and cuts Thermaplugg in half with his own trap.", gear = true },
+            { id = 9625, name = "Dual Reinforced Leggings", note = "Reward from The Grand Betrayal, which Mekkatorque starts", blurb = "In the short story Cut Short he leads the gnomes to retake Gnomeregan and cuts Thermaplugg in half with his own trap.", gear = true },
+            { id = 9624, name = "Triprunner Dungarees", note = "Reward from The Grand Betrayal, which Mekkatorque starts", blurb = "In the short story Cut Short he leads the gnomes to retake Gnomeregan and cuts Thermaplugg in half with his own trap.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Gelbin_Mekkatorque",
             "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
@@ -2221,7 +2298,10 @@ ns.NPCS = {
              .. "Shortly before the Cataclysm he witnesses Magni's petrification in Old Ironforge and casts healing spells to save the king, but it is too late. "
              .. "After the earthquakes he travels to Kharanos to heal the injured. "
              .. "When Moira Thaurissan claims the throne of Ironforge, he accepts her as the new queen, and when Anduin stops his father from killing her, he declares that she remains the future queen.",
-        items = {},
+        items = {
+            { id = 18752, name = "Exorcism Censer", note = "Originally owned by High Priest Rohan; objective of Exorcising Terrordale", blurb = "In the novel The Shattering he heals Anduin Wrynn and witnesses King Magni's petrification, then backs Moira Thaurissan.", gear = false },
+            { id = 18819, name = "Rohan's Exorcism Censer", note = "Originally owned by High Priest Rohan; turned in on To Show Due Judgment", blurb = "In the novel The Shattering he heals Anduin Wrynn and witnesses King Magni's petrification, then backs Moira Thaurissan.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/High_Priest_Rohan",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
@@ -2245,7 +2325,19 @@ ns.NPCS = {
         story = "Magistrate Solomon is the judge of the Court of Lakeshire in the Redridge Mountains. "
              .. "In the novel Traveler he declares Greydon Thorne dead two years after Greydon abandons his family, so Ceya Northbrooke can marry Robb Glade. "
              .. "In World of Warcraft he is a quest giver in Lakeshire.",
-        items = {},
+        items = {
+            { id = 11367, name = "Solomon's Plea to King Wrynn", note = "Letter from Solomon, handed to you for The True Masters (2)", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1409, name = "Solomon's Plea to Darkshire", note = "Letter from Solomon, carried to Lord Ebonlocke in Messenger to Darkshire", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1407, name = "Solomon's Plea to Westfall", note = "Letter from Solomon, carried to Gryan Stoutmantle in Messenger to Westfall", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1410, name = "Ebonlocke's Response to Solomon", note = "Turn-in: Ebonlocke's reply brought back to Solomon in Messenger to Darkshire (2)", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1408, name = "Stoutmantle's Response to Solomon", note = "Turn-in: Stoutmantle's reply brought back to Solomon in Messenger to Westfall (2)", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1294, name = "The General's Response", note = "Turn-in: General Marcus Jonathan's reply brought back to Solomon in Messenger to Stormwind (2)", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 1293, name = "The State of Lakeshire", note = "Report Solomon gives you for General Marcus Jonathan in Messenger to Stormwind", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 11366, name = "Helendis Riverhorn's Letter", note = "Turn-in: delivered to Solomon in The True Masters", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 11368, name = "Bolvar's Decree", note = "Turn-in: taken to Solomon in The True Masters (4)", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 3633, name = "Head of Gath'Ilzogg", note = "Turn-in: head brought to Solomon in Wanted: Gath'Ilzogg", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+            { id = 3632, name = "Fangore's Paw", note = "Turn-in: paw returned to Solomon in Wanted: Lieutenant Fangore", blurb = "In the novel Traveler he declares Greydon Thorne dead so that Ceya Northbrooke can marry Robb Glade.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Magistrate_Solomon",
             "https://warcraft.wiki.gg/wiki/Traveler",
@@ -2271,7 +2363,9 @@ ns.NPCS = {
         story = "Sarah Ladimore is the daughter of Morgan Ladimore and the only survivor of her family. "
              .. "She became a Watcher of the Night Watch. "
              .. "In Terror by Torchlight, by which time she had succeeded Althea Ebonlocke as Commander of the Watch, she was found mortally wounded after confronting the Necromancer, and Mathias Shaw and Flynn Fairwind recovered the Torch of Holy Flame.",
-        items = {},
+        items = {
+            { id = 2000, name = "Archeus", note = "Reward of A Daughter's Love, which Watcher Ladimore starts", blurb = "In Terror by Torchlight she commands the Night Watch and is found mortally wounded after facing the Necromancer.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Sarah_Ladimore",
             "https://warcraft.wiki.gg/wiki/Terror_by_Torchlight",
@@ -2345,7 +2439,12 @@ ns.NPCS = {
              .. "In the novel Traveler: The Spiral Path, he registers for the Annual Fizzle and Pozzik's Speedbarge Boat Race as sponsor, engineer and pilot of his speedboat, the Guzzler. "
              .. "He finishes second in the race. "
              .. "Afterwards he leads a protest with Fizzle Brassbolts, claiming that Steamwhistle should be disqualified for switching pilots.",
-        items = {},
+        items = {
+            { id = 5862, name = "Seaforium Booster", note = "Retrieved for Razzeric in Razzeric's Tweaking", blurb = "In the novel Traveler: The Spiral Path he pilots the speedboat Guzzler to second place, then protests the result.", gear = false },
+            { id = 5865, name = "Modified Seaforium Booster", note = "Returned to Razzeric in Safety First (2)", blurb = "In the novel Traveler: The Spiral Path he pilots the speedboat Guzzler to second place, then protests the result.", gear = false },
+            { id = 6726, name = "Razzeric's Customized Seatbelt", note = "Reward for Safety First (2), which ends with Razzeric", blurb = "In the novel Traveler: The Spiral Path he pilots the speedboat Guzzler to second place, then protests the result.", gear = true },
+            { id = 6727, name = "Razzeric's Racing Grips", note = "Reward for Safety First (2), which ends with Razzeric", blurb = "In the novel Traveler: The Spiral Path he pilots the speedboat Guzzler to second place, then protests the result.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Razzeric",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
@@ -2419,7 +2518,10 @@ ns.NPCS = {
         story = "Fizzle Brassbolts is a gnome and an avid member of the Mechanical Engineers' Guild of Azeroth (MEGA). "
              .. "He and the goblin Pozzik built the Mirage Raceway in Thousand Needles to prove the superiority of their respective races, and built rocket cars together. "
              .. "In the novel Traveler: The Spiral Path he led a protest with Razzeric after the Annual Speedbarge Boat Race.",
-        items = {},
+        items = {
+            { id = 5827, name = "Fizzle Brassbolts' Letter", note = "Handed out by Fizzle to start Martek the Exiled's quest, to deliver to Martek", blurb = "In the novel Traveler: The Spiral Path he led a protest with Razzeric after the Annual Speedbarge Boat Race.", gear = false },
+            { id = 6729, name = "Fizzle's Zippy Lighter", note = "Reward for News for Fizzle, which ends with him", blurb = "In the novel Traveler: The Spiral Path he led a protest with Razzeric after the Annual Speedbarge Boat Race.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Fizzle_Brassbolts",
             "https://warcraft.wiki.gg/wiki/Razzeric",
@@ -2471,7 +2573,9 @@ ns.NPCS = {
              .. "In the novella Quest for Pandaria, Talithar helps the dwarf Baenan escape the Horde destroyer Warchief's Fist and asks him to give Vyrin their wedding rings with the message that he never stopped loving her. "
              .. "Talithar later sacrificed himself to save Baenan and Chen Stormstout, and Baenan chose to name him a hero. "
              .. "In World of Warcraft she is a quest giver at the Farstrider Lodge in Loch Modan.",
-        items = {},
+        items = {
+            { id = 2713, name = "Ol' Sooty's Head", note = "Dropped by Ol' Sooty; provided for Vyrin's Revenge (2), which ends with Vyrin", blurb = "In the novella Quest for Pandaria she tells the dwarf Baenan of her longing for her estranged husband Talithar.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Vyrin_Swiftwind",
             "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
@@ -2524,7 +2628,10 @@ ns.NPCS = {
              .. "Nearly one year after the Forsaken secured the Undercity, he led the Scarlet Crusade in an all-out assault on the Forsaken and invaded the Undercity itself. "
              .. "He and Sally Whitemane were forced to pull back by Garek Bandarion, Dark Ranger Anya and, in Whitemane's case, Leonid Barthalomew, and the crusaders retreated to the Scarlet Monastery. "
              .. "In World of Warcraft he is the Scarlet Commander, a boss in the Scarlet Monastery.",
-        items = {},
+        items = {
+            { id = 7723, name = "Mograine's Might", note = "Drops from Scarlet Commander Mograine in the Scarlet Monastery", blurb = "The Scarlet Crusade commander who led the assault on the Forsaken together with High Inquisitor Whitemane.", gear = true },
+            { id = 7726, name = "Aegis of the Scarlet Commander", note = "Drops from Scarlet Commander Mograine in the Scarlet Monastery", blurb = "The Scarlet Crusade commander who led the assault on the Forsaken together with High Inquisitor Whitemane.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Renault_Mograine",
             "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
@@ -2554,7 +2661,11 @@ ns.NPCS = {
              .. "Nearly one year after the Forsaken secured the Undercity, she and Renault Mograine launched an all-out assault on the Forsaken, and Whitemane attacked the Forsaken settlements in Tirisfal Glades. "
              .. "She and Renault were forced to pull back by Garek Bandarion, Dark Ranger Anya and, in Whitemane's case, Leonid Barthalomew, and the crusaders retreated to the Scarlet Monastery. "
              .. "In World of Warcraft she is the final boss of the Scarlet Monastery.",
-        items = {},
+        items = {
+            { id = 7720, name = "Whitemane's Chapeau", note = "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral", blurb = "Scarlet Crusade commander and enemy of the Forsaken; in the short story We Ride Forth she rides with the Four Horsemen.", gear = true },
+            { id = 7721, name = "Hand of Righteousness", note = "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral", blurb = "Scarlet Crusade commander and enemy of the Forsaken; in the short story We Ride Forth she rides with the Four Horsemen.", gear = true },
+            { id = 7722, name = "Triune Amulet", note = "Drops from High Inquisitor Whitemane in the Scarlet Monastery Cathedral", blurb = "Scarlet Crusade commander and enemy of the Forsaken; in the short story We Ride Forth she rides with the Four Horsemen.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Sally_Whitemane",
             "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
@@ -2582,7 +2693,10 @@ ns.NPCS = {
              .. "Gelbin kept Sicco in a prominent role in the Tinkers' Court despite his flawed work, and Sicco went on to serve as Gelbin's chief advisor for many years. "
              .. "In the short story Cut Short he sets a trap for Gelbin in his old quarters in Sector 17 and attacks him in a battle suit, but Gelbin's trap cuts him in half, his battle suit saves his life, and Gelbin leaves him for dead. "
              .. "In World of Warcraft he is a boss in Gnomeregan.",
-        items = {},
+        items = {
+            { id = 9492, name = "Electromagnetic Gigaflux Reactivator", note = "Drops from Thermaplugg in Gnomeregan", blurb = "In the short story Cut Short he makes himself king of Gnomeregan, until Gelbin Mekkatorque's trap cuts him in half.", gear = true },
+            { id = 9299, name = "Thermaplugg's Safe Combination", note = "Quest objective of Rig Wars, taken from Gnomeregan to Nogg", blurb = "In the short story Cut Short he makes himself king of Gnomeregan, until Gelbin Mekkatorque's trap cuts him in half.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Sicco_Thermaplugg",
             "https://warcraft.wiki.gg/wiki/Cut_Short",
@@ -2608,7 +2722,12 @@ ns.NPCS = {
              .. "Under her rule the quilboar drove the tauren out of the southern Barrens. "
              .. "The novel Traveler: The Spiral Path says she shaped most of the thorn dome of Razorfen Downs and trained Chugara Razorflank to maintain it. "
              .. "The novel also states that Chugara later surrendered Razorfen to the Death's Head tribe.",
-        items = {},
+        items = {
+            { id = 5793, name = "Razorflank's Heart", note = "Listed in Charlga's own loot table.", blurb = "In the novel Traveler: The Spiral Path she is said to have shaped most of the thorn dome of Razorfen Downs.", gear = false },
+            { id = 6692, name = "Pronged Reaver", note = "Drops from Charlga Razorflank in Razorfen Kraul.", blurb = "In the novel Traveler: The Spiral Path she is said to have shaped most of the thorn dome of Razorfen Downs.", gear = true },
+            { id = 6693, name = "Agamaggan's Clutch", note = "Drops from Charlga Razorflank in Razorfen Kraul.", blurb = "In the novel Traveler: The Spiral Path she is said to have shaped most of the thorn dome of Razorfen Downs.", gear = true },
+            { id = 6694, name = "Heart of Agamaggan", note = "Listed in Charlga's own loot table.", blurb = "In the novel Traveler: The Spiral Path she is said to have shaped most of the thorn dome of Razorfen Downs.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Charlga_Razorflank",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
@@ -2640,7 +2759,9 @@ ns.NPCS = {
              .. "In Sylvanas he served as a subordinate of Grand Apothecary Putress and became one of the foremost experts on the undead plague. "
              .. "In Arthas: Rise of the Lich King, on Putress' orders, he showed the effects of the New Plague by having two prisoners drink it, and Sylvanas was pleased but warned that the blight must never fall into the wrong hands. "
              .. "In World of Warcraft he is the Master of the Apothecarium in the Undercity.",
-        items = {},
+        items = {
+            { id = 9436, name = "Faranell's Parcel", note = "Provided by Apothecary Lydon, delivered to Faranell for Venom to the Undercity", blurb = "In the novel Arthas: Rise of the Lich King he shows Sylvanas the New Plague by making two prisoners drink it.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Master_Apothecary_Faranell",
             "https://warcraft.wiki.gg/wiki/Arthas:_Rise_of_the_Lich_King",
@@ -2668,7 +2789,9 @@ ns.NPCS = {
              .. "At the Gathering in the Arathi Highlands he was reunited with his daughter. "
              .. "He then tried to defect to the Alliance at Stromgarde Keep, and he was killed by Sylvanas' dark rangers as he ran toward Stromgarde. "
              .. "In World of Warcraft he works in the Apothecarium of the Undercity.",
-        items = {},
+        items = {
+            { id = 5861, name = "Beginnings of the Undead Threat", note = "Book returned to Parqual in Test of Lore (5)", blurb = "In the novel Before the Storm he is a Forsaken historian and Desolate Council member, reunited with his daughter Philia.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Parqual_Fintallas",
             "https://warcraft.wiki.gg/wiki/Before_the_Storm",
@@ -2694,7 +2817,10 @@ ns.NPCS = {
              .. "In the book, she offered the support of the Grimtotem tribe to the new Warchief Garrosh Hellscream as a way to dispose of Cairne Bloodhoof. "
              .. "When Cairne challenged Garrosh to mak'gora, she applied poison to the blade of Gorehowl, and Garrosh killed him. "
              .. "Her tribe then attacked Thunder Bluff and the other tauren towns to kill everyone in them, Cairne's son Baine included.",
-        items = {},
+        items = {
+            { id = 10678, name = "Magatha's Note", note = "Given by Magatha Grimtotem for the quest Magatha's Payment to Jediga", blurb = "In the novel The Shattering she poisons Gorehowl so Garrosh can kill Cairne, then has her tribe attack Thunder Bluff.", gear = false },
+            { id = 12785, name = "Incendia Powder", note = "Provided by Magatha Grimtotem for the quest Arikara", blurb = "In the novel The Shattering she poisons Gorehowl so Garrosh can kill Cairne, then has her tribe attack Thunder Bluff.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Magatha_Grimtotem",
             "https://warcraft.wiki.gg/wiki/Rahauro",
@@ -2739,7 +2865,9 @@ ns.NPCS = {
              .. "In the novel Stormrage, he became a close friend of Broll, who considers him his closest friend apart from Varian and Valeera. "
              .. "In The Shattering: Prelude to Cataclysm, he met Cairne Bloodhoof at Red Rocks to discuss how Garrosh had rebuilt Orgrimmar, and he was sending messages to the Cenarion Circle. "
              .. "In Tides of War, he stepped forward to aid Baine Bloodhoof when Baine and Garrosh Hellscream confronted each other over the planned attack on Theramore, until both were ordered to stand down.",
-        items = {},
+        items = {
+            { id = 10649, name = "Nightmare Shard", note = "Turned in to Hamuul in In Nightmares (Horde).", blurb = "In the novel Stormrage the tauren archdruid becomes a close friend of Broll Bearmantle and is summoned to Teldrassil.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Hamuul_Runetotem",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -2766,7 +2894,9 @@ ns.NPCS = {
         story = "Rahauro was the servant of Magatha Grimtotem in Thunder Bluff. "
              .. "In The Shattering: Prelude to Cataclysm, he loyally aided Magatha in securing Thunder Bluff for the Grimtotem tribe. "
              .. "He grew worried when Magatha told him that Garrosh Hellscream refused to aid the Grimtotem.",
-        items = {},
+        items = {
+            { id = 14381, name = "Grimtotem Satchel", note = "Turn-in: objective of Returning the Lost Satchel, which Rahauro ends", blurb = "In the novel The Shattering he is Magatha Grimtotem's servant, helping her secure Thunder Bluff for the Grimtotem.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Rahauro",
             "https://www.wowhead.com/classic/npc=11833",
@@ -2839,7 +2969,9 @@ ns.NPCS = {
              .. "In the novel Of Blood and Honor, after meeting Thrall he found that his people had rediscovered their shamanistic roots, and he returned to life among his own kind. "
              .. "In the novel Jaina Proudmoore: Tides of War, he was against Garrosh's plan to conquer Kalimdor, and Baine Bloodhoof supported him. "
              .. "In World of Warcraft he serves the Horde as an advisor and supporter to Thrall, and can be found in Thrall's throne room in Orgrimmar.",
-        items = {},
+        items = {
+            { id = 19002, name = "Head of Nefarian", note = "Turned in to Eitrigg for the quest The Lord of Blackrock (Horde)", blurb = "In the novel Of Blood and Honor this Blackrock orc is saved from execution in Stratholme and joins Thrall's New Horde.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Eitrigg",
             "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
@@ -2989,7 +3121,9 @@ ns.NPCS = {
              .. "The two young trolls were tested by the loa at First Home, and Zalazane became a witch doctor under Master Gadrin. "
              .. "In World of Warcraft he became the Hexmaster and Traitor of the Darkspears, and used dark voodoo to rob most of the Darkspear trolls of their free will. "
              .. "He declared himself ruler of the Echo Isles, and the Darkspears and their allies often struck at his holdings there.",
-        items = {},
+        items = {
+            { id = 4866, name = "Zalazane's Head", note = "Drops from Zalazane on the Echo Isles in Durotar", blurb = "His head: Vol'jin's boyhood best friend, who in the short story The Judgment became a witch doctor.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Zalazane",
             "https://warcraft.wiki.gg/wiki/The_Judgment",
@@ -3013,7 +3147,9 @@ ns.NPCS = {
         story = "In the novel Stormrage, when the Emerald Nightmare attacked Azeroth, Malfurion Stormrage contacted Zor to gather allies against the Nightmare Lord. "
              .. "In World of Warcraft he stands in Grommash Hold in Orgrimmar and is well schooled in Alliance politics. "
              .. "He sends adventurers to help the spirits of the Stonetalon Mountains.",
-        items = {},
+        items = {
+            { id = 5942, name = "Jeweled Pendant", note = "Turn-in: objective of Marg Speaks, then brought to Zor for Report to Zor (ends at Zor)", blurb = "In the novel Stormrage Malfurion contacts him for help against the Nightmare Lord when the Emerald Nightmare strikes.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Zor_Lonetree",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -3146,7 +3282,9 @@ ns.NPCS = {
         story = "Shael'dryn is a dryad quest giver in Ashenvale who considers herself a comedian; Broll Bearmantle calls her a jester of words and a lover of puns. "
              .. "In the novel Stormrage, when the Emerald Nightmare attacks Azeroth, she warns the other guardians about shadow attackers. "
              .. "She then becomes a sleeping victim of the attack herself.",
-        items = {},
+        items = {
+            { id = 5463, name = "Glowing Gem", note = "Brought to Shael'dryn in Dryad Delivery.", blurb = "In the novel Stormrage the dryad warns the other guardians about the shadow attackers, then falls asleep herself.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Shael%27dryn",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -3231,7 +3369,11 @@ ns.NPCS = {
         story = "Elling Trias runs Trias' Cheese in the Trade District with his wife Elaine and son Ben, but he is more than a cheesemaker and has contacts from SI:7 to Hearthglen. "
              .. "In the audio short story The Tipping Point, Mathias Shaw meets him in the cellar beneath his shop to plan how to protect SI:7's informants in Undermine, and later gives Renzik a coin to show the master of cheese if he ever comes to Stormwind. "
              .. "In World of Warcraft he is a contact in quest chains such as The Missing Diplomat, and he orders the killing of the traitor Lord Gregor Lescovar.",
-        items = {},
+        items = {
+            { id = 5946, name = "Sealed Note to Elling", note = "Provided for The Missing Diplomat (3), which ends with Elling Trias", blurb = "In the audio short story The Tipping Point he meets Mathias Shaw in his cellar to plan protecting SI:7's informants.", gear = false },
+            { id = 5947, name = "Defias Docket", note = "Provided for The Missing Diplomat (6), which ends with Elling Trias", blurb = "In the audio short story The Tipping Point he meets Mathias Shaw in his cellar to plan protecting SI:7's informants.", gear = false },
+            { id = 5960, name = "Sealed Note to Watcher Backus", note = "Handed out by Elling Trias in The Missing Diplomat (4)", blurb = "In the audio short story The Tipping Point he meets Mathias Shaw in his cellar to plan protecting SI:7's informants.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Elling_Trias",
             "https://warcraft.wiki.gg/wiki/The_Tipping_Point_(short_story)",
@@ -3283,7 +3425,11 @@ ns.NPCS = {
              .. "In World of Warcraft he sends agents to the Arathi Highlands to gather reagents and recover Trelane's belongings. "
              .. "In the novella Elegy, set during the War of the Thorns, he holds portals open at the Wizard's Sanctum for night elf refugees fleeing to Stormwind. "
              .. "King Anduin has him send word to Dalaran asking its mages to help speed up the evacuation.",
-        items = {},
+        items = {
+            { id = 4533, name = "Sealed Letter to Archmage Malin", note = "Brought to Malin in Malin's Request (2).", blurb = "In the novella Elegy he holds portals open at the Wizard's Sanctum for night elf refugees from Teldrassil.", gear = false },
+            { id = 4975, name = "Vigilant Buckler", note = "Reward of Malin's Request (2), which Malin ends.", blurb = "In the novella Elegy he holds portals open at the Wizard's Sanctum for night elf refugees from Teldrassil.", gear = true },
+            { id = 15104, name = "Wingborne Boots", note = "Reward of Malin's Request (2), which Malin ends.", blurb = "In the novella Elegy he holds portals open at the Wizard's Sanctum for night elf refugees from Teldrassil.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Malin",
             "https://warcraft.wiki.gg/wiki/Elegy",
@@ -3311,6 +3457,7 @@ ns.NPCS = {
              .. "Gryth has no choice but to obey, since one of his gryphons had already been injured by a Dark Iron. "
              .. "He explains all of this to Prince Anduin Wrynn, who realizes that Moira is isolating Ironforge.",
         items = {
+            { id = 16311, name = "Honorary Picks", note = "Brought to Gryth Thurden in Gryth Thurden (Classic).", blurb = "In the novel The Shattering he tells Anduin Wrynn how Moira Thaurissan had Ironforge's gryphons quarantined.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Gryth_Thurden",
@@ -3338,6 +3485,9 @@ ns.NPCS = {
              .. "In World of Warcraft he stands in the Library of the Hall of Explorers, where he acts on Historian Karnik's warning about the Shadowforge dwarves in Uldaman and sends adventurers back for the Tablet of Will. "
              .. "In the novel The Shattering, he fills in as head of Ironforge's government for a while after Magni turns to stone.",
         items = {
+            { id = 4622, name = "Sealed Note to Advisor Belgrum", note = "Provided for Passing Word of a Threat, which ends with Belgrum", blurb = "In the novel The Shattering he helps decipher the Ulduar tablet, then steps up in Ironforge after Magni is petrified.", gear = false },
+            { id = 4621, name = "Ambassador Infernus' Bracer", note = "Proof of Infernus's death, delivered to Belgrum for An Ambassador of Evil", blurb = "In the novel The Shattering he helps decipher the Ulduar tablet, then steps up in Ironforge after Magni is petrified.", gear = false },
+            { id = 5824, name = "Tablet of Will", note = "Quest item returned to Belgrum in The Lost Tablets of Will", blurb = "In the novel The Shattering he helps decipher the Ulduar tablet, then steps up in Ironforge after Magni is petrified.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Advisor_Belgrum",
@@ -3370,6 +3520,11 @@ ns.NPCS = {
              .. "In the novel The Shattering, he tries to decipher the phrases of a tablet from Ulduar and translates the unknown language of Magni's ritual in Old Ironforge for Anduin Wrynn. "
              .. "In the novel Before the Storm, he agrees to send a team from the Explorers' League to Silithus after Magni speaks about Azerite.",
         items = {
+            { id = 6064, name = "Miniature Platinum Discs", note = "Brought to Magellas in The Platinum Discs (Alliance).", blurb = "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.", gear = false },
+            { id = 8070, name = "Reward Voucher", note = "Given by Magellas in The Platinum Discs (Alliance 2).", blurb = "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.", gear = false },
+            { id = 271716, name = "Explorer's League Dustcover", note = "Reward of Prehistoric Prism, which Magellas ends.", blurb = "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.", gear = true },
+            { id = 271767, name = "Healer's Staff", note = "Reward of Prehistoric Prism, which Magellas ends.", blurb = "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.", gear = true },
+            { id = 271766, name = "Heavehammer", note = "Reward of Prehistoric Prism, which Magellas ends.", blurb = "In the novel The Shattering he tries to decipher the Ulduar tablet and translates Magni's ritual for Anduin.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/High_Explorer_Muninn_Magellas",
@@ -3395,8 +3550,7 @@ ns.NPCS = {
         story = "Daryl Riknussun is a dwarf cooking trainer in Ironforge. "
              .. "In The War Effort, he helps Saegan clean and cook fish supplies for the Ahn'Qiraj War. "
              .. "The supplies are to be delivered to Huntress Swiftriver.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Daryl_Riknussun",
             "https://warcraft.wiki.gg/wiki/The_War_Effort",
@@ -3420,8 +3574,7 @@ ns.NPCS = {
         story = "Huntress Swiftriver is a night elf quest giver in the Military Ward of Ironforge. "
              .. "During the war effort before the Ahn'Qiraj War she gathers spotted yellowtail fish, aiming for 17,000, to feed the soldiers. "
              .. "In the short story The War Effort, the fish that Saegan and Daryl Riknussun prepare are meant for her.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Huntress_Swiftriver",
             "https://warcraft.wiki.gg/wiki/The_War_Effort",
@@ -3455,7 +3608,11 @@ ns.NPCS = {
              .. "He was the mentor of Vol'jin and Zalazane, and after they returned from First Home he told them about the death of Sen'jin. "
              .. "In World of Warcraft he sends adventurers to retrieve Minshina's skull in the Echo Isles and to fight Zalazane's minions. "
              .. "In the novel Before the Storm he stood beside Baine Bloodhoof at Spirit Rise in Thunder Bluff.",
-        items = {},
+        items = {
+            { id = 4864, name = "Minshina's Skull", note = "Objective of the quest Minshina's Skull, started and ended by Master Gadrin", blurb = "In the short story The Judgment he mentors Vol'jin and Zalazane, then confirms the death of Sen'jin after First Home.", gear = false },
+            { id = 4945, name = "Faintly Glowing Skull", note = "Quest reward from Minshina's Skull, which Master Gadrin gives", blurb = "In the short story The Judgment he mentors Vol'jin and Zalazane, then confirms the death of Sen'jin after First Home.", gear = false },
+            { id = 9323, name = "Gadrin's Parchment", note = "Provided by Master Gadrin for the quest Summoning Shadra", blurb = "In the short story The Judgment he mentors Vol'jin and Zalazane, then confirms the death of Sen'jin after First Home.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Master_Gadrin",
             "https://warcraft.wiki.gg/wiki/The_Judgment",
@@ -3482,7 +3639,12 @@ ns.NPCS = {
         story = "Jorn Skyseer is a tauren hunter at Camp Taurajo in the Barrens. "
              .. "There he serves as a guide and mentor to Horde adventurers as they train in the wilds of the Barrens. "
              .. "In the novel The Shattering: Prelude to Cataclysm, he gives shelter and help to Baine Bloodhoof and his loyal forces when Magatha Grimtotem seizes Thunder Bluff.",
-        items = {},
+        items = {
+            { id = 5138, name = "Harvester's Head", note = "Brought to Jorn in The Harvester.", blurb = "In the novel The Shattering he shelters Baine Bloodhoof and his loyal forces after Magatha seizes Thunder Bluff.", gear = false },
+            { id = 5099, name = "Hoof of Lakota'mani", note = "Brought to Jorn in Lakota'mani.", blurb = "In the novel The Shattering he shelters Baine Bloodhoof and his loyal forces after Magatha seizes Thunder Bluff.", gear = false },
+            { id = 5102, name = "Owatanka's Tailspike", note = "Brought to Jorn in Owatanka.", blurb = "In the novel The Shattering he shelters Baine Bloodhoof and his loyal forces after Magatha seizes Thunder Bluff.", gear = false },
+            { id = 5103, name = "Washte Pawne's Feather", note = "Brought to Jorn in Washte Pawne.", blurb = "In the novel The Shattering he shelters Baine Bloodhoof and his loyal forces after Magatha seizes Thunder Bluff.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Jorn_Skyseer",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
@@ -3506,7 +3668,10 @@ ns.NPCS = {
         story = "Wharfmaster Dizzywig is a goblin dockmaster in Ratchet in the Barrens. "
              .. "In the novel Night of the Dragon he provided transport for Velinde Starsong, and later for Iridi when she came through Ratchet to purchase a boat. "
              .. "In World of Warcraft he runs the docks of Ratchet and gives quests such as Southsea Freebooters and Passage to Booty Bay.",
-        items = {},
+        items = {
+            { id = 5799, name = "Kravel's Parts Order", note = "Turn-in: brought to Dizzywig in Wharfmaster Dizzywig (quest)", blurb = "In the novel Night of the Dragon he provides boat transport to Velinde Starsong and later to the draenei Iridi.", gear = false },
+            { id = 6462, name = "Secure Crate", note = "Turn-in: brought to Dizzywig in Wharfmaster Dizzywig (Barrens)", blurb = "In the novel Night of the Dragon he provides boat transport to Velinde Starsong and later to the draenei Iridi.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Wharfmaster_Dizzywig",
             "https://warcraft.wiki.gg/wiki/Night_of_the_Dragon",
@@ -3609,7 +3774,11 @@ ns.NPCS = {
              .. "Both of them then built rocket cars and enlisted teams to drive them. "
              .. "The novel Traveler: The Spiral Path, set much later, records him as a member of MEGA, the Mechanical Engineers' Guild of Azeroth. "
              .. "There he registers and officiates the Annual Fizzle and Pozzik's Speedbarge Boat Race, and Gazlowe pays him to confirm that the pilots switched only after the race.",
-        items = {},
+        items = {
+            { id = 5852, name = "Fuel Regulator Blueprints", note = "Turn-in: delivered to Pozzik in Goblin Sponsorship (5)", blurb = "In the novel Traveler: The Spiral Path he officiates the Annual Boat Race that he co-founded with Fizzle Brassbolts.", gear = false },
+            { id = 5848, name = "Hollow Vulture Bone", note = "Turn-in: 10 gathered for Pozzik in Load Lightening", blurb = "In the novel Traveler: The Spiral Path he officiates the Annual Boat Race that he co-founded with Fizzle Brassbolts.", gear = false },
+            { id = 5866, name = "Sample of Indurium Ore", note = "Turn-in: taken to Pozzik in Rizzle's Schematics", blurb = "In the novel Traveler: The Spiral Path he officiates the Annual Boat Race that he co-founded with Fizzle Brassbolts.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Pozzik",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
@@ -3650,6 +3819,12 @@ ns.NPCS = {
              .. "Years later he lives in exile in a cottage on the shores of the Thondroril River in the Eastern Plaguelands, with his horse Mirador. "
              .. "In the novel Arthas: Rise of the Lich King he is present when Arthas becomes a paladin in Stormwind.",
         items = {
+            { id = 16058, name = "Fordring's Seal", note = "Reward for In Dreams, which ends with Tirion", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = true },
+            { id = 15411, name = "Mark of Fordring", note = "Reward for In Dreams, which ends with Tirion", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = true },
+            { id = 14679, name = "Of Love and Family", note = "Painting from Stratholme, turned in to Tirion in Of Love and Family (2)", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = false },
+            { id = 14625, name = "Symbol of Lost Honor", note = "Handed out by Tirion to start Of Lost Honor", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = false },
+            { id = 14613, name = "Taelan's Hammer", note = "Handed out by Tirion to start Of Forgotten Memories", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = false },
+            { id = 14872, name = "Tirion's Gift", note = "Handed out by Tirion, shown to Myranda in Find Myranda", blurb = "The Silver Hand knight who frees the orc Eitrigg from execution in the novel Of Blood and Honor.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Tirion_Fordring",
@@ -3676,8 +3851,7 @@ ns.NPCS = {
         story = "Aurora Skycaller is a high elf priestess who helped Alliance adventurers recreate the Crystal of Zin-Malor at Northpass Tower. "
              .. "When the tower became a battlefield she moved to a spot just outside it, below Quel'Lithien Lodge, where she still gives quests in the Eastern Plaguelands. "
              .. "In the short story In the Shadow of the Sun she and Renthar Hawkspear reject the Regent Lord's offer of supplies.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Aurora_Skycaller",
             "https://warcraft.wiki.gg/wiki/In_the_Shadow_of_the_Sun",
@@ -3709,6 +3883,7 @@ ns.NPCS = {
              .. "In the novel World of Warcraft: Sylvanas he and the other Farstriders investigate the deaths of Lireesa and Verath Windrunner. "
              .. "In the short story In the Shadow of the Sun he turns down Lor'themar Theron's offer of aid and tells him the lodge's quel'dorei were banished from Quel'Thalas.",
         items = {
+            { id = 284157, name = "Ranger Lord's Longsword", note = "Dropped by Hawkspear in Eastern Plaguelands; Forever only", blurb = "In the novel World of Warcraft: Sylvanas he leads Quel'Lithien Lodge's hunters and probes Lireesa Windrunner's slaying.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Death-Hunter_Hawkspear",
@@ -3742,6 +3917,7 @@ ns.NPCS = {
              .. "In the novel Blood Ties he turns down Arator the Redeemer's bid for promotion, but later inducts three new paladins into the Silver Hand. "
              .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he leads the Argent Dawn forces at Dawn's Watch when the Crushridge clan attacks.",
         items = {
+            { id = 21533, name = "Colossus of Zora's Husk", note = "Brought to Tyrosus in Secrets of the Colossus - Zora.", blurb = "Argent Dawn leader at Dawn's Watch, which Garek, Anya and Leonid liberate from the Crushridge clan.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Lord_Maxwell_Tyrosus",
@@ -3771,6 +3947,9 @@ ns.NPCS = {
              .. "Later he tricks Tinkee Steamboil into sending the adventurers back to him with frozen black dragon eggs, then has them deliver the eggs to Betina Bigglezink. "
              .. "In the Forsaken Kingdom campaign of Warcraft III Reforged he helps Garek Bandarion and Dark Ranger Anya destroy the central crystal of Naxxramas.",
         items = {
+            { id = 13761, name = "Frozen Eggs", note = "Objective of Leonid Barthalomew (quest), delivered to him", blurb = "Undead Argent Dawn member who helps Garek and Anya retake Dawn's Watch and destroy Naxxramas' central crystal.", gear = false },
+            { id = 13585, name = "Keepsake of Remembrance", note = "Objective of The Dying, Ras Frostwhisper, shown to Leonid", blurb = "Undead Argent Dawn member who helps Garek and Anya retake Dawn's Watch and destroy Naxxramas' central crystal.", gear = false },
+            { id = 13624, name = "Soulbound Keepsake", note = "Taken to Leonid at the end of Menethil's Gift (2)", blurb = "Undead Argent Dawn member who helps Garek and Anya retake Dawn's Watch and destroy Naxxramas' central crystal.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Leonid_Barthalomew",
@@ -3796,8 +3975,7 @@ ns.NPCS = {
         story = "Mirador is the faithful stallion of Tirion Fordring. "
              .. "In World of Warcraft he stands outside Tirion's cottage beside the Thondroril River in the Eastern Plaguelands. "
              .. "In the novella Of Blood and Honor he carries the wounded Tirion home after his duel with Eitrigg, and later carries him to Stratholme to save the orc.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Mirador",
             "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
@@ -3847,6 +4025,10 @@ ns.NPCS = {
              .. "In the novel Before the Storm he serves as Sylvanas's champion and bodyguard and reports on the Undercity to her. "
              .. "In the novel Shadows Rising he is sent to kill the loa Bwonsamdi, and the attempt fails.",
         items = {
+            { id = 15880, name = "Head of Ramstein the Gorger", note = "Taken to Nathanos as a souvenir in the Ramstein quest; drops from Ramstein", blurb = "In the novel Before the Storm he is Sylvanas's champion and bodyguard; in Shadows Rising he fails to kill Bwonsamdi.", gear = false },
+            { id = 15850, name = "Patch of Duskwing's Fur", note = "Turn-in: recovered from Duskwing and returned to Nathanos", blurb = "In the novel Before the Storm he is Sylvanas's champion and bodyguard; in Shadows Rising he fails to kill Bwonsamdi.", gear = false },
+            { id = 15876, name = "Nathanos' Chest", note = "His chest, provided as an objective for Nathanos' Ruse", blurb = "In the novel Before the Storm he is Sylvanas's champion and bodyguard; in Shadows Rising he fails to kill Bwonsamdi.", gear = false },
+            { id = 15868, name = "The Grand Crusader's Command", note = "Turn-in: recovered from the Crimson Courier and returned to Nathanos", blurb = "In the novel Before the Storm he is Sylvanas's champion and bodyguard; in Shadows Rising he fails to kill Bwonsamdi.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Nathanos_Blightcaller",
@@ -3876,6 +4058,11 @@ ns.NPCS = {
              .. "In the novel Blood Ties he usually repairs the weapons and armor of the paladins of the Order of the Silver Hand. "
              .. "In the same book he keeps working at his forge and drinks Thunderbrew lager while Arator the Redeemer visits him.",
         items = {
+            { id = 22719, name = "Omarion's Handbook", note = "Turn-in: taken to Craftsman Wilhelm, who then crafts Omarion's frost gear", blurb = "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.", gear = false },
+            { id = 22700, name = "Glacial Leggings", note = "Reward of The Only Song I Know..., Wilhelm's recipe quest", blurb = "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.", gear = true },
+            { id = 22699, name = "Icebane Leggings", note = "Reward of The Only Song I Know..., Wilhelm's recipe quest", blurb = "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.", gear = true },
+            { id = 22702, name = "Icy Scale Leggings", note = "Reward of The Only Song I Know..., Wilhelm's recipe quest", blurb = "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.", gear = true },
+            { id = 22701, name = "Polar Leggings", note = "Reward of The Only Song I Know..., Wilhelm's recipe quest", blurb = "In the novel Blood Ties he works his forge at Light's Hope Chapel, where Arator the Redeemer visits him.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Master_Craftsman_Wilhelm",
@@ -3902,7 +4089,10 @@ ns.NPCS = {
         story = "In World of Warcraft Arei appears in Irontree Woods in Felwood when you play the Flute of the Ancients. "
              .. "You then escort his spirit through the corrupted woods. "
              .. "In the novel Stormrage he battles the Emerald Nightmare from within the Emerald Dream alongside Zaetar and other guardians of nature.",
-        items = {},
+        items = {
+            { id = 11874, name = "Clouddrift Mantle", note = "Reward from Ancient Spirit, the escort quest that starts with Arei (Classic)", blurb = "In the novel Stormrage the Ancient of War fights the Emerald Nightmare from within the Dream and leads Broll to Zaetar.", gear = true },
+            { id = 11873, name = "Ethereal Mist Cape", note = "Reward from Ancient Spirit, the escort quest that starts with Arei (Classic)", blurb = "In the novel Stormrage the Ancient of War fights the Emerald Nightmare from within the Dream and leads Broll to Zaetar.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Arei",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -3936,7 +4126,15 @@ ns.NPCS = {
              .. "In the novel Stormrage, Xavius uses Remulos as a pawn to lure Malfurion Stormrage into a trap, and Remulos is defeated and cleansed of his corruption. "
              .. "At the end of the novel he is one of many who witness the marriage of Tyrande and Malfurion. "
              .. "In the novel The Shattering: Prelude to Cataclysm, he refuses to let Hamuul Runetotem and Elerethe Renferal meet in Moonglade, but allows a second meeting there if the first goes well.",
-        items = {},
+        items = {
+            { id = 21139, name = "Green Scepter Shard", note = "Handed out by Remulos to start The Champion Returns", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 21147, name = "Fragment of the Nightmare's Corruption (Ashenvale)", note = "Collected for Remulos in The Nightmare's Corruption", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 21149, name = "Fragment of the Nightmare's Corruption (Duskwood)", note = "Collected for Remulos in The Nightmare's Corruption", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 21148, name = "Fragment of the Nightmare's Corruption (Feralas)", note = "Collected for Remulos in The Nightmare's Corruption", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 21146, name = "Fragment of the Nightmare's Corruption (Hinterlands)", note = "Collected for Remulos in The Nightmare's Corruption", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 20644, name = "Nightmare Engulfed Object", note = "Turned in to Remulos to end Shrouded in Nightmare", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+            { id = 17760, name = "Seed of Life", note = "Given to Remulos to end the Seeds of Life quest", blurb = "In the novel Stormrage Xavius uses him as a pawn to trap Malfurion, until he is cleansed of the corruption.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Keeper_Remulos",
             "https://warcraft.wiki.gg/wiki/Moonglade",
@@ -3999,7 +4197,12 @@ ns.NPCS = {
              .. "He appears for the weekly Stranglethorn Fishing Extravaganza, which is held on Sunday afternoons. "
              .. "In the short story Stranglethorn Fishing Extravaganza, he rows into Booty Bay and asks Baron Revilgaz for a loan to fund his plan. "
              .. "Revilgaz first refuses, but after tasting Riggle's tastyfish he agrees to a fishing tournament, and Riggle goes off to seed the coastal waters with fish.",
-        items = {},
+        items = {
+            { id = 19807, name = "Speckled Tastyfish", note = "Turned in to Riggle in the Grand Prize contest of the Stranglethorn Fishing Extravaganza", blurb = "In Stranglethorn Fishing Extravaganza he wins over Baron Revilgaz with tastyfish and gets his tournament.", gear = false },
+            { id = 19970, name = "Arcanite Fishing Pole", note = "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza", blurb = "In Stranglethorn Fishing Extravaganza he wins over Baron Revilgaz with tastyfish and gets his tournament.", gear = true },
+            { id = 19971, name = "High Test Eternium Fishing Line", note = "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza", blurb = "In Stranglethorn Fishing Extravaganza he wins over Baron Revilgaz with tastyfish and gets his tournament.", gear = false },
+            { id = 19979, name = "Hook of the Master Angler", note = "Grand Prize reward from Riggle Bassbait's Stranglethorn Fishing Extravaganza", blurb = "In Stranglethorn Fishing Extravaganza he wins over Baron Revilgaz with tastyfish and gets his tournament.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Riggle_Bassbait",
             "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
@@ -4025,7 +4228,12 @@ ns.NPCS = {
              .. "In the short story Stranglethorn Fishing Extravaganza, the wars in Alterac Valley and Warsong Gulch have drawn visitors away from Stranglethorn and business is struggling. "
              .. "He first refuses a loan to the angler Riggle Bassbait. "
              .. "Then he tastes Riggle's tastyfish and agrees to a fishing tournament that brings adventurers and trade back to Booty Bay.",
-        items = {},
+        items = {
+            { id = 5852, name = "Fuel Regulator Blueprints", note = "Turn-in: brought to Baron Revilgaz in Goblin Sponsorship (4)", blurb = "In Stranglethorn Fishing Extravaganza he is won over by Riggle's tastyfish and agrees to a fishing tournament.", gear = false },
+            { id = 4034, name = "Stone of the Tides", note = "Turn-in: brought back to Revilgaz in The Curse of the Tides; drops from Gazban", blurb = "In Stranglethorn Fishing Extravaganza he is won over by Riggle's tastyfish and agrees to a fishing tournament.", gear = false },
+            { id = 4027, name = "Catelyn's Blade", note = "Turn-in: brought back to Revilgaz in The Curse of the Tides", blurb = "In Stranglethorn Fishing Extravaganza he is won over by Riggle's tastyfish and agrees to a fishing tournament.", gear = true },
+            { id = 3960, name = "Bag of Water Elemental Bracers", note = "Quest item from Revilgaz for Magical Analysis; to be brought to Ansirem Runeweaver", blurb = "In Stranglethorn Fishing Extravaganza he is won over by Riggle's tastyfish and agrees to a fishing tournament.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Baron_Revilgaz",
             "https://warcraft.wiki.gg/wiki/Stranglethorn_Fishing_Extravaganza_(short_story)",
@@ -4050,7 +4258,9 @@ ns.NPCS = {
              .. "She is the best knife fighter in Booty Bay and the daughter of Archmage Ansirem Runeweaver. "
              .. "She joined the Blackwater Raiders as a pirate and became captain of the raider ship Neptulon's Bride. "
              .. "In the book Quest for Pandaria she owes a debt to the Steamwheedle Cartel, steals the Pearl of Pandaria from Li Li Stormstout, and later gives it back.",
-        items = {},
+        items = {
+            { id = 4027, name = "Catelyn's Blade", note = "Troll relic that Ansirem Runeweaver gave to his daughter Catelyn the Blade", blurb = "The troll relic blade her father Ansirem gave her. In Quest for Pandaria she steals a pearl to pay her debt.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Catelyn_the_Blade",
             "https://warcraft.wiki.gg/wiki/Quest_for_Pandaria",
@@ -4126,7 +4336,15 @@ ns.NPCS = {
              .. "Once inside the temple he and his retinue were corrupted, and he became a shade pulled between the Emerald Dream and the physical world. "
              .. "In the novel Stormrage he is despondent about the growing corruption and reluctant to help, but he later carries Tyrande and Broll to Bough Shadow, and he sacrifices himself so that Ysera can escape. "
              .. "In World of Warcraft the Shade of Eranikus is an elite boss in the Temple of Atal'Hakkar, and you must defeat Jammal'an the Prophet before you can fight him.",
-        items = {},
+        items = {
+            { id = 10828, name = "Dire Nail", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10847, name = "Dragon's Call", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10837, name = "Tooth of Eranikus", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10836, name = "Rod of Corrosion", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10835, name = "Crest of Supremacy", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10833, name = "Horns of Eranikus", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+            { id = 10829, name = "The Dragon's Eye", note = "Drops from the Shade of Eranikus in Temple of Atal'Hakkar", blurb = "In the novel Stormrage he first refuses to help, then carries Tyrande and Broll and sacrifices himself for Ysera.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Shade_of_Eranikus",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -4213,6 +4431,9 @@ ns.NPCS = {
              .. "In Traveler: The Spiral Path, he supervises the Thunderdrome bets, and Malus blackmails him into revealing the Crustacean booking. "
              .. "In the short story The Goblin Way, he agrees to align his cartel with Gazlowe's after Gazlowe demands an inspection of his mine.",
         items = {
+            { id = 8529, name = "Noggenfogger Elixir", note = "Elixir Marin makes; the quest Noggenfogger Elixir starts with him", blurb = "In Traveler: The Spiral Path he tips off Malus under blackmail; in The Goblin Way he aligns his cartel with Gazlowe's.", gear = false },
+            { id = 8528, name = "Violet Powder", note = "Delivered to Marin in Delivery for Marin", blurb = "In Traveler: The Spiral Path he tips off Malus under blackmail; in The Goblin Way he aligns his cartel with Gazlowe's.", gear = false },
+            { id = 8428, name = "Laden Dew Gland", note = "Brought to Marin in The Thirsty Goblin", blurb = "In Traveler: The Spiral Path he tips off Malus under blackmail; in The Goblin Way he aligns his cartel with Gazlowe's.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Marin_Noggenfogger",
@@ -4240,6 +4461,8 @@ ns.NPCS = {
              .. "In Traveler: The Spiral Path, she meets Gazlowe and Aramar Thorne on a staged picnic and hides the children in her caravan to bring them into Gadgetzan unseen. "
              .. "Later she tells her husband that the Crustacean is where the travelers have booked passage, and he passes this on to Malus.",
         items = {
+            { id = 8526, name = "Violet Tragan", note = "Turn-in: returned to Sprinkle in Sprinkle's Secret Ingredient", blurb = "In the novel Traveler: The Spiral Path she smuggles Aramar Thorne's companions into Gadgetzan hidden in her caravan.", gear = false },
+            { id = 8603, name = "Thistleshrub Dew", note = "Turn-in: brought to Sprinkle to finish In Good Taste", blurb = "In the novel Traveler: The Spiral Path she smuggles Aramar Thorne's companions into Gadgetzan hidden in her caravan.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Sprinkle_Noggenfogger",
@@ -4264,8 +4487,7 @@ ns.NPCS = {
         story = "In World of Warcraft, Trenton Lighthammer is a night elf blacksmith of the Mithril Order near Gadgetzan's southern gate, where he trains armorsmiths and asks adventurers for troll temper from Zul'Farrak. "
              .. "In Traveler: The Spiral Path, he lets Aramar Thorne and his companions sleep in his tower. "
              .. "Aram and Trenton forge a new harpoon for Makasa, and Trenton gives Aram a new iron chain for his compass.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Trenton_Lighthammer",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
@@ -4289,8 +4511,7 @@ ns.NPCS = {
         story = "In World of Warcraft, Chronalis is an elite bronze drake that guards the entrance to the Caverns of Time in eastern Tanaris, together with Tick. "
              .. "In Thrall: Twilight of the Aspects, he at first refuses Thrall and Desharin entry to the Caverns of Time. "
              .. "He lets them through only after learning they were acting under Ysera's direction.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Chronalis",
             "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
@@ -4321,8 +4542,7 @@ ns.NPCS = {
              .. "In Thrall: Twilight of the Aspects, she takes Thrall to meet the other dragonflights. "
              .. "She later carries him in the battle to retake Wyrmrest Temple from the Twilight's Hammer and returns him to the Maelstrom. "
              .. "In the short story Charge of the Aspects, she carries the badly wounded Zirion to Nozdormu and tells him the Infinite Dragonflight and its leader attacked Zirion.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Tick_(drake)",
             "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
@@ -4354,6 +4574,16 @@ ns.NPCS = {
              .. "In the short story The War of the Shifting Sands, he calls the other dragonflights to fight the qiraji. "
              .. "In Thrall: Twilight of the Aspects, he is present when Nozdormu is brought back to the Caverns of Time after the Cataclysm.",
         items = {
+            { id = 21139, name = "Green Scepter Shard", note = "Turn-in: taken to Anachronos in The Champion Returns", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 21137, name = "Blue Scepter Shard", note = "Turn-in: objective of The Wrath of Neptulon, which ends with Anachronos", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 21138, name = "Red Scepter Shard", note = "Turn-in: dropped by Nefarian, taken to Anachronos in The Champion Returns", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 21175, name = "The Scepter of the Shifting Sands", note = "Created by Anachronos; end of the Anachronos quest chain (Classic 1.9.0 to 4.0.3a)", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = true },
+            { id = 20415, name = "The War of the Shifting Sands", note = "Book provided for the Anachronos quest, which ends with him", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 22733, name = "Staff Head of Atiesh", note = "Turn-in: Anachronos wants it for Atiesh, the Befouled Greatstaff", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 22734, name = "Base of Atiesh", note = "Turn-in: Anachronos wants it for Atiesh, the Befouled Greatstaff; drops from C'Thun", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = false },
+            { id = 21201, name = "Signet Ring of the Bronze Dragonflight (Conqueror)", note = "Turn-in: presented to Anachronos when changing path (The Changing of Paths)", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = true },
+            { id = 21206, name = "Signet Ring of the Bronze Dragonflight (Invoker)", note = "Turn-in: presented to Anachronos when changing path (The Changing of Paths)", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = true },
+            { id = 21196, name = "Signet Ring of the Bronze Dragonflight (Protector)", note = "Turn-in: presented to Anachronos when changing path (The Changing of Paths)", blurb = "Bronze dragon who, in The War of the Shifting Sands, calls the other dragonflights against the qiraji.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Anachronos",
@@ -4382,6 +4612,7 @@ ns.NPCS = {
              .. "In the short story The War of the Shifting Sands, Anachronos calls her, the child of Ysera, to join the fight against the qiraji. "
              .. "She and the other dragon progeny fly into the city to hold the qiraji back while the magical barrier is raised.",
         items = {
+            { id = 21237, name = "Imperial Qiraji Regalia", note = "Brought to Merithra for the Regalia quest she starts.", blurb = "Ysera's child who, in The War of the Shifting Sands, charges into Ahn'Qiraj with Caelestrasz and Arygos.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Merithra",
@@ -4407,6 +4638,7 @@ ns.NPCS = {
              .. "In the short story The War of the Shifting Sands, Anachronos calls on the red dragonflight's progeny, Caelestrasz, to fight the qiraji. "
              .. "He, Merithra and Arygos fly into the city to hold the qiraji back while the barrier is raised, and are overwhelmed when the qiraji surge forth.",
         items = {
+            { id = 21221, name = "Eye of C'Thun", note = "Brought to Caelestrasz in C'Thun's Legacy.", blurb = "Red dragon progeny who, in The War of the Shifting Sands, charges into Ahn'Qiraj beside Merithra and Arygos.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Caelestrasz",
@@ -4438,6 +4670,7 @@ ns.NPCS = {
              .. "In the short story The War of the Shifting Sands, he is one of the dragon progeny who fly into Ahn'Qiraj to hold the qiraji back. "
              .. "In Thrall: Twilight of the Aspects, he orders his guards to kill Thrall when Thrall comes to the Nexus, until Kalecgos intervenes.",
         items = {
+            { id = 21232, name = "Imperial Qiraji Armaments", note = "Turn-in: brought to Arygos, who forges Elementium Infused Armaments from them", blurb = "Blue dragon who, in The War of the Shifting Sands, flies into Ahn'Qiraj with Merithra and Caelestrasz.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Arygos",
@@ -4473,6 +4706,7 @@ ns.NPCS = {
              .. "In the novel Traveler: The Spiral Path the Sandfury trolls call on her at Zul'Farrak to judge their captives, but she refuses to claim the dryad Taryndrella and Murky. "
              .. "In the novel Vol'jin: Shadows of the Horde she communicates with Vol'jin through visions shortly after the Landfall.",
         items = {
+            { id = 9324, name = "Shadra's Venom", note = "Drops from Shadra; used in Summoning Shadra (Classic)", blurb = "In the novel Traveler: The Spiral Path the spider loa refuses to claim the captives the Sandfury trolls would sacrifice.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Shadra",
@@ -4524,8 +4758,7 @@ ns.NPCS = {
              .. "In the novel Day of the Dragon he leads gryphon riders who protect Hasic and carry Rhonin's group across the Great Sea to Khaz Modan. "
              .. "In the novel Stormrage he attends the wedding of Malfurion and Tyrande, and in War Crimes he attends Garrosh's trial. "
              .. "In the novel Before the Storm he welcomes King Anduin Wrynn to Ironforge as a member of the Council of Three Hammers.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Falstad_Wildhammer",
             "https://warcraft.wiki.gg/wiki/Day_of_the_Dragon",
@@ -4610,7 +4843,13 @@ ns.NPCS = {
              .. "He is obsessed with restoring his tribe to its former glory. "
              .. "In the novel Traveler: The Spiral Path, Aramar Thorne and his group of friends are captured in Zul'Farrak and set to be sacrificed to the loa. "
              .. "In World of Warcraft he is the end boss of Zul'Farrak, and you can reach him by talking to Weegli Blastfuse or by starting the optional fight with Sergeant Bly.",
-        items = {},
+        items = {
+            { id = 9477, name = "The Chief's Enforcer", note = "Drops from Chief Ukorz Sandscalp in Zul'Farrak", blurb = "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.", gear = true },
+            { id = 11086, name = "Jang'thraze the Protector", note = "Drops from Chief Ukorz Sandscalp in Zul'Farrak", blurb = "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.", gear = true },
+            { id = 9478, name = "Ripsaw", note = "Drops from Chief Ukorz Sandscalp in Zul'Farrak", blurb = "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.", gear = true },
+            { id = 9479, name = "Embrace of the Lycan", note = "Drops from Chief Ukorz Sandscalp in Zul'Farrak", blurb = "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.", gear = true },
+            { id = 9476, name = "Big Bad Pauldrons", note = "Drops from Chief Ukorz Sandscalp in Zul'Farrak", blurb = "In the novel Traveler: The Spiral Path he helps summon the loa Kimbul, Shadra and Mueh'zala with his prisoners' blood.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Chief_Ukorz_Sandscalp",
             "https://warcraft.wiki.gg/wiki/Traveler:_The_Spiral_Path",
@@ -4655,8 +4894,7 @@ ns.NPCS = {
              .. "After the Third War he crossed the sea to help Thrall found Durotar, and in The Founding of Durotar he sends Rexxar to gather shimmerweed. "
              .. "In World of Warcraft he leads the Frostwolf clan from Frostwolf Keep in Alterac Valley and commands the Horde in the battle against the Stormpike Guard. "
              .. "He still carries guilt over the early days of the Horde.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Drek%27Thar",
             "https://warcraft.wiki.gg/wiki/To_Tame_a_Land_(WC3_Orc)",
@@ -4690,8 +4928,7 @@ ns.NPCS = {
              .. "From the Dun Baldar North Bunker she asks Alliance adventurers for storm crystals to summon Ivus the Forest Lord, an Ancient of War who will judge the Horde's destruction of the valley. "
              .. "She deeply loves the lands of Alterac and wants to save its plants and animals. "
              .. "In the novel The Shattering: Prelude to Cataclysm she meets Hamuul Runetotem in Ashenvale just before the Cataclysm, and the meeting is broken up by an attack.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Elerethe_Renferal",
             "https://warcraft.wiki.gg/wiki/Stormrage",
@@ -4750,6 +4987,27 @@ ns.NPCS = {
              .. "After the Third War he ruled the Eastern Plaguelands from the flying necropolis Naxxramas. "
              .. "In World of Warcraft he waits for adventurers in his chamber at the heart of Naxxramas, guarded by the Four Horsemen and the frost wyrm Sapphiron.",
         items = {
+            { id = 22520, name = "The Phylactery of Kel'Thuzad", note = "Drops from Kel'Thuzad in Naxxramas; starts The Fall of Kel'Thuzad", blurb = "His phylactery: the necromancer behind the plague and Archimonde's summoning returns as long as it lasts.", gear = false },
+            { id = 22733, name = "Staff Head of Atiesh", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = false },
+            { id = 22821, name = "Doomfinger", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23054, name = "Gressil, Dawn of Ruin", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23056, name = "Hammer of the Twisting Nether", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23057, name = "Gem of Trapped Innocents", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 22802, name = "Kingsfall", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 22798, name = "Might of Menethil", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 22812, name = "Nerubian Slavemaker", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 22819, name = "Shield of Condemnation", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 22799, name = "Soulseeker", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23053, name = "Stormrage's Talisman of Seething", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23577, name = "The Hungering Cold", note = "Drops from Kel'Thuzad in Naxxramas (40-man loot)", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23060, name = "Bonescythe Ring", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23062, name = "Frostfire Ring", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23061, name = "Ring of Faith", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23066, name = "Ring of Redemption", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23067, name = "Ring of the Cryptstalker", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23059, name = "Ring of the Dreadnaught", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23064, name = "Ring of the Dreamwalker", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
+            { id = 23065, name = "Ring of the Earthshatterer", note = "Tier ring dropped by Kel'Thuzad in Naxxramas", blurb = "The necromancer who spread the plague and summoned Archimonde. While the phylactery lasts, he returns.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Kel%27Thuzad",
@@ -4783,6 +5041,20 @@ ns.NPCS = {
              .. "In World of Warcraft he guards the Frostwyrm Lair in Naxxramas, the approach to the chamber of Kel'Thuzad. "
              .. "His frost magic, strengthened when Arthas raised him, defends Kel'Thuzad at all costs.",
         items = {
+            { id = 23242, name = "Claw of the Frost Wyrm", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23050, name = "Cloak of the Necropolis", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23047, name = "Eye of the Dead", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23040, name = "Glyph of Deflection", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23049, name = "Sapphiron's Left Eye", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23048, name = "Sapphiron's Right Eye", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23045, name = "Shroud of Dominion", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23041, name = "Slayer's Crest", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23043, name = "The Face of Death (shield)", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23046, name = "The Restrained Essence of Sapphiron", note = "Drops from Sapphiron in Naxxramas.", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = true },
+            { id = 23549, name = "Fortitude of the Scourge", note = "Shoulder enchant drop from Sapphiron (Tank).", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = false },
+            { id = 23548, name = "Might of the Scourge", note = "Shoulder enchant drop from Sapphiron (Physical dps).", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = false },
+            { id = 23545, name = "Power of the Scourge", note = "Shoulder enchant drop from Sapphiron (Caster).", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = false },
+            { id = 23547, name = "Resilience of the Scourge", note = "Shoulder enchant drop from Sapphiron (Healer).", blurb = "The blue dragon who fought Arthas and Anub'arak over his hoard, then was raised as a Scourge frost wyrm.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Sapphiron",
@@ -4810,8 +5082,7 @@ ns.NPCS = {
              .. "Kel'Thuzad forces his body to obey, but Zeliek keeps his sanity and morals, which makes him a tragic figure forced to slay what he once held dear. "
              .. "In World of Warcraft he stands in Naxxramas above Stratholme with the other horsemen, overseeing the Military Quarter. "
              .. "In Forsaken Kingdom the Forsaken strike team kills him, but Leonid notes that the Scourge will simply resurrect him.",
-        items = {
-        },
+        items = {},
         sources = {
             "https://warcraft.wiki.gg/wiki/Sir_Zeliek",
             "https://warcraft.wiki.gg/wiki/War_of_the_Damned_(WC3_Undead)",
@@ -4837,6 +5108,16 @@ ns.NPCS = {
              .. "In World of Warcraft he is the second boss of the Ruins of Ahn'Qiraj. "
              .. "Adventurers must first defeat seven waves of his officers and their swarms before they reach him.",
         items = {
+            { id = 21492, name = "Manslayer of the Qiraji", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 21493, name = "Boots of the Vanguard", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 21497, name = "Boots of the Qiraji General", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 21495, name = "Legplates of the Qiraji Command", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 21496, name = "Bracers of Qiraji Command", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 21494, name = "Southwind's Grasp", note = "Dropped by General Rajaxx in the Ruins of Ahn'Qiraj (named drop)", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = true },
+            { id = 20888, name = "Qiraji Ceremonial Ring", note = "Cenarion Circle token in Rajaxx's loot table; also drops from all AQ bosses", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = false },
+            { id = 20884, name = "Qiraji Magisterial Ring", note = "Cenarion Circle token in Rajaxx's loot table; also drops from all AQ bosses", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = false },
+            { id = 20885, name = "Qiraji Martial Drape", note = "Cenarion Circle token in Rajaxx's loot table; drops from Kurinnaxx, Rajaxx, Buru and Ayamiss", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = false },
+            { id = 20889, name = "Qiraji Regal Drape", note = "Cenarion Circle token in Rajaxx's loot table; drops from Kurinnaxx, Rajaxx, Buru and Ayamiss", blurb = "In The War of the Shifting Sands he leads the qiraji and silithid against the night elves and kills Valstann Staghelm.", gear = false },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/General_Rajaxx",
@@ -4869,7 +5150,13 @@ ns.NPCS = {
              .. "They blamed Orgrim Doomhammer for the Horde's defeat and planned to reforge the Horde as they saw fit. "
              .. "In the novel Beyond the Dark Portal Rend refused to rejoin Ner'zhul's Horde, and Nefarian then took command of the Blackhand brothers and their forces. "
              .. "In World of Warcraft he rules the Dark Horde from the arena of Upper Blackrock Spire, rides the chromatic drake Gyth and wants to overthrow Thrall.",
-        items = {},
+        items = {
+            { id = 12630, name = "Head of Rend Blackhand", note = "Drops from Rend Blackhand in Upper Blackrock Spire", blurb = "His head: the Blackhand brother who declared himself Warchief, then fell under Nefarian's command.", gear = false },
+            { id = 12583, name = "Blackhand Doomsaw", note = "Drops from Rend Blackhand in Upper Blackrock Spire", blurb = "In the novel Beyond the Dark Portal he refuses to rejoin Ner'zhul's Horde, then falls under Nefarian's command.", gear = true },
+            { id = 12940, name = "Dal'Rend's Sacred Charge", note = "Drops from Rend Blackhand in Upper Blackrock Spire", blurb = "In the novel Beyond the Dark Portal he refuses to rejoin Ner'zhul's Horde, then falls under Nefarian's command.", gear = true },
+            { id = 12939, name = "Dal'Rend's Tribal Guardian", note = "Drops from Rend Blackhand in Upper Blackrock Spire", blurb = "In the novel Beyond the Dark Portal he refuses to rejoin Ner'zhul's Horde, then falls under Nefarian's command.", gear = true },
+            { id = 18987, name = "Blackhand's Command", note = "Letter from Rend Blackhand, carried by the Scarshield Quartermaster at Blackrock Spire", blurb = "His command: the Blackhand brother who refused Ner'zhul's Horde and later fell under Nefarian's command.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Dal%27rend_Blackhand",
             "https://warcraft.wiki.gg/wiki/Tides_of_Darkness",
@@ -4896,7 +5183,9 @@ ns.NPCS = {
              .. "In the novel Beyond the Dark Portal, Deathwing orders Nefarian and his sister Onyxia to secure the Blackrock orcs as their new force. "
              .. "Nefarian then comes to Blackrock Spire and takes command of Rend and Maim Blackhand and their forces. "
              .. "In World of Warcraft this guise is known as the Lord of Blackrock, who holds the Blackrock clan and various clans of ogres under his control.",
-        items = {},
+        items = {
+            { id = 21142, name = "From the Desk of Lord Victor Nefarius", note = "Letter he wrote, dropped by Nefarian if he dies more than five hours into the Scepter quest", blurb = "A letter in the human guise of Nefarian, who took command of the Blackhand brothers in Beyond the Dark Portal.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Nefarian",
             "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
@@ -4923,7 +5212,12 @@ ns.NPCS = {
              .. "In the novel Beyond the Dark Portal, Deathwing orders Nefarian and his sister Onyxia to secure the Blackrock orcs as their new force, and Nefarian takes command of Rend and Maim Blackhand. "
              .. "He allied the Dark Horde with the black dragonflight and experimented with the blood of every dragonflight to create the chromatic dragonflight. "
              .. "In World of Warcraft he rules from the top of Blackrock Spire and from Blackwing Lair, where he has enslaved the red dragon Vaelastrasz and commands him to kill the heroes of Azeroth.",
-        items = {},
+        items = {
+            { id = 19002, name = "Head of Nefarian", note = "Drops from Nefarian in Blackwing Lair (Horde version)", blurb = "His head: Deathwing's eldest son, who took command of Rend and Maim Blackhand in Beyond the Dark Portal.", gear = false },
+            { id = 19003, name = "Head of Nefarian", note = "Drops from Nefarian in Blackwing Lair (Alliance version)", blurb = "His head: Deathwing's eldest son, who took command of Rend and Maim Blackhand in Beyond the Dark Portal.", gear = false },
+            { id = 21138, name = "Red Scepter Shard", note = "Drops from Nefarian in Blackwing Lair if he dies within five hours of the raid start", blurb = "In the novel Beyond the Dark Portal Deathwing sends him to Blackrock Spire, where he commands the Blackhand brothers.", gear = false },
+            { id = 21142, name = "From the Desk of Lord Victor Nefarius", note = "Drops from Nefarian in Blackwing Lair if he dies more than five hours in", blurb = "In the novel Beyond the Dark Portal Deathwing sends him to Blackrock Spire, where he commands the Blackhand brothers.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Nefarian",
             "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
@@ -4956,7 +5250,13 @@ ns.NPCS = {
              .. "She has been seen traveling to and from Blackrock Mountain, but her main lair is a fiery cave below the Dragonmurk. "
              .. "In the short story Visage Day she scorns the bronze dragon Chronormu for choosing a visage to relate to mortals. "
              .. "In World of Warcraft she guards the eggs of her new brood in that lair and will answer any threat with terrible wrath.",
-        items = {},
+        items = {
+            { id = 18423, name = "Head of Onyxia", note = "Drops from Onyxia in Onyxia's Lair (Alliance version)", blurb = "Her head: Deathwing's daughter, sent with Nefarian to secure the Blackrock orcs in Beyond the Dark Portal.", gear = false },
+            { id = 18422, name = "Head of Onyxia", note = "Drops from Onyxia in Onyxia's Lair (Horde version)", blurb = "Her head: Deathwing's daughter, sent with Nefarian to secure the Blackrock orcs in Beyond the Dark Portal.", gear = false },
+            { id = 17966, name = "Onyxia Hide Backpack", note = "Drops from Onyxia in Onyxia's Lair", blurb = "In the novel Beyond the Dark Portal Deathwing sends her and Nefarian to secure the Blackrock orcs as his new force.", gear = false },
+            { id = 18705, name = "Mature Black Dragon Sinew", note = "Drops from Onyxia in Onyxia's Lair (Classic)", blurb = "In the novel Beyond the Dark Portal Deathwing sends her and Nefarian to secure the Blackrock orcs as his new force.", gear = false },
+            { id = 21108, name = "Draconic for Dummies", note = "Drops from Onyxia in Onyxia's Lair", blurb = "In the novel Beyond the Dark Portal Deathwing sends her and Nefarian to secure the Blackrock orcs as his new force.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Onyxia",
             "https://warcraft.wiki.gg/wiki/Beyond_the_Dark_Portal",
@@ -5002,7 +5302,11 @@ ns.NPCS = {
              .. "She fell in love with him, and when Magni sent a team that killed Dagran she refused to come home and announced that she was pregnant. "
              .. "In the novel The Shattering: Prelude to Cataclysm she returns to Ironforge with her son to claim the throne, and Varian Wrynn spares her at Anduin's plea. "
              .. "In World of Warcraft you meet her in Shadowforge City, in Blackrock Depths.",
-        items = {},
+        items = {
+            { id = 12545, name = "Eye of Orgrimmar", note = "Quest reward from The Princess Saved?, given by Moira (ends at Thrall)", blurb = "In the novel The Shattering she returns to Ironforge with her infant son to claim the throne; Varian spares her.", gear = true },
+            { id = 12548, name = "Magni's Will", note = "Quest reward from The Princess's Surprise, given by Moira (ends at King Magni)", blurb = "In the novel The Shattering she returns to Ironforge with her infant son to claim the throne; Varian spares her.", gear = true },
+            { id = 12543, name = "Songstone of Ironforge", note = "Quest reward from The Princess's Surprise, given by Moira (ends at King Magni)", blurb = "In the novel The Shattering she returns to Ironforge with her infant son to claim the throne; Varian spares her.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Moira_Thaurissan",
             "https://warcraft.wiki.gg/wiki/The_Shattering:_Prelude_to_Cataclysm",
@@ -5042,7 +5346,25 @@ ns.NPCS = {
              .. "In Siege he led cultists out of Andorhal and fought Garek Bandarion before teleporting away to Stratholme. "
              .. "There he cut his own throat and was raised as a lich by the Lich King, then was attacked by Garek and Ilastar Songbreeze, though he swore he would meet them again. "
              .. "In World of Warcraft he is the favored pupil of Kel'Thuzad and oversees everything that happens in the necromancy school of Scholomance.",
-        items = {},
+        items = {
+            { id = 13626, name = "Human Head of Ras Frostwhisper", note = "Drops from Ras Frostwhisper (Classic)", blurb = "His head: the Cult of the Damned mage who led cultists out of Andorhal before teleporting away to Stratholme.", gear = false },
+            { id = 13624, name = "Soulbound Keepsake", note = "Used on Ras in The Lich, Ras Frostwhisper (Classic)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = false },
+            { id = 13585, name = "Keepsake of Remembrance", note = "Objective of Menethil's Gift and The Dying, Ras Frostwhisper", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = false },
+            { id = 13314, name = "Alanna's Embrace", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14487, name = "Bonechill Hammer", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14525, name = "Boneclenched Gauntlets", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14503, name = "Death's Clutch", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14340, name = "Freezing Lich Robes", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14502, name = "Frostbite Girdle", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 13952, name = "Iceblade Hacker", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 18696, name = "Intricately Runed Shield", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 14522, name = "Maelstrom Leggings", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 16689, name = "Magister's Mantle", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 18694, name = "Shadowy Mail Greaves", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 18693, name = "Shivery Handwraps", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 18695, name = "Spellbound Tome", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = true },
+            { id = 13521, name = "Recipe: Flask of Supreme Power", note = "Drops from Ras Frostwhisper (loot table)", blurb = "Cult of the Damned mage who rose as a lich; he led the cultists out of Andorhal until Garek Bandarion cornered him.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Ras_Frostwhisper",
             "https://warcraft.wiki.gg/wiki/Siege_(WC3_Human)",
@@ -5069,7 +5391,15 @@ ns.NPCS = {
              .. "He is stitched together from many corpses and is responsible for the death of thousands, including the ranger lord Nathanos Marris. "
              .. "Nathanos, now the undead Nathanos Blightcaller, hunted him across the Plaguelands for months until Ramstein fled to the safety of Stratholme. "
              .. "In Warcraft III: Reforged, Forsaken Kingdom, he is already in Stratholme when Garek Bandarion and Ilastar Songbreeze enter the city to hunt down Baron Rivendare.",
-        items = {},
+        items = {
+            { id = 15880, name = "Head of Ramstein the Gorger", note = "Ramstein's own head, linked to the Ramstein (quest).", blurb = "His head: the abomination who stood among the Scourge forces in Stratholme as Garek hunted Baron Rivendare.", gear = false },
+            { id = 13515, name = "Ramstein's Lightning Bolts", note = "Drops from Ramstein, listed in his loot table.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+            { id = 13372, name = "Slavedriver's Cane", note = "Drops from Ramstein the Gorger in Stratholme.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+            { id = 13375, name = "Crest of Retribution", note = "Drops from Ramstein the Gorger in Stratholme.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+            { id = 18723, name = "Animated Chain Necklace", note = "Drops from Ramstein the Gorger in Stratholme.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+            { id = 13374, name = "Soulstealer Mantle", note = "Drops from Ramstein the Gorger in Stratholme.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+            { id = 13373, name = "Band of Flesh", note = "Drops from Ramstein the Gorger in Stratholme.", blurb = "Stitched Scourge abomination who stands among the undead in Stratholme as Garek Bandarion hunts Baron Rivendare.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Ramstein_the_Gorger",
             "https://warcraft.wiki.gg/wiki/Vengeance_(WC3_Human)",
@@ -5100,7 +5430,32 @@ ns.NPCS = {
              .. "In Treachery he oversaw the torture of caged soldiers in the sewers beneath Capital City, and in Vengeance Garek Bandarion killed him in his slaughterhouse. "
              .. "He was raised as a death knight and given control of the burning remains of Stratholme. "
              .. "In World of Warcraft he holds Stratholme against the Scarlet Crusade and coordinates the Lich King's efforts in the Plaguelands.",
-        items = {},
+        items = {
+            { id = 13335, name = "Deathcharger's Reins", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = false },
+            { id = 13505, name = "Runeblade of Baron Rivendare", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13251, name = "Head of Baron Rivendare", note = "Drops from Baron Rivendare; objective of the quest Above and Beyond", blurb = "His head: the cult champion killed by Garek Bandarion in his Stratholme slaughterhouse.", gear = false },
+            { id = 13368, name = "Bonescraper", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13340, name = "Cape of the Black Baron", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13344, name = "Dracorian Gauntlets", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 22411, name = "Helm of the Executioner", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 22410, name = "Gauntlets of Deftness", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 22408, name = "Ritssyn's Wand of Bad Mojo", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13346, name = "Robes of the Exalted", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13349, name = "Scepter of the Unholy", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13345, name = "Seal of Rivendare", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 13361, name = "Skullforge Reaver", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 22412, name = "Thuzadin Mantle", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 22409, name = "Tunic of the Crescent Moon", note = "Drops from Baron Rivendare in Stratholme (Classic)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16678, name = "Beaststalker's Pants", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16694, name = "Devout Skirt", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16699, name = "Dreadmist Leggings", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16668, name = "Kilt of Elements", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16732, name = "Legplates of Valor", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16728, name = "Lightforge Legplates", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16687, name = "Magister's Leggings", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16709, name = "Shadowcraft Pants", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+            { id = 16719, name = "Wildheart Kilt", note = "Drops from Baron Rivendare in Stratholme (Dungeon Set 1)", blurb = "Cult of the Damned traitor who tortured captive soldiers in the Capital City sewers; Garek kills him in Stratholme.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Baron_Rivendare",
             "https://warcraft.wiki.gg/wiki/Treachery_(WC3_Human)",
@@ -5128,7 +5483,22 @@ ns.NPCS = {
              .. "Sylvanas laid siege to his forces and had Varimathras execute him, but the execution was faked. "
              .. "He then took the body of Saidan Dathrohan and became Grand Crusader of the Scarlet Crusade. "
              .. "In World of Warcraft he is in Stratholme, using that disguise to manipulate the Scarlet Crusade.",
-        items = {},
+        items = {
+            { id = 13348, name = "Demonshear", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 13359, name = "Crown of Tyranny", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 13353, name = "Book of the Dead", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 13360, name = "Gift of the Elven Magi", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 18718, name = "Grand Crusader's Helm", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 18717, name = "Hammer of the Grand Crusader", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 18720, name = "Shroud of the Nathrezim", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 12103, name = "Star of Mystaria", note = "Classic drop from Balnazzar in Stratholme", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 13358, name = "Wyrmtongue Shoulders", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 13369, name = "Fire Striders", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 16725, name = "Lightforge Boots", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = true },
+            { id = 14512, name = "Pattern: Truefaith Vestments", note = "Drops from Balnazzar in Stratholme (Classic)", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = false },
+            { id = 13520, name = "Recipe: Flask of Distilled Wisdom", note = "Non-soulbound copy drops from Balnazzar in Stratholme", blurb = "The dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = false },
+            { id = 13250, name = "Head of Balnazzar", note = "Drops from Balnazzar in Stratholme (Classic); starts the quest The Truth Comes Crashing Down", blurb = "His head: the dreadlord who seized Lordaeron's capital from Arthas with his brothers, then lost it to Sylvanas.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Balnazzar",
             "https://warcraft.wiki.gg/wiki/King_Arthas_(WC3_Undead)",
@@ -5162,7 +5532,19 @@ ns.NPCS = {
              .. "In the novel Of Blood and Honor he made Stratholme his seat as Lord Commander, and sent his old friend Tirion Fordring to trial for treason. "
              .. "After the Third War the dreadlord Balnazzar possessed his body and used it to lead the Scarlet Crusade as Grand Crusader. "
              .. "In World of Warcraft the possessed Saidan leads the Crimson Legion from the Scarlet Bastion in the ruins of Stratholme.",
-        items = {},
+        items = {
+            { id = 18718, name = "Grand Crusader's Helm", note = "Drops from Balnazzar, who wore Dathrohan's form in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 18717, name = "Hammer of the Grand Crusader", note = "Drops from Balnazzar in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13353, name = "Book of the Dead", note = "Drops from Balnazzar in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13359, name = "Crown of Tyranny", note = "Drops from Balnazzar in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13348, name = "Demonshear", note = "Drops from Balnazzar in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 18720, name = "Shroud of the Nathrezim", note = "Drops from Balnazzar in the Scarlet Bastion.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13250, name = "Head of Balnazzar", note = "Balnazzar's head, delivered to Duke Zverenhoff in The Truth Comes Crashing Down.", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = false },
+            { id = 13360, name = "Gift of the Elven Magi", note = "Drops from Balnazzar in Stratholme (Classic encounter loot table).", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13358, name = "Wyrmtongue Shoulders", note = "Drops from Balnazzar in Stratholme (Classic encounter loot table).", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 16725, name = "Lightforge Boots", note = "Drops from Balnazzar in Stratholme (Classic encounter loot table).", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+            { id = 13369, name = "Fire Striders", note = "Drops from Balnazzar in Stratholme (Classic encounter loot table).", blurb = "Silver Hand knight who put his friend Tirion Fordring on trial in Of Blood and Honor; Balnazzar later took his body.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Saidan_Dathrohan",
             "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
@@ -5189,7 +5571,9 @@ ns.NPCS = {
              .. "When Thrall's New Horde attacked Stratholme, an orc speared him in the chest, but he survived and took over Mardenholde after Tirion's exile. "
              .. "He later became Magistrate of Stratholme until Arthas killed him and his people during the Culling. "
              .. "In World of Warcraft he haunts Stratholme as an undead wight in the service of the Scourge.",
-        items = {},
+        items = {
+            { id = 23198, name = "Idol of Brutality", note = "Drops from Magistrate Barthilas in Stratholme", blurb = "In Of Blood and Honor he is Tirion Fordring's second, who oversees his prosecution and plans Eitrigg's execution.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Magistrate_Barthilas",
             "https://warcraft.wiki.gg/wiki/Of_Blood_and_Honor",
@@ -5231,8 +5615,11 @@ ns.NPCS = {
              .. "Captain Truman, one of his captains in life, still serves him without knowing that both of them are now undead. "
              .. "When adventurers bring the Baron's head to Master Apothecary Faranell, he reveals who the creature really is.",
         items = {
-            { id = 280438, name = "Abominable Head", note = "Horde drop from him; starts \"Unending Torment\", handed to Master Apothecary Faranell" },
-            { id = 268518, name = "Head of the Baron", note = "Alliance drop from him; Captain Truman wants it for \"Abominable Creatures\"" },
+            { id = 280438, name = "Abominable Head", note = "Horde drop from him; starts \"Unending Torment\", handed to Master Apothecary Faranell", blurb = "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.", gear = false },
+            { id = 268518, name = "Head of the Baron", note = "Alliance drop from him; Captain Truman wants it for \"Abominable Creatures\"", blurb = "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.", gear = false },
+            { id = 271204, name = "Meathook Slicer", note = "Drops from The Baron in Ruins of Lordaeron.", blurb = "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.", gear = true },
+            { id = 271205, name = "Abomination Bones", note = "Drops from The Baron in Ruins of Lordaeron.", blurb = "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.", gear = true },
+            { id = 271206, name = "Leftover Abomination Skin", note = "Drops from The Baron in Ruins of Lordaeron.", blurb = "Grand Marshal Garithos, who condemned Kael'thas; Sylvanas had him killed and the Forsaken stitched him back together.", gear = true },
         },
         sources = {
             "https://warcraft.wiki.gg/wiki/Othmar_Garithos",
@@ -5301,7 +5688,14 @@ ns.NPCS = {
              .. "Before the Third War she spoke out against Kel'Thuzad's necromancy, and she stayed in Dalaran after the Scourge destroyed it. "
              .. "In WoW Forever, Dalaran has lowered its shield early while the city is still being rebuilt, and Modera herself works in the Violet Citadel. "
              .. "Outside the city walls, by the sewer exit pipe in Silverpine Forest, a magical image of her gives adventurers tasks for the Kirin Tor.",
-        items = {},
+        items = {
+            { id = 279837, name = "Fallen Guard's Pendant", note = "Reward of Starving Arcane, a quest for her image", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = true },
+            { id = 279838, name = "Arcane Infused Rod", note = "Reward of Starving Arcane, a quest for her image", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = true },
+            { id = 279839, name = "Spellguard Pauldrons", note = "Reward of Heart of Disruption (Alliance), a quest for her image", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = true },
+            { id = 279840, name = "Renewing Footpads", note = "Reward of Heart of Disruption (Alliance), a quest for her image", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = true },
+            { id = 279841, name = "Defender of Dalaran", note = "Reward of Heart of Disruption (Alliance), a quest for her image", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = true },
+            { id = 277507, name = "Dalaran Sewer Key", note = "Provided by her image for Heart of Disruption (permanent key, not a quest item)", blurb = "Council of Six archmage who warned Kel'Thuzad of heresy; in the novel Stormrage she holds back the Nightmare.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Image_of_Archmage_Modera_(Forever)",
             "https://warcraft.wiki.gg/wiki/Archmage_Modera",
@@ -5395,7 +5789,9 @@ ns.NPCS = {
              .. "The Windshapers' leader Ayessa Dawnsinger contacted him because their home island in Skywall, the plane of air, was collapsing, and he led Earthen Ring forces there to help against Rohash. "
              .. "Skyborne players meet him again in the finale of their starting experience on Zephras Isle. "
              .. "In the novel Thrall: Twilight of the Aspects, he is worried about Thrall at the Maelstrom, and in Jaina Proudmoore: Tides of War he has handed the Earthen Ring to Thrall after Deathwing's fall.",
-        items = {},
+        items = {
+            { id = 270866, name = "Titan Relic", note = "Turn-in: brought to Muln in Earthen Echo (Horde); drops from the Relic Guardian; Forever only", blurb = "In Thrall: Twilight of the Aspects the Earthen Ring shaman worries about Thrall, then helps rescue him.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Muln_Earthfury",
             "https://warcraft.wiki.gg/wiki/Thrall:_Twilight_of_the_Aspects",
@@ -5479,7 +5875,16 @@ ns.NPCS = {
              .. "He was an archmage of the Kirin Tor who was killed in the Scourge attack on Dalaran, raised as one of the Scourge, and then freed by Sylvanas. "
              .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde. "
              .. "In the game he sends adventurers after Archmage Arugal.",
-        items = {},
+        items = {
+            { id = 5442, name = "Head of Arugal", note = "Turn-in: Arugal's head brought to Dalar in Arugal Must Die; drops from Arugal", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3634, name = "Head of Grimson", note = "Turn-in: Grimson's head brought to Dalar in Arugal's Folly (3)", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3157, name = "Darksoul Shackle", note = "Turn-in: brought to Dalar in Arugal's Folly (2)", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3156, name = "Glutton Shackle", note = "Turn-in: brought to Dalar in Arugal's Folly (2)", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3218, name = "Pyrewood Shackle", note = "Turn-in: brought to Dalar in Arugal's Folly (4)", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3353, name = "Rune-inscribed Pendant", note = "Turn-in: taken to Dalar in Dalar's Analysis", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 3155, name = "Remedy of Arugal", note = "Retrieved for Dalar in Arugal's Folly", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+            { id = 280375, name = "Worgen Bits", note = "Turn-in: brought to Dalar in Arugal's Folly (5); Forever only", blurb = "One of the randomly named enemy archmage heroes who oppose Arthas outside Dalaran while Kel'Thuzad summons Archimonde.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Dalar_Dawnweaver",
             "https://warcraft.wiki.gg/wiki/Under_the_Burning_Sky_(WC3_Undead)",
@@ -5503,7 +5908,10 @@ ns.NPCS = {
         story = "Magistrate Sevren is a Forsaken quest giver in the Town Hall of Brill in Tirisfal Glades. "
              .. "He hands out the early duties of the newly freed Forsaken around Brill. "
              .. "In Warcraft III: Reforged, Forsaken Kingdom, Bernd sends the player to survey the damaged villages, and Brill and Sevren are the first stop.",
-        items = {},
+        items = {
+            { id = 3017, name = "Sevren's Orders", note = "Given by Sevren in The Prodigal Lich.", blurb = "Brill's Forsaken magistrate; in Forsaken Kingdom his village is the first stop on Bernd's survey of the damage.", gear = false },
+            { id = 3234, name = "Deliah's Ring", note = "Brought to Sevren in The Engraved Ring.", blurb = "Brill's Forsaken magistrate; in Forsaken Kingdom his village is the first stop on Bernd's survey of the damage.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Magistrate_Sevren",
             "https://warcraft.wiki.gg/wiki/A_Scarlet_Flame_(WC3_Undead)",
@@ -5552,7 +5960,20 @@ ns.NPCS = {
              .. "Long ago the green drake Morphaz devoured one of his apprentices and the arcane shard the apprentice carried, and Xylem has sworn to hunt the drake down and recover it. "
              .. "In Warcraft III: Reforged his name is one of the random enemy archmage heroes in the human bases that Grom Hellscream's Warsong clan attacks in the Stonetalon Mountains. "
              .. "In Where Wyverns Dare he can also be the archmage of the Lordaeron Brigade.",
-        items = {},
+        items = {
+            { id = 20022, name = "Azure Key", note = "Given by Xylem to start The Azure Key.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 20023, name = "Encoded Fragment", note = "Turned in to Xylem in Encoded Fragments.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 20085, name = "Arcane Shard", note = "Brought to Xylem in Destroy Morphaz.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 19775, name = "Sealed Azure Bag", note = "Brought to Xylem in Sealed Azure Bag.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 10541, name = "Tablet of Sael'hai", note = "Delivered to Xylem in Delivery to Archmage Xylem.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 10681, name = "Xylem's Note", note = "Given by Xylem for Xylem's Payment to Jediga.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = false },
+            { id = 20036, name = "Fire Ruby", note = "Reward of Destroy Morphaz, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+            { id = 20035, name = "Glacial Spike (dagger)", note = "Reward of Destroy Morphaz, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+            { id = 20037, name = "Arcane Crystal Pendant", note = "Reward of Destroy Morphaz, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+            { id = 19984, name = "Ebon Mask", note = "Reward of The Azure Key, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+            { id = 20255, name = "Whisperwalk Boots", note = "Reward of The Azure Key, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+            { id = 19982, name = "Duskbat Drape", note = "Reward of The Azure Key, which Xylem starts.", blurb = "One of the randomly named enemy archmage heroes defending human bases in Stonetalon against Grom's Warsong clan.", gear = true },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Archmage_Xylem",
             "https://warcraft.wiki.gg/wiki/Cry_of_the_Warsong_(WC3_Orc)",
@@ -5578,7 +5999,9 @@ ns.NPCS = {
              .. "He is the former leader of Scholomance, and from Andorhal he spreads the Plague of Undeath through the plague cauldrons while holding off the Forsaken at the Bulwark and the Alliance at Chillwind Camp. "
              .. "In Warcraft III: Reforged he is the regional commander of the Scourge who leads the Undead Ravagers against Hearthglen in March of the Scourge. "
              .. "In the game adventurers kill him on the orders of Commander Ashlam Valorfist and High Executor Derrington, and his scarab is used to make the key to Scholomance.",
-        items = {},
+        items = {
+            { id = 14610, name = "Araj's Scarab", note = "Contained in Araj's Phylactery, which Araj guards in Andorhal", blurb = "Scourge lich who commanded the Undead Ravagers in their attack on Hearthglen.", gear = false },
+        },
         sources = {
             "https://warcraft.wiki.gg/wiki/Araj_the_Summoner",
             "https://warcraft.wiki.gg/wiki/March_of_the_Scourge_(WC3_Human)",

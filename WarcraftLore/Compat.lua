@@ -230,8 +230,16 @@ local function itemIDFromLink(link)
 end
 
 -- Hooks callback(tooltip, itemID) into item tooltips (bags, loot, quest rewards, chat links ...).
+-- onHide(tooltip), if given, runs when one of those tooltips closes.
 -- Returns the name of the method used, or nil if none was found.
-function C.HookItemTooltip(callback)
+function C.HookItemTooltip(callback, onHide)
+    if onHide then
+        for _, tooltip in ipairs({ GameTooltip, rawget(_G, "ItemRefTooltip") }) do
+            if tooltip and tooltip.HookScript then
+                pcall(tooltip.HookScript, tooltip, "OnHide", function(t) pcall(onHide, t) end)
+            end
+        end
+    end
     if TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
         and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Item then
         TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, function(tooltip, data)
@@ -291,8 +299,8 @@ end
 
 -- Adds a line. Both hook methods above run before the tooltip gets its final
 -- size, so there is no need to call Show() ourselves.
-function C.AddTooltipLine(tooltip, text, r, g, b)
-    tooltip:AddLine(text, r, g, b)
+function C.AddTooltipLine(tooltip, text, r, g, b, wrap)
+    tooltip:AddLine(text, r, g, b, wrap)
 end
 
 -- Buttons: on Forever, OnClick never fires until the button has registered click
@@ -565,6 +573,18 @@ function C.IsShiftDown()
     end
     local ok, down = pcall(IsShiftKeyDown)
     return ok and down == true
+end
+
+-- Fills the main tooltip again when it shows an item (so a held Shift shows at once).
+function C.RefreshItemTooltip()
+    local tt = GameTooltip
+    if not (tt and tt.IsShown and tt:IsShown() and tt.GetItem) then
+        return
+    end
+    local ok, _, link = pcall(tt.GetItem, tt)
+    if ok and link and tt.RefreshData then
+        pcall(tt.RefreshData, tt)
+    end
 end
 
 -- Seconds since the game started (sub-second); 0 if the client has no GetTime.

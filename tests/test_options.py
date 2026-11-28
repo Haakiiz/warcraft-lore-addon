@@ -74,12 +74,12 @@ def main():
     lua.execute("loader = frames[#frames]; loader.scripts.OnEvent(loader)")
     results.append(check("registers canvas category", lua.eval("calls[1]") == "canvas:Warcraft Lore" and lua.eval("calls[2]") == "addon"))
     results.append(check("Open() opens the category", lua.eval("ns.Options.Open()") and lua.eval("calls[3]") == "open:7"))
-    # Controls with an OnClick, in creation order: 5 checkboxes, then 2 buttons.
+    # Controls with an OnClick, in creation order: 7 checkboxes, then 3 buttons.
     lua.execute("""
         clickable = {}
         for _, f in ipairs(frames) do if f.scripts.OnClick then clickable[#clickable + 1] = f end end
     """)
-    results.append(check("eight clickable controls (incl. the theme switch)", lua.eval("#clickable") == 8))
+    results.append(check("ten clickable controls (incl. the theme switch)", lua.eval("#clickable") == 10))
     lua.execute("clickable[1].scripts.OnClick(); clickable[2].scripts.OnClick()")
     results.append(check("checkbox toggles auto/alert", lua.eval("WarcraftLoreDB.auto") is False and lua.eval("WarcraftLoreDB.alert") is True))
     lua.execute("clickable[3].scripts.OnClick()")
@@ -89,8 +89,14 @@ def main():
     lua.execute("clickable[4].scripts.OnClick()")
     results.append(check("world map checkbox turns pins off and refreshes", lua.eval("WarcraftLoreDB.mapPins") is False and lua.eval("pinRefreshes") == 1))
     lua.execute("clickable[5].scripts.OnClick()")
+    results.append(check("item lore checkbox turns the tooltip lore off", lua.eval("WarcraftLoreDB.itemLore") is False))
+    lua.execute("clickable[5].scripts.OnClick()")
+    results.append(check("item lore checkbox turns it on again (back to the default)", lua.eval("WarcraftLoreDB.itemLore") is None))
+    lua.execute("clickable[6].scripts.OnClick()")
+    results.append(check("short item lore checkbox", lua.eval("WarcraftLoreDB.itemShort") is True))
+    lua.execute("clickable[7].scripts.OnClick()")
     results.append(check("book-only toggled and list refreshed", lua.eval("WarcraftLoreDB.hideBookOnly") is True and lua.eval("refreshes") == 1))
-    lua.execute("ns.ResetWindows = nil; clickable[7].scripts.OnClick()")
+    lua.execute("ns.ResetWindows = nil; clickable[9].scripts.OnClick()")
     results.append(check("reset button does nothing (no error) without ns.ResetWindows", lua.eval("resets") == 0))
 
     # Open() returns (true, true) normally, (true, false) when opening fails, false when no panel.
@@ -117,7 +123,7 @@ def main():
 
     # "Reset window positions" goes through ns.ResetWindows (same chat line as /wcl reset).
     lua.execute("resetCalls = 0; ns.ResetWindows = function() resetCalls = resetCalls + 1 end")
-    lua.execute("clickable[7].scripts.OnClick()")
+    lua.execute("clickable[9].scripts.OnClick()")
     results.append(check("reset button uses ns.ResetWindows", lua.eval("resetCalls") == 1))
 
     lua = run(False)

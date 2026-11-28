@@ -27,7 +27,8 @@ MEMORIAL_FIELDS = {"name", "kind", "zone", "coords", "objectIDs", "honors", "app
 MEMORIAL_OPTIONAL = {"locations", "order", "forever"}
 MEMORIAL_KINDS = {"plaque", "tomb", "monument", "book"}
 APPEARANCE_FIELDS = {"game", "campaign", "missions", "role"}
-ITEM_FIELDS = {"id", "name", "note"}
+ITEM_FIELDS = {"id", "name", "note", "blurb", "gear"}
+BLURB_MAX = 120  # the tooltip text under "Warcraft Lore: <name>"
 
 # Warcraft Lore ships for WoW Forever (classic-era). Higher IDs are Season of Discovery or later content.
 MAX_NPC_ID = 200000
@@ -482,6 +483,11 @@ def check_entries(npcs):
                     seen.add(iid)
                     if not (isinstance(d.get("name"), str) and d["name"].strip()):
                         err(f"items[{n}].name is missing")
+                    b = d.get("blurb")
+                    if b is not None and not (isinstance(b, str) and b.strip() and len(b) <= BLURB_MAX):
+                        err(f"items[{n}].blurb must be text of at most {BLURB_MAX} characters")
+                    if "gear" in d and not isinstance(d["gear"], bool):
+                        err(f"items[{n}].gear must be true or false")
 
         check_sources(e, err)
     return errors, warnings

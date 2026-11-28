@@ -1,0 +1,131 @@
+377 items for 98 veterans, gear 176
+   24 Baron Rivendare
+   21 Kel'Thuzad
+   17 Ras Frostwhisper
+   14 Sapphiron
+   14 Balnazzar
+   12 Archmage Xylem
+   12 Anachronos
+   11 Grand Crusader Dathrohan
+   11 Magistrate Solomon
+   10 General Rajaxx
+    8 Craftsman Wilhelm
+    8 Dalar Dawnweaver
+    7 Keeper Remulos
+    7 Ramstein the Gorger
+    7 Master Mathias Shaw
+    7 Shade of Eranikus
+    6 Tirion Fordring
+    6 Image of Archmage Modera
+    5 Warchief Rend Blackhand
+    5 Onyxia
+    5 High Explorer Magellas
+    5 Chief Ukorz Sandscalp
+    4 Razzeric
+    4 Nefarian
+    4 Highlord Bolvar Fordragon
+    4 Jorn Skyseer
+    4 Charlga Razorflank
+    4 Marshal Redpath
+    4 Nazgrel
+    4 Baron Revilgaz
+    4 Nathanos Blightcaller
+    4 Riggle Bassbait
+    3 Leonid Barthalomew the Revered
+    3 Marin Noggenfogger
+    3 Gazlowe
+    3 Lord Grayson Shadowbreaker
+    3 Count Remington Ridgewell
+    3 Archmage Malin
+    3 The Baron
+    3 Pozzik
+    3 Lady Jaina Proudmoore
+    3 High Inquisitor Whitemane
+    3 Advisor Belgrum
+    3 Elling Trias
+    3 Princess Moira Bronzebeard
+    3 Master Gadrin
+    3 High Tinker Mekkatorque
+    2 Mekgineer Thermaplugg
+    2 Fizzle Brassbolts
+    2 General Marcus Jonathan
+    2 Scarlet Commander Mograine
+    2 High Priest Rohan
+    2 Tyrande Whisperwind
+    2 Merithra of the Dream
+    2 Hamuul Runetotem
+    2 Magistrate Sevren
+    2 King Magni Bronzebeard
+    2 Sprinkle
+    2 Marshal Dughan
+    2 Draz'Zilb
+    2 Wharfmaster Dizzywig
+    2 Arei
+    2 Thrall
+    2 Athrikus Narassin
+    2 Magatha Grimtotem
+    2 Varimathras
+    1 Doctor Gustaf VanHowzen
+    1 Arch Druid Renferal
+    1 Do'gol
+    1 Zor Lonetree
+    1 Lord Victor Nefarius
+    1 Gar'Thok
+    1 Zalazane
+    1 Archbishop Benedictus
+    1 Rahauro
+    1 Watcher Ladimore
+    1 Catelyn the Blade
+    1 Araj the Summoner
+    1 Magistrate Barthilas
+    1 Lord Maxwell Tyrosus
+    1 Shael'dryn
+    1 Gryth Thurden
+    1 Caelestrasz
+    1 Cairne Bloodhoof
+    1 Arygos
+    1 Muln Earthfury
+    1 Ranger Lord Hawkspear
+    1 Master Apothecary Faranell
+    1 Rexxar
+    1 Vyrin Swiftwind
+    1 Archmage Ansirem Runeweaver
+    1 Ol' Emma
+    1 Shadra
+    1 Parqual Fintallas
+    1 Baine Bloodhoof
+    1 Vol'jin
+    1 Eitrigg
+    1 Bink
+
+30 problems
+ - E:40 Bag of Water Elemental Bracers: blurb has a game code / later expansion: A member of the Council of Six of the Kirin Tor, who stayed at Dalaran Crater until the Cataclysm.
+ - shared item 13585: Leonid Barthalomew the Revered, Ras Frostwhisper
+ - shared item 13624: Leonid Barthalomew the Revered, Ras Frostwhisper
+ - shared item 21139: Keeper Remulos, Anachronos
+ - shared item 22733: Kel'Thuzad, Anachronos
+ - shared item 12630: Warchief Rend Blackhand, Master Mathias Shaw, Thrall
+ - shared item 1293: General Marcus Jonathan, Magistrate Solomon
+ - shared item 1294: General Marcus Jonathan, Magistrate Solomon
+ - shared item 18422: Onyxia, Thrall
+ - shared item 19002: Nefarian, Eitrigg
+ - shared item 21138: Nefarian, Anachronos
+ - shared item 21142: Nefarian, Lord Victor Nefarius
+ - shared item 4883: Gar'Thok, Vol'jin
+ - shared item 4027: Catelyn the Blade, Baron Revilgaz
+ - shared item 11368: Highlord Bolvar Fordragon, Magistrate Solomon
+ - shared item 11367: Highlord Bolvar Fordragon, Magistrate Solomon
+ - shared item 18718: Grand Crusader Dathrohan, Balnazzar
+ - shared item 18717: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13353: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13359: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13348: Grand Crusader Dathrohan, Balnazzar
+ - shared item 18720: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13250: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13360: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13358: Grand Crusader Dathrohan, Balnazzar
+ - shared item 16725: Grand Crusader Dathrohan, Balnazzar
+ - shared item 13369: Grand Crusader Dathrohan, Balnazzar
+ - shared item 15880: Ramstein the Gorger, Nathanos Blightcaller
+ - shared item 5852: Baron Revilgaz, Pozzik
+ - shared item 3960: Baron Revilgaz, Archmage Ansirem Runeweaver

@@ -1,4 +1,4 @@
--- Options.lua – the Warcraft Lore page in the game's AddOns settings: five checkboxes and two
+-- Options.lua – the Warcraft Lore page in the game's AddOns settings: seven checkboxes and three
 -- buttons, styled like the windows. Changes apply at once. If the client has no settings
 -- panel this file does nothing. ns.Options.Open() opens the page (used by /wcl options).
 
@@ -49,6 +49,18 @@ local OPTIONS = {
                 ns.MapPins.Refresh()
             end
         end },
+    { L["Show veteran lore in item tooltips"],
+        function(d) return d.itemLore ~= false end,
+        function(d, on)
+            if on then
+                d.itemLore = nil -- the default (on)
+            else
+                d.itemLore = false
+            end
+        end },
+    { L["Keep item lore to one line (hold Shift for the text)"],
+        function(d) return d.itemShort == true end,
+        function(d, on) d.itemShort = on or nil end },
     { L["Hide book-only veterans in the list"],
         function(d) return d.hideBookOnly == true end,
         function(d, on)
